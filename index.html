@@ -1,0 +1,1979 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>阿宏不動產工具站</title>
+
+<style>
+/* ============ 分區圖例配色 ============
+   取自都市計畫土地使用分區圖例：住宅黃褐＝主色，商業紅＝危險，
+   農業綠＝安全，工業紫＝資料，公設藍＝中性資訊。
+   ==================================== */
+:root{
+  --ground:#E7E7E3; --surface:#FBFBF8; --surface2:#F1F1EC; --raise:#FFFFFF;
+  --line:#D5D4CC; --line2:#BFBEB4;
+  --ink:#1A1A17; --ink2:#5C5B54; --ink3:#8A897F;
+  --accent:#A9761A; --accent-soft:#F0E3C7; --accent-ink:#FFFFFF;
+  --bad:#B2412C; --bad-soft:#F6DED8;
+  --good:#43713A; --good-soft:#DEEBD9;
+  --ind:#6D4E9C; --ind-soft:#E7DFF4;
+  --pub:#2F6180; --pub-soft:#DBE8F0;
+  --shadow:0 1px 2px rgba(26,26,23,.06), 0 8px 24px -12px rgba(26,26,23,.18);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ground:#131311; --surface:#1C1C19; --surface2:#242420; --raise:#2B2B26;
+    --line:#33332E; --line2:#45443D;
+    --ink:#ECECE6; --ink2:#ADACA3; --ink3:#77766D;
+    --accent:#E3B155; --accent-soft:#3A2F17; --accent-ink:#131311;
+    --bad:#E0684D; --bad-soft:#3A211B;
+    --good:#7FB06F; --good-soft:#1F2B1B;
+    --ind:#A98BD8; --ind-soft:#282039;
+    --pub:#6FA6C8; --pub-soft:#182A33;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="light"]{
+  --ground:#E7E7E3; --surface:#FBFBF8; --surface2:#F1F1EC; --raise:#FFFFFF;
+  --line:#D5D4CC; --line2:#BFBEB4;
+  --ink:#1A1A17; --ink2:#5C5B54; --ink3:#8A897F;
+  --accent:#A9761A; --accent-soft:#F0E3C7; --accent-ink:#FFFFFF;
+  --bad:#B2412C; --bad-soft:#F6DED8;
+  --good:#43713A; --good-soft:#DEEBD9;
+  --ind:#6D4E9C; --ind-soft:#E7DFF4;
+  --pub:#2F6180; --pub-soft:#DBE8F0;
+  --shadow:0 1px 2px rgba(26,26,23,.06), 0 8px 24px -12px rgba(26,26,23,.18);
+}
+:root[data-theme="dark"]{
+  --ground:#131311; --surface:#1C1C19; --surface2:#242420; --raise:#2B2B26;
+  --line:#33332E; --line2:#45443D;
+  --ink:#ECECE6; --ink2:#ADACA3; --ink3:#77766D;
+  --accent:#E3B155; --accent-soft:#3A2F17; --accent-ink:#131311;
+  --bad:#E0684D; --bad-soft:#3A211B;
+  --good:#7FB06F; --good-soft:#1F2B1B;
+  --ind:#A98BD8; --ind-soft:#282039;
+  --pub:#6FA6C8; --pub-soft:#182A33;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Heiti TC","Microsoft JhengHei UI","Microsoft JhengHei",system-ui,sans-serif;
+  font-size:15px; line-height:1.65; letter-spacing:.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:ui-monospace,"Cascadia Mono","SF Mono","Menlo",Consolas,monospace;font-variant-numeric:tabular-nums}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- shell ---------- */
+.wrap{max-width:1160px;margin:0 auto;padding:0 16px}
+header.bar{
+  position:sticky;top:0;z-index:40;background:var(--ground);
+  border-bottom:1px solid var(--line);
+}
+.bar-in{display:flex;align-items:center;gap:12px;padding:12px 0}
+.mark{
+  width:34px;height:34px;flex:none;border-radius:8px;background:var(--accent);
+  color:var(--accent-ink);display:grid;place-items:center;
+  font-weight:900;font-size:17px;letter-spacing:0
+}
+.brand b{display:block;font-size:16px;font-weight:800;letter-spacing:.02em;line-height:1.2}
+.brand span{display:block;font-size:11.5px;color:var(--ink3);letter-spacing:.06em}
+.bar-sp{flex:1}
+.tag-free{
+  font-size:11px;font-weight:800;letter-spacing:.08em;padding:4px 9px;border-radius:99px;
+  background:var(--good-soft);color:var(--good);border:1px solid var(--good);white-space:nowrap
+}
+.icon-btn{
+  width:34px;height:34px;border-radius:8px;border:1px solid var(--line);
+  background:var(--surface);cursor:pointer;display:grid;place-items:center;font-size:15px
+}
+.icon-btn:hover{border-color:var(--line2)}
+
+/* ---------- hero strip ---------- */
+.creed{
+  border:1px solid var(--line);border-left:4px solid var(--accent);
+  background:var(--surface);border-radius:4px;padding:14px 16px;margin:18px 0 4px
+}
+.creed p{margin:0;font-size:15.5px;font-weight:700;letter-spacing:.02em}
+.creed small{display:block;margin-top:5px;color:var(--ink2);font-weight:400;font-size:12.5px;letter-spacing:.02em}
+
+/* ---------- category rail ---------- */
+.rail{
+  display:flex;gap:8px;overflow-x:auto;padding:14px 0 12px;
+  scrollbar-width:none;-ms-overflow-style:none
+}
+.rail::-webkit-scrollbar{display:none}
+.chip{
+  flex:none;padding:7px 14px;border-radius:99px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink2);font-size:13px;font-weight:600;
+  cursor:pointer;white-space:nowrap;letter-spacing:.02em
+}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+
+/* ---------- group + cards ---------- */
+.group{margin:6px 0 30px}
+.group-h{display:flex;align-items:baseline;gap:10px;margin:0 0 4px}
+.group-h h2{margin:0;font-size:17px;font-weight:800;letter-spacing:.03em}
+.group-h em{font-style:normal;font-size:12px;color:var(--ink3);letter-spacing:.03em}
+.group-note{margin:0 0 14px;font-size:12.5px;color:var(--ink2)}
+.grid{display:grid;gap:10px;grid-template-columns:1fr}
+@media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:940px){.grid{grid-template-columns:1fr 1fr 1fr}}
+
+.card{
+  position:relative;text-align:left;width:100%;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);border-radius:6px;
+  padding:14px 14px 13px;transition:border-color .14s,transform .14s,box-shadow .14s
+}
+.card:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:var(--shadow)}
+.card-top{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.card h3{margin:0;font-size:15px;font-weight:800;letter-spacing:.02em}
+.card p{margin:0;font-size:12.5px;color:var(--ink2);line-height:1.6}
+.pill{
+  font-size:10.5px;font-weight:800;letter-spacing:.06em;padding:2.5px 7px;border-radius:3px;
+  white-space:nowrap;border:1px solid transparent
+}
+.p-acc{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.p-bad{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)}
+.p-good{background:var(--good-soft);color:var(--good);border-color:var(--good)}
+.p-ind{background:var(--ind-soft);color:var(--ind);border-color:var(--ind)}
+.p-pub{background:var(--pub-soft);color:var(--pub);border-color:var(--pub)}
+.p-mute{background:var(--surface2);color:var(--ink3);border-color:var(--line)}
+.card-tail{margin-top:9px;font-size:11px;color:var(--ink3);letter-spacing:.04em}
+
+/* ---------- panel ---------- */
+.panel{display:none}
+.panel.on{display:block;animation:rise .18s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.p-head{display:flex;align-items:flex-start;gap:12px;padding:18px 0 14px;border-bottom:1px solid var(--line)}
+.back{
+  flex:none;padding:6px 12px;border-radius:5px;border:1px solid var(--line);
+  background:var(--surface);cursor:pointer;font-size:13px;font-weight:600
+}
+.back:hover{border-color:var(--ink3)}
+.p-head h1{margin:0;font-size:20px;font-weight:900;letter-spacing:.02em;line-height:1.3}
+.p-head .sub{margin:3px 0 0;font-size:12.5px;color:var(--ink2)}
+
+.cols{display:grid;gap:16px;padding:18px 0 60px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:900px){.cols{grid-template-columns:minmax(0,380px) minmax(0,1fr);align-items:start}}
+@media(min-width:900px){.cols.wide{grid-template-columns:1fr}}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px}
+@media(min-width:900px){.cols>.box.stick{position:sticky;top:74px}}
+.box h4{
+  margin:0 0 12px;font-size:11px;font-weight:800;letter-spacing:.14em;
+  color:var(--ink3);text-transform:uppercase
+}
+
+/* ---------- form ---------- */
+.f{display:grid;gap:11px}
+.f2{display:grid;gap:11px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+label.fl{display:block;font-size:12px;font-weight:700;color:var(--ink2);margin-bottom:4px;letter-spacing:.02em}
+label.fl i{font-style:normal;color:var(--ink3);font-weight:500}
+.inp{
+  width:100%;padding:8px 10px;border-radius:5px;border:1px solid var(--line2);
+  background:var(--raise);font-size:15px
+}
+input.inp{font-family:ui-monospace,"Cascadia Mono","SF Mono",Consolas,monospace;font-variant-numeric:tabular-nums}
+.inp:focus{border-color:var(--accent)}
+.unit{position:relative}
+.unit .u{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  font-size:11.5px;color:var(--ink3);pointer-events:none;font-weight:600
+}
+.unit .inp{padding-right:38px}
+.seg{display:flex;gap:0;border:1px solid var(--line2);border-radius:5px;overflow:hidden}
+.seg button{
+  flex:1;padding:7px 4px;background:var(--raise);border:0;cursor:pointer;
+  font-size:12.5px;font-weight:600;border-right:1px solid var(--line2)
+}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+.chk{display:flex;gap:9px;align-items:flex-start;cursor:pointer;padding:2px 0}
+.chk input{margin:3px 0 0;width:16px;height:16px;flex:none;accent-color:var(--accent)}
+.chk span{font-size:13px;line-height:1.5}
+.btn{
+  padding:10px 16px;border-radius:5px;border:1px solid var(--accent);background:var(--accent);
+  color:var(--accent-ink);font-size:14px;font-weight:800;cursor:pointer;letter-spacing:.04em
+}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:var(--surface);color:var(--ink);border-color:var(--line2)}
+.btn.sm{padding:6px 12px;font-size:12.5px}
+.row-btn{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.row-btn .btn{min-width:0;flex:1 1 auto;text-align:center;line-height:1.4}
+
+/* ---------- readout ---------- */
+.hero-num{
+  border:1px solid var(--line);border-radius:6px;background:var(--surface2);
+  padding:16px;margin-bottom:12px
+}
+.hero-num .lab{font-size:11.5px;font-weight:800;letter-spacing:.12em;color:var(--ink3)}
+.hero-num .val{
+  font-family:ui-monospace,"Cascadia Mono","SF Mono",Consolas,monospace;font-variant-numeric:tabular-nums;
+  font-size:clamp(30px,8vw,42px);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-top:2px
+}
+.hero-num .val small{font-size:16px;font-weight:700;color:var(--ink2);letter-spacing:.02em}
+.hero-num .note{margin-top:6px;font-size:12px;color:var(--ink2)}
+.hero-num.accent{border-color:var(--accent);background:var(--accent-soft)}
+.hero-num.bad{border-color:var(--bad);background:var(--bad-soft)}
+.hero-num.good{border-color:var(--good);background:var(--good-soft)}
+
+.kv{display:grid;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.kv .r{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  padding:9px 13px;border-bottom:1px solid var(--line);background:var(--surface)
+}
+.kv .r:last-child{border-bottom:0}
+.kv .r.tot{background:var(--surface2);font-weight:800}
+.kv .r.neg .n{color:var(--bad)}
+.kv .k{font-size:13px;color:var(--ink2)}
+.kv .k b{color:var(--ink);font-weight:700}
+.kv .k em{display:block;font-style:normal;font-size:11px;color:var(--ink3);margin-top:1px}
+.kv .n{
+  font-family:ui-monospace,"Cascadia Mono","SF Mono",Consolas,monospace;font-variant-numeric:tabular-nums;
+  font-size:14.5px;font-weight:700;white-space:nowrap
+}
+
+/* price band */
+.band{margin:14px 0 4px}
+.band-track{position:relative;height:38px;border-radius:5px;overflow:hidden;background:var(--surface2);border:1px solid var(--line)}
+.band-fill{position:absolute;top:0;bottom:0;background:linear-gradient(90deg,var(--good-soft),var(--accent-soft),var(--bad-soft))}
+.band-mark{position:absolute;top:0;bottom:0;width:2px;background:var(--ink)}
+.band-mark.mid{width:3px;background:var(--accent)}
+.band-labs{display:flex;justify-content:space-between;margin-top:6px;gap:8px}
+.band-labs div{text-align:center;flex:1}
+.band-labs .t{font-size:11px;color:var(--ink3);font-weight:700;letter-spacing:.06em}
+.band-labs .v{font-family:ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums;font-size:15px;font-weight:800;margin-top:1px}
+.band-labs .mid .v{color:var(--accent)}
+
+/* verdict */
+.verdict{border-radius:6px;padding:14px;border:1px solid;margin-bottom:12px}
+.verdict.g{background:var(--good-soft);border-color:var(--good)}
+.verdict.y{background:var(--accent-soft);border-color:var(--accent)}
+.verdict.r{background:var(--bad-soft);border-color:var(--bad)}
+.verdict .lv{font-size:13px;font-weight:900;letter-spacing:.1em;margin-bottom:5px}
+.verdict.g .lv{color:var(--good)} .verdict.y .lv{color:var(--accent)} .verdict.r .lv{color:var(--bad)}
+.verdict p{margin:0;font-size:13.5px;line-height:1.65}
+.verdict ul{margin:8px 0 0;padding-left:19px;font-size:13px;line-height:1.7}
+
+table.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+table.tbl th,table.tbl td{padding:6px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+table.tbl th:first-child,table.tbl td:first-child{text-align:left}
+table.tbl th{
+  font-size:11px;letter-spacing:.06em;color:var(--ink3);position:sticky;top:0;
+  background:var(--surface);border-bottom:1px solid var(--line2)
+}
+table.tbl td{font-family:ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto;max-height:420px;overflow-y:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+
+.out{
+  width:100%;min-height:280px;padding:13px;border-radius:6px;border:1px solid var(--line2);
+  background:var(--raise);font-size:13px;line-height:1.7;resize:vertical;
+  font-family:ui-monospace,"Cascadia Mono",Consolas,monospace
+}
+.hint{font-size:12px;color:var(--ink2);line-height:1.65;margin:10px 0 0}
+.hint code{background:var(--surface2);padding:1px 5px;border-radius:3px;font-size:11.5px}
+.disc{
+  margin-top:14px;padding:11px 13px;border:1px dashed var(--line2);border-radius:6px;
+  font-size:11.5px;color:var(--ink3);line-height:1.65;background:var(--surface)
+}
+.linklist{display:grid;gap:8px}
+@media(min-width:700px){.linklist{grid-template-columns:1fr 1fr}}
+.lk{
+  display:block;padding:12px 13px;border:1px solid var(--line);border-radius:6px;background:var(--surface);
+  text-decoration:none;color:inherit;transition:border-color .14s
+}
+.lk:hover{border-color:var(--accent)}
+.lk b{display:block;font-size:14px;font-weight:800;letter-spacing:.02em}
+.lk span{display:block;font-size:12px;color:var(--ink2);margin-top:3px;line-height:1.55}
+.lk .src{display:inline-block;margin-top:6px;font-size:10.5px;color:var(--ink3);letter-spacing:.04em}
+
+footer{border-top:1px solid var(--line);margin-top:20px;padding:20px 0 40px;font-size:12px;color:var(--ink3);line-height:1.8}
+footer b{color:var(--ink2)}
+.toast{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+  background:var(--ink);color:var(--ground);padding:10px 18px;border-radius:99px;
+  font-size:13px;font-weight:700;opacity:0;pointer-events:none;transition:.2s;z-index:99
+}
+.toast.on{opacity:1;transform:translateX(-50%)}
+
+/* 前台 CTA */
+.cta{
+  margin-top:16px;border:1px solid var(--accent);border-radius:6px;background:var(--accent-soft);
+  padding:16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap
+}
+.cta .t{flex:1;min-width:200px}
+.cta .t b{display:block;font-size:15px;font-weight:800;letter-spacing:.02em}
+.cta .t span{display:block;font-size:12.5px;color:var(--ink2);margin-top:3px;line-height:1.6}
+.cta a.go{
+  padding:10px 20px;border-radius:5px;background:var(--accent);color:var(--accent-ink);
+  text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.04em;white-space:nowrap
+}
+/* 內部工具標記 */
+.p-int{background:var(--ind-soft);color:var(--ind);border-color:var(--ind)}
+.card.internal{border-style:dashed}
+.intbar{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  margin:0 0 14px;padding:10px 13px;border:1px dashed var(--ind);border-radius:6px;
+  background:var(--ind-soft);font-size:12.5px;color:var(--ink2)
+}
+.intbar b{color:var(--ind);font-weight:800}
+/* 後台預覽橫幅 */
+.pvbar{
+  background:var(--ind);color:#fff;text-align:center;padding:6px 12px;
+  font-size:12px;font-weight:700;letter-spacing:.04em
+}
+.foot-tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.foot-tools button{
+  background:none;border:0;padding:0;cursor:pointer;font-size:11.5px;
+  color:var(--ink3);text-decoration:underline;text-underline-offset:3px
+}
+</style>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <div class="mark" id="bMark">宏</div>
+    <div class="brand">
+      <b id="bSite">阿宏不動產工具站</b>
+      <span id="bSlogan">賣房不賣夢　陪你完成夢 不陪你做錯夢</span>
+    </div>
+    <div class="bar-sp"></div>
+    <span class="tag-free" id="bFree">永久免費</span>
+    <button class="icon-btn" id="themeBtn" title="切換深淺色" aria-label="切換深淺色">◐</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- ================= HOME ================= -->
+  <section id="home">
+    <div class="creed">
+      <p id="hTitle"></p>
+      <small id="hSub"></small>
+    </div>
+
+    <div class="rail" id="rail"></div>
+    <div id="groups"></div>
+  </section>
+
+  <!-- ================= PANEL ================= -->
+  <section class="panel" id="panel">
+    <div class="p-head">
+      <button class="back" id="backBtn">← 工具箱</button>
+      <div>
+        <h1 id="pTitle"></h1>
+        <p class="sub" id="pSub"></p>
+      </div>
+    </div>
+    <div id="pBody"></div>
+  </section>
+</main>
+
+<footer class="wrap" id="foot"></footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- 設定檔：後台產生。檔案不存在時自動用下面的內建預設值，不會出錯。 -->
+<script src="config.js"></script>
+
+<script>
+/* ===================== 設定系統（前台讀，後台寫） ===================== */
+var DEFAULTS={
+  brand:{
+    site:'阿宏不動產工具站',
+    slogan:'賣房不賣夢　陪你完成夢 不陪你做錯夢',
+    mark:'宏',
+    name:'何志宏',
+    title:'不動產經紀人',
+    area:'主力雙北　延伸桃園　最後全省',
+    company:'',
+    store:'',
+    licenseBroker:'',
+    licenseSales:'',
+    lineUrl:'',
+    phone:'',
+    accent:'ochre',
+    freeTag:'永久免費'
+  },
+  lead:{
+    on:true,
+    label:'這份試算幫我看一下',
+    text:'算完想找人確認？把結果複製起來傳給我，我幫你看哪裡要調整。',
+    action:'line'
+  },
+  hero:{
+    title:'別人的工具吃 591 即時資料，被擋一次就整站掛掉。這裡不爬任何平台。',
+    sub:'全部算在你自己的手機裡 ‧ 資料來源是內政部官方公開資料 ‧ 沒有帳號、沒有後台、沒有月費 ‧ 斷網也能算'
+  },
+  /* public＝客戶看得到　private＝只有你看得到　off＝關閉 */
+  tools:{
+    loan:'public', afford:'public', buycost:'public', sellnet:'public',
+    value:'private', yield:'public', ping:'public',
+    deed:'private', visit:'public', gate:'private',
+    prompt:'private', gov:'public', route:'private', match:'public'
+  },
+  /* 買方需求匹配器用的物件清單，後台維護。tags 用固定字典（見 match 工具內 TAGDICT）。
+     price 單位：萬。這裡留空陣列，出廠不放任何真實物件，避免對外顯示未經確認資料。 */
+  listings:[],
+  params:{
+    rate1:2.185, rate2:2.435, switchYear:2, years:30, ltv:80, grace:0, income:90000,
+    priceDemo:1580,
+    feeBuy:2, feeSell:4, scrivenerBuy:25000, scrivenerSell:30000, fireIns:4000,
+    deedTaxRate:6, stampRate:0.1, regRate:0.1,
+    dbrSafe:33, dbrMax:45,
+    pubRatioOk:28, pubRatioWarn:34,
+    valueDown:8, valueUp:8,
+    yieldGoal:3, yieldOk:3, yieldWarn:2,
+    expenseRate:3
+  },
+  legal:{
+    footer:'所有試算為決策輔助，稅費以國稅局／地方稅捐處核定為準，行情以實價登錄揭露為準，屋況以現場與謄本為準。',
+    privacy:'本站不儲存、不上傳任何你輸入的資料——關掉分頁就沒了。'
+  }
+};
+function deepMerge(a,b){
+  var o={};
+  for(var k in a){ o[k]= (a[k]&&typeof a[k]==='object'&&!Array.isArray(a[k])) ? deepMerge(a[k], (b&&b[k])||{}) : ((b&&b[k]!==undefined&&b[k]!=='')? b[k] : a[k]) }
+  if(b) for(var k2 in b){ if(!(k2 in o)) o[k2]=b[k2] }
+  return o;
+}
+var CFG=deepMerge(DEFAULTS, window.AHCONFIG||{});
+/* 後台即時預覽：?cfg=<base64> 覆蓋設定（不影響 #/ 路由） */
+var PREVIEW=false;
+(function(){
+  var m=location.search.match(/[?&]cfg=([^&]+)/);
+  if(m){ try{ CFG=deepMerge(CFG, JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(m[1])))))); PREVIEW=true }catch(e){} }
+  if(/[?&]internal=1/.test(location.search)) window.__showInternal=true;
+})();
+function PAR(k,d){ var x=CFG.params[k]; return (x===undefined||x===null||x==='')? d : x }
+var ACCENTS={
+  ochre:{l:'#A9761A',ls:'#F0E3C7',d:'#E3B155',ds:'#3A2F17'},
+  brick:{l:'#B2412C',ls:'#F6DED8',d:'#E0684D',ds:'#3A211B'},
+  indigo:{l:'#2F6180',ls:'#DBE8F0',d:'#6FA6C8',ds:'#182A33'},
+  moss:{l:'#43713A',ls:'#DEEBD9',d:'#7FB06F',ds:'#1F2B1B'},
+  plum:{l:'#6D4E9C',ls:'#E7DFF4',d:'#A98BD8',ds:'#282039'}
+};
+(function applyAccent(){
+  var a=ACCENTS[CFG.brand.accent]||ACCENTS.ochre;
+  var s=document.createElement('style');
+  s.textContent=
+    ':root{--accent:'+a.l+';--accent-soft:'+a.ls+'}'+
+    '@media (prefers-color-scheme:dark){:root{--accent:'+a.d+';--accent-soft:'+a.ds+'}}'+
+    ':root[data-theme="light"]{--accent:'+a.l+';--accent-soft:'+a.ls+'}'+
+    ':root[data-theme="dark"]{--accent:'+a.d+';--accent-soft:'+a.ds+'}';
+  document.head.appendChild(s);
+})();
+
+/* ===================== 共用 ===================== */
+var PING = 3.305785;
+function $(id){return document.getElementById(id)}
+function v(id){var e=$(id); if(!e) return 0; var n=parseFloat(String(e.value).replace(/,/g,'')); return isNaN(n)?0:n}
+function sv(id){var e=$(id); return e?e.value:''}
+function nf(n,d){ if(!isFinite(n)) n=0; d=d||0;
+  return n.toLocaleString('zh-TW',{minimumFractionDigits:d,maximumFractionDigits:d}) }
+function wan(yuan,d){ return nf(yuan/10000, d===undefined?1:d) }
+function toast(m){ var t=$('toast'); t.textContent=m; t.classList.add('on'); setTimeout(function(){t.classList.remove('on')},1600) }
+function copy(text,msg){
+  var ta=document.createElement('textarea'); ta.value=text;
+  ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta);
+  ta.select();
+  try{ document.execCommand('copy') }catch(e){}
+  document.body.removeChild(ta);
+  if(navigator.clipboard){ navigator.clipboard.writeText(text).catch(function(){}) }
+  toast(msg||'已複製')
+}
+function seg(id,opts,def,cb){
+  var h='<div class="seg" id="'+id+'" data-val="'+def+'">';
+  for(var i=0;i<opts.length;i++){
+    h+='<button type="button" data-v="'+opts[i][0]+'" aria-pressed="'+(opts[i][0]==def)+'">'+opts[i][1]+'</button>';
+  }
+  return h+'</div>';
+}
+function bindSegs(scope){
+  var segs=scope.querySelectorAll('.seg');
+  for(var i=0;i<segs.length;i++){
+    (function(s){
+      s.addEventListener('click',function(e){
+        var b=e.target.closest('button'); if(!b) return;
+        var bs=s.querySelectorAll('button');
+        for(var j=0;j<bs.length;j++) bs[j].setAttribute('aria-pressed', bs[j]===b);
+        s.dataset.val=b.dataset.v;
+        if(window.__run) window.__run();
+      })
+    })(segs[i]);
+  }
+}
+function segv(id){ var e=$(id); return e?e.dataset.val:'' }
+function autoRun(scope){
+  var f=scope.querySelectorAll('input,select,textarea');
+  for(var i=0;i<f.length;i++){
+    f[i].addEventListener('input',function(){ if(window.__run) window.__run() });
+    f[i].addEventListener('change',function(){ if(window.__run) window.__run() });
+  }
+  bindSegs(scope);
+}
+function kvRow(k,sub,n,cls){
+  return '<div class="r '+(cls||'')+'"><div class="k"><b>'+k+'</b>'+(sub?'<em>'+sub+'</em>':'')+'</div><div class="n">'+n+'</div></div>'
+}
+
+/* 逐月攤還模擬：支援寬限期＋利率變動（機動利率／升息壓力測試） */
+function amortize(P, years, r1, r2, switchYear, graceYears){
+  var n=Math.round(years*12), g=Math.round(graceYears*12), sw=Math.round(switchYear*12);
+  var bal=P, totInt=0, rows=[], firstPay=0, afterGrace=0, afterSwitch=0;
+  if(n<=0||P<=0) return {rows:[],totInt:0,firstPay:0,afterGrace:0,afterSwitch:0,n:0,total:0};
+  for(var m=1;m<=n;m++){
+    var ar = (m<=sw? r1 : r2);
+    var i = ar/100/12;
+    var interest = bal*i, pay, pp;
+    if(m<=g){ pay=interest; pp=0 }
+    else{
+      var remain=n-m+1;
+      pay = i>0 ? bal*i/(1-Math.pow(1+i,-remain)) : bal/remain;
+      pp = pay-interest;
+    }
+    bal-=pp; totInt+=interest;
+    if(m===1) firstPay=pay;
+    if(m===g+1) afterGrace=pay;
+    if(m===sw+1) afterSwitch=pay;
+    rows.push({m:m,pay:pay,int:interest,pp:pp,bal:Math.max(bal,0),rate:ar});
+  }
+  return {rows:rows,totInt:totInt,firstPay:firstPay,afterGrace:afterGrace||firstPay,
+          afterSwitch:afterSwitch,n:n,total:P+totInt};
+}
+
+/* ===================== 工具定義 ===================== */
+var GROUPS=[
+  {id:'buyer', name:'找到懂你的物件',   note:'591 只能篩坪數地區總價。這裡多問你幾句「為什麼要買」，篩出來的才是真的適合你。'},
+  {id:'calc', name:'現場就要算得出來', note:'客戶當面問你，翻手機三秒給答案。不用連網、不用等回公司。'},
+  {id:'risk', name:'不讓人買錯的判斷',  note:'買對是資產，買錯是壓力。這一區是踩雷前的最後一道閘門。'},
+  {id:'make', name:'一鍵生內容',        note:'填完欄位按複製，貼進任何 AI 就出稿。不用付 API 錢。'},
+  {id:'find', name:'官方資料直達',      note:'免費、合法、可查證的來源。不猜、不轉述、不吃二手資料。'}
+];
+
+var TOOLS=[
+/* ---------- A 現場計算 ---------- */
+{
+ id:'loan', g:'calc', name:'房貸試算 ＋ 升息壓力測試', pill:['p-acc','招牌'],
+ desc:'寬限期、兩段利率、機動利率一次算。月付、總利息、逐月攤還表全開，不藏公式。',
+ tail:'齊家沒有這支',
+ sub:'逐月模擬攤還，寬限期結束跳多少、升息一碼多少，一眼看完',
+ build:function(){ return {
+  form:
+   '<div class="f">'+
+   '<div><label class="fl">房屋總價 <i>單位：萬元</i></label><div class="unit"><input class="inp" id="l_price" value="'+PAR('priceDemo',1580)+'"><span class="u">萬</span></div></div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">貸款成數</label><div class="unit"><input class="inp" id="l_ltv" value="'+PAR('ltv',80)+'"><span class="u">%</span></div></div>'+
+    '<div><label class="fl">貸款年限</label><div class="unit"><input class="inp" id="l_yr" value="'+PAR('years',30)+'"><span class="u">年</span></div></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">前期年利率</label><div class="unit"><input class="inp" id="l_r1" value="'+PAR('rate1',2.185)+'"><span class="u">%</span></div></div>'+
+    '<div><label class="fl">前期維持 <i>幾年後跳</i></label><div class="unit"><input class="inp" id="l_sw" value="'+PAR('switchYear',2)+'"><span class="u">年</span></div></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">後期年利率 <i>升息後</i></label><div class="unit"><input class="inp" id="l_r2" value="'+PAR('rate2',2.435)+'"><span class="u">%</span></div></div>'+
+    '<div><label class="fl">寬限期 <i>只繳息</i></label><div class="unit"><input class="inp" id="l_g" value="'+PAR('grace',0)+'"><span class="u">年</span></div></div>'+
+   '</div>'+
+   '<div><label class="fl">家庭月收入 <i>用來算負擔率，可留空</i></label><div class="unit"><input class="inp" id="l_inc" value="'+PAR('income',90000)+'"><span class="u">元</span></div></div>'+
+   '<div class="row-btn"><button class="btn sm ghost" id="l_c1">套新青安條件</button>'+
+   '<button class="btn sm ghost" id="l_c2">套一般房貸</button></div>'+
+   '<p class="hint" style="margin-top:-2px">新青安＝40 年、寬限 5 年；一般房貸＝'+PAR('years',30)+' 年、無寬限。利率預設 '+PAR('rate1',2.185)+'％／'+PAR('rate2',2.435)+'％（後台可改），實際請填銀行核准的數字。</p>'+
+   '</div>',
+  out:'<div id="l_out"></div>'+
+      '<div class="box" style="margin-top:12px"><h4>逐月攤還表</h4><div class="scroll"><table class="tbl" id="l_tbl"></table></div>'+
+      '<div class="row-btn" style="margin-top:10px"><button class="btn sm ghost" id="l_copy">複製摘要給客戶</button></div></div>'+
+      '<div class="disc">利率請填銀行實際核准的數字。本息平均攤還逐月模擬，寬限期內只繳息、本金不減，寬限結束後以剩餘年限重算月付。實際還款以銀行攤還表為準。</div>',
+  run:function(){
+    var price=v('l_price')*10000, ltv=v('l_ltv')/100, P=price*ltv;
+    var a=amortize(P, v('l_yr'), v('l_r1'), v('l_r2'), v('l_sw'), v('l_g'));
+    var inc=v('l_inc');
+    var peak=Math.max(a.firstPay,a.afterGrace,a.afterSwitch||0);
+    var dbr= inc>0 ? peak/inc*100 : 0;
+    var SAFE=PAR('dbrSafe',33), MAXD=PAR('dbrMax',45);
+    var lv = dbr===0?'':(dbr<=SAFE?'good':(dbr<=MAXD?'accent':'bad'));
+    var lvT= dbr<=SAFE?'安全水位':(dbr<=MAXD?'偏緊 要留現金':'超載 銀行大概不會過');
+
+    var h='<div class="hero-num accent"><div class="lab">最高月付（含跳息後）</div>'+
+      '<div class="val">'+nf(peak)+' <small>元／月</small></div>'+
+      '<div class="note">貸款 '+wan(P)+' 萬 ‧ 自備 '+wan(price-P)+' 萬 ‧ '+v('l_yr')+' 年期</div></div>';
+
+    h+='<div class="kv">'+
+      kvRow('第 1 期月付','', nf(a.firstPay)+' 元')+
+      (v('l_g')>0? kvRow('寬限期結束後月付','第 '+(v('l_g')*12+1)+' 期起 ‧ 跳 '+nf(a.afterGrace-a.firstPay)+' 元', nf(a.afterGrace)+' 元','neg'):'')+
+      (v('l_r2')!==v('l_r1')? kvRow('利率跳動後月付','第 '+(v('l_sw')*12+1)+' 期起', nf(a.afterSwitch)+' 元'):'')+
+      kvRow('總利息支出','', nf(a.totInt)+' 元　('+wan(a.totInt)+' 萬)','neg')+
+      kvRow('本息合計還款總額','', nf(a.total)+' 元　('+wan(a.total)+' 萬)','tot')+
+      '</div>';
+
+    if(inc>0){
+      h+='<div class="verdict '+(lv==='good'?'g':lv==='accent'?'y':'r')+'" style="margin-top:12px">'+
+        '<div class="lv">房貸負擔率 '+nf(dbr,1)+'％　'+lvT+'</div>'+
+        '<p>最高月付佔家庭月收入 '+nf(dbr,1)+'％。銀行審核多看 '+MAXD+'％ 以內，自住實務建議壓在 <b>'+SAFE+'％</b> 以下，留出裝潢、修繕、失業緩衝。</p>'+
+        (dbr>MAXD?'<ul><li>拉長年限或降低總價，別靠寬限期硬撐——寬限期結束那一跳最容易斷頭</li><li>先把信貸、車貸、循環結清，銀行看的是全部負債</li></ul>':'')+
+        '</div>';
+    }
+    $('l_out').innerHTML=h;
+
+    var t='<thead><tr><th>期</th><th>月付</th><th>利息</th><th>本金</th><th>剩餘本金</th></tr></thead><tbody>';
+    var show=[];
+    for(var i=0;i<a.rows.length;i++){ var m=a.rows[i].m;
+      if(m<=13 || m%12===0 || m===a.rows.length) show.push(a.rows[i]) }
+    for(var j=0;j<show.length;j++){ var r=show[j];
+      t+='<tr><td>'+r.m+(r.m%12===0?'（'+(r.m/12)+'年）':'')+'</td><td>'+nf(r.pay)+'</td><td>'+nf(r.int)+'</td><td>'+nf(r.pp)+'</td><td>'+nf(r.bal)+'</td></tr>' }
+    $('l_tbl').innerHTML=t+'</tbody>';
+
+    window.__loanSummary='【'+nf(price/10000)+'萬 房貸試算】\n'+
+      '貸款 '+wan(P)+' 萬（'+v('l_ltv')+' 成）／自備 '+wan(price-P)+' 萬\n'+
+      '年限 '+v('l_yr')+' 年　利率 '+v('l_r1')+'%（'+v('l_sw')+'年後 '+v('l_r2')+'%）'+(v('l_g')>0?'　寬限 '+v('l_g')+' 年':'')+'\n'+
+      '第1期月付　'+nf(a.firstPay)+' 元\n'+
+      (v('l_g')>0?'寬限結束後　'+nf(a.afterGrace)+' 元（會跳 '+nf(a.afterGrace-a.firstPay)+'）\n':'')+
+      '最高月付　'+nf(peak)+' 元\n'+
+      '總利息　'+wan(a.totInt)+' 萬\n'+
+      (inc>0?'房貸負擔率　'+nf(dbr,1)+'%（'+lvT+'）\n':'')+
+      '\n※ 利率以銀行實際核准為準，此為試算';
+  },
+  after:function(){
+    $('l_c1').onclick=function(){ $('l_r1').value=PAR('rate1',2.185); $('l_r2').value=PAR('rate1',2.185); $('l_sw').value=2; $('l_yr').value=40; $('l_g').value=5; window.__run() };
+    $('l_c2').onclick=function(){ $('l_r1').value=PAR('rate2',2.435); $('l_r2').value=(PAR('rate2',2.435)+0.25).toFixed(3); $('l_sw').value=PAR('switchYear',2); $('l_yr').value=PAR('years',30); $('l_g').value=0; window.__run() };
+    $('l_copy').onclick=function(){ copy(window.__loanSummary||'','房貸摘要已複製，可直接貼 LINE') };
+  }
+ }}
+},
+
+{
+ id:'afford', g:'calc', name:'我到底買得起多少', pill:['p-acc','買方最愛'],
+ desc:'倒過來算：手上多少現金、月付願意付多少，反推可以看幾百萬的房子。',
+ tail:'買方第一句話就是問這個',
+ sub:'由「月付上限＋自備款」反推可負擔總價，同時給保守與極限兩條線',
+ build:function(){ return {
+  form:
+   '<div class="f">'+
+   '<div><label class="fl">家庭月收入 <i>稅後可支配</i></label><div class="unit"><input class="inp" id="a_inc" value="'+PAR('income',90000)+'"><span class="u">元</span></div></div>'+
+   '<div><label class="fl">現有其他月付 <i>車貸／信貸／學貸</i></label><div class="unit"><input class="inp" id="a_debt" value="0"><span class="u">元</span></div></div>'+
+   '<div><label class="fl">手上可動用現金 <i>扣掉緊急預備金</i></label><div class="unit"><input class="inp" id="a_cash" value="400"><span class="u">萬</span></div></div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">貸款成數</label><div class="unit"><input class="inp" id="a_ltv" value="'+PAR('ltv',80)+'"><span class="u">%</span></div></div>'+
+    '<div><label class="fl">年限</label><div class="unit"><input class="inp" id="a_yr" value="'+PAR('years',30)+'"><span class="u">年</span></div></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">年利率</label><div class="unit"><input class="inp" id="a_r" value="'+PAR('rate2',2.435)+'"><span class="u">%</span></div></div>'+
+    '<div><label class="fl">稅費裝潢預留 <i>佔總價</i></label><div class="unit"><input class="inp" id="a_fee" value="6"><span class="u">%</span></div></div>'+
+   '</div>'+
+   '<div><label class="fl">可接受的房貸負擔率</label>'+
+    seg('a_seg',[[PAR('dbrSafe',33),PAR('dbrSafe',33)+'% 保守'],['40','40% 標準'],[PAR('dbrMax',45),PAR('dbrMax',45)+'% 極限']],PAR('dbrSafe',33))+'</div>'+
+   '</div>',
+  out:'<div id="a_out"></div>'+
+      '<div class="disc">「買得起」不等於「該買」。負擔率超過三成，等於未來十年不能失業、不能生病、不能換工作。這條線是給你自己看的，不是給銀行看的。</div>',
+  run:function(){
+    var inc=v('a_inc'), debt=v('a_debt'), cash=v('a_cash')*10000;
+    var ltv=v('a_ltv')/100, yr=v('a_yr'), r=v('a_r')/100/12, feeRate=v('a_fee')/100;
+    var out='';
+    function calc(ratio){
+      var cap=inc*ratio/100-debt;
+      if(cap<=0) return null;
+      var n=yr*12;
+      var P = r>0 ? cap*(1-Math.pow(1+r,-n))/r : cap*n;   // 月付上限 → 可貸本金
+      var byIncome = P/ltv;                                // 收入撐得起的總價
+      var byCash   = cash/(1-ltv+feeRate);                 // 現金撐得起的總價
+      var total = Math.min(byIncome, byCash);
+      return {cap:cap,P:P,byIncome:byIncome,byCash:byCash,total:total,
+              bind: byIncome<byCash ? '收入' : '自備款'};
+    }
+    var pick=calc(parseFloat(segv('a_seg')));
+    if(!pick){ $('a_out').innerHTML='<div class="verdict r"><div class="lv">算不出來</div><p>現有月付負債已經吃掉全部可負擔額度。先處理既有負債，再談買房。</p></div>'; return }
+
+    out+='<div class="hero-num accent"><div class="lab">可負擔總價上限</div>'+
+      '<div class="val">'+wan(pick.total,0)+' <small>萬</small></div>'+
+      '<div class="note">卡在<b>'+pick.bind+'</b>這一邊 ‧ 月付上限 '+nf(pick.cap)+' 元</div></div>';
+
+    out+='<div class="kv">'+
+      kvRow('收入撐得起的總價','月付 '+nf(pick.cap)+' 元 → 可貸 '+wan(pick.P,0)+' 萬', wan(pick.byIncome,0)+' 萬')+
+      kvRow('自備款撐得起的總價','現金 '+wan(cash,0)+' 萬 ÷（頭款 '+nf((1-ltv)*100)+'% ＋ 稅費裝潢 '+v('a_fee')+'%）', wan(pick.byCash,0)+' 萬')+
+      kvRow('可以看的總價帶','建議往下抓 5–10% 留議價空間', wan(pick.total*0.9,0)+' ～ '+wan(pick.total,0)+' 萬','tot')+
+      '</div>';
+
+    var rows=[[PAR('dbrSafe',33),'保守'],['40','標準'],[PAR('dbrMax',45),'極限']], t='';
+    t+='<div class="box" style="margin-top:12px"><h4>三條線一起看</h4><div class="kv">';
+    for(var i=0;i<rows.length;i++){
+      var c=calc(parseFloat(rows[i][0]));
+      if(c) t+=kvRow(rows[i][0]+'% '+rows[i][1],'月付 '+nf(c.cap)+' 元', wan(c.total,0)+' 萬');
+    }
+    t+='</div><p class="hint">三條線差距很大，代表你的購屋能力其實是「你願意過多緊的日子」決定的，不是房價決定的。</p></div>';
+    $('a_out').innerHTML=out+t;
+  },
+  after:function(){}
+ }}
+},
+
+{
+ id:'buycost', g:'calc', name:'買方到底要準備多少現金', pill:['p-bad','最容易爆'],
+ desc:'頭款只是開始。契稅、印花稅、代書、規費、仲介費、火險、裝潢、搬家全部列出來。',
+ tail:'簽約前算清楚，別到交屋才發現錢不夠',
+ sub:'把「總價 × 兩成」以外的那一大包，一項一項攤開',
+ build:function(){ return {
+  form:
+   '<div class="f">'+
+   '<div><label class="fl">成交總價</label><div class="unit"><input class="inp" id="b_price" value="'+PAR('priceDemo',1580)+'"><span class="u">萬</span></div></div>'+
+   '<div><label class="fl">貸款成數</label><div class="unit"><input class="inp" id="b_ltv" value="'+PAR('ltv',80)+'"><span class="u">%</span></div></div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">房屋評定現值 <i>謄本／稅單上</i></label><div class="unit"><input class="inp" id="b_hv" value="60"><span class="u">萬</span></div></div>'+
+    '<div><label class="fl">土地公告現值總額</label><div class="unit"><input class="inp" id="b_lv" value="180"><span class="u">萬</span></div></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">仲介服務費 <i>買方，上限雙方合計6%</i></label><div class="unit"><input class="inp" id="b_fee" value="'+PAR('feeBuy',2)+'"><span class="u">%</span></div></div>'+
+    '<div><label class="fl">代書費 <i>含簽約過戶</i></label><div class="unit"><input class="inp" id="b_scr" value="'+PAR('scrivenerBuy',25000)+'"><span class="u">元</span></div></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">裝潢／家具預算</label><div class="unit"><input class="inp" id="b_deco" value="80"><span class="u">萬</span></div></div>'+
+    '<div><label class="fl">搬家＋雜支</label><div class="unit"><input class="inp" id="b_misc" value="5"><span class="u">萬</span></div></div>'+
+   '</div>'+
+   '<div><label class="fl">火險地震險 <i>首年</i></label><div class="unit"><input class="inp" id="b_ins" value="'+PAR('fireIns',4000)+'"><span class="u">元</span></div></div>'+
+   '</div>',
+  out:'<div id="b_out"></div>'+
+      '<div class="row-btn" style="margin-top:12px"><button class="btn sm ghost" id="b_copy">複製明細給客戶</button></div>'+
+      '<div class="disc">契稅＝房屋評定現值×6％；印花稅＝（房屋現值＋土地公告現值）×0.1％；登記規費＝（房屋現值＋申報地價總額）×0.1％＋書狀費；抵押權設定規費＝設定金額（一般為貸款額×1.2）×0.1％。此處以土地公告現值近似申報地價，實際請以地政事務所計算為準。房地合一稅、土地增值稅由賣方負擔，不列入本表。</div>',
+  run:function(){
+    var price=v('b_price')*10000, ltv=v('b_ltv')/100;
+    var hv=v('b_hv')*10000, lv=v('b_lv')*10000;
+    var loan=price*ltv;
+    var down=price-loan;
+    var deed=hv*PAR('deedTaxRate',6)/100;          // 契稅
+    var stamp=(hv+lv)*PAR('stampRate',0.1)/100;    // 印花稅
+    var reg=(hv+lv)*PAR('regRate',0.1)/100+240;    // 登記規費＋書狀費約3張
+    var mort=loan*1.2*PAR('regRate',0.1)/100;      // 抵押權設定規費
+    var fee=price*v('b_fee')/100;        // 仲介服務費
+    var scr=v('b_scr');
+    var ins=v('b_ins');
+    var deco=v('b_deco')*10000, misc=v('b_misc')*10000;
+    var closing=deed+stamp+reg+mort+fee+scr+ins;
+    var cashNeed=down+closing;
+    var allIn=cashNeed+deco+misc;
+
+    var h='<div class="hero-num bad"><div class="lab">交屋前要準備的現金</div>'+
+      '<div class="val">'+wan(allIn,0)+' <small>萬</small></div>'+
+      '<div class="note">頭款 '+wan(down,0)+' 萬　＋　過戶稅費 '+wan(closing,1)+' 萬　＋　裝潢搬家 '+wan(deco+misc,0)+' 萬</div></div>';
+
+    h+='<div class="kv">'+
+      kvRow('自備頭款','總價 '+nf(price/10000)+' 萬 × '+nf((1-ltv)*100)+'%', nf(down)+' 元')+
+      kvRow('契稅','房屋現值 '+v('b_hv')+' 萬 × '+PAR('deedTaxRate',6)+'%', nf(deed)+' 元')+
+      kvRow('印花稅','（房屋現值＋土地公告現值）× '+PAR('stampRate',0.1)+'%', nf(stamp)+' 元')+
+      kvRow('所有權登記規費','含書狀費', nf(reg)+' 元')+
+      kvRow('抵押權設定規費','設定 '+wan(loan*1.2,0)+' 萬 × '+PAR('regRate',0.1)+'%', nf(mort)+' 元')+
+      kvRow('仲介服務費','總價 × '+v('b_fee')+'%', nf(fee)+' 元')+
+      kvRow('代書費','', nf(scr)+' 元')+
+      kvRow('火險地震險','首年', nf(ins)+' 元')+
+      kvRow('過戶稅費小計','頭款以外的硬支出', nf(closing)+' 元','tot')+
+      '</div>';
+
+    h+='<div class="box" style="margin-top:12px"><h4>交屋後才開始的錢</h4><div class="kv">'+
+      kvRow('裝潢／家具','', nf(deco)+' 元')+
+      kvRow('搬家＋雜支','', nf(misc)+' 元')+
+      kvRow('全部到位總現金','頭款＋稅費＋裝潢＋搬家', nf(allIn)+' 元（'+wan(allIn,0)+' 萬）','tot')+
+      '</div>'+
+      '<div class="verdict y" style="margin-top:12px"><div class="lv">最常爆的一刀</div>'+
+      '<p>多數人只準備了頭款 '+wan(down,0)+' 萬，卻沒算到後面還有 <b>'+wan(allIn-down,0)+' 萬</b>。這筆錢佔總價 '+nf((allIn-down)/price*100,1)+'％，通常在簽約後兩個月內全部要出去。</p></div></div>';
+    $('b_out').innerHTML=h;
+
+    window.__buySummary='【購屋現金需求試算】成交總價 '+nf(price/10000)+' 萬\n'+
+      '自備頭款　'+wan(down,0)+' 萬\n契稅　'+nf(deed)+' 元\n印花稅　'+nf(stamp)+' 元\n'+
+      '登記規費　'+nf(reg)+' 元\n設定規費　'+nf(mort)+' 元\n仲介服務費　'+nf(fee)+' 元\n'+
+      '代書費　'+nf(scr)+' 元\n火險　'+nf(ins)+' 元\n'+
+      '───────────\n過戶稅費小計　'+wan(closing,1)+' 萬\n'+
+      '裝潢家具　'+wan(deco,0)+' 萬\n搬家雜支　'+wan(misc,0)+' 萬\n'+
+      '═══════════\n全部要準備　'+wan(allIn,0)+' 萬\n\n※ 稅費以地政事務所與稅捐處核定為準';
+  },
+  after:function(){ $('b_copy').onclick=function(){ copy(window.__buySummary||'','明細已複製') } }
+ }}
+},
+
+{
+ id:'sellnet', g:'calc', name:'賣方口袋實拿多少', pill:['p-bad','拿下委託的殺招'],
+ desc:'成交價扣掉仲介費、代書、土增稅、房地合一稅、清償貸款，真正入袋剩多少。含房地合一 2.0。',
+ tail:'算給屋主看，他當場就想跟你談',
+ sub:'屋主只在乎一個數字：最後匯進我戶頭的是多少',
+ build:function(){ return {
+  form:
+   '<div class="f">'+
+   '<div><label class="fl">預計成交價</label><div class="unit"><input class="inp" id="s_price" value="'+PAR('priceDemo',1580)+'"><span class="u">萬</span></div></div>'+
+   '<div><label class="fl">當初取得成本 <i>買入價，繼承受贈填公告現值</i></label><div class="unit"><input class="inp" id="s_cost" value="980"><span class="u">萬</span></div></div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">持有年數</label><div class="unit"><input class="inp" id="s_hold" value="8"><span class="u">年</span></div></div>'+
+    '<div><label class="fl">剩餘貸款</label><div class="unit"><input class="inp" id="s_loan" value="420"><span class="u">萬</span></div></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">仲介服務費 <i>賣方</i></label><div class="unit"><input class="inp" id="s_fee" value="'+PAR('feeSell',4)+'"><span class="u">%</span></div></div>'+
+    '<div><label class="fl">代書＋履保＋雜費</label><div class="unit"><input class="inp" id="s_scr" value="'+PAR('scrivenerSell',30000)+'"><span class="u">元</span></div></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">土地漲價總數額 <i>謄本／稅單，不確定填0</i></label><div class="unit"><input class="inp" id="s_lgain" value="0"><span class="u">萬</span></div></div>'+
+    '<div><label class="fl">土地增值稅 <i>已試算金額</i></label><div class="unit"><input class="inp" id="s_lvt" value="0"><span class="u">萬</span></div></div>'+
+   '</div>'+
+   '<div><label class="fl">可列舉費用 <i>裝修、仲介、代書等憑證；未填則按成交價 '+PAR('expenseRate',3)+'% 推計，上限 30 萬</i></label><div class="unit"><input class="inp" id="s_exp" value="0"><span class="u">萬</span></div></div>'+
+   '<label class="chk"><input type="checkbox" id="s_self"><span><b>符合自住優惠</b>　本人或配偶、未成年子女設籍且實際居住連續滿 6 年，持有滿 6 年，期間無出租／營業，且前 6 年內未用過本優惠</span></label>'+
+   '<label class="chk"><input type="checkbox" id="s_old"><span><b>房地為 105/1/1 前取得且持有滿 2 年</b>　不適用房地合一稅（走舊制財產交易所得）</span></label>'+
+   '</div>',
+  out:'<div id="s_out"></div>'+
+      '<div class="row-btn" style="margin-top:12px"><button class="btn sm ghost" id="s_copy">複製實拿明細</button></div>'+
+      '<div class="disc">房地合一稅 2.0（110/7/1 起）中華民國境內個人適用稅率：持有 2 年內 45％、逾 2 年未逾 5 年 35％、逾 5 年未逾 10 年 20％、逾 10 年 15％。自住優惠：課稅所得 400 萬以內免稅、超過部分 10％。課稅所得＝成交價−取得成本−可列舉費用−土地漲價總數額。<b>法人、預售屋換約、繼承受贈、非居住者、重購退稅另有規定</b>，土地增值稅需依公告現值與持有期間另行試算（見「官方資料直達」的財政部試算連結）。本表為決策輔助，實際以國稅局核定為準。</div>',
+  run:function(){
+    var price=v('s_price')*10000, cost=v('s_cost')*10000, hold=v('s_hold');
+    var loan=v('s_loan')*10000, fee=price*v('s_fee')/100, scr=v('s_scr');
+    var lgain=v('s_lgain')*10000, lvt=v('s_lvt')*10000;
+    var exp=v('s_exp')>0 ? v('s_exp')*10000 : Math.min(price*PAR('expenseRate',3)/100, 300000);
+    var isSelf=$('s_self').checked, isOld=$('s_old').checked;
+
+    var rate=0, rateT='', tax=0, taxable=0;
+    taxable = Math.max(price-cost-exp-lgain, 0);
+    if(isOld){ rateT='舊制（不適用房地合一）'; tax=0 }
+    else if(isSelf){
+      rateT='自住優惠　400萬免稅額＋10%';
+      tax = Math.max(taxable-4000000,0)*0.10;
+    } else {
+      if(hold<=2){rate=45;rateT='持有 2 年內　45%'}
+      else if(hold<=5){rate=35;rateT='逾2年未逾5年　35%'}
+      else if(hold<=10){rate=20;rateT='逾5年未逾10年　20%'}
+      else {rate=15;rateT='逾10年　15%'}
+      tax=taxable*rate/100;
+    }
+
+    var net = price - fee - scr - lvt - tax - loan;
+    var gain = price - cost;
+
+    var h='<div class="hero-num '+(net>0?'good':'bad')+'"><div class="lab">扣完全部之後，實際入袋</div>'+
+      '<div class="val">'+wan(net,0)+' <small>萬</small></div>'+
+      '<div class="note">成交 '+nf(price/10000)+' 萬 ‧ 帳面價差 '+wan(gain,0)+' 萬 ‧ 實拿佔成交價 '+nf(net/price*100,1)+'％</div></div>';
+
+    h+='<div class="kv">'+
+      kvRow('成交總價','', nf(price)+' 元')+
+      kvRow('仲介服務費','× '+v('s_fee')+'%', '− '+nf(fee)+' 元','neg')+
+      kvRow('代書＋履保＋雜費','', '− '+nf(scr)+' 元','neg')+
+      kvRow('土地增值稅', lvt>0?'已填入試算值':'未填，請至財政部試算後回填', '− '+nf(lvt)+' 元','neg')+
+      kvRow('房地合一稅', rateT, '− '+nf(tax)+' 元','neg')+
+      kvRow('清償剩餘貸款','', '− '+nf(loan)+' 元','neg')+
+      kvRow('實際入袋','匯進戶頭的數字', nf(net)+' 元　('+wan(net,0)+' 萬)','tot')+
+      '</div>';
+
+    if(!isOld){
+      h+='<div class="box" style="margin-top:12px"><h4>房地合一稅怎麼算出來的</h4><div class="kv">'+
+        kvRow('成交價','', nf(price)+' 元')+
+        kvRow('減：取得成本','', '− '+nf(cost)+' 元','neg')+
+        kvRow('減：可列舉費用', v('s_exp')>0?'實際憑證':'未填，按成交價 '+PAR('expenseRate',3)+'% 推計（上限 30 萬）', '− '+nf(exp)+' 元','neg')+
+        kvRow('減：土地漲價總數額','已課土增稅部分不重複課', '− '+nf(lgain)+' 元','neg')+
+        kvRow('＝ 課稅所得','', nf(taxable)+' 元','tot')+
+        (isSelf? kvRow('自住免稅額','','− 4,000,000 元','neg')+kvRow('應納稅額','超過 400 萬部分 × 10%', nf(tax)+' 元','tot')
+               : kvRow('應納稅額','× '+rate+'%', nf(tax)+' 元','tot'))+
+        '</div></div>';
+    }
+
+    var wait=hold<2?2-hold:(hold<5?5-hold:(hold<10?10-hold:0));
+    if(!isOld && !isSelf && wait>0){
+      var nextRate = hold<2?35:(hold<5?20:15);
+      var save = taxable*(rate-nextRate)/100;
+      h+='<div class="verdict y" style="margin-top:12px"><div class="lv">對立視角：現在賣 vs 再等 '+nf(wait,1)+' 年</div>'+
+        '<p>再持有 '+nf(wait,1)+' 年，稅率由 '+rate+'％ 降到 '+nextRate+'％，同樣售價可少繳 <b>'+wan(save,0)+' 萬</b>。'+
+        '但這 '+nf(wait,1)+' 年要承擔房價變動、利息支出、機會成本與屋況折舊——<b>不是等就一定賺</b>。'+
+        '把「少繳的稅」跟「這段期間的貸款利息＋房價風險」放一起比，才是完整的決策。</p></div>';
+    }
+
+    $('s_out').innerHTML=h;
+
+    window.__sellSummary='【賣方實拿試算】\n成交總價　'+nf(price/10000)+' 萬\n'+
+      '仲介服務費（'+v('s_fee')+'%）　−'+wan(fee,1)+' 萬\n'+
+      '代書履保雜費　−'+nf(scr)+' 元\n'+
+      '土地增值稅　−'+wan(lvt,1)+' 萬\n'+
+      '房地合一稅（'+rateT+'）　−'+wan(tax,1)+' 萬\n'+
+      '清償剩餘貸款　−'+wan(loan,0)+' 萬\n───────────\n實際入袋　'+wan(net,0)+' 萬\n\n'+
+      '※ 稅額為決策輔助試算，實際以國稅局核定為準';
+  },
+  after:function(){ $('s_copy').onclick=function(){ copy(window.__sellSummary||'','實拿明細已複製') } }
+ }}
+},
+
+{
+ id:'value', g:'calc', name:'三價估價機（車位獨立拆）', pill:['p-acc','招牌'],
+ desc:'保守／合理／樂觀三條價，車位一定拆開算。屋主開的價落在哪一段，一眼看出來。',
+ tail:'不含車位單價才是真單價',
+ sub:'車位混在總價裡算單價，是台灣估價最常見的假數字',
+ build:function(){ return {
+  form:
+   '<div class="f">'+
+   '<div><label class="fl">權狀總坪數 <i>含車位登記坪</i></label><div class="unit"><input class="inp" id="v_all" value="42.5"><span class="u">坪</span></div></div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">車位登記坪數</label><div class="unit"><input class="inp" id="v_pk" value="8.2"><span class="u">坪</span></div></div>'+
+    '<div><label class="fl">車位行情價</label><div class="unit"><input class="inp" id="v_pkp" value="200"><span class="u">萬</span></div></div>'+
+   '</div>'+
+   '<div><label class="fl">同社區／同路段成交單價 <i>不含車位</i></label><div class="unit"><input class="inp" id="v_up" value="42"><span class="u">萬/坪</span></div></div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">保守下修</label><div class="unit"><input class="inp" id="v_dn" value="'+PAR('valueDown',8)+'"><span class="u">%</span></div></div>'+
+    '<div><label class="fl">樂觀上修</label><div class="unit"><input class="inp" id="v_up2" value="'+PAR('valueUp',8)+'"><span class="u">%</span></div></div>'+
+   '</div>'+
+   '<div><label class="fl">屋主開價／待議價格 <i>用來定位</i></label><div class="unit"><input class="inp" id="v_ask" value="1880"><span class="u">萬</span></div></div>'+
+   '<div><label class="fl">個案條件調整</label>'+
+    seg('v_seg',[['-6','劣勢 −6%'],['0','持平'],['6','優勢 +6%']],'0')+
+    '<p class="hint" style="margin-top:6px">劣勢：一樓／頂樓無電梯／面路噪音／格局差／屋況待整。優勢：邊間採光／低樓層免爬／整層／剛翻新／稀有格局。</p></div>'+
+   '</div>',
+  out:'<div id="v_out"></div>'+
+      '<div class="row-btn" style="margin-top:12px"><button class="btn sm ghost" id="v_copy">複製估價摘要</button></div>'+
+      '<div class="disc">單價請以實價登錄同社區近一年成交為主、同路段為輔。實價登錄有申報時滯（成交後 30 日內申報、每旬揭露、常有補登），近三個月資料不完整，引用時要註明「實價登錄揭露至 ○年○月」。本工具只做價格帶定位，不構成任何價格保證。</div>',
+  run:function(){
+    var all=v('v_all'), pk=v('v_pk'), pkp=v('v_pkp')*10000;
+    var up=v('v_up')*10000, adj=parseFloat(segv('v_seg'))/100;
+    var bldg=Math.max(all-pk,0);
+    var base=up*(1+adj);
+    var dn=base*(1-v('v_dn')/100), opt=base*(1+v('v_up2')/100);
+    var lo=dn*bldg, mid=base*bldg, hi=opt*bldg;
+    var loT=lo+pkp, midT=mid+pkp, hiT=hi+pkp;
+    var ask=v('v_ask')*10000;
+
+    var h='<div class="hero-num accent"><div class="lab">合理總價（含車位）</div>'+
+      '<div class="val">'+wan(midT,0)+' <small>萬</small></div>'+
+      '<div class="note">建物 '+nf(bldg,2)+' 坪 × '+nf(base/10000,2)+' 萬/坪　＋　車位 '+nf(pkp/10000,0)+' 萬</div></div>';
+
+    // 價格帶
+    var span=hiT-loT, pos = span>0 ? (ask-loT)/span : 0.5;
+    var clamp=Math.max(-0.12,Math.min(1.12,pos));
+    h+='<div class="box"><h4>價格帶定位</h4><div class="band">'+
+      '<div class="band-track"><div class="band-fill" style="left:0;right:0"></div>'+
+      '<div class="band-mark mid" style="left:50%"></div>'+
+      '<div class="band-mark" style="left:'+(clamp*100).toFixed(1)+'%;background:var(--ind);width:3px"></div>'+
+      '</div><div class="band-labs">'+
+      '<div><div class="t">保守</div><div class="v">'+wan(loT,0)+'</div></div>'+
+      '<div class="mid"><div class="t">合理</div><div class="v">'+wan(midT,0)+'</div></div>'+
+      '<div><div class="t">樂觀</div><div class="v">'+wan(hiT,0)+'</div></div>'+
+      '</div><p class="hint">紫線＝屋主開價 '+nf(ask/10000,0)+' 萬</p></div></div>';
+
+    var diff=(ask-midT)/midT*100;
+    var lvl = diff>12?'r':(diff>4?'y':(diff<-8?'g':'g'));
+    var txt = diff>12 ? '開價高於合理價 '+nf(diff,1)+'％，已超出樂觀帶。這種案子不先修正價格就上架，只會累積帶看無斡旋的紀錄，最後變滯銷案。'
+            : diff>4 ? '開價高於合理價 '+nf(diff,1)+'％，落在合理到樂觀之間。有議價空間，但要先跟屋主說清楚：這個價格會過濾掉大部分自住買方。'
+            : diff<-8 ? '開價低於合理價 '+nf(Math.abs(diff),1)+'％。先確認為什麼——急售？屋況有問題？產權有瑕疵？<b>先查清楚再推</b>，便宜通常有原因。'
+            : '開價落在合理帶內（差 '+nf(diff,1)+'％），價格可推。接下來卡的是素材跟通路，不是價格。';
+    h+='<div class="verdict '+lvl+'" style="margin-top:12px"><div class="lv">定價判讀</div><p>'+txt+'</p></div>';
+
+    h+='<div class="box" style="margin-top:12px"><h4>拆開來看</h4><div class="kv">'+
+      kvRow('權狀總坪','', nf(all,2)+' 坪')+
+      kvRow('車位登記坪','從總坪拆出，不參與單價計算', nf(pk,2)+' 坪')+
+      kvRow('建物計價坪','實際乘單價的坪數', nf(bldg,2)+' 坪')+
+      kvRow('採用單價','已含個案調整 '+(adj>=0?'+':'')+nf(adj*100,0)+'%', nf(base/10000,2)+' 萬/坪')+
+      kvRow('保守 ／ 合理 ／ 樂觀（不含車位）','', wan(lo,0)+' ／ '+wan(mid,0)+' ／ '+wan(hi,0)+' 萬')+
+      kvRow('保守 ／ 合理 ／ 樂觀（含車位）','', wan(loT,0)+' ／ '+wan(midT,0)+' ／ '+wan(hiT,0)+' 萬','tot')+
+      kvRow('屋主開價換算單價','（開價 − 車位）÷ 建物坪', bldg>0?nf((ask-pkp)/bldg/10000,2)+' 萬/坪':'—')+
+      '</div></div>';
+    $('v_out').innerHTML=h;
+
+    window.__valSummary='【三價估價】\n權狀 '+nf(all,2)+' 坪（車位 '+nf(pk,2)+' 坪，建物計價 '+nf(bldg,2)+' 坪）\n'+
+      '採用單價　'+nf(base/10000,2)+' 萬/坪　車位　'+nf(pkp/10000,0)+' 萬\n───────────\n'+
+      '保守　'+wan(loT,0)+' 萬\n合理　'+wan(midT,0)+' 萬\n樂觀　'+wan(hiT,0)+' 萬\n'+
+      '（以上含車位）\n\n屋主開價 '+nf(ask/10000,0)+' 萬，'+(diff>=0?'高於':'低於')+'合理價 '+nf(Math.abs(diff),1)+'%\n'+
+      '\n※ 單價來源：實價登錄同社區／同路段，揭露至　　年　　月';
+  },
+  after:function(){ $('v_copy').onclick=function(){ copy(window.__valSummary||'','估價摘要已複製') } }
+ }}
+},
+
+{
+ id:'yield', g:'calc', name:'租金投報率 ＋ 合理買價回推', pill:['p-ind','投資客'],
+ desc:'毛投報只是廣告數字。扣掉管理費、稅、修繕、空置，淨投報才是真的。並回推該用多少錢買。',
+ tail:'包租代管話術的照妖鏡',
+ sub:'給定目標報酬率，回推這間房最多值多少錢',
+ build:function(){ return {
+  form:
+   '<div class="f">'+
+   '<div><label class="fl">購入總價</label><div class="unit"><input class="inp" id="y_price" value="880"><span class="u">萬</span></div></div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">月租金</label><div class="unit"><input class="inp" id="y_rent" value="22000"><span class="u">元</span></div></div>'+
+    '<div><label class="fl">裝潢／家電投入</label><div class="unit"><input class="inp" id="y_deco" value="60"><span class="u">萬</span></div></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">管理費</label><div class="unit"><input class="inp" id="y_mgm" value="2400"><span class="u">元/月</span></div></div>'+
+    '<div><label class="fl">空置率 <i>一年空幾個月</i></label><div class="unit"><input class="inp" id="y_vac" value="1"><span class="u">月</span></div></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">房屋稅＋地價稅</label><div class="unit"><input class="inp" id="y_tax" value="12000"><span class="u">元/年</span></div></div>'+
+    '<div><label class="fl">修繕維護提列</label><div class="unit"><input class="inp" id="y_fix" value="15000"><span class="u">元/年</span></div></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">貸款成數</label><div class="unit"><input class="inp" id="y_ltv" value="60"><span class="u">%</span></div></div>'+
+    '<div><label class="fl">房貸年利率</label><div class="unit"><input class="inp" id="y_r" value="2.8"><span class="u">%</span></div></div>'+
+   '</div>'+
+   '<div><label class="fl">你要求的最低淨投報</label><div class="unit"><input class="inp" id="y_goal" value="'+PAR('yieldGoal',3)+'"><span class="u">%</span></div></div>'+
+   '</div>',
+  out:'<div id="y_out"></div>'+
+      '<div class="disc">租賃所得須併入個人綜合所得稅（可減除必要損耗費用），非自住房屋稅與地價稅稅率較高，本表未含所得稅影響。房東須留意租賃住宅市場發展及管理條例、包租代管相關規範。</div>',
+  run:function(){
+    var price=v('y_price')*10000, rent=v('y_rent'), deco=v('y_deco')*10000;
+    var mgm=v('y_mgm')*12, vac=v('y_vac'), tax=v('y_tax'), fix=v('y_fix');
+    var ltv=v('y_ltv')/100, r=v('y_r')/100;
+    var gross=rent*12;
+    var effective=rent*(12-vac);
+    var netIncome=effective-mgm-tax-fix;
+    var capital=price+deco;
+    var grossY=gross/price*100;
+    var netY=netIncome/capital*100;
+    var loan=price*ltv, interest=loan*r;
+    var cashIn=capital-loan;
+    var cashFlow=netIncome-interest;
+    var coc= cashIn>0 ? cashFlow/cashIn*100 : 0;
+    var fair=v('y_goal')>0 ? netIncome/(v('y_goal')/100)-deco : 0;
+    var payback= netIncome>0 ? capital/netIncome : 0;
+
+    var lvl = netY>=PAR('yieldOk',3)?'g':(netY>=PAR('yieldWarn',2)?'y':'r');
+    var h='<div class="hero-num '+(lvl==='g'?'good':lvl==='y'?'accent':'bad')+'">'+
+      '<div class="lab">淨投報率（扣管理費、稅、修繕、空置）</div>'+
+      '<div class="val">'+nf(netY,2)+' <small>％</small></div>'+
+      '<div class="note">毛投報 '+nf(grossY,2)+'％ ‧ 中間差了 '+nf(grossY-netY,2)+' 個百分點</div></div>';
+
+    h+='<div class="kv">'+
+      kvRow('年租金收入（滿租）','月租 '+nf(rent)+' × 12', nf(gross)+' 元')+
+      kvRow('扣空置','一年空 '+vac+' 個月', '− '+nf(rent*vac)+' 元','neg')+
+      kvRow('扣管理費','', '− '+nf(mgm)+' 元','neg')+
+      kvRow('扣房屋稅地價稅','', '− '+nf(tax)+' 元','neg')+
+      kvRow('扣修繕提列','', '− '+nf(fix)+' 元','neg')+
+      kvRow('年淨租金收入','', nf(netIncome)+' 元','tot')+
+      '</div>';
+
+    h+='<div class="box" style="margin-top:12px"><h4>用了貸款之後</h4><div class="kv">'+
+      kvRow('貸款金額','成數 '+v('y_ltv')+'%', nf(loan)+' 元')+
+      kvRow('年利息支出','僅計息，未含本金攤還', '− '+nf(interest)+' 元','neg')+
+      kvRow('年現金流','淨租金 − 利息', nf(cashFlow)+' 元'+(cashFlow<0?'（負現金流）':''), cashFlow<0?'neg':'')+
+      kvRow('自有資金投入','總價＋裝潢 − 貸款', nf(cashIn)+' 元')+
+      kvRow('自有資金報酬率','年現金流 ÷ 自有資金', nf(coc,2)+' ％','tot')+
+      '</div></div>';
+
+    h+='<div class="box" style="margin-top:12px"><h4>回推：這間最多值多少</h4><div class="kv">'+
+      kvRow('要達到 '+v('y_goal')+'% 淨投報','最高可付總價（已扣裝潢）', wan(fair,0)+' 萬','tot')+
+      kvRow('目前開價與合理買價差','', wan(price-fair,0)+' 萬'+(price>fair?'（買貴了）':'（還有空間）'), price>fair?'neg':'')+
+      kvRow('回本年數','不計房價漲跌、不計利息', nf(payback,1)+' 年')+
+      '</div></div>';
+
+    h+='<div class="verdict '+lvl+'" style="margin-top:12px"><div class="lv">'+
+      (lvl==='g'?'還算合理':lvl==='y'?'邊際案件':'數字不成立')+'</div><p>'+
+      (lvl==='g'?'淨投報 '+nf(netY,2)+'％，在雙北算是可以看的案子。但要記得：投報率是「現在」的租金除以「現在」的房價，房客走了、租金掉了、大樓要拉皮，這個數字就變了。'
+       :lvl==='y'?'淨投報 '+nf(netY,2)+'％，跟定存與債券比起來優勢不大，卻要承擔房客風險、空置風險、修繕風險與流動性風險。除非你賭的是增值，不然這筆帳不好看。'
+       :'淨投報 '+nf(netY,2)+'％。這個數字撐不起持有成本。若對方用「毛投報 '+nf(grossY,2)+'％」來說服你，那是把管理費、稅、修繕、空置全部藏起來的數字。')+
+      '</p>'+(cashFlow<0?'<ul><li>目前是<b>負現金流</b>：每年要自己貼 '+nf(Math.abs(cashFlow))+' 元進去養這間房</li><li>負現金流只有在確定增值時才成立，而增值不是你能控制的</li></ul>':'')+
+      '</div>';
+    $('y_out').innerHTML=h;
+  },
+  after:function(){}
+ }}
+},
+
+{
+ id:'ping', g:'calc', name:'坪數換算 ＋ 公設比反推', pill:['p-pub','天天用'],
+ desc:'坪、平方公尺互換。權狀拆主建物、附屬、公設、車位，反推真正住得到的坪數。',
+ tail:'公設比 35% 代表你花錢買的三分之一走不進去',
+ sub:'把權狀坪數拆成「住得到的」跟「買到但用不到的」',
+ build:function(){ return {
+  form:
+   '<div class="box" style="margin-bottom:14px;padding:14px"><h4>單位互換</h4><div class="f2">'+
+    '<div><label class="fl">坪</label><input class="inp" id="u_p" value="30"></div>'+
+    '<div><label class="fl">平方公尺</label><input class="inp" id="u_m" value="99.17"></div>'+
+   '</div><p class="hint">1 坪 ＝ 3.305785 平方公尺　‧　1 平方公尺 ＝ 0.3025 坪</p></div>'+
+   '<div class="f">'+
+   '<div><label class="fl">權狀總坪數</label><div class="unit"><input class="inp" id="p_all" value="42.5"><span class="u">坪</span></div></div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">車位登記坪</label><div class="unit"><input class="inp" id="p_pk" value="8.2"><span class="u">坪</span></div></div>'+
+    '<div><label class="fl">公共設施坪</label><div class="unit"><input class="inp" id="p_pub" value="10.4"><span class="u">坪</span></div></div>'+
+   '</div>'+
+   '<div><label class="fl">附屬建物坪 <i>陽台等</i></label><div class="unit"><input class="inp" id="p_ext" value="2.8"><span class="u">坪</span></div></div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">總價 <i>用來算真實單價</i></label><div class="unit"><input class="inp" id="p_price" value="1580"><span class="u">萬</span></div></div>'+
+    '<div><label class="fl">車位價 <i>拆單價用</i></label><div class="unit"><input class="inp" id="p_pkp" value="200"><span class="u">萬</span></div></div>'+
+   '</div>'+
+   '</div>',
+  out:'<div id="p_out"></div>'+
+      '<div class="disc">公設比計算方式在實務上有兩種：一為公設÷權狀總坪（含車位），一為公設÷（權狀總坪−車位坪）。本表採後者（不含車位），較貼近「住宅本身的公設比」。101 年 1 月 1 日以後請照的建物，雨遮、屋簷不得計入登記面積。</div>',
+  run:function(){
+    var all=v('p_all'), pk=v('p_pk'), pub=v('p_pub'), ext=v('p_ext');
+    var noPk=Math.max(all-pk,0);
+    var main=Math.max(noPk-pub-ext,0);
+    var ratio= noPk>0 ? pub/noPk*100 : 0;
+    var price=v('p_price')*10000, pkp=v('p_pkp')*10000;
+    var lvl = ratio<=PAR('pubRatioOk',28)?'g':(ratio<=PAR('pubRatioWarn',34)?'y':'r');
+
+    var h='<div class="hero-num '+(lvl==='g'?'good':lvl==='y'?'accent':'bad')+'">'+
+      '<div class="lab">公設比（不含車位）</div>'+
+      '<div class="val">'+nf(ratio,1)+' <small>％</small></div>'+
+      '<div class="note">主建物 '+nf(main,2)+' 坪 ‧ 真正關起門來的空間</div></div>';
+
+    h+='<div class="kv">'+
+      kvRow('權狀總坪','', nf(all,2)+' 坪')+
+      kvRow('車位登記坪','', nf(pk,2)+' 坪')+
+      kvRow('公共設施坪','大廳、梯廳、走道、機電、公設空間', nf(pub,2)+' 坪')+
+      kvRow('附屬建物坪','陽台等', nf(ext,2)+' 坪')+
+      kvRow('主建物坪','室內實際使用', nf(main,2)+' 坪','tot')+
+      kvRow('主建物 ㎡','', nf(main*PING,2)+' ㎡')+
+      '</div>';
+
+    if(price>0){
+      h+='<div class="box" style="margin-top:12px"><h4>三種單價，三種真相</h4><div class="kv">'+
+        kvRow('權狀單價','總價 ÷ 權狀總坪（含車位）　← 廣告最愛用', nf(price/all/10000,2)+' 萬/坪')+
+        kvRow('不含車位單價','（總價 − 車位價 '+nf(pkp/10000,0)+' 萬）÷（權狀 − 車位坪）　← 比價要用這個', noPk>0 ? nf((price-pkp)/noPk/10000,2)+' 萬/坪' : '—')+
+        kvRow('實坪單價','總價 ÷ 主建物坪　← 你真正住到的每坪成本', main>0?nf(price/main/10000,2)+' 萬/坪':'—','tot')+
+        '</div><p class="hint">同一間房，三個單價可以差到快一倍。屋主報「權狀單價」，你比價要用「不含車位單價」，客戶感受到的是「實坪單價」。</p></div>';
+    }
+
+    h+='<div class="verdict '+lvl+'" style="margin-top:12px"><div class="lv">'+
+      (lvl==='g'?'公設比合理':lvl==='y'?'偏高，要問清楚':'過高，要有交代')+'</div><p>'+
+      (lvl==='g'?'不含車位公設比 '+nf(ratio,1)+'％，屬於正常區間。'
+       :lvl==='y'?'不含車位公設比 '+nf(ratio,1)+'％，偏高。要問：多出來的公設用在哪？健身房、閱覽室、交誼廳你會用嗎？<b>不會用的公設，每個月還是要繳管理費養。</b>'
+       :'不含車位公設比 '+nf(ratio,1)+'％，每買 3 坪就有 1 坪走不進去。要確認是不是把逃生梯廳、機電空間、大而無當的門廳全部灌進來——這種公設不但用不到，管理費還照收。')+
+      '</p></div>';
+    $('p_out').innerHTML=h;
+  },
+  after:function(){
+    var lock=false;
+    $('u_p').addEventListener('input',function(){ if(lock)return; lock=true; $('u_m').value=(v('u_p')*PING).toFixed(2); lock=false });
+    $('u_m').addEventListener('input',function(){ if(lock)return; lock=true; $('u_p').value=(v('u_m')/PING).toFixed(2); lock=false });
+  }
+ }}
+},
+
+/* ---------- B 風險判斷 ---------- */
+{
+ id:'deed', g:'risk', name:'謄本紅旗檢查', pill:['p-bad','踩雷前最後一關'],
+ desc:'標示部、所有權部、他項權利部逐項勾。勾完直接給風險等級跟「該問誰什麼」。',
+ tail:'買錯是壓力，這裡是壓力的入口',
+ sub:'把謄本上看不懂的欄位，翻成「會不會出事」',
+ build:function(){
+  var ITEMS=[
+   {t:'標示部', a:[
+    ['red','建物實際面積與登記不符（有增建、夾層、頂加、露台外推）','增建部分不受法律保護，可能被報拆；銀行鑑價不算增建坪數，貸款成數會掉'],
+    ['red','土地使用分區為工業區、農業區、保護區，卻作住宅使用','工業宅／農舍：貸款成數低、利率高、無法設籍或設籍受限、日後轉手困難'],
+    ['yellow','建物主要用途登記為「事務所」「商業用」「一般零售業」','非住宅用途，房屋稅按非自住課、水電可能按營業計價、貸款條件較差'],
+    ['yellow','建物為未辦保存登記（無建號、無使用執照）','無法辦理所有權移轉登記與抵押，只能用「事實上處分權」交易，風險極高'],
+    ['gray','屋齡超過 40 年','結構、管線、防水都到期，要把整修預算算進總成本']
+   ]},
+   {t:'所有權部', a:[
+    ['red','有查封、假扣押、假處分、破產或限制登記','債權關係未解決前不得移轉，先塗銷才能談，不塗銷不簽約'],
+    ['red','出面談的人不是登記所有權人，且無合法授權','要見到本人或經公證的授權書；共有物處分另有多數決規定'],
+    ['yellow','有預告登記','已有第三人保全請求權，處分受限制，須先取得該權利人同意'],
+    ['yellow','多人共有（持分）','處分須依土地法第 34 條之 1 多數決，程序長、變數多，價格通常要打折'],
+    ['yellow','一年內曾移轉過（短期轉手）','要查上一手成交價與轉手原因，可能是投資客整修轉售或有隱藏瑕疵'],
+    ['gray','所有權人為法人或建設公司','交易主體與稅制不同（法人適用房地合一法人稅率），流程要另談']
+   ]},
+   {t:'他項權利部', a:[
+    ['red','抵押權設定金額明顯高於合理成交價','可能有二胎、私人借貸或民間高利，交屋前務必確認全部塗銷'],
+    ['red','抵押權人為個人或非金融機構','民間借貸，塗銷難度與變數高，要求先塗銷或以履約保證嚴格控管'],
+    ['yellow','設有地上權、不動產役權、典權','使用權受限，可能無法自由改建或有他人通行權'],
+    ['gray','設有金融機構抵押權（正常房貸）','正常情況，交屋時以價金代償塗銷即可']
+   ]},
+   {t:'現場與揭露', a:[
+    ['red','曾為兇宅、火損屋、海砂屋、輻射屋，或有此疑慮','屬重大瑕疵，賣方有告知義務；未揭露可主張解約或減價'],
+    ['red','有滲漏水、壁癌、結構裂縫','列入不動產說明書與買賣契約特約條款，明訂修繕責任與期限'],
+    ['yellow','鄰近嫌惡設施（宮廟、加油站、殯葬、變電所、基地台、高架）','影響轉手性與價格，帶看前先講，不要讓客戶自己發現'],
+    ['yellow','曾為出租中且租約未到期','買賣不破租賃，新屋主須承受原租約，須確認租期與押金交接'],
+    ['gray','管委會有大額修繕提列或公共基金不足','入住後可能被追繳，要向管委會調閱近年會議紀錄']
+   ]}
+  ];
+  var f='<p class="hint" style="margin:0 0 14px">照著謄本逐項勾。<b>只要勾到紅旗，就先停，不要進到談價格那一步。</b></p>';
+  var idx=0;
+  for(var i=0;i<ITEMS.length;i++){
+    f+='<div class="box" style="margin-bottom:12px"><h4>'+ITEMS[i].t+'</h4><div class="f">';
+    for(var j=0;j<ITEMS[i].a.length;j++){
+      var it=ITEMS[i].a[j];
+      var badge = it[0]==='red'?'<span class="pill p-bad">紅旗</span>' : it[0]==='yellow'?'<span class="pill p-acc">要問</span>' : '<span class="pill p-mute">留意</span>';
+      f+='<label class="chk"><input type="checkbox" class="dchk" data-lv="'+it[0]+'" data-t="'+it[1].replace(/"/g,'&quot;')+'" data-n="'+it[2].replace(/"/g,'&quot;')+'">'+
+         '<span>'+badge+' '+it[1]+'</span></label>';
+      idx++;
+    }
+    f+='</div></div>';
+  }
+  return {
+   wide:true,
+   form:f,
+   out:'<div id="d_out"></div><div class="row-btn" style="margin-top:12px">'+
+       '<button class="btn sm ghost" id="d_copy">複製風險清單</button>'+
+       '<button class="btn sm ghost" id="d_clear">全部清空</button></div>'+
+       '<div class="disc">本檢查表為執行提醒，不取代地政士、律師與專業機構的正式意見。涉及產權瑕疵、稅務爭議或訴訟風險時，請委由地政士或律師出具正式評估。謄本內含個人資料，僅得於「屋主已回應或已約見面談後、為查證產權」之目的使用，不得用於陌生開發階段反查聯絡人。</div>',
+   run:function(){
+    var cs=document.querySelectorAll('.dchk'), red=[], yel=[], gray=[];
+    for(var i=0;i<cs.length;i++){ if(cs[i].checked){
+      var o={t:cs[i].dataset.t,n:cs[i].dataset.n};
+      if(cs[i].dataset.lv==='red') red.push(o); else if(cs[i].dataset.lv==='yellow') yel.push(o); else gray.push(o);
+    }}
+    var lvl = red.length?'r':(yel.length?'y':'g');
+    var title = red.length? '紅燈　'+red.length+' 項致命風險，不得推進'
+              : yel.length? '黃燈　'+yel.length+' 項要問清楚才能往下'
+              : '綠燈　目前未勾到重大風險';
+    var h='<div class="verdict '+lvl+'"><div class="lv">'+title+'</div><p>'+
+      (red.length? '這些項目在解決之前，<b>不產出對外廣告、不排帶看、不談議價</b>。紅旗代表的是「解決不了就不能成交」，不是「先賣再說」。'
+       : yel.length? '黃旗不是不能做，是「不問清楚就做會出事」。把下面每一條的答案問到，再決定要不要接、怎麼定價。'
+       : '未勾到紅旗黃旗，可以往下走。但這只代表<b>謄本上看得到的</b>沒問題——現場、鄰居、管委會、實際使用狀況還是要自己跑一趟。')+
+      '</p></div>';
+
+    function block(arr,cls,label){
+      if(!arr.length) return '';
+      var s='<div class="box" style="margin-top:12px"><h4>'+label+'</h4><div class="kv">';
+      for(var i=0;i<arr.length;i++) s+='<div class="r"><div class="k"><b>'+arr[i].t+'</b><em>'+arr[i].n+'</em></div></div>';
+      return s+'</div></div>';
+    }
+    h+=block(red,'r','紅旗　先解決，否則不推進')+block(yel,'y','黃旗　談之前要問到答案')+block(gray,'g','留意　列入成本與說明書');
+
+    if(!red.length && !yel.length && !gray.length){
+      h='<div class="verdict g"><div class="lv">還沒開始勾</div><p>左邊照著謄本逐項勾，勾完這裡會直接給你風險等級與處理順序。</p></div>';
+    }
+    $('d_out').innerHTML=h;
+
+    var txt='【謄本風險檢查結果】\n風險等級：'+title+'\n';
+    if(red.length){ txt+='\n■ 紅旗（先解決，否則不推進）\n'; for(var i=0;i<red.length;i++) txt+=(i+1)+'. '+red[i].t+'\n   → '+red[i].n+'\n' }
+    if(yel.length){ txt+='\n■ 黃旗（談之前要問到答案）\n'; for(var i=0;i<yel.length;i++) txt+=(i+1)+'. '+yel[i].t+'\n   → '+yel[i].n+'\n' }
+    if(gray.length){ txt+='\n■ 留意（列入成本與說明書）\n'; for(var i=0;i<gray.length;i++) txt+=(i+1)+'. '+gray[i].t+'\n' }
+    txt+='\n※ 本清單為執行提醒，正式產權意見請由地政士或律師出具';
+    window.__deedTxt=txt;
+   },
+   after:function(){
+     $('d_copy').onclick=function(){ copy(window.__deedTxt||'','風險清單已複製') };
+     $('d_clear').onclick=function(){ var cs=document.querySelectorAll('.dchk'); for(var i=0;i<cs.length;i++) cs[i].checked=false; window.__run() };
+   }
+  }
+ }
+},
+
+{
+ id:'visit', g:'risk', name:'看屋現場檢查表', pill:['p-acc','手機拿著走'],
+ desc:'漏水、管線、採光、隔音、嫌惡設施、管委會，一項一項勾。勾完產出可以直接傳給客戶的紀錄。',
+ tail:'現場漏掉的，交屋後都是你的事',
+ sub:'帶看當下就勾完，回車上直接把紀錄傳出去',
+ build:function(){
+  var S=[
+   ['水　最貴的一項',[
+    '天花板、牆角、窗框下方有水漬或壁癌',
+    '浴室天花板可開孔檢查（樓上管線滲漏最常見）',
+    '外牆、陽台女兒牆有裂縫或滲水痕',
+    '頂樓：防水層施作年份、是否有加蓋、排水孔是否阻塞',
+    '現場實測：沖馬桶、放滿水槽再排、開蓮蓬頭看水壓'
+   ]],
+   ['管線與設備',[
+    '電箱安培數是否足夠（老屋常只有 30A，冷氣一開就跳）',
+    '有無獨立迴路、有無漏電斷路器',
+    '水管材質與更換年份（鐵管年限約 15–20 年）',
+    '瓦斯為天然氣或桶裝，管線是否合格',
+    '對外窗數量、有無違規加裝鐵窗影響逃生'
+   ]],
+   ['感受得到但看不見的',[
+    '採光：實際到現場的時段，是否西曬',
+    '通風：能否對流，浴室有無對外窗或抽風',
+    '隔音：開窗聽車聲、敲牆聽厚度、留意樓上腳步聲',
+    '味道：霉味、下水道味、鄰居油煙',
+    '格局：有無暗房、走道浪費、樑柱壓迫'
+   ]],
+   ['房子以外的事',[
+    '嫌惡設施：宮廟、加油站、殯葬、變電所、基地台、高架、夜市',
+    '停車：車位型式（平面／機械）、機械位高度與載重限制、進出動線',
+    '電梯：品牌、年份、有無汰換計畫（一次汰換每戶可能分攤數萬）',
+    '管委會：管理費、公共基金餘額、近三年會議紀錄與大修計畫',
+    '鄰居：同層住戶狀況、有無出租套房、有無群聚或糾紛'
+   ]],
+   ['帶看當下就要問屋主的',[
+    '為什麼賣（動機決定議價空間）',
+    '住多久、之前是自住還是出租',
+    '有沒有修過漏水、修的是哪裡、有沒有保固',
+    '社區有沒有正在進行或即將進行的大型修繕',
+    '目前有沒有租約、租約到什麼時候'
+   ]]
+  ];
+  var f='<p class="hint" style="margin:0 0 14px">帶看現場邊看邊勾。<b>沒勾到的不是沒問題，是還沒查。</b></p>';
+  for(var i=0;i<S.length;i++){
+    f+='<div class="box" style="margin-bottom:12px"><h4>'+S[i][0]+'</h4><div class="f">';
+    for(var j=0;j<S[i][1].length;j++){
+      f+='<label class="chk"><input type="checkbox" class="vchk" data-s="'+S[i][0]+'" data-t="'+S[i][1][j].replace(/"/g,'&quot;')+'"><span>'+S[i][1][j]+'</span></label>';
+    }
+    f+='</div></div>';
+  }
+  return {
+   wide:true,
+   form:f,
+   out:'<div id="vs_out"></div>'+
+       '<div class="box" style="margin-top:12px"><h4>現場補充</h4>'+
+       '<textarea class="inp" id="vs_note" rows="4" placeholder="物件地址、看屋日期、屋主說了什麼、你自己的判斷…"></textarea>'+
+       '<div class="row-btn" style="margin-top:10px">'+
+       '<button class="btn sm ghost" id="vs_copy">複製看屋紀錄</button>'+
+       '<button class="btn sm ghost" id="vs_clear">全部清空</button></div></div>',
+   run:function(){
+    var cs=document.querySelectorAll('.vchk'), done=0, list={}, undone={};
+    for(var i=0;i<cs.length;i++){
+      var s=cs[i].dataset.s;
+      if(cs[i].checked){ done++; (list[s]=list[s]||[]).push(cs[i].dataset.t) }
+      else (undone[s]=undone[s]||[]).push(cs[i].dataset.t);
+    }
+    var pct=Math.round(done/cs.length*100);
+    var lvl=pct>=80?'good':(pct>=50?'accent':'bad');
+    var h='<div class="hero-num '+lvl+'"><div class="lab">現場檢查完成度</div>'+
+      '<div class="val">'+pct+' <small>％</small></div>'+
+      '<div class="note">已查 '+done+' 項 ‧ 還沒查 '+(cs.length-done)+' 項</div></div>';
+    if(pct<80){
+      h+='<div class="verdict '+(pct>=50?'y':'r')+'"><div class="lv">還不到可以下判斷的程度</div>'+
+        '<p>剩 '+(cs.length-done)+' 項沒查。這些不是「加分項」，是<b>交屋後會變成你的事</b>的項目。特別是水、管線、管委會這三塊——修起來最貴、事後最難談。</p></div>';
+    } else {
+      h+='<div class="verdict g"><div class="lv">現場資訊到位</div><p>該查的都查過了，可以進到「這間值不值這個價」的判斷。把查到的缺點寫進不動產說明書與特約條款，不要留在口頭。</p></div>';
+    }
+    var txt='【看屋現場紀錄】\n完成度 '+pct+'%（'+done+'/'+cs.length+'）\n';
+    var un='';
+    for(var k in undone){ un+='\n■ '+k+'\n'; for(var m=0;m<undone[k].length;m++) un+='□ '+undone[k][m]+'\n' }
+    if(un) { h+='<div class="box" style="margin-top:12px"><h4>還沒查的（下次帶看補完）</h4><div class="kv">';
+      for(var k2 in undone){ for(var m2=0;m2<undone[k2].length;m2++)
+        h+='<div class="r"><div class="k"><b>'+undone[k2][m2]+'</b><em>'+k2+'</em></div></div>' }
+      h+='</div></div>' }
+    $('vs_out').innerHTML=h;
+    var ck=''; for(var k3 in list){ ck+='\n■ '+k3+'\n'; for(var m3=0;m3<list[k3].length;m3++) ck+='✓ '+list[k3][m3]+'\n' }
+    window.__visitTxt=txt+'\n【已查核】'+ck+'\n【尚未查核】'+un+'\n【現場補充】\n'+(sv('vs_note')||'（無）');
+   },
+   after:function(){
+     $('vs_copy').onclick=function(){ copy(window.__visitTxt||'','看屋紀錄已複製') };
+     $('vs_clear').onclick=function(){ var cs=document.querySelectorAll('.vchk'); for(var i=0;i<cs.length;i++) cs[i].checked=false; $('vs_note').value=''; window.__run() };
+   }
+  }
+ }
+},
+
+{
+ id:'gate', g:'risk', name:'八大成交閘門檢核', pill:['p-ind','阿宏獨有'],
+ desc:'案子卡在哪一關？沒過的閘門不准跳過去產廣告、腳本、議價話術。這是內容風控，不是流程表。',
+ tail:'別人沒有這個，因為別人只想快點上架',
+ sub:'先答三個問題：現在在哪一段、卡在哪一關、下一步誰做什麼',
+ build:function(){
+  var G=[
+   ['賣方接案資格','這個屋主值不值得重服務？價格認知、配合度、決策者、時間壓力先看清楚','不是每個屋主都值得接。接錯人，後面全部白做'],
+   ['委賣前風險初篩','產權、持分、抵押、違建、漏水、嫌惡、屋況先拆雷','雷沒拆就接，等於把自己押進去'],
+   ['素材閘門','照片、格局、生活圈、缺點證據齊了沒','素材沒齊就上公版廣告，是在燒自己的通路'],
+   ['買方服務轉換','預算、付款能力、決策者、時程明了沒','沒明就進深度服務，是拿時間換空氣'],
+   ['斡旋前底線','買方真預算、屋主底線、付款條件清楚了沒','三個之中缺一個就催斡旋，只會兩邊都得罪'],
+   ['簽約前二次風險','產權、付款、貸款、稅費、屋況、特殊約定再檢查一次','成交前不重查，出事的都是這一關'],
+   ['成交後素材回收','案例、推薦、私域信任、下一輪案源收了沒','成交只收服務費，是把最貴的資產丟掉'],
+   ['滯銷停損','無詢問、無帶看、無斡旋時，檢討價格、素材、通路、客群','不准只加碼曝光。曝光治不好定價錯誤']
+  ];
+  var f='<p class="hint" style="margin:0 0 14px">從上往下勾。<b>第一個沒勾的，就是這個案子現在真正卡住的地方。</b></p><div class="box"><h4>八大閘門</h4><div class="f">';
+  for(var i=0;i<G.length;i++){
+    f+='<label class="chk" style="padding:7px 0;border-bottom:1px solid var(--line)">'+
+       '<input type="checkbox" class="gchk" data-i="'+i+'" data-n="'+G[i][0]+'" data-d="'+G[i][1].replace(/"/g,'&quot;')+'" data-w="'+G[i][2].replace(/"/g,'&quot;')+'">'+
+       '<span><b>'+(i+1)+'　'+G[i][0]+'</b><br><span style="color:var(--ink3);font-size:12px">'+G[i][1]+'</span></span></label>';
+  }
+  f+='</div></div>'+
+     '<div class="box" style="margin-top:12px"><h4>案件備註</h4>'+
+     '<textarea class="inp" id="g_note" rows="3" placeholder="案件編號、屋主狀況、目前卡點…"></textarea></div>';
+  return {
+   wide:true, form:f,
+   out:'<div id="g_out"></div><div class="row-btn" style="margin-top:12px">'+
+       '<button class="btn sm ghost" id="g_copy">複製閘門判斷</button>'+
+       '<button class="btn sm ghost" id="g_clear">清空</button></div>'+
+       '<div class="disc">出處：阿宏房仲成交飛輪 OS v1.2「八大成交閘門」。未通過的閘門不得跳過直接產出對外廣告、腳本、簡報、議價話術或簽約建議。</div>',
+   run:function(){
+    var cs=document.querySelectorAll('.gchk'), pass=0, block=null;
+    for(var i=0;i<cs.length;i++){ if(cs[i].checked) pass++; else { if(!block) block=cs[i]; } }
+    var h='';
+    if(!block){
+      h='<div class="hero-num good"><div class="lab">八大閘門</div><div class="val">8 / 8 <small>全數通過</small></div>'+
+        '<div class="note">可以產出對外素材與議價策略</div></div>'+
+        '<div class="verdict g"><div class="lv">全過</div><p>八關都過了，這個案子可以進到「怎麼賣最快、最漂亮」的階段。'+
+        '但第 8 關<b>滯銷停損</b>是循環關卡——上架後每兩週回來重看一次，無詢問無帶看無斡旋，就回到價格、素材、通路、客群四個變數重來，不要只加碼曝光。</p></div>';
+    } else {
+      var n=parseInt(block.dataset.i)+1;
+      h='<div class="hero-num accent"><div class="lab">目前卡在</div>'+
+        '<div class="val">第 '+n+' 關</div>'+
+        '<div class="note">'+block.dataset.n+' ‧ 已通過 '+pass+' / 8</div></div>'+
+        '<div class="verdict y"><div class="lv">在這一關過之前，不得產出對外素材</div>'+
+        '<p><b>要做什麼：</b>'+block.dataset.d+'</p>'+
+        '<p style="margin-top:8px"><b>為什麼不能跳：</b>'+block.dataset.w+'</p></div>'+
+        '<div class="box" style="margin-top:12px"><h4>三個問題</h4><div class="kv">'+
+        kvRow('現在在哪一段','第 '+n+' 關前','已過 '+pass+' 關')+
+        kvRow('卡在哪一關', block.dataset.n, '第 '+n+' 關')+
+        kvRow('下一步誰做什麼', block.dataset.d, '待指派','tot')+
+        '</div><p class="hint">答不出這三題的欄位，都是管理幻覺。</p></div>';
+    }
+    $('g_out').innerHTML=h;
+    var txt='【八大成交閘門判斷】\n通過 '+pass+' / 8\n';
+    txt+= block? '卡點：第 '+(parseInt(block.dataset.i)+1)+' 關　'+block.dataset.n+'\n下一步：'+block.dataset.d+'\n風險：'+block.dataset.w+'\n'
+               : '全數通過，可產出對外素材\n';
+    txt+='\n備註：'+(sv('g_note')||'（無）');
+    window.__gateTxt=txt;
+   },
+   after:function(){
+     $('g_copy').onclick=function(){ copy(window.__gateTxt||'','閘門判斷已複製') };
+     $('g_clear').onclick=function(){ var cs=document.querySelectorAll('.gchk'); for(var i=0;i<cs.length;i++) cs[i].checked=false; $('g_note').value=''; window.__run() };
+   }
+  }
+ }
+},
+
+/* ---------- C 生內容 ---------- */
+{
+ id:'prompt', g:'make', name:'AI 提示詞產生器', pill:['p-good','零成本'],
+ desc:'填物件欄位，一鍵產出可貼進任何 AI 的完整指令。物件文案、短影音口播、開箱腳本、競品分析四種。',
+ tail:'不用付 API 錢，貼過去就出稿',
+ sub:'我們不代你呼叫 AI，我們把指令寫到位——你貼哪個 AI 都能用',
+ build:function(){ return {
+  form:
+   '<div class="f">'+
+   '<div><label class="fl">要產什麼</label>'+
+    seg('m_seg',[['fb','物件文案'],['short','短影音口播'],['tour','開箱腳本'],['comp','競品分析']],'fb')+'</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">行政區</label><input class="inp" id="m_area" value="新北市樹林區" style="font-family:inherit"></div>'+
+    '<div><label class="fl">物件型態</label><input class="inp" id="m_type" value="電梯大樓 3房2廳2衛" style="font-family:inherit"></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">權狀坪數</label><div class="unit"><input class="inp" id="m_ping" value="42.5"><span class="u">坪</span></div></div>'+
+    '<div><label class="fl">開價</label><div class="unit"><input class="inp" id="m_price" value="1580"><span class="u">萬</span></div></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">屋齡</label><div class="unit"><input class="inp" id="m_age" value="12"><span class="u">年</span></div></div>'+
+    '<div><label class="fl">樓層</label><input class="inp" id="m_fl" value="8/14" style="font-family:inherit"></div>'+
+   '</div>'+
+   '<div><label class="fl">三個真實優點 <i>用頓號分開，不要形容詞，要具體事實</i></label>'+
+    '<textarea class="inp" id="m_pro" rows="2" style="font-family:inherit">走路 6 分鐘到樹林火車站、雙面採光邊間、屋主自住保養好幾乎免整理</textarea></div>'+
+   '<div><label class="fl">誠實講出來的缺點 <i>一定要填，這是阿宏的差異</i></label>'+
+    '<textarea class="inp" id="m_con" rows="2" style="font-family:inherit">主臥的窗正對主幹道，開窗有車聲；公設比 32% 偏高</textarea></div>'+
+   '<div><label class="fl">目標客群</label><input class="inp" id="m_who" value="首購換屋家庭，通勤台北，小孩剛上小學" style="font-family:inherit"></div>'+
+   '<div><label class="fl">要打的痛點／議題</label><input class="inp" id="m_pain" value="通勤時間換坪數，值不值得往外圍走一站" style="font-family:inherit"></div>'+
+   '<div class="row-btn"><button class="btn" id="m_go">產生提示詞</button>'+
+   '<button class="btn ghost" id="m_copy">複製</button></div>'+
+   '</div>',
+  out:'<div class="box"><h4>完整提示詞 ‧ 全選複製後貼進任何 AI</h4>'+
+      '<textarea class="out" id="m_out"></textarea>'+
+      '<p class="hint">貼進 <b>ChatGPT／Claude／Gemini</b> 都可以。這段指令已經內建阿宏的風格規則、事實紅線與不可承諾句，不需要再另外交代背景。</p></div>'+
+      '<div class="disc">AI 產出的稿一律要人工過一次：價格、坪數、屋齡、學區、法規狀態、成交價、屋主動機不得由 AI 補寫。缺點欄位不得刪除——把缺點寫出來是專業，不是扣分。</div>',
+  run:function(){
+    var t=segv('m_seg');
+    var base='你現在是台灣資深房仲的文案幕僚，服務對象是「阿宏」，品牌核心句是：\n'+
+      '「阿宏賣房不賣夢，陪你完成夢，但不陪你做錯夢。」\n\n'+
+      '【風格鐵律】\n'+
+      '1 因果論述，不無病呻吟：每個結論都要說出「因為什麼，所以什麼」\n'+
+      '2 風險預判優先：先講買錯會怎樣，再講買對會怎樣\n'+
+      '3 經營者視角，不粉飾不討好，不用房仲慣用的浮誇形容詞\n'+
+      '4 缺點一定要寫出來，而且要寫在明顯的位置，不能藏在最後一行\n'+
+      '5 結尾要給讀者一個具體的下一步動作，不要喊「歡迎洽詢」\n\n'+
+      '【事實紅線 — 違反即為錯誤輸出】\n'+
+      '‧ 不得補寫、推測或美化任何我沒給你的事實\n'+
+      '‧ 價格、坪數、屋齡、屋況、漏水、使用分區、可建、學區、成交價、屋主動機、法規狀態，一律只能用我提供的資料\n'+
+      '‧ 不得使用「保證增值」「穩賺」「絕對」「一定漲」等承諾語\n'+
+      '‧ 資料不足的地方，直接標記〔待補〕，不要自己編\n\n'+
+      '【物件資料】\n'+
+      '區域：'+sv('m_area')+'\n型態：'+sv('m_type')+'\n權狀：'+sv('m_ping')+' 坪\n'+
+      '開價：'+sv('m_price')+' 萬\n屋齡：'+sv('m_age')+' 年\n樓層：'+sv('m_fl')+'\n'+
+      '真實優點：'+sv('m_pro')+'\n誠實缺點：'+sv('m_con')+'\n'+
+      '目標客群：'+sv('m_who')+'\n要打的痛點：'+sv('m_pain')+'\n\n';
+
+    var task='';
+    if(t==='fb'){
+      task='【任務】寫三個版本的物件文案\n\n'+
+        'A 版　Facebook 長文（600–900 字）\n'+
+        '‧ 開頭三行必須讓「不打算買房的人」也讀得下去，從痛點或社會議題切入，不要一開頭就報物件\n'+
+        '‧ 中段才進物件，用「這間解決了什麼問題」的邏輯講，不是列規格\n'+
+        '‧ 缺點獨立一段，標題就叫「先說缺點」\n'+
+        '‧ 正文不使用句號，用換行製造呼吸感，段落之間空一行\n'+
+        '‧ 結尾給一個具體下一步（例如：想知道這個價格在同社區排第幾，留言「排名」）\n'+
+        '‧ hashtag 只放 #何志宏，放在正文最後\n\n'+
+        'B 版　591／官網物件說明（300–400 字）\n'+
+        '‧ 條列式，資訊密度高，可掃讀\n‧ 缺點放在「屋況說明」欄位，不省略\n\n'+
+        'C 版　LINE 傳給客戶（120 字內）\n'+
+        '‧ 一段話講完，讓客戶在通勤時三秒判斷要不要看\n‧ 附一句「這間不適合誰」\n\n'+
+        '三版寫完後，另外給我 5 個標題選項與 3 句可以單獨拿出來用的金句。';
+    } else if(t==='short'){
+      task='【任務】寫一支 60 秒短影音口播稿\n\n'+
+        '‧ 前 3 秒是生死線：第一句話就要讓滑到的人停下來，用反直覺、具體數字或一個尖銳提問開場，不要自我介紹\n'+
+        '‧ 4–10 秒：把痛點放大到「一般人也會怕」的層次，不要只講房仲圈的事\n'+
+        '‧ 10–45 秒：用因果邏輯拆解，2–3 個段落，每段一個判斷，講完給理由\n'+
+        '‧ 45–55 秒：把結論收成一句可以被截圖的話\n'+
+        '‧ 最後 5 秒：故意留一個缺口（例如「至於怎麼判斷是不是第二種，我下一支講」或「想要完整判斷清單，留言＋1」），不要把話講完\n\n'+
+        '格式要求：\n'+
+        '‧ 逐句斷行，每句不超過 20 字，方便照著唸\n'+
+        '‧ 台灣口語，不要書面語，不要中國用語\n'+
+        '‧ 每句後面用括號標記字卡文字（4–8 字）\n\n'+
+        '另外給我：\n1 三個不同角度的開場鉤子備選\n2 平台關鍵詞標籤（FB／抖音／YouTube Shorts 各一組）\n3 一句留言引導句';
+    } else if(t==='tour'){
+      task='【任務】寫一支房屋開箱／探房影片的拍攝腳本\n\n'+
+        '‧ 採「買方視角」，不是仲介視角：鏡頭走到哪，就講買方站在那裡會想到什麼\n'+
+        '‧ 開場用倒裝句：先講一個結果或反差，再回頭解釋（例如「這間房子最貴的地方，其實不在屋裡」）\n'+
+        '‧ 全片結構：開場鉤子 → 玄關／客廳 → 採光與格局 → 主臥 → 廚衛（最容易出問題的地方要停久一點）→ 陽台與外部 → 社區與生活圈 → 收尾判斷\n'+
+        '‧ 每一站給我：鏡頭怎麼走、口播講什麼、字卡打什麼\n'+
+        '‧ 缺點必須有獨立一站，鏡頭要真的拍到，不能只用嘴巴帶過\n'+
+        '‧ 收尾不喊「歡迎預約」，改成一句判斷句：「這間適合誰、不適合誰」\n\n'+
+        '另外給我：封面圖上的 8 字以內主標，以及三個備選。';
+    } else {
+      task='【任務】做這個物件的競品定位分析\n\n'+
+        '重要：你手上沒有即時市場資料。<b>不准編造任何競品的價格、坪數、成交紀錄或在售天數。</b>\n\n'+
+        '請改為輸出以下三段：\n\n'+
+        '第一段　競品天梯查核清單\n'+
+        '列出我應該去查哪些對照組，每一組寫清楚「查什麼欄位、去哪裡查、為什麼這組重要」：\n'+
+        '‧ 同社區在售 ‧ 同路段在售 ‧ 同總價帶不同區 ‧ 同產品型（坪數房數相近）‧ 同社區近一年實價登錄成交\n\n'+
+        '第二段　空白對照表\n'+
+        '做一張我可以直接填的表格，欄位包含：來源、物件編號、坪數（含／不含車位）、單價、總價、樓層、屋齡、在售天數、降價次數、與本案差異。\n\n'+
+        '第三段　判讀規則\n'+
+        '告訴我填完之後，用什麼規則判斷本案是「高估／合理／可強推」，以及每一種情況下對屋主該說什麼、不該承諾什麼。\n\n'+
+        '最後附上「不可承諾句清單」——這個案子絕對不能對屋主或買方說出口的話。';
+    }
+    $('m_out').value=base+task;
+  },
+  after:function(){
+    $('m_go').onclick=function(){ window.__run(); toast('已產生，可以複製了') };
+    $('m_copy').onclick=function(){ copy($('m_out').value,'提示詞已複製，貼進 AI 即可') };
+  }
+ }}
+},
+
+/* ---------- D 官方資料 ---------- */
+{
+ id:'gov', g:'find', name:'官方資料直達', pill:['p-pub','免費合法'],
+ desc:'實價登錄、房貸利率、地籍圖資、都市計畫、災害潛勢、法拍、稅務試算、租約範本與租金補貼，全部官方來源一次到位。',
+ tail:'不吃二手資料，不轉述，不猜',
+ sub:'能查證的才寫進說明書。查不到的，就標「待查」',
+ build:function(){
+  var L=[
+   ['行情與成交',[
+    ['內政部不動產交易實價查詢服務網','買賣、預售、租賃成交揭露，可下載開放資料 CSV 自建行情庫','https://plvr.land.moi.gov.tw/','內政部地政司'],
+    ['實價登錄開放資料下載','每旬更新的整批與增量檔，做自己的行情資料庫就靠這個','https://plvr.land.moi.gov.tw/DownloadOpenData','內政部地政司'],
+    ['不動產資訊平台','住宅價格指數、租金指數、房價所得比、貸款負擔率統計','https://pip.moi.gov.tw/','內政部'],
+    ['五大銀行新承做放款利率','中央銀行每月公布的房貸利率官方基準，跟銀行談利率前先看這個','https://www.cbc.gov.tw/','中央銀行']
+   ]],
+   ['租屋',[
+    ['住宅租賃契約範本','內政部住宅租賃定型化契約範本與應記載不得記載事項，簽約前先對官方版','https://www.land.moi.gov.tw/','內政部地政司'],
+    ['租賃實價登錄','租金成交行情跟買賣同一個系統，進去查詢時切「租賃」','https://plvr.land.moi.gov.tw/','內政部地政司'],
+    ['租金補貼與住宅補貼','300億元中央擴大租金補貼申請資訊與資格說明','https://www.nlma.gov.tw/','內政部國土管理署']
+   ]],
+   ['產權與地籍',[
+    ['全國地政電子謄本系統','線上申請第二類謄本（規費另計）','https://ep.land.nat.gov.tw/','內政部地政司'],
+    ['國土測繪圖資服務雲','地籍圖、正射影像、地形圖查詢','https://maps.nlsc.gov.tw/','內政部國土測繪中心'],
+    ['地籍圖資網路便民服務系統','地號查詢、地籍圖謄本申請','https://easymap.land.moi.gov.tw/','內政部地政司']
+   ]],
+   ['分區與法規',[
+    ['全國土地使用分區資料查詢系統','查都市計畫使用分區，判斷是不是工業宅、農地','https://luz.tcd.gov.tw/','內政部國土管理署'],
+    ['新北市都市計畫整合查詢','新北市土地使用分區與都市計畫圖','https://gis.planning.ntpc.gov.tw/','新北市城鄉發展局'],
+    ['臺北市都市計畫查詢','臺北市土地使用分區線上查詢','https://www.zone.taipei/','臺北市都市發展局'],
+    ['全國建築管理資訊系統入口網','建照、使照查詢入口','https://cpabm.cpami.gov.tw/','內政部國土管理署']
+   ]],
+   ['風險與環境',[
+    ['災害潛勢地圖網站','淹水、土壤液化、坡地、斷層潛勢一次查','https://dmap.ncdr.nat.gov.tw/','國家災害防救科技中心'],
+    ['土壤液化潛勢查詢系統','液化潛勢分級查詢','https://www.liquid.net.tw/','經濟部地質調查及礦業管理中心'],
+    ['海砂屋與輻射屋相關查詢','高氯離子混凝土建物與輻射污染建築物查詢','https://www.aec.gov.tw/','核安會／各縣市建管單位']
+   ]],
+   ['稅務試算',[
+    ['財政部稅務入口網 線上試算','土地增值稅、契稅、房屋稅、房地合一稅官方試算','https://www.etax.nat.gov.tw/','財政部'],
+    ['地價及標準地價查詢','公告地價、公告土地現值查詢','https://lvr.land.moi.gov.tw/','內政部地政司'],
+    ['房屋稅籍與房屋現值查詢','各地方稅捐稽徵處','https://www.tax.ntpc.gov.tw/','新北市稅捐稽徵處']
+   ]],
+   ['其他',[
+    ['法拍屋公告查詢','司法院法拍屋查詢系統','https://aomp.judicial.gov.tw/','司法院'],
+    ['商工登記公示資料查詢','查公司負責人與登記地址，開發廠辦土地用','https://findbiz.nat.gov.tw/','經濟部商業發展署'],
+    ['政府資料開放平臺','上面連結若失效，來這裡搜關鍵字找最新版','https://data.gov.tw/','國家發展委員會']
+   ]]
+  ];
+  var f='';
+  for(var i=0;i<L.length;i++){
+    f+='<div class="box" style="margin-bottom:12px"><h4>'+L[i][0]+'</h4><div class="linklist">';
+    for(var j=0;j<L[i][1].length;j++){
+      var x=L[i][1][j];
+      f+='<a class="lk" href="'+x[2]+'" target="_blank" rel="noopener noreferrer"><b>'+x[0]+'</b><span>'+x[1]+'</span><span class="src">'+x[3]+'</span></a>';
+    }
+    f+='</div></div>';
+  }
+  return {
+   wide:true, form:f, out:'',
+   run:function(){},
+   after:function(){}
+  }
+ }
+},
+
+{
+ id:'route', g:'find', name:'拜訪路線一鍵導航', pill:['p-ind','跑外務'],
+ desc:'把今天要跑的地址貼進來，直接生成 Google 地圖多點導航連結。免金鑰、免安裝。',
+ tail:'一天跑五個點，順序不對就少跑一個',
+ sub:'貼地址、按產生、開手機導航，三步',
+ build:function(){ return {
+  form:
+   '<div class="f">'+
+   '<div><label class="fl">出發地</label><input class="inp" id="r_from" value="新北市樹林區中山路一段" style="font-family:inherit"></div>'+
+   '<div><label class="fl">今天要跑的地址 <i>一行一個</i></label>'+
+    '<textarea class="inp" id="r_list" rows="8" style="font-family:inherit">新北市板橋區文化路二段\n新北市新莊區中正路\n新北市土城區中央路三段\n新北市中和區景平路</textarea></div>'+
+   '<div><label class="fl">終點 <i>可留空</i></label><input class="inp" id="r_to" value="" style="font-family:inherit"></div>'+
+   '<div class="row-btn"><button class="btn" id="r_go">產生導航連結</button></div>'+
+   '</div>',
+  out:'<div id="r_out"></div>'+
+      '<div class="disc">Google 地圖多點導航網址每條上限 10 站，超過會自動拆成第二條接續。此工具只組網址，不呼叫任何 API，也不儲存地址。含個人資料的拜訪名單請留在自己的裝置，不要放進共用雲端或群組。</div>',
+  run:function(){
+    var from=sv('r_from').trim(), to=sv('r_to').trim();
+    var raw=sv('r_list').split('\n');
+    var pts=[];
+    for(var i=0;i<raw.length;i++){ var s=raw[i].trim(); if(s) pts.push(s) }
+    if(!pts.length){ $('r_out').innerHTML='<div class="verdict y"><div class="lv">還沒有地址</div><p>左邊一行貼一個地址，按產生就好。</p></div>'; return }
+    var all=[]; if(from) all.push(from);
+    for(var j=0;j<pts.length;j++) all.push(pts[j]);
+    if(to) all.push(to);
+
+    var chunks=[], MAX=10;
+    for(var k=0;k<all.length;k+= (MAX-1)){
+      var c=all.slice(k, k+MAX);
+      if(c.length>1) chunks.push(c);
+    }
+    var h='<div class="hero-num accent"><div class="lab">今日拜訪</div><div class="val">'+pts.length+' <small>站</small></div>'+
+      '<div class="note">拆成 '+chunks.length+' 條導航連結 ‧ 手機點開直接導航</div></div>';
+    h+='<div class="linklist">';
+    for(var m=0;m<chunks.length;m++){
+      var url='https://www.google.com/maps/dir/'+chunks[m].map(encodeURIComponent).join('/');
+      h+='<a class="lk" href="'+url+'" target="_blank" rel="noopener noreferrer"><b>第 '+(m+1)+' 段導航（'+chunks[m].length+' 個點）</b>'+
+         '<span>'+chunks[m].join(' → ')+'</span><span class="src">Google 地圖 ‧ 免金鑰</span></a>';
+    }
+    h+='</div>';
+    h+='<div class="box" style="margin-top:12px"><h4>出門前</h4><div class="kv">'+
+      kvRow('每個點都要有回填','拜訪完當場回填，回公司就忘了','必填')+
+      kvRow('話題包先準備','到場前先看過該點的行情與周邊成交','建議')+
+      kvRow('聯絡資料','只放自己裝置，不進群組、不上共用雲端','個資紅線')+
+      '</div></div>';
+    $('r_out').innerHTML=h;
+  },
+  after:function(){ $('r_go').onclick=function(){ window.__run() } }
+ }}
+},
+
+{
+ id:'match', g:'buyer', name:'買方需求匹配器', pill:['p-acc','招牌'],
+ desc:'591 只會篩總價、坪數、地區。這裡多問通勤、優先項目、為什麼要買，從你手上的物件裡挑出真正合的，其餘直接整理成需求單傳給你。',
+ tail:'比591更懂買家要什麼',
+ sub:'填預算與生活需求，對你手上正在賣的物件逐一比對評分，順便產出一張可以直接傳的需求單',
+ build:function(){
+  var TAGDICT=[
+   ['near_mrt','近捷運／公車站'],['school','學區'],['parking','有車位'],['elevator','有電梯'],
+   ['quiet','安靜少噪音'],['bright','採光好'],['renovated','已整理／新成屋'],['view','景觀好'],
+   ['low_total','總價親民好貸'],['rare_layout','稀有格局／格局方正'],['big_space','坪數大'],['pet','可養寵物']
+  ];
+  window.__matchTAGDICT=TAGDICT;
+  var tagLab={}; for(var ti=0;ti<TAGDICT.length;ti++) tagLab[TAGDICT[ti][0]]=TAGDICT[ti][1];
+  window.__matchTagLab=tagLab;
+  var chkH='';
+  for(var tj=0;tj<TAGDICT.length;tj++){
+    chkH+='<label class="chk"><input type="checkbox" class="m_tag" value="'+TAGDICT[tj][0]+'"><span>'+TAGDICT[tj][1]+'</span></label>';
+  }
+  var regions=[]; var lst=(CFG.listings||[]);
+  for(var ri=0;ri<lst.length;ri++){ if(lst[ri].region && regions.indexOf(lst[ri].region)<0) regions.push(lst[ri].region); }
+  var regionH='';
+  for(var rj=0;rj<regions.length;rj++){
+    regionH+='<label class="chk"><input type="checkbox" class="m_region" value="'+regions[rj]+'"><span>'+regions[rj]+'</span></label>';
+  }
+  return {
+  form:
+   '<div class="f">'+
+   '<div class="f2">'+
+    '<div><label class="fl">你的稱呼 <i>選填，只是幫阿宏認人</i></label><input class="inp" id="m_name" value="" placeholder="例如：陳先生"></div>'+
+    '<div><label class="fl">聯絡電話 <i>選填</i></label><input class="inp" id="m_phone" value="" placeholder="方便阿宏回電"></div>'+
+   '</div>'+
+   '<div class="f2">'+
+    '<div><label class="fl">預算下限</label><div class="unit"><input class="inp" id="m_pmin" value="900"><span class="u">萬</span></div></div>'+
+    '<div><label class="fl">預算上限</label><div class="unit"><input class="inp" id="m_pmax" value="1500"><span class="u">萬</span></div></div>'+
+   '</div>'+
+   '<div><label class="fl">房型需求</label>'+seg('m_rooms',[['1','1房'],['2','2房'],['3','3房'],['4','4房+']],'2')+'</div>'+
+   (regionH? '<div><label class="fl">地區　<i>不勾＝不限，複選</i></label>'+regionH+'</div>' : '')+
+   '<div><label class="fl">樓層偏好</label>'+seg('m_floor',[['any','不限'],['noground','不要一樓'],['elev','要有電梯'],['high','高樓層佳'],['top','頂樓可接受']],'any')+'</div>'+
+   '<div><label class="fl">學區／商圈／捷運站／建案名 <i>選填，想指定就打關鍵字，可打好幾個用頓號分開</i></label>'+
+    '<input class="inp" id="m_kw" value="" placeholder="例如：文化國小、裕民街商圈、板橋車站、亞洲大學"></div>'+
+   '<div><label class="fl">通勤／生活重心地址 <i>選填，不會送出，只用來開地圖比對距離</i></label>'+
+    '<input class="inp" id="m_work" value="" placeholder="例如：台北車站、板橋區公所"></div>'+
+   '<div><label class="fl">在意的事　<i>複選，愈勾愈準</i></label>'+chkH+'</div>'+
+   '<div><label class="fl">多久內想搬進去</label>'+seg('m_urgency',[['slow','不急，先看看'],['half','半年內想定案'],['rush','急，現在就要']],'half')+
+    '<p class="hint" style="margin-top:6px">這欄不影響物件比對分數，但阿宏看需求單時會先處理標「急」的——沒時間窗的需求容易被排到後面。</p></div>'+
+   '<div><label class="fl">如果一直找不到合適的房子，會怎樣 <i>用你自己的話說，這是最關鍵的一題</i></label>'+
+    '<textarea class="inp" id="m_note" rows="3" placeholder="例如：租約到期要搬、小孩要上學卡學區、跟房東處不好、家裡多了人不夠住"></textarea></div>'+
+   '<div class="row-btn"><button class="btn" id="m_go">找出合適物件</button></div>'+
+   '</div>',
+  out:'<div id="m_out"></div>'+
+      '<div class="disc">比對用的物件資料由後台維護，只會是目前確實在銷售中的委託案，不吃 591 或任何平台資料。分數只是排序參考，不是保證交易條件；價格、屋況、坪數一律以謄本與現場為準。姓名電話留不留都可以，這頁不會存、不會送出，只是幫你把想講的話一次整理好，複製鍵按下去才會離開你的手機。</div>',
+  run:function(){
+    var pmin=v('m_pmin'), pmax=v('m_pmax')||999999, rooms=segv('m_rooms');
+    var work=sv('m_work').trim(), note=sv('m_note').trim(), urgency=segv('m_urgency');
+    var floorPref=segv('m_floor');
+    var floorLab={any:'不限',noground:'不要一樓',elev:'要有電梯',high:'高樓層佳',top:'頂樓可接受'};
+    var urgLab={slow:'不急，先看看',half:'半年內想定案',rush:'急，現在就要'};
+    var checked=$('pBody').querySelectorAll('.m_tag:checked');
+    var pri=[]; for(var i=0;i<checked.length;i++) pri.push(checked[i].value);
+    var regionChecked=$('pBody').querySelectorAll('.m_region:checked');
+    var wantRegions=[]; for(var ri2=0;ri2<regionChecked.length;ri2++) wantRegions.push(regionChecked[ri2].value);
+    var kwRaw=sv('m_kw').trim();
+    var kws=kwRaw? kwRaw.split(/[、,，\s]+/).filter(function(x){return x}) : [];
+    var listings=(CFG.listings||[]);
+
+    function scoreOf(L){
+      var price=parseFloat(L.price)||0;
+      if(price<=0) return null;
+      if(price>pmax*1.15) return null;
+      if(wantRegions.length && wantRegions.indexOf(L.region)<0) return null;
+      var s=0, reasons=[];
+      if(price>=pmin && price<=pmax){ s+=3; reasons.push('落在預算內'); }
+      else if(price<=pmax*1.15){ s+=1; reasons.push('超預算 '+nf(price-pmax,0)+' 萬，但在可談範圍'); }
+      else { s-=1; reasons.push('低於預算下限，總價相對親民'); }
+      if(rooms && L.rooms===rooms){ s+=2; reasons.push(L.rooms+'房，符合房型需求'); }
+      var mt=[];
+      for(var j=0;j<pri.length;j++){ if(L.tags && L.tags.indexOf(pri[j])>=0){ s+=1; mt.push(tagLab[pri[j]]||pri[j]); } }
+      if(mt.length) reasons.push('符合在意的事：'+mt.join('、'));
+
+      /* 樓層偏好：只吃後台填的 floor 文字與 tags.elevator，判不出來就不加不扣，交給人工判斷 */
+      var floorTxt=String(L.floor||'');
+      var hasElev=L.tags && L.tags.indexOf('elevator')>=0;
+      var floorNum=parseInt(floorTxt,10);
+      if(floorPref==='noground'){
+        if(/1樓|一樓/.test(floorTxt)){ s-=3; reasons.push('是一樓，跟需求不符'); }
+        else if(floorTxt){ s+=1; reasons.push('非一樓'); }
+      } else if(floorPref==='elev'){
+        if(hasElev){ s+=2; reasons.push('有電梯'); }
+        else if(L.tags){ s-=1; reasons.push('未標示有電梯，要再確認'); }
+      } else if(floorPref==='high'){
+        if(!isNaN(floorNum) && floorNum>=6){ s+=1; reasons.push(floorTxt+'，樓層夠高'); }
+      } else if(floorPref==='top'){
+        if(/頂樓/.test(floorTxt)){ s+=2; reasons.push('頂樓'); }
+      }
+
+      /* 地緣關鍵字：學區／商圈／捷運站／建案名／交通，掃描後台填的相關欄位，命中就加分並講出命中哪個字 */
+      if(kws.length){
+        var haystack=[L.name,L.region,L.floor,L.note,L.schoolDistrict,L.nearbyBiz,L.jobHubs,L.transit].filter(Boolean).join(' ‧ ');
+        var hitKw=[];
+        for(var kwi=0;kwi<kws.length;kwi++){ if(haystack.indexOf(kws[kwi])>=0) hitKw.push(kws[kwi]); }
+        if(hitKw.length){ s+=hitKw.length*2; reasons.push('命中關鍵字：'+hitKw.join('、')); }
+      }
+
+      return {L:L, score:s, reasons:reasons, matched:mt.length};
+    }
+
+    var scored=[];
+    for(var k=0;k<listings.length;k++){ var r=scoreOf(listings[k]); if(r) scored.push(r); }
+    scored.sort(function(a,b){ return b.score-a.score });
+
+    var h='';
+    if(!listings.length){
+      h+='<div class="verdict y"><div class="lv">目前後台還沒建物件資料</div>'+
+        '<p>買方需求匹配器要比對的是「阿宏手上正在賣的物件」，不是市場全部物件。後台還沒建物件清單前，這裡只能先幫你把需求整理成一張單子，直接複製傳給阿宏，由他從現有委託裡幫你挑。</p></div>';
+    } else {
+      var top=scored.filter(function(r){return r.score>0});
+      h+='<div class="hero-num accent"><div class="lab">符合條件的物件</div>'+
+        '<div class="val">'+top.length+' <small>／ '+listings.length+' 件在售</small></div>'+
+        '<div class="note">依預算、房型、在意的事排序，分數愈高愈合</div></div>';
+      if(!top.length){
+        h+='<div class="verdict y"><div class="lv">目前沒有完全吻合的物件</div><p>手上物件跟這組需求對不上，別勉強湊——把需求傳給阿宏，等新委託進來或去談降價空間。</p></div>';
+      } else {
+        h+='<div class="linklist">';
+        for(var m=0;m<Math.min(top.length,8);m++){
+          var r2=top[m], L=r2.L;
+          var mapUrl = work ? 'https://www.google.com/maps/dir/'+encodeURIComponent(work)+'/'+encodeURIComponent((L.region||'')+(L.name||'')) : '';
+          h+='<a class="lk" '+(mapUrl?'href="'+mapUrl+'" target="_blank" rel="noopener noreferrer"':'href="javascript:void(0)"')+'>'+
+             '<b>'+(L.name||'未命名物件')+'　'+nf(parseFloat(L.price)||0,0)+' 萬</b>'+
+             '<span>'+(L.region||'')+(L.rooms?'　'+L.rooms+'房':'')+(L.floor?'　'+L.floor:'')+'</span>'+
+             '<span>'+r2.reasons.join('　‧　')+'</span>'+
+             (work?'<span class="src">點開＝從「'+work+'」到此案的路線</span>':'')+
+             '</a>';
+        }
+        h+='</div>';
+        if(top.length>8) h+='<p class="hint">還有 '+(top.length-8)+' 件分數較低但仍在預算內，完整清單直接問阿宏。</p>';
+      }
+    }
+
+    var name=sv('m_name').trim(), phone=sv('m_phone').trim();
+    var matchedNames=scored.filter(function(r){return r.score>0}).map(function(r){return r.L.name}).join('、');
+
+    var needText='【買方需求單】\n'+
+      '急迫度　'+(urgLab[urgency]||urgency)+'\n'+
+      (name?'稱呼　'+name+'\n':'')+(phone?'電話　'+phone+'\n':'')+
+      '預算　'+nf(pmin,0)+' ～ '+nf(pmax,0)+' 萬\n房型　'+rooms+'房\n'+
+      (wantRegions.length?'地區　'+wantRegions.join('、')+'\n':'')+
+      (floorPref!=='any'?'樓層偏好　'+(floorLab[floorPref]||floorPref)+'\n':'')+
+      (kws.length?'學區／商圈／建案關鍵字　'+kws.join('、')+'\n':'')+
+      (work?'通勤／生活重心　'+work+'\n':'')+
+      (pri.length?'在意的事　'+pri.map(function(x){return tagLab[x]||x}).join('、')+'\n':'')+
+      (note?'如果找不到會怎樣　'+note+'\n':'')+
+      (listings.length? '\n系統比對結果　'+scored.filter(function(r){return r.score>0}).length+' 件符合'+(matchedNames?'（'+matchedNames+'）':'') : '')+
+      '\n※ 這是買方自填需求，不是物件事實，物件詳情以阿宏確認為準';
+    window.__matchSummary=needText;
+
+    /* 對應「買方回報表」欄位：日期／買方姓名／電話／有無實際約看／接觸來源／問物件／互動狀況
+       Tab 分隔，貼進 Excel 會自動落成一列，各自對到一欄 */
+    var today=new Date(); function p2(n){return n<10?'0'+n:''+n}
+    var dateStr=today.getFullYear()+'/'+p2(today.getMonth()+1)+'/'+p2(today.getDate());
+    var rowText=[dateStr, name||'', phone||'', '', '工具站-買方需求匹配器', matchedNames||'（無匹配，見需求單）', ''].join('\t');
+    window.__matchRow=rowText;
+
+    h+='<div class="row-btn" style="margin-top:12px">'+
+       '<button class="btn sm ghost" id="m_copy">複製需求單給阿宏</button>'+
+       (INTERNAL?'<button class="btn sm ghost" id="m_copyRow">複製一列給買方回報表.xlsx</button>':'')+
+       '</div>'+
+       (INTERNAL?'<p class="hint">內部工具：複製後直接貼進「買方回報表」空白列最左欄，會自動分成日期／姓名／電話／接觸來源／問物件幾欄，「有無實際約看」跟「互動狀況」空著，帶看後手動補。</p>':'');
+    $('m_out').innerHTML=h;
+    var btn=document.getElementById('m_copy');
+    if(btn) btn.onclick=function(){ copy(window.__matchSummary||'','需求單已複製，可直接貼 LINE') };
+    var btnRow=document.getElementById('m_copyRow');
+    if(btnRow) btnRow.onclick=function(){ copy(window.__matchRow||'','已複製，貼進買方回報表空白列即可') };
+  },
+  after:function(){ $('m_go').onclick=function(){ window.__run() } }
+ }}
+}
+];
+
+/* ===================== 前台／後台：可見性 ===================== */
+function visOf(id){ return CFG.tools[id]||'public' }
+var INTERNAL=!!window.__showInternal;
+try{ if(localStorage.getItem('ah-internal')==='1') INTERNAL=true }catch(e){}
+function shownTools(){
+  return TOOLS.filter(function(t){
+    var v=visOf(t.id);
+    if(v==='off') return false;
+    if(v==='private') return INTERNAL;
+    return true;
+  });
+}
+
+/* ===================== 品牌套用 ===================== */
+function applyBrand(){
+  var b=CFG.brand;
+  document.title=b.site;
+  $('bMark').textContent=b.mark;
+  $('bSite').textContent=b.site;
+  $('bSlogan').textContent=b.slogan;
+  $('bFree').textContent=b.freeTag;
+  $('bFree').style.display= b.freeTag? '':'none';
+  $('hTitle').textContent=CFG.hero.title;
+  $('hSub').textContent=CFG.hero.sub;
+  var contact=[];
+  if(b.name) contact.push(b.name+(b.title?'　'+b.title:''));
+  if(b.store) contact.push(b.store);
+  if(b.phone) contact.push(b.phone);
+  if(b.area) contact.push(b.area);
+  var lic=[];
+  if(b.company) lic.push(b.company);
+  if(b.licenseBroker) lic.push('經紀業 '+b.licenseBroker);
+  if(b.licenseSales) lic.push('經紀人 '+b.licenseSales);
+  $('foot').innerHTML=
+    '<b>'+b.site+'</b>'+(contact.length?'　'+contact.join('　‧　'):'')+'<br>'+
+    (lic.length? lic.join('　‧　')+'<br>' : '')+
+    CFG.legal.footer+'<br>'+CFG.legal.privacy+
+    '<div class="foot-tools">'+
+      '<button id="fInt">'+(INTERNAL?'關閉內部工具（回到客戶看到的畫面）':'顯示內部工具')+'</button>'+
+    '</div>';
+  $('fInt').onclick=function(){
+    INTERNAL=!INTERNAL;
+    try{ localStorage.setItem('ah-internal', INTERNAL?'1':'0') }catch(e){}
+    applyBrand(); renderHome(); toast(INTERNAL?'已顯示內部工具':'已切回客戶畫面');
+  };
+  if(PREVIEW && !document.getElementById('pvbar')){
+    var d=document.createElement('div');
+    d.id='pvbar'; d.className='pvbar';
+    d.textContent='後台預覽模式　這是套用草稿設定後的前台畫面，尚未發布';
+    document.body.insertBefore(d, document.body.firstChild);
+  }
+}
+
+/* ===================== 前台 CTA ===================== */
+function ctaHTML(){
+  var c=CFG.lead, b=CFG.brand;
+  if(!c.on) return '';
+  var href='', label=c.label;
+  if(c.action==='line' && b.lineUrl) href=b.lineUrl;
+  else if(c.action==='phone' && b.phone) href='tel:'+b.phone.replace(/[^0-9+]/g,'');
+  if(!href && c.action!=='none') return '';
+  if(c.action==='none') {
+    return '<div class="cta"><div class="t"><b>'+label+'</b><span>'+c.text+'</span></div></div>';
+  }
+  return '<div class="cta"><div class="t"><b>'+label+'</b><span>'+c.text+'</span></div>'+
+         '<a class="go" href="'+href+'" target="_blank" rel="noopener noreferrer">'+
+         (c.action==='phone'?'撥給 '+(b.name||'我'):'加 LINE 問')+'</a></div>';
+}
+
+/* ===================== 渲染 ===================== */
+var filter='all';
+function renderHome(){
+  var pool=shownTools();
+  var rail='<button class="chip" data-f="all" aria-pressed="'+(filter==='all')+'">全部工具 '+pool.length+'</button>';
+  for(var i=0;i<GROUPS.length;i++){
+    var gid=GROUPS[i].id;
+    var c=pool.filter(function(t){return t.g===gid}).length;
+    if(!c) continue;
+    rail+='<button class="chip" data-f="'+gid+'" aria-pressed="'+(filter===gid)+'">'+GROUPS[i].name+' '+c+'</button>';
+  }
+  $('rail').innerHTML=rail;
+  var chips=$('rail').querySelectorAll('.chip');
+  for(var j=0;j<chips.length;j++){
+    chips[j].onclick=function(){ filter=this.dataset.f; renderHome() };
+  }
+  var out='';
+  if(INTERNAL){
+    var nInt=TOOLS.filter(function(t){return visOf(t.id)==='private'}).length;
+    out+='<div class="intbar"><b>內部工具已開啟</b>'+
+         '有 '+nInt+' 支標示為「只有我看得到」的工具正顯示在下面。客戶用你發布出去的網址進來時看不到它們。'+
+         '這是入口隱藏，不是加密——真正含個資的東西不要放進任何網頁。</div>';
+  }
+  for(var g=0;g<GROUPS.length;g++){
+    if(filter!=='all' && filter!==GROUPS[g].id) continue;
+    var gid2=GROUPS[g].id;
+    var list=pool.filter(function(t){return t.g===gid2});
+    if(!list.length) continue;
+    out+='<div class="group"><div class="group-h"><h2>'+GROUPS[g].name+'</h2><em>'+list.length+' 支</em></div>'+
+         '<p class="group-note">'+GROUPS[g].note+'</p><div class="grid">';
+    for(var k=0;k<list.length;k++){
+      var t=list[k], priv=visOf(t.id)==='private';
+      out+='<button class="card'+(priv?' internal':'')+'" data-id="'+t.id+'">'+
+        '<div class="card-top"><h3>'+t.name+'</h3>'+
+        (priv?'<span class="pill p-int">內部</span>':'<span class="pill '+t.pill[0]+'">'+t.pill[1]+'</span>')+'</div>'+
+        '<p>'+t.desc+'</p>'+
+        '<div class="card-tail">'+t.tail+'</div></button>';
+    }
+    out+='</div></div>';
+  }
+  if(!pool.length) out='<div class="verdict y"><div class="lv">目前沒有上架的工具</div><p>到後台把工具設成「客戶看得到」再發布。</p></div>';
+  $('groups').innerHTML=out;
+  var cards=$('groups').querySelectorAll('.card');
+  for(var m=0;m<cards.length;m++){
+    cards[m].onclick=function(){ location.hash='#/'+this.dataset.id };
+  }
+}
+
+function openTool(id){
+  var t=null;
+  for(var i=0;i<TOOLS.length;i++) if(TOOLS[i].id===id) t=TOOLS[i];
+  if(!t){ location.hash=''; return }
+  var vis=visOf(t.id);
+  if(vis==='off' || (vis==='private' && !INTERNAL)){ location.hash=''; return }
+  var cfg=t.build();
+  $('pTitle').textContent=t.name;
+  $('pSub').textContent=t.sub;
+  $('pBody').innerHTML=
+    '<div class="cols'+(cfg.wide?' wide':'')+'">'+
+      '<div class="box'+(cfg.wide?'':' stick')+'" style="'+(cfg.wide?'border:0;background:transparent;padding:0':'')+'">'+
+        (cfg.wide?'':'<h4>參數</h4>')+cfg.form+
+      '</div>'+
+      '<div>'+cfg.out+ (vis==='public'?ctaHTML():'') +'</div>'+
+    '</div>';
+  window.__run=cfg.run;
+  autoRun($('pBody'));
+  if(cfg.after) cfg.after();
+  cfg.run();
+  $('home').style.display='none';
+  $('panel').classList.add('on');
+  window.scrollTo(0,0);
+}
+
+function route(){
+  var h=location.hash;
+  if(h.indexOf('#/')===0){ openTool(h.slice(2)) }
+  else{
+    $('panel').classList.remove('on');
+    $('home').style.display='';
+    window.__run=null;
+  }
+}
+window.addEventListener('hashchange',route);
+$('backBtn').onclick=function(){ location.hash='' };
+
+/* 主題 */
+(function(){
+  var saved=null;
+  try{ saved=localStorage.getItem('ah-theme') }catch(e){}
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+  $('themeBtn').onclick=function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    if(!cur){ cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light' }
+    var next = cur==='dark' ? 'light':'dark';
+    document.documentElement.setAttribute('data-theme',next);
+    try{ localStorage.setItem('ah-theme',next) }catch(e){}
+  };
+})();
+
+applyBrand();
+renderHome();
+route();
+</script>
