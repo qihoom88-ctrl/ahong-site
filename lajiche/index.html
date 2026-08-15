@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>新北垃圾車與生活機能查詢｜住商樹林站前店 阿宏</title>
+<meta name="description" content="輸入路名或用定位，查新北市 29 區共 26,659 個垃圾車停靠點的到達時間，一般垃圾、資源回收、廚餘分開列出星期幾。資料來自新北市政府資料開放平臺。">
+<meta name="theme-color" content="#A87332">
+<style>
+:root{
+  --zone-res:#A87332; --zone-com:#B33A2E; --zone-agr:#3F7350; --zone-ind:#6B4E8C;
+  --ground:#FBF9F5; --surface:#FFF; --sunk:#F2EDE4;
+  --ink:#1C1813; --ink-soft:#574F44; --ink-faint:#8B8175; --rule:#DED5C7;
+  --sans:"PingFang TC","Microsoft JhengHei","Noto Sans TC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+  --serif:"Songti TC","Noto Serif CJK TC","PMingLiU",Georgia,serif;
+}
+@media(prefers-color-scheme:dark){:root{
+  --zone-res:#D9A45B;--zone-com:#E06A5C;--zone-agr:#6FA982;--zone-ind:#A98BC9;
+  --ground:#15120E;--surface:#1E1A15;--sunk:#262019;
+  --ink:#F2ECE2;--ink-soft:#BCB0A0;--ink-faint:#857B6D;--rule:#362F26;}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:18px 14px 40px}
+
+header{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+h1{font-family:var(--serif);font-size:23px;font-weight:700;margin:0;line-height:1.3}
+.sub{font-size:13.5px;color:var(--ink-soft)}
+.sub b{color:var(--zone-res);font-variant-numeric:tabular-nums}
+
+.panel{background:var(--surface);border:1px solid var(--rule);padding:14px;display:flex;flex-direction:column;gap:11px;margin-bottom:14px}
+label{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:5px}
+select,input[type=text]{width:100%;padding:11px 12px;font-size:16px;font-family:inherit;background:var(--ground);color:var(--ink);border:1px solid var(--rule);border-radius:0;-webkit-appearance:none;appearance:none}
+select:focus,input:focus{outline:2px solid var(--zone-res);outline-offset:-1px}
+.btnrow{display:grid;grid-template-columns:1fr;gap:8px}
+@media(min-width:480px){.btnrow{grid-template-columns:1fr 1fr}}
+button{padding:12px 14px;font-size:15px;font-family:inherit;font-weight:700;border:1px solid var(--zone-res);background:var(--zone-res);color:var(--surface);cursor:pointer;border-radius:0}
+button.ghost{background:transparent;color:var(--zone-res)}
+button:active{opacity:.75}
+button:disabled{opacity:.4;cursor:default}
+button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+.status{font-size:13px;color:var(--ink-soft);min-height:1.4em}
+.status.err{color:var(--zone-com);font-weight:700}
+
+.results{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--zone-res);padding:13px 14px;display:flex;flex-direction:column;gap:9px}
+.card.near{border-left-color:var(--zone-agr)}
+.c-top{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.c-name{font-size:16px;font-weight:700;line-height:1.35}
+.c-dist{font-family:var(--mono);font-size:12px;color:var(--zone-agr);font-weight:700;white-space:nowrap}
+.c-meta{font-size:12.5px;color:var(--ink-faint)}
+.timebox{display:flex;align-items:baseline;gap:8px;background:var(--sunk);padding:8px 11px}
+.timebox .t{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--zone-res);line-height:1;font-variant-numeric:tabular-nums}
+.timebox .tl{font-size:12px;color:var(--ink-soft)}
+.days{display:flex;flex-direction:column;gap:5px}
+.drow{display:grid;grid-template-columns:62px 1fr;gap:8px;align-items:center;font-size:13px}
+.drow .k{font-size:11.5px;color:var(--ink-faint);font-weight:700}
+.dots{display:flex;gap:3px}
+.dot{width:23px;height:23px;display:grid;place-items:center;font-size:11.5px;font-family:var(--mono);background:var(--sunk);color:var(--ink-faint);border:1px solid transparent}
+.dot.on{color:var(--surface);font-weight:700}
+.d-g .dot.on{background:var(--zone-res)}
+.d-r .dot.on{background:var(--zone-agr)}
+.d-f .dot.on{background:var(--zone-ind)}
+.dot.today{border-color:var(--ink)}
+.nav{display:inline-block;font-size:13px;font-weight:700;color:var(--zone-res);text-decoration:none;border-bottom:1px solid currentColor;align-self:flex-start}
+
+.around{background:var(--surface);border:1px solid var(--rule);padding:14px;margin:16px 0;display:flex;flex-direction:column;gap:10px}
+.around h2{font-family:var(--serif);font-size:17px;margin:0;font-weight:700}
+.around p{margin:0;font-size:13px;color:var(--ink-soft)}
+.aroundgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.aroundgrid a{display:block;padding:11px 10px;text-align:center;background:var(--sunk);color:var(--ink);text-decoration:none;font-size:14px;font-weight:700;border:1px solid var(--rule)}
+.aroundgrid a:active{opacity:.7}
+.aroundgrid a:focus-visible{outline:2px solid var(--zone-res);outline-offset:2px}
+
+.empty{padding:26px 14px;text-align:center;color:var(--ink-faint);font-size:14px;background:var(--surface);border:1px dashed var(--rule)}
+
+.cta{background:var(--surface);border:1px solid var(--zone-res);border-top:4px solid var(--zone-res);padding:16px;margin-top:22px;display:flex;flex-direction:column;gap:9px}
+.cta h2{font-family:var(--serif);font-size:17px;margin:0}
+.cta p{margin:0;font-size:13.5px;color:var(--ink-soft)}
+.ctabtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:3px}
+.ctabtns a{display:block;padding:12px;text-align:center;text-decoration:none;font-weight:700;font-size:15px;background:var(--zone-res);color:var(--surface)}
+.ctabtns a.alt{background:transparent;color:var(--zone-res);border:1px solid var(--zone-res)}
+
+footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--ink-faint);line-height:1.75}
+footer a{color:var(--ink-faint)}
+.legal{font-size:11px;margin-top:9px;padding-top:9px;border-top:1px dashed var(--rule)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>垃圾車幾點到你家門口</h1>
+  <p class="sub">新北市 29 區 <b id="totPts">26,659</b> 個停靠點 ‧ 一般垃圾／資源回收／廚餘分開查 ‧ 資料來自新北市政府資料開放平臺</p>
+</header>
+
+<div class="panel">
+  <div>
+    <label for="citySel">選行政區</label>
+    <select id="citySel"><option value="">載入中…</option></select>
+  </div>
+  <div>
+    <label for="q">找路名、里名或門牌（例：中正路、溪崑、俊英街）</label>
+    <input type="text" id="q" placeholder="輸入後自動搜尋" autocomplete="off" inputmode="search">
+  </div>
+  <div class="btnrow">
+    <button id="geoBtn" type="button">用我現在的位置找最近的</button>
+    <button id="clearBtn" type="button" class="ghost">清除，看全區</button>
+  </div>
+  <p class="status" id="status"></p>
+</div>
+
+<div class="results" id="results"></div>
+
+<div class="around" id="around" hidden>
+  <h2>這一帶的生活機能</h2>
+  <p id="aroundNote">以下用 Google 地圖搜尋你選定的位置周邊，點了會開新分頁。</p>
+  <div class="aroundgrid">
+    <a id="aEat" href="#" target="_blank" rel="noopener">附近吃的</a>
+    <a id="aBus" href="#" target="_blank" rel="noopener">大眾運輸怎麼坐</a>
+    <a id="aPark" href="#" target="_blank" rel="noopener">附近停車場</a>
+    <a id="aMart" href="#" target="_blank" rel="noopener">超市與市場</a>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>買房前，這一帶的日子長什麼樣</h2>
+  <p>垃圾車幾點來、走幾步到停靠點、附近有沒有得吃、車停哪裡——這些是搬進去以後每天要面對的事，但看屋那半小時通常沒人告訴你。想知道某一間房子周邊的完整生活動線，傳地址給我，我幫你查。</p>
+  <div class="ctabtns">
+    <a href="https://line.me/R/ti/p/@798ulmws" target="_blank" rel="noopener">用 LINE 問阿宏</a>
+    <a class="alt" href="tel:0226878822">撥打 02-2687-8822</a>
+  </div>
+</div>
+
+<footer>
+  <p><strong>資料來源｜</strong>新北市政府資料開放平臺「新北市垃圾車路線」資料集（<span id="fetchDate">2026-08-12</span> 取得）。收運時間與路線可能因國定假日、颱風、道路施工或清潔隊調整而變動，<strong>實際以現場公告與新北市政府環境保護局公告為準</strong>。本頁僅整理公開資料，不代表官方。</p>
+  <p><strong>隱私｜</strong>定位只在你的手機或電腦裡運算，用來計算距離，<strong>不會上傳、不會儲存</strong>。關掉分頁就沒了。本頁沒有帳號、沒有後台、沒有追蹤碼。</p>
+  <p class="legal">住商不動產 樹林站前加盟店｜鴻石不動產經紀有限公司｜經紀人 林秀嫻 (96) 北縣字第001399號｜營業員 何志宏 (114) 年登字第495065號</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+"use strict";
+var DATA=null, CITY="", LASTPOS=null;
+var DAYCH=["日","一","二","三","四","五","六"];
+var TODAY=new Date().getDay();
+var $=function(id){return document.getElementById(id)};
+var els={city:$("citySel"),q:$("q"),geo:$("geoBtn"),clear:$("clearBtn"),
+         status:$("status"),results:$("results"),around:$("around"),
+         aEat:$("aEat"),aBus:$("aBus"),aPark:$("aPark"),aMart:$("aMart"),
+         aroundNote:$("aroundNote"),tot:$("totPts")};
+
+function say(msg,isErr){els.status.textContent=msg||"";els.status.className="status"+(isErr?" err":"")}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+
+function dist(la1,lo1,la2,lo2){
+  var R=6371000,t=Math.PI/180;
+  var dLa=(la2-la1)*t,dLo=(lo2-lo1)*t;
+  var a=Math.sin(dLa/2)*Math.sin(dLa/2)+Math.cos(la1*t)*Math.cos(la2*t)*Math.sin(dLo/2)*Math.sin(dLo/2);
+  return Math.round(R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a)));
+}
+function fmtDist(m){return m<1000?m+" 公尺":(m/1000).toFixed(1)+" 公里"}
+
+function dayDots(bits,cls){
+  var h='<div class="dots '+cls+'">';
+  for(var i=0;i<7;i++){
+    var on=bits.indexOf(String(i))>=0;
+    h+='<span class="dot'+(on?" on":"")+(i===TODAY?" today":"")+'">'+DAYCH[i]+'</span>';
+  }
+  return h+'</div>';
+}
+
+// p = [name, village, time, lon, lat, garbage, recycle, food, line]
+function card(p,d){
+  var h='<article class="card'+(d!=null?" near":"")+'">';
+  h+='<div class="c-top"><span class="c-name">'+esc(p[0])+'</span>';
+  if(d!=null)h+='<span class="c-dist">'+fmtDist(d)+'</span>';
+  h+='</div>';
+  h+='<p class="c-meta">'+esc(CITY)+(p[1]?" "+esc(p[1]):"")+(p[8]?" ‧ "+esc(p[8]):"")+'</p>';
+  h+='<div class="timebox"><span class="t">'+esc(p[2]||"--:--")+'</span><span class="tl">預定抵達時間</span></div>';
+  h+='<div class="days">';
+  h+='<div class="drow"><span class="k">一般垃圾</span>'+dayDots(p[5],"d-g")+'</div>';
+  h+='<div class="drow"><span class="k">資源回收</span>'+dayDots(p[6],"d-r")+'</div>';
+  h+='<div class="drow"><span class="k">廚餘</span>'+dayDots(p[7],"d-f")+'</div>';
+  h+='</div>';
+  h+='<a class="nav" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination='+p[4]+','+p[3]+'">在 Google 地圖開啟這個停靠點</a>';
+  return h+'</article>';
+}
+
+function render(list,withDist){
+  if(!list.length){els.results.innerHTML='<div class="empty">這個條件查不到停靠點。換個關鍵字，或改用「看全區」。</div>';return}
+  var cap=withDist?8:120;
+  var h="";
+  for(var i=0;i<Math.min(list.length,cap);i++){
+    h+=withDist?card(list[i].p,list[i].d):card(list[i],null);
+  }
+  if(list.length>cap)h+='<div class="empty">另有 '+(list.length-cap)+' 個停靠點，輸入路名可以縮小範圍。</div>';
+  els.results.innerHTML=h;
+}
+
+function showAround(lat,lon,label){
+  els.around.hidden=false;
+  els.aroundNote.textContent=label?("以下用 Google 地圖搜尋「"+label+"」周邊，點了會開新分頁。"):"以下用 Google 地圖搜尋你選定的位置周邊，點了會開新分頁。";
+  var at="/@"+lat+","+lon+",16z";
+  els.aEat.href="https://www.google.com/maps/search/餐廳+小吃"+at;
+  els.aBus.href="https://www.google.com/maps/dir/?api=1&destination="+lat+","+lon+"&travelmode=transit";
+  els.aPark.href="https://www.google.com/maps/search/停車場"+at;
+  els.aMart.href="https://www.google.com/maps/search/超市+傳統市場"+at;
+}
+
+function loadCity(city,cb){
+  if(!city){return}
+  say("載入 "+city+" 的資料…");
+  var x=new XMLHttpRequest();
+  x.open("GET","data/"+encodeURIComponent(city)+".json",true);
+  x.onload=function(){
+    if(x.status>=200&&x.status<300){
+      try{DATA=JSON.parse(x.responseText);CITY=city;
+        say(city+" 共 "+DATA.length.toLocaleString()+" 個停靠點");
+        try{localStorage.setItem("ahong_lifemap_city",city)}catch(e){}
+        if(cb)cb();else doSearch();
+      }catch(e){say("資料解析失敗，請重新整理",true)}
+    }else{say("載入失敗（"+x.status+"），請重新整理",true)}
+  };
+  x.onerror=function(){say("載入失敗，請確認網路連線",true)};
+  x.send();
+}
+
+function doSearch(){
+  if(!DATA)return;
+  var kw=els.q.value.trim();
+  if(!kw){render(DATA,false);return}
+  var out=[];
+  for(var i=0;i<DATA.length;i++){
+    var p=DATA[i];
+    if(p[0].indexOf(kw)>=0||p[1].indexOf(kw)>=0||p[8].indexOf(kw)>=0)out.push(p);
+  }
+  render(out,false);
+  say(kw+"：找到 "+out.length+" 個停靠點");
+}
+
+function nearest(lat,lon){
+  if(!DATA)return;
+  var arr=[];
+  for(var i=0;i<DATA.length;i++){
+    var p=DATA[i];
+    arr.push({p:p,d:dist(lat,lon,p[4],p[3])});
+  }
+  arr.sort(function(a,b){return a.d-b.d});
+  render(arr,true);
+  say("離你最近的停靠點是 "+fmtDist(arr[0].d)+"，共列出 8 個");
+  showAround(lat,lon,"");
+}
+
+els.city.addEventListener("change",function(){
+  els.q.value="";
+  if(this.value)loadCity(this.value);
+});
+var timer=null;
+els.q.addEventListener("input",function(){
+  clearTimeout(timer);timer=setTimeout(doSearch,180);
+});
+els.clear.addEventListener("click",function(){
+  els.q.value="";els.around.hidden=true;
+  if(DATA){render(DATA,false);say(CITY+" 共 "+DATA.length.toLocaleString()+" 個停靠點")}
+});
+els.geo.addEventListener("click",function(){
+  if(!navigator.geolocation){say("這個瀏覽器不支援定位，請改用行政區加路名搜尋",true);return}
+  els.geo.disabled=true;say("正在取得你的位置…");
+  navigator.geolocation.getCurrentPosition(function(pos){
+    els.geo.disabled=false;
+    LASTPOS=[pos.coords.latitude,pos.coords.longitude];
+    if(!DATA){say("請先選一個行政區，再按一次定位",true);return}
+    nearest(LASTPOS[0],LASTPOS[1]);
+  },function(err){
+    els.geo.disabled=false;
+    var m={1:"你拒絕了定位權限。可以改用行政區加路名搜尋。",2:"抓不到位置訊號，請到戶外再試，或改用路名搜尋。",3:"定位逾時，請再按一次。"};
+    say(m[err.code]||"定位失敗，請改用路名搜尋",true);
+  },{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
+});
+
+// 啟動：載入行政區清單
+(function init(){
+  var x=new XMLHttpRequest();
+  x.open("GET","data/_index.json",true);
+  x.onload=function(){
+    if(x.status<200||x.status>=300){say("行政區清單載入失敗，請重新整理",true);return}
+    var idx;
+    try{idx=JSON.parse(x.responseText)}catch(e){say("行政區清單解析失敗",true);return}
+    var tot=0,h='<option value="">請選擇行政區</option>';
+    for(var i=0;i<idx.length;i++){
+      tot+=idx[i].n;
+      h+='<option value="'+esc(idx[i].city)+'">'+esc(idx[i].city)+'（'+idx[i].n.toLocaleString()+' 點）</option>';
+    }
+    els.city.innerHTML=h;
+    els.tot.textContent=tot.toLocaleString();
+    var saved="";
+    try{saved=localStorage.getItem("ahong_lifemap_city")||""}catch(e){}
+    if(saved){
+      for(var j=0;j<idx.length;j++){if(idx[j].city===saved){els.city.value=saved;loadCity(saved);return}}
+    }
+    say("先選一個行政區，或直接按定位");
+  };
+  x.onerror=function(){say("載入失敗，請確認是用網頁伺服器開啟而不是直接點檔案",true)};
+  x.send();
+})();
+})();
+</script>
+</body>
+</html>
