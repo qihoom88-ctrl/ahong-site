@@ -8,7 +8,7 @@ window.SITE = {
   brandName : '阿宏房產判斷所',
   brandSub  : '何志宏 · 先拆風險 再談成交',
   mark      : '宏',                  // 方塊 logo 內的字（沒有圖檔時用）
-  markImg   : '/a/logo.jpg',         // 有 logo 圖檔就填路徑，例：'/a/logo.png'（填了就蓋掉上面的字）
+  markImg   : '/a/logo.jpg?v=2',     // 有 logo 圖檔就填路徑，例：'/a/logo.png'（填了就蓋掉上面的字）
   portrait  : '/a/ahong_v2.jpg',     // 首頁形象照
   slogan    : '先拆風險，再談成交',
   sloganHi  : '再談成交',            // slogan 裡要標金色的那幾個字
