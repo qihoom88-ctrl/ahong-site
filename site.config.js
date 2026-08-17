@@ -58,6 +58,7 @@ window.SITE = {
     {t:'成交行情', u:'/hangqing/'},
     {t:'物件開箱', u:'/kaixiang/'},
     {t:'賣房稅務', u:'/shuiwu/'},
+    {t:'稅務快答', u:'/shuiwu-faq/'},
     {t:'房產知識', u:'/zhishi/'},
     {t:'免費工具', u:'/tools/'}
   ],

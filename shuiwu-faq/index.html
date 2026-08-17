@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>房產稅務快答｜阿宏房產判斷所</title>
+<meta name="description" content="賣屋房地合一稅、重購退稅、繼承、贈與、房屋稅地價稅、土增稅、買屋稅費、租金報稅——點一類看懂原則，個案再傳給阿宏算。">
+<meta property="og:title" content="房產稅務快答｜阿宏房產判斷所">
+<meta property="og:description" content="八大房產稅務題，點哪一類就看哪一類，看完再私訊算你的實際數字。">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://0930848000.com/shuiwu-faq/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+.faqhd{text-align:center}
+.faqhd p.lead{max-width:560px;margin:0 auto}
+.faq-grid{display:grid;gap:12px;grid-template-columns:1fr 1fr;margin:26px 0 8px}
+@media(min-width:640px){.faq-grid{grid-template-columns:repeat(4,1fr)}}
+.faq-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 14px;text-align:center;cursor:pointer;font:inherit;color:inherit;width:100%;transition:border-color .15s,transform .15s}
+.faq-card:hover,.faq-card:focus-visible{border-color:var(--gold);transform:translateY(-2px);outline:none}
+.faq-card.on{border-color:var(--brand);background:var(--brandsoft)}
+.faq-card .ic{width:44px;height:44px;margin:0 auto 10px;border-radius:11px;background:var(--brandsoft);color:var(--brand);display:grid;place-items:center;font-size:20px;font-weight:900}
+.faq-card.on .ic{background:var(--brand);color:#fff}
+.faq-card b{display:block;font-size:14.5px;font-weight:700;line-height:1.5}
+.faq-panel{display:none;border-top:3px solid var(--gold);background:var(--alt);border-radius:12px;padding:24px 22px 20px;margin-top:18px}
+.faq-panel.on{display:block}
+.faq-panel h2{margin:0 0 14px;font-size:21px;font-weight:900}
+.faq-panel h3{margin:18px 0 6px;font-size:15px;font-weight:900;color:var(--brand)}
+.faq-panel h3:first-of-type{margin-top:0}
+.faq-panel p,.faq-panel li{margin:0 0 10px;font-size:14.5px;color:var(--ink2);line-height:1.9}
+.faq-panel ul{margin:0 0 10px;padding-left:20px}
+.faq-panel b{color:var(--ink)}
+.faq-empty{padding:30px 0;text-align:center;color:var(--fade);font-size:14.5px}
+</style>
+</head>
+<body>
+<div id="ahnav"></div>
+
+<section class="pagehd faqhd"><div class="wrap">
+  <p class="eyebrow">TAX FAQ</p>
+  <h1>房產稅務快答</h1>
+  <p class="lead">先點一類看懂原則，複雜的個案數字再傳給阿宏算。</p>
+</div></section>
+
+<section><div class="wrap">
+
+  <div class="faq-grid" id="faqGrid"></div>
+
+  <div id="faqEmpty" class="faq-empty">↑ 點上面任一個分類，內容展開在這裡</div>
+  <div class="faq-panel" id="faqPanel"></div>
+
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2>算完原則，<em>還要算你的數字</em></h2>
+  <p>持有年限、取得成本、戶籍狀況、有沒有出租——同一題兩個人答案常常差到七位數。把你的狀況傳給阿宏，實際算一次。</p>
+  <a class="btn btn-line" href="https://lin.ee/IV8bl9H">LINE 傳給阿宏算</a>
+</div></section>
+
+<div id="ahfoot"></div>
+<script src="/site.config.js"></script>
+<script src="/nav.js"></script>
+<script>
+var topics = [
+  {
+    id:"clj", icon:"賣", label:"賣屋房地合一稅",
+    body:'<h2>賣屋房地合一稅</h2>'+
+      '<h3>什麼是房地合一稅</h3><p>2016年後取得的房地，出售時獲利要用「房地合一稅」課稅，稅率依持有年限級距不同大幅拉高。</p>'+
+      '<h3>持有年限稅率級距</h3><ul>'+
+      '<li>持有 1 年以內：45%</li><li>持有 1～2 年：35%</li>'+
+      '<li>持有 2～5 年：20%</li><li>持有 5～10 年：15%</li>'+
+      '<li>持有 10 年以上：一般為 15%</li></ul>'+
+      '<p>持有時間是判斷稅負高低的第一關，時間點沒抓對，賣的時機可能差一個稅率級距。</p>'+
+      '<h3>怎麼算</h3><p>課稅所得＝賣價－買價－取得與改良成本－土地漲價總數額（土增稅部分）。實際金額要對到你的權狀與買賣合約才能算準。</p>'
+  },
+  {
+    id:"repurchase", icon:"退", label:"換屋重購退稅",
+    body:'<h2>換屋重購退稅</h2>'+
+      '<h3>重購退稅是什麼</h3><p>賣舊屋買新屋，若符合「換屋自住」條件，已繳的房地合一稅或財產交易所得稅可以申請全部或部分退還。</p>'+
+      '<h3>常見門檻</h3><ul>'+
+      '<li>本人或配偶、直系親屬設有戶籍並實際居住</li>'+
+      '<li>出售與購買須在一定期限內（先賣後買、先買後賣期限不同）</li>'+
+      '<li>新舊房地皆須符合自住認定，非用於出租、營業</li></ul>'+
+      '<h3>划不划算怎麼判斷</h3><p>要看換屋價差、原房地持有年限級距、以及重購房地的登記時點是否卡在期限內，三個變數要一起算才知道退多少。</p>'
+  },
+  {
+    id:"inherit", icon:"繼", label:"繼承房產稅務",
+    body:'<h2>繼承房產稅務</h2>'+
+      '<h3>繼承房產要面對的稅</h3><ul>'+
+      '<li>遺產稅：以被繼承人死亡時房地公告現值／評定現值計算</li>'+
+      '<li>未來出售時的房地合一稅：繼承取得適用新制還是舊制，會影響持有年限起算點與稅率</li></ul>'+
+      '<h3>新制／舊制差異</h3><p>被繼承人是在 2016 年前還是後取得房地，繼承後出售時的稅制認定不同，直接影響賣掉要繳多少稅，這是繼承案最容易忽略但影響最大的一步。</p>'+
+      '<h3>先問自己一句</h3><p>繼承後打算自住、出租還是要賣？三種用途對應的稅務規劃完全不同，方向沒定，稅務試算也沒有意義。</p>'
+  },
+  {
+    id:"gift-vs-inherit", icon:"贈", label:"贈與vs繼承怎麼選",
+    body:'<h2>贈與 vs 繼承怎麼選</h2>'+
+      '<h3>兩條路，稅負邏輯不同</h3>'+
+      '<p><b>贈與</b>：在世時過戶，課贈與稅，受贈人取得成本＝贈與時的公告現值／評定現值（通常偏低），未來出售時的獲利會被拉高，房地合一稅負可能較重。</p>'+
+      '<p><b>繼承</b>：身故後過戶，課遺產稅，但有較高的免稅額與扣除額，且繼承取得的成本認定方式對未來出售通常較有利。</p>'+
+      '<h3>怎麼選</h3><ul>'+
+      '<li>看家族資產總額是否會用到遺產稅累進稅率高端</li>'+
+      '<li>看受贈／繼承後多久會賣掉，決定房地合一稅衝擊大不大</li>'+
+      '<li>看是否有多名繼承人，分配是否會產生爭議</li></ul>'+
+      '<p>沒有哪一條路絕對比較好，要拿實際的持有年限、資產總額、家庭結構代入試算才知道。</p>'
+  },
+  {
+    id:"house-land-tax", icon:"屋", label:"房屋稅/地價稅",
+    body:'<h2>房屋稅 / 地價稅</h2>'+
+      '<h3>房屋稅</h3><p>每年課徵，依房屋現值×稅率計算，自住與非自住（出租、空置）稅率不同，2024年新制上路後非自住採全國歸戶累進，持有多屋稅負明顯拉高。</p>'+
+      '<h3>地價稅</h3><p>每年課徵，依土地公告地價計算，自用住宅用地有優惠稅率，一般用地採累進稅率。</p>'+
+      '<h3>房東常見盲點</h3><p>出租房屋若未依法申報，可能被歸類為非自住稅率，房屋稅負會比預期高出許多，這點在算租金報酬率時要一併算進去。</p>'
+  },
+  {
+    id:"land-value-increment", icon:"增", label:"土地增值稅",
+    body:'<h2>土地增值稅</h2>'+
+      '<h3>什麼情況會課</h3><p>出售土地（含房地合一稅案件中的土地部分）時，依公告現值漲價幅度課徵，跟房地合一稅是分開計算、合併負擔的兩筆稅。</p>'+
+      '<h3>自用住宅優惠稅率</h3><p>符合自用住宅用地條件可適用 10% 優惠稅率，一般稅率則依漲價倍數採 20%～40% 累進。</p>'+
+      '<h3>一生一次 vs 一生一屋</h3><ul>'+
+      '<li>一生一次：終身可使用一次 10% 優惠，條件較寬鬆</li>'+
+      '<li>一生一屋：條件較嚴（需符合自住面積、無出租營業等），優惠可重複使用</li></ul>'+
+      '<p>用哪一種要看你名下是否已用過優惠、未來還會不會再換屋，這是需要對照個人使用紀錄才能判斷的部分。</p>'
+  },
+  {
+    id:"buyer-cost", icon:"買", label:"買屋要繳哪些稅費",
+    body:'<h2>買屋要繳哪些稅費</h2>'+
+      '<h3>成交當下要準備的稅費</h3><ul>'+
+      '<li>契稅：以房屋評定現值×稅率（一般為 6%）計算</li>'+
+      '<li>印花稅：買賣契約按契價課徵</li>'+
+      '<li>代書費／規費：辦理過戶登記的行政成本</li>'+
+      '<li>如有貸款：另有貸款相關的規費、保險費用</li></ul>'+
+      '<h3>之後每年要繳的</h3><p>房屋稅、地價稅，交屋當年會依持有月數比例分算。</p>'+
+      '<p>買屋前把這些成本一次列清楚，才不會簽約後才發現預算不夠付過戶稅費。</p>'
+  },
+  {
+    id:"rental-income", icon:"租", label:"租金收入報稅",
+    body:'<h2>租金收入報稅</h2>'+
+      '<h3>租金要不要報稅</h3><p>租金收入屬於個人綜合所得稅的「租賃所得」，原則上都要併入年度所得申報，未申報被查獲會補稅加罰。</p>'+
+      '<h3>必要費用怎麼算</h3><ul>'+
+      '<li>提供合法憑證：可核實減除實際支出（房貸利息、房屋稅、修繕費等）</li>'+
+      '<li>未提供憑證：依財政部公告的「租金收入必要費用率」（通常 43%）概算減除</li></ul>'+
+      '<h3>公益出租人</h3><p>房東若透過社會住宅包租代管或租屋補助系統簽約，符合公益出租人資格，租金所得可享較高的免稅額度，房屋稅、地價稅也有優惠，但會影響自住認定，出售時要一併考慮。</p>'
+  }
+];
+
+var grid = document.getElementById('faqGrid');
+topics.forEach(function(t){
+  var btn = document.createElement('button');
+  btn.className = 'faq-card';
+  btn.id = 'card-'+t.id;
+  btn.innerHTML = '<span class="ic">'+t.icon+'</span><b>'+t.label+'</b>';
+  btn.onclick = function(){ showTopic(t.id); };
+  grid.appendChild(btn);
+});
+
+function showTopic(id){
+  var t = topics.filter(function(x){return x.id===id;})[0];
+  document.querySelectorAll('.faq-card').forEach(function(c){c.classList.remove('on');});
+  document.getElementById('card-'+id).classList.add('on');
+  var panel = document.getElementById('faqPanel');
+  panel.innerHTML = t.body +
+    '<div class="note"><b>以上為一般性稅務原則說明。</b>實際稅額須依你的權狀、買賣合約、持有年限等資料試算，個案情況以真人核算為準。</div>';
+  panel.classList.add('on');
+  document.getElementById('faqEmpty').style.display = 'none';
+  panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+</script>
+</body>
+</html>
