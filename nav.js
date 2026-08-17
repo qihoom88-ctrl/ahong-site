@@ -92,8 +92,9 @@
 
   var nav=css+
   '<div class="ahtop"><div class="ahtop-in">'+
-    '<a class="tel" href="tel:'+(S.tel||'').replace(/-/g,'')+'">'+S.tel+'</a>'+
-    '<span class="hide-s">｜ '+S.company+'</span><span class="sp"></span>'+
+    '<span class="hide-s">'+S.company+'</span>'+
+    '<a class="tel" href="tel:'+(S.tel||'').replace(/-/g,'')+'">｜ '+S.tel+'</a>'+
+    '<span class="sp"></span>'+
     '<span class="hide-s">關注 · 預約阿宏</span><span class="soc">'+
     '<a class="f" href="'+S.fb+'" aria-label="Facebook">f</a>'+
     '<a class="l" href="'+S.line+'" aria-label="LINE">L</a>'+
