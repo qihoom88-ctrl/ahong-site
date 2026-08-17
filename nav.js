@@ -55,9 +55,9 @@
   '.ahnav{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 12px -8px rgba(16,22,19,.4)}'+
   '.ahnav-in{max-width:1180px;margin:0 auto;padding:9px 18px;display:flex;align-items:center;gap:10px}'+
   '.ahlogo{display:flex;align-items:center;gap:9px;flex:none}'+
-  '.ahlogo .mk{height:60px;border-radius:9px;color:var(--gold);display:grid;place-items:center;font-weight:900;font-size:19px;overflow:hidden}'+
+  '.ahlogo .mk{height:84px;border-radius:9px;color:var(--gold);display:grid;place-items:center;font-weight:900;font-size:19px;overflow:hidden}'+
   '.ahlogo .mk:not(.imgmk){width:38px;height:38px}'+
-  '.ahlogo .mk img{height:60px;width:auto;max-width:170px;object-fit:contain;display:block}'+
+  '.ahlogo .mk img{height:84px;width:auto;max-width:240px;object-fit:contain;display:block}'+
   '.ahlogo b{display:block;font-size:15.5px;font-weight:900;color:var(--ink);line-height:1.2;letter-spacing:.03em}'+
   '.ahlogo i{display:block;font-style:normal;font-size:10.5px;color:var(--fade);letter-spacing:.05em}'+
   '.ahmenu{display:none;flex:1;gap:1px;justify-content:center}'+
