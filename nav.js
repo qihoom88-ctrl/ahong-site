@@ -55,8 +55,9 @@
   '.ahnav{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 12px -8px rgba(16,22,19,.4)}'+
   '.ahnav-in{max-width:1180px;margin:0 auto;padding:9px 18px;display:flex;align-items:center;gap:10px}'+
   '.ahlogo{display:flex;align-items:center;gap:9px;flex:none}'+
-  '.ahlogo .mk{width:38px;height:38px;border-radius:9px;color:var(--gold);display:grid;place-items:center;font-weight:900;font-size:19px;overflow:hidden}'+
-  '.ahlogo .mk img{width:100%;height:100%;object-fit:cover}'+
+  '.ahlogo .mk{height:40px;border-radius:9px;color:var(--gold);display:grid;place-items:center;font-weight:900;font-size:19px;overflow:hidden}'+
+  '.ahlogo .mk:not(.imgmk){width:38px}'+
+  '.ahlogo .mk img{height:100%;width:auto;object-fit:contain;display:block}'+
   '.ahlogo b{display:block;font-size:15.5px;font-weight:900;color:var(--ink);line-height:1.2;letter-spacing:.03em}'+
   '.ahlogo i{display:block;font-style:normal;font-size:10.5px;color:var(--fade);letter-spacing:.05em}'+
   '.ahmenu{display:none;flex:1;gap:1px;justify-content:center}'+
@@ -87,6 +88,7 @@
     return '<a href="'+n.u+'"'+(here===n.u?' class="on"':'')+'>'+n.t+'</a>';
   }).join('');
   var mk=S.markImg?'<img src="'+S.markImg+'" alt="">':S.mark;
+  var mkCls=S.markImg?'mk imgmk':'mk';
 
   var nav=css+
   '<div class="ahtop"><div class="ahtop-in">'+
@@ -98,7 +100,7 @@
     '<a class="g" href="'+S.social+'" aria-label="'+S.socialName+'">社</a></span>'+
   '</div></div>'+
   '<div class="ahnav"><div class="ahnav-in">'+
-    '<a class="ahlogo" href="/"><span class="mk">'+mk+'</span><span><b>'+S.brandName+'</b><i>'+S.brandSub+'</i></span></a>'+
+    '<a class="ahlogo" href="/"><span class="'+mkCls+'">'+mk+'</span><span><b>'+S.brandName+'</b><i>'+S.brandSub+'</i></span></a>'+
     '<nav class="ahmenu">'+menu+'</nav>'+
     '<a class="ahcta" href="'+S.line+'">'+S.ctaText+'</a>'+
     '<button class="ahburger" id="ahbg" aria-label="開啟選單" aria-expanded="false">☰</button>'+
