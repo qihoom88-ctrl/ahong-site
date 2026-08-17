@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /wujian/haojing/
+Disallow: /wujian/xikun/
+Disallow: /wujian/127/
+
+Sitemap: https://0930848000.com/sitemap.xml
