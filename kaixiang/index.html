@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>物件開箱｜每一間都拍給你看，缺點先講完</title>
+<meta name="description" content="何志宏（阿宏）的物件開箱影片。每一間在售物件都拍成實拍影片，上片前先調謄本查過，屋況不修圖照現況呈現。樹林、板橋、新莊、三峽在售物件開箱。">
+<meta property="og:title" content="物件開箱｜每一間都拍給你看，缺點先講完">
+<meta property="og:description" content="屋況不修圖，你在影片看到的就是現場。">
+<link rel="canonical" href="https://0930848000.com/kaixiang/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+.vcard{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.vcard:hover{border-color:var(--gold)}
+.vcard .ph{aspect-ratio:16/9;background:var(--brandsoft);position:relative;overflow:hidden}
+.vcard .ph img{width:100%;height:100%;object-fit:cover}
+.vcard .play{position:absolute;inset:0;display:grid;place-items:center}
+.vcard .play span{width:48px;height:48px;border-radius:50%;background:rgba(16,22,19,.86);color:var(--gold);display:grid;place-items:center;font-size:16px;padding-left:3px}
+.vcard .vb{padding:14px 15px 15px}
+.vcard h3{margin:0 0 5px;font-size:16px;font-weight:900;line-height:1.45}
+.vcard p{margin:0;font-size:13.5px;color:var(--ink2);line-height:1.7}
+.how{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:700px){.how{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div id="ahnav"></div>
+
+<section class="pagehd"><div class="wrap">
+  <p class="eyebrow">UNBOXING</p>
+  <h1>每一間都拍給你看</h1>
+  <p>照片可以挑角度、可以修圖，影片走一圈比較難騙人。我接的每一間都拍成開箱影片，上片前先調謄本查過，屋況照現況呈現、不修圖。</p>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">LATEST</p>
+  <h2 class="sec">最新開箱</h2>
+  <p class="sec-note">點卡片看 Facebook 上的完整影片。</p>
+  <div class="cards c3" id="vids"></div>
+  <div style="margin-top:20px">
+    <a class="btn btn-brand" id="fbmore" href="https://www.facebook.com/profile.php?id=61590602468898">到 Facebook 看全部影片</a>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <p class="eyebrow">HOW I SHOOT</p>
+  <h2 class="sec">開箱片的三條規矩</h2>
+  <p class="sec-note">這是我自己定的，不是業界標準——業界標準通常反過來。</p>
+  <div class="how">
+    <div class="wcard"><div class="ic">查</div><h3>上片前先查謄本</h3><p>產權、他項權利、有沒有非自然身故登載，先查過才敢拍。查不到答案的，我在片裡直接說查不到。</p></div>
+    <div class="wcard"><div class="ic">實</div><h3>屋況不修圖</h3><p>亂就是亂、舊就是舊。畫面看起來不美沒關係，帶看到現場才落差才是真的傷。</p></div>
+    <div class="wcard"><div class="ic">講</div><h3>缺點寫在文案裡</h3><p>無電梯、要整理、屋齡幾年、有沒有車位，全部寫在貼文裡，不藏到私訊才講。</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">FULL LIST</p>
+  <h2 class="sec">影片裡的物件，完整資料在這</h2>
+  <p class="sec-note">看完影片想知道價格、坪數、格局與缺點揭露，直接看在售清單。</p>
+  <a class="btn btn-gold" href="/wujian/">看在售物件清單 →</a>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2>想看哪一間，<em>我帶你去</em></h2>
+  <p>影片看得再仔細，也不如站在屋裡感受一次。約看之前我會先把該注意的講完，不浪費你的假日。</p>
+  <a class="btn btn-line" href="https://lin.ee/IV8bl9H">LINE 約看屋</a>
+</div></section>
+
+<div id="ahfoot"></div>
+<script src="/site.config.js"></script>
+<script src="/nav.js"></script>
+<script src="/fbfeed.js"></script>
+<script>
+(function(){
+  var F=window.AHFB||{videos:[]};
+  document.getElementById('vids').innerHTML=(F.videos||[]).map(function(v){
+    var ph=v.img?'<img src="'+v.img+'" alt="'+v.t+'" loading="lazy">':'';
+    return '<a class="vcard" href="'+v.u+'"><div class="ph">'+ph+'<div class="play"><span>▶</span></div></div>'+
+      '<div class="vb"><h3>'+v.t+'</h3><p>'+v.d+'</p></div></a>';
+  }).join('');
+  if(F.page) document.getElementById('fbmore').href=F.page;
+})();
+</script>
+</body>
+</html>
