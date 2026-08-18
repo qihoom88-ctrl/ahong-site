@@ -5,8 +5,8 @@
 window.SITE = {
 
   /* ── 品牌 ───────────────────────────────── */
-  brandName : '鴻觀資產交流社',
-  brandSub  : '阿宏觀察站 · 先拆風險 再談成交',
+  brandName : '鴻觀資產-阿宏觀點',
+  brandSub  : '何志宏 · 先拆風險 再談成交',
   mark      : '宏',                  // 方塊 logo 內的字（沒有圖檔時用）
   markImg   : '/a/logo2.png',     // 有 logo 圖檔就填路徑，例：'/a/logo.png'（填了就蓋掉上面的字）
   portrait  : '/a/ahong_v2.jpg',     // 首頁形象照
