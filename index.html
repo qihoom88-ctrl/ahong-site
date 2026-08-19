@@ -18,39 +18,44 @@
 {"@context":"https://schema.org","@type":"RealEstateAgent","name":"鴻觀資產-阿宏觀點（何志宏）","description":"新北在地不動產經紀營業員。買房判斷、賣房估價、換屋規劃、風險檢查、現金流試算。主力樹林、板橋、新莊、三峽，延伸桃園。","telephone":"+886-2-2687-8822","areaServed":["新北市","台北市","桃園市"],"url":"https://0930848000.com/","image":"https://0930848000.com/a/ahong_v2.jpg","worksFor":{"@type":"Organization","name":"住商不動產 樹林站前加盟店（鴻石不動產經紀有限公司）"}}
 </script>
 <style>
-.hero{background:var(--night);color:#fff;padding:0;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 80% 30%,rgba(31,92,70,.5),transparent 62%);pointer-events:none}
+.hero{background:linear-gradient(118deg,var(--night),var(--brand) 130%);color:#fff;padding:0;position:relative;overflow:hidden;min-height:520px}
+@media(min-width:880px){.hero{min-height:600px}}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 80% 28%,rgba(201,162,75,.16),transparent 60%);pointer-events:none}
 .hero .wrap{position:relative;z-index:1}
-.hgrid{display:grid;gap:0;align-items:end}
-@media(min-width:880px){.hgrid{grid-template-columns:1.1fr .9fr}}
-.hleft{padding:42px 0 38px}
-.hero .eyebrow{color:var(--gold)}
-.hero h1{margin:0 0 10px;font-size:32px;line-height:1.28;font-weight:900;letter-spacing:.04em;text-wrap:balance}
-@media(min-width:720px){.hero h1{font-size:46px}}
+.hgrid{display:grid;gap:0;align-items:center;min-height:520px}
+@media(min-width:880px){.hgrid{grid-template-columns:1.12fr .88fr;min-height:600px}}
+.hleft{padding:52px 0 40px}
+@media(min-width:880px){.hleft{padding:0}}
+.hero .eyebrow{color:var(--gold);font-size:13px}
+.hero h1{margin:0 0 14px;font-size:38px;line-height:1.16;font-weight:900;letter-spacing:-.01em;text-wrap:balance}
+@media(min-width:720px){.hero h1{font-size:58px}}
+@media(min-width:1080px){.hero h1{font-size:66px}}
 .hero h1 em{font-style:normal;color:var(--gold)}
-.svc{display:flex;flex-wrap:wrap;align-items:center;margin:0 0 16px;font-size:14px;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:.05em}
-.svc span{padding:2px 11px;border-right:1px solid rgba(201,162,75,.5)}
-.svc span:first-child{padding-left:0}.svc span:last-child{border-right:0}
-.hquote{margin:0 0 18px;display:inline-block;border:1px solid rgba(201,162,75,.55);border-radius:6px;padding:10px 18px;font-size:15px;color:#fff}
+.svc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.svc span{padding:7px 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.06);font-size:13.5px;font-weight:650;color:rgba(255,255,255,.92)}
+.hquote{margin:0 0 20px;display:inline-block;border:1px solid rgba(201,162,75,.55);border-radius:6px;padding:10px 18px;font-size:15px;color:#fff}
 .hcta{display:flex;flex-wrap:wrap;gap:10px}
-.hsub{margin:16px 0 0;font-size:13px;color:rgba(255,255,255,.55)}
-.hphoto{display:none;position:relative}
-@media(min-width:880px){.hphoto{display:block}}
-.hphoto img{width:100%;max-width:380px;margin:0 auto;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
-.hstrip{background:var(--night2);border-top:1px solid rgba(201,162,75,.22)}
-.hstrip-in{display:grid;grid-template-columns:1fr 1fr;gap:1px 0;padding:14px 0}
+.hcta .btn:hover{transform:translateY(-2px)}
+.hsub{margin:18px 0 0;font-size:13px;color:rgba(255,255,255,.55)}
+.hphoto{display:none;position:relative;align-items:flex-end;justify-content:center;height:100%}
+@media(min-width:880px){.hphoto{display:flex}}
+.hphoto::before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(201,162,75,.32);border-radius:50%;top:38px;left:50%;transform:translateX(-50%)}
+.hphoto::after{content:"阿宏觀點";position:absolute;right:6px;top:52px;color:rgba(255,255,255,.10);font-size:58px;font-weight:900;writing-mode:vertical-rl;letter-spacing:.1em;pointer-events:none}
+.hphoto img{position:relative;z-index:1;width:100%;max-width:340px;margin:0 auto;display:block;object-fit:cover;aspect-ratio:3/4;border-radius:46% 46% 6px 6px;mask-image:linear-gradient(#000 90%,transparent 100%);filter:contrast(1.03)}
+.hstrip{background:#fff}
+.hstrip-in{display:grid;grid-template-columns:1fr 1fr;gap:1px 0;padding:22px 0}
 @media(min-width:720px){.hstrip-in{grid-template-columns:repeat(4,1fr)}}
-.hstrip b{display:block;font-size:19px;font-weight:900;color:var(--gold);letter-spacing:.02em}
-.hstrip span{display:block;font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
-.hstrip div{padding:6px 14px;border-left:1px solid rgba(255,255,255,.1)}
+.hstrip b{display:block;font-size:22px;font-weight:900;color:var(--brand);letter-spacing:.01em}
+.hstrip span{display:block;font-size:12.5px;color:var(--ink2);margin-top:3px}
+.hstrip div{padding:8px 18px;border-left:1px solid var(--line)}
 .hstrip div:first-child{border-left:0}
 @media(max-width:719px){.hstrip div:nth-child(3){border-left:0}}
 
 .rail{display:flex;gap:14px;overflow-x:auto;padding:2px 2px 12px;scroll-snap-type:x mandatory}
 .rail::-webkit-scrollbar{height:6px}
 .rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
-.lcard{flex:none;width:252px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:transform .15s,box-shadow .15s,border-color .15s}
-.lcard:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 10px 26px -16px rgba(28,35,32,.5)}
+.lcard{flex:none;width:262px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .18s,box-shadow .18s,border-color .18s}
+.lcard:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 16px 32px -18px rgba(28,35,32,.5)}
 .lcard .ph{aspect-ratio:16/10;background:var(--brandsoft);overflow:hidden}
 .lcard .ph img{width:100%;height:100%;object-fit:cover}
 .lcard .ph.noimg{display:grid;place-items:center;color:var(--fade);font-size:12px;letter-spacing:.08em}
@@ -62,8 +67,8 @@
 .lb .spec{margin-top:6px;font-size:12px;color:var(--ink2)}
 .lb .go{margin-top:9px;font-size:13px;font-weight:700;color:var(--brand)}
 .rail-note{margin:2px 0 0;font-size:12.5px;color:var(--fade)}
-.vcard{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-.vcard:hover{border-color:var(--gold)}
+.vcard{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s}
+.vcard:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 16px 32px -18px rgba(28,35,32,.5)}
 .vcard .ph{aspect-ratio:16/9;background:var(--brandsoft);position:relative;overflow:hidden}
 .vcard .ph img{width:100%;height:100%;object-fit:cover}
 .vcard .play{position:absolute;inset:0;display:grid;place-items:center}
@@ -75,13 +80,16 @@
 .pcard h3{margin:0 0 4px;font-size:15px;font-weight:700}
 .pcard p{margin:0;font-size:13.5px;color:var(--ink2);line-height:1.7}
 .more{display:inline-block;margin-top:16px;font-size:14.5px;font-weight:700;color:var(--brand)}
-.two{display:grid;gap:14px;grid-template-columns:1fr}
+.two{display:grid;gap:16px;grid-template-columns:1fr}
 @media(min-width:820px){.two{grid-template-columns:1fr 1fr}}
-.bigcard{border:1px solid var(--line);border-radius:14px;padding:22px 20px;background:#fff}
-.bigcard h3{margin:0 0 6px;font-size:20px;font-weight:900}
-.bigcard p{margin:0 0 14px;font-size:14.5px;color:var(--ink2);line-height:1.8}
-.bigcard.dark{background:var(--brand);border-color:var(--brand);color:#fff}
+.bigcard{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:24px;padding:34px 28px;min-height:270px;background:#fff;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .18s ease}
+.bigcard:hover{transform:translateY(-4px)}
+.bigcard:before{content:attr(data-num);position:absolute;right:18px;bottom:-26px;font-size:100px;font-weight:900;line-height:1;color:var(--brand);opacity:.08}
+.bigcard h3{margin:0 0 8px;font-size:26px;font-weight:900}
+.bigcard p{margin:0 0 18px;font-size:14.5px;color:var(--ink2);line-height:1.85;max-width:420px}
+.bigcard.dark{background:linear-gradient(135deg,var(--brand),var(--brand-dk));border-color:var(--brand);color:#fff}
 .bigcard.dark p{color:rgba(255,255,255,.86)}
+.bigcard.dark:before{color:#fff}
 </style>
 </head>
 <body>
@@ -126,12 +134,12 @@
   <h2 class="sec">還沒找到適合的？</h2>
   <p class="sec-note">兩條路：讓我照你的條件配案，或先自己查這個社區到底成交多少。</p>
   <div class="two">
-    <div class="bigcard dark">
+    <div class="bigcard dark" data-num="01">
       <h3>買方配案</h3>
       <p>填區域、總價、坪數、房數、屋齡、車位這些你在 591 會篩的條件，再多問你幾句「為什麼要買」——我從手上的委託逐一比對，配不到就直接跟你說配不到，不硬推。</p>
       <a class="btn btn-gold" href="/maifang/">填我的條件 →</a>
     </div>
-    <div class="bigcard">
+    <div class="bigcard" data-num="02">
       <h3>成交行情</h3>
       <p>開價是屋主的期待，成交價才是市場的答案。查同社區、同坪數近期實際成交多少，出價前先有依據，不要被開價牽著走。</p>
       <a class="btn btn-brand" href="/hangqing/">查成交行情 →</a>
@@ -175,8 +183,10 @@
 </div></section>
 
 <section class="band"><div class="wrap">
-  <h2>買對是資產，<em>買錯是壓力</em></h2>
-  <p>房子是人生風險的容器。與其成交之後才發現問題，不如簽約之前就把該問的問完——這是判斷所存在的唯一理由。</p>
+  <div class="btxt">
+    <h2>買對是資產，<em>買錯是壓力</em></h2>
+    <p>房子是人生風險的容器。與其成交之後才發現問題，不如簽約之前就把該問的問完——這是判斷所存在的唯一理由。</p>
+  </div>
   <a class="btn btn-line" href="https://lin.ee/IV8bl9H">LINE 找阿宏聊聊</a>
 </div></section>
 
