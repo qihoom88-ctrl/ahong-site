@@ -88,6 +88,8 @@
   '.ahdock a{flex:1;text-align:center;border-radius:999px;padding:12px;font-size:14.5px;font-weight:700}'+
   '.ahdock .g{background:var(--gold);color:#1A1508}.ahdock .l{background:#06C755;color:#fff}'+
   '@media(min-width:1080px){.ahdock{display:none}}'+
+  '.ahviewtoggle{display:block;margin-top:12px;padding:0;font:inherit;font-size:11.5px;color:rgba(255,255,255,.55);background:none;border:0;text-decoration:underline;cursor:pointer}'+
+  '.ahviewtoggle:hover{color:#fff}'+
   '</style>';
 
   var menu=(S.nav||[]).map(function(n){
@@ -121,7 +123,9 @@
     '</div><div class="ahlegal">'+
     S.agentName+'｜'+S.agentTitle+S.agentLic+'<br>'+
     S.company+'｜'+S.companyLtd+'｜經紀人 '+S.brokerLic+'<br>'+
-    S.legal+'<br>'+S.privacy+'</div></div></div>'+
+    S.legal+'<br>'+S.privacy+
+    '<button class="ahviewtoggle" id="ahViewToggle" type="button"></button>'+
+    '</div></div></div>'+
     '<div class="ahdock"><a class="g" href="/wujian/">看在售物件</a><a class="l" href="'+S.line+'">LINE 諮詢</a></div>';
 
   var n=document.getElementById('ahnav'); if(n) n.innerHTML=nav;
@@ -132,4 +136,16 @@
     bg.setAttribute('aria-expanded',on?'true':'false');
     bg.textContent=on?'✕':'☰';
   });
+
+  /* 手機瀏覽時可切成電腦版畫面看，選擇會記住到下次 */
+  var VDK='ahViewDesktop';
+  function forcedDesktop(){return localStorage.getItem(VDK)==='1'}
+  var vt=document.getElementById('ahViewToggle');
+  if(vt){
+    vt.textContent=forcedDesktop()?'切換回手機版畫面':'查看電腦版畫面';
+    vt.addEventListener('click',function(){
+      localStorage.setItem(VDK, forcedDesktop()?'0':'1');
+      location.reload();
+    });
+  }
 })();
