@@ -231,8 +231,17 @@ tr.self td:first-child{color:var(--gold)}
 
 /* 格局圖 */
 .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px}
+.plan-frame{position:relative}
 .plan button{border:0;background:none;padding:0;width:100%;cursor:zoom-in;border-radius:14px;overflow:hidden}
 .plan img{width:100%;border-radius:14px}
+.plan-orient{
+  position:absolute;top:14px;right:14px;z-index:2;pointer-events:none;
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--solid-warm);color:#fff;font-weight:900;
+  font-size:1.2rem;line-height:1;padding:11px 16px;border-radius:14px;
+  box-shadow:0 10px 24px rgba(0,0,0,.3);letter-spacing:.02em
+}
+.plan-orient .compass{font-size:1.1rem}
 .cap{margin:9px 3px 0;color:var(--muted);font-size:.84rem}
 
 /* 工具按鈕（點開彈窗） */
@@ -621,7 +630,10 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <h2>四房怎麼配</h2>
     </div>
     <div class="plan">
-      <button type="button" data-full="a/floorplan.jpg" aria-label="放大格局圖"><img src="a/floorplan.jpg" alt="台北豪景 4房2廳2衛格局圖"></button>
+      <div class="plan-frame">
+        <button type="button" data-full="a/floorplan.jpg" aria-label="放大格局圖，座向朝南"><img src="a/floorplan.jpg" alt="台北豪景 4房2廳2衛格局圖，座向朝南"></button>
+        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座向朝南</span>
+      </div>
       <p class="cap">座向朝南（依委託資料）。主臥與三房分開配置，客廳、餐廳、廚房在同一動線上，兩套衛浴。格局圖僅依現況繪製示意，未依實際比例及座向繪製，實際格局與座向以現場、謄本與測量成果圖為準。</p>
     </div>
   </section>
