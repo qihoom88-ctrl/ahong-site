@@ -81,6 +81,9 @@ header.bar{
   border-bottom:1px solid var(--line);
 }
 .bar-in{display:flex;align-items:center;gap:12px;padding:12px 0}
+.brandlink{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;min-width:0}
+.brandlink:hover .mark{filter:brightness(1.08)}
+.brandlink:hover .brand b{color:var(--accent)}
 .mark{
   width:34px;height:34px;flex:none;border-radius:8px;background:var(--accent);
   color:var(--accent-ink);display:grid;place-items:center;
@@ -95,7 +98,8 @@ header.bar{
 }
 .icon-btn{
   width:34px;height:34px;border-radius:8px;border:1px solid var(--line);
-  background:var(--surface);cursor:pointer;display:grid;place-items:center;font-size:15px
+  background:var(--surface);cursor:pointer;display:grid;place-items:center;font-size:15px;
+  text-decoration:none;color:inherit
 }
 .icon-btn:hover{border-color:var(--line2)}
 
@@ -341,13 +345,16 @@ footer b{color:var(--ink2)}
 
 <header class="bar">
   <div class="wrap bar-in">
-    <div class="mark" id="bMark">宏</div>
-    <div class="brand">
-      <b id="bSite">阿宏不動產工具站</b>
-      <span id="bSlogan">賣房不賣夢　陪你完成夢 不陪你做錯夢</span>
-    </div>
+    <a class="brandlink" href="/" title="回首頁" aria-label="回鴻觀資產-阿宏觀點首頁">
+      <div class="mark" id="bMark">宏</div>
+      <div class="brand">
+        <b id="bSite">阿宏不動產工具站</b>
+        <span id="bSlogan">賣房不賣夢　陪你完成夢 不陪你做錯夢</span>
+      </div>
+    </a>
     <div class="bar-sp"></div>
     <span class="tag-free" id="bFree">永久免費</span>
+    <a class="icon-btn" href="/" title="回首頁" aria-label="回首頁">🏠</a>
     <button class="icon-btn" id="themeBtn" title="切換深淺色" aria-label="切換深淺色">◐</button>
   </div>
 </header>

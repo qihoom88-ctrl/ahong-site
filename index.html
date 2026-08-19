@@ -27,12 +27,14 @@
 .hleft{padding:52px 0 40px}
 @media(min-width:880px){.hleft{padding:0}}
 .hero .eyebrow{color:var(--gold);font-size:13px}
-.hero h1{margin:0 0 14px;font-size:38px;line-height:1.16;font-weight:900;letter-spacing:-.01em;text-wrap:balance}
-@media(min-width:720px){.hero h1{font-size:58px}}
-@media(min-width:1080px){.hero h1{font-size:66px}}
+.hero h1{margin:0 0 10px;font-size:32px;line-height:1.2;font-weight:900;letter-spacing:-.01em;text-wrap:balance}
+@media(min-width:720px){.hero h1{font-size:44px}}
+@media(min-width:1080px){.hero h1{font-size:50px}}
 .hero h1 em{font-style:normal;color:var(--gold)}
+.hcred{margin:0 0 20px;font-size:12.5px;font-weight:650;letter-spacing:.03em;color:rgba(255,255,255,.72)}
 .svc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
-.svc span{padding:7px 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.06);font-size:13.5px;font-weight:650;color:rgba(255,255,255,.92)}
+.svc a{padding:7px 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.06);font-size:13.5px;font-weight:650;color:rgba(255,255,255,.92);text-decoration:none;transition:background .18s,border-color .18s}
+.svc a:hover{background:rgba(201,162,75,.18);border-color:var(--gold);color:#fff}
 .hquote{margin:0 0 20px;display:inline-block;border:1px solid rgba(201,162,75,.55);border-radius:6px;padding:10px 18px;font-size:15px;color:#fff}
 .hcta{display:flex;flex-wrap:wrap;gap:10px}
 .hcta .btn:hover{transform:translateY(-2px)}
@@ -102,7 +104,8 @@
     <div class="hleft">
       <p class="eyebrow">買房 ｜ 賣房 ｜ 換屋</p>
       <h1>先拆風險，<em>再談成交</em></h1>
-      <div class="svc"><span>買房判斷</span><span>賣房估價</span><span>換屋規劃</span><span>風險檢查</span><span>現金流</span></div>
+      <p class="hcred">住商不動產 樹林站前加盟店　·　何志宏 不動產經紀營業員（114）年登字第495065號</p>
+      <div class="svc"><a href="#svc-buy">買房判斷</a><a href="#svc-value">賣房估價</a><a href="#svc-swap">換屋規劃</a><a href="#svc-risk">風險檢查</a><a href="#svc-cash">現金流</a></div>
       <p class="hquote">房子不是看喜歡，是看買錯會不會出事</p>
       <div class="hcta">
         <a class="btn btn-gold" href="/wujian/">看在售物件</a>
@@ -152,11 +155,11 @@
   <h2 class="sec">判斷所在做的六件事</h2>
   <p class="sec-note">不是幫你找房子，是幫你判斷這個決定三年後會不會出事。</p>
   <div class="cards c3">
-    <div class="wcard"><div class="ic">判</div><h3>買房判斷</h3><p>屋況、謄本、產權、貸款成數一起看，告訴你這間該不該碰、該出多少。</p></div>
-    <div class="wcard"><div class="ic">估</div><h3>賣房估價</h3><p>同社區實際成交一筆一筆比對，開價區間與底線先算清楚再掛牌。</p></div>
-    <div class="wcard"><div class="ic">換</div><h3>換屋規劃</h3><p>先賣先買、資金銜接、重購退稅怎麼卡時間點，順序排錯代價很大。</p></div>
-    <div class="wcard"><div class="ic">險</div><h3>風險檢查</h3><p>漏水、增建、嫌惡設施、他項權利，簽約前一次掃完，不留到交屋才吵。</p></div>
-    <div class="wcard"><div class="ic">金</div><h3>現金流試算</h3><p>房地合一、土增稅、月付金、實拿金額，數字先攤開再談要不要出價。</p></div>
+    <div class="wcard" id="svc-buy"><div class="ic">判</div><h3>買房判斷</h3><p>屋況、謄本、產權、貸款成數一起看，告訴你這間該不該碰、該出多少。</p></div>
+    <div class="wcard" id="svc-value"><div class="ic">估</div><h3>賣房估價</h3><p>同社區實際成交一筆一筆比對，開價區間與底線先算清楚再掛牌。</p></div>
+    <div class="wcard" id="svc-swap"><div class="ic">換</div><h3>換屋規劃</h3><p>先賣先買、資金銜接、重購退稅怎麼卡時間點，順序排錯代價很大。</p></div>
+    <div class="wcard" id="svc-risk"><div class="ic">險</div><h3>風險檢查</h3><p>漏水、增建、嫌惡設施、他項權利，簽約前一次掃完，不留到交屋才吵。</p></div>
+    <div class="wcard" id="svc-cash"><div class="ic">金</div><h3>現金流試算</h3><p>房地合一、土增稅、月付金、實拿金額，數字先攤開再談要不要出價。</p></div>
     <div class="wcard"><div class="ic">拍</div><h3>屋況開箱</h3><p>每一間都拍成開箱影片，上架前先調謄本查過，屋況不修圖照現況給你看。</p></div>
   </div>
 </div></section>

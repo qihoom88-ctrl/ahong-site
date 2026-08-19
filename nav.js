@@ -27,7 +27,7 @@
   '.cards{display:grid;gap:16px;grid-template-columns:1fr}'+
   '@media(min-width:600px){.cards{grid-template-columns:1fr 1fr}}'+
   '@media(min-width:940px){.cards.c4{grid-template-columns:repeat(4,1fr)}.cards.c3{grid-template-columns:repeat(3,1fr)}}'+
-  '.wcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 22px;min-height:200px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}'+
+  '.wcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 22px;min-height:200px;scroll-margin-top:100px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}'+
   'a.wcard:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 16px 32px -20px rgba(16,22,19,.35)}'+
   '.wcard .ic{width:48px;height:48px;border-radius:13px;background:var(--brandsoft);color:var(--brand);display:grid;place-items:center;font-size:20px;font-weight:900;margin-bottom:14px}'+
   '.wcard h3{margin:0 0 6px;font-size:18px;font-weight:900}'+
