@@ -9,7 +9,7 @@ window.AHCONFIG = {
     "mark": "宏",
     "name": "何志宏",
     "title": "不動產經紀營業員",
-    "area": "主力雙北　延伸桃園　最後全省",
+    "area": "新北市",
     "company": "鴻石不動產經紀有限公司",
     "store": "住商不動產 樹林站前店",
     "licenseBroker": "(96) 北縣字第001399號",
