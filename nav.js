@@ -118,15 +118,29 @@
   '.ahviewtoggle{display:none;margin-top:12px;padding:0;font:inherit;font-size:11.5px;color:rgba(255,255,255,.55);background:none;border:0;text-decoration:underline;cursor:pointer}'+
   '.ahviewtoggle:hover{color:#fff}'+
   /* 版面比例切換晶片：常駐可見，顯示當下模式與比例 */
-  '.vchip{position:fixed;left:12px;bottom:96px;z-index:72;display:flex;align-items:center;gap:7px;padding:7px 12px 7px 9px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.94);backdrop-filter:blur(8px);box-shadow:0 5px 18px -6px rgba(16,22,19,.4);cursor:pointer;font:inherit;font-size:12px;font-weight:800;color:var(--ink)}'+
-  '.vchip:hover{border-color:var(--gold)}'+
+  /* 版面比例切換晶片：常駐可見，顏色區分手機版／電腦版 */
+  '.vchip{position:fixed;left:12px;bottom:92px;z-index:72;display:flex;align-items:center;gap:9px;padding:11px 16px 11px 13px;border-radius:999px;border:2px solid transparent;box-shadow:0 8px 22px -6px rgba(16,22,19,.55);cursor:pointer;font:inherit;font-size:14px;font-weight:900;letter-spacing:.02em;transition:transform .18s ease,filter .18s ease}'+
+  '.vchip:hover{transform:translateY(-2px);filter:brightness(1.08)}'+
   '@media(min-width:1080px){.vchip{bottom:24px}}'+
-  '.vchip .vico{flex:none;width:15px;border:1.5px solid var(--brand);border-radius:2.5px}'+
-  '.vchip.m .vico{height:24px}'+
-  '.vchip.d .vico{height:11px;width:19px}'+
-  '.vchip .vnow{color:var(--brand)}'+
-  '.vchip .vratio{font-weight:600;color:var(--fade);font-variant-numeric:tabular-nums}'+
-  '.vchip .vsw{padding-left:7px;margin-left:1px;border-left:1px solid var(--line);color:var(--gold-dk);font-weight:800}'+
+  /* 手機版狀態＝品牌墨綠　電腦版狀態＝金色，一眼分得出現在在哪個模式 */
+  '.vchip.m{background:var(--brand);border-color:var(--brand);color:#fff}'+
+  '.vchip.d{background:var(--gold);border-color:var(--gold);color:#1A1508}'+
+  '.vchip .vico{flex:none;border:2px solid currentColor;border-radius:3px;opacity:.9}'+
+  '.vchip.m .vico{width:16px;height:25px}'+
+  '.vchip.d .vico{width:26px;height:17px}'+
+  '.vchip .vnow{font-size:14.5px}'+
+  '.vchip .vratio{font-weight:700;opacity:.72;font-size:13px;font-variant-numeric:tabular-nums}'+
+  '.vchip .vsw{padding:5px 11px;margin-left:2px;border-radius:999px;font-size:13px;font-weight:900}'+
+  '.vchip.m .vsw{background:var(--gold);color:#1A1508}'+
+  '.vchip.d .vsw{background:var(--brand);color:#fff}'+
+  '.ahdock{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;gap:8px;padding:8px 14px 12px;background:rgba(16,22,19,.96);border-top:1px solid rgba(201,162,75,.3)}'+
+  '.ahdock a{flex:1;text-align:center;border-radius:999px;padding:12px;font-size:14.5px;font-weight:700}'+
+  '.ahdock .g{background:var(--gold);color:#1A1508}.ahdock .l{background:#06C755;color:#fff}'+
+  '@media(min-width:1080px){.ahdock{display:none}}'+
+  '.ahviewtoggle{display:none;margin-top:12px;padding:0;font:inherit;font-size:11.5px;color:rgba(255,255,255,.55);background:none;border:0;text-decoration:underline;cursor:pointer}'+
+  '.ahviewtoggle:hover{color:#fff}'+
+  /* 版面比例切換晶片：常駐可見，顯示當下模式與比例 */
+
   '</style>';
 
   var menu=(S.nav||[]).map(function(n){
