@@ -405,7 +405,7 @@ var DEFAULTS={
     slogan:'賣房不賣夢　陪你完成夢 不陪你做錯夢',
     mark:'宏',
     name:'何志宏',
-    title:'不動產經紀人',
+    title:'不動產經紀營業員',
     area:'主力雙北　延伸桃園　最後全省',
     company:'',
     store:'',
@@ -1855,8 +1855,8 @@ function applyBrand(){
   if(b.area) contact.push(b.area);
   var lic=[];
   if(b.company) lic.push(b.company);
-  if(b.licenseBroker) lic.push('經紀業 '+b.licenseBroker);
-  if(b.licenseSales) lic.push('經紀人 '+b.licenseSales);
+  if(b.licenseBroker) lic.push('經紀人 林秀嫻 '+b.licenseBroker);
+  if(b.licenseSales) lic.push('經紀營業員 何志宏 '+b.licenseSales);
   $('foot').innerHTML=
     '<b>'+b.site+'</b>'+(contact.length?'　'+contact.join('　‧　'):'')+'<br>'+
     (lic.length? lic.join('　‧　')+'<br>' : '')+
