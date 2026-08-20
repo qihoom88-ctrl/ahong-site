@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(function(){if(localStorage.getItem("ahViewDesktop")==="1"){var m=document.querySelector('meta[name="viewport"]');if(m)m.setAttribute("content","width=1280")}})();</script>
+<title>社區生活圈｜樹林、新莊在地店家，住進去以後真的會用到的</title>
+<meta name="description" content="買房看的不只是那間房子，是你以後每天走的那條路。樹林、新莊在地店家推薦，全部自己走過查過、標查證日期，不抄部落客、不收推薦費。何志宏（阿宏）｜住商不動產樹林站前加盟店。">
+<meta property="og:title" content="社區生活圈｜樹林、新莊在地店家">
+<meta property="og:description" content="住進去以後真的會用到的店。自己走過查過、標查證日期，不抄部落客、不收推薦費。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://0930848000.com/shangquan/">
+<link rel="canonical" href="https://0930848000.com/shangquan/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+.catbar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 24px}
+.catbar button{border:1px solid var(--line);background:#fff;border-radius:999px;
+  padding:10px 18px;font-size:14.5px;font-weight:700;cursor:pointer;color:var(--ink2);
+  font-family:inherit;min-height:44px}
+.catbar button[aria-pressed="true"]{background:var(--brand);color:#fff;border-color:var(--brand)}
+.catbar button b{font-size:16px;font-weight:900;margin-right:4px}
+
+.shops{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.shop{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 22px;
+  display:flex;flex-direction:column}
+.shop .tag{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
+  background:var(--brandsoft);color:var(--brand);border-radius:999px;
+  padding:5px 12px;font-size:12px;font-weight:800;letter-spacing:.04em;margin-bottom:12px}
+.shop h3{margin:0 0 2px;font-size:21px;font-weight:900;line-height:1.35}
+.shop .alias{margin:0 0 14px;font-size:13px;color:var(--fade);font-weight:700;letter-spacing:.08em}
+.shop .why{margin:0 0 16px;font-size:14.5px;line-height:1.9;color:var(--ink)}
+.shop .spec{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-direction:column;gap:6px}
+.shop .spec li{font-size:13.5px;color:var(--ink2);padding-left:18px;position:relative}
+.shop .spec li::before{content:'·';position:absolute;left:6px;top:-1px;
+  color:var(--gold);font-weight:900;font-size:17px}
+.shop .honest{background:#FBF8F1;border-left:3px solid var(--gold);border-radius:0 8px 8px 0;
+  padding:12px 14px;margin:0 0 18px;font-size:13px;line-height:1.8;color:var(--ink2)}
+.shop .honest b{display:block;font-size:12px;letter-spacing:.06em;color:var(--gold-dk);margin-bottom:3px}
+.shop dl{margin:0 0 18px;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:13.5px}
+.shop dt{color:var(--fade);font-weight:700;white-space:nowrap}
+.shop dd{margin:0;color:var(--ink2);line-height:1.7}
+.shop dd a[href^="tel:"]{display:inline-block;padding:10px 14px;margin:-4px 0 2px;
+  border:1px solid var(--line);border-radius:999px;font-variant-numeric:tabular-nums}
+.shop dd a[href^="tel:"]:hover{border-color:var(--gold)}
+.shop .acts{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;padding-top:4px}
+.shop .acts a{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);
+  border-radius:999px;padding:10px 16px;font-size:13.5px;font-weight:700;color:var(--ink2);min-height:44px}
+.shop .acts a:hover{border-color:var(--gold);color:var(--brand)}
+.shop .checked{margin:14px 0 0;font-size:11.5px;color:var(--fade);letter-spacing:.02em}
+
+.shop.soon{border-style:dashed;background:var(--alt);justify-content:center;
+  align-items:center;text-align:center;min-height:260px}
+.shop.soon .ic{width:52px;height:52px;border-radius:14px;background:#EDEFEC;color:var(--fade);
+  display:grid;place-items:center;font-size:22px;font-weight:900;margin-bottom:14px}
+.shop.soon h3{font-size:18px;color:var(--fade)}
+.shop.soon p{margin:8px 0 0;font-size:13.5px;color:var(--fade);line-height:1.85;max-width:260px}
+
+.rules{margin-top:26px;border-left:3px solid var(--gold);background:#FBF8F1;
+  padding:18px 20px;border-radius:0 10px 10px 0;font-size:13.5px;color:var(--ink2);line-height:1.9}
+.rules b{color:var(--ink);display:block;margin-bottom:8px;font-size:14.5px}
+.rules ol{margin:0;padding-left:20px}
+.rules li{margin:5px 0}
+.joinbox{background:var(--night);color:#fff;border-radius:18px;padding:34px 28px;text-align:center}
+.joinbox h2{margin:0 0 10px;font-size:24px;font-weight:900;line-height:1.45}
+.joinbox p{margin:0 0 20px;font-size:14.5px;color:#C9CFC9;line-height:1.9;
+  max-width:520px;margin-left:auto;margin-right:auto}
+.joinbox .btn{margin:0 5px 8px}
+@media(max-width:520px){
+  .shops{grid-template-columns:1fr}
+  .shop{padding:20px 18px}
+  .joinbox{padding:26px 20px}
+}
+</style>
+</head>
+<body>
+<div id="ahnav"></div>
+
+<main>
+
+<section class="pagehd"><div class="wrap">
+  <p class="eyebrow">NEIGHBOURHOOD</p>
+  <h1>買房看的不只是那間房子<br>是你以後每天走的那條路</h1>
+  <p>權狀上不會寫「棉被壞掉要去哪裡洗」。這頁是樹林、新莊住進去以後真的會用到的店，我自己走過、查過、標上查證日期。不抄部落客、不收推薦費，店收了我就把它拿掉。</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="catbar" id="catbar"></div>
+  <div class="shops" id="shops"></div>
+
+  <div class="rules">
+    <b>這頁的規矩，先說在前面</b>
+    <ol>
+      <li>每一家都是我自己去看過、打過電話確認的，卡片下面標的就是查證日期。時間久了資訊會變，出門前建議再打一次電話。</li>
+      <li>我不收店家任何推薦費用。願意收錄的標準只有一個：我自己會用，也敢介紹給客戶。</li>
+      <li>店家推薦跟物件廣告是分開的兩件事。物件頁上寫的生活機能只會寫捷運站、學校、公有市場、公園、醫院這種不會收掉的；店家一律留在這頁，店收了改這頁就好。</li>
+      <li>有食安爭議、消費糾紛風險的店不收錄。推薦就是背書，我背不起的不寫。</li>
+    </ol>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="joinbox">
+    <h2>你是這一帶的店家嗎</h2>
+    <p>這頁還在慢慢補。如果你在樹林、新莊開店，做的是街坊生意，願意被收錄可以跟我說一聲——不用付錢，我會自己去看過再決定寫不寫。寫了就照實寫，包含不適合誰。</p>
+    <a class="btn btn-line" id="joinLine" href="#">用 LINE 跟我說</a>
+    <a class="btn btn-ghost" id="joinTel" href="#">打電話</a>
+  </div>
+</div></section>
+
+</main>
+
+<div id="ahfoot"></div>
+
+<script src="/site.config.js"></script>
+<script src="/nav.js"></script>
+<script src="./data.js"></script>
+<script>
+(function(){
+  var S = window.SITE || {}, DB = window.AHSHOP || {cats:[],shops:[]};
+  var cur = 'all';
+
+  var joinLine = document.getElementById('joinLine');
+  var joinTel  = document.getElementById('joinTel');
+  if(S.line) joinLine.href = S.line;
+  if(S.tel){ joinTel.href = 'tel:' + S.tel.replace(/[^0-9+]/g,''); joinTel.textContent = '打電話 ' + S.tel; }
+
+  function esc(s){ return String(s==null?'':s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function catName(k){
+    for(var i=0;i<DB.cats.length;i++) if(DB.cats[i].k===k) return DB.cats[i].t;
+    return '';
+  }
+
+  /* 分類鈕：只列真的有店的分類，避免點進去空的 */
+  function buildCats(){
+    var used = {};
+    DB.shops.forEach(function(s){ used[s.cat] = (used[s.cat]||0) + 1; });
+    var html = '<button data-k="all" aria-pressed="true">全部 <b>' + DB.shops.length + '</b></button>';
+    DB.cats.forEach(function(c){
+      if(!used[c.k]) return;
+      html += '<button data-k="' + c.k + '" aria-pressed="false"><b>' + c.t + '</b>'
+            + esc(c.d) + '　' + used[c.k] + '</button>';
+    });
+    var bar = document.getElementById('catbar');
+    bar.innerHTML = html;
+    bar.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if(!b) return;
+      cur = b.dataset.k;
+      [].forEach.call(bar.querySelectorAll('button'), function(x){
+        x.setAttribute('aria-pressed', x.dataset.k === cur ? 'true' : 'false');
+      });
+      draw();
+    });
+  }
+
+  function card(s){
+    var h = '<article class="shop">';
+    h += '<span class="tag">' + esc(s.area) + '　' + esc(catName(s.cat)) + '</span>';
+    h += '<h3>' + esc(s.name) + '</h3>';
+    if(s.alias) h += '<p class="alias">' + esc(s.alias) + '</p>';
+    if(s.why)   h += '<p class="why">' + esc(s.why) + '</p>';
+    if(s.spec && s.spec.length){
+      h += '<ul class="spec">' + s.spec.map(function(x){
+        return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+    }
+    if(s.honest) h += '<div class="honest"><b>去之前先知道</b>' + esc(s.honest) + '</div>';
+
+    h += '<dl>';
+    if(s.hours) h += '<dt>營業</dt><dd>' + esc(s.hours) + '</dd>';
+    if(s.addr)  h += '<dt>地址</dt><dd>' + esc(s.addr)
+                  + (s.landmark ? '<br><span style="color:var(--fade)">' + esc(s.landmark) + '</span>' : '')
+                  + '</dd>';
+    if(s.tel)   h += '<dt>電話</dt><dd><a href="tel:' + esc(s.tel).replace(/[^0-9+]/g,'')
+                  + '" style="color:var(--brand);font-weight:700">' + esc(s.tel) + '</a></dd>';
+    h += '</dl>';
+
+    h += '<div class="acts">';
+    if(s.map) h += '<a href="' + esc(s.map) + '" target="_blank" rel="noopener">開地圖</a>';
+    if(s.fb)  h += '<a href="' + esc(s.fb)  + '" target="_blank" rel="noopener">看粉專</a>';
+    h += '</div>';
+
+    if(s.checked) h += '<p class="checked">資訊查證日 ' + esc(s.checked) + '　·　出門前建議再打一次電話確認</p>';
+    return h + '</article>';
+  }
+
+  function draw(){
+    var list = cur === 'all' ? DB.shops : DB.shops.filter(function(s){ return s.cat === cur; });
+    var h = list.map(card).join('');
+    /* 還沒補滿的位子照實說，不用假資料湊版面 */
+    if(cur === 'all'){
+      h += '<article class="shop soon"><div class="ic">＋</div>'
+        +  '<h3>還在找下一家</h3>'
+        +  '<p>這頁是慢慢累積的，一家一家自己去看。找到值得寫的才會放上來，不用店家數字充場面。</p>'
+        +  '</article>';
+    }
+    document.getElementById('shops').innerHTML = h;
+  }
+
+  buildCats();
+  draw();
+})();
+</script>
+</body>
+</html>
