@@ -86,7 +86,7 @@
   '.ahfoot h4{margin:0 0 8px;font-size:13.5px;font-weight:900;color:var(--gold);letter-spacing:.08em}'+
   '.ahfoot a:hover{color:#fff}'+
   '.ahlegal{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);font-size:11.5px;color:rgba(255,255,255,.5);line-height:1.9}'+
-  /* 踢館 Q&A 浮動面板 */
+  /* 技術 Q&A 浮動面板 */
   '.tkbtn{position:fixed;right:14px;bottom:96px;z-index:72;width:56px;height:56px;border-radius:50%;border:0;cursor:pointer;background:var(--gold);color:#1A1508;font-size:11px;font-weight:900;line-height:1.2;box-shadow:0 6px 20px -4px rgba(16,22,19,.5);display:grid;place-items:center;letter-spacing:.02em}'+
   '.tkbtn:hover{background:var(--gold-dk);color:#fff}'+
   '@media(min-width:1080px){.tkbtn{bottom:24px}}'+
@@ -111,6 +111,12 @@
   '.tka .tknext{display:inline-block;margin-top:10px;font-size:13px;font-weight:800;color:var(--gold-dk);border-bottom:1px solid var(--gold)}'+
   '.tkfoot{flex:none;padding:12px 18px;border-top:1px solid var(--line);background:#fff;font-size:11.5px;color:var(--fade);line-height:1.7}'+
   '.tkfoot a{color:var(--brand);font-weight:800}'+
+  '.tkfix{flex:none;padding:14px 18px 16px;border-top:2px solid var(--gold);background:#FBF8F1}'+
+  '.tkfix b{display:block;font-size:13.5px;font-weight:900;color:var(--ink);margin-bottom:3px}'+
+  '.tkfix p{margin:0 0 10px;font-size:12px;color:var(--ink2);line-height:1.7}'+
+  '.tkfixbtn{display:inline-block;background:var(--brand);color:#fff;font-size:13px;font-weight:900;'+
+    'padding:9px 16px;border-radius:999px;text-decoration:none}'+
+  '.tkfixbtn:hover{background:var(--brand-dk);color:#fff}'+
   '.ahdock{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;gap:8px;padding:8px 14px 12px;background:rgba(16,22,19,.96);border-top:1px solid rgba(201,162,75,.3)}'+
   '.ahdock a{flex:1;text-align:center;border-radius:999px;padding:12px;font-size:14.5px;font-weight:700}'+
   '.ahdock .g{background:var(--gold);color:#1A1508}.ahdock .l{background:#06C755;color:#fff}'+
@@ -222,31 +228,34 @@
   window.addEventListener('resize',paintChip);
   document.body.appendChild(chip);
 
-  /* 踢館 Q&A　資料在 /tikuan.js（阿宏策展，情緒與政治發言不收錄） */
+  /* 技術 Q&A　資料在 /tikuan.js（只做技術問答，不做人身類問答） */
   var TK=window.AHTIKUAN||[];
   if(TK.length){
     var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){
       return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
-    var TABS=[{k:'all',t:'全部'},{k:'buyer',t:'買方'},{k:'seller',t:'賣方'},{k:'peer',t:'同業'}];
+    var TABS=[{k:'all',t:'全部'},{k:'deed',t:'產權'},{k:'tax',t:'稅費'},{k:'flow',t:'流程'},{k:'cond',t:'屋況'}];
     var box=document.createElement('div');
     box.innerHTML=
-      '<button class="tkbtn" id="tkOpen" aria-label="打開踢館 Q&amp;A">踢館<br>Q&amp;A</button>'+
+      '<button class="tkbtn" id="tkOpen" aria-label="打開技術問答">技術<br>Q&amp;A</button>'+
       '<div class="tkmask" id="tkMask"></div>'+
-      '<aside class="tkpanel" id="tkPanel" role="dialog" aria-label="踢館 Q&amp;A" aria-modal="true">'+
-        '<div class="tkhd"><div><h3>踢館 Q&amp;A</h3>'+
-          '<p>最難聽的問題放這裡，不挑好聽的答</p></div>'+
+      '<aside class="tkpanel" id="tkPanel" role="dialog" aria-label="技術問答" aria-modal="true">'+
+        '<div class="tkhd"><div><h3>技術 Q&amp;A</h3>'+
+          '<p>謄本、稅費、流程、屋況　查得到的都寫出來</p></div>'+
           '<button class="tkx" id="tkClose" aria-label="關閉">✕</button></div>'+
         '<div class="tktabs" id="tkTabs">'+TABS.map(function(x,i){
           return '<button data-k="'+x.k+'"'+(i===0?' class="on"':'')+'>'+x.t+'</button>'}).join('')+'</div>'+
         '<div class="tkbody" id="tkBody"></div>'+
-        '<div class="tkfoot">這裡是常見的尖銳提問，不是客戶留言記錄。想直接問我沒列到的，走 '+
-          '<a href="'+S.line+'">官方 LINE</a>。</div>'+
+        '<div class="tkfix">'+
+          '<b>發現這裡寫錯了？</b>'+
+          '<p>頁面上的數字、法規、屋況資料如果對不上，直接告訴我，我查證後更正並在這裡註記</p>'+
+          '<a class="tkfixbtn" href="'+S.line+'">回報資料錯誤</a>'+
+        '</div>'+
       '</aside>';
     document.body.appendChild(box);
 
     var body=document.getElementById('tkBody');
     function render(k){
-      var L=TK.filter(function(x){return k==='all'||x.who===k});
+      var L=TK.filter(function(x){return k==='all'||x.g===k});
       body.innerHTML=L.length?L.map(function(x){
         return '<div class="tkitem"><button class="tkq" type="button">'+esc(x.q)+'</button>'+
           '<div class="tka">'+esc(x.a)+
