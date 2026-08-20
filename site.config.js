@@ -46,7 +46,7 @@ window.SITE = {
   fb        : 'https://www.facebook.com/profile.php?id=61590602468898',
   social    : 'https://reurl.cc/zQVzg7',   // 鴻觀資產交流社
   socialName: '鴻觀資產交流社',
-  card      : 'https://beautiful-panda-bf9fa4.netlify.app/',  // 電子名片
+  card      : '/mingpian/',  // 電子名片
   ctaText   : '免費行情試算',
 
   /* ── 導覽列（不要的整行刪掉就消失） ────────── */
