@@ -86,6 +86,31 @@
   '.ahfoot h4{margin:0 0 8px;font-size:13.5px;font-weight:900;color:var(--gold);letter-spacing:.08em}'+
   '.ahfoot a:hover{color:#fff}'+
   '.ahlegal{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);font-size:11.5px;color:rgba(255,255,255,.5);line-height:1.9}'+
+  /* 踢館 Q&A 浮動面板 */
+  '.tkbtn{position:fixed;right:14px;bottom:96px;z-index:72;width:56px;height:56px;border-radius:50%;border:0;cursor:pointer;background:var(--gold);color:#1A1508;font-size:11px;font-weight:900;line-height:1.2;box-shadow:0 6px 20px -4px rgba(16,22,19,.5);display:grid;place-items:center;letter-spacing:.02em}'+
+  '.tkbtn:hover{background:var(--gold-dk);color:#fff}'+
+  '@media(min-width:1080px){.tkbtn{bottom:24px}}'+
+  '.tkmask{position:fixed;inset:0;z-index:80;background:rgba(10,14,12,.72);display:none}'+
+  '.tkmask.on{display:block}'+
+  '.tkpanel{position:fixed;right:0;top:0;bottom:0;z-index:81;width:min(100%,420px);background:var(--paper);display:none;flex-direction:column;box-shadow:-12px 0 40px -16px rgba(0,0,0,.6)}'+
+  '.tkpanel.on{display:flex}'+
+  '.tkhd{background:var(--night);color:#fff;padding:16px 18px;display:flex;align-items:flex-start;gap:12px;flex:none}'+
+  '.tkhd h3{margin:0 0 3px;font-size:17px;font-weight:900;color:var(--gold)}'+
+  '.tkhd p{margin:0;font-size:12px;color:rgba(255,255,255,.72);line-height:1.65}'+
+  '.tkx{margin-left:auto;flex:none;width:32px;height:32px;border-radius:8px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-size:17px;cursor:pointer}'+
+  '.tktabs{display:flex;gap:6px;padding:12px 18px 0;flex:none;background:var(--paper)}'+
+  '.tktabs button{flex:1;padding:9px 4px;font-size:13px;font-weight:800;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink2);cursor:pointer}'+
+  '.tktabs button.on{background:var(--brand);border-color:var(--brand);color:#fff}'+
+  '.tkbody{flex:1;overflow-y:auto;padding:14px 18px 24px}'+
+  '.tkitem{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}'+
+  '.tkq{width:100%;text-align:left;border:0;background:transparent;padding:15px 16px;font-size:14.5px;font-weight:800;color:var(--ink);cursor:pointer;line-height:1.65;display:flex;gap:10px;align-items:flex-start}'+
+  '.tkq:before{content:"Q";flex:none;width:22px;height:22px;border-radius:6px;background:var(--brandsoft);color:var(--brand);font-size:12px;font-weight:900;display:grid;place-items:center;margin-top:2px}'+
+  '.tka{display:none;padding:0 16px 15px 48px;font-size:13.5px;color:var(--ink2);line-height:1.85}'+
+  '.tkitem.on .tka{display:block}'+
+  '.tkitem.on .tkq{color:var(--brand)}'+
+  '.tka .tknext{display:inline-block;margin-top:10px;font-size:13px;font-weight:800;color:var(--gold-dk);border-bottom:1px solid var(--gold)}'+
+  '.tkfoot{flex:none;padding:12px 18px;border-top:1px solid var(--line);background:#fff;font-size:11.5px;color:var(--fade);line-height:1.7}'+
+  '.tkfoot a{color:var(--brand);font-weight:800}'+
   '.ahdock{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;gap:8px;padding:8px 14px 12px;background:rgba(16,22,19,.96);border-top:1px solid rgba(201,162,75,.3)}'+
   '.ahdock a{flex:1;text-align:center;border-radius:999px;padding:12px;font-size:14.5px;font-weight:700}'+
   '.ahdock .g{background:var(--gold);color:#1A1508}.ahdock .l{background:#06C755;color:#fff}'+
@@ -149,5 +174,60 @@
       localStorage.setItem(VDK, forcedDesktop()?'0':'1');
       location.reload();
     });
+  }
+
+  /* 踢館 Q&A　資料在 /tikuan.js（阿宏策展，情緒與政治發言不收錄） */
+  var TK=window.AHTIKUAN||[];
+  if(TK.length){
+    var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+    var TABS=[{k:'all',t:'全部'},{k:'buyer',t:'買方'},{k:'seller',t:'賣方'},{k:'peer',t:'同業'}];
+    var box=document.createElement('div');
+    box.innerHTML=
+      '<button class="tkbtn" id="tkOpen" aria-label="打開踢館 Q&amp;A">踢館<br>Q&amp;A</button>'+
+      '<div class="tkmask" id="tkMask"></div>'+
+      '<aside class="tkpanel" id="tkPanel" role="dialog" aria-label="踢館 Q&amp;A" aria-modal="true">'+
+        '<div class="tkhd"><div><h3>踢館 Q&amp;A</h3>'+
+          '<p>最難聽的問題放這裡，不挑好聽的答</p></div>'+
+          '<button class="tkx" id="tkClose" aria-label="關閉">✕</button></div>'+
+        '<div class="tktabs" id="tkTabs">'+TABS.map(function(x,i){
+          return '<button data-k="'+x.k+'"'+(i===0?' class="on"':'')+'>'+x.t+'</button>'}).join('')+'</div>'+
+        '<div class="tkbody" id="tkBody"></div>'+
+        '<div class="tkfoot">這裡是常見的尖銳提問，不是客戶留言記錄。想直接問我沒列到的，走 '+
+          '<a href="'+S.line+'">官方 LINE</a>。</div>'+
+      '</aside>';
+    document.body.appendChild(box);
+
+    var body=document.getElementById('tkBody');
+    function render(k){
+      var L=TK.filter(function(x){return k==='all'||x.who===k});
+      body.innerHTML=L.length?L.map(function(x){
+        return '<div class="tkitem"><button class="tkq" type="button">'+esc(x.q)+'</button>'+
+          '<div class="tka">'+esc(x.a)+
+          (x.next?'<a class="tknext" href="'+esc(x.nu||'#')+'">'+esc(x.next)+' →</a>':'')+
+          '</div></div>'}).join('')
+        :'<p style="color:var(--fade);font-size:13.5px">這個分類還沒有收錄的提問。</p>';
+    }
+    render('all');
+
+    body.addEventListener('click',function(e){
+      var q=e.target.closest('.tkq'); if(!q) return;
+      q.parentNode.classList.toggle('on');
+    });
+    document.getElementById('tkTabs').addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      [].forEach.call(this.children,function(c){c.classList.remove('on')});
+      b.classList.add('on'); render(b.dataset.k);
+    });
+
+    var panel=document.getElementById('tkPanel'), mask=document.getElementById('tkMask');
+    function toggle(on){
+      panel.classList.toggle('on',on); mask.classList.toggle('on',on);
+      document.body.style.overflow=on?'hidden':'';
+    }
+    document.getElementById('tkOpen').addEventListener('click',function(){toggle(true)});
+    document.getElementById('tkClose').addEventListener('click',function(){toggle(false)});
+    mask.addEventListener('click',function(){toggle(false)});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')toggle(false)});
   }
 })();
