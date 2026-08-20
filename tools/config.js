@@ -48,13 +48,6 @@ window.AHCONFIG = {
   },
   "listings": [
     {
-      "name": "板橋麗池香榭｜首購兩房",
-      "price": 1158,
-      "rooms": "2",
-      "region": "新北市板橋區",
-      "note": "留言關鍵字：麗池香榭"
-    },
-    {
       "name": "佳陞豐川 F2戶 七樓（蘆竹山鼻）",
       "price": 1498,
       "region": "桃園市蘆竹區",
