@@ -8,5 +8,6 @@ Disallow: /wujian/034/
 Disallow: /wujian/guanghua/
 Disallow: /wujian/nanshulin/
 Disallow: /wujian/puxin/
+Disallow: /wujian/jiasheng/
 
 Sitemap: https://0930848000.com/sitemap.xml
