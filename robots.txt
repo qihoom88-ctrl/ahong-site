@@ -4,5 +4,9 @@ Disallow: /_hq/
 Disallow: /wujian/haojing/
 Disallow: /wujian/xikun/
 Disallow: /wujian/127/
+Disallow: /wujian/034/
+Disallow: /wujian/guanghua/
+Disallow: /wujian/nanshulin/
+Disallow: /wujian/puxin/
 
 Sitemap: https://0930848000.com/sitemap.xml
