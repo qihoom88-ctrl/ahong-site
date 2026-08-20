@@ -231,6 +231,15 @@ tr.self td:first-child{color:var(--gold)}
 
 /* 格局圖 */
 .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px}
+.plan-frame{position:relative}
+.plan-orient{
+  position:absolute;top:14px;right:14px;z-index:2;pointer-events:none;
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--solid-warm);color:#fff;font-weight:900;
+  font-size:1.2rem;line-height:1;padding:11px 16px;border-radius:14px;
+  box-shadow:0 10px 24px rgba(0,0,0,.3);letter-spacing:.02em
+}
+.plan-orient .compass{font-size:1.1rem}
 .plan button{border:0;background:none;padding:0;width:100%;cursor:zoom-in;border-radius:14px;overflow:hidden}
 .plan img{width:100%;border-radius:14px}
 .cap{margin:9px 3px 0;color:var(--muted);font-size:.84rem}
@@ -463,9 +472,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
 
     <div class="keys">
-      <div class="key k-price"><small>委託總價</small><strong>1068 萬</strong><span>單價約 48.4 萬／坪</span></div>
+      <div class="key k-price"><small>委託總價</small><strong>1068 萬</strong><span>開價≠成交價</span></div>
       <div class="key k-size"><small>登記坪數</small><strong>22.07 坪</strong><span>無公設・全實坪</span></div>
-      <div class="key k-plan"><small>格局</small><strong>2房4廳2衛</strong><span>一戶隔兩間收租</span></div>
+      <div class="key k-plan"><small>格局</small><strong>2房4廳2衛</strong><span>座東南朝西北・一戶隔兩間</span></div>
       <div class="key k-age"><small>樓層與屋齡</small><strong>2 樓・45.3 年</strong><span>地上 5 層・無電梯</span></div>
     </div>
   </header>
@@ -626,8 +635,11 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <h2>兩間怎麼分</h2>
     </div>
     <div class="plan">
-      <button type="button" data-full="a/k_floorplan.jpg?v=851db216" aria-label="放大格局圖"><img src="a/k_floorplan.jpg?v=851db216" alt="034車站2樓 2房4廳2衛格局圖，含陽台外推標示"></button>
-      <p class="cap">上下兩套各自獨立的客廳、餐廳、廚房、衛浴，中間樓梯間相連。<strong>圖上已標示「陽台外推」與「陽台外推電箱」</strong>。格局圖僅供參考，未依實際比例與座向繪製，建築面積與登記範圍以地政機關登載為準。</p>
+      <div class="plan-frame">
+        <button type="button" data-full="a/k_floorplan.jpg?v=851db216" aria-label="放大格局圖，座東南朝西北"><img src="a/k_floorplan.jpg?v=851db216" alt="034車站2樓 2房4廳2衛格局圖，座東南朝西北，含陽台外推標示"></button>
+        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座東南朝西北</span>
+      </div>
+      <p class="cap">座東南朝西北（依委託資料）。上下兩套各自獨立的客廳、餐廳、廚房、衛浴，中間樓梯間相連。<strong>圖上已標示「陽台外推」與「陽台外推電箱」</strong>。格局圖僅供參考，未依實際比例與座向繪製，建築面積與登記範圍以地政機關登載為準。</p>
     </div>
   </section>
 
