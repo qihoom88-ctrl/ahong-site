@@ -346,6 +346,16 @@ tr.self td:first-child{color:var(--gold)}
 .closing .kicker{color:var(--gold-on-dark);opacity:.95}
 .closing p{margin:13px 0 0;font-size:1.02rem;line-height:1.95}
 .closing .last{margin-top:18px;font-size:1.16rem;font-weight:900;color:var(--gold-on-dark);line-height:1.65}
+.verify{margin-top:18px;border:2px solid var(--solid-warm);border-radius:18px;overflow:hidden;background:var(--card)}
+.verify-hd{background:var(--solid-warm);color:#fff;padding:14px 17px}
+.verify-hd b{display:block;font-size:1.05rem;font-weight:900;letter-spacing:.01em}
+.verify-hd span{display:block;font-size:.82rem;opacity:.92;margin-top:3px;line-height:1.65}
+.verify table{width:100%;border-collapse:collapse;font-size:.86rem}
+.verify th,.verify td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.7}
+.verify th{background:var(--bg-soft,#F4F2ED);font-weight:900;font-size:.78rem;white-space:nowrap}
+.verify td:first-child{font-weight:800;white-space:nowrap}
+.verify tr:last-child td{border-bottom:0}
+.verify-ft{padding:13px 17px;background:var(--bg-soft,#F4F2ED);font-size:.82rem;line-height:1.85}
 .disc{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px;font-size:.83rem;color:var(--muted);line-height:1.85}
 .disc .warm{color:var(--ink);font-size:.92rem;margin:0 0 11px}
 .disc ol{margin:0;padding-left:1.15rem;display:grid;gap:6px}
@@ -908,6 +918,33 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <p>我沒有把這兩件事藏起來，是因為藏了也沒有用——買方看謄本會看到、看屋當天看天花板也會看到。與其讓你事後發現，不如我先講。</p>
     <p>這間值不值得買，答案不在我這裡，在你把這幾件事都查完之後。</p>
     <p class="last">買對是資產，買錯是壓力。<br>願你這一次，買的是資產。</p>
+  </div>
+
+  <div class="verify">
+    <div class="verify-hd">
+      <b>這一頁的每一項資訊，最終以什麼為準</b>
+      <span>頁面內容會隨物件狀況持續更新。任何一項要下決定之前，請以下表右欄的官方資料與現場實際勘查為準，不要只依據這一頁。</span>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>資訊類別</th><th>以什麼為準</th><th>去哪裡查證</th></tr></thead>
+        <tbody>
+          <tr><td>面積・坪數・樓層</td><td>地政機關登載</td><td>建物與土地謄本、測量成果圖</td></tr>
+          <tr><td>產權・限制登記・他項權利</td><td>登記簿謄本記載</td><td>地政司數位櫃臺申請謄本</td></tr>
+          <tr><td>法定用途・增建・違建</td><td>建照使照核准內容與查報紀錄</td><td>各縣市建管處、違章建築查報系統</td></tr>
+          <tr><td>屋況・設備・瑕疵</td><td>現場實際勘查</td><td>帶看現場逐項確認＋不動產標的現況說明書</td></tr>
+          <tr><td>租賃狀態・租約條件</td><td>租賃契約書</td><td>簽約前調閱租約正本確認</td></tr>
+          <tr><td>成交行情</td><td>內政部實價登錄揭露資料</td><td>不動產交易實價查詢服務網</td></tr>
+          <tr><td>稅費金額</td><td>稽徵機關核定</td><td>國稅局、地方稅捐稽徵處</td></tr>
+          <tr><td>貸款成數・利率・年限</td><td>金融機構核定</td><td>承貸銀行辦理貸款預審</td></tr>
+          <tr><td>學區</td><td>當學年度官方公告</td><td>各縣市教育局學區查詢</td></tr>
+          <tr><td>公共設施・管理費</td><td>管委會公告</td><td>向社區管委會確認</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="verify-ft">
+      <strong>簡單講：</strong>這一頁負責讓你在來看屋之前就知道該知道的事，包含缺點。但它不是查證結果本身——上面每一項我都可以陪你一起查，查出來跟頁面寫的不一樣，以查到的為準，我也會立刻更正這一頁。
+    </div>
   </div>
 
   <div class="disc">
