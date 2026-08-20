@@ -466,6 +466,17 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   .tools{grid-template-columns:repeat(2,1fr)}
   .afford-top{grid-template-columns:repeat(3,1fr)}
 }
+.verify{margin-top:18px;border:2px solid var(--solid-warm,#B4501C);border-radius:18px;overflow:hidden;background:var(--card,#fff)}
+.verify-hd{background:var(--solid-warm,#B4501C);color:#fff;padding:14px 17px}
+.verify-hd b{display:block;font-size:1.05rem;font-weight:900}
+.verify-hd span{display:block;font-size:.82rem;opacity:.92;margin-top:3px;line-height:1.65}
+.verify-tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.verify table{width:100%;border-collapse:collapse;font-size:.86rem}
+.verify th,.verify td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line,#e2e2dc);vertical-align:top;line-height:1.7}
+.verify th{background:var(--bg-soft,#F4F2ED);font-weight:900;font-size:.78rem;white-space:nowrap}
+.verify td:first-child{font-weight:800;white-space:nowrap}
+.verify tr:last-child td{border-bottom:0}
+.verify-ft{padding:13px 17px;background:var(--bg-soft,#F4F2ED);font-size:.82rem;line-height:1.85}
 </style>
 </head>
 <body>
@@ -977,9 +988,38 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <p class="last">買對是資產，買錯是壓力。<br>願你這一次，買的是資產。</p>
   </div>
 
+  <div class="verify">
+    <div class="verify-hd">
+      <b>這一頁的每一項資訊，最終以什麼為準</b>
+      <span>頁面內容會隨物件狀況持續更新。任何一項要下決定之前，請以下表右欄的官方資料與現場實際勘查為準，不要只依據這一頁。</span>
+    </div>
+    <div class="verify-tw">
+      <table>
+        <thead><tr><th>資訊類別</th><th>以什麼為準</th><th>去哪裡查證</th></tr></thead>
+        <tbody>
+          <tr><td>面積・坪數・樓層</td><td>地政機關登載</td><td>建物與土地謄本、測量成果圖</td></tr>
+          <tr><td>產權・限制登記・他項權利</td><td>登記簿謄本記載</td><td>地政司數位櫃臺申請謄本</td></tr>
+          <tr><td>法定用途・增建・違建</td><td>建照使照核准內容與查報紀錄</td><td>各縣市建管處、違章建築查報系統</td></tr>
+          <tr><td>屋況・設備・瑕疵</td><td>現場實際勘查</td><td>帶看現場逐項確認＋不動產標的現況說明書</td></tr>
+          <tr><td>租賃狀態・租約條件</td><td>租賃契約書</td><td>簽約前調閱租約正本確認</td></tr>
+          <tr><td>成交行情</td><td>內政部實價登錄揭露資料</td><td>不動產交易實價查詢服務網</td></tr>
+          <tr><td>稅費金額</td><td>稽徵機關核定</td><td>國稅局、地方稅捐稽徵處</td></tr>
+          <tr><td>貸款成數・利率・年限</td><td>金融機構核定</td><td>承貸銀行辦理貸款預審</td></tr>
+          <tr><td>學區</td><td>當學年度官方公告</td><td>各縣市教育局學區查詢</td></tr>
+          <tr><td>公共設施・管理費</td><td>管委會公告</td><td>向社區管委會確認</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="verify-ft">
+      <strong>簡單講：</strong>這一頁負責讓你在來看屋之前就知道該知道的事，包含缺點。但它不是查證結果本身——上面每一項我都可以陪你一起查，查出來跟頁面寫的不一樣，以查到的為準，我也會立刻更正這一頁。
+    </div>
+  </div>
+
   <div class="disc">
     <p class="warm">這一頁能幫你把方向抓對，但每個人的狀況都不一樣。真的要動手之前，還是找專業的人幫你看過一次，那一趟不會白跑。</p>
     <ol>
+      <li><strong>從有意願到簽約，正式流程是這樣走的</strong>：收斡旋之前會先跟你做一次資料核對；斡旋與買賣契約的談判基礎是<strong>官方謄本與現場實際現況</strong>，不是這一頁；買賣意向與條件一律再透過<strong>合法代書</strong>向雙方布達確認。這一頁只負責讓你在來看屋之前先知道該知道的事。</li>
+      <li><strong>本頁是物件資訊整理，不是買賣契約，也不構成要約或要約引誘</strong>；實際交易條件以雙方簽署之書面契約為準。看不看屋、出不出價完全由你決定，我不會催你，也不會用這頁上的任何內容當作催促的理由。</li>
       <li>本頁為一般性資訊整理，不構成法律、稅務、財務或投資建議，也不因閱讀本頁而成立任何委任或諮詢關係。</li>
       <li>資訊可能因法令修訂或個案事實而變動，相關內容<strong>不負法律責任</strong>，作者與所屬經紀業不對依本頁內容所為之決定負擔法律責任。</li>
       <li>實際個案請洽<strong>律師、地政士、會計師、稅務機關或各該主管機關</strong>確認後再行動。</li>
