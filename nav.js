@@ -115,8 +115,18 @@
   '.ahdock a{flex:1;text-align:center;border-radius:999px;padding:12px;font-size:14.5px;font-weight:700}'+
   '.ahdock .g{background:var(--gold);color:#1A1508}.ahdock .l{background:#06C755;color:#fff}'+
   '@media(min-width:1080px){.ahdock{display:none}}'+
-  '.ahviewtoggle{display:block;margin-top:12px;padding:0;font:inherit;font-size:11.5px;color:rgba(255,255,255,.55);background:none;border:0;text-decoration:underline;cursor:pointer}'+
+  '.ahviewtoggle{display:none;margin-top:12px;padding:0;font:inherit;font-size:11.5px;color:rgba(255,255,255,.55);background:none;border:0;text-decoration:underline;cursor:pointer}'+
   '.ahviewtoggle:hover{color:#fff}'+
+  /* 版面比例切換晶片：常駐可見，顯示當下模式與比例 */
+  '.vchip{position:fixed;left:12px;bottom:96px;z-index:72;display:flex;align-items:center;gap:7px;padding:7px 12px 7px 9px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.94);backdrop-filter:blur(8px);box-shadow:0 5px 18px -6px rgba(16,22,19,.4);cursor:pointer;font:inherit;font-size:12px;font-weight:800;color:var(--ink)}'+
+  '.vchip:hover{border-color:var(--gold)}'+
+  '@media(min-width:1080px){.vchip{bottom:24px}}'+
+  '.vchip .vico{flex:none;width:15px;border:1.5px solid var(--brand);border-radius:2.5px}'+
+  '.vchip.m .vico{height:24px}'+
+  '.vchip.d .vico{height:11px;width:19px}'+
+  '.vchip .vnow{color:var(--brand)}'+
+  '.vchip .vratio{font-weight:600;color:var(--fade);font-variant-numeric:tabular-nums}'+
+  '.vchip .vsw{padding-left:7px;margin-left:1px;border-left:1px solid var(--line);color:var(--gold-dk);font-weight:800}'+
   '</style>';
 
   var menu=(S.nav||[]).map(function(n){
@@ -164,17 +174,39 @@
     bg.textContent=on?'✕':'☰';
   });
 
-  /* 手機瀏覽時可切成電腦版畫面看，選擇會記住到下次 */
+  /* 版面比例切換：手機 9:16 為主，電腦版為次；晶片常駐顯示當下模式與比例 */
   var VDK='ahViewDesktop';
   function forcedDesktop(){return localStorage.getItem(VDK)==='1'}
+  function flip(){ localStorage.setItem(VDK, forcedDesktop()?'0':'1'); location.reload(); }
+
   var vt=document.getElementById('ahViewToggle');
   if(vt){
     vt.textContent=forcedDesktop()?'切換回手機版畫面':'查看電腦版畫面';
-    vt.addEventListener('click',function(){
-      localStorage.setItem(VDK, forcedDesktop()?'0':'1');
-      location.reload();
-    });
+    vt.addEventListener('click',flip);
   }
+
+  var chip=document.createElement('button');
+  chip.type='button'; chip.id='ahVChip';
+  function paintChip(){
+    var d=forcedDesktop();
+    /* 未強制電腦版時，依實際視窗寬判斷現在是哪種版面 */
+    var wide=d||window.innerWidth>=1080;
+    chip.className='vchip '+(wide?'d':'m');
+    /* 只有窄螢幕（真的在手機上看）才需要切換；桌機本來就是電腦版，只顯示狀態 */
+    var canSwitch = d || window.innerWidth < 1080;
+    chip.innerHTML='<span class="vico"></span>'+
+      '<span class="vnow">'+(wide?'電腦版':'手機版')+'</span>'+
+      '<span class="vratio">'+(wide?'16:10':'9:16')+'</span>'+
+      (canSwitch?'<span class="vsw">'+(d?'回手機版':'看電腦版')+'</span>':'');
+    chip.disabled=!canSwitch;
+    chip.style.cursor=canSwitch?'pointer':'default';
+    chip.setAttribute('aria-label','目前版面為'+(wide?'電腦版 16:10':'手機版 9:16')+
+      (canSwitch?'，點擊切換':''));
+  }
+  paintChip();
+  chip.addEventListener('click',flip);
+  window.addEventListener('resize',paintChip);
+  document.body.appendChild(chip);
 
   /* 踢館 Q&A　資料在 /tikuan.js（阿宏策展，情緒與政治發言不收錄） */
   var TK=window.AHTIKUAN||[];

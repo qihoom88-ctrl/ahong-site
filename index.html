@@ -19,37 +19,40 @@
 {"@context":"https://schema.org","@type":"RealEstateAgent","name":"鴻觀資產-阿宏觀點（何志宏）","description":"新北在地不動產經紀營業員。買房判斷、賣房估價、換屋規劃、風險檢查、現金流試算。主力樹林、板橋、新莊、三峽，延伸桃園。","telephone":"+886-2-2687-8822","areaServed":["新北市","台北市","桃園市"],"url":"https://0930848000.com/","image":"https://0930848000.com/a/ahong_v2.jpg","worksFor":{"@type":"Organization","name":"住商不動產 樹林站前加盟店（鴻石不動產經紀有限公司）"}}
 </script>
 <style>
-.hero{background:linear-gradient(118deg,var(--night),var(--brand) 130%);color:#fff;padding:0;position:relative;overflow:hidden;min-height:520px}
-@media(min-width:880px){.hero{min-height:600px}}
-.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 80% 28%,rgba(201,162,75,.16),transparent 60%);pointer-events:none}
-.hero .wrap{position:relative;z-index:1}
-.hgrid{display:grid;gap:0;align-items:center;min-height:520px}
-@media(min-width:880px){.hgrid{grid-template-columns:1.12fr .88fr;min-height:600px}}
-.hleft{padding:52px 0 40px}
-@media(min-width:880px){.hleft{padding:0}}
-.hero .eyebrow{color:var(--gold);font-size:13px}
-.hero h1{margin:0 0 10px;font-size:32px;line-height:1.2;font-weight:900;letter-spacing:-.01em;text-wrap:balance}
-@media(min-width:720px){.hero h1{font-size:44px}}
-@media(min-width:1080px){.hero h1{font-size:50px}}
+.hero{background:linear-gradient(118deg,var(--night),var(--brand) 135%);color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(110% 70% at 85% 12%,rgba(201,162,75,.15),transparent 58%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;padding-top:24px;padding-bottom:30px}
+@media(min-width:880px){.hero .wrap{padding-top:34px;padding-bottom:38px}}
+
+/* 署名列：形象照降級成小頭像，不再佔半屏 */
+.hbar{display:flex;align-items:center;gap:11px;margin-bottom:20px}
+.havatar{width:44px;height:44px;flex:none;border-radius:50%;object-fit:cover;object-position:center 22%;border:1.5px solid rgba(201,162,75,.5)}
+.hwho b{display:block;font-size:14.5px;font-weight:900;letter-spacing:.02em}
+.hwho i{display:block;font-style:normal;font-size:11.5px;color:rgba(255,255,255,.62);line-height:1.5;margin-top:1px}
+
+.hero h1{margin:0 0 10px;font-size:29px;line-height:1.25;font-weight:900;letter-spacing:-.01em;text-wrap:balance}
+@media(min-width:720px){.hero h1{font-size:38px}}
+@media(min-width:1080px){.hero h1{font-size:44px}}
 .hero h1 em{font-style:normal;color:var(--gold)}
-.svc{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}
-.svc a{padding:7px 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.06);font-size:13.5px;font-weight:650;color:rgba(255,255,255,.92);text-decoration:none;transition:background .18s,border-color .18s}
-.svc a:hover{background:rgba(201,162,75,.18);border-color:var(--gold);color:#fff}
-.hquote{margin:0 0 20px;display:inline-block;border:1px solid rgba(201,162,75,.55);border-radius:6px;padding:10px 18px;font-size:15px;color:#fff}
+.hlead{margin:0 0 20px;font-size:14px;color:rgba(255,255,255,.78);line-height:1.85;max-width:560px}
+
+/* 工具格：第一屏就能直接點開算，這是版型主角 */
+.hgrid2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px}
+@media(min-width:720px){.hgrid2{grid-template-columns:repeat(3,1fr);gap:11px}}
+.hcell{position:relative;display:block;padding:15px 14px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.07);transition:background .18s,border-color .18s,transform .18s}
+.hcell:hover{background:rgba(201,162,75,.16);border-color:var(--gold);transform:translateY(-3px)}
+.hcell .hn{display:block;font-size:10.5px;font-weight:900;letter-spacing:.14em;color:var(--gold);margin-bottom:6px}
+.hcell b{display:block;font-size:15px;font-weight:900;line-height:1.4}
+.hcell i{display:block;font-style:normal;margin-top:3px;font-size:11.5px;color:rgba(255,255,255,.6);line-height:1.6}
 .hcta{display:flex;flex-wrap:wrap;gap:10px}
 .hcta .btn:hover{transform:translateY(-2px)}
-.hsub{margin:18px 0 0;font-size:13px;color:rgba(255,255,255,.55)}
-.hphoto{display:none;position:relative;align-items:flex-end;justify-content:center;height:100%}
-@media(min-width:880px){.hphoto{display:flex}}
-.hphoto::before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(201,162,75,.32);border-radius:50%;top:38px;left:50%;transform:translateX(-50%)}
-.hphoto::after{content:"阿宏觀點";position:absolute;right:6px;top:52px;color:rgba(255,255,255,.10);font-size:58px;font-weight:900;writing-mode:vertical-rl;letter-spacing:.1em;pointer-events:none}
-.hphoto img{position:relative;z-index:1;width:100%;max-width:340px;margin:0 auto;display:block;object-fit:cover;aspect-ratio:3/4;border-radius:46% 46% 6px 6px;mask-image:linear-gradient(#000 90%,transparent 100%);filter:contrast(1.03)}
+
 .hstrip{background:#fff}
-.hstrip-in{display:grid;grid-template-columns:1fr 1fr;gap:1px 0;padding:22px 0}
+.hstrip-in{display:grid;grid-template-columns:1fr 1fr;gap:1px 0;padding:20px 0}
 @media(min-width:720px){.hstrip-in{grid-template-columns:repeat(4,1fr)}}
-.hstrip b{display:block;font-size:22px;font-weight:900;color:var(--brand);letter-spacing:.01em}
-.hstrip span{display:block;font-size:12.5px;color:var(--ink2);margin-top:3px}
-.hstrip div{padding:8px 18px;border-left:1px solid var(--line)}
+.hstrip b{display:block;font-size:20px;font-weight:900;color:var(--brand);letter-spacing:.01em}
+.hstrip span{display:block;font-size:12px;color:var(--ink2);margin-top:3px}
+.hstrip div{padding:8px 16px;border-left:1px solid var(--line)}
 .hstrip div:first-child{border-left:0}
 @media(max-width:719px){.hstrip div:nth-child(3){border-left:0}}
 
@@ -100,25 +103,35 @@
 <main>
 
 <section class="hero">
-  <div class="wrap hgrid">
-    <div class="hleft">
-      <p class="eyebrow">買房 ｜ 賣房 ｜ 換屋</p>
-      <h1>先拆風險，<em>再談成交</em></h1>
-      <div class="svc"><a href="#svc-buy">買房判斷</a><a href="#svc-value">賣房估價</a><a href="#svc-swap">換屋規劃</a><a href="#svc-risk">風險檢查</a><a href="#svc-cash">現金流</a></div>
-      <p class="hquote">房子不是看喜歡，是看買錯會不會出事</p>
-      <div class="hcta">
-        <a class="btn btn-gold" href="/wujian/">看在售物件</a>
-        <a class="btn btn-ghost" href="https://lin.ee/IV8bl9H">私訊「判斷」領風險檢查表</a>
-      </div>
-      <p class="hsub">阿宏賣房不賣夢，陪你完成夢，但不陪你做錯夢。</p>
+  <div class="wrap">
+    <div class="hbar">
+      <img class="havatar" src="/a/ahong_v2.jpg" alt="不動產經紀營業員 何志宏（阿宏）">
+      <div class="hwho"><b>何志宏 · 阿宏</b><i>住商不動產 樹林站前加盟店　·　主力雙北，延伸桃園</i></div>
     </div>
-    <div class="hphoto"><img src="/a/ahong_v2.jpg" alt="不動產經紀營業員 何志宏（阿宏）"></div>
+
+    <h1>先自己算過<br><em>再決定要不要找我</em></h1>
+    <p class="hlead">房子不是看喜歡，是看買錯會不會出事。下面每一支都直接開始算，不用留資料、不用加好友。</p>
+
+    <div class="hgrid2">
+      <a class="hcell" href="/tools/#/afford"><span class="hn">01</span><b>我買得起多少</b><i>收入負債反推總價上限</i></a>
+      <a class="hcell" href="/tools/#/loan"><span class="hn">02</span><b>月付要繳多少</b><i>寬限期升息一次壓測</i></a>
+      <a class="hcell" href="/tools/#/buycost"><span class="hn">03</span><b>頭期要備多少</b><i>連稅費規費一起算</i></a>
+      <a class="hcell" href="/tools/#/sellnet"><span class="hn">04</span><b>賣掉實拿多少</b><i>扣完稅與費用剩幾成</i></a>
+      <a class="hcell" href="/tools/#/yield"><span class="hn">05</span><b>租金投報幾趴</b><i>反推合理買進價格</i></a>
+      <a class="hcell" href="/tools/#/visit"><span class="hn">06</span><b>看屋要檢查什麼</b><i>現場逐項可勾選</i></a>
+    </div>
+
+    <div class="hcta">
+      <a class="btn btn-gold" href="/wujian/">看在售物件</a>
+      <a class="btn btn-ghost" href="/tools/">14 支工具全部打開</a>
+    </div>
   </div>
+
   <div class="hstrip"><div class="wrap hstrip-in">
     <div><b>雙北 · 桃園</b><span>主力樹林板橋新莊三峽</span></div>
     <div><b>每間都開箱</b><span>上片前先調謄本查過</span></div>
     <div><b>缺點先講完</b><span>屋況照現況不修圖</span></div>
-    <div><b>14 支試算工具</b><span>免費、不留資料</span></div>
+    <div><b>資料不上傳</b><span>全部算在你手機裡</span></div>
   </div></div>
 </section>
 
