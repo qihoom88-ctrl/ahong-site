@@ -1941,6 +1941,15 @@ function renderHome(){
   }
 }
 
+/* 物件簡報頁帶入本案總價：/tools/?price=1398#/loan（單位：萬元） */
+var CASE_PRICE_INPUT={loan:'l_price'};
+function applyCasePrice(id){
+  var m=location.search.match(/[?&]price=(\d+(?:\.\d+)?)/);
+  if(!m) return;
+  var el=$(CASE_PRICE_INPUT[id]||'');
+  if(el) el.value=m[1];
+}
+
 function openTool(id){
   var t=null;
   for(var i=0;i<TOOLS.length;i++) if(TOOLS[i].id===id) t=TOOLS[i];
@@ -1960,6 +1969,7 @@ function openTool(id){
   window.__run=cfg.run;
   autoRun($('pBody'));
   if(cfg.after) cfg.after();
+  applyCasePrice(t.id);
   cfg.run();
   $('home').style.display='none';
   $('panel').classList.add('on');
