@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /_hq/
 Disallow: /wujian/haojing/
 Disallow: /wujian/xikun/
 Disallow: /wujian/127/
