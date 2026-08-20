@@ -143,7 +143,9 @@ window.AHCONFIG = {
       "price": 1398,
       "rooms": "3",
       "region": "新北市樹林區",
-      "tags": ["elevator", "rare_layout"]
+      "floor": "12樓",
+      "tags": ["elevator", "rare_layout"],
+      "note": "34.01坪、3房2廳2衛、12樓電梯、屋齡25年。一層兩戶社區129戶，房間都有對外窗，天然瓦斯。無汽車位只有機車位，管理費每月2041元。留言關鍵字：俊英三房"
     }
   ],
   "params": {
