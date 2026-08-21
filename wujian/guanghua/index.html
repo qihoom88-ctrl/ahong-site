@@ -416,6 +416,23 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .verify td:first-child{font-weight:800;white-space:nowrap}
 .verify tr:last-child td{border-bottom:0}
 .verify-ft{padding:13px 17px;background:var(--bg-soft,#F4F2ED);font-size:.82rem;line-height:1.85}
+
+/* 買方能力試算卡（2026-08-21 回補） */
+.afford{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:19px;box-shadow:0 8px 22px rgba(43,58,74,.05)}
+.afford-top{display:grid;gap:10px;grid-template-columns:1fr;margin-bottom:14px}
+.abox{border:1px solid var(--line);border-radius:16px;padding:13px 14px;background:var(--paper)}
+.abox small{display:block;color:var(--muted);font-weight:800;font-size:.78rem;letter-spacing:.05em}
+.abox strong{display:block;margin-top:3px;font-size:1.5rem;font-weight:900;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--trust)}
+.abox span{display:block;margin-top:2px;font-size:.78rem;color:var(--muted)}
+.abox.a-total strong{color:var(--gold)}
+.abox.a-pay strong{color:var(--warm)}
+.arow{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 2px;border-bottom:1px dashed var(--line);font-size:.92rem}
+.arow:last-of-type{border-bottom:0}
+.arow b{font-variant-numeric:tabular-nums;color:var(--trust)}
+.arow i{font-style:normal;color:var(--muted);display:block;font-size:.8rem}
+.abtn{display:flex;align-items:center;justify-content:center;min-height:50px;margin-top:13px;background:var(--solid-warm);color:#fff;border-radius:14px;text-decoration:none;font-weight:900;text-align:center}
+.anote{margin:11px 0 0;color:var(--muted);font-size:.83rem;line-height:1.75}
+@media (min-width:680px){.afford-top{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
@@ -650,6 +667,33 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <a class="vlink" href="https://icdc-pub.ntpc.gov.tw/ntpcpb/" target="_blank" rel="noopener"><b>建</b><div><strong>新北違章建築案件查詢</strong><small>查陽台外推、鐵窗增建有無查報紀錄</small></div></a>
       <a class="vlink" href="/lajiche/"><b>清</b><div><strong>垃圾車到點時間查詢</strong><small>輸入路名查一般垃圾／回收／廚餘</small></div></a>
       <a class="vlink" href="https://law.moj.gov.tw" target="_blank" rel="noopener"><b>法</b><div><strong>全國法規資料庫</strong><small>查法條原文</small></div></a>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">買之前先算自己</div>
+      <h2>850 萬<br>你的月付會是多少</h2>
+      <p class="lead">總價是一個數字，能不能扛得住是另一個。先把首付、月付款、月息攤開來看，再決定要不要花時間來看屋。</p>
+    </div>
+    <div class="afford">
+      <div class="afford-top">
+        <div class="abox a-total"><small>首付（自備款）</small><strong>170 萬</strong><span>總價 850 萬 − 貸款 680 萬</span></div>
+        <div class="abox a-pay"><small>月付款</small><strong>26,639 元</strong><span>本息平均攤還，每月固定</span></div>
+        <div class="abox"><small>月息（首月利息）</small><strong>13,798 元</strong><span>首月本金約 12,841 元</span></div>
+      </div>
+
+      <div class="arow"><span>本案委託總價<i>無車位</i></span><b>850 萬</b></div>
+      <div class="arow"><span>貸款金額<i>總價 × 8 成</i></span><b>680 萬</b></div>
+      <div class="arow"><span>試算條件<i>30 年期・年利率 2.435%・無寬限期</i></span><b>本息平均攤還</b></div>
+
+      <a class="abtn" href="/tools/?price=850#/loan" target="_blank" rel="noopener">用試算工具改成你的成數與利率（已帶入 850 萬）</a>
+
+      <p class="anote">
+        試算條件：總價 850 萬、貸款 8 成、30 年期、年利率 2.435%、無寬限期，本息平均攤還。<br>
+        <strong>這些是預設值，不是你的條件。</strong>成數、利率、年限每個人不一樣，實際以銀行核准為準；老屋的核貸年限與成數請先做貸款預審。首付之外還要另外準備契稅、印花稅、代書費、規費、火險地震險與整理費用，本卡都未計入。<br>
+        按上面的按鈕會帶著本案總價 850 萬進入試算工具，你可以直接改成新青安 40 年、寬限期或升息後的月付款做壓力測試。<strong>工具站的預設是兩段式利率（前 2 年 2.185%、第 3 年起 2.435%），算出來是首期月付 25,768 元、跳息後 26,587 元</strong>，跟上面這張卡的 26,639 元差在利率設定不同，不是哪一邊算錯。買房前先做貸款預審，順序不要顛倒——先知道銀行給你多少，再決定看哪個總價帶。
+      </p>
     </div>
   </section>
 
