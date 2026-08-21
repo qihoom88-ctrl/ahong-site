@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>停車場位置查詢｜新北台北公有路外停車場｜住商樹林站前店 阿宏</title>
+<meta name="description" content="輸入路名或用定位，查新北市與臺北市共 3,188 個合法登記路外停車場：車位數、費率、營業時間、地圖位置。資料來自政府開放資料平臺，免費查、不留資料。">
+<meta property="og:title" content="停車場位置查詢｜新北台北公有路外停車場">
+<meta property="og:description" content="買房前先知道車停不停得下：3,188 個合法登記停車場的車位數、費率與位置，一次查完。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://0930848000.com/tingche/">
+<link rel="canonical" href="https://0930848000.com/tingche/">
+<meta name="theme-color" content="#2E6B8A">
+<style>
+:root{
+  --acc:#2E6B8A; --acc-soft:#E8F0F4; --warn:#B33A2E;
+  --ground:#FBF9F5; --surface:#FFF; --sunk:#F2EDE4;
+  --ink:#1C1813; --ink-soft:#574F44; --ink-faint:#8B8175; --rule:#DED5C7;
+  --sans:"PingFang TC","Microsoft JhengHei","Noto Sans TC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
+  --serif:"Songti TC","Noto Serif CJK TC","PMingLiU",Georgia,serif;
+}
+@media(prefers-color-scheme:dark){:root{
+  --acc:#6FA9C7; --acc-soft:#1F2E38; --warn:#E06A5C;
+  --ground:#15120E;--surface:#1E1A15;--sunk:#262019;
+  --ink:#F2ECE2;--ink-soft:#BCB0A0;--ink-faint:#857B6D;--rule:#362F26;}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:18px 14px 40px}
+a{color:inherit}
+.back{font-size:13px;color:var(--ink-faint);text-decoration:none;display:inline-block;margin-bottom:10px}
+.back:hover{color:var(--acc)}
+header{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+h1{font-family:var(--serif);font-size:23px;font-weight:700;margin:0;line-height:1.3}
+.sub{font-size:13.5px;color:var(--ink-soft)}
+.sub b{color:var(--acc);font-variant-numeric:tabular-nums}
+
+.panel{background:var(--surface);border:1px solid var(--rule);padding:14px;display:flex;flex-direction:column;gap:11px;margin-bottom:14px}
+label{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:5px}
+select,input[type=text]{width:100%;padding:11px 12px;font-size:16px;font-family:var(--sans);color:var(--ink);background:var(--ground);border:1px solid var(--rule);border-radius:0;-webkit-appearance:none;appearance:auto}
+select:focus,input:focus{outline:2px solid var(--acc);outline-offset:-1px}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+button{flex:1;min-width:140px;padding:11px 10px;font-size:14.5px;font-weight:700;font-family:var(--sans);border:1px solid var(--acc);background:var(--acc);color:#fff;cursor:pointer}
+button.ghost{background:transparent;color:var(--acc)}
+button:disabled{opacity:.55;cursor:wait}
+.status{font-size:13px;color:var(--ink-soft);margin:0;min-height:1.2em}
+.status.err{color:var(--warn)}
+
+.results{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--surface);border:1px solid var(--rule);padding:14px}
+.card.near{border-left:3px solid var(--acc)}
+.c-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.c-name{font-weight:700;font-size:16.5px;line-height:1.35}
+.c-dist{font-family:var(--mono);font-size:12px;color:var(--acc);white-space:nowrap;font-variant-numeric:tabular-nums}
+.c-meta{font-size:13px;color:var(--ink-soft);margin:4px 0 10px}
+.caps{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.cap{background:var(--sunk);padding:6px 10px;font-size:13px;display:flex;gap:6px;align-items:baseline}
+.cap b{font-size:17px;font-variant-numeric:tabular-nums;color:var(--acc)}
+.fee{background:var(--acc-soft);padding:9px 11px;font-size:13px;line-height:1.7;color:var(--ink-soft);word-break:break-all}
+.fee .fl{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);display:block;margin-bottom:2px}
+.fee.clamp .ft{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.fee .more{display:inline-block;margin-top:4px;font-size:12px;font-weight:700;color:var(--acc);cursor:pointer;text-decoration:underline}
+.c-time{font-size:13px;color:var(--ink-soft);margin:8px 0 0}
+.c-note{font-size:11.5px;color:var(--ink-faint);margin:8px 0 0}
+a.nav{display:block;margin-top:10px;padding:10px;text-align:center;font-size:14px;font-weight:700;color:var(--acc);border:1px solid var(--acc);text-decoration:none}
+a.nav:hover{background:var(--acc);color:#fff}
+.empty{background:var(--sunk);padding:16px;font-size:14px;color:var(--ink-soft);text-align:center}
+
+.crosslink{margin-top:26px;background:var(--surface);border:1px solid var(--rule);padding:16px}
+.crosslink h2{font-family:var(--serif);font-size:18px;margin:0 0 8px}
+.crosslink p{font-size:13.5px;color:var(--ink-soft);margin:0 0 10px}
+.crosslink a.big{display:block;padding:11px;text-align:center;font-size:14.5px;font-weight:700;color:var(--acc);border:1px solid var(--acc);text-decoration:none}
+.crosslink a.big:hover{background:var(--acc);color:#fff}
+
+.cta{margin-top:26px;background:var(--surface);border:1px solid var(--rule);padding:18px 16px}
+.cta h2{font-family:var(--serif);font-size:19px;margin:0 0 8px}
+.cta p{font-size:14px;color:var(--ink-soft);margin:0 0 14px}
+.ctabtns{display:flex;flex-direction:column;gap:9px}
+.ctabtns a{display:block;padding:12px;text-align:center;font-size:15px;font-weight:700;text-decoration:none;background:#06C755;color:#fff}
+.ctabtns a.alt{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+
+footer{margin-top:30px;border-top:1px solid var(--rule);padding-top:16px;font-size:12.5px;color:var(--ink-faint);line-height:1.8}
+footer p{margin:0 0 10px}
+footer strong{color:var(--ink-soft)}
+footer .legal{font-size:11.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<a class="back" href="/bianmin/">← 回便民查詢</a>
+
+<header>
+  <h1>停車場位置查詢</h1>
+  <p class="sub">新北市＋臺北市共 <b id="totPts">3,188</b> 個合法登記路外停車場：車位數、費率、營業時間。買房前先知道車停不停得下、月租行情在哪一帶。</p>
+</header>
+
+<div class="panel">
+  <div>
+    <label for="citySel">選行政區（新北在前）</label>
+    <select id="citySel"><option value="">載入中…</option></select>
+  </div>
+  <div>
+    <label for="q">找停車場名稱或路名（例：中正路、車站、溪崑）</label>
+    <input type="text" id="q" placeholder="輸入後自動搜尋" autocomplete="off" inputmode="search">
+  </div>
+  <div class="btnrow">
+    <button id="geoBtn" type="button">用我現在的位置找最近的</button>
+    <button id="clearBtn" type="button" class="ghost">清除，看全區</button>
+  </div>
+  <p class="status" id="status"></p>
+</div>
+
+<div class="results" id="results"></div>
+
+<div class="crosslink">
+  <h2>租車位看位置，買車位看產權</h2>
+  <p>這一頁幫你解決「附近有沒有得停、費率多少」。但如果你是要<b>買</b>有車位的房子，先搞清楚那格車位的產權是三種裡的哪一種——高雄有 42 戶花 1,140 萬把自己的車位再買了一次。</p>
+  <a class="big" href="/chewei/">三種車位自查表：你那格車位是誰的 →</a>
+</div>
+
+<div class="cta">
+  <h2>想確認某一間房子的停車條件</h2>
+  <p>社區有沒有車位、那格車位的產權種類、沒車位的話附近月租行情——傳物件地址給我，我幫你查一次講完。</p>
+  <div class="ctabtns">
+    <a href="https://line.me/R/ti/p/@798ulmws" target="_blank" rel="noopener">用 LINE 問阿宏</a>
+    <a class="alt" href="/mingpian/">阿宏的電子名片（證號與服務項目）</a>
+  </div>
+</div>
+
+<footer>
+  <p><strong>資料來源｜</strong>新北市政府資料開放平臺「新北市路外公共停車場資訊」（新北市政府交通局）＋臺北市資料大平臺「臺北市停車場資訊」（臺北市停車管理工程處），皆依「政府資料開放授權條款－第1版」使用，<span id="fetchDate">2026-08-21</span> 取得。</p>
+  <p><strong>費率照登免責｜</strong>本頁費率與車位數為開放資料<strong>原文照登</strong>，未做任何改寫。停車場可能調價、歇業、變更營業時間或轉為月租專用，<strong>實際以各停車場現場公告為準</strong>。臨停前建議先看現場費率牌，月租請直接電洽各場。本頁僅整理公開資料，不代表官方。</p>
+  <p><strong>隱私｜</strong>定位只在你的手機或電腦裡運算，用來計算距離，<strong>不會上傳、不會儲存</strong>。關掉分頁就沒了。本頁沒有帳號、沒有後台、沒有追蹤碼。</p>
+  <p class="legal">住商不動產 樹林站前加盟店｜鴻石不動產經紀有限公司｜經紀人 林秀嫻 (96) 北縣字第001399號｜營業員 何志宏 (114) 年登字第495065號</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+"use strict";
+var DATA=null, CITY="", DISTNAME="";
+var $=function(id){return document.getElementById(id)};
+var els={city:$("citySel"),q:$("q"),geo:$("geoBtn"),clear:$("clearBtn"),
+         status:$("status"),results:$("results"),tot:$("totPts")};
+
+function say(msg,isErr){els.status.textContent=msg||"";els.status.className="status"+(isErr?" err":"")}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+
+function dist(la1,lo1,la2,lo2){
+  var R=6371000,t=Math.PI/180;
+  var dLa=(la2-la1)*t,dLo=(lo2-lo1)*t;
+  var a=Math.sin(dLa/2)*Math.sin(dLa/2)+Math.cos(la1*t)*Math.cos(la2*t)*Math.sin(dLo/2)*Math.sin(dLo/2);
+  return Math.round(R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a)));
+}
+function fmtDist(m){return m<1000?"直線約 "+m+" 公尺":"直線約 "+(m/1000).toFixed(1)+" 公里"}
+
+// p = [name, address, car, motor, payex, serviceTime, lat, lon, kind]
+function card(p,d){
+  var h='<article class="card'+(d!=null?" near":"")+'">';
+  h+='<div class="c-top"><span class="c-name">'+esc(p[0])+'</span>';
+  if(d!=null)h+='<span class="c-dist">'+fmtDist(d)+'</span>';
+  h+='</div>';
+  h+='<p class="c-meta">'+esc(p[1]||DISTNAME)+(p[8]?" ‧ "+esc(p[8]):"")+'</p>';
+  h+='<div class="caps">';
+  h+='<span class="cap">汽車 <b>'+esc(p[2]||"0")+'</b> 格</span>';
+  if(p[3]&&p[3]!=="0")h+='<span class="cap">機車 <b>'+esc(p[3])+'</b> 格</span>';
+  h+='</div>';
+  if(p[4]){
+    var long=p[4].length>90;
+    h+='<div class="fee'+(long?" clamp":"")+'"><span class="fl">費率（開放資料原文照登，以現場公告為準）</span><span class="ft">'+esc(p[4])+'</span>';
+    if(long)h+='<span class="more" role="button" tabindex="0">展開完整費率</span>';
+    h+='</div>';
+  }
+  if(p[5])h+='<p class="c-time">營業時間｜'+esc(p[5])+'</p>';
+  var mapURL;
+  if(p[6]!=null&&p[7]!=null){mapURL="https://www.google.com/maps/search/?api=1&query="+p[6]+","+p[7];}
+  else{mapURL="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(CITY+DISTNAME+" "+(p[1]||p[0]));}
+  h+='<a class="nav" target="_blank" rel="noopener" href="'+mapURL+'">在 Google 地圖開啟這個停車場</a>';
+  h+='<p class="c-note">費率與車位數為開放資料原文，實際以現場公告為準（資料日期 2026-08-21）</p>';
+  return h+'</article>';
+}
+
+function render(list,withDist){
+  if(!list.length){els.results.innerHTML='<div class="empty">這個條件查不到停車場。換個關鍵字，或改用「看全區」。</div>';return}
+  var cap=withDist?8:60;
+  var h="";
+  for(var i=0;i<Math.min(list.length,cap);i++){
+    h+=withDist?card(list[i].p,list[i].d):card(list[i],null);
+  }
+  if(list.length>cap)h+='<div class="empty">另有 '+(list.length-cap)+' 個停車場，輸入路名可以縮小範圍。</div>';
+  els.results.innerHTML=h;
+}
+
+els.results.addEventListener("click",function(e){
+  var t=e.target;
+  if(t.classList&&t.classList.contains("more")){
+    var box=t.closest(".fee");if(box){box.classList.remove("clamp");t.remove();}
+  }
+});
+
+function loadDist(tag,label,cb){
+  if(!tag)return;
+  say("載入 "+label+" 的資料…");
+  var x=new XMLHttpRequest();
+  x.open("GET","data/"+encodeURIComponent(tag)+".json",true);
+  x.onload=function(){
+    if(x.status>=200&&x.status<300){
+      try{DATA=JSON.parse(x.responseText);
+        CITY=tag.indexOf("ntpc_")===0?"新北市":"臺北市";
+        DISTNAME=label.replace(/（.*$/,"");
+        say(DISTNAME+" 共 "+DATA.length.toLocaleString()+" 個停車場");
+        try{localStorage.setItem("ahong_tingche_dist",tag)}catch(e){}
+        if(cb)cb();else doSearch();
+      }catch(e){say("資料解析失敗，請重新整理",true)}
+    }else{say("載入失敗（"+x.status+"），請重新整理",true)}
+  };
+  x.onerror=function(){say("載入失敗，請確認網路連線",true)};
+  x.send();
+}
+
+function doSearch(){
+  if(!DATA)return;
+  var kw=els.q.value.trim();
+  if(!kw){render(DATA,false);return}
+  var out=[];
+  for(var i=0;i<DATA.length;i++){
+    var p=DATA[i];
+    if(p[0].indexOf(kw)>=0||(p[1]&&p[1].indexOf(kw)>=0))out.push(p);
+  }
+  render(out,false);
+  say(kw+"：找到 "+out.length+" 個停車場");
+}
+
+function nearest(lat,lon){
+  if(!DATA)return;
+  var arr=[];
+  for(var i=0;i<DATA.length;i++){
+    var p=DATA[i];
+    if(p[6]==null||p[7]==null)continue;
+    arr.push({p:p,d:dist(lat,lon,p[6],p[7])});
+  }
+  if(!arr.length){say("這一區的座標資料不足，請改用路名搜尋",true);return}
+  arr.sort(function(a,b){return a.d-b.d});
+  render(arr,true);
+  say("離你最近的停車場"+fmtDist(arr[0].d)+"，共列出 8 個（直線距離，實際路程依 Google 地圖）");
+}
+
+els.city.addEventListener("change",function(){
+  els.q.value="";
+  if(this.value)loadDist(this.value,this.options[this.selectedIndex].text);
+});
+var timer=null;
+els.q.addEventListener("input",function(){
+  clearTimeout(timer);timer=setTimeout(doSearch,180);
+});
+els.clear.addEventListener("click",function(){
+  els.q.value="";
+  if(DATA){render(DATA,false);say(DISTNAME+" 共 "+DATA.length.toLocaleString()+" 個停車場")}
+});
+els.geo.addEventListener("click",function(){
+  if(!navigator.geolocation){say("這個瀏覽器不支援定位，請改用行政區加路名搜尋",true);return}
+  els.geo.disabled=true;say("正在取得你的位置…");
+  navigator.geolocation.getCurrentPosition(function(pos){
+    els.geo.disabled=false;
+    if(!DATA){say("請先選一個行政區，再按一次定位",true);return}
+    nearest(pos.coords.latitude,pos.coords.longitude);
+  },function(err){
+    els.geo.disabled=false;
+    var m={1:"你拒絕了定位權限。可以改用行政區加路名搜尋。",2:"抓不到位置訊號，請到戶外再試，或改用路名搜尋。",3:"定位逾時，請再按一次。"};
+    say(m[err.code]||"定位失敗，請改用路名搜尋",true);
+  },{enableHighAccuracy:true,timeout:12000,maximumAge:60000});
+});
+
+(function init(){
+  var x=new XMLHttpRequest();
+  x.open("GET","data/_index.json",true);
+  x.onload=function(){
+    if(x.status<200||x.status>=300){say("行政區清單載入失敗，請重新整理",true);return}
+    var idx;
+    try{idx=JSON.parse(x.responseText)}catch(e){say("行政區清單解析失敗",true);return}
+    var list=idx.list||[];
+    var tot=0,h='<option value="">請選擇行政區</option>',lastCity="";
+    for(var i=0;i<list.length;i++){
+      tot+=list[i].n;
+      if(list[i].c!==lastCity){
+        if(lastCity)h+='</optgroup>';
+        h+='<optgroup label="'+esc(list[i].c)+'">';
+        lastCity=list[i].c;
+      }
+      h+='<option value="'+esc(list[i].f)+'">'+esc(list[i].c)+list[i].d+'（'+list[i].n.toLocaleString()+' 場）</option>';
+    }
+    if(lastCity)h+='</optgroup>';
+    els.city.innerHTML=h;
+    els.tot.textContent=tot.toLocaleString();
+    if(idx.date){var fd=document.getElementById("fetchDate");if(fd)fd.textContent=idx.date;}
+    var saved="";
+    try{saved=localStorage.getItem("ahong_tingche_dist")||""}catch(e){}
+    if(saved){
+      for(var j=0;j<list.length;j++){
+        if(list[j].f===saved){els.city.value=saved;loadDist(saved,list[j].c+list[j].d+"（"+list[j].n+" 場）");return}
+      }
+    }
+    say("先選一個行政區，或直接按定位");
+  };
+  x.onerror=function(){say("載入失敗，請確認是用網頁伺服器開啟而不是直接點檔案",true)};
+  x.send();
+})();
+})();
+</script>
+</body>
+</html>
