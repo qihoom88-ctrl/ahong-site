@@ -4,6 +4,8 @@
 window.AHFB = {
   page: 'https://www.facebook.com/profile.php?id=61590602468898',
   videos: [
+    {t:'46年老公寓 硬擠出4房2廳2衛', d:'丹鳳捷運加倍屋，加蓋哪來的我先講清楚——新莊空屋無人開箱',
+     u:'https://www.facebook.com/profile.php?id=61590602468898', img:'/wujian/danfeng/a/k_hero.jpg'},
     {t:'住了32年 東西都還在',    d:'土城龍傳家電梯兩房，原始屋況不修圖——捷運LG09站生活圈無人開箱',
      u:'https://www.facebook.com/profile.php?id=61590602468898', img:'/wujian/lg09/a/k_hero.jpg'},
     {t:'31坪 連一間房都沒有',  d:'整層空白畫布，要幾房自己隔——樹林學區捷運宅開箱',
