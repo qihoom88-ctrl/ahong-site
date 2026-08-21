@@ -4,6 +4,10 @@
 window.AHFB = {
   page: 'https://www.facebook.com/profile.php?id=61590602468898',
   videos: [
+    {t:'捷運通了 還買得到三房車嗎', d:'三峽樂河郡豐耘12樓邊間，1998萬三房兩廳兩衛含車位——三峽站前無人開箱',
+     u:'https://www.facebook.com/profile.php?id=61590602468898', img:'/wujian/fengyun/a/k_hero.jpg'},
+    {t:'樹林後站 838萬這坪數還買得到', d:'后站金站商業用彈性空間，登記15.33坪電梯大樓——樹林無人開箱',
+     u:'https://www.facebook.com/profile.php?id=61590602468898', img:'/wujian/jinzhan/a/k_hero.jpg'},
     {t:'43年老公寓 裡子全部是新的', d:'彭福捷運新裝三房，裝潢的錢值不值教你驗——樹林無人開箱',
      u:'https://www.facebook.com/profile.php?id=61590602468898', img:'/wujian/074/a/k_hero.jpg'},
     {t:'46年老公寓 硬擠出4房2廳2衛', d:'丹鳳捷運加倍屋，加蓋哪來的我先講清楚——新莊空屋無人開箱',
