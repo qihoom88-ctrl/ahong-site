@@ -53,7 +53,7 @@
   --danger:#B83232;
   --soft-gold:#FDF5E2; --soft-warm:#FDEFE6; --soft-teal:#E6F2F0; --soft-trust:#EDF1F5;
   --soft-danger:#FBECEC;
-  --solid-warm:#B4501C; --solid-danger:#9E2626; --solid-teal:#12564D;
+  --solid-warm:#B4501C; --solid-danger:#9E2626; --solid-teal:#12564D; --solid-line:#027A34;
   --shadow:0 14px 34px rgba(43,58,74,.12); --radius:20px;
 }
 @media (prefers-color-scheme:dark){
@@ -132,7 +132,7 @@ h3{font-size:1.05rem;margin:0 0 6px;font-weight:900}
 
 .btn{display:block;text-align:center;text-decoration:none;font-weight:900;border-radius:14px;padding:14px 16px;margin-top:11px}
 .btn.primary{background:var(--solid-warm);color:#fff}
-.btn.line{background:#06C755;color:#fff}
+.btn.line{background:var(--solid-line);color:#fff}
 .btn.ghost{background:var(--card);color:var(--trust);border:2px solid var(--trust)}
 
 .myth{border-left:5px solid var(--danger);padding-left:13px;margin-bottom:16px}
@@ -147,7 +147,7 @@ h3{font-size:1.05rem;margin:0 0 6px;font-weight:900}
 .risklane{padding:13px 15px;border-bottom:1px dashed var(--line)}
 .risklane:last-child{border-bottom:0}
 .lanetag{display:inline-block;font-size:.74rem;font-weight:900;letter-spacing:.06em;padding:3px 9px;border-radius:999px;margin-bottom:6px}
-.t-fix{background:var(--soft-teal);color:var(--solid-teal)}
+.t-fix{background:var(--soft-teal);color:var(--teal)}
 .t-cost{background:var(--soft-gold);color:var(--gold)}
 .t-check{background:var(--soft-trust);color:var(--trust)}
 .risklane p{margin:0 0 6px}
@@ -202,7 +202,7 @@ footer{margin-top:30px;padding-top:22px;border-top:2px solid var(--line);text-al
 .legal b{color:var(--ink)}
 
 .float{position:fixed;right:14px;bottom:16px;z-index:40}
-.float a{display:flex;align-items:center;gap:7px;text-decoration:none;background:#06C755;color:#fff;font-weight:900;padding:12px 17px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.28);font-size:.95rem}
+.float a{display:flex;align-items:center;gap:7px;text-decoration:none;background:var(--solid-line);color:#fff;font-weight:900;padding:12px 17px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.28);font-size:.95rem}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 </style>
 <script>
