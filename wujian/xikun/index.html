@@ -217,6 +217,27 @@ tr.self td:first-child{color:var(--gold)}
 .tnum{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--solid-warm);color:#fff;font-weight:900;font-size:.86rem}
 .titem strong{color:var(--trust);font-size:.98rem}
 .titem p{margin:2px 0 0;color:var(--muted);font-size:.89rem}
+/* 風險五欄模組（40-0822-11，版型抄 junying 四欄＋第五欄買方對策） */
+.riskkit{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);display:grid;gap:8px}
+.rk{display:grid;grid-template-columns:104px 1fr;gap:9px;align-items:start;font-size:.87rem;line-height:1.7}
+.rk b{color:var(--warm);font-weight:900;font-size:.82rem;padding-top:1px}
+.rk .v{color:var(--muted);min-width:0;overflow-wrap:anywhere}
+.rk .v strong{color:var(--ink);font-weight:800}
+.rk .src{display:block;margin-top:3px;font-size:.76rem;color:var(--muted)}
+.rk .cp{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:5px}
+.rk .cp li{display:grid;grid-template-columns:58px 1fr;gap:7px;align-items:start}
+.rk .cp li b{color:var(--trust);font-size:.78rem;font-weight:900;padding-top:2px}
+.rk .cp li a{color:var(--trust);font-weight:800;overflow-wrap:anywhere}
+@media(max-width:420px){.rk{grid-template-columns:1fr}.rk b{padding-top:0}}
+/* 把修繕算進去（修繕總成本小卡，沿用 .afford-top/.abox/.arow） */
+.repairsum{margin-top:12px;background:var(--card);border:2px solid var(--warm);border-radius:var(--radius);padding:17px;box-shadow:0 8px 22px rgba(43,58,74,.05)}
+.repairsum h3{margin:0;color:var(--warm);font-size:1.08rem;font-weight:900}
+.repairsum .rs-lead{margin:6px 0 12px;color:var(--muted);font-size:.86rem;line-height:1.7}
+.repairsum .arow span{min-width:0;overflow-wrap:anywhere}
+.repairsum .arow b{text-align:right;white-space:nowrap}
+.repairsum .rs-note{margin:11px 0 0;color:var(--muted);font-size:.8rem;line-height:1.75;overflow-wrap:anywhere}
+.repairsum .rs-note strong{color:var(--ink)}
+
 
 /* 適合與否 */
 .split{display:grid;gap:12px}
@@ -631,15 +652,151 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="sec-head">
       <div class="kicker">重要條件</div>
       <h2>缺點我先講完</h2>
+      <p class="lead">每一條缺點下面接五格：不處理會怎樣、可以怎麼修、要花多少（含清運）、怎麼驗、你怎麼承擔。費用區間只引用有出處的公開報價，查不到就寫沒有，不編數字；實際以現場估價為準。</p>
     </div>
     <div class="tlist">
-      <div class="titem"><div class="tnum">1</div><div><strong>4 樓，沒有電梯</strong><p>地上 5 層的公寓。搬家、買菜、推嬰兒車、長輩上下樓都要納入考慮。看屋那天請自己爬一次。</p></div></div>
-      <div class="titem"><div class="tnum">2</div><div><strong>本戶沒有車位</strong><p>周邊停車場的位置與月租費用，看屋時我陪你走一趟實際確認，不憑印象講。</p></div></div>
-      <div class="titem"><div class="tnum">3</div><div><strong>屋齡 37 年</strong><p>民國 78 年 5 月建築完成。屋齡會影響銀行核貸年限與成數，出價前先做貸款預審。</p></div></div>
-      <div class="titem"><div class="tnum">4</div><div><strong>一樓有私人宮廟</strong><p>影片片尾是實拍，不是聽說。香火、誦經時間與人潮會不會影響你，只有你自己站在門口才知道。</p></div></div>
-      <div class="titem"><div class="tnum">5</div><div><strong>格局圖標示「增建鐵窗」與「陽台外推」</strong><p>這是售屋資料上原本就有的標示。是否屬違章建築、有無查報紀錄、風險由誰承擔，簽約前務必查證，官方查詢入口在下面。</p></div></div>
-      <div class="titem"><div class="tnum">6</div><div><strong>垃圾採定點清運</strong><p>社區巷口為新北市定點清運點，一般垃圾、資源回收與廚餘都收。表定時間有兩班（下午與傍晚），可自行到新北市環保局查詢網確認。</p></div></div>
-      <div class="titem"><div class="tnum">7</div><div><strong>屋主自住中</strong><p>帶看要先跟我約時間，無法臨時到場。</p></div></div>
+
+      <div class="titem">
+        <div class="tnum">1</div>
+        <div>
+          <strong>4 樓，沒有電梯</strong>
+          <p>地上 5 層的公寓。搬家、買菜、推嬰兒車、長輩上下樓都要納入考慮。看屋那天請自己爬一次。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">搬家、買菜、長輩上下樓是每天的事；大型家具與家電要人力扛或吊掛，這筆錢搬進去第一天就會碰到。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕題。看屋那天提著東西爬一次；搬家前問清楚樓梯間寬度夠不夠搬大件、要不要吊車。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">無修繕費用，屬自我評估條件。搬家樓梯搬運費 <strong>$300～500／層</strong>（PRO360 搬家頁，2025-06-03）、樓層數 1～6 樓 <strong>$1,500～5,000 起</strong>（找師傅945，2026-03-24）；吊車服務首小時 <strong>$2,500～3,000</strong>（PRO360，2025-06-03；找師傅945 同區間，2026-03-24）。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">不是驗屋項目。看樓梯間照明、扶手、堆放雜物與清潔維護狀況，這些看屋當天就看得出來。</span></div>
+            <div class="rk"><b>買方對策</b><div class="v"><ul class="cp">
+              <li><b>預算</b><span>把搬家的樓層加價與可能的吊車費用列進搬家預算，不進修繕合計。</span></li>
+              <li><b>交易結構</b><span>無，屬自我評估；白天與傍晚各爬一次再決定。</span></li>
+              <li><b>處理順序</b><span>不影響工程順序。</span></li>
+              <li><b>阿宏協助</b><span>陪你不同時段各爬一次／搬家前協助確認樓梯間尺寸與搬運動線。</span></li>
+            </ul></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="titem">
+        <div class="tnum">2</div>
+        <div>
+          <strong>本戶沒有車位</strong>
+          <p>周邊停車場的位置與月租費用，看屋時我陪你走一趟實際確認，不憑印象講。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">把停車當「之後再說」，入住後才發現每月多一筆固定支出，或每天花時間找車位，這是天天發生的事。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕題。看屋當天繞周邊一圈，把月租停車場的位置與空位狀況記下來；有車就把這筆固定支出直接加進月付試算。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">無修繕費用，屬固定支出。70 修繕行情偵查表未收錄車位租金，沒有可引用的公開數字，不編造——<strong>以現場詢價為準</strong>。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">車位不是驗屋項目。周邊停車場的月租方案與候補狀況，看屋當天直接到場問。</span></div>
+            <div class="rk"><b>買方對策</b><div class="v"><ul class="cp">
+              <li><b>預算</b><span>把問到的月租金直接加進月支出，跟月付款一起算，不進修繕合計。</span></li>
+              <li><b>交易結構</b><span>無，屬生活條件。</span></li>
+              <li><b>處理順序</b><span>不影響入住，但要在出價前問清楚。</span></li>
+              <li><b>阿宏協助</b><span>陪你走一趟周邊停車場／把問到的方案寫進帶看紀錄。</span></li>
+            </ul></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="titem">
+        <div class="tnum">3</div>
+        <div>
+          <strong>屋齡 37 年</strong>
+          <p>民國 78 年 5 月建築完成。屋齡會影響銀行核貸年限與成數，出價前先做貸款預審。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">水電與門窗雖然 2024 年底已更新，但「更新到什麼範圍」只有紙本才算數，沒驗過就等於用聽的；屋齡加貸款年限銀行多半有內部上限，沒先預審就出價，最後可能卡在成數。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">向屋主要施工明細、照片與保固文件／驗屋時針對更新項目做電路檢測與排水測試，確認做了不是聽說做了／結構與外牆滲漏是另一件事，要獨立看。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">電路檢測 <strong>$100～500／次</strong>（PRO360 水電頁，2025-08-11）、<strong>$300～500／次</strong>（找師傅945，2026-03-24）、線路檢測 <strong>$500～1,200／次</strong>（100室內設計，2025-12-11）；抓漏檢測（不用儀器）<strong>$500～1,000／次</strong>、儀器抓漏 <strong>$8,000～20,000／次</strong>（找師傅945，2026-03-24）。<span class="src">已更新完成的項目不列修繕費；驗出遺漏再依估價單處理，以現場估價為準。</span></span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">本案登記 36.51 坪，落在中古屋 31～40 坪級距，整戶驗屋約 <strong>$18,000／戶</strong>、中古屋整體區間 <strong>$15,000～24,000／戶</strong>、複驗 <strong>$4,000～6,000／次</strong>（PRO360 驗屋頁，2025-06-12）。報告要有配電盤負載、給排水壓力與排水測試、外牆滲漏熱顯像。</span></div>
+            <div class="rk"><b>買方對策</b><div class="v"><ul class="cp">
+              <li><b>預算</b><span>本條先抓檢測費上限約 2.1 萬（線路檢測 1,200＋儀器抓漏 20,000），修繕費等驗屋報告出來再加；想分攤修繕，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。</span></li>
+              <li><b>交易結構</b><span>可要求屋主提供 2024 年底更新的明細、照片與保固文件作為契約附件；驗出缺失可依估價單議價或約定價金保留；可要求交屋前複驗。</span></li>
+              <li><b>處理順序</b><span>安全（電／結構）→ 漏水防水 → 管線 → 美化；本條主要是驗證，不是施工。</span></li>
+              <li><b>阿宏協助</b><span>陪同驗屋／向屋主調施工與保固文件／把附件與修繕條件寫進要約或契約建議／交屋清點。</span></li>
+              <li><b>政府補助</b><span>內政部「整合住宅補貼資源實施方案」的修繕住宅貸款利息補貼：貸款額度最高 80 萬元、補貼年限最長 15 年、寬限期最長 3 年，限家庭成員僅持有一戶、使用執照核發逾 10 年的住宅，且所得與財產低於規定金額；每年受理一次（114 年度受理 114-09-01～114-09-30，115 年度受理期間與資格以國土管理署當年度公告為準）。<a href="https://has.nlma.gov.tw/subsidyOnline/" target="_blank" rel="noopener">住宅補貼線上申請（國土署）</a>、<a href="https://welfare.ntpc.gov.tw/viewService/show/162?actionName=list6&amp;fromOpa=1" target="_blank" rel="noopener">新北市福利補助自己查</a>、<a href="https://pip.moi.gov.tw/v3/b/SCRB0108.aspx?KeyID=HS202316" target="_blank" rel="noopener">整合住宅補貼資源實施方案（內政部不動產資訊平台）</a></span></li>
+            </ul></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="titem">
+        <div class="tnum">4</div>
+        <div>
+          <strong>一樓有私人宮廟</strong>
+          <p>影片片尾是實拍，不是聽說。香火、誦經時間與人潮會不會影響你，只有你自己站在門口才知道。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">香火、誦經時間與節慶人潮，住進去才知道受不受得了；這一點沒有修繕解法。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕題。挑平日白天、傍晚、初一十五或節慶各去一次，站在門口感受。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">無修繕費用，屬自我評估條件。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">不是驗屋項目。</span></div>
+            <div class="rk"><b>買方對策</b><div class="v"><ul class="cp">
+              <li><b>預算</b><span>無。</span></li>
+              <li><b>交易結構</b><span>無；把你在意的時段與感受寫進看屋紀錄，當成決定依據。</span></li>
+              <li><b>處理順序</b><span>不影響工程順序。</span></li>
+              <li><b>阿宏協助</b><span>陪你在不同時段各去一次。</span></li>
+            </ul></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="titem">
+        <div class="tnum">5</div>
+        <div>
+          <strong>格局圖標示「增建鐵窗」與「陽台外推」</strong>
+          <p>這是售屋資料上原本就有的標示。是否屬違章建築、有無查報紀錄、風險由誰承擔，簽約前務必查證，官方查詢入口在下面。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">是否屬違章、有無查報紀錄不查清楚，日後被查報就可能面臨限期拆除與復原，費用與責任都落在新屋主身上；登記面積也不含外推部分。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">簽約前先查新北市違建查報紀錄（官方入口在下面）／沒有紀錄也要把「被查報時拆除復原由誰負擔」寫進契約／若要主動恢復原狀，拆除＋清運＋門窗周邊復原三段估。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">拆除工程 <strong>$1,000～1,500／坪</strong>（PRO360 泥作頁，2025-06-26）；清運：裝潢廢棄物 <strong>$10,000～15,000／車</strong>（PRO360 清運頁，2025-06-12）、廢棄物處理 <strong>$3,000～8,000／車（3.5 噸）</strong>（找師傅945，2026-03-24）；門窗周邊填縫 <strong>$8,000～12,000／式</strong>（PRO360 泥作頁，2025-06-26）。<span class="src">以附屬建物 3.58 坪概估拆除面積；只有需要拆除復原時才會發生，合計見下方「把修繕算進去」。</span></span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">驗屋報告要註明外推部分的結構方式與防水狀況；查報紀錄請地政士於簽約前確認並寫進契約。</span></div>
+            <div class="rk"><b>買方對策</b><div class="v"><ul class="cp">
+              <li><b>預算</b><span>若需拆除復原，上限約 3.2 萬（拆除 5,370＋清運 15,000＋填縫 12,000）加進入住總成本；未被查報則為 0。想分攤，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。</span></li>
+              <li><b>交易結構</b><span>可約定「交屋前若遭查報，由屋主負責拆除復原」或價金保留；可要求交屋前複驗。</span></li>
+              <li><b>處理順序</b><span>屬安全與結構段，若要拆就排在最前面、入住前做。</span></li>
+              <li><b>阿宏協助</b><span>代查違建查報紀錄／代約估價比價／把拆除復原責任寫進要約或契約建議／交屋清點。</span></li>
+            </ul></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="titem">
+        <div class="tnum">6</div>
+        <div>
+          <strong>垃圾採定點清運</strong>
+          <p>社區巷口為新北市定點清運點，一般垃圾、資源回收與廚餘都收。表定時間有兩班（下午與傍晚），可自行到新北市環保局查詢網確認。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">沒有管理室代收，錯過兩班時間垃圾就留在家裡；這是生活習慣題，不是修繕題。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">看屋時對一次新北市環保局的清運點與時間；上班時間配不上，就要改用夜間班或回收站。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">無修繕費用，屬生活條件。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">不是驗屋項目。</span></div>
+            <div class="rk"><b>買方對策</b><div class="v"><ul class="cp">
+              <li><b>預算</b><span>無。</span></li>
+              <li><b>交易結構</b><span>無。</span></li>
+              <li><b>處理順序</b><span>不影響工程順序。</span></li>
+              <li><b>阿宏協助</b><span>把清運點與時間寫進帶看紀錄給你。</span></li>
+            </ul></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="titem">
+        <div class="tnum">7</div>
+        <div>
+          <strong>屋主自住中</strong>
+          <p>帶看要先跟我約時間，無法臨時到場。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">看到的家具與物品不代表交屋配置；本案「贈傢俱家電」哪些留、哪些不留沒有寫成清單，交屋時就會有爭議。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕題。看屋時把留的家電逐項點過、測功能，寫成清單進契約附件；屋主搬離後再複驗一次。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">無修繕費用，屬交易條件。若留置物要由你清運：家戶廢棄物 <strong>$4,000～7,500／車</strong>、大型家具（沙發）<strong>$400～5,000／件</strong>（PRO360 清運頁，2025-06-12）。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">複驗 <strong>$4,000～6,000／次</strong>（PRO360 驗屋頁，2025-06-12），家具移開後的牆面與地面才看得到。</span></div>
+            <div class="rk"><b>買方對策</b><div class="v"><ul class="cp">
+              <li><b>預算</b><span>約定清單內家電留、其餘清空交屋，就不用另抓清運費。</span></li>
+              <li><b>交易結構</b><span>家電設備清單與功能狀態寫進契約附件；可約定交屋前複驗、交屋日與搬遷期限明訂。</span></li>
+              <li><b>處理順序</b><span>交屋日決定何時能入住。</span></li>
+              <li><b>阿宏協助</b><span>代約看屋時間／列家電清單／寫進要約或契約建議／交屋清點。</span></li>
+            </ul></div></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -761,10 +918,26 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
       <p class="anote">
         試算條件：總價 1430 萬、貸款 8 成、30 年期、年利率 2.435%、無寬限期，本息平均攤還。<br>
-        <strong>這些是預設值，不是你的條件。</strong>成數、利率、年限每個人不一樣，實際以銀行核准為準；老屋的核貸年限與成數請先做貸款預審。首付之外還要另外準備契稅、印花稅、代書費、規費、火險地震險與整理費用，本卡都未計入。<br>
+        <strong>這些是預設值，不是你的條件。</strong>成數、利率、年限每個人不一樣，實際以銀行核准為準；老屋的核貸年限與成數請先做貸款預審。首付之外還要另外準備契稅、印花稅、代書費、規費、火險地震險與整理費用，本卡都未計入；修繕與清運的區間見下方「把修繕算進去」。<br>
         按上面的按鈕會帶著本案總價 1430 萬進入試算工具，你可以直接改成新青安 40 年、寬限期或升息後的月付款做壓力測試。<strong>工具站的預設是兩段式利率（前 2 年 2.185%、第 3 年起 2.435%），算出來是首期月付 43,351 元、跳息後 44,729 元</strong>，跟上面這張卡的 44,816 元差在利率設定不同，不是哪一邊算錯。買房前先做貸款預審，順序不要顛倒——先知道銀行給你多少，再決定看哪個總價帶。<br>
         本卡是用委託總價 1430 萬去試算的，<strong>開價不等於成交價</strong>，也不代表議價空間，最終金額由買賣雙方議定；真的談成之後，這三個數字要用實際成交價重算一次。
       </p>
+    </div>
+      <div class="repairsum" id="repairsum">
+      <h3>把修繕算進去</h3>
+      <p class="rs-lead">把上面「缺點我先講完」每一條的修繕＋清運區間加總。這間 2024 年底已更新全室水電與門窗，唯一可能發生的修繕是第 5 項「增建鐵窗與陽台外推」被查報時的拆除復原；這不是報價，是用公開報價站有出處的區間抓量級，各站數字不一致時下限取各站最低、上限取各站最高，不取平均。<strong>修繕預算另計，實際以現場估價為準。</strong></p>
+      <div class="afford-top">
+        <div class="abox a-total"><small>修繕＋清運合計</small><strong>1.5～3.2 萬</strong><span>只在需要拆除復原時發生；未被查報則為 0</span></div>
+        <div class="abox a-pay"><small>入住總成本</small><strong>1431.5～1433.2 萬</strong><span>委託總價 1430 萬＋這筆</span></div>
+        <div class="abox"><small>首付要多準備</small><strong>1.5～3.2 萬</strong><span>修繕全額自備：286 萬 → 287.5～289.2 萬</span></div>
+      </div>
+      <div class="arow"><span>拆除工程<i>以附屬建物 3.58 坪概估・PRO360 泥作頁 2025-06-26</i></span><b>0.4～0.5 萬</b></div>
+      <div class="arow"><span>清運 1 車<i>PRO360 清運頁 2025-06-12／找師傅945 2026-03-24</i></span><b>0.3～1.5 萬</b></div>
+      <div class="arow"><span>門窗周邊填縫 1 式<i>PRO360 泥作頁 2025-06-26</i></span><b>0.8～1.2 萬</b></div>
+      <div class="arow"><span><strong>合計（修繕＋清運）</strong><i>14,580～32,370 元</i></span><b>1.5～3.2 萬</b></div>
+      <div class="arow"><span>檢測另計，不在合計內<i>線路檢測 500～1,200・100室內設計 2025-12-11／儀器抓漏 8,000～20,000・找師傅945 2026-03-24</i></span><b>0.1～2.1 萬</b></div>
+      <div class="arow"><span>驗屋另計，不在合計內<i>中古屋 31～40 坪約 18,000／戶、區間 15,000～24,000／戶・PRO360 驗屋頁 2025-06-12</i></span><b>1.5～2.4 萬</b></div>
+      <p class="rs-note">算法：<strong>入住總成本＝委託總價 1430 萬＋修繕＋清運合計</strong>。銀行房貸的成數只算房價，本卡沿用上面試算卡的設定（貸款 8 成＝1144 萬、30 年期、年利率 2.435%、無寬限期、本息平均攤還），貸款金額與月付款 44,816 元都不變；修繕預算若全額自備，首付就從 286 萬變成 <strong>287.5～289.2 萬</strong>（286 萬＋1.5～3.2 萬）。想把修繕費一起分攤，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。搬家樓層加價、吊車與停車月租屬生活成本，不在合計內。</p>
     </div>
   </section>
 
@@ -1020,6 +1193,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="fbtns">
       <a href="tel:0930848000">打我手機 0930-848000</a>
       <a href="https://lin.ee/IV8bl9H" target="_blank" rel="noopener">用官方 LINE 問我</a>
+      <a href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">看我的電子名片</a>
     </div>
     <p class="tags">#何志宏 #新北房仲 #樹林買房 #板橋買房 #溪崑一街 #樹林車站 #全新裝潢 #免裝潢入住 #三房雙衛 #買房看屋清單</p>
     <div class="legal">
@@ -1028,7 +1202,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       經紀人　林秀嫻　(96)北縣字第001399號<br>
       新北市板橋區金門街288-2號<br>
       公司電話　<a href="tel:0226878822">02-2687-8822</a><br>
-      何志宏　<a href="tel:0930848000">0930-848000</a>
+      何志宏　<a href="tel:0930848000">0930-848000</a><br>
+      電子名片　<a href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">https://0930848000.com/mingpian/</a>
     </div>
   </div>
 </div>
@@ -1056,7 +1231,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <li><b>省下拆盲盒的風險。</b>老屋最怕拆開才發現漏水、管線走向不明、結構要補強，預算一路追加。已經做完的房子，變數少很多。</li>
     <li><b>但要換一件事來確認。</b>施工品質與保固你看不到，所以要問：水電更新到什麼範圍、有沒有施工照片與明細、防水做了哪些地方、有沒有保固文件。有紙本的才算數。</li>
   </ol>
-  <p class="mnote">本頁不列任何裝潢行情或省下金額的數字：那必須依實際屋況與報價才算得出來。要我幫你找師傅到現場複看，跟我說一聲。</p>
+  <p class="mnote">本頁不列「省下多少錢」的數字：那必須依實際屋況與報價才算得出來；「缺點我先講完」裡列的費用區間只引用有出處的公開報價站數字，用來抓量級，不是報價。要我幫你找師傅到現場複看，跟我說一聲。</p>
 </template>
 
 <template id="m-stair">
