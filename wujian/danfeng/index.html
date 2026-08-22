@@ -215,6 +215,17 @@ tr.self td:first-child{color:var(--gold)}
 .tnum{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--solid-warm);color:#fff;font-weight:900;font-size:.86rem}
 .titem strong{color:var(--trust);font-size:.98rem}
 .titem p{margin:2px 0 0;color:var(--muted);font-size:.89rem}
+/* 風險五欄模組（40-0822-12，版型沿用 junying 四欄模組＋第五欄買方對策） */
+.riskkit{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);display:grid;gap:8px}
+.rk{display:grid;grid-template-columns:104px 1fr;gap:9px;align-items:start;font-size:.87rem;line-height:1.7}
+.rk b{color:var(--warm);font-weight:900;font-size:.82rem;padding-top:1px}
+.rk .v{color:var(--muted)}
+.rk .v strong{color:var(--ink);font-weight:800}
+.rk .v a{color:var(--trust);font-weight:800;overflow-wrap:anywhere;word-break:break-all}
+.rk .src{display:block;margin-top:3px;font-size:.76rem;color:var(--muted)}
+@media(max-width:420px){.rk{grid-template-columns:1fr}.rk b{padding-top:0}}
+.afford + .afford{margin-top:12px}
+.afford + .afford strong,.afford + .afford b{overflow-wrap:anywhere}
 
 /* 適合與否 */
 .split{display:grid;gap:12px}
@@ -596,12 +607,60 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <p class="lead">這一頁是完整揭露版，不是等你私訊才肯講的版本。以下每一項都可以到現場、到謄本、到官方網站驗證。</p>
     </div>
     <div class="tlist">
-      <div class="titem"><div class="tnum">1</div><div><strong>加蓋的 1 房 1 廳 1 衛，沒有登記</strong><p>不計入登記坪數 22.52 坪，屬未登記增建範疇，有無查報紀錄簽約前務必查證；銀行估價通常不採計加蓋部分。拆除風險由誰承擔，要白紙黑字寫進契約，不要只有口頭承諾。</p></div></div>
-      <div class="titem"><div class="tnum">2</div><div><strong>屋齡 46 年，5 樓沒有電梯</strong><p>每天爬五層樓要自己接受。屋齡也會影響銀行核貸年限與成數，出價前建議先做貸款預審。</p></div></div>
-      <div class="titem"><div class="tnum">3</div><div><strong>本戶在公寓最高層</strong><p>屋頂防水狀況與夏季日曬要現場確認，加蓋部分的滲漏風險一併看。看屋建議白天去一次、傍晚再去一次。</p></div></div>
-      <div class="titem"><div class="tnum">4</div><div><strong>本戶沒有車位</strong><p>周邊停車場的位置與月租費用，看屋時我陪你走一趟實際確認。</p></div></div>
-      <div class="titem"><div class="tnum">5</div><div><strong>捷運丹鳳站的公尺數，還沒查證完成</strong><p>委託資料只載概略資訊。我的揭露規範是距離只寫公尺（依 Google 地圖）、不寫步行分鐘，所以這格先空著，查證後補上，不給你一個我自己都沒對過的數字。</p></div></div>
-      <div class="titem"><div class="tnum">6</div><div><strong>座向與格局圖尚未核對完成</strong><p>委託資料未載明座向，本頁不寫、也不猜。帶看前我會向屋主方確認清楚給你。</p></div></div>
+      <div class="titem"><div class="tnum">1</div><div><strong>加蓋的 1 房 1 廳 1 衛，沒有登記</strong><p>不計入登記坪數 22.52 坪，屬未登記增建範疇，有無查報紀錄簽約前務必查證；銀行估價通常不採計加蓋部分。拆除風險由誰承擔，要白紙黑字寫進契約，不要只有口頭承諾。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">銀行估價不採計，自備款比想的多；查報拆除時，那 1 房 1 廳 1 衛連同拆除清運費一起消失；用加蓋面積算單價，比價全錯。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕，是查證與風險分配：新北市違章建築案件查詢有無查報紀錄／既存違建不等於就地合法，主管機關依法仍可拆除／把拆除風險寫進契約特約／貸款先問銀行，照登記坪數抓自備款。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v"><strong>無固定修繕費用，屬法律面風險。</strong>若遭查報拆除：拆除工程 <strong>$1,000～1,500／坪</strong>（PRO360 泥作頁，2025-06-26）、拆除清運工人工資 <strong>$2,000～3,000／人天</strong>（找師傅945，2026-03-24）、營建廢棄物 <strong>$600～2,000／噸</strong>、裝潢廢棄物 <strong>$10,000～15,000／車</strong>（PRO360 清運頁，2025-06-12）、樓層搬運加價約 <strong>＋$500／層</strong>（PRO360 清運頁，2025-06-12，本戶 5 樓無電梯）；加蓋面積未登記、未丈量，範圍以查報結果與現場丈量為準，條件式費用不納入合計。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">驗屋時請一併標出加蓋範圍、比對謄本與測量成果圖，並檢查加蓋部分接縫的滲漏（見第 3 條）。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>無固定費用；留一筆「若遭查報」的拆除與清運緩衝，自備款照登記 22.52 坪的邏輯抓。<br><strong>交易結構：</strong>可向新北市違章建築處理相關單位查詢，依官方答覆為準；拆除費用與責任由誰承擔可要求寫進契約特約，可協商價金保留；出價用登記坪數。<br><strong>處理順序：</strong>出價前查證、簽約時寫進契約。<br><strong>阿宏協助：</strong>代查查報紀錄、謄本與測量成果圖並書面交你、把特約條款寫進要約或契約建議、貸款預審前的資料準備。</span></div>
+          </div>
+        </div></div>
+      <div class="titem"><div class="tnum">2</div><div><strong>屋齡 46 年，5 樓沒有電梯</strong><p>每天爬五層樓要自己接受。屋齡也會影響銀行核貸年限與成數，出價前建議先做貸款預審。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">46 年的配電箱與迴路撐不住現在的家電，跳電是常態；給排水管鏽蝕、阻塞；衛浴是傳統老配置（照片可看），防水層早過了年限，往樓下滲就是鄰居糾紛；每天爬五層樓，搬家與清運都要加錢——這些交屋後才算，等於把預算丟給運氣。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">第一層非做不可：電路檢測、配電箱依檢測結果更換、增設專用迴路、通水管／兩套衛浴依檢測決定只補防水還是整間重做，馬桶排水一併看／給排水全換屬大工程，先驗再決定範圍／第二層可排隊：廚具、原始收納櫃汰換，住半年再說／搬家與清運的樓層加價先問清楚。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">電路檢測 <strong>$100～500／次</strong>（PRO360 水電頁，2025-08-11）、<strong>$300～500／次</strong>（找師傅945，2026-03-24）、線路檢測 <strong>$500～1,200／次</strong>（100室內設計，2025-12-11）；配電箱更換（動力室內電箱）<strong>$15,000～20,000／式</strong>（PRO360 水電頁，2025-08-11）；專用迴路 <strong>$2,500～3,500／迴</strong>（PRO360 水電頁，2025-08-11）、新增迴路 <strong>$2,500～4,500／個</strong>（100室內設計，2025-12-11）、迴路安裝 <strong>$2,000～3,000／個</strong>（找師傅945，2026-03-24）；通水管 <strong>$3,000～5,000／支</strong>（PRO360 水電頁，2025-08-11）；給排水配管：冷水 <strong>$1,500～3,500／處</strong>、熱水 <strong>$3,000～6,500／處</strong>、排水 <strong>$1,000～3,500／處</strong>（100室內設計，2025-12-11，處數依現場，列而不加總）；浴室防水重做（整間）<strong>$6,000～12,000／間</strong>（PRO360 廁所防水頁，⚠️最後更新 2023-11-06，三站中最舊）、<strong>$8,000～20,000／間</strong>（100室內設計，2025-05-30）、浴室防水彈性水泥 <strong>$2,000～3,000／坪</strong>（找師傅945，2026-03-24）；磁磚重鋪 <strong>$2,500～4,500／坪</strong>、重做洩水坡度 <strong>$4,500～6,000／坪</strong>（PRO360 廁所防水頁，2023-11-06，浴室坪數依現場）；馬桶裝修 <strong>$1,000～3,500／次</strong>（PRO360 水電頁，2025-08-11；找師傅945，2026-03-24）；清運：裝潢廢棄物 <strong>$10,000～15,000／車</strong>（PRO360 清運頁，2025-06-12）、<strong>$3,000～8,000／車</strong>（3.5 噸，找師傅945，2026-03-24）、樓層搬運加價約 <strong>＋$500／層</strong>（PRO360，2025-06-12）、拆除清運佔比參考約總裝潢費 5%（找師傅945，2026-03-24）。<br><strong>本條納入合計：$44,100～104,200</strong>（口徑：電路檢測 1 次、配電箱更換 1 式、專用迴路 2 迴、通水管 2 支、浴室防水整間 2 間、馬桶裝修 2 次、裝潢廢棄物清運 1 車、樓層搬運加價 4 層；每項取三站最低下限與最高上限，不取平均。廚具汰換與給排水全換依現場估價，不納入）。搬家的樓梯搬運費 <strong>$300～500／層</strong>（PRO360 搬家頁，2025-06-03）不是修繕，另列。<span class="src">以上為市場公開報價區間，同工種各站數字不一致是常態，全部並列不取平均；實際費用以現場估價為準。</span></span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">本案 22.52 坪落在 21～30 坪級距約 <strong>$15,000／戶</strong>、中古屋整體 <strong>$15,000～24,000／戶</strong>（PRO360 驗屋頁，2025-06-12）；雙北中古屋 21～30 坪 <strong>$10,000～15,000／戶</strong>（鴻宇健康驗屋，2025-07-06）；複驗 <strong>$4,000～6,000／次</strong>（PRO360 驗屋頁，2025-06-12）。46 年的房子，建議正式簽約前自費請驗屋公司或結構技師到場一次。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>把本條上限 $104,200 加進入住總成本（見下方「把修繕算進去」）；想把修繕費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。本案屋齡 46 年又含未登記增建，核貸成數與年限可能明顯低於預設，自備款照最壞情況抓。<br><strong>交易結構：</strong>驗屋報告與估價單可當議價依據；可約定屋主交屋前修復或價金保留；交屋前可要求複驗。<br><strong>處理順序：</strong>安全（電／配電箱）→ 漏水防水（頂樓與衛浴）→ 管線 → 美化；前三段交屋前做完，廚具與收納可入住後再做。<br><strong>阿宏協助：</strong>陪同驗屋、代約估價與報價單比價、把修繕條件寫進要約或契約建議、交屋清點。<br><strong>政府補助：</strong>內政部國土管理署每年度辦理「修繕住宅貸款利息補貼」，依《修繕住宅貸款利息及簡易修繕住宅費用補貼辦法》（最新修正 2026-08-11）第 5 條，住宅須為申請人所有、且使用執照核發已逾十年——買方要先完成過戶才能以所有權人身分申請，是否符合資格由主管機關認定，本頁不判定；受理期間每年公告，線上申請頁 2026-08-22 查看時顯示 114 年度受理期間為 114 年 9 月 1 日至 9 月 30 日、目前非受理期間，115 年度以該署公告為準。線上申請：<br><a href="https://has.nlma.gov.tw/subsidyOnline/" target="_blank" rel="noopener">https://has.nlma.gov.tw/subsidyOnline/</a><br>法規原文：<br><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070206" target="_blank" rel="noopener">https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070206</a><br>新北市受理窗口（城鄉發展局，預計每年 7 月前公告當年度受理資訊）：<br><a href="https://www.planning.ntpc.gov.tw/home.jsp?id=512cdd6f20d79814" target="_blank" rel="noopener">https://www.planning.ntpc.gov.tw/home.jsp?id=512cdd6f20d79814</a></span></div>
+          </div>
+        </div></div>
+      <div class="titem"><div class="tnum">3</div><div><strong>本戶在公寓最高層</strong><p>屋頂防水狀況與夏季日曬要現場確認，加蓋部分的滲漏風險一併看。看屋建議白天去一次、傍晚再去一次。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">屋頂防水層老化，雨季滲到天花板；加蓋部分的接縫是最常見的滲漏點；夏季頂樓日曬室溫高。修繕費與屋頂共有部分的分攤，沒先談好，交屋後一個人扛。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">先做抓漏檢測（不用儀器 → 需要再上儀器）／屋頂防水依現況選工法：防水漆、PU、彈性水泥，防水毯另議／加蓋部分接縫一併處理／屋頂屬共有部分，分攤方式先問樓下住戶與既有約定。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">屋頂防水漆 <strong>$600～1,500／坪</strong>（100室內設計，2025-05-30）、<strong>$600～1,200／坪</strong>（找師傅945，2026-03-24）；屋頂 PU 防水層 <strong>$1,500～3,500／坪</strong>（100室內設計，2025-05-30）、<strong>$1,500～3,000／坪</strong>（找師傅945，2026-03-24）；屋頂彈性水泥 <strong>$2,000～3,000／坪</strong>（找師傅945，2026-03-24）；屋頂防水毯 <strong>$10,000～18,000／坪</strong>（100室內設計，2025-05-30）、<strong>$10,000～15,000／坪</strong>（找師傅945，2026-03-24）；高壓灌注（打針）<strong>$300～1,000／針</strong>（找師傅945，2026-03-24）、<strong>$500～1,000／針</strong>（PRO360 廁所防水頁，2023-11-06）。<br><strong>本條納入合計：$13,512～78,820</strong>（口徑：以登記 22.52 坪為屋頂面積上限、防水漆到 PU 的做法取最低下限與最高上限；防水毯另列不納入；屋頂屬共有部分，分攤依區分所有權人約定，本合計先以全額自付估上限）。<span class="src">以上為市場公開報價區間，同工種各站數字不一致是常態，全部並列不取平均；實際費用以現場估價為準。</span></span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">抓漏檢測不用儀器 <strong>$500～1,000／次</strong>、儀器判定 <strong>$8,000～20,000／次</strong>（找師傅945，2026-03-24）；漏水初勘含車馬費 <strong>$1,500～3,000／次</strong>（PRO360 廁所防水頁，2023-11-06）。看屋白天去一次、下雨天再去一次。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>把本條上限 $78,820 加進入住總成本（見下方「把修繕算進去」）。<br><strong>交易結構：</strong>抓漏報告可當議價依據；可約定屋主交屋前修復滲漏或價金保留；屋頂分攤約定可要求賣方揭露並寫進契約；交屋前可要求複驗。<br><strong>處理順序：</strong>漏水防水段，緊接在電之後，交屋前做。<br><strong>阿宏協助：</strong>代約抓漏檢測、向樓下住戶與賣方確認屋頂分攤約定、把防水條件寫進要約或契約建議、交屋清點。</span></div>
+          </div>
+        </div></div>
+      <div class="titem"><div class="tnum">4</div><div><strong>本戶沒有車位</strong><p>周邊停車場的位置與月租費用，看屋時我陪你走一趟實際確認。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">把停車當「之後再說」，住進去才發現每月多一筆固定租金，或每天花時間找車位。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">看屋當天繞一圈周邊月租停車場，問月租與空位；有車就把這筆固定支出直接加進月付試算。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v"><strong>無修繕費用，屬使用限制。</strong>車位租金 70 修繕行情偵查表未收錄，沒有可引用的公開數字，不編造——以現場詢價為準。本條不納入合計。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">不是驗屋項目。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>問到真實月租後加進月支出（房貸月付 29,773 元之外）。<br><strong>交易結構：</strong>無需契約約定；有車的人先把這筆算進去再決定出不出價。<br><strong>處理順序：</strong>看屋當天完成。<br><strong>阿宏協助：</strong>陪你走周邊停車場、問到真實數字。</span></div>
+          </div>
+        </div></div>
+      <div class="titem"><div class="tnum">5</div><div><strong>捷運丹鳳站的公尺數，還沒查證完成</strong><p>委託資料只載概略資訊。我的揭露規範是距離只寫公尺（依 Google 地圖）、不寫步行分鐘，所以這格先空著，查證後補上，不給你一個我自己都沒對過的數字。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">用「捷運宅」的想像出價，實際距離沒量過。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕：自己用 Google 地圖量一次門口到站口的路線。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v"><strong>無修繕費用，屬查證事項。</strong>本條不納入合計。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">不是驗屋項目。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>無修繕費用。<br><strong>交易結構：</strong>無需契約約定。<br><strong>處理順序：</strong>看屋前自己量。<br><strong>阿宏協助：</strong>查證公尺數後更新本頁。</span></div>
+          </div>
+        </div></div>
+      <div class="titem"><div class="tnum">6</div><div><strong>座向尚未核對完成，格局圖只是示意</strong><p>委託資料未載明座向，本頁不寫、也不猜，下方格局圖的大字卡標「未複核」；格局圖是委託方提供的示意圖（圖上註明非依比例與座向製作），加蓋在整體格局的位置要現場走一次對。帶看前我會向屋主方確認座向給你。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">西曬靠猜；加蓋在整體格局的位置沒現場對過，拆除風險的範圍也搞不清楚。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕：向屋主方確認座向；對照下方格局圖現場走一次，標出哪一塊是登記、哪一塊是加蓋。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v"><strong>無修繕費用，屬查證事項。</strong>若查證後確有西曬要遮陽，窗簾與隔熱費用偵查表未收錄，以現場估價為準；本條不納入合計。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">驗屋時記錄座向、日照時段與加蓋範圍。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>無修繕費用。<br><strong>交易結構：</strong>可要求賣方於不動產標的現況說明書如實填寫座向與增建範圍。<br><strong>處理順序：</strong>帶看前完成。<br><strong>阿宏協助：</strong>向屋主方確認座向與格局圖後更新本頁。</span></div>
+          </div>
+        </div></div>
     </div>
   </section>
 
@@ -638,6 +697,23 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
         按上面的按鈕會帶著本案開價 950 萬進入試算工具，你可以直接改成數、利率與年限做壓力測試。<strong>工具站的預設是兩段式利率（前 2 年 2.185%、第 3 年起 2.435%），算出來是首期月付 28,799 元、跳息後 29,715 元</strong>，跟上面這張卡的 29,773 元差在利率設定不同，不是哪一邊算錯。
       </p>
     </div>
+    <div class="afford">
+      <div class="afford-top">
+        <div class="abox a-total"><small>把修繕算進去：本頁風險修繕＋清運合計</small><strong>5.8～18.3 萬</strong><span>$57,612～183,020；下限＝全部工項都拿到最低報價，上限＝全部都是最高報價，只做部分工項會更低</span></div>
+        <div class="abox a-pay"><small>入住總成本＝開價＋這筆</small><strong>955.8～968.3 萬</strong><span>開價 950 萬＋ 5.8～18.3 萬；開價不等於成交價</span></div>
+        <div class="abox"><small>修繕全額自備，首付要多準備</small><strong>5.8～18.3 萬</strong><span>首付 190 萬 → 入住前要備妥的現金 195.8～208.3 萬；修繕不計入貸款，月付款不變 29,773 元</span></div>
+      </div>
+
+      <div class="arow"><span>試算參數<i>沿用上卡，未另創</i></span><b>8 成・30 年・2.435%</b></div>
+      <div class="arow"><span>公式<i>入住前現金＝開價 ×（1 − 8 成）＋修繕與清運上限；下限同式帶入</i></span><b>950 × 0.2 ＋ 18.3</b></div>
+      <div class="arow"><span>另加驗屋<i>中古屋，不在合計內</i></span><b>$15,000～24,000／戶</b></div>
+
+      <p class="anote">
+        <strong>修繕預算另計，實際以現場估價為準。</strong>合計口徑：「缺點我先講完」第 2 條 $44,100～104,200（電路檢測 1 次、配電箱更換 1 式、專用迴路 2 迴、通水管 2 支、浴室防水整間 2 間、馬桶裝修 2 次、裝潢廢棄物清運 1 車、樓層搬運加價 4 層）＋第 3 條 $13,512～78,820（屋頂防水以登記 22.52 坪、防水漆到 PU 口徑）；每一項取三站最低下限與最高上限，不取平均、不裁切。第 1 條的拆除費屬條件式、第 4、5、6 條無修繕費用，都不在合計內。<br>
+        驗屋：中古屋 $15,000～24,000／戶（PRO360 驗屋頁，2025-06-12；22.52 坪落在 21～30 坪級距約 $15,000）、雙北中古屋 21～30 坪 $10,000～15,000／戶（鴻宇健康驗屋，2025-07-06），不在合計內。<br>
+        想把修繕費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。本卡不推薦任何銀行或商品，也不是核貸結果；本案 46 年公寓含未登記增建，8 成是上限不是預期，自備款照最壞情況抓，務必先做貸款預審。
+      </p>
+    </div>
   </section>
 
   <section>
@@ -646,19 +722,11 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <h2>4 房 2 廳 2 衛<br>其中一組是加蓋的</h2>
     </div>
     <div class="plan">
-      <!-- 座向大字卡（.plan-orient）需要委託資料上明載的座向才會掛上；本案委託資料未填座向，
-           依「不編造物件事實」原則不放、也不猜方位，改以下方待補說明如實揭露。 -->
-      <div class="pending">
-        <h3>格局圖與座向：待核對，不猜</h3>
-        <p>本案的格局圖與座向，目前還沒有可以對外公布的核對版本。<strong>與其畫一張示意圖給你當依據，不如直接說這一項還沒核對完。</strong></p>
-        <ul>
-          <li><strong>格局：</strong>4 房 2 廳 2 衛（依委託資料），其中 1 房 1 廳 1 衛為加蓋部分、未登記。</li>
-          <li><strong>座向：</strong>委託資料未載明，本頁不寫、也不猜。帶看前我會向屋主方確認給你。</li>
-          <li><strong>格局圖：</strong>待補。加蓋部分在整體格局的位置，帶看時現場走一次最清楚。</li>
-          <li><strong>樓層配置：</strong>本戶為公寓 5 層之 5 樓，無電梯（依委託資料）。</li>
-        </ul>
+      <div class="plan-frame">
+        <button type="button" data-full="a/k_floorplan.jpg" aria-label="放大格局圖，含未登記加蓋部分，座向未複核"><img src="a/k_floorplan.jpg" alt="丹鳳捷運加倍屋格局圖：一側為客廳、廚房、衛浴、三間臥室與前陽台，另一側為後陽台、衛浴、開放式空間與平台，含未登記加蓋，座向未複核"></button>
+        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座向 未複核（以現場實測為準）</span>
       </div>
-      <p class="cap">格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準；加蓋部分未登記，不在謄本面積內。</p>
+      <p class="cap"><strong>含未登記加蓋，以登記謄本為準。</strong>格局圖取自委託方提供的帶看資料，圖上註明：並非依原尺寸之比例及座向製作、示意圖僅供參考、建物面積仍依地政機關謄本登載為準。圖上畫了兩個區塊（客廳、廚房、衛浴、三間臥室、前陽台；後陽台、衛浴、開放式空間、平台），但沒有標示哪一區是加蓋——依委託資料 4 房 2 廳 2 衛中含加蓋 1 房 1 廳 1 衛，哪一塊是登記、哪一塊是加蓋，帶看時現場走一次最清楚。<strong>座向：</strong>委託資料未載明，本頁不寫、也不猜，大字卡標「未複核」，以現場實測為準。本戶為公寓 5 層之 5 樓，無電梯（依委託資料）。格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準；加蓋部分未登記，不在謄本面積內。</p>
     </div>
   </section>
 
@@ -941,7 +1009,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <li>加蓋部分：委託資料載明 4 房 2 廳 2 衛中含加蓋 1 房 1 廳 1 衛；該部分未登記、不計入登記坪數，本頁不就其合法性做任何聲明，有無查報紀錄請至<a href="https://icdc-pub.ntpc.gov.tw/ntpcpb/" target="_blank" rel="noopener">新北市違章建築案件查詢系統</a>查證。</li>
       <li>影片與照片：現場實拍原始素材，未使用虛擬佈置、AI 生成裝潢示意或修圖。本頁照片皆自該支影片截取。</li>
       <li>捷運丹鳳站距離：公尺數尚未查證完成，本頁未列數字；依本站揭露規範距離只寫公尺（依 Google 地圖）、不寫步行分鐘。</li>
-      <li>座向、格局圖與學區：尚未核對完成，本頁未列，核對完成後補上。</li>
+      <li>座向與學區：尚未核對完成，本頁未列，核對完成後補上。格局圖：委託方提供之帶看資料示意圖（圖上註明非依比例及座向製作），僅供參考，以地政謄本與現場為準。</li>
       <li>同路段成交紀錄：本頁未列具體成交數字，請自行至<a href="https://lvr.land.moi.gov.tw" target="_blank" rel="noopener">內政部不動產交易實價查詢服務網</a>查證，以該網站公告為準。</li>
       <li>房貸試算：以一般房貸常見預設條件模擬，非銀行核貸承諾；老屋與未登記增建對估價及核貸之影響，以承貸銀行核准為準。</li>
       <li>成屋交易應揭露事項：內政部公告之成屋買賣定型化契約應記載及不得記載事項、不動產標的現況說明書，原文見<a href="https://law.moj.gov.tw" target="_blank" rel="noopener">全國法規資料庫</a>。</li>
@@ -1005,6 +1073,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="fbtns">
       <a href="tel:0930848000">打我手機 0930-848000</a>
       <a href="https://lin.ee/IV8bl9H" target="_blank" rel="noopener">用官方 LINE 問我</a>
+      <a href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">看我的電子名片</a>
     </div>
     <p class="tags">#何志宏 #新莊 #丹鳳 #加倍屋 #低總價 #4房</p>
     <div class="legal">
@@ -1013,7 +1082,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       經紀人　林秀嫻　(96)北縣字第001399號<br>
       新北市板橋區金門街288-2號<br>
       公司電話　<a href="tel:0226878822">02-2687-8822</a><br>
-      何志宏　<a href="tel:0930848000">0930-848000</a>
+      何志宏　<a href="tel:0930848000">0930-848000</a><br>
+      電子名片　<a href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">https://0930848000.com/mingpian/</a>
     </div>
   </div>
 </div>
