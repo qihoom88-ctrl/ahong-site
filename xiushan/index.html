@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>(function(){if(localStorage.getItem("ahViewDesktop")==="1"){var m=document.querySelector('meta[name="viewport"]');if(m)m.setAttribute("content","width=1280")}})();</script>
-<title>修繕報價資訊｜看懂報價單，比殺價更重要</title>
-<meta name="description" content="修繕沒有公定價，這頁不給你行情數字，給你更有用的：十個常見工種的計價單位與影響價格的因素、報價單必列六項檢核表、詢價防雷五步、政府修繕補貼官方入口。何志宏（阿宏）｜住商不動產樹林站前加盟店。">
-<meta property="og:title" content="修繕報價資訊｜看懂報價單，比殺價更重要">
-<meta property="og:description" content="修繕沒有公定價。與其背一個會過期的行情數字，不如看懂報價單上每一行在說什麼。">
+<title>修繕報價資訊｜九工種行情數字，三站並列不取平均</title>
+<meta name="description" content="泥作、油漆、防水、水電、木工、清運、搬家、驗屋九工種行情區間，逐筆標示來源網站與該頁更新年份，三家報價並列不取平均。另附報價單必列六項、詢價防雷五步、政府修繕補貼官方入口。何志宏（阿宏）｜住商不動產樹林站前加盟店。">
+<meta property="og:title" content="修繕報價資訊｜九工種行情數字，三站並列不取平均">
+<meta property="og:description" content="每一筆數字都帶來源站與更新年份，三家並列讓你自己看差異。看懂報價單，比殺價更重要。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://0930848000.com/xiushan/">
 <link rel="canonical" href="https://0930848000.com/xiushan/">
@@ -35,6 +35,44 @@
 .gov p{margin:0 0 12px;font-size:13.5px;color:var(--ink2);line-height:1.8}
 .gov .src{margin-top:auto;font-size:12px;color:var(--fade);line-height:1.7}
 .gov .go{display:inline-block;margin:0 0 10px;font-size:13.5px;font-weight:800;color:var(--brand);word-break:break-all}
+/* ── 行情表 ── */
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.jump a{font-size:13px;font-weight:800;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink2)}
+.jump a:hover{border-color:var(--gold);color:var(--brand)}
+.trade{margin:0 0 36px;scroll-margin-top:88px}
+.trade:last-child{margin-bottom:0}
+.tname{margin:0 0 6px;font-size:20px;font-weight:900;display:flex;align-items:center;gap:10px;line-height:1.4}
+.tname i{font-style:normal;width:28px;height:28px;border-radius:8px;background:var(--brand);color:#fff;font-size:14px;display:grid;place-items:center;flex:none}
+.tnote{margin:0 0 14px;font-size:12.5px;color:var(--fade);line-height:1.8}
+.tnote b{color:#9A3412}
+.srcgrid{display:grid;gap:14px;grid-template-columns:1fr;align-items:start}
+@media(min-width:640px){.srcgrid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.srcgrid{grid-template-columns:repeat(3,1fr)}}
+.srcbox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;display:flex;flex-direction:column;min-width:0}
+.srchd{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 8px;padding-bottom:9px;border-bottom:2px solid var(--brandsoft)}
+.srchd .site{font-size:14.5px;font-weight:900}
+.srchd .upd{font-size:11.5px;font-weight:800;color:var(--brand);background:var(--brandsoft);border-radius:99px;padding:2px 8px;white-space:nowrap}
+.srchd .upd.old{color:#9A3412;background:#FDEEE0}
+.srcbox .basis{margin:0 0 6px;font-size:12px;color:var(--fade);line-height:1.7}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.ptbl{width:100%;border-collapse:collapse;font-size:13px;line-height:1.6}
+.ptbl th,.ptbl td{padding:7px 6px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.ptbl th{font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--fade);white-space:nowrap}
+.ptbl tr:last-child td{border-bottom:0}
+.ptbl td:first-child{color:var(--ink);font-weight:600}
+.ptbl td:nth-child(2){color:var(--fade);font-size:12px;white-space:nowrap}
+.ptbl .p{font-weight:800;color:var(--brand)}
+.ptbl .up{color:#9A3412}
+.psrc{margin-top:auto;padding-top:11px;font-size:12px;font-weight:800;color:var(--brand);word-break:break-all}
+.nodata{background:var(--alt);border-style:dashed}
+.nd{margin:2px 0 0;font-size:13.5px;color:var(--ink2);line-height:1.85}
+.nd b{color:var(--ink);display:block;font-size:14px;margin-bottom:4px}
+.srcbox.wide{grid-column:1/-1}
+.srccard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.srccard h3{margin:0 0 4px;font-size:16px;font-weight:900}
+.srccard .tag{display:inline-block;font-size:11.5px;font-weight:800;padding:2px 9px;border-radius:99px;background:var(--brandsoft);color:var(--brand);margin-bottom:8px}
+.srccard p{margin:0 0 10px;font-size:13px;color:var(--ink2);line-height:1.8}
+.srccard .go{font-size:12.5px;font-weight:800;color:var(--brand);word-break:break-all}
 </style>
 </head>
 <body>
@@ -45,21 +83,582 @@
 <section class="pagehd"><div class="wrap">
   <p class="eyebrow">REPAIR</p>
   <h1>修繕沒有公定價<br>但報價單看不看得懂，差很多</h1>
-  <p>抓漏被追加、油漆坪數算不明白、「一式」包山包海——修繕糾紛九成不是出在單價高低，是出在報價單根本沒寫清楚。這頁不給你行情數字，給你更有用的：每個工種怎麼計價、價格被什麼推高、拿到報價單要對哪幾行。</p>
+  <p>抓漏被追加、油漆坪數算不明白、「一式」包山包海——修繕糾紛九成不是出在單價高低，是出在報價單根本沒寫清楚。這頁給你兩樣東西：九個工種的公開行情區間（每筆都標來源站與更新年份、三家並列不取平均），加上拿到報價單要對哪幾行。</p>
 </div></section>
 
 <section><div class="wrap">
-  <p class="eyebrow">WHY NO PRICE</p>
-  <h2 class="sec">為什麼這頁沒有價格數字</h2>
+  <p class="eyebrow">HOW TO READ</p>
+  <h2 class="sec">這頁的數字怎麼來、怎麼用</h2>
+  <p class="sec-note">選站條件只有三個：有公開的分工種報價區間頁、頁面標得出更新日期、搜尋引用度高。逐頁實際開頁抄錄，不憑搜尋摘要寫數字。</p>
   <div class="note">
-    <b>因為查不到可以負責任引用的公開來源。</b>修繕行情沒有政府開放資料，網路上流傳的數字沒有人掛名負責，而且同一個工種在不同屋況、不同樓層、不同工法下報出來的價可以差一倍以上。與其給你一個會過期、會誤導出價的數字，不如把「怎麼計價、什麼因素會推高價格、詢價要問什麼」講清楚——這才是拿到三張報價單時真正用得上的東西。
+    <b>三家報的價不一樣，是常態，不是誰在騙人。</b>計價基準不同（有的連工帶料、有的只算工資不含料）、頁面更新時間不同、樣本來源不同，數字自然對不起來。所以這頁把三家<b>並列呈現，不取平均、不算中位數</b>——差異本身就是資訊。你要看的不是「哪個數字才對」，是「我手上這張報價單落在區間的哪裡、為什麼」。落在區間外不代表被坑，但你要問得出原因。
+  </div>
+  <div class="cards c3" style="margin-top:18px">
+    <div class="srccard">
+      <h3>PRO360 達人網</h3>
+      <span class="tag">接案媒合平台</span>
+      <p>每個工種有獨立報價專頁並標最後更新日，品類覆蓋最全（含清運、搬家、驗屋）。本頁引用約 133 筆。</p>
+      <a class="go" href="https://www.pro360.com.tw/" target="_blank" rel="noopener nofollow">pro360.com.tw →</a>
+    </div>
+    <div class="srccard">
+      <h3>100室內設計</h3>
+      <span class="tag">裝修內容媒體</span>
+      <p>文章式行情攻略，2025 年底起多篇更新，部分工種有分地區報價。本頁引用約 43 筆；泥作、清運、搬家、驗屋該站無報價數字。</p>
+      <a class="go" href="https://www.100.com.tw/" target="_blank" rel="noopener nofollow">100.com.tw →</a>
+    </div>
+    <div class="srccard">
+      <h3>找師傅 945</h3>
+      <span class="tag">叫修媒合平台</span>
+      <p>報價專區全區 2026-03-24 更新，三站中最新，附平台成交金額統計。本頁引用約 58 筆；驗屋該站無報價頁。</p>
+      <a class="go" href="https://www.945.com.tw/" target="_blank" rel="noopener nofollow">945.com.tw →</a>
+    </div>
+  </div>
+  <div class="note" style="margin-top:18px">
+    <b>使用前提｜</b>以下所有區間僅供參考，<b>實際費用以廠商現場勘估後的書面報價為準</b>——各來源站原文皆有此前提，本頁同步揭露。數字會過期，每筆旁邊的更新年份就是給你判斷新舊用的；<b>PRO360 廁所防水頁最後更新為 2023-11，是全表最舊的一組，引用時請特別注意年份</b>。本頁抄錄查證日：2026-08-22。
   </div>
 </div></section>
 
 <section class="alt"><div class="wrap">
+  <p class="eyebrow">PRICE DATA</p>
+  <h2 class="sec">九工種行情區間：三站並列</h2>
+  <p class="sec-note">同一工種三家各報各的，全部攤開給你看。該站沒有資料的就寫「該站無資料」，不用別家的數字補位。</p>
+  <div class="jump">
+    <a href="#t1">1 泥作</a>
+    <a href="#t2">2 油漆</a>
+    <a href="#t3">3 廁所防水</a>
+    <a href="#t4">4 水電</a>
+    <a href="#t5">5 木工</a>
+    <a href="#t6">6 其他項目</a>
+    <a href="#t7">7 清運</a>
+    <a href="#t8">8 搬家</a>
+    <a href="#t9">9 驗屋</a>
+  </div>
+
+  <!-- 1 泥作 -->
+  <div class="trade" id="t1">
+    <h3 class="tname"><i>1</i>泥作</h3>
+    <p class="tnote">打底、粉光、貼磚、砌牆、拆除都在這一類。三家的「防水」項目也各自出現在泥作頁，與第 3 項廁所防水可交叉對照。</p>
+    <div class="srcgrid">
+      <div class="srcbox">
+        <div class="srchd"><span class="site">PRO360</span><span class="upd">更新 2025-06-26</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>泥作打底</td><td>坪</td><td class="p">$3,000～$6,500</td></tr>
+            <tr><td>水泥粉光</td><td>坪</td><td class="p">$2,000～$3,000</td></tr>
+            <tr><td>砌紅磚牆</td><td>坪</td><td class="p">$4,000～$7,000</td></tr>
+            <tr><td>軟底貼磁磚</td><td>坪</td><td class="p">$2,500～$3,500</td></tr>
+            <tr><td>硬底貼磁磚</td><td>坪</td><td class="p">$3,000～$3,500</td></tr>
+            <tr><td>半濕式貼磁磚</td><td>坪</td><td class="p">$3,500～$4,500</td></tr>
+            <tr><td>牆壁破洞修補</td><td>處</td><td class="p">$1,500～$2,500</td></tr>
+            <tr><td>門窗周邊填縫</td><td>式</td><td class="p">$8,000～$12,000</td></tr>
+            <tr><td>管溝水泥修補</td><td>式</td><td class="p">$4,000～$8,000</td></tr>
+            <tr><td>防水工程</td><td>坪</td><td class="p">$600～$15,000</td></tr>
+            <tr><td>洗石子</td><td>坪</td><td class="p">$2,000～$3,500</td></tr>
+            <tr><td>抿石子</td><td>坪</td><td class="p">$2,500～$4,000</td></tr>
+            <tr><td>磨石子</td><td>坪</td><td class="p">$12,000～$15,000</td></tr>
+            <tr><td>拆除工程</td><td>坪</td><td class="p">$1,000～$1,500</td></tr>
+            <tr><td>水泥材料</td><td>包</td><td class="p">$300～$500</td></tr>
+            <tr><td>紅磚</td><td>塊</td><td class="p">$15～$20</td></tr>
+            <tr><td>混凝土</td><td>立方米</td><td class="p">$2,500～$3,000</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.pro360.com.tw/price/cement_concrete" target="_blank" rel="noopener nofollow">來源：PRO360 泥作報價頁 →</a>
+      </div>
+      <div class="srcbox nodata">
+        <div class="srchd"><span class="site">100室內設計</span><span class="upd">—</span></div>
+        <p class="nd"><b>該站無資料</b>實查該站兩篇泥作文章（2026-04-24、2025-07-08），內容只談計價方式與監工要點，沒有具體報價數字，因此不列。</p>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">找師傅 945</span><span class="upd">更新 2026-03-24</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>整體行情</td><td>坪</td><td class="p">$2,000～$6,000</td></tr>
+            <tr><td>砌紅磚牆</td><td>坪</td><td class="p">$3,000～$6,000</td></tr>
+            <tr><td>壁面貼磚</td><td>坪</td><td class="p">$2,500～$5,000</td></tr>
+            <tr><td>牆面／地坪打底</td><td>坪</td><td class="p">$2,000～$2,700</td></tr>
+            <tr><td>牆壁粉光</td><td>坪</td><td class="p">約 $2,000</td></tr>
+            <tr><td>地面墊高＋洩水坡度</td><td>坪</td><td class="p">約 $6,000</td></tr>
+            <tr><td>門窗填縫</td><td>坪</td><td class="p">$2,000～$3,000</td></tr>
+            <tr><td>洗石子</td><td>坪</td><td class="p">$2,500～$4,500</td></tr>
+            <tr><td>防水用彈性水泥</td><td>坪</td><td class="p">$2,000～$3,000</td></tr>
+            <tr><td>防水用漆料</td><td>坪</td><td class="p">$1,000～$1,500</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.945.com.tw/life/price?id=282" target="_blank" rel="noopener nofollow">來源：找師傅 945 泥作報價頁 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 油漆 -->
+  <div class="trade" id="t2">
+    <h3 class="tname"><i>2</i>油漆</h3>
+    <p class="tnote">這一類最容易看錯：三家的基準不同——PRO360 標連工帶料、945 多數項目標「未含漆料」、100室內設計有分地區。比價前先確認你的報價單含不含料。</p>
+    <div class="srcgrid">
+      <div class="srcbox">
+        <div class="srchd"><span class="site">PRO360</span><span class="upd">更新 2025-09-30</span></div>
+        <p class="basis">基準：頁面標示為連工帶料</p>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>水泥漆（1 道）</td><td>坪</td><td class="p">$300～$500</td></tr>
+            <tr><td>乳膠漆（2 道）</td><td>坪</td><td class="p">$500～$1,000</td></tr>
+            <tr><td>乳膠漆（3 道）</td><td>坪</td><td class="p">$1,000～$1,500</td></tr>
+            <tr><td>石頭漆</td><td>坪</td><td class="p">$1,200～$1,500</td></tr>
+            <tr><td>藝術漆</td><td>公升</td><td class="p">$700～$2,500</td></tr>
+            <tr><td>批土＋研磨</td><td>坪</td><td class="p">$100～$300</td></tr>
+            <tr><td>補 AB 膠</td><td>坪</td><td class="p">$100～$150</td></tr>
+            <tr><td>粉刷天花板</td><td>坪</td><td class="p up">加價約 $100</td></tr>
+            <tr><td>粉刷踢腳板</td><td>尺</td><td class="p">約 $20</td></tr>
+            <tr><td>粉刷門片／門框</td><td>件</td><td class="p">$500～$1,500</td></tr>
+            <tr><td>木作上漆</td><td>尺</td><td class="p">$500～$2,400</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.pro360.com.tw/price/wall_painting" target="_blank" rel="noopener nofollow">來源：PRO360 油漆報價頁 →</a>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">100室內設計</span><span class="upd">更新 2025-12-14</span></div>
+        <p class="basis">基準：連工帶料，且有分地區</p>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>內牆連工帶料（台北／新北）</td><td>坪</td><td class="p">$900～$1,600</td></tr>
+            <tr><td>內牆連工帶料（台中／高雄）</td><td>坪</td><td class="p">$700～$1,300</td></tr>
+            <tr><td>舊屋翻新加價（修補批土防黴）</td><td>坪</td><td class="p up">＋$300～$800</td></tr>
+            <tr><td>天花板加價</td><td>坪</td><td class="p up">＋$100～$300</td></tr>
+            <tr><td>外牆</td><td>—</td><td class="p">內牆的 1.5～2 倍</td></tr>
+            <tr><td>平價品牌連工帶料（得利／Nippon 等）</td><td>坪</td><td class="p">$600～$2,000</td></tr>
+            <tr><td>進口高級（礦物漆／藝術塗料）</td><td>坪</td><td class="p">$3,000～$8,000</td></tr>
+            <tr><td>費用構成</td><td>—</td><td class="p">人工約佔總價六到七成</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.100.com.tw/article/11888" target="_blank" rel="noopener nofollow">來源：100室內設計 油漆行情文 →</a>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">找師傅 945</span><span class="upd">更新 2026-03-24</span></div>
+        <p class="basis">基準：除首列外，多數為未含漆料</p>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>連工帶料整體行情</td><td>坪</td><td class="p">$800～$3,000</td></tr>
+            <tr><td>水泥漆（未含漆料）</td><td>坪</td><td class="p">$200～$300</td></tr>
+            <tr><td>乳膠漆兩道（未含漆料）</td><td>坪</td><td class="p">約 $500</td></tr>
+            <tr><td>乳膠漆三道（未含漆料）</td><td>坪</td><td class="p">約 $700</td></tr>
+            <tr><td>批土＋研磨一道（未含漆料）</td><td>坪</td><td class="p">約 $300</td></tr>
+            <tr><td>批土＋研磨兩道（未含漆料）</td><td>坪</td><td class="p">約 $450</td></tr>
+            <tr><td>補 AB 膠</td><td>坪</td><td class="p">$200～$350</td></tr>
+            <tr><td>踢腳板</td><td>坪</td><td class="p">$80～$120</td></tr>
+            <tr><td>線板</td><td>坪</td><td class="p">$80～$150</td></tr>
+            <tr><td>木作上漆（未含漆料）</td><td>坪</td><td class="p">$1,000～$1,500</td></tr>
+            <tr><td>木作染色（未含漆料）</td><td>尺</td><td class="p">$300～$500</td></tr>
+            <tr><td>清運費</td><td>次</td><td class="p">$500～$1,000</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.945.com.tw/life/price?id=11" target="_blank" rel="noopener nofollow">來源：找師傅 945 油漆報價頁 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 廁所防水 -->
+  <div class="trade" id="t3">
+    <h3 class="tname"><i>3</i>廁所防水</h3>
+    <p class="tnote"><b>⚠️ 注意年份：PRO360 這一頁最後更新為 2023-11，是全表最舊的一組數字</b>，比同工種另外兩家舊了兩年以上，請把它當「較早期的參考值」看，不要拿來當現在的議價基準。</p>
+    <div class="srcgrid">
+      <div class="srcbox">
+        <div class="srchd"><span class="site">PRO360</span><span class="upd old">更新 2023-11（最舊）</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>浴室防水重做</td><td>坪</td><td class="p">$2,000～$2,500</td></tr>
+            <tr><td>浴室防水重做（整間）</td><td>間</td><td class="p">$6,000～$12,000</td></tr>
+            <tr><td>重做洩水坡度</td><td>坪</td><td class="p">$4,500～$6,000</td></tr>
+            <tr><td>磁磚重鋪</td><td>坪</td><td class="p">$2,500～$4,500</td></tr>
+            <tr><td>壁癌處理</td><td>坪</td><td class="p">$2,500～$5,000</td></tr>
+            <tr><td>矽酸質防水</td><td>坪</td><td class="p">$300～$500</td></tr>
+            <tr><td>結構修補</td><td>坪</td><td class="p">$5,000～$7,000</td></tr>
+            <tr><td>漏水初勘（含車馬費）</td><td>次</td><td class="p">$1,500～$3,000</td></tr>
+            <tr><td>浴室漏水儀器檢測</td><td>次</td><td class="p">$8,000～$20,000</td></tr>
+            <tr><td>高壓灌注（打針）</td><td>針</td><td class="p">$500～$1,000</td></tr>
+            <tr><td>低壓灌注</td><td>針</td><td class="p">$300～$500</td></tr>
+            <tr><td>暗管修理</td><td>次</td><td class="p">$3,000～$8,000</td></tr>
+            <tr><td>明管修理</td><td>次</td><td class="p">$500～$1,500</td></tr>
+            <tr><td>浴缸安裝</td><td>組</td><td class="p">$3,500～$7,000</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.pro360.com.tw/price/bathroom_leak_treatment" target="_blank" rel="noopener nofollow">來源：PRO360 浴室漏水處理報價頁 →</a>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">100室內設計</span><span class="upd">更新 2025-05-30</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>浴室防水（彈性水泥）</td><td>坪</td><td class="p">$2,000～$4,000</td></tr>
+            <tr><td>浴室防水（整間）</td><td>間</td><td class="p">$8,000～$20,000</td></tr>
+            <tr><td>屋頂防水漆</td><td>坪</td><td class="p">$600～$1,500</td></tr>
+            <tr><td>屋頂 PU 防水層</td><td>坪</td><td class="p">$1,500～$3,500</td></tr>
+            <tr><td>屋頂防水毯</td><td>坪</td><td class="p">$10,000～$18,000</td></tr>
+            <tr><td>外牆防水漆／防水劑</td><td>坪</td><td class="p">$600～$2,000</td></tr>
+            <tr><td>外牆彈性水泥</td><td>坪</td><td class="p">$2,000～$4,000</td></tr>
+            <tr><td>陽台防水</td><td>坪</td><td class="p">$1,500～$18,000</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.100.com.tw/article/8705" target="_blank" rel="noopener nofollow">來源：100室內設計 防水行情文 →</a>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">找師傅 945</span><span class="upd">更新 2026-03-24</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>浴室防水（彈性水泥塗 2～3 層）</td><td>坪</td><td class="p">$2,000～$3,000</td></tr>
+            <tr><td>屋頂防水漆</td><td>坪</td><td class="p">$600～$1,200</td></tr>
+            <tr><td>屋頂 PU 防水層</td><td>坪</td><td class="p">$1,500～$3,000</td></tr>
+            <tr><td>屋頂彈性水泥</td><td>坪</td><td class="p">$2,000～$3,000</td></tr>
+            <tr><td>屋頂防水毯</td><td>坪</td><td class="p">$10,000～$15,000</td></tr>
+            <tr><td>外牆塗防水漆</td><td>坪</td><td class="p">$600～$1,200</td></tr>
+            <tr><td>外牆重做防水（彈性水泥）</td><td>坪</td><td class="p">$2,000～$3,000</td></tr>
+            <tr><td>高壓灌注（打針）</td><td>針</td><td class="p">$300～$1,000</td></tr>
+            <tr><td>高空作業（蜘蛛人）</td><td>人／天</td><td class="p">$6,000～$10,000</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.945.com.tw/life/price?id=33" target="_blank" rel="noopener nofollow">來源：找師傅 945 防水報價頁 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 水電 -->
+  <div class="trade" id="t4">
+    <h3 class="tname"><i>4</i>水電</h3>
+    <p class="tnote">中古屋最常低估的一塊。留意三家對「檢測」報價差距很大（$100～$1,200），儀器抓漏則一致落在 $8,000～$20,000 這個量級。</p>
+    <div class="srcgrid">
+      <div class="srcbox">
+        <div class="srchd"><span class="site">PRO360</span><span class="upd">更新 2025-08-11</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>電路檢測</td><td>次</td><td class="p">$100～$500</td></tr>
+            <tr><td>專用迴路</td><td>迴</td><td class="p">$2,500～$3,500</td></tr>
+            <tr><td>插座安裝更換</td><td>個</td><td class="p">$150～$1,000</td></tr>
+            <tr><td>開關面板更換</td><td>個</td><td class="p">$500～$700</td></tr>
+            <tr><td>無熔絲開關更換</td><td>顆</td><td class="p">$300～$500</td></tr>
+            <tr><td>動力室內電箱</td><td>式</td><td class="p">$15,000～$20,000</td></tr>
+            <tr><td>電表動力箱（前箱）</td><td>式</td><td class="p">$8,000～$9,500</td></tr>
+            <tr><td>水管配管</td><td>次</td><td class="p">$1,000～$4,000</td></tr>
+            <tr><td>水管移位</td><td>口</td><td class="p">$4,000～$5,000</td></tr>
+            <tr><td>通水管</td><td>支</td><td class="p">$3,000～$5,000</td></tr>
+            <tr><td>燈具安裝</td><td>盞</td><td class="p">$300～$1,500</td></tr>
+            <tr><td>馬桶裝修</td><td>次</td><td class="p">$1,000～$3,500</td></tr>
+            <tr><td>熱水器安裝</td><td>座</td><td class="p">$500～$800</td></tr>
+            <tr><td>抽水馬達安裝</td><td>顆</td><td class="p">$800～$1,500</td></tr>
+            <tr><td>換水塔（含水塔）</td><td>座</td><td class="p">$10,000～$30,000</td></tr>
+            <tr><td>水塔清洗</td><td>次</td><td class="p">$1,000～$2,500</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.pro360.com.tw/price/handyman_ver2" target="_blank" rel="noopener nofollow">來源：PRO360 水電報價頁 →</a>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">100室內設計</span><span class="upd">更新 2025-12-11</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>基本出勤費（車馬費）</td><td>趟</td><td class="p">$500～$800</td></tr>
+            <tr><td>新增插座（舊迴路延長）</td><td>個</td><td class="p">$2,000～$3,500</td></tr>
+            <tr><td>新增插座（新增迴路）</td><td>個</td><td class="p">$2,500～$4,500</td></tr>
+            <tr><td>防水插座</td><td>個</td><td class="p">$1,500 起</td></tr>
+            <tr><td>明管拉線</td><td>迴</td><td class="p">$2,000～$3,500</td></tr>
+            <tr><td>暗管拉線</td><td>迴</td><td class="p">$3,500～$4,500</td></tr>
+            <tr><td>插座安裝</td><td>個</td><td class="p">$150～$1,500</td></tr>
+            <tr><td>開關面板更換</td><td>個</td><td class="p">$500～$1,000</td></tr>
+            <tr><td>線路檢測</td><td>次</td><td class="p">$500～$1,200</td></tr>
+            <tr><td>冷水給水配管</td><td>處</td><td class="p">$1,500～$3,500</td></tr>
+            <tr><td>熱水給水配管</td><td>處</td><td class="p">$3,000～$6,500</td></tr>
+            <tr><td>排水配管</td><td>處</td><td class="p">$1,000～$3,500</td></tr>
+            <tr><td>汙水配管</td><td>處</td><td class="p">$2,000～$4,000</td></tr>
+            <tr><td>汙水配管移位</td><td>處</td><td class="p">$5,000 起</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.100.com.tw/article/11918" target="_blank" rel="noopener nofollow">來源：100室內設計 水電行情文 →</a>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">找師傅 945</span><span class="upd">更新 2026-03-24</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>電路檢測</td><td>次</td><td class="p">$300～$500</td></tr>
+            <tr><td>開關安裝更換</td><td>個</td><td class="p">$300～$1,000</td></tr>
+            <tr><td>迴路安裝</td><td>個</td><td class="p">$2,000～$3,000</td></tr>
+            <tr><td>照明／電器安裝</td><td>個</td><td class="p">$300～$3,000</td></tr>
+            <tr><td>抓漏檢測（不用儀器）</td><td>次</td><td class="p">$500～$1,000</td></tr>
+            <tr><td>儀器抓漏</td><td>次</td><td class="p">$8,000～$20,000</td></tr>
+            <tr><td>高低壓灌注</td><td>針</td><td class="p">$300～$1,000</td></tr>
+            <tr><td>防水施作</td><td>坪</td><td class="p">$700～$10,000</td></tr>
+            <tr><td>水管配管／移位</td><td>次</td><td class="p">$1,000～$5,000</td></tr>
+            <tr><td>馬桶裝修</td><td>次</td><td class="p">$1,000～$3,500</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.945.com.tw/life/price?id=75" target="_blank" rel="noopener nofollow">來源：找師傅 945 水電報價頁 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 木工 -->
+  <div class="trade" id="t5">
+    <h3 class="tname"><i>5</i>木工</h3>
+    <p class="tnote">木工同時有「點工」（按師傅天數）與「按件」兩種計價，兩者不能直接相加比較。945 的數字多為不含木材費。</p>
+    <div class="srcgrid">
+      <div class="srcbox">
+        <div class="srchd"><span class="site">PRO360</span><span class="upd">更新 2025-06-24</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>木作天花板</td><td>坪</td><td class="p">$3,200～$5,600</td></tr>
+            <tr><td>木作隔間牆</td><td>坪</td><td class="p">$3,500～$6,000</td></tr>
+            <tr><td>木地板</td><td>坪</td><td class="p">$800～$3,400</td></tr>
+            <tr><td>木作收納櫃</td><td>尺</td><td class="p">$5,000～$12,000</td></tr>
+            <tr><td>木作門框</td><td>尺</td><td class="p">$3,000～$4,000</td></tr>
+            <tr><td>木作門片</td><td>尺</td><td class="p">$6,000～$7,500</td></tr>
+            <tr><td>木作拉門</td><td>套</td><td class="p">$10,000 以上</td></tr>
+            <tr><td>窗簾盒</td><td>尺</td><td class="p">$400～$600</td></tr>
+            <tr><td>冷氣包管／冷氣盒</td><td>尺</td><td class="p">$500～$700</td></tr>
+            <tr><td>木作貼皮</td><td>坪</td><td class="p">$1,000～$2,000</td></tr>
+            <tr><td>木工修繕</td><td>次</td><td class="p">$1,000～$2,000</td></tr>
+            <tr><td>木作點工（師傅工資）</td><td>天</td><td class="p">$3,000～$4,500</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.pro360.com.tw/price/carpenter" target="_blank" rel="noopener nofollow">來源：PRO360 木工報價頁 →</a>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">100室內設計</span><span class="upd">更新 2025-05-28</span></div>
+        <p class="basis">基準：師傅工資有分北部／中南部</p>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>北部粗木工工資</td><td>天</td><td class="p">$3,500～$4,500</td></tr>
+            <tr><td>北部細木工工資</td><td>天</td><td class="p">$4,500～$5,500</td></tr>
+            <tr><td>北部裝潢木工工資</td><td>天</td><td class="p">$5,000～$6,000</td></tr>
+            <tr><td>中南部師傅工資</td><td>天</td><td class="p">$3,000～$5,000</td></tr>
+            <tr><td>木作隔間牆</td><td>坪</td><td class="p">$3,500～$6,000（以尺約 $300～$400）</td></tr>
+            <tr><td>木作天花板</td><td>坪</td><td class="p">$3,200～$5,600；含工帶料 $4,000～$5,000；特殊造型 $6,000 以上</td></tr>
+            <tr><td>木作收納櫃</td><td>尺</td><td class="p">$5,000～$12,000</td></tr>
+            <tr><td>訂製衣櫃</td><td>尺</td><td class="p">$1,500～$2,500</td></tr>
+            <tr><td>系統櫃</td><td>尺</td><td class="p">$800～$1,500</td></tr>
+            <tr><td>木心板板材</td><td>才</td><td class="p">$550～$850</td></tr>
+            <tr><td>簡易電視牆</td><td>個</td><td class="p">$5,000～$15,000</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.100.com.tw/article/8700" target="_blank" rel="noopener nofollow">來源：100室內設計 木工行情文 →</a>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">找師傅 945</span><span class="upd">更新 2026-03-24</span></div>
+        <p class="basis">基準：多為不含木材費</p>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>整體工程行情</td><td>間</td><td class="p">$60,000～$300,000</td></tr>
+            <tr><td>木作家具修繕</td><td>次</td><td class="p">$500～$1,000</td></tr>
+            <tr><td>簡易木工裝潢</td><td>次</td><td class="p">$1,000～$3,000</td></tr>
+            <tr><td>空間木工裝潢（點工）</td><td>天</td><td class="p">$2,500～$4,500</td></tr>
+            <tr><td>木作貼皮</td><td>坪</td><td class="p">$1,000～$2,000</td></tr>
+            <tr><td>木作地板／天花板</td><td>坪</td><td class="p">$2,500～$4,000</td></tr>
+            <tr><td>木作櫃</td><td>件</td><td class="p">$1,000～$3,000</td></tr>
+            <tr><td>清運費</td><td>次</td><td class="p">$600～$1,000</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.945.com.tw/life/price?id=7" target="_blank" rel="noopener nofollow">來源：找師傅 945 木工報價頁 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 其他 -->
+  <div class="trade" id="t6">
+    <h3 class="tname"><i>6</i>其他項目</h3>
+    <p class="tnote">散見於各站報價頁的順帶項目，不屬於前五大工種但常出現在同一張報價單上。每筆各自標來源頁與更新日。</p>
+    <div class="srcgrid">
+      <div class="srcbox wide">
+        <div class="srchd"><span class="site">跨站彙整</span><span class="upd">逐筆標來源</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th><th>來源（更新日）</th></tr></thead>
+          <tbody>
+            <tr><td>冷氣安裝</td><td>台</td><td class="p">$1,200～$5,000</td><td>PRO360 水電頁（2025-08-11）</td></tr>
+            <tr><td>暖風機安裝</td><td>台</td><td class="p">$2,000～$3,500</td><td>PRO360 水電頁（2025-08-11）</td></tr>
+            <tr><td>木地板</td><td>坪</td><td class="p">$800～$3,400</td><td>PRO360 木工頁（2025-06-24）</td></tr>
+            <tr><td>拆除工程</td><td>坪</td><td class="p">$1,000～$1,500</td><td>PRO360 泥作頁（2025-06-26）</td></tr>
+            <tr><td>拆除清運工人工資</td><td>人／天（8hr）</td><td class="p">$2,000～$3,000</td><td>找師傅 945 清運頁（2026-03-24）</td></tr>
+            <tr><td>高空作業（蜘蛛人）</td><td>人／天</td><td class="p">$6,000～$10,000</td><td>找師傅 945 防水頁（2026-03-24）</td></tr>
+            <tr><td>系統櫃</td><td>尺</td><td class="p">$800～$1,500</td><td>100室內設計 木工行情文（2025-05-28）</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 清運 -->
+  <div class="trade" id="t7">
+    <h3 class="tname"><i>7</i>清運</h3>
+    <p class="tnote">▲ 標記為加價項目，基本價之外另計。這一筆最常在報價單上「被消失」，完工當天才冒出來——簽約前就要問清楚含不含。</p>
+    <div class="srcgrid">
+      <div class="srcbox">
+        <div class="srchd"><span class="site">PRO360</span><span class="upd">更新 2025-06-12</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>家戶廢棄物</td><td>車</td><td class="p">$4,000～$7,500</td></tr>
+            <tr><td>裝潢廢棄物</td><td>車</td><td class="p">$10,000～$15,000</td></tr>
+            <tr><td>營建廢棄物</td><td>噸</td><td class="p">$600～$2,000</td></tr>
+            <tr><td>大型家具（沙發）</td><td>件</td><td class="p">$400～$5,000</td></tr>
+            <tr><td>大型家具（床墊／床架）</td><td>件</td><td class="p">$500～$2,500</td></tr>
+            <tr><td>大型家具（衣櫃／櫃子）</td><td>件</td><td class="p">$300～$1,000</td></tr>
+            <tr><td>大型家電（冰箱）</td><td>件</td><td class="p">$700～$1,000</td></tr>
+            <tr><td>大型家電（冷氣／洗衣機／電視）</td><td>件</td><td class="p">$200～$1,000</td></tr>
+            <tr><td>▲ 樓層搬運加價</td><td>層</td><td class="p up">約 ＋$500</td></tr>
+            <tr><td>▲ 同樓層移動搬運</td><td>式</td><td class="p up">約 $2,500</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.pro360.com.tw/price/junk_removal" target="_blank" rel="noopener nofollow">來源：PRO360 清運報價頁 →</a>
+      </div>
+      <div class="srcbox nodata">
+        <div class="srchd"><span class="site">100室內設計</span><span class="upd">—</span></div>
+        <p class="nd"><b>該站無資料</b>該站沒有清運報價專頁，不列數字。</p>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">找師傅 945</span><span class="upd">更新 2026-03-24</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>廢棄物處理</td><td>車（3.5 噸）</td><td class="p">$3,000～$8,000</td></tr>
+            <tr><td>拆除清運工人工資</td><td>人／天（8hr）</td><td class="p">$2,000～$3,000</td></tr>
+            <tr><td>拆除清運佔比參考</td><td>—</td><td class="p">約總裝潢費 5%</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.945.com.tw/life/price?id=230" target="_blank" rel="noopener nofollow">來源：找師傅 945 清運報價頁 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 搬家 -->
+  <div class="trade" id="t8">
+    <h3 class="tname"><i>8</i>搬家</h3>
+    <p class="tnote">▲ 標記為加價項目，基本價之外另計。搬家糾紛多半發生在現場加價，簽約前先對照下方政府定型化契約範本。</p>
+    <div class="srcgrid">
+      <div class="srcbox">
+        <div class="srchd"><span class="site">PRO360</span><span class="upd">更新 2025-06-03</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>自助搬家</td><td>車</td><td class="p">$1,500～$2,500</td></tr>
+            <tr><td>經濟型搬家</td><td>車</td><td class="p">$2,500～$3,000</td></tr>
+            <tr><td>精緻搬家</td><td>車</td><td class="p">$4,000～$5,000</td></tr>
+            <tr><td>免動手搬家（全包）</td><td>車</td><td class="p">$5,500～$6,000</td></tr>
+            <tr><td>回頭車搬家</td><td>—</td><td class="p">專車價 5～8 折</td></tr>
+            <tr><td>1.75 噸貨車（1F～6F 組合）</td><td>車</td><td class="p">$1,500～$3,500</td></tr>
+            <tr><td>5 噸貨車（1F～6F 組合）</td><td>車</td><td class="p">$2,800～$5,800</td></tr>
+            <tr><td>▲ 樓梯搬運費</td><td>層</td><td class="p up">$300～$500</td></tr>
+            <tr><td>▲ 長距離步行搬運</td><td>每 10 公尺</td><td class="p up">$100～$250</td></tr>
+            <tr><td>▲ 夜間搬運</td><td>車</td><td class="p up">$500～$1,000</td></tr>
+            <tr><td>▲ 大型家具搬運</td><td>趟</td><td class="p up">$1,500～$3,000</td></tr>
+            <tr><td>▲ 吊車服務（首小時）</td><td>小時</td><td class="p up">$2,500～$3,000（後續每小時 $1,000～$1,500）</td></tr>
+            <tr><td>打包服務（計次）</td><td>次</td><td class="p">$3,000～$10,000</td></tr>
+            <tr><td>打包服務（計時）</td><td>人／小時</td><td class="p">$600～$1,200</td></tr>
+            <tr><td>傢俱拆裝</td><td>按尺寸</td><td class="p">$200～$1,200</td></tr>
+            <tr><td>跨縣市：台北→桃園</td><td>5 噸／8 噸</td><td class="p">約 $3,500／$6,000</td></tr>
+            <tr><td>跨縣市：台北→台中</td><td>5 噸／8 噸</td><td class="p">約 $6,500／$9,000</td></tr>
+            <tr><td>跨縣市：台北→高雄</td><td>5 噸／8 噸</td><td class="p">約 $11,000／$17,000</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.pro360.com.tw/price/moving" target="_blank" rel="noopener nofollow">來源：PRO360 搬家報價頁 →</a>
+      </div>
+      <div class="srcbox nodata">
+        <div class="srchd"><span class="site">100室內設計</span><span class="upd">—</span></div>
+        <p class="nd"><b>該站無資料</b>該站沒有搬家報價專頁，不列數字。</p>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">找師傅 945</span><span class="upd">更新 2026-03-24</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>計費方式</td><td>—</td><td class="p">車趟數計價／承包式估價兩種</td></tr>
+            <tr><td>基本行情</td><td>次</td><td class="p">$3,000～$10,000</td></tr>
+            <tr><td>車趟</td><td>趟</td><td class="p">$1,500～$3,000 起</td></tr>
+            <tr><td>樓層數（1～6 樓）</td><td>—</td><td class="p">$1,500～$5,000 起</td></tr>
+            <tr><td>▲ 搬運距離</td><td>每 10 公尺</td><td class="p up">$150～$250 起</td></tr>
+            <tr><td>廢棄物處理</td><td>車</td><td class="p">$2,000～$4,000</td></tr>
+            <tr><td>▲ 吊車支援</td><td>小時</td><td class="p up">$2,500～$3,000</td></tr>
+          </tbody>
+        </table></div>
+        <a class="psrc" href="https://www.945.com.tw/life/price?id=43" target="_blank" rel="noopener nofollow">來源：找師傅 945 搬家報價頁 →</a>
+      </div>
+    </div>
+    <div class="note" style="margin-top:14px">
+      <b>🏛️ 政府端硬資訊｜搬家貨運定型化契約範本</b>——交通部主管，93-04-05 交路字第 93003581 號公告修正，行政院消費者保護處頁面附 PDF 下載。簽約前拿範本對照業者給的合約，缺哪幾條一目了然。<br>
+      <a class="go" style="display:inline-block;margin-top:8px;font-size:13.5px;font-weight:800;color:var(--brand);word-break:break-all" href="https://www.ey.gov.tw/Page/AABD2F12D8A6D561/5aa5e777-6390-4d46-8e6b-46c21e69230a" target="_blank" rel="noopener">行政院消費者保護處 › 搬家貨運定型化契約範本 →</a>
+    </div>
+  </div>
+
+  <!-- 9 驗屋 -->
+  <div class="trade" id="t9">
+    <h3 class="tname"><i>9</i>驗屋</h3>
+    <p class="tnote">找師傅 945 與 100室內設計皆無驗屋報價頁，改由兩家驗屋業者官方頁補位。<b>三個來源都沒有單獨拆「毛胚屋」的價格，所以這頁也不列毛胚價。</b></p>
+    <div class="srcgrid">
+      <div class="srcbox">
+        <div class="srchd"><span class="site">PRO360</span><span class="upd">更新 2025-06-12</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>按坪計價</td><td>坪</td><td class="p">$500～$1,000</td></tr>
+            <tr><td>新成屋</td><td>戶</td><td class="p">$12,000～$24,000</td></tr>
+            <tr><td>中古屋</td><td>戶</td><td class="p">$15,000～$24,000</td></tr>
+            <tr><td>透天</td><td>戶</td><td class="p">$25,000～$50,000</td></tr>
+            <tr><td>複驗</td><td>次</td><td class="p">$4,000～$6,000</td></tr>
+            <tr><td>20 坪以下</td><td>戶</td><td class="p">約 $12,000</td></tr>
+            <tr><td>21～30 坪</td><td>戶</td><td class="p">約 $15,000</td></tr>
+            <tr><td>31～40 坪</td><td>戶</td><td class="p">約 $18,000</td></tr>
+            <tr><td>41～50 坪</td><td>戶</td><td class="p">約 $21,000</td></tr>
+            <tr><td>51～60 坪</td><td>戶</td><td class="p">約 $24,000</td></tr>
+          </tbody>
+        </table></div>
+        <p class="basis" style="margin-top:8px">頁面未逐項列儀器加價，僅提及使用專業儀器檢測。</p>
+        <a class="psrc" href="https://www.pro360.com.tw/price/home_inspection" target="_blank" rel="noopener nofollow">來源：PRO360 驗屋報價頁 →</a>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">房屋管家</span><span class="upd">更新 2026-04-29</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>新成屋小坪數</td><td>戶</td><td class="p">$8,000～$15,000</td></tr>
+            <tr><td>新成屋中坪數</td><td>戶</td><td class="p">$15,000～$25,000</td></tr>
+            <tr><td>大坪數／透天</td><td>戶</td><td class="p">$25,000 以上</td></tr>
+          </tbody>
+        </table></div>
+        <p class="basis" style="margin-top:8px">影響價格七項：坪數、格局複雜度、設備數量、複驗、假日時段加價、檢測深度、人力配置。儀器提及熱顯像儀與內視鏡，未列必含項目；未分毛胚與中古。</p>
+        <a class="psrc" href="https://hemahouse.com.tw/2026/04/29/%E9%A9%97%E5%B1%8B%E8%B2%BB%E7%94%A8%E6%80%8E%E9%BA%BC%E7%AE%97/" target="_blank" rel="noopener nofollow">來源：房屋管家 驗屋費用說明頁 →</a>
+      </div>
+      <div class="srcbox">
+        <div class="srchd"><span class="site">鴻宇健康驗屋</span><span class="upd">更新 2025-07-06</span></div>
+        <div class="tw"><table class="ptbl">
+          <thead><tr><th>細項</th><th>單位</th><th>價格區間</th></tr></thead>
+          <tbody>
+            <tr><td>一般行情</td><td>坪</td><td class="p">$500～$1,000</td></tr>
+            <tr><td>新成屋 21～30 坪（雙北）</td><td>戶</td><td class="p">$10,000～$15,000</td></tr>
+            <tr><td>中古屋 21～30 坪（雙北）</td><td>戶</td><td class="p">$10,000～$15,000</td></tr>
+            <tr><td>預售屋小資方案（20 坪以下，限水電）</td><td>戶</td><td class="p">約 $10,000</td></tr>
+            <tr><td>複驗</td><td>次</td><td class="p">初驗費 5～7 成</td></tr>
+          </tbody>
+        </table></div>
+        <p class="basis" style="margin-top:8px">儀器明列：水分偵測器（牆體潮濕）、紅外線熱顯像儀（漏水）、水質檢測（TDS &amp; EC）；是否含在基本方案未明示。</p>
+        <a class="psrc" href="https://www.healthhouse.tw/blogs/%E9%A9%97%E5%B1%8B%E6%9C%8D%E5%8B%99/197344" target="_blank" rel="noopener nofollow">來源：鴻宇健康驗屋 費用說明頁 →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:26px">
+    <b>再說一次｜</b>上表所有區間<b>僅供參考，實際費用以廠商現場勘估後的書面報價為準</b>。本頁不推薦特定廠商、不代收報價、不介入交易；來源站可能隨時更新或調整數字，以各來源頁當下內容為準。
+  </div>
+</div></section>
+
+<section><div class="wrap">
   <p class="eyebrow">TRADES</p>
   <h2 class="sec">十個常見工種：計價單位與價格因素</h2>
-  <p class="sec-note">先知道對方用什麼單位算錢，才知道報價單上的數量對不對。</p>
+  <p class="sec-note">上面的數字告訴你「大概多少錢」，這一段告訴你「錢為什麼會落在區間的高端或低端」。先知道對方用什麼單位算錢，才知道報價單上的數量對不對。</p>
   <div class="cards c3">
     <div class="tcard">
       <h3>水電（換線／配電箱／給排水）</h3>
@@ -164,7 +763,7 @@
   </div>
 </div></section>
 
-<section><div class="wrap">
+<section class="alt"><div class="wrap">
   <p class="eyebrow">CHECKLIST</p>
   <h2 class="sec">報價單必列六項：拿著這張對</h2>
   <p class="sec-note">報價單上沒寫的，日後都算你的。六項全有再談價，缺一項就請對方補。</p>
@@ -178,7 +777,7 @@
   </ul>
 </div></section>
 
-<section class="alt"><div class="wrap">
+<section><div class="wrap">
   <p class="eyebrow">FIVE STEPS</p>
   <h2 class="sec">詢價防雷五步</h2>
   <p class="sec-note">順序照走，每一步都在幫下一步把關。</p>
@@ -191,7 +790,7 @@
   </ul>
 </div></section>
 
-<section><div class="wrap">
+<section class="alt"><div class="wrap">
   <p class="eyebrow">GOVERNMENT</p>
   <h2 class="sec">政府修繕補貼：官方入口</h2>
   <p class="sec-note">先講清楚：這是「貸款利息補貼」，政府幫你付一部分利息，不是直接發修繕費。有屋齡、自用、所得財產門檻等資格條件，每年受理一次，一切以官方公告為準。</p>
@@ -220,7 +819,7 @@
   </div>
 </div></section>
 
-<section class="alt"><div class="wrap">
+<section><div class="wrap">
   <p class="eyebrow">BEFORE YOU BUY</p>
   <h2 class="sec">買中古屋的人：修繕預算要算在總價裡</h2>
   <p class="sec-note">同一個總價，屋齡 5 年跟屋齡 35 年是兩種完全不同的支出結構。</p>
@@ -248,7 +847,7 @@
 
 <section><div class="wrap">
   <div class="note">
-    <b>免責聲明｜</b>本頁為一般性概念整理，不是個案估價，也不推薦特定廠商。各工種計價方式為市場常見慣例，實際費用以廠商現場勘估後的書面報價為準；政府補貼資訊以各官方頁面當年度公告為準。何志宏（阿宏）｜住商不動產 樹林站前加盟店｜服務區域：新北。
+    <b>免責聲明｜</b>本頁行情數字為公開來源的整理引用，每筆均標示來源網站與該頁更新年份，本頁不對來源數字的正確性作保證，也不推薦特定廠商。所有區間僅供參考，<b>實際費用以廠商現場勘估後的書面報價為準</b>；各工種計價方式為市場常見慣例，會因屋況、樓層、工法而異；政府補貼資訊以各官方頁面當年度公告為準。本頁抄錄查證日 2026-08-22。何志宏（阿宏）｜住商不動產 樹林站前加盟店｜服務區域：新北。
   </div>
 </div></section>
 
