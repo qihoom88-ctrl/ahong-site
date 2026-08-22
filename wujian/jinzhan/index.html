@@ -75,6 +75,17 @@
   --solid-line:#027A34;
   --on-light:#1D2731;
   --gold-on-dark:#E3B857;
+  /* 懶人包整合區塊（.pk）沿用的別名，跟著上面的主題一起翻轉 */
+  --ink2:var(--muted);
+  --alert:var(--danger);
+  --green:var(--teal);
+  --orange:var(--warm);
+  --navy:var(--trust);
+  --bg:var(--paper);
+  --goldText:var(--gold);
+  /* 實心彩底＋白字，兩種主題都不翻轉 */
+  --navySolid:#2B3A4A;
+  --alertSolid:#9E2626;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -448,7 +459,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 @media (min-width:680px){
   .page{padding-left:22px;padding-right:22px}
   .topbar{margin-left:-22px;margin-right:-22px;padding-left:22px;padding-right:22px}
-  .footer{margin-left:-22px;margin-right:-22px;padding-left:22px;padding-right:22px}
+  /* .footer 在 .page 之外，不能吃 .page 的負邊界，否則整頁在桌機寬度會橫向溢出 44px */
+  .footer{padding-left:22px;padding-right:22px}
   .keys{grid-template-columns:repeat(4,1fr)}
   .grid2{grid-template-columns:repeat(2,1fr)}
   .split{grid-template-columns:repeat(2,1fr)}
@@ -469,6 +481,52 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .verify td:first-child{font-weight:800;white-space:nowrap}
 .verify tr:last-child td{border-bottom:0}
 .verify-ft{padding:13px 17px;background:var(--bg-soft,#F4F2ED);font-size:.82rem;line-height:1.85}
+
+/* ===== 懶人包整合區塊 .pk（只放內容類樣式，版面框架沿用本頁） ===== */
+.pk .flip{background:linear-gradient(160deg,#33455A,#1D2833);color:#F4EFE6;border-radius:var(--radius);padding:23px 20px;box-shadow:var(--shadow)}
+.pk .flip .kicker{color:var(--gold-on-dark)}
+.pk .flip h2{margin:5px 0 11px;color:#fff}
+.pk .flip p{margin:0;color:#E2DACE;font-size:.99rem;line-height:1.92}
+.pk .flip p+p{margin-top:12px}
+.pk .flip strong{color:#fff;font-weight:900}
+
+.pk .myth{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px 16px;margin-bottom:11px;box-shadow:0 8px 22px rgba(43,58,74,.05)}
+.pk .myth .wrong{display:block;margin-bottom:7px;color:var(--danger);text-decoration:line-through;font-weight:800;font-size:.93rem;line-height:1.7}
+.pk .myth .right{display:block;font-size:.95rem;line-height:1.88}
+.pk .myth .right b{color:var(--teal);font-weight:900}
+.pk .myth .right strong{color:var(--ink);font-weight:900}
+.pk .myth .srcline{margin:9px 0 0;font-size:.83rem;color:var(--muted);line-height:1.75}
+.pk .myth a{color:var(--trust);font-weight:800}
+
+.pk .riskcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:14px;box-shadow:0 8px 22px rgba(43,58,74,.06)}
+.pk .riskhd{background:var(--navySolid);color:#fff;padding:13px 16px}
+.pk .riskhd span{display:block;font-size:.75rem;font-weight:800;letter-spacing:.1em;opacity:.82}
+.pk .riskhd strong{display:block;margin-top:2px;font-size:1.03rem;font-weight:900;line-height:1.5}
+.pk .riskbody{padding:5px 16px 14px}
+.pk .rk{display:block;grid-template-columns:none;padding:12px 0;border-bottom:1px dashed var(--line)}
+.pk .rk:last-child{border-bottom:0}
+.pk .rk b{display:block;margin-bottom:4px;padding-top:0;font-size:.79rem;font-weight:900;letter-spacing:.05em;color:var(--warm)}
+.pk .rk .v{display:block;font-size:.9rem;line-height:1.85;color:var(--ink)}
+.pk .rk .v strong{color:var(--ink);font-weight:900}
+.pk .rk ol,.pk .rk ul{margin:6px 0 0;padding-left:1.3rem}
+.pk .rk li{margin-bottom:5px;font-size:.9rem;line-height:1.8}
+.pk .rk .src{display:block;margin-top:6px;font-size:.8rem;color:var(--muted);line-height:1.72}
+.pk .rk a{color:var(--trust);font-weight:800}
+.pk .pending{display:inline-block;margin-right:6px;padding:2px 8px;border:0;border-radius:6px;
+  background:var(--alertSolid);color:#fff;font-size:.75rem;font-weight:900;vertical-align:2px}
+
+.pk .track{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px 16px;margin-bottom:11px;box-shadow:0 8px 22px rgba(43,58,74,.05)}
+.pk .track h3{margin:0;color:var(--trust);font-size:1.05rem;font-weight:900}
+.pk .track ol{margin:8px 0 0;padding-left:1.3rem}
+.pk .track li{margin-bottom:6px;font-size:.92rem;line-height:1.8}
+
+.pk details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:9px;box-shadow:0 8px 22px rgba(43,58,74,.05)}
+.pk summary{list-style:none;cursor:pointer;padding:14px 16px;color:var(--trust);font-size:.98rem;font-weight:900;line-height:1.65}
+.pk summary::-webkit-details-marker{display:none}
+.pk summary::before{content:"＋ ";color:var(--warm);font-weight:900}
+.pk details[open] summary::before{content:"－ "}
+.pk details .ans{padding:0 16px 15px;font-size:.92rem;color:var(--muted);line-height:1.9}
+.pk details .ans strong{color:var(--ink);font-weight:900}
 </style>
 </head>
 <body>
@@ -507,6 +565,15 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
   </header>
 
+  <section class="pk">
+    <div class="flip">
+      <div class="kicker">先講一件多數人不知道的事</div>
+      <h2>它不是「比較便宜的住宅」</h2>
+      <p>看到樹林後站商圈、838 萬、15.33 坪，第一個反應通常是「這個總價在這個位置怎麼還買得到」。會有這個價差，關鍵不在屋況，在<strong>登記用途</strong>——這一件在委託資料上載明的主要用途是<strong>商業用</strong>，不是住宅用。</p>
+      <p>同樣的坪數、同樣的位置，登記用途不一樣，能規劃什麼、銀行怎麼估價與核貸、持有與交易的稅費怎麼算，全部都會不一樣。這一頁存在的目的只有一個：把這件事講到你不用再猜，也不用等到簽約前才發現。</p>
+    </div>
+  </section>
+
   <section>
     <div class="sec-head">
       <div class="kicker">30 秒看懂</div>
@@ -537,6 +604,32 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
   </section>
 
+  <section class="pk" id="mishi">
+    <div class="sec-head">
+      <div class="kicker">三個最常想錯的地方</div>
+      <h2>先把這三件事調回來</h2>
+      <p class="lead">這三句話我在現場聽過很多次。不是誰笨，是資訊本來就不好查。</p>
+    </div>
+
+    <div class="myth">
+      <span class="wrong">「商業用比較便宜，買來自己住比較划算。」</span>
+      <span class="right"><b>更正：</b>登記用途寫的是商業用，能不能作住宅使用、能不能做你想做的營業內容，要看使用執照登載內容與都市計畫使用分區，<strong>不是買下來就自動可以</strong>。這件事我不猜也不背書，一定要洽主管機關查證。而且銀行對非住宅用途的估價與成數通常更保守，自備款要抓寬。</span>
+      <p class="srcline">查證入口：<a href="https://building-management.publicwork.ntpc.gov.tw/" target="_blank" rel="noopener">新北市建管便民服務網</a>、<a href="https://dcland.moi.gov.tw/" target="_blank" rel="noopener">內政部地政司數位櫃臺</a>。</p>
+    </div>
+
+    <div class="myth">
+      <span class="wrong">「登記 15.33 坪，就是有 15.33 坪可以用。」</span>
+      <span class="right"><b>更正：</b>登記 15.33 坪裡，<strong>主建物 9.73 坪</strong>＋附屬建物 0.82 坪才是你實際碰得到、用得到的部分，公設 4.78 坪是分擔的共用部分，公設比 31.2%。比價的時候一律用<strong>主建坪數</strong>去對，拿含公設的登記總坪數去比，算出來的單價會失真。</span>
+      <p class="srcline">面積與範圍最終以地政機關登載為準，見<a href="https://dcland.moi.gov.tw/" target="_blank" rel="noopener">地政司數位櫃臺</a>申請謄本與建物測量成果圖。</p>
+    </div>
+
+    <div class="myth">
+      <span class="wrong">「寫空屋，代表屋況都整理好了。」</span>
+      <span class="right"><b>更正：</b>空屋的意思是<strong>沒有人在使用</strong>，不等於整理好了。現況留有前手的固定櫃台與玻璃隔屏、地面有未收整的外露線路，外部工作陽台的管線與磁磚是舊的；屋齡 29 年，管線與防水目前沒有可查的複驗紀錄。這些下面都有照片，也都有費用區間。</span>
+      <p class="srcline">現況照片拍攝日 2026-07-27，看現場當天以實際狀況為準。</p>
+    </div>
+  </section>
+
   <section>
     <div class="sec-head">
       <div class="kicker">影片</div>
@@ -555,85 +648,169 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   <section>
     <div class="sec-head">
       <div class="kicker">現況直球</div>
-      <h2>空屋現況<br>全部拍給你看</h2>
-      <p class="lead">以下照片是現場實拍的原始照片，沒有另外修圖、沒有加字卡。點照片可以放大看細節。</p>
+      <h2>好的壞的<br>一起拍給你看</h2>
+      <p class="lead">以下八張是現場實拍的原始照片，沒有虛擬佈置、沒有裝潢示意圖、沒有修掉任何東西。點照片可以放大看細節。</p>
     </div>
     <div class="gallery">
-      <button class="wide" type="button" data-full="a/k_hero.jpg" aria-label="放大空間現況照片">
-        <img src="a/k_hero.jpg" alt="空間現況，開放式配置"><span class="cap">空間現況，開放式配置，商業用途使用彈性大</span>
+      <button class="wide" type="button" data-full="a/k_hero.jpg" aria-label="放大開放區域主視角照片">
+        <img src="a/k_hero.jpg" alt="開放區域主視角現況，留有前手固定櫃台與玻璃隔屏"><span class="cap">開放區域主視角。橘色櫃台與鋁框玻璃隔屏是前手留下的固定物，要留要拆得寫進契約附件</span>
       </button>
-      <button type="button" data-full="a/k_open.jpg" aria-label="放大空間現況照片">
-        <img src="a/k_open.jpg" alt="空間現況，電梯大樓10樓"><span class="cap">電梯大樓10樓，屋齡29年，目前無人使用</span>
+      <button type="button" data-full="a/k_window.jpg" aria-label="放大靠窗側照片">
+        <img src="a/k_window.jpg" alt="開放區域靠窗側，地面有外露線路"><span class="cap">靠窗側，通往外部工作陽台。地面有一綑未收整的外露線路，通電前要先請師傅檢查</span>
       </button>
-      <button class="wide" type="button" data-full="a/k_window.jpg" aria-label="放大採光照片">
-        <img src="a/k_window.jpg" alt="空間現況，對外窗與陽台"><span class="cap">對外窗與陽台現況；售屋資料登載座向朝西北，尚未經謄本或現場實測複核；空屋現況，交屋時間好安排</span>
+      <button type="button" data-full="a/k_partition.jpg" aria-label="放大玻璃隔屏照片">
+        <img src="a/k_partition.jpg" alt="玻璃隔屏把空間分成前後兩段"><span class="cap">玻璃隔屏把空間分成前後兩段，現況是開放式配置，沒有實體隔間牆</span>
+      </button>
+      <button type="button" data-full="a/k_open.jpg" aria-label="放大內側區域照片">
+        <img src="a/k_open.jpg" alt="內側區域，綠色百葉玻璃隔間"><span class="cap">內側區域，綠色百葉玻璃隔間。天花板是明管配置，沒有做天花板包覆</span>
+      </button>
+      <button type="button" data-full="a/k_pantry.jpg" aria-label="放大茶水區照片">
+        <img src="a/k_pantry.jpg" alt="茶水區，舊式上下櫃與不鏽鋼水槽"><span class="cap">茶水區。上下櫃與不鏽鋼水槽是舊式的，黃色壁磚沒有更新過，要用得順手大概要重做</span>
+      </button>
+      <button type="button" data-full="a/k_bath.jpg" aria-label="放大衛浴照片">
+        <img src="a/k_bath.jpg" alt="衛浴現況，灰色石紋壁磚"><span class="cap">衛浴。這一區看得出來整理過，壁地磚較新，是全場狀況最好的地方；防水層年份沒有紀錄可查</span>
+      </button>
+      <button type="button" data-full="a/k_balcony.jpg" aria-label="放大外部工作陽台照片">
+        <img src="a/k_balcony.jpg" alt="外部工作陽台，管線外露、磁磚老舊"><span class="cap">外部工作陽台。管線外露、磁磚與五金明顯老舊，這裡最看得出來屋齡 29 年</span>
+      </button>
+      <button type="button" data-full="a/k_entry.jpg" aria-label="放大入口照片">
+        <img src="a/k_entry.jpg" alt="入口，深色大門與對講機電箱"><span class="cap">入口。深色大門、對講機與電箱都在這一側，地面磁磚有前手留下的圓形壓痕</span>
       </button>
     </div>
-    <p class="zoomhint">照片與影片皆為現況實拍，未經修飾。本頁不使用任何虛擬佈置或裝潢示意圖。</p>
+    <p class="zoomhint">照片皆為現況實拍未經修飾，拍攝日 2026-07-27。本頁不使用任何虛擬佈置或裝潢示意圖，也沒有 AI 生成的畫面。</p>
   </section>
 
-  <section class="truth">
+  <section class="pk" id="fengxian">
     <div class="sec-head">
-      <div class="kicker">重要條件</div>
-      <h2>使用限制我先講完</h2>
-      <p class="lead">主要用途登記為商業用，不是住宅用——這一頁把能查證的都攤開講，不是等你私訊才肯講的版本。</p>
+      <div class="kicker">六項缺點與要花的錢</div>
+      <h2>缺點我先講完<br>連費用一起講</h2>
+      <p class="lead">每一項都走完五件事：不處理會怎樣、去哪查怎麼查、大概要花多少、要不要驗、你怎麼承擔（預算怎麼算、交易怎麼談、先做哪個、我能做的）。<strong>費用只引用有出處的公開報價區間，並標來源與年份；查不到出處的，寫「待查證」，不編數字給你。</strong></p>
     </div>
-    <div class="tlist">
-      <div class="titem">
-        <div class="tnum">1</div>
-        <div>
-          <strong>屋齡29年，管線與防水建議現場複驗</strong>
-          <p>民國86年6月完成，屋齡29年，現況空屋。管線與防水沒有明顯漏水痕跡的紀錄，但屋齡到了，我建議還是花小錢先查一次，比帶著疑慮簽約踏實。</p>
-          <div class="riskkit">
-            <div class="rk"><b>不處理的風險</b><span class="v">老舊大樓水電管線與防水層可能已達更新年限，若未提前檢查，後續使用時可能出現跳電、漏水等問題，增加事後維修成本。</span></div>
-            <div class="rk"><b>維修策略選項</b><span class="v">委託水電師傅現場檢測評估迴路容量與管線狀況／視結果決定是否局部換管或加設專用迴路／設備周邊防水視需要重做。</span></div>
-            <div class="rk"><b>參考費用</b><span class="v">電路檢測 $300～500／次（找師傅945，2026-03-24）、$100～500／次（PRO360 水電頁，2025-08-11）；專用迴路 $2,500～3,500／迴（PRO360，2025-08-11）、迴路安裝 $2,000～3,000／迴（找師傅945，2026-03-24）；局部換管：水管配管 $1,000～4,000／次（PRO360 水電頁，2025-08-11）、$1,000～5,000／次（找師傅945，2026-03-24）；以上工項不拆除，清運費不另計。<span class="src">以上為市場公開報價區間，同工種各站數字不一致是常態，全部並列不取平均。實際費用以現場估價為準。</span></span></div>
-            <div class="rk"><b>驗屋建議</b><span class="v">屋齡29年建議自費做一次複驗，中古行情約 $10,000～15,000（鴻宇健康驗屋，2025-07-06）或 $15,000～24,000／戶（PRO360，2025-06-12）。</span></div>
-            <div class="rk"><b>買方對策</b><span class="v"><strong>預算怎麼算：</strong>這條先抓上限 <strong>$12,000</strong>（專用迴路 2 迴＋局部換管 1 次，不拆除、清運不另計；檢測與複驗另計）加進「入住總成本」；想把修繕費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定——商業用途標的的核貸條件通常比住宅保守，先問過再算。<br><strong>交易怎麼談：</strong>檢測或估價單出來後可依報價議價，契約可約定屋主交屋前修復或價金保留，可要求交屋前複驗。<br><strong>處理順序：</strong>安全（電／結構）→ 漏水防水 → 管線 → 美化，這條在第一段「安全」與第三段「管線」，入住前做完。<br><strong>我能做的：</strong>陪同複驗、代約水電師傅估價並做報價單比價、把修繕條件寫進要約或契約建議、交屋清點。</span></div>
-          </div>
-        </div>
+
+    <div class="riskcard">
+      <div class="riskhd"><span>缺點 01</span><strong>主要用途登記為商業用，實際能做什麼要查證</strong></div>
+      <div class="riskbody">
+        <div class="rk"><b>不處理的風險</b><span class="v">沒查證就照自己的想法規劃使用內容，可能與使用執照登載用途、消防法規或營業登記要求不符，衍生違規使用的風險；銀行端也可能因為非住宅用途而壓低估價與成數，讓自備款臨時變大。</span></div>
+        <div class="rk"><b>查證策略</b><span class="v">
+          <ol>
+            <li>向委託方索取使用執照影本，或自行申請建物謄本，核對登載的主要用途。</li>
+            <li>洽新北市建管與都市計畫相關單位，查使用分區與登記用途，問清楚你想做的使用內容合不合規。</li>
+            <li>有特定營業計畫的，另洽該目的事業主管機關——不同營業項目各有登記與消防要求。</li>
+            <li>簽約前請地政士協助確認使用執照登載內容與謄本一致。</li>
+          </ol>
+          <strong>這一段我不猜、也不替它背書，需洽主管機關查證。</strong></span></div>
+        <div class="rk"><b>費用</b><span class="v"><strong>無修繕費用，屬使用限制／交易條件，不進本頁修繕合計。</strong><span class="pending">待查證</span>公部門查詢使用分區與登記用途多為申請規費或免費，金額依各機關公告。<span class="src">70 部門修繕行情偵查表（查證日 2026-08-22）為修繕類報價彙整，未收錄公部門規費，故本頁不列數字。</span></span></div>
+        <div class="rk"><b>驗屋成本</b><span class="v">用途查證屬書面與行政程序，不在驗屋範圍，不需另付驗屋費；後續若要調整內部裝修，先做水電評估（費用見缺點 02）。</span></div>
+        <div class="rk"><b>買方對策（怎麼承擔）</b><span class="v"><strong>預算怎麼算：</strong>查證使用分區與登記用途多為公部門規費或免費，不進修繕合計；若查證結果要求消防或裝修補件，費用以現場估價為準。<br><strong>交易怎麼談：</strong>可與委託方協商把「查證結果符合你的使用目的」寫成契約條件，條款內容由地政士擬定；查證沒完成前先不要下定。能不能做你想做的使用內容，可向主管機關查詢，依官方答覆為準。<br><strong>處理順序：</strong>這條不是修繕，是簽約前必須先完成的查證，排在所有工項之前。<br><strong>我能做的：</strong>陪同向主管機關查詢、把查證條件寫進要約或契約建議。</span></div>
       </div>
-      <div class="titem">
-        <div class="tnum">2</div>
-        <div>
-          <strong>商業用途的實際使用限制，需要洽主管機關查證</strong>
-          <p>主要用途登記為商業用，能做什麼、不能做什麼，不是我一句話說了算，也不是你猜的準，這件事必須查證清楚再決定。</p>
-          <div class="riskkit">
-            <div class="rk"><b>不處理的風險</b><span class="v">若未經查證就依個人需求規劃使用內容，可能與登記用途、消防法規或營業登記要求不符，衍生違規使用的風險。</span></div>
-            <div class="rk"><b>查證策略選項</b><span class="v">看現場前先洽新北市都市計畫或建管相關單位查詢使用分區與登記用途／簽約前請地政士協助確認使用執照登載內容／有特定營業計畫，另洽該目的事業主管機關。</span></div>
-            <div class="rk"><b>參考費用</b><span class="v">本表（70修繕行情偵查表）為修繕類報價彙整，查證使用分區與登記用途多為公部門申請規費或免費，沒有統一數字可引用，不編造。</span></div>
-            <div class="rk"><b>驗屋建議</b><span class="v">非結構性項目可以不驗；後續若要調整內部裝修，建議先做水電評估。</span></div>
-            <div class="rk"><b>買方對策</b><span class="v"><strong>預算怎麼算：</strong>查證使用分區與登記用途多為公部門規費或免費，不進修繕合計；若查證結果要求消防或裝修補件，費用以現場估價為準。<br><strong>交易怎麼談：</strong>可與屋主協商把「查證結果符合你的使用目的」寫成契約條件，條款內容由地政士擬定；查證沒完成前先不要下定。<br><strong>處理順序：</strong>這條不是修繕，是簽約前必須先完成的查證，排在所有工項之前。<br><strong>我能做的：</strong>陪同向主管機關查詢、把查證條件寫進要約或契約建議。</span></div>
-          </div>
-        </div>
+    </div>
+
+    <div class="riskcard">
+      <div class="riskhd"><span>缺點 02</span><strong>屋齡 29 年，管線與防水沒有複驗紀錄</strong></div>
+      <div class="riskbody">
+        <div class="rk"><b>不處理的風險</b><span class="v">民國 86 年 6 月完成，屋齡 29 年。老舊大樓的給排水管線、配電迴路與防水層可能已達更新年限，沒有提前檢查就使用，後續可能出現跳電、滲漏、壁癌，維修時要打牆打地，事後處理的成本遠高於事前檢查。</span></div>
+        <div class="rk"><b>維修策略</b><span class="v">
+          <ol>
+            <li>先請水電師傅到現場做電路檢測，評估迴路容量夠不夠、老線要不要換。</li>
+            <li>視結果決定是否局部換管、或為高耗電設備加設專用迴路。</li>
+            <li>衛浴與茶水區周邊做一次漏水檢查，有疑慮才進到防水重做。</li>
+            <li>先做檢測再決定要不要施工，不要一開始就編整包裝修預算。</li>
+          </ol></span></div>
+        <div class="rk"><b>費用</b><span class="v">
+          <ul>
+            <li>電路檢測 $300～500／次（找師傅945，2026-03-24）；另一站列 $100～500／次（PRO360 水電頁，2025-08-11）。</li>
+            <li>專用迴路 $2,500～3,500／迴（PRO360 水電頁，2025-08-11）；迴路安裝 $2,000～3,000／個（找師傅945，2026-03-24）。</li>
+            <li>水管配管 $1,000～4,000／次、通水管 $3,000～5,000／支（PRO360 水電頁，2025-08-11）。</li>
+            <li>水管配管／移位 $1,000～5,000／次（找師傅945，2026-03-24）。</li>
+            <li>抓漏檢測（不用儀器）$500～1,000／次、儀器抓漏 $8,000～20,000／次（找師傅945，2026-03-24）。</li>
+            <li>衛浴防水（彈性水泥塗 2～3 層）$2,000～3,000／坪（找師傅945，2026-03-24）；整間防水重做 $6,000～12,000／間、壁癌處理 $2,500～5,000／坪（PRO360 防水頁，<strong>該頁最後更新 2023-11-06，是三個來源中最舊的</strong>）。</li>
+          </ul>
+          <span class="src">來源：70 部門修繕行情偵查表（查證日 2026-08-22）。三站數字不一致是常態，本頁全部並列不取平均。以上工項不拆除，清運費不另計；以上為市場公開報價區間，實際費用以現場估價為準。</span></span></div>
+        <div class="rk"><b>驗屋成本</b><span class="v">
+          <ul>
+            <li>中古標的驗屋 $15,000～24,000／戶；20 坪以下約 $12,000／戶；按坪計價 $500～1,000／坪；複驗 $4,000～6,000／次（PRO360 驗屋頁，2025-06-12）。</li>
+            <li>一般行情 $500～1,000／坪、複驗約初驗費的 5～7 成（鴻宇健康驗屋，2025-07-06）。</li>
+            <li>以本案登記 15.33 坪按坪換算約 $7,700～15,300（換算值，非報價）。</li>
+          </ul>
+          <span class="src">來源：70 部門修繕行情偵查表（查證日 2026-08-22）。屋齡到了，這筆錢我建議花——比帶著疑慮簽約踏實。</span></span></div>
+        <div class="rk"><b>買方對策（怎麼承擔）</b><span class="v"><strong>預算怎麼算：</strong>這條先抓上限 <strong>$12,000</strong>（專用迴路 2 迴 × $2,000～3,500＋局部換管 1 次 $1,000～5,000＝$5,000～12,000，不拆除、清運不另計；電路檢測、抓漏與複驗另計）加進「<a href="#zongchengben">入住總成本</a>」；防水只在檢測有疑慮時才進到重做，費用另計以現場估價為準。想把修繕費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定——商業用途標的的核貸條件通常比住宅保守，先問過再算。<br><strong>交易怎麼談：</strong>檢測或估價單出來後可依報價議價，契約可約定委託方交屋前修復或價金保留，可要求交屋前複驗。<br><strong>處理順序：</strong>安全（電／結構）→ 漏水防水 → 管線 → 美化，這條在第一段「安全」與第三段「管線」，入住前做完。<br><strong>我能做的：</strong>陪同複驗、代約水電師傅估價並做報價單比價、把修繕條件寫進要約或契約建議、交屋清點。</span></div>
       </div>
-      <div class="titem">
-        <div class="tnum">3</div>
-        <div>
-          <strong>公設比31.2%，比一般華廈略高</strong>
-          <p>登記15.33坪中，主建9.73坪、公設4.78坪、附屬0.82坪，公設比31.2%。比價時建議用「主建坪數」去對，不要只看登記總坪數，比較基準才會一致。</p>
-          <div class="riskkit">
-            <div class="rk"><b>不處理的風險</b><span class="v">用登記總坪數比價，單價被公設稀釋，跟主建坪數大的標的比會失真。</span></div>
-            <div class="rk"><b>處理選項</b><span class="v">比價一律用主建 9.73 坪對主建坪數／向管委會確認公設項目與維護狀況。</span></div>
-            <div class="rk"><b>參考費用</b><span class="v">無修繕費用，屬登記條件。</span></div>
-            <div class="rk"><b>看現場怎麼確認</b><span class="v">對照謄本登記的主建、附屬、公設坪數；實走公共空間看維護狀況。</span></div>
-            <div class="rk"><b>買方對策</b><span class="v"><strong>預算怎麼算：</strong>這條不進修繕合計。<br><strong>交易怎麼談：</strong>可要求以謄本坪數為準載明於不動產說明書與契約。<br><strong>處理順序：</strong>簽約前確認。<br><strong>我能做的：</strong>陪看時帶謄本核對、把坪數口徑寫進契約建議。</span></div>
-          </div>
-        </div>
+    </div>
+
+    <div class="riskcard">
+      <div class="riskhd"><span>缺點 03</span><strong>無車位，停放要自己解決</strong></div>
+      <div class="riskbody">
+        <div class="rk"><b>不處理的風險</b><span class="v">本案沒有配置車位。每個月的停放費用是長期固定支出，要算進持有成本；如果將來有訪客或載貨需求，周邊臨停條件也要先走過一次。轉手時，需要車位的買方會直接被排除，這一點對未來的流通性有影響。</span></div>
+        <div class="rk"><b>查證策略</b><span class="v">
+          <ol>
+            <li>看現場當天實際走一圈周邊停車場，問月租金額、有沒有排隊、能不能租到固定位。</li>
+            <li>先用停車場位置查詢工具看清楚哪些場離得近，再實地確認：<a href="/tingche/" target="_blank" rel="noopener">本站停車場位置查詢</a>（只吃政府開放資料）。</li>
+            <li>面前路寬 20 米，臨停條件當天實際走一次比看資料準。</li>
+          </ol></span></div>
+        <div class="rk"><b>費用</b><span class="v"><strong>無修繕費用，屬交易條件（停放費用是持有成本），不進本頁修繕合計。</strong><span class="pending">待查證</span>樹林後站周邊停車場月租費用，以各停車場現場公告為準。<span class="src">70 部門修繕行情偵查表未收錄停車場月租行情，本頁不編數字。看現場那天我陪你逐家問。</span></span></div>
+        <div class="rk"><b>驗屋成本</b><span class="v">不適用——沒有車位就沒有車位相關的驗收項目（車道高度、車位寬度、車重限制都不用驗）。</span></div>
+        <div class="rk"><b>買方對策（怎麼承擔）</b><span class="v"><strong>預算怎麼算：</strong>這條不進修繕合計，月租問到後加進每月固定支出（跟管理費 1,456 元一起列）。<br><strong>交易怎麼談：</strong>車位不是本標的的一部分，無法約定；可作為你的出價考量。<br><strong>處理順序：</strong>簽約前確認——先用停車場位置查詢工具看一輪，再到現場逐家問空位與月租，也問管委會社區有無可承租車位。<br><strong>我能做的：</strong>陪你繞周邊問月租與空位、把結果列進每月支出試算。</span></div>
       </div>
-      <div class="titem">
-        <div class="tnum">4</div>
-        <div>
-          <strong>無車位，樹林後站周邊停車費用需另計</strong>
-          <p>本案沒有配置車位。周邊停車場的位置與月租費用，看現場時我陪你實際確認。</p>
-          <div class="riskkit">
-            <div class="rk"><b>不處理的風險</b><span class="v">每月多一筆停車支出，或天天找車位，入住後才發現；沒車的人這條不是缺點。</span></div>
-            <div class="rk"><b>處理選項</b><span class="v">看現場先繞周邊月租停車場問空位與月租／有車就把月租直接加進每月固定支出／問管委會社區有無可承租車位。</span></div>
-            <div class="rk"><b>參考費用</b><span class="v">無修繕費用，屬使用限制；周邊停車月租 70 修繕行情偵查表未收錄，以現場詢價為準。</span></div>
-            <div class="rk"><b>看現場怎麼確認</b><span class="v">看現場當天繞周邊停車場、記下月租與空位；問管委會有無可承租車位。</span></div>
-            <div class="rk"><b>買方對策</b><span class="v"><strong>預算怎麼算：</strong>這條不進修繕合計，月租問到後加進每月固定支出。<br><strong>交易怎麼談：</strong>車位不是本標的的一部分，無法約定；可作為你的出價考量。<br><strong>處理順序：</strong>簽約前確認。<br><strong>我能做的：</strong>陪你繞周邊問月租、把結果列進每月支出試算。</span></div>
-          </div>
-        </div>
+    </div>
+
+    <div class="riskcard">
+      <div class="riskhd"><span>缺點 04</span><strong>公設比 31.2%，可用面積比登記坪數少</strong></div>
+      <div class="riskbody">
+        <div class="rk"><b>不處理的風險</b><span class="v">登記 15.33 坪＝主建 9.73＋公設 4.78＋附屬 0.82，公設比 31.2%，主建只佔 63.5%。如果拿登記總坪數去跟別件比單價，會把公設一起算進來，比出來的結論是錯的；規劃使用時如果照 15.33 坪去想，實際擺進去也會不夠放。</span></div>
+        <div class="rk"><b>查證策略</b><span class="v">
+          <ol>
+            <li>比價一律用<strong>主建坪數</strong>對主建坪數，兩邊基準一致才有意義。</li>
+            <li>看現場帶捲尺，把你真正要用的那幾段實際量一次。</li>
+            <li>申請建物測量成果圖與謄本，核對登記面積與現況範圍。</li>
+            <li>向管理組織問清楚公設包含哪些項目、有沒有約定專用的部分。</li>
+          </ol></span></div>
+        <div class="rk"><b>費用</b><span class="v"><strong>無修繕費用，屬交易條件，不進本頁修繕合計。</strong><span class="pending">待查證</span>建物謄本與測量成果圖為地政規費，金額依地政機關公告費額。<span class="src">70 部門修繕行情偵查表未收錄地政規費，本頁不編數字。這幾份本來就是我的工作，你不用自己跑，跟我說一聲我去調。</span></span></div>
+        <div class="rk"><b>驗屋成本</b><span class="v">面積不在驗屋範圍，屬地政測量業務。要精算面積請委託地政士或不動產估價師，費用依委託內容個別議定。</span></div>
+        <div class="rk"><b>買方對策（怎麼承擔）</b><span class="v"><strong>預算怎麼算：</strong>這條不進修繕合計；真正會動到錢的是「用哪個坪數比價」——用主建 9.73 坪去對別件的主建坪數，基準一致才不會比錯。<br><strong>交易怎麼談：</strong>可要求以謄本坪數為準載明於不動產說明書與契約，面積以地政機關登載為準；面積認定有疑義可向地政機關查詢，依官方登載為準。<br><strong>處理順序：</strong>簽約前確認——先調謄本與測量成果圖核對，再帶捲尺到現場量你要用的那幾段。<br><strong>我能做的：</strong>陪看時帶謄本核對、代調建物測量成果圖、把坪數口徑寫進契約建議。</span></div>
+      </div>
+    </div>
+
+    <div class="riskcard">
+      <div class="riskhd"><span>缺點 05</span><strong>電梯大樓 29 年，管理費與公共設備更新是長期變數</strong></div>
+      <div class="riskbody">
+        <div class="rk"><b>不處理的風險</b><span class="v">管理費 1,456 元／月（依委託資料），一年 17,472 元，這是不會停的固定支出。真正的變數在後面：屋齡 29 年，電梯、消防設備與外牆都接近或已達更新年限，一旦要汰換或大修，費用由區分所有權人依約定分攤，金額可能一次很大。管理費若不足，管委會可能另收特別公共基金。</span></div>
+        <div class="rk"><b>查證策略</b><span class="v">
+          <ol>
+            <li>向管委會索取近三年收支報表與公共基金餘額，看得出來這棟養不養得起自己。</li>
+            <li>問電梯保養合約內容與最近一次大修時間，有沒有汰換的決議或討論。</li>
+            <li>調閱消防安檢申報紀錄，看有沒有未完成的缺失改善單。</li>
+            <li>問外牆有沒有整修計畫，這是老舊大樓最常見的大額分攤來源。</li>
+            <li>確認前手有沒有欠繳管理費——欠款的處理方式要寫進契約。</li>
+          </ol>
+          <span class="src">大樓總樓層與總戶數，依住商不動產售屋資料登載為地上13層、地下2層，每層5戶、社區總戶74戶；最終仍以建物謄本與使用執照登載為準。</span></span></div>
+        <div class="rk"><b>費用</b><span class="v"><strong>無本戶單獨的修繕費用，屬交易條件（共用部分依規約分攤），不進本頁修繕合計。</strong><span class="pending">待查證</span>電梯汰換、消防設備更新與大樓公共修繕的分攤金額，以管委會決議與廠商實際報價為準。<span class="src">70 部門修繕行情偵查表的九工種未收錄電梯與大樓公共設備，本頁不編數字。</span><br>
+          可引用的相關項目（評估外牆整修分攤時參考）：外牆塗防水漆 $600～1,200／坪、外牆重做防水（彈性水泥）$2,000～3,000／坪、高空作業（蜘蛛人）$6,000～10,000／人天（找師傅945，2026-03-24）。<span class="src">來源：70 部門修繕行情偵查表（查證日 2026-08-22），實際費用以現場估價為準。</span></span></div>
+        <div class="rk"><b>驗屋成本</b><span class="v">公共設施不在個戶驗屋範圍，不需為此加價。改成請管委會提供電梯保養紀錄與消防安檢申報書，這兩份看得出來的東西比驗屋還多。</span></div>
+        <div class="rk"><b>買方對策（怎麼承擔）</b><span class="v"><strong>預算怎麼算：</strong>無本戶單獨的修繕費用，不進修繕合計；管理費 1,456 元／月（一年 17,472 元）先列進每月支出，公共設備更新的分攤金等管委會資料到手再抓量級，列進持有成本。<br><strong>交易怎麼談：</strong>可要求委託方提供管委會近三年收支報表、公共基金餘額與電梯保養紀錄；已決議未繳的分攤金或欠繳管理費，可約定由委託方交屋前結清或價金保留，交屋前可要求管委會出具無欠繳證明。分攤方式依《公寓大廈管理條例》與社區規約，有疑義可向主管機關查詢，依官方答覆為準。<br><strong>處理順序：</strong>不是修繕，是出價前的查證——上面「查證策略」那幾份文件看完再出價。<br><strong>我能做的：</strong>陪同向管委會索取文件、把欠繳結清與分攤金條款寫進要約或契約建議、交屋清點時一併核對管理費結算。</span></div>
+      </div>
+    </div>
+
+    <div class="riskcard">
+      <div class="riskhd"><span>缺點 06</span><strong>前手留下的固定物與外露線路，交屋範圍要寫清楚</strong></div>
+      <div class="riskbody">
+        <div class="rk"><b>不處理的風險</b><span class="v">現況留有橘色櫃台、鋁框玻璃隔屏、綠色百葉玻璃隔間，還有地面未收整的外露線路。這些屬於固定物，交屋時要留還是要拆，如果沒有逐項寫進契約，交屋當天最容易吵；外露線路在通電前沒檢查就使用，也有風險。</span></div>
+        <div class="rk"><b>處理策略</b><span class="v">
+          <ol>
+            <li>把「哪幾項留、哪幾項由委託方拆除清運」逐項寫進不動產標的現況說明書與買賣契約附件，寫到看照片就對得起來。</li>
+            <li>決定要自己拆的，先估拆除費與清運費再談價，不要交屋後才發現要多花一筆。</li>
+            <li>通電前請水電師傅檢查外露線路與插座迴路。</li>
+          </ol></span></div>
+        <div class="rk"><b>費用</b><span class="v">
+          <ul>
+            <li>拆除工程 $1,000～1,500／坪（PRO360 泥作頁，2025-06-26）。</li>
+            <li>木作家具修繕 $500～1,000／次（找師傅945，2026-03-24）。</li>
+            <li>家戶廢棄物清運 $4,000～7,500／車、裝潢廢棄物 $10,000～15,000／車、樓層搬運加價約＋$500／層（PRO360 清運頁，2025-06-12）。</li>
+            <li>廢棄物處理 $3,000～8,000／車（3.5 噸）、拆除清運工人工資 $2,000～3,000／人天（找師傅945，2026-03-24）。</li>
+            <li>電路檢測 $300～500／次（找師傅945，2026-03-24）。</li>
+          </ul>
+          <span class="src">來源：70 部門修繕行情偵查表（查證日 2026-08-22）。本戶在 10 樓有電梯，樓層搬運加價實際會不會發生，要看清運廠商的計價方式，現場問。</span></span></div>
+        <div class="rk"><b>驗屋成本</b><span class="v">併入缺點 02 的水電檢測一起做，不用另外付一次出勤費；請師傅同一趟把外露線路與迴路一起看完。</span></div>
+        <div class="rk"><b>買方對策（怎麼承擔）</b><span class="v"><strong>預算怎麼算：</strong>若由你自己拆：拆除工程粗抓 3 坪 × $1,000～1,500＋裝潢廢棄物清運 1 車 $3,000～15,000（兩站並列）＝$6,000～19,500，這條先抓上限 <strong>$19,500</strong> 加進「<a href="#zongchengben">入住總成本</a>」；電路檢測併入缺點 02 那一趟，另計。契約約定由委託方拆除清運的話，這條可以是 0；10 樓搬運加價與要不要留下部分固定物，現場估價才算數。想把拆除費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。<br><strong>交易怎麼談：</strong>可協商由委託方交屋前拆除清運並復原，或留物由契約約定折價／價金保留；交屋時可要求依契約附件逐項點交。<br><strong>處理順序：</strong>排在所有工項之前——固定物拆完、外露線路檢查完，才看得到真正的牆面與地面狀況，也才能進到缺點 02 的管線工程。<br><strong>我能做的：</strong>把留與拆的清單連同照片寫進現況說明書與契約附件建議、代約拆除清運廠商估價並做報價單比價、交屋清點。</span></div>
       </div>
     </div>
   </section>
@@ -662,6 +839,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="arow"><span>本案開價<i>依委託資料</i></span><b>838 萬</b></div>
       <div class="arow"><span>貸款金額<i>總價 × 8 成</i></span><b>670.4 萬</b></div>
       <div class="arow"><span>試算條件<i>30 年期・年利率 2.435%・無寬限期</i></span><b>本息平均攤還</b></div>
+      <div class="arow"><span>管理費<i>依委託資料，另計、不含在月付款裡</i></span><b>1,456 元／月</b></div>
 
       <a class="abtn" href="/tools/?price=838#/loan" target="_blank" rel="noopener">用試算工具改成你的成數與利率（已帶入 838 萬）</a>
 
@@ -672,17 +850,17 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       </p>
     </div>
 
-    <div class="afford">
+    <div class="afford" id="zongchengben">
       <div class="afford-top">
-        <div class="abox a-total"><small>把修繕算進去</small><strong>約 0.5 萬～1.2 萬</strong><span>上面「使用限制我先講完」第 1 項的修繕區間合計（$5,000～12,000），工項不拆除所以清運不另計。修繕預算另計，實際以現場估價為準。</span></div>
+        <div class="abox a-total"><small>把修繕算進去</small><strong>約 1.1 萬～3.2 萬</strong><span>上面「六項缺點與要花的錢」裡會動到修繕與清運的兩條（缺點 02 管線＋缺點 06 固定物拆除清運）粗抓區間相加＝$11,000～31,500。修繕預算另計，實際以現場估價為準。</span></div>
       </div>
-      <div class="arow"><span>入住總成本<i>開價 838 萬＋修繕上限 1.2 萬</i></span><b>約 839.2 萬</b></div>
-      <div class="arow"><span>修繕若全額自備，首付要多準備<i>貸款仍只算總價 × 8 成（商業用途標的的核貸成數常比住宅保守，8 成是預設值），修繕不在貸款裡：167.6 萬 → 約 168.8 萬</i></span><b>＋1.2 萬</b></div>
-      <div class="arow"><span>修繕上限若改分期<i>同上卡條件：30 年期・年利率 2.435%・本息平均攤還</i></span><b>每月約 +47 元</b></div>
-      <div class="arow"><span>驗屋與檢測另計<i>複驗 $10,000～15,000（鴻宇健康驗屋，2025-07-06）／$15,000～24,000（PRO360，2025-06-12），電路檢測 $100～500，不在上面合計裡</i></span><b>另計</b></div>
+      <div class="arow"><span>入住總成本<i>開價 838 萬＋修繕上限 3.15 萬（$31,500）</i></span><b>約 841.2 萬</b></div>
+      <div class="arow"><span>修繕若全額自備，首付要多準備<i>貸款仍只算總價 × 8 成，修繕不在貸款裡：167.6 萬 → 約 170.8 萬。本案主要用途登記商業用，銀行對非住宅用途的核貸成數常較保守，8 成是試算假設不是核貸條件</i></span><b>＋3.15 萬</b></div>
+      <div class="arow"><span>修繕上限若改分期<i>同上卡條件：30 年期・年利率 2.435%・本息平均攤還（月付係數 0.0039175）</i></span><b>每月約 +123 元</b></div>
+      <div class="arow"><span>驗屋與檢測另計<i>中古標的驗屋 $15,000～24,000／戶、複驗 $4,000～6,000／次（PRO360 驗屋頁，2025-06-12）；$500～1,000／坪（鴻宇健康驗屋，2025-07-06）；電路檢測 $100～500／次（PRO360 水電頁，2025-08-11）；儀器抓漏 $8,000～20,000／次（找師傅945，2026-03-24）——都不在上面合計裡</i></span><b>另計</b></div>
       <p class="anote">
-        合計怎麼來的：第 1 項水電（專用迴路 2 迴＋局部換管 1 次）$5,000～12,000；第 2 項用途查證沒有修繕費，不計入；後續若要調整內部裝修，費用另計以現場估價為準。數量是粗抓的假設，每一筆單價與出處都在上面「參考費用」裡，三站數字不一致全部並列不取平均。<br>
-        <strong>這些是上限粗估，不是報價。</strong>實際費用以現場估價為準，檢測沒問題的項目可以是 0。想把修繕費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。
+        <strong>合計怎麼來的：</strong>缺點 02 水電（專用迴路 2 迴＋局部換管 1 次，不拆除、清運不另計）$5,000～12,000；缺點 06 固定物（拆除工程 3 坪＋裝潢廢棄物清運 1 車）$6,000～19,500；缺點 01 用途查證、03 無車位、04 公設比、05 公共設備分攤都沒有本戶單獨的修繕費，不計入。數量是粗抓的假設，每一筆單價與出處都在各缺點的「費用」列裡，三站數字不一致全部並列不取平均。<br>
+        <strong>這些是上限粗估，不是報價。</strong>實際費用以現場估價為準，檢測沒問題的項目可以是 0；缺點 06 若契約約定由委託方拆除清運，那一條也可以是 0。想把修繕費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。
       </p>
     </div>
   </section>
@@ -721,6 +899,46 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
   </section>
 
+  <section class="pk" id="buzhou">
+    <div class="sec-head">
+      <div class="kicker">三種身分的下一步</div>
+      <h2>你是哪一種<br>順序不一樣</h2>
+      <p class="lead">不要照同一套流程硬走。先看你屬於哪一種，再照那一條走。</p>
+    </div>
+
+    <div class="track">
+      <h3>你要自用規劃</h3>
+      <ol>
+        <li>先查使用執照登載的主要用途，確認與委託資料一致。</li>
+        <li>把你想做的使用內容講清楚，洽建管與目的事業主管機關問合不合規。</li>
+        <li>請水電師傅做一次現場檢測，抓出整理成本的量級。</li>
+        <li>帶著「商業用途」這四個字去做貸款預審，問到實際成數與年限。</li>
+        <li>四項都有答案了，再談價。前面沒走完就談價，等於拿沒算完的帳去出價。</li>
+      </ol>
+    </div>
+
+    <div class="track">
+      <h3>你要置產出租</h3>
+      <ol>
+        <li>一樣先查登記用途——能出租給誰、對方能做什麼，取決於這一步。</li>
+        <li>自己去查周邊同類型的出租行情，本頁不給你數字，因為我手上沒有可以對外引用的查證資料。</li>
+        <li>把持有成本算完整：管理費 1,456 元／月、稅費、後續修繕與空置期。</li>
+        <li>做貸款預審，非住宅用途的成數與年限會直接改變你的報酬結構。</li>
+        <li>再回頭看這個總價，決定要不要談。</li>
+      </ol>
+    </div>
+
+    <div class="track">
+      <h3>你還在比較階段</h3>
+      <ol>
+        <li>比價一律用主建坪數，不要用登記總坪數。</li>
+        <li>同類型成交紀錄自己上內政部實價登錄查，官方的最準。</li>
+        <li>把上面六項缺點當成檢查表，去對你在看的其他每一件。</li>
+        <li>對不上的地方回來問我，這一件不合，我照你的條件幫你找別的。</li>
+      </ol>
+    </div>
+  </section>
+
   <section>
     <div class="sec-head">
       <div class="kicker">先看合不合</div>
@@ -750,6 +968,43 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
   </section>
 
+  <section class="pk" id="faq">
+    <div class="sec-head">
+      <div class="kicker">簽約前才會卡住的問題</div>
+      <h2>這幾題<br>現在先問完</h2>
+    </div>
+
+    <details>
+      <summary>商業用途的標的，貸款成數會不會比較低？</summary>
+      <div class="ans">通常會比住宅嚴，但沒有一個固定的數字可以套——每家銀行對非住宅用途的估價方式與授信政策都不一樣，也會看你的職業、收入與既有負債。<strong>唯一有意義的做法是做貸款預審</strong>，帶著「主要用途登記商業用」這個條件去問至少兩家，拿到的才是真的。上面試算卡的 8 成是試算假設，不是可核准的數字。</div>
+    </details>
+
+    <details>
+      <summary>管理費 1,456 元包含哪些？會不會另外再收？</summary>
+      <div class="ans">依委託資料，管理費是每月 1,456 元。<strong>涵蓋項目要向管委會確認</strong>，各社區差很多。要特別問的是：屋齡 29 年，電梯、消防或外牆如果要更新，是不是會另收特別公共基金；以及公共基金現在還剩多少。這兩題的答案，比管理費金額本身重要。</div>
+    </details>
+
+    <details>
+      <summary>交屋時前手留下的櫃台跟玻璃隔屏，會一起留給我嗎？</summary>
+      <div class="ans">這件事<strong>沒有預設答案，要談，而且要寫進契約</strong>。固定物的去留是買賣雙方約定的內容，不寫清楚就是交屋當天吵架的來源。建議照著上面現況照片逐項列出來，寫進不動產標的現況說明書與買賣契約附件，寫到看照片就對得起來。要拆的部分，拆除與清運費用先估進你的預算。</div>
+    </details>
+
+    <details>
+      <summary>如果查出來我想做的用途不能做，付出去的斡旋金拿得回來嗎？</summary>
+      <div class="ans">這要看你的斡旋文件怎麼寫。實務上會建議在出價文件裡把「以查證結果為停止條件」這類保留寫清楚，但每個案子的條款不同，<strong>具體怎麼寫請洽地政士或律師確認</strong>，不要憑口頭承諾。更穩的順序是：<strong>查證走在出價前面</strong>——上面「三種身分的下一步」就是照這個順序排的。</div>
+    </details>
+
+    <details>
+      <summary>開價 838 萬，實際會成交在多少？</summary>
+      <div class="ans"><strong>開價不等於成交價</strong>，也不代表議價空間，最終金額由買賣雙方議定。我不會在這一頁引導你喊價，也不會替委託方放話。你要出價，我照正式程序來：先做完資料核對，再以書面透過合法代書向雙方布達確認。同類型成交紀錄請自行到內政部實價登錄查，以該網站公告為準。</div>
+    </details>
+
+    <details>
+      <summary>15.33 坪要繳哪些稅費？大概多少？</summary>
+      <div class="ans">交易階段常見的有契稅、印花稅、代書費、地政規費，持有階段有地價稅與稅捐；非住宅用途的稅率適用與住宅不同。<strong>金額一律由稽徵機關核定，我不在這裡給你一個數字</strong>，因為算錯的代價是你去補稅。要試算請洽國稅局、地方稅捐稽徵處或會計師；你把條件給我，我也可以陪你把該問的問完。</div>
+    </details>
+  </section>
+
   <section>
     <div class="sec-head">
       <div class="kicker">買之前先算</div>
@@ -766,7 +1021,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
         <div class="tool-go">→</div>
       </button>
       <button class="tool t-teal" type="button" data-modal="m-check">
-        <div class="tool-t"><strong>看現場當天檢核表</strong><span>12 項，可以勾，會記在你手機裡</span></div>
+        <div class="tool-t"><strong>看現場當天檢核表</strong><span>16 項，可以勾，會記在你手機裡</span></div>
         <div class="tool-go">→</div>
       </button>
       <button class="tool t-trust" type="button" data-modal="m-flag">
@@ -787,7 +1042,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <a class="vlink" href="https://building-management.publicwork.ntpc.gov.tw/" target="_blank" rel="noopener"><b>照</b><div><strong>新北建管便民服務網</strong><small>查使用執照登載的主要用途</small></div></a>
       <a class="vlink" href="https://icdc-pub.ntpc.gov.tw/ntpcpb/" target="_blank" rel="noopener"><b>建</b><div><strong>新北違章建築案件查詢</strong><small>查有無查報紀錄</small></div></a>
       <a class="vlink" href="https://dmap.ncdr.nat.gov.tw/" target="_blank" rel="noopener"><b>災</b><div><strong>災害潛勢地圖</strong><small>查淹水、地震與坡地潛勢</small></div></a>
-      <a class="vlink" href="https://law.moj.gov.tw" target="_blank" rel="noopener"><b>法</b><div><strong>全國法規資料庫</strong><small>查法條原文</small></div></a>
+      <a class="vlink" href="https://law.moj.gov.tw" target="_blank" rel="noopener"><b>法</b><div><strong>全國法規資料庫</strong><small>查法條原文與成屋買賣定型化契約應記載事項</small></div></a>
+      <a class="vlink" href="/tingche/" target="_blank" rel="noopener"><b>停</b><div><strong>停車場位置查詢</strong><small>本案無車位，先看周邊有哪些場（只吃政府開放資料）</small></div></a>
     </div>
   </section>
 
@@ -980,15 +1236,15 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <strong>資料來源與查核範圍</strong>
     <ul>
       <li><strong>本頁產權、面積、現況等資訊整理自委託方提供之售屋資料與現場紀錄，僅供參考；如與地政機關核發之正式謄本、建物測量成果圖或使用執照不符，一律以官方謄本及正式登記資料為準。</strong>簽約前請自行申請最新謄本查證。</li>
-      <li>開價、面積、樓層、屋齡與現況：委託銷售資料，資料查核日期 2026 年 8 月 22 日；委託合約編號未附於帶看資料，待補。登記面積與範圍以地政機關登載為準。</li>
+      <li>開價、面積、樓層、屋齡、管理費與現況：委託銷售資料，<strong>委託資料資訊更新日 2026-08-17，本頁查核日 2026-08-22</strong>；委託合約編號未附於帶看資料，尚未取得。登記面積與範圍以地政機關登載為準。</li>
       <li><strong>主要用途登記為商業用</strong>：委託資料明載，本頁不就其可作特定使用內容之合法性做任何聲明或保證；使用分區與登記用途以使用執照及主管機關認定為準，請洽新北市建管相關單位或委請地政士查證。</li>
-      <li>影片與照片：現場實拍原始素材，未使用虛擬佈置、AI 生成裝修示意或修圖。本頁照片為現場實拍原始照片，非影片截圖。</li>
+      <li>影片與照片：現場實拍原始素材，<strong>照片拍攝日 2026-07-27</strong>，未使用虛擬佈置、AI 生成裝修示意或修圖。本頁照片為現場實拍原始照片，非影片截圖。內部帶看單影像含完整門牌與內部價格資訊，未收入本頁。</li>
       <li>座向：<strong>朝西北</strong>——來源為住商不動產售屋資料（樹林站前加盟店）方位欄登載；<strong>尚未經地政謄本或現場實測複核</strong>，實際採光與西曬以現場實測為準。格局圖見上方「座向」段，來源同一份文件，已裁除門牌等不可公開資訊。</li>
       <li>總樓層與戶數：住商不動產售屋資料登載<strong>地上13層、地下2層，本戶所在10F</strong>；<strong>每層5戶、社區總戶74戶</strong>。最終仍以建物謄本與使用執照登載為準。</li>
       <li>樹林後火車站距離：實際公尺數尚未查證完成，本頁不寫，依規範距離只寫公尺（依 Google 地圖）。</li>
       <li>同類型成交紀錄：本頁未列具體成交數字，請自行至<a href="https://lvr.land.moi.gov.tw" target="_blank" rel="noopener">內政部不動產交易實價查詢服務網</a>查證，以該網站公告為準。</li>
-      <li>修繕與驗屋參考費用：整理自 PRO360、找師傅945、鴻宇健康驗屋等公開報價頁面，各站標示更新日不同，實際費用以現場估價為準，本頁不做費用保證。</li>
-      <li>貸款試算：以一般貸款常見預設條件模擬，非銀行核貸承諾；商業用途空間之核貸成數與年限以承貸銀行核准為準，通常較住宅保守。</li>
+      <li><strong>修繕、清運與驗屋費用區間</strong>：整理自 70 部門修繕行情偵查表（查證日 2026-08-22），原始來源為 PRO360 達人網、找師傅945、鴻宇健康驗屋等公開報價頁面；各站標示的更新日不同，已逐筆於文中標註。三站數字不一致是常態，本頁全部並列不取平均。實際費用以現場估價為準，本頁不做費用保證。</li>
+      <li>貸款試算：以一般貸款常見預設條件模擬，非銀行核貸承諾；商業用途空間之核貸成數與年限以承貸銀行核准為準，通常較住宅保守。<strong>試算基準日 2026-08-22</strong>。</li>
       <li>交易應揭露事項：內政部公告之成屋買賣定型化契約應記載及不得記載事項、不動產標的現況說明書，原文見<a href="https://law.moj.gov.tw" target="_blank" rel="noopener">全國法規資料庫</a>。</li>
     </ul>
   </section>
@@ -1109,19 +1365,23 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   <p class="msub">勾起來代表這一項你已經確認過了。沒勾的，就是你現在還不知道的事。你的勾選會留在這台手機裡。</p>
   <div class="checks" id="checks">
     <label class="chk"><input type="checkbox" data-k="c1"><span>我看過建物與土地兩張謄本，確認產權人、登記面積與有無限制登記。</span></label>
-    <label class="chk"><input type="checkbox" data-k="c2"><span>我查過本案使用執照登載的主要用途，確認與委託資料一致。</span></label>
-    <label class="chk"><input type="checkbox" data-k="c3"><span>我洽詢過主管機關，確認商業用途下我想做的使用內容是否合法可行。</span></label>
-    <label class="chk"><input type="checkbox" data-k="c4"><span>我要求賣方填寫了不動產標的現況說明書，並看過內容。</span></label>
-    <label class="chk"><input type="checkbox" data-k="c5"><span>我請水電師傅現場檢查過管線與迴路狀況（屋齡29年）。</span></label>
-    <label class="chk"><input type="checkbox" data-k="c6"><span>我確認過有無漏水或防水老化痕跡，特別是衛浴設備周邊。</span></label>
-    <label class="chk"><input type="checkbox" data-k="c7"><span>我問過電梯保養與大樓公共設施折舊狀況。</span></label>
-    <label class="chk"><input type="checkbox" data-k="c8"><span>我在白天與傍晚各去過一次，確認過採光、噪音與周邊環境。</span></label>
-    <label class="chk"><input type="checkbox" data-k="c9"><span>我問過至少兩家銀行，確認商業用途空間的核貸成數與年限。</span></label>
-    <label class="chk"><input type="checkbox" data-k="c10"><span>我自己用 Google 地圖量過到樹林後火車站的實際距離與路線。</span></label>
-    <label class="chk"><input type="checkbox" data-k="c11"><span>我問過管理費涵蓋的服務項目與是否有欠繳紀錄。</span></label>
-    <label class="chk"><input type="checkbox" data-k="c12"><span>我確認過周邊停車場位置與月租費用（本案無車位）。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c2"><span>我查過使用執照登載的主要用途，確認與委託資料一致。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c3"><span>我洽詢過主管機關，確認商業用途下我想做的使用內容合不合規。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c4"><span>我要求委託方填寫了不動產標的現況說明書，而且看過內容。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c5"><span>我請水電師傅現場檢查過管線與迴路狀況（屋齡 29 年）。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c6"><span>我確認過有無漏水或防水老化痕跡，特別是衛浴與茶水區周邊。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c7"><span>我看過地面外露線路的實際狀況，知道通電前要先處理。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c8"><span>我把要留與要拆的固定物逐項列出來了（櫃台、玻璃隔屏、隔間）。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c9"><span>我向管委會問過近三年收支、公共基金餘額與有無欠繳。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c10"><span>我問過電梯保養與消防安檢紀錄，也問了有沒有汰換或外牆整修的決議。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c11"><span>我問過管理費 1,456 元涵蓋哪些服務，會不會另收特別公共基金。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c12"><span>我在白天與傍晚各去過一次，確認過採光、西曬、噪音與周邊環境。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c13"><span>我問過至少兩家銀行，確認商業用途標的的核貸成數與年限。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c14"><span>我自己用 Google 地圖量過到樹林後火車站的實際距離與路線。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c15"><span>我確認過周邊停車場的位置與月租費用（本案無車位）。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c16"><span>我用主建 9.73 坪去跟其他標的比過價，不是用登記 15.33 坪。</span></label>
   </div>
-  <p class="tally" id="tally" aria-live="polite">還有 <em>12</em> 項沒確認。<span class="sub">全部確認完之前，先不要出價。</span></p>
+  <p class="tally" id="tally" aria-live="polite">還有 <em>16</em> 項沒確認。<span class="sub">全部確認完之前，先不要出價。</span></p>
   <p class="mnote">謄本、使用執照、現況說明書這幾項本來就是我的工作，你不用自己跑。要我先幫你調，跟我說一聲就好。</p>
 </template>
 
@@ -1179,7 +1439,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     if(e.key==='Escape'){if(imgModal.classList.contains('open'))closeImg();else if(modal.classList.contains('open'))closeModal()}
   });
 
-  var CKEY='jinzhan_check_v1';
+  var CKEY='jinzhan_check_v2';
   function initChecks(){
     var boxes=[].slice.call(document.querySelectorAll('#checks input[type=checkbox]'));
     var tally=document.getElementById('tally');
