@@ -79,6 +79,18 @@
   '.ahdrop a{display:block;padding:13px 18px;font-size:15px;border-bottom:1px solid #F1F3F1}'+
   '.ahdrop a.on{color:var(--brand);font-weight:900;background:var(--brandsoft)}'+
   '@media(min-width:1080px){.ahmenu{display:flex}.ahburger{display:none}}'+
+  /* 手機窄版（<600px）：原本 logo／CTA／漢堡全是 flex:none 不可縮，三者加間距共 436px 超過 375px 畫面
+     → 整列撐出 79px 橫向溢出，固定定位的 ahdock／tkbtn 跟著被推出畫面。改成可縮＋縮小尺寸，從根因解（40-0822-13） */
+  '@media(max-width:599px){'+
+    '.ahnav-in{gap:8px;padding:8px 10px}'+
+    '.ahlogo{flex:0 1 auto;min-width:0;gap:6px}'+
+    '.ahlogo .mk{height:48px}.ahlogo .mk img{height:48px;max-width:150px}'+
+    '.ahlogo .ahtx{min-width:0}'+
+    '.ahlogo b{font-size:min(13px,3.4vw);letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'+
+    '.ahlogo i{font-size:min(9.5px,2.55vw);letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'+
+    '.ahcta{padding:8px 12px;font-size:13px}'+
+    '.ahburger{width:36px;height:36px;font-size:17px}'+
+  '}'+
   '.ahfoot{background:var(--night2);color:rgba(255,255,255,.72);font-size:13px;line-height:1.9;padding:34px 0 96px}'+
   '@media(min-width:1080px){.ahfoot{padding-bottom:34px}}'+
   '.ahfg{display:grid;gap:22px;grid-template-columns:1fr}'+
@@ -166,7 +178,7 @@
     '<a class="g" href="'+S.social+'" aria-label="'+S.socialName+'">社</a></span>'+
   '</div></div>'+
   '<div class="ahnav"><div class="ahnav-in">'+
-    '<a class="ahlogo" href="/"><span class="'+mkCls+'">'+mk+'</span><span><b>'+S.brandName+'</b><i>'+S.brandSub+'</i></span></a>'+
+    '<a class="ahlogo" href="/"><span class="'+mkCls+'">'+mk+'</span><span class="ahtx"><b>'+S.brandName+'</b><i>'+S.brandSub+'</i></span></a>'+
     '<nav class="ahmenu">'+menu+'</nav>'+
     '<a class="ahcta" href="'+S.line+'">'+S.ctaText+'</a>'+
     '<button class="ahburger" id="ahbg" aria-label="開啟選單" aria-expanded="false">☰</button>'+
