@@ -67,7 +67,7 @@
   --soft-teal:#E6F2F0;
   --soft-trust:#EDF1F5;
   --shadow:0 16px 40px rgba(43,58,74,.13);
-  --radius:22px;
+  --soft-danger:#FBECEC;--solid-teal:#12564D;--radius:22px;
   /* 實心色塊專用：兩個主題都固定，確保白字對比足夠 */
   --solid-warm:#B4501C;
   --solid-gold:#8A6410;
@@ -486,6 +486,96 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .verify td:first-child{font-weight:800;white-space:nowrap}
 .verify tr:last-child td{border-bottom:0}
 .verify-ft{padding:13px 17px;background:var(--bg-soft,#F4F2ED);font-size:.82rem;line-height:1.85}
+
+/* ===== 併入原 pack 物件懶人包內容（scoped .pk，2026-08-22 阿宏「物件懶人包＝簡報頁」佈達）===== */
+.pk img,.pk video{display:block;max-width:100%}
+.pk a{color:var(--trust)}
+.pk .tb-name{color:#fff;font-weight:900;font-size:.95rem}
+.pk .tb-name small{display:block;font-weight:600;font-size:.7rem;opacity:.74}
+.pk .tb-cta{text-decoration:none;background:var(--solid-warm);color:#fff;padding:8px 14px;border-radius:999px;font-weight:900;font-size:.88rem;white-space:nowrap}
+.pk .pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.pk .pill{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--card);padding:5px 11px;border-radius:999px;font-size:.8rem;font-weight:800;color:var(--muted)}
+.pk .pill.hot{background:var(--soft-warm);border-color:var(--warm);color:var(--warm)}
+.pk .pill.gold{background:var(--soft-gold);border-color:var(--gold);color:var(--gold)}
+.pk h1{margin:0;color:var(--trust);font-weight:900;font-size:clamp(1.9rem,7.4vw,3.2rem);line-height:1.16;letter-spacing:-.03em}
+.pk .stamp{margin-top:14px;font-size:.85rem;color:var(--muted);border-left:3px solid var(--gold);padding-left:11px}
+.pk nav.toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin:18px 0 6px;box-shadow:var(--shadow)}
+.pk nav.toc p{margin:0 0 9px;font-weight:900;color:var(--trust);font-size:.95rem}
+.pk nav.toc ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+@media(max-width:520px){.pk nav.toc ul{grid-template-columns:1fr}}
+.pk nav.toc a{display:block;text-decoration:none;background:var(--soft-trust);border:1px solid var(--line);border-radius:12px;padding:9px 11px;font-weight:800;font-size:.9rem}
+.pk section{margin:34px 0 0}
+.pk h2{color:var(--trust);font-weight:900;font-size:clamp(1.35rem,5.2vw,1.85rem);line-height:1.3;margin:0 0 6px;letter-spacing:-.02em}
+.pk .lead{margin:0 0 16px;color:var(--muted);font-size:.97rem}
+.pk h3{font-size:1.05rem;margin:0 0 6px;font-weight:900}
+.pk .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);margin-bottom:13px}
+.pk .card.warm{background:var(--soft-warm);border-color:var(--warm)}
+.pk .card.gold{background:var(--soft-gold);border-color:var(--gold)}
+.pk .card.teal{background:var(--soft-teal);border-color:var(--teal)}
+.pk .card.danger{background:var(--soft-danger);border-color:var(--danger)}
+.pk .moneygrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+@media(max-width:430px){.pk .moneygrid{grid-template-columns:1fr}}
+.pk .mbox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.pk .mbox .k{font-size:.82rem;font-weight:800;color:var(--muted)}
+.pk .mbox .v{font-size:clamp(1.5rem,6.6vw,2rem);font-weight:900;color:var(--trust);line-height:1.15;letter-spacing:-.02em;margin:2px 0 3px}
+.pk .mbox .n{font-size:.8rem;color:var(--muted)}
+.pk .mbox.big{grid-column:1/-1;background:var(--soft-gold);border-color:var(--gold)}
+.pk .mbox.big .v{color:var(--warm);font-size:clamp(2.1rem,10vw,3rem)}
+.pk .btn{display:block;text-align:center;text-decoration:none;font-weight:900;border-radius:14px;padding:14px 16px;margin-top:11px}
+.pk .btn.primary{background:var(--solid-warm);color:#fff}
+.pk .btn.line{background:var(--solid-line);color:#fff}
+.pk .btn.ghost{background:var(--card);color:var(--trust);border:2px solid var(--trust)}
+.pk .myth{border-left:5px solid var(--danger);padding-left:13px;margin-bottom:16px}
+.pk .myth .wrong{color:var(--muted);text-decoration:line-through;font-weight:700}
+.pk .myth .right{font-weight:800;margin-top:4px}
+.pk .myth .src{font-size:.85rem;margin-top:5px}
+.pk .riskcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:15px;overflow:hidden}
+.pk .riskhead{background:var(--soft-danger);border-bottom:1px solid var(--line);padding:13px 15px}
+.pk .riskhead .no{font-size:.76rem;font-weight:900;color:var(--danger);letter-spacing:.08em}
+.pk .riskhead h3{margin:2px 0 0;color:var(--ink)}
+.pk .risklane{padding:13px 15px;border-bottom:1px dashed var(--line)}
+.pk .risklane:last-child{border-bottom:0}
+.pk .lanetag{display:inline-block;font-size:.74rem;font-weight:900;letter-spacing:.06em;padding:3px 9px;border-radius:999px;margin-bottom:6px}
+.pk .t-fix{background:var(--soft-teal);color:var(--teal)}
+.pk .t-cost{background:var(--soft-gold);color:var(--gold)}
+.pk .t-check{background:var(--soft-trust);color:var(--trust)}
+.pk .t-plan{background:var(--soft-warm);color:var(--warm)}
+.pk .risklane p{margin:0 0 6px}
+.pk .risklane ul{margin:6px 0 0;padding-left:20px}
+.pk .risklane li{margin-bottom:5px}
+.pk .src{font-size:.82rem;color:var(--muted)}
+.pk .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.pk table{border-collapse:collapse;width:100%;min-width:520px;font-size:.9rem}
+.pk th,.pk td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.pk th{background:var(--soft-trust);font-weight:900;color:var(--trust);white-space:nowrap}
+.pk tr:last-child td{border-bottom:0}
+.pk .flag{display:flex;gap:11px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--danger);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.pk .flag .num{font-weight:900;color:var(--danger);font-size:1.15rem;line-height:1.4}
+.pk .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px;margin-bottom:12px;box-shadow:var(--shadow)}
+.pk .stepno{font-weight:900;color:var(--warm);font-size:.85rem;letter-spacing:.08em;border-bottom:2px solid var(--warm);display:inline-block;padding-bottom:2px;margin-bottom:7px}
+.pk .ck{display:flex;gap:11px;align-items:flex-start;padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:var(--card);margin-bottom:8px;cursor:pointer}
+.pk .ck input{width:21px;height:21px;margin-top:3px;flex:none;accent-color:#12564D}
+.pk .ck span{font-size:.95rem}
+.pk .ck.done{background:var(--soft-teal);border-color:var(--teal)}
+.pk .tally{background:var(--soft-warm);border:1px solid var(--warm);border-radius:14px;padding:13px 15px;font-weight:800;margin-top:10px}
+.pk .tally b{color:var(--warm);font-size:1.3rem}
+.pk .links{list-style:none;margin:0;padding:0}
+.pk .links li{margin-bottom:9px}
+.pk .links a{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:800}
+.pk .links a small{display:block;font-weight:600;color:var(--muted);font-size:.83rem;margin-top:2px}
+.pk details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:9px}
+.pk summary{font-weight:900;cursor:pointer;color:var(--trust)}
+.pk details p{margin:9px 0 0}
+.pk .disc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;margin-top:22px;font-size:.86rem;color:var(--muted)}
+.pk .disc h3{font-size:.95rem;color:var(--ink);margin-bottom:7px}
+.pk .disc ol{margin:0;padding-left:19px}
+.pk .disc li{margin-bottom:6px}
+.pk footer{margin-top:30px;padding-top:22px;border-top:2px solid var(--line);text-align:center}
+.pk .soft{color:var(--muted);font-size:.9rem;margin:12px 0 16px}
+.pk .float{position:fixed;right:14px;bottom:16px;z-index:40}
+.pk .float a{display:flex;align-items:center;gap:7px;text-decoration:none;background:var(--solid-line);color:#fff;font-weight:900;padding:12px 17px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.28);font-size:.95rem}
+.pk{margin:0}
+.pk section{margin:0 0 26px}
 </style>
 </head>
 <body>
@@ -598,85 +688,331 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <p class="zoomhint">照片與影片皆為現況實拍，未經修飾。本頁不使用任何虛擬佈置或裝潢示意圖。</p>
   </section>
 
-  <section class="truth">
-    <div class="sec-head">
-      <div class="kicker">重要條件</div>
-      <h2>缺點我先講完</h2>
-      <p class="lead">這一頁是完整揭露版，不是等你私訊才肯講的版本。以下每一項都可以到現場、到謄本、到官方網站驗證。</p>
+  <div class="pk">
+<section id="truth">
+  <h2>三個先講清楚的誤會</h2>
+  <p class="lead">這三件事如果先搞錯，後面看什麼都會偏。先把它擺正，再往下看。</p>
+
+  <div class="myth">
+    <p class="wrong">「開價 1088 萬，那我準備 1088 萬就好。」</p>
+    <p class="right">總價只是門票。這間是屋主自住 32 年的原始屋況，交屋後的清運、粉刷、水電檢測，加上稅費規費與驗屋，都要算進你的口袋。真正該問自己的是：<strong>1088 萬之外，我還拿得出多少。</strong></p>
+    <p class="src">成交價是多少，自己查最準：<a href="https://lvr.land.moi.gov.tw">內政部不動產交易實價查詢服務網</a>。</p>
+  </div>
+
+  <div class="myth">
+    <p class="wrong">「廚房天花板有水漬，那就是壁癌，這間不能買。」</p>
+    <p class="right">水漬要先分辨是<strong>乾掉的舊痕</strong>還是<strong>還在漏</strong>，兩者的處理方式與費用差很多——前者粉刷就好，後者可能要抓漏、重做防水。本案廚房天花板確實有水漬與發黑痕跡，<strong>經現場確認是舊痕、不是現行漏水，重新粉刷即可</strong>。痕跡我照實留在照片裡不修圖，下面也照樣教你怎麼自己驗一次；如果你驗出來跟這個說法不符，請立刻告訴我，我負責更正。</p>
+    <p class="src">買賣雙方該揭露什麼、契約該怎麼寫，法規原文在<a href="https://law.moj.gov.tw">全國法規資料庫</a>（成屋買賣定型化契約應記載及不得記載事項）。</p>
+  </div>
+
+  <div class="myth">
+    <p class="wrong">「捷運站約 50 公尺，那我現在就有捷運可以搭。」</p>
+    <p class="right">捷運萬大線 LG09 站<strong>目前興建中，尚未通車</strong>。約 50 公尺（距離依 Google 地圖）買到的是未來性；通車之前，那裡是工地，圍籬、施工動線與噪音要自己到現場感受一次。通車時程以主管機關公告為準。</p>
+    <p class="src">工程進度看官方的：<a href="https://www.dorts.gov.taipei/">臺北市政府捷運工程局</a>（萬大－中和－樹林線）。</p>
+  </div>
+</section>
+<section id="matrix">
+  <h2>風險・維修・費用・驗屋</h2>
+  <p class="lead">你現在心裡最想問的其實是一句話：「這間要再花多少才能住？」我不能給你報價，但我可以把每一項風險攤開，告訴你市場行情大概落在哪個區間、資料是哪一年、哪個網站來的，還有這一項到底該怎麼驗。<strong>所有區間僅供參考，實際費用以現場估價為準。</strong>每一項最後多一列「買方對策」：這筆錢怎麼算進預算、契約怎麼談、先做哪個、我能幫什麼——全頁合計在上面「<a href="#zongchengben">把修繕算進去</a>」那張卡。</p>
+
+  <div class="riskcard">
+    <div class="riskhead">
+      <div class="no">風險 01</div>
+      <h3>廚房天花板有水漬與發黑痕跡（經確認為舊痕，非現行漏水）</h3>
     </div>
-    <div class="tlist">
-      <div class="titem">
-        <div class="tnum">1</div>
-        <div>
-          <strong>屋主自住中，不是空屋</strong>
-          <p>住了 32 年、東西都還在，雜物滿屋是原始現況。看屋要先約時間，交屋後的清運與整理成本要自己抓進預算。</p>
-          <div class="riskkit">
-            <div class="rk"><b>不處理的風險</b><span class="v">屋主現況物品量大，交屋後若自己動手清運，時間與人力成本容易低估，也可能耽誤後續裝修排程。</span></div>
-            <div class="rk"><b>維修策略選項</b><span class="v">找清運公司整批估價一次清空／自己分類留用物品後找搬家公司載運／混合處理（大型家具找清運、貴重物品自己搬）。</span></div>
-            <div class="rk"><b>參考費用</b><span class="v">家戶廢棄物 $4,000～7,500／車（PRO360，2025-06-12）；廢棄物處理 $3,000～8,000／3.5噸車（找師傅945，2026-03-24）；大型家具（沙發）$400～5,000／件、大型家電（冰箱）$700～1,000／件（PRO360）；樓層搬運加價約＋$500／層。18.8 坪一戶原始屋況，抓 1～2 車家戶廢棄物＋數件大型家具家電，粗抓約 $8,000～20,000 區間，實際以現場估價與物品量為準。<span class="src">以上為市場公開報價區間，實際費用以現場估價為準。</span></span></div>
-            <div class="rk"><b>驗屋建議</b><span class="v">清運完成、屋況淨空後，建議再約一次現場複驗，把清運前被雜物擋住看不到的地板、牆角、插座位置一起看過。</span></div>
-            <div class="rk"><b>買方對策</b><span class="v"><strong>預算怎麼算：</strong>清運粗抓 $8,000～20,000（1～2 車家戶廢棄物＋數件大型家具家電），這條先抓上限 <strong>$20,000</strong> 加進「入住總成本」；想把整理費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。<br><strong>交易怎麼談：</strong>可協商屋主交屋前自行清空，或留物由契約約定折價／價金保留，交屋時可要求淨空點交。<br><strong>處理順序：</strong>排在所有工項之前，清空才能驗屋、才能施工。<br><strong>我能做的：</strong>代約清運公司估價並做報價單比價、把清運與點交條件寫進契約建議、交屋清點。</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="titem">
-        <div class="tnum">2</div>
-        <div>
-          <strong>廚房天花板有粉刷痕跡，已複驗確認非漏水</strong>
-          <p>經現場複驗，這是天花板粉刷面老化留下的痕跡，不是滲水、也不是結構性壁癌，重新粉刷處理即可，不影響居住安全。</p>
-          <div class="riskkit">
-            <div class="rk"><b>不處理的風險</b><span class="v">痕跡不處理，觀感上會比較舊，純粹是美觀問題，不會擴大也不影響結構或防水。</span></div>
-            <div class="rk"><b>維修策略選項</b><span class="v">局部批土整平＋防霉底漆封閉舊痕跡＋面漆粉刷即可，不需要抓漏檢測，也不需要重做防水工程。</span></div>
-            <div class="rk"><b>參考費用</b><span class="v">批土＋研磨（一道）$100～300／坪、乳膠漆（2 道）$500～1,000／坪（皆 PRO360，2025-09-30）；舊屋翻新加價（修補批土防黴）＋$300～800／坪、天花板加價＋$100～300／坪（100室內設計，2025-12-14）。廚房天花板抓 2 坪估算，粗抓約 $2,000～4,500 區間。<span class="src">以上為市場公開報價區間，實際費用以現場估價為準。</span></span></div>
-            <div class="rk"><b>驗屋建議</b><span class="v">一般看屋時現場確認粉刷痕跡範圍即可，不需要另外安排儀器抓漏檢測。</span></div>
-            <div class="rk"><b>買方對策</b><span class="v"><strong>預算怎麼算：</strong>粉刷粗抓 2 坪 $2,000～4,500，這條先抓上限 <strong>$4,500</strong> 加進「入住總成本」；金額不大，通常交屋後自行安排粉刷即可。<br><strong>交易怎麼談：</strong>可請屋主交屋前先行粉刷處理，或直接折抵象徵性金額，不必列為議價重點。<br><strong>處理順序：</strong>排在一般裝修美化階段，不用優先於其他工項處理。<br><strong>我能做的：</strong>陪同看屋現場確認範圍、代約油漆師傅估價比價。</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="titem">
-        <div class="tnum">3</div>
-        <div>
-          <strong>本戶沒有車位</strong>
-          <p>周邊停車場的位置與月租費用，看屋時我陪你走一趟實際確認。</p>
-          <div class="riskkit">
-            <div class="rk"><b>不處理的風險</b><span class="v">每月多一筆停車支出，或天天找車位，入住後才發現；沒車的人這條不是缺點。</span></div>
-            <div class="rk"><b>處理選項</b><span class="v">看屋先繞周邊月租停車場問空位與月租／有車就把月租直接加進每月固定支出／問管理室社區有無可承租車位。</span></div>
-            <div class="rk"><b>參考費用</b><span class="v">無修繕費用，屬使用限制；周邊停車月租 70 修繕行情偵查表未收錄，以現場詢價為準。</span></div>
-            <div class="rk"><b>看屋怎麼確認</b><span class="v">看屋當天繞周邊停車場、記下月租與空位；問管理室有無可承租車位。</span></div>
-            <div class="rk"><b>買方對策</b><span class="v"><strong>預算怎麼算：</strong>這條不進修繕合計，月租問到後加進每月固定支出。<br><strong>交易怎麼談：</strong>車位不是本標的的一部分，無法約定；可作為你的出價考量。<br><strong>處理順序：</strong>簽約前確認。<br><strong>我能做的：</strong>陪你繞周邊問月租、把結果列進每月支出試算。</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="titem">
-        <div class="tnum">4</div>
-        <div>
-          <strong>屋齡 32 年</strong>
-          <p>民國 82 年 12 月建築完成。屋齡會影響銀行核貸年限與成數，出價前建議先做貸款預審。</p>
-          <div class="riskkit">
-            <div class="rk"><b>不處理的風險</b><span class="v">屋齡加貸款年限常有銀行內部上限，沒先預審就出價，成數年限可能不如預期，首付要臨時補。</span></div>
-            <div class="rk"><b>處理選項</b><span class="v">出價前先向兩家以上銀行做貸款預審／以預審結果回推你能接受的總價帶／屋齡帶來的管線與防水風險見第 2 項。</span></div>
-            <div class="rk"><b>參考費用</b><span class="v">無修繕費用，屬貸款條件；預審是否收費依各銀行規定。</span></div>
-            <div class="rk"><b>看屋怎麼確認</b><span class="v">看屋前帶著預審結果；看屋當天核對建物完成日期（民國 82 年 12 月）與謄本一致。</span></div>
-            <div class="rk"><b>買方對策</b><span class="v"><strong>預算怎麼算：</strong>這條不進修繕合計；預審結果決定首付要準備多少。<br><strong>交易怎麼談：</strong>可在契約約定貸款條件不符時的處理方式，條款由地政士擬定。<br><strong>處理順序：</strong>簽約前確認。<br><strong>我能做的：</strong>整理預審要備的文件、陪你核對謄本、把貸款條件寫進契約建議。</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="titem">
-        <div class="tnum">5</div>
-        <div>
-          <strong>LG09 站是「興建中」，不是通車了</strong>
-          <p>約 50 公尺買的是未來性，不是現在就有捷運可搭。通車時程以主管機關公告為準，施工期間的圍籬、動線與噪音請自己到現場感受一次。</p>
-          <div class="riskkit">
-            <div class="rk"><b>不處理的風險</b><span class="v">把「未來有捷運」當「現在有捷運」，通勤與轉手預期都會落空；施工期間的噪音與動線是現在就要承受的。</span></div>
-            <div class="rk"><b>處理選項</b><span class="v">通車時程以主管機關公告為準／看屋時實走到工地圍籬看動線與噪音／用現在的交通條件算通勤，不把未來算進去。</span></div>
-            <div class="rk"><b>參考費用</b><span class="v">無修繕費用，屬周邊條件。</span></div>
-            <div class="rk"><b>看屋怎麼確認</b><span class="v">平日上下班時段到現場走一次約 50 公尺的路線，感受施工噪音與動線；查主管機關最新公告。</span></div>
-            <div class="rk"><b>買方對策</b><span class="v"><strong>預算怎麼算：</strong>這條不進修繕合計；出價不用「通車後的價」算。<br><strong>交易怎麼談：</strong>捷運時程不是屋主能承諾的事，不列契約條件；可納入你的出價考量。<br><strong>處理順序：</strong>簽約前確認。<br><strong>我能做的：</strong>陪你到現場走一次、提供主管機關公告的查證入口。</span></div>
-          </div>
-        </div>
-      </div>
+    <div class="risklane">
+      <span class="lanetag t-fix">維修策略</span>
+      <ul>
+        <li><strong>成因已確認：是舊痕，不是現行漏水。</strong>所以<strong>不需要抓漏、不需要重做防水</strong>——那是這類屋況最花錢的一段，本案省下來了。</li>
+        <li>處理方式：刮除鬆動處、批土研磨、重新粉刷，就這樣。</li>
+        <li>建議<strong>併入全室粉刷一次做完</strong>，不要為這一塊單獨叫工——叫一次工的車馬與最低消費，往往比材料本身還貴。</li>
+        <li>雖然已經確認，仍請屋主把「無現行漏水」據實勾註在<strong>現況說明書</strong>上。這不是不信任誰，是你日後唯一拿得出來的書面憑據。</li>
+      </ul>
     </div>
-  </section>
+    <div class="risklane">
+      <span class="lanetag t-cost">費用區間（附出處）</span>
+      <ul>
+        <li>乳膠漆兩道 $500～$1,000／坪；批土研磨 $100～$300／坪｜<span class="src">PRO360 油漆報價頁 2025-09-30</span></li>
+        <li>北部連工帶料 $900～$1,600／坪；舊屋翻新加價 $300～$800／坪｜<span class="src">100室內設計 油漆報價文 2025-12-14</span></li>
+        <li><strong>局部天花板重新粉刷 加價約 $100～$300／坪</strong>｜<span class="src">100室內設計 油漆報價文 2025-12-14；PRO360 油漆報價頁 2025-09-30 列加價約 $100／坪</span></li>
+        <li>刮除批土等小量廢料清運 $500～$1,000／次｜<span class="src">找師傅945 油漆報價頁 2026-03-24</span></li>
+      </ul>
+      <p class="src">⚠️ 廚房天花板<strong>實際面積未量，本頁不預設坪數</strong>，也不替你算一個假的總額。處理建議併入下面<strong>風險 05 全室粉刷</strong>（15 坪 $9,500～$37,000），那個區間已經含天花板局部加價，不會重複計算。同一工種三站數字不一致是常態，這裡全部並列不取平均——差異本身就是資訊。上列是市場公開區間，不是本案報價。</p>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-check">怎麼驗</span>
+      <ul>
+        <li>帶水分計到現場，量水漬處與周邊牆面，數值差異會說話——已經確認是舊痕，你自己再驗一次更安心，我不會攔你。</li>
+        <li>看賣方填寫的<strong>不動產標的現況說明書</strong>（賣方對屋況逐項勾註的揭露表，買賣端在成屋買賣定型化契約裡稱「建物現況確認書」），確認此處有據實勾註。這份我會主動幫你取得。</li>
+        <li>正式簽約前自費請驗屋單位以紅外線熱像儀複驗一次，這筆錢不要省。</li>
+        <li>雨天過後再去一次，是最便宜的驗證方法。<strong>如果你驗出來跟「非現行漏水」不符，立刻告訴我，我負責更正這一頁</strong>——寫錯比沒寫更嚴重。</li>
+      </ul>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-plan">買方對策（怎麼承擔）</span>
+      <ul>
+        <li><strong>預算怎麼算：</strong><strong>這條不單獨計列費用</strong>——處理已含在風險 05「全室粉刷」那筆（15 坪 $9,500～$37,000）裡面，不重複算給你看。原本這條抓的 $16,000 抓漏與壁癌預算，<strong>因為確認非現行漏水而不需要了</strong>。</li>
+        <li><strong>交易怎麼談：</strong>請屋主在現況說明書據實勾註「無現行漏水」，並在驗屋時一併複查。已確認的事寫成白紙黑字，日後才有依據。</li>
+        <li><strong>處理順序：</strong>安全（電／結構）→ 管線 → 美化，這條屬<strong>第三段「美化」</strong>——清空與水電做完之後再粉刷，順序顛倒會白做一次。</li>
+        <li><strong>我能做的：</strong>代約油漆師傅估價並做報價單比價、把屋況與修繕條件寫進契約建議、驗屋時陪同複查、交屋清點。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="riskcard">
+    <div class="riskhead">
+      <div class="no">風險 02</div>
+      <h3>屋主自住 32 年，雜物滿屋不是空屋</h3>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-fix">維修策略</span>
+      <ul>
+        <li>先談清楚是<strong>現況交屋</strong>還是<strong>清空交屋</strong>，這一句話的差別，就是下面那幾筆清運與搬運費用要不要由你付。</li>
+        <li>如果是現況交屋，清運費用由你負擔，就要在出價時算進去，而不是交屋後才發現。</li>
+        <li>清運與粉刷分兩批做：先清空、再看見真正的牆面與地板狀況，然後才決定要修到什麼程度。</li>
+      </ul>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-cost">費用區間（附出處）</span>
+      <ul>
+        <li>家戶廢棄物清運 $4,000～$7,500／車｜<span class="src">PRO360 清運報價頁 2025-06-12</span></li>
+        <li>廢棄物處理（3.5 噸車）$3,000～$8,000／車｜<span class="src">找師傅945 拆除清運報價頁 2026-03-24</span></li>
+        <li>大型家具：沙發 $400～$5,000／件、床墊或床架 $500～$2,500／件、衣櫃或櫃體 $300～$1,000／件｜<span class="src">PRO360 清運報價頁 2025-06-12</span></li>
+        <li>大型家電：冰箱 $700～$1,000／件、冷氣或洗衣機或電視 $200～$1,000／件｜<span class="src">PRO360 清運報價頁 2025-06-12</span></li>
+        <li>樓層搬運加價 約＋$500／層｜<span class="src">PRO360 清運報價頁 2025-06-12。本戶 6 樓有電梯，是否加價以業者現場認定為準</span></li>
+        <li>搬家：經濟型 $2,500～$3,000／車、精緻型 $4,000～$5,000／車｜<span class="src">PRO360 搬家報價頁 2025-06-03。找師傅945 搬家報價頁 2026-03-24 列基本行情 $3,000～$10,000／次</span></li>
+        <li>簽搬家合約前，對照政府公告的<a href="https://www.ey.gov.tw/Page/AABD2F12D8A6D561/5aa5e777-6390-4d46-8e6b-46c21e69230a">搬家貨運定型化契約範本</a>（行政院消費者保護處），該給的條款不要少。</li>
+      </ul>
+      <p class="src">清運要幾車，取決於實際物量，現場估價才算數。本案先粗抓 1～2 車家戶廢棄物＋數件大型家具家電＝約 $8,000～$20,000 當預算上限（單價見上列）；上列是市場公開區間，不是本案報價。</p>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-check">怎麼驗</span>
+      <ul>
+        <li>看屋時把每個房間、陽臺、儲藏空間都拍下來，清運業者看照片才報得出價。</li>
+        <li>點交當天逐項清點，對照契約寫的交屋範圍。</li>
+        <li>清空之後、交屋之前，再走一次現場——東西搬走才看得到的牆面與地板問題，那時候才會露出來。</li>
+      </ul>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-plan">買方對策（怎麼承擔）</span>
+      <ul>
+        <li><strong>預算怎麼算：</strong>清運粗抓 $8,000～$20,000（1～2 車家戶廢棄物＋數件大型家具家電，單價見上列），這條先抓上限 <strong>$20,000</strong> 加進「<a href="#zongchengben">入住總成本</a>」；想把整理費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。</li>
+        <li><strong>交易怎麼談：</strong>可協商屋主交屋前自行清空，或留物由契約約定折價／價金保留，交屋時可要求淨空點交。</li>
+        <li><strong>處理順序：</strong>排在所有工項之前，清空才能驗屋、才能施工。</li>
+        <li><strong>我能做的：</strong>代約清運公司估價並做報價單比價、把清運與點交條件寫進契約建議、交屋清點。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="riskcard">
+    <div class="riskhead">
+      <div class="no">風險 03</div>
+      <h3>屋齡 32 年，室內水電管線是否更新過待查</h3>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-fix">維修策略</span>
+      <ul>
+        <li>直接問屋主：配電、給水、排水管線有沒有換過，什麼時候換的。</li>
+        <li>清點插座數量與位置，對照你的家電需求；老屋常見的是插座不夠、迴路不足。</li>
+        <li>冷氣、電熱水器、電陶爐這類大電流設備要走專用迴路，這筆要先算。</li>
+      </ul>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-cost">費用區間（附出處）</span>
+      <ul>
+        <li>電路檢測 $100～$500／次｜<span class="src">PRO360 水電報價頁 2025-08-11。找師傅945 2026-03-24 列 $300～$500／次；100室內設計 2025-12-11 列線路檢測 $500～$1,200／次</span></li>
+        <li>專用迴路 $2,500～$3,500／迴｜<span class="src">PRO360 水電報價頁 2025-08-11。找師傅945 2026-03-24 列迴路安裝 $2,000～$3,000／個</span></li>
+        <li>明管拉線 $2,000～$3,500／迴；暗管拉線 $3,500～$4,500／迴｜<span class="src">100室內設計 水電報價文 2025-12-11</span></li>
+        <li>插座安裝更換 $150～$1,000／個；開關面板更換 $500～$700／個｜<span class="src">PRO360 水電報價頁 2025-08-11</span></li>
+        <li>通水管 $3,000～$5,000／支｜<span class="src">PRO360 水電報價頁 2025-08-11</span></li>
+        <li>水管配管（局部換管）$1,000～$4,000／次｜<span class="src">PRO360 水電報價頁 2025-08-11。找師傅945 2026-03-24 列水管配管／移位 $1,000～$5,000／次</span></li>
+        <li>熱水器安裝 $500～$800／座；冷氣安裝 $1,200～$5,000／台｜<span class="src">PRO360 水電報價頁 2025-08-11</span></li>
+        <li>基本出勤費（車馬費）$500～$800／趟｜<span class="src">100室內設計 水電報價文 2025-12-11</span></li>
+      </ul>
+      <p class="src">上列為市場公開報價區間，不是本案報價；實際費用以師傅現場估價為準。</p>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-check">怎麼驗</span>
+      <ul>
+        <li>帶一個插座測電器，全室插座逐個測通電與極性。</li>
+        <li>打開所有水龍頭同時放水，看水壓有沒有明顯掉；再看排水速度與有無回味。</li>
+        <li>看電箱：無熔絲開關的數量、標示是否清楚、有沒有明顯改裝痕跡。</li>
+        <li>這幾項驗屋公司都會驗，但你自己先看過，議價時才問得出重點。</li>
+      </ul>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-plan">買方對策（怎麼承擔）</span>
+      <ul>
+        <li><strong>預算怎麼算：</strong>這條先抓上限 <strong>$12,000</strong>（專用迴路 2 迴 × $2,000～$3,500＋局部換管 1 次 $1,000～$5,000＝$5,000～$12,000，不拆除、清運不另計；電路檢測與驗屋另計）加進「<a href="#zongchengben">入住總成本</a>」；插座、開關、熱水器與冷氣安裝屬設備更新，依你的需求另計。想把修繕費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。</li>
+        <li><strong>交易怎麼談：</strong>檢測或估價單出來後可依報價議價，契約可約定屋主交屋前修復或價金保留，可要求交屋前複驗。</li>
+        <li><strong>處理順序：</strong>安全（電／結構）→ 漏水防水 → 管線 → 美化，這條在第一段「安全」與第三段「管線」，入住前做完，而且要在油漆之前——拉線打牆會弄髒牆面。</li>
+        <li><strong>我能做的：</strong>陪同複驗、代約水電師傅估價並做報價單比價、把修繕條件寫進要約或契約建議、交屋清點。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="riskcard">
+    <div class="riskhead">
+      <div class="no">風險 04</div>
+      <h3>32 年共用設施：電梯、水塔、外牆與修繕基金</h3>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-fix">維修策略</span>
+      <ul>
+        <li>管理費每月 900 元收得低（依委託資料，實際以管委會為準），相對要看修繕基金夠不夠因應外牆、電梯、水塔這些共用修繕。</li>
+        <li>調閱電梯保養紀錄與有無汰換計畫——與建物同齡的電梯（是否曾汰換過待查）若面臨大修或更換，是全體住戶分攤的大筆支出。</li>
+        <li>問有沒有排定中的外牆整修、管線更新或都更整合，這些會變成未來的分攤金。</li>
+      </ul>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-cost">費用區間（附出處）</span>
+      <p><strong>無本戶單獨的修繕費用，屬交易條件</strong>——共用部分的修繕由公共基金或全體區分所有權人依規約分攤，不進本頁修繕合計。下列只是讓你知道量級：</p>
+      <ul>
+        <li>換水塔（含水塔）$10,000～$30,000／座；水塔清洗 $1,000～$2,500／次｜<span class="src">PRO360 水電報價頁 2025-08-11</span></li>
+        <li>高空作業（外牆施工人力）$6,000～$10,000／人／天｜<span class="src">找師傅945 防水報價頁 2026-03-24</span></li>
+        <li>外牆塗防水漆 $600～$1,200／坪；外牆重做防水（彈性水泥）$2,000～$3,000／坪｜<span class="src">找師傅945 防水報價頁 2026-03-24</span></li>
+      </ul>
+      <p class="src">共用部分的費用不是由你單獨負擔。依《公寓大廈管理條例》第 10 條，共用部分的修繕、管理、維護費用由公共基金支付或由區分所有權人按其共有之應有部分比例分擔，<b>但規約另有規定者從其規定</b>——所以要看你們社區的規約怎麼寫，不能一律套比例。實際金額與是否施作以區分所有權人會議與管委會決議為準。這裡列出來，是讓你知道「修繕基金不足」代表的量級。法條原文見<a href="https://law.moj.gov.tw">全國法規資料庫</a>。</p>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-check">怎麼驗</span>
+      <ul>
+        <li>這一塊<strong>驗屋公司不驗</strong>，要自己問管委會或總幹事。</li>
+        <li>查出來修繕基金確實偏低怎麼辦：把「可預見的大額共用修繕」當成議價依據具體提出來（例如電梯汰換、外牆整修），或直接把它算進你的持有成本再決定要不要買。不用因為一項就走人，但也不要當作沒看見。</li>
+        <li>要看的三份東西：最近一次區分所有權人會議紀錄（就是社區住戶大會的會議紀錄）、修繕基金餘額、電梯保養合約與紀錄。</li>
+        <li>繞外牆走一圈，抬頭看有沒有磁磚剝落、滲水痕跡、鋼筋外露。</li>
+        <li>看頂樓與地下室的公共空間，那裡最誠實。</li>
+      </ul>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-plan">買方對策（怎麼承擔）</span>
+      <ul>
+        <li><strong>預算怎麼算：</strong>無本戶單獨的修繕費用，不進修繕合計；管理費 900 元／月先列進每月支出，可預見的大額分攤（電梯汰換、外牆整修、水塔更換）等管委會資料到手再抓量級，列進持有成本。</li>
+        <li><strong>交易怎麼談：</strong>可要求屋主提供最近一次區分所有權人會議紀錄、修繕基金餘額與電梯保養紀錄；已決議未繳的分攤金或欠繳管理費，可約定由屋主交屋前結清或價金保留，交屋前可要求管委會出具無欠繳證明。分攤方式依《公寓大廈管理條例》與社區規約，有疑義可向主管機關查詢，依官方答覆為準。</li>
+        <li><strong>處理順序：</strong>不是修繕，是出價前的查證——上面「怎麼驗」那三份文件看完再出價。</li>
+        <li><strong>我能做的：</strong>陪同向管委會或總幹事索取三份文件、把欠繳結清與分攤金條款寫進契約建議、交屋清點時一併核對管理費結算。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="riskcard">
+    <div class="riskhead">
+      <div class="no">風險 05</div>
+      <h3>要住進去之前的基本整理費用</h3>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-fix">維修策略</span>
+      <ul>
+        <li>先做「能住」的最低限度：清空、粉刷、水電到位、必要的防水處理。其餘住進去再慢慢弄。</li>
+        <li>本案 18.8 坪、公設比 9.4%，室內坪數估算時記得用主建 14.94 坪＋附屬 2.1 坪去抓油漆與地板的量，不要拿登記總坪數去乘。</li>
+        <li>不要一開始就做木作。先住一季，你才知道自己真正需要什麼櫃子。</li>
+      </ul>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-cost">費用區間（附出處）</span>
+      <ul>
+        <li>內牆油漆連工帶料（北部）$900～$1,600／坪｜<span class="src">100室內設計 油漆報價文 2025-12-14</span></li>
+        <li>舊屋翻新加價（修補、批土、防黴）＋$300～$800／坪｜<span class="src">100室內設計 油漆報價文 2025-12-14</span></li>
+        <li>水泥漆一道 $300～$500／坪；乳膠漆兩道 $500～$1,000／坪；乳膠漆三道 $1,000～$1,500／坪｜<span class="src">PRO360 油漆報價頁 2025-09-30，標示連工帶料</span></li>
+        <li>批土＋研磨 $100～$300／坪｜<span class="src">PRO360 油漆報價頁 2025-09-30</span></li>
+        <li>木地板 $800～$3,400／坪｜<span class="src">PRO360 木工報價頁 2025-06-24</span></li>
+        <li>系統櫃 $800～$1,500／尺｜<span class="src">100室內設計 木工報價文 2025-05-28</span></li>
+        <li>拆除工程 $1,000～$1,500／坪｜<span class="src">PRO360 泥作報價頁 2025-06-26</span></li>
+        <li>油漆批土等小量廢料清運 $500～$1,000／次｜<span class="src">找師傅945 油漆報價頁 2026-03-24</span></li>
+        <li>拆除後的裝潢廢棄物清運 $10,000～$15,000／車｜<span class="src">PRO360 清運報價頁 2025-06-12。找師傅945 拆除清運報價頁 2026-03-24 列廢棄物處理 $3,000～$8,000／車（3.5 噸）</span></li>
+      </ul>
+      <p class="src">這一列不是驗屋範圍，是預算問題。要精確金額，請師傅到現場估價。</p>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-check">怎麼驗</span>
+      <ul>
+        <li>把「非做不可」跟「想要做」分兩張紙寫，第一張才是你出價前要算的錢。</li>
+        <li>至少找兩家報價，比的是工項寫得清不清楚，不是只比總價。</li>
+        <li>報價單要逐項列出工項、單位、數量與單價，只寫一個總價的不要簽。</li>
+      </ul>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-plan">買方對策（怎麼承擔）</span>
+      <ul>
+        <li><strong>預算怎麼算：</strong>先算「非做不可」那一張：全室粉刷 15 坪（主建 14.94 坪取整）＝$9,500～$37,000——低標用 PRO360 乳膠漆兩道 $500～$1,000／坪＋批土研磨 $100～$300／坪，高標用 100室內設計 北部連工帶料 $900～$1,600／坪＋舊屋翻新加價 $300～$800／坪，再加小量廢料清運 $500～$1,000，這條先抓上限 <strong>$37,000</strong> 加進「<a href="#zongchengben">入住總成本</a>」；木地板、系統櫃屬「想要做」，住過一季再決定，不進這次合計；若有拆除，裝潢廢棄物清運另計。想把整理費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。</li>
+        <li><strong>交易怎麼談：</strong>這條是你要住的標準，不是屋況瑕疵，通常不會寫成修復條款；可在出價時把整理費當成你評估總價的依據具體提出，最終金額由買賣雙方議定。</li>
+        <li><strong>處理順序：</strong>安全（電／結構）→ 漏水防水 → 管線 → 美化，這條是最後一段「美化」——清空、水電、天花板水漬都處理完才進油漆；能入住後再做的（地板、櫃子）就往後排。</li>
+        <li><strong>我能做的：</strong>代約油漆師傅估價並做報價單比價（報價單要逐項列工項、單位、數量、單價）、交屋清點。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="riskcard">
+    <div class="riskhead">
+      <div class="no">風險 06</div>
+      <h3>沒有車位、捷運興建中</h3>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-fix">維修策略</span>
+      <ul>
+        <li><strong>沒有車位</strong>：先確認周邊停車場位置、月租金額與是否還有名額，這是每個月的固定支出，不是一次性費用。土城區的停車場位置可先用<a href="/tingche/">停車場位置查詢</a>自己看過一輪，再到現場問月租。</li>
+        <li><strong>捷運興建中</strong>：買的是未來性。若你的用錢計畫撐不到通車，那這個優勢對你不成立——這句話我不美化。</li>
+      </ul>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-cost">費用區間（附出處）</span>
+      <p><strong>無修繕費用，屬使用限制／交易條件，不進本頁修繕合計。</strong>這兩項在修繕行情資料裡沒有對應的公開報價，<strong>以現場實際洽詢與估價為準</strong>——周邊車位月租行情請以停車場業者當下公告為準，我陪你走一趟實際問。這裡不編數字給你。</p>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-check">怎麼驗</span>
+      <ul>
+        <li>白天與傍晚各去一次，感受採光、音量與施工噪音的差別。</li>
+        <li>走一次你實際會走的路線：從社區大門到未來站體位置、到停車場、到市場。</li>
+      </ul>
+    </div>
+    <div class="risklane">
+      <span class="lanetag t-plan">買方對策（怎麼承擔）</span>
+      <ul>
+        <li><strong>預算怎麼算：</strong>這條不進修繕合計；停車月租問到後加進每月固定支出（跟房貸 34,098 元、管理費 900 元一起列）；出價不用「通車後的價」算，通勤也用現在的交通條件算。</li>
+        <li><strong>交易怎麼談：</strong>車位不是本標的的一部分，無法約定；捷運時程不是屋主能承諾的事，不列契約條件；兩者都可納入你的出價考量。捷運進度可向主管機關查詢，依官方公告為準。</li>
+        <li><strong>處理順序：</strong>簽約前確認——先用停車場位置查詢工具看一輪，再到現場逐家問空位與月租、問管委會有無可承租車位；平日上下班時段到工地圍籬旁走一次。</li>
+        <li><strong>我能做的：</strong>陪你繞周邊問月租與空位、把結果列進每月支出試算、陪你到現場走一次並提供主管機關公告的查證入口。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+  </div>
+
+  <div class="pk">
+<section id="inspect">
+  <h2>驗屋要花多少錢</h2>
+  <p class="lead">很多人卡在這裡：多花一筆錢驗屋，好像很浪費。這間屋齡 32 年、屋主自住原始屋況，該看的管線與設備不少——跟買錯之後才發現的代價比，這筆很值得花。本案登記 18.8 坪、屋齡 32 年，三種計價口徑的區間直接列給你。</p>
+
+  <div class="tablewrap">
+  <table>
+    <tr><th>項目</th><th>單位</th><th>價格區間</th><th>來源與更新年份</th></tr>
+    <tr><td>按坪計價</td><td>坪</td><td>$500～$1,000</td><td>PRO360 驗屋報價頁 2025-06-12</td></tr>
+    <tr><td>20 坪以下</td><td>戶</td><td>約 $12,000</td><td>PRO360 驗屋報價頁 2025-06-12</td></tr>
+    <tr><td><b>中古屋（未分坪數）｜本案屬此類</b></td><td>戶</td><td><b>$15,000～$24,000</b></td><td>PRO360 驗屋報價頁 2025-06-12</td></tr>
+    <tr><td>一般行情（按坪）</td><td>坪</td><td>$500～$1,000</td><td>鴻宇健康驗屋 2025-07-06</td></tr>
+    <tr><td>複驗</td><td>次</td><td>$4,000～$6,000</td><td>PRO360 驗屋報價頁 2025-06-12</td></tr>
+    <tr><td>複驗（按比例）</td><td>次</td><td>初驗費 5～7 成</td><td>鴻宇健康驗屋 2025-07-06</td></tr>
+    <tr><td>小坪數新成屋（供對照）</td><td>戶</td><td>$8,000～$15,000</td><td>房屋管家 hemahouse 2026-04-29</td></tr>
+  </table>
+  </div>
+
+  <div class="card teal" style="margin-top:13px">
+    <h3>本案驗屋要特別指定的三件事</h3>
+    <ul>
+      <li><strong>紅外線熱顯像儀</strong>：複查廚房天花板舊痕範圍是否仍有濕氣，順便掃其他區域（鴻宇健康驗屋 2025-07-06 明列此儀器）。</li>
+      <li><strong>水分偵測器</strong>：量牆體與天花板含水率，分辨舊痕與進行中的滲漏（同上來源）。</li>
+      <li><strong>全室插座通電與排水測試</strong>：32 年屋齡的重點不在美觀，在管線。</li>
+    </ul>
+    <p class="src"><b>三種口徑怎麼取捨：</b>本案是屋齡 32 年的中古屋，實務上多以「中古屋」那一列報價，抓 $15,000～$24,000 比較保險；按坪計價（18.8 坪推算約 $9,400～$18,800）與「20 坪以下約 $12,000」兩列偏低，多對應屋況單純或新成屋的案件，列在這裡是給你對照與議價用的。三站沒有一站把中古屋再依坪數細分，本頁也不自行推估。價格區間僅供參考，實際費用以驗屋單位現場報價為準。</p>
+  </div>
+
+  <div class="card">
+    <h3>更多工種的行情，我整理在另一頁</h3>
+    <p>泥作、油漆、廁所防水、水電、木工、清運、搬家、驗屋的完整報價區間與出處，都在這裡。</p>
+    <a class="btn ghost" href="/xiushan/">看修繕報價行情整理頁</a>
+  </div>
+</section>
+  </div>
 
   <section class="notice">
     <div class="sec-head">
@@ -692,7 +1028,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <h2>1088 萬<br>你的月付會是多少</h2>
       <p class="lead">總價是一個數字，能不能扛得住是另一個。先把首付、月付款、月息攤開來看，再決定要不要花時間來看屋。</p>
     </div>
-    <div class="afford">
+    <div class="afford" id="zongchengben">
       <div class="afford-top">
         <div class="abox a-total"><small>首付（自備款）</small><strong>217.6 萬</strong><span>總價 1088 萬 − 貸款 870.4 萬</span></div>
         <div class="abox a-pay"><small>月付款</small><strong>34,098 元</strong><span>本息平均攤還，每月固定</span></div>
@@ -741,6 +1077,56 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <p class="cap">本案<strong>座向朝東</strong>、格局圖如上（皆依委託資料），2 房 1 廳 1 衛、兩個房間皆有對外窗、屋型方正；本戶 6 樓，社區地上 12 層、地下 1 層，有電梯。格局圖僅供參考，實際仍以現況格局為主；格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準。</p>
     </div>
   </section>
+
+  <div class="pk">
+<section id="layout">
+  <h2>格局圖與室內動線</h2>
+  <p class="lead">格局圖完整放，不遮不糊。看得懂格局，你才知道自己買的是什麼——以下每一項我都直接說，包含不好的那幾項。</p>
+
+  <img src="../a/k_floorplan.jpg" alt="龍傳家電梯兩房格局圖：玄關、客廳、廚房、兩間臥室、浴室、陽臺與電梯梯間配置" loading="lazy" style="border-radius:14px;border:1px solid var(--line);background:#fff;padding:8px">
+  <p class="src">格局圖由委託方提供，未經修改。格局、面積與範圍最終以地政謄本、建物測量成果圖、不動產說明書及買賣契約記載為準。</p>
+
+  <div class="card">
+    <h3>動線怎麼走</h3>
+    <p>進門是玄關廊道，往右進客廳；客廳右側在格局圖上是一整面長窗。廚房在中央，往上接陽臺；兩間臥室分別配置在左右兩側，右側臥室直接連通陽臺。浴室在玄關進門後的左手邊，緊鄰電梯梯間側。以上依格局圖判讀，實際採光狀況請到現場親眼看一次。</p>
+    <p>陽臺只有一座（登記附屬建物 2.1 坪），廚房與右側臥室都可以進出它。</p>
+    <p>簡單講：<strong>公私分離做得出來</strong>——客廳與廚房在同一側，兩間臥室各自獨立，不用穿過房間去另一個房間。18.8 坪的兩房能有這樣的格局，空間不會白白浪費在走道上。</p>
+  </div>
+
+  <div class="card gold">
+    <h3>坪數怎麼分配（這決定你的整理報價）</h3>
+    <div class="tablewrap">
+    <table>
+      <tr><th>項目</th><th>坪數</th><th>說明</th></tr>
+      <tr><td>主建物</td><td>14.94 坪</td><td>室內實際隔間空間，室內油漆與地板報價抓這一塊</td></tr>
+      <tr><td>附屬建物</td><td>2.1 坪</td><td>陽臺</td></tr>
+      <tr><td>共用部分（公設）</td><td>1.76 坪</td><td>公設比 9.4%</td></tr>
+      <tr><td>登記總坪數</td><td>18.8 坪</td><td>依委託資料，面積以地政機關登載為準</td></tr>
+    </table>
+    </div>
+    <p class="src">找師傅估價時，室內工程（油漆、地板）報主建 14.94 坪；陽臺 2.1 坪要另外講，因為陽臺通常不鋪木地板、外牆漆料也跟室內不同。整份工程總量是 14.94＋2.1＝17.04 坪。不要直接報 18.8 坪——那 1.76 坪的公設不在你家裡，報錯會多花錢。</p>
+  </div>
+
+  <div class="card danger">
+    <h3>格局上的三個缺點，我直接講</h3>
+    <ul>
+      <li><strong>浴室在格局圖上沒有標示對外窗。</strong>兩間臥室與客廳的窗戶在圖上都畫得出來，浴室那一格沒有。無窗浴室的濕氣與發霉風險比較高，通常要靠抽風機或暖風機處理（暖風機安裝 $2,000～$3,500／台，來源：PRO360 水電報價頁 2025-08-11）。<strong>帶看那天請務必自己確認一次</strong>——以現場實際狀況為準。</li>
+      <li><strong>浴室與其中一間臥室緊鄰電梯梯間。</strong>電梯運轉聲與梯間人聲會傳，與建物同齡的電梯尤其要留意。看屋時站在那間臥室裡，請人搭一趟電梯上下，你就聽得到答案。</li>
+      <li><strong>只有一套衛浴。</strong>兩房一廳一衛，兩人以上同時作息會互相卡；格局圖上也看不到可以再增設衛浴的位置。這一項不是缺陷，是產品定位——它適合一到兩人，不適合三代同堂。</li>
+    </ul>
+  </div>
+
+  <div class="card teal">
+    <h3>座向：朝東（依委託資料，未複核）</h3>
+    <p>這張格局圖本身沒有畫指北標示。委託資料載明朝東，但這一項<strong>尚未經地政謄本或現場實測複核</strong>，我不把它當成已確認的事實寫給你——帶看時我會陪你在客廳長窗前用手機指北針再核一次，兩邊對得上才算數；對不上，以現場與官方圖為準，我會立刻更正這一頁。</p>
+    <ul>
+      <li><strong>帶看當天：</strong>站在客廳長窗前打開手機指北針，窗戶朝哪，那就是主要座向，跟委託資料現場對一次。</li>
+      <li><strong>簽約前：</strong>向地政機關申請<strong>建物測量成果圖</strong>，圖上有正北標示，這是官方版本。<a href="https://dcland.moi.gov.tw/">內政部地政司數位櫃臺</a>可線上申請。</li>
+    </ul>
+    <p class="src">座向、格局圖與範圍最終以地政謄本、建物測量成果圖、不動產說明書及買賣契約記載為準。</p>
+  </div>
+</section>
+  </div>
 
   <section>
     <div class="sec-head">
@@ -827,6 +1213,106 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <a class="vlink" href="https://law.moj.gov.tw" target="_blank" rel="noopener"><b>法</b><div><strong>全國法規資料庫</strong><small>查法條原文</small></div></a>
     </div>
   </section>
+
+  <div class="pk">
+<section id="steps">
+  <h2>接下來三步怎麼走</h2>
+  <p class="lead">看到這裡你大概心裡有數了。接下來的順序很重要——順序錯了，會花冤枉錢。</p>
+
+  <div class="step">
+    <div class="stepno">第 1 步</div>
+    <h3>先做貸款預審，不是先看屋</h3>
+    <p>本案屋齡 32 年，屋齡加貸款年限銀行內部通常有上限，成數與年限會直接改變你的月付款。先問過至少兩家銀行，知道銀行給你多少，再決定要看哪個總價帶的房子。</p>
+    <p><b>怎麼做：</b>準備身分證、最近一年的收入證明或扣繳憑單、勞保投保明細、名下貸款與信用卡的現況，帶著本案的總價與屋齡（1088 萬、32 年），直接約銀行房貸專員談。<b>要問清楚這四件事：</b>成數、貸款年限、利率（含是否為兩段式）、有沒有寬限期。</p>
+    <p class="src">預審不等於正式申貸，但多數銀行會請你授權查詢聯徵，<b>查詢紀錄會留存</b>，短期內找太多家是會被後面的銀行看到的——所以先挑兩家談就好，不要一次跑五家。是否收取估價費或開辦費依各家銀行規定不同，談之前先問。</p>
+  </div>
+
+  <div class="step">
+    <div class="stepno">第 2 步</div>
+    <h3>看屋當天分兩條路走</h3>
+    <p><strong>如果你能接受自己發包整理：</strong>重點放在「清運要幾車、水電要不要重拉、粉刷要做幾坪」，這三項決定你的整理預算，也決定你的出價。</p>
+    <p><strong>如果你要買了就能入住：</strong>那要先誠實面對——這間是屋主自住 32 年的原始屋況，中間一定有一段整理期。時間成本（租金或通勤）也要算進總成本，再回頭比同總價帶的整理好可入住物件，哪個對你划算。</p>
+    <p class="src">兩條路沒有對錯，怕的是心裡想著第一條、生活節奏卻是第二條。</p>
+  </div>
+
+  <div class="step">
+    <div class="stepno">第 3 步</div>
+    <h3>出價之前，先把三份文件看過</h3>
+    <p>建物與土地謄本、不動產標的現況說明書（賣方逐項勾註屋況的揭露表）、社區最近一次區分所有權人會議紀錄（社區住戶大會的紀錄）。<strong>前兩份是我的工作，我會主動調好給你，不用你開口要</strong>；第三份要向管委會或總幹事索取，帶看那天我陪你一起問。</p>
+    <p>你也可以自己來：謄本從<a href="https://dcland.moi.gov.tw/">內政部地政司數位櫃臺</a>線上申請就有，不用透過任何人。我把路徑寫出來，是因為你有權自己查證，不是只能相信我說的。</p>
+    <p class="src">看完這三份，你出的價才有依據，不是憑感覺砍。</p>
+  </div>
+
+  <a class="btn line" href="https://line.me/R/ti/p/@798ulmws">用官方 LINE 跟我約看屋時間</a>
+</section>
+<section id="faq">
+  <h2>常見問題</h2>
+  <p class="lead">這幾題是看完資料之後最常被問到的。答案都寫在這裡，不用等私訊。</p>
+
+  <details>
+    <summary>1088 萬可以議價嗎．我該出多少</summary>
+    <p><strong>開價不等於成交價，也不代表議價空間，最終金額由買賣雙方議定。</strong>委託方交付的內部價格資訊我不會外流，那是我對委託人的義務，跟你買不買得到沒有關係——但「你該出多少」這題我可以直接教你算，不用私訊問我：</p>
+    <p><b>第一步：查實價。</b>到<a href="https://lvr.land.moi.gov.tw">內政部不動產交易實價查詢服務網</a>，選「新北市土城區」，用社區名稱或路段查最近一年的成交紀錄，把屋齡、樓層、坪數與本案接近的挑出來看。</p>
+    <p><b>第二步：把整理費扣回去。</b>你查到的成交行情，多半是屋況整理過的房子。這間是自住 32 年的原始屋況，你要把清運、粉刷、水電的預估金額（區間都在「風險・維修・費用・驗屋」那一段），從行情裡扣掉——那才是這間對你的合理價。</p>
+    <p><b>第三步：用你的月付款倒推。</b>先確定你每個月付得起多少，回推總價上限，再跟前面兩步的數字對照。三個數字裡最小的那個，就是你的出價天花板。</p>
+    <p class="src">出價是你的權利，我的工作是把資料備齊讓你算得出來，不是替你決定金額，也不會催你加價。</p>
+  </details>
+
+  <details>
+    <summary>買下來要繳哪些稅費．大概什麼時候繳</summary>
+    <p>買方這一端常見的有：<b>契稅</b>（向地方稅捐稽徵處申報，稅基是房屋評定現值，不是成交價）、<b>印花稅</b>、<b>地政規費與登記費</b>、<b>代書費</b>（地政士服務報酬，市場行情依案件複雜度不同）、<b>火險與地震險</b>（辦房貸的銀行通常要求投保）。若有貸款，還有設定規費與銀行相關手續費。</p>
+    <p>這一筆最常被漏掉，因為它不在你跟屋主談的那個數字裡——談完價格才冒出來，最傷。我不在這裡寫金額，是因為契稅的稅基是<b>房屋評定現值</b>，每一戶都不一樣，我編一個數字給你只會害你抓錯預算。但你不用等到簽約才知道，<b>三步就問得出來</b>：</p>
+    <p><b>一、拿到房屋評定現值。</b>向屋主索取最近一期的房屋稅繳款書，上面就有這個數字——這件事我來要，你不用開口。</p>
+    <p><b>二、用它去試算契稅。</b>拿著這個數字打給<b>新北市政府稅捐稽徵處</b>（或用該處網站的稅額試算），問「這個評定現值的買賣契稅是多少、什麼時候要申報」，他們會直接告訴你金額與期限，這是最準的答案。稅率與申報期限的法條原文在<a href="https://law.moj.gov.tw">全國法規資料庫</a>（契稅條例、印花稅法）可以自己對。</p>
+    <p><b>三、請代書先給費用明細。</b>代書費、地政規費與登記費、設定規費不是稅，是服務與行政費用，可以在簽約前就請地政士報一張明細出來，貨比兩家也可以。火險與地震險由承貸銀行配合的保險公司報價，保費依保額而定。</p>
+    <p>實際稅額以新北市政府稅捐稽徵處核定為準。簽約後代書也會列一張完整的費用明細，但那時候你已經沒有議價空間了——所以要提前問。</p>
+    <p class="src">阿宏這邊常用的稅務整理放在<a href="/shuiwu-faq/">房地稅務常見問題</a>，賣方端的稅在那裡講得比較細。</p>
+  </details>
+
+  <details>
+    <summary>18.8 坪的兩房，兩個人住會不會太擠</summary>
+    <p>主建物 14.94 坪、陽臺 2.1 坪，格局是兩房一廳一衛加獨立廚房。以一到兩人自住來說空間是夠的，而且格局方正、公私分離，不會有那種穿過房間才能到另一個房間的浪費動線。</p>
+    <p>但要誠實講兩件事：<b>只有一套衛浴</b>，兩個人作息時間重疊會卡；<b>收納空間有限</b>，格局圖上沒有獨立儲藏室，18.8 坪要住得舒服，收納一定要在裝修時就規劃進去。如果你的家庭成員未來會增加到三人以上，這間會在幾年內就變小——那不是它的問題，是產品定位的問題，先想清楚比較好。</p>
+  </details>
+
+  <details>
+    <summary>整理那段期間，我要住哪裡</summary>
+    <p>這是很多人忽略掉的成本。以本案的狀況（先清空、水電到位、再粉刷），你在交屋後到入住前這段期間，房租或跟家人同住的安排要先想好，而且要把那段時間的<strong>房租＋房貸雙付</strong>算進總預算。</p>
+    <p>工期長短取決於你要做到什麼程度，這一題沒有標準答案，等師傅現場估價才知道。但預算要抓，不要等到交屋才發現兩邊都要付。</p>
+  </details>
+
+  <details>
+    <summary>這間以後好不好賣</summary>
+    <p>我不會對未來的價格做任何預測，那不是我能承諾的事。可以客觀講的是這間的條件在轉手時分別代表什麼：低總價、電梯、公設比 9.4%、兩房——這些條件對應的接手客群是首購與小家庭；反過來，沒有車位、屋齡會再往上走、只有一套衛浴，這些條件在轉手時同樣會被下一個買方拿出來談。</p>
+    <p>捷運通車與否是變數，不是既定事實。真正影響好不好賣的，是你買進的價格與屋況整理的品質——這兩件事在你手上，不在市場手上。</p>
+  </details>
+
+  <details>
+    <summary>屋齡 32 年，銀行會不會不給貸</summary>
+    <p>屋齡加貸款年限銀行內部通常有上限，會影響核貸年限與成數，但每一家銀行的標準不同，也跟你的收入、負債與信用條件有關。這一題沒有通用答案，做過貸款預審才會知道你的數字。實際成數、利率與月付以承貸銀行核准為準。</p>
+  </details>
+
+  <details>
+    <summary>廚房天花板的痕跡，是不是可以要求屋主先粉刷好</summary>
+    <p>可以談。這條已確認是舊痕、不是現行漏水，處理就是粉刷，金額不大（2 坪抓 $2,000～$4,500），談起來單純：請屋主交屋前粉刷完成，或直接折抵由你自己找師傅做。要談就談具體——修哪些範圍、什麼時候完成、沒做到怎麼辦，寫進買賣契約，口頭說法交屋後沒有用。</p>
+  </details>
+
+  <details>
+    <summary>公設比 9.4% 是不是特別低</summary>
+    <p>依委託資料，本案 18.8 坪中公設占 1.76 坪。相對於近年新建大樓常見的高公設，這個比例確實低，代表你買的坪數幾乎都落在室內。但要一起看的是：低公設通常也代表公共設施少、管理費低，相對要確認修繕基金是否足以支應共用部分的維護。面積與範圍最終以地政機關登載為準。</p>
+  </details>
+
+  <details>
+    <summary>捷運還沒通車，現在買會不會太早</summary>
+    <p>這一題沒有標準答案，要看你的用錢計畫。如果你是自住、可以等，並且現在的通勤方式撐得住，那通車前你有比較長的決策時間；如果你需要短期內就有捷運可搭，那這個條件對你不成立。通車時程以主管機關公告為準，不要用未定的時間表去做確定的財務規劃。</p>
+  </details>
+
+  <details>
+    <summary>為什麼影片這麼短，沒有完整走一遍</summary>
+    <p>因為屋主目前自住中，完整動線影片還沒拍。那支 27 秒的是社群版開箱精華，畫面全部是現場實拍照片。與其剪一支看起來像完整帶看的影片給你，不如老實說這件事，然後約你到現場走一次。</p>
+  </details>
+</section>
+  </div>
 
   <section class="form-wrap" id="needs">
     <div class="sec-head">
