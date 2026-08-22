@@ -215,6 +215,17 @@ tr.self td:first-child{color:var(--gold)}
 .tnum{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--solid-warm);color:#fff;font-weight:900;font-size:.86rem}
 .titem strong{color:var(--trust);font-size:.98rem}
 .titem p{margin:2px 0 0;color:var(--muted);font-size:.89rem}
+/* 風險五欄模組（40-0822-12，版型沿用 junying 四欄模組＋第五欄買方對策） */
+.riskkit{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);display:grid;gap:8px}
+.rk{display:grid;grid-template-columns:104px 1fr;gap:9px;align-items:start;font-size:.87rem;line-height:1.7}
+.rk b{color:var(--warm);font-weight:900;font-size:.82rem;padding-top:1px}
+.rk .v{color:var(--muted)}
+.rk .v strong{color:var(--ink);font-weight:800}
+.rk .v a{color:var(--trust);font-weight:800;overflow-wrap:anywhere;word-break:break-all}
+.rk .src{display:block;margin-top:3px;font-size:.76rem;color:var(--muted)}
+@media(max-width:420px){.rk{grid-template-columns:1fr}.rk b{padding-top:0}}
+.afford + .afford{margin-top:12px}
+.afford + .afford strong,.afford + .afford b{overflow-wrap:anywhere}
 
 /* 適合與否 */
 .split{display:grid;gap:12px}
@@ -596,12 +607,60 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <p class="lead">這一頁是完整揭露版，不是等你私訊才肯講的版本。以下每一項都可以到現場、到謄本、到官方網站驗證。</p>
     </div>
     <div class="tlist">
-      <div class="titem"><div class="tnum">1</div><div><strong>價格站在社區的高位</strong><p>不是撿便宜的物件。它換到的是「前面沒有樓」這個條件，你要先認同這件事值錢，價格才談得下去。</p></div></div>
-      <div class="titem"><div class="tnum">2</div><div><strong>是 2 房 1 廳，不是三房</strong><p>要三房的直接劃走。這間的尺度是兩個人剛好，硬要塞三房會很擠。</p></div></div>
-      <div class="titem"><div class="tnum">3</div><div><strong>嫌惡設施尚未完成現場勘查</strong><p>委託資料的嫌惡設施欄目前標記「待現場勘查」。<strong>所以我不會跟你說這裡沒有嫌惡設施</strong>——沒查證的事我不掛保證。要看，我陪你現場走一次，用你的眼睛確認。</p></div></div>
-      <div class="titem"><div class="tnum">4</div><div><strong>同社區還有其他戶在賣</strong><p>不只這一戶。要比，我把樓層、坪數、有無車位的差別一起攤給你看，不會只給你看對我有利的那一張。</p></div></div>
-      <div class="titem"><div class="tnum">5</div><div><strong>座向、管理費、公設比尚未核對完成</strong><p>這三項我手上還沒有可以對外掛保證的版本，所以這頁不寫數字，也不猜。<strong>帶看前我會把謄本、管委會的管理費金額、共有部分持分核算一次給你</strong>，白紙黑字對，不是口頭說。</p></div></div>
-      <div class="titem"><div class="tnum">6</div><div><strong>新成屋沒有實際居住紀錄</strong><p>沒有人住過，代表隔音、日照時段、通風、樓上樓下作息都還沒有前人的經驗可以問。這些要靠你自己到現場站一次，最好白天晚上各一次。</p></div></div>
+      <div class="titem"><div class="tnum">1</div><div><strong>價格站在社區的高位</strong><p>不是撿便宜的物件。它換到的是「前面沒有樓」這個條件，你要先認同這件事值錢，價格才談得下去。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">用「撿便宜」的期待進場，看完才發現價格帶站在社區上緣，白跑一趟又傷情緒；或為了湊價砍掉驗屋預算，新成屋的施工瑕疵就這樣帶進保固期之後。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕。先上實價登錄把同社區成交拆成含車位、不含車位兩組，再問自己「前面沒有樓」值多少；認同才留下，不認同去看社區別的戶別更划算。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v"><strong>無修繕費用，屬交易條件。</strong>本條不納入合計。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">新成屋驗屋報告（見第 6 條）是出價時唯一能拿在手上的「條件差異」證據，先驗再談。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>無修繕費用；把「總價以外的錢」（契稅、印花稅、代書費、規費、火險地震險、家電家具）先固定再出價。<br><strong>交易結構：</strong>可持實價登錄逐筆與驗屋報告議價；開價不等於成交價，也不代表議價空間，最終金額由買賣雙方議定，本頁不暗示可議幅度。<br><strong>處理順序：</strong>出價前的判斷。<br><strong>阿宏協助：</strong>同社區逐筆成交整理（含／不含車位分開）、把條件差異列表、要約依據整理。</span></div>
+          </div>
+        </div></div>
+      <div class="titem"><div class="tnum">2</div><div><strong>是 2 房 1 廳，不是三房</strong><p>要三房的直接劃走。這間的尺度是兩個人剛好，硬要塞三房會很擠。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">硬買來當三房，住進去才發現尺度不夠，想隔第三房又沒窗沒光，最後多花一筆木作又住得不舒服。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕，是需求匹配：兩個人住剛好；真要第三房，去看社區其他戶別，不要用價格硬補。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v"><strong>無修繕費用，屬使用限制。</strong>若硬要加隔間，木作隔間牆 <strong>$3,500～6,000／坪</strong>（PRO360 木工頁，2025-06-24；100室內設計，2025-05-28）、拆除與裝潢廢棄物清運 <strong>$10,000～15,000／車</strong>（PRO360 清運頁，2025-06-12）——列出來是讓你知道代價，本頁不建議這樣做，不納入合計。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">不是驗屋項目。帶捲尺量你的床與衣櫃放不放得下，比看格局圖準。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>無修繕費用。<br><strong>交易結構：</strong>需求不合就換戶別，不要用價格硬補；同社區其他戶別的條件可要求一併提供。<br><strong>處理順序：</strong>看屋前先決定房數需求。<br><strong>阿宏協助：</strong>同社區其他戶別的樓層、坪數、車位差異一次攤給你看。</span></div>
+          </div>
+        </div></div>
+      <div class="titem"><div class="tnum">3</div><div><strong>嫌惡設施尚未完成現場勘查</strong><p>委託資料的嫌惡設施欄目前標記「待現場勘查」。<strong>所以我不會跟你說這裡沒有嫌惡設施</strong>——沒查證的事我不掛保證。要看，我陪你現場走一次，用你的眼睛確認。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">簽了才發現附近有你在意的設施，退不了，也賣不到好價。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕：陪你現場走一次（白天晚上各一次）＋官方圖資（災害潛勢地圖、用地分區）對照，看到什麼記什麼。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v"><strong>無修繕費用，屬待勘查事項。</strong>本條不納入合計。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">驗屋公司不負責嫌惡設施；這一項靠現勘與官方查詢，不靠任何人的一句話。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>無修繕費用。<br><strong>交易結構：</strong>可要求賣方於不動產標的現況說明書如實填寫周邊設施；可約定以現況說明書記載為契約依據。<br><strong>處理順序：</strong>出價前完成現勘。<br><strong>阿宏協助：</strong>陪同現勘、官方圖資查詢結果書面給你、把現況說明書列進簽約前核對。</span></div>
+          </div>
+        </div></div>
+      <div class="titem"><div class="tnum">4</div><div><strong>同社區還有其他戶在賣</strong><p>不只這一戶。要比，我把樓層、坪數、有無車位的差別一起攤給你看，不會只給你看對我有利的那一張。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">只看這一戶，沒比就出價，多付了條件差異以外的錢；或被「別戶便宜」牽著走，忘了自己要的是前面沒有樓。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕：樓層、坪數、有無車位、視野、開價一起列表比，口徑統一（含車位、不含車位分開）。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v"><strong>無修繕費用，屬交易條件。</strong>本條不納入合計。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">不是驗屋項目。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>無修繕費用。<br><strong>交易結構：</strong>比較表可當議價依據；條件差異可協商，最終金額由買賣雙方議定。<br><strong>處理順序：</strong>出價前完成。<br><strong>阿宏協助：</strong>比較表整理、含車位口徑統一、跟你一起看差在哪。</span></div>
+          </div>
+        </div></div>
+      <div class="titem"><div class="tnum">5</div><div><strong>座向、管理費、公設比尚未核對完成</strong><p>這三項我手上還沒有可以對外掛保證的版本，所以這頁不寫數字，也不猜。<strong>帶看前我會把謄本、管委會的管理費金額、共有部分持分核算一次給你</strong>，白紙黑字對，不是口頭說。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">西曬、月支出、實坪三件事全靠猜；管理費漏算，住進去才知道每月固定支出比想的多。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">不是修繕：謄本共有部分核算公設比、管委會書面管理費、現場羅盤確認座向，三件事帶看前做完。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v"><strong>無修繕費用，屬查證事項。</strong>若座向查證後確有西曬要遮陽，窗簾與隔熱費用偵查表未收錄，以現場估價為準；本條不納入合計。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">驗屋時請驗屋人員一併記錄座向與日照時段，白天晚上各站一次。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>無修繕費用；管理費核對後加進月支出（房貸月付 46,947 元之外）。<br><strong>交易結構：</strong>可要求賣方提供管委會收費標準與公共基金餘額；過戶前應付費用可約定由賣方負擔。<br><strong>處理順序：</strong>帶看前完成。<br><strong>阿宏協助：</strong>調謄本核算公設比、向管委會取得書面、現場羅盤確認座向後更新本頁。</span></div>
+          </div>
+        </div></div>
+      <div class="titem"><div class="tnum">6</div><div><strong>新成屋沒有實際居住紀錄</strong><p>沒有人住過，代表隔音、日照時段、通風、樓上樓下作息都還沒有前人的經驗可以問。這些要靠你自己到現場站一次，最好白天晚上各一次。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">隔音、日照、通風、樓上樓下作息沒人能告訴你；新成屋的施工瑕疵沒在保固期內驗出來，之後自己扛；空屋交屋，冷氣、燈具、窗簾全部是新的一筆，漏算就是頭款繳完沒錢配置。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">第一層簽約前：新成屋驗屋（水電、防水、門窗、設備）＋建商保固範圍與剩餘期限／第二層入住前：冷氣、燈具、窗簾配置／第三層：家具家電住進去再補，收納住半年再做。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">本頁沒有已揭露的屋況瑕疵，修繕費以現場估價為準。入住前配置工資：冷氣安裝 <strong>$1,200～5,000／台</strong>、燈具安裝 <strong>$300～1,500／盞</strong>（PRO360 水電頁，2025-08-11）；冷氣機、燈具、窗簾、家電本體價格偵查表未收錄，不編數字。<br><strong>本條納入合計：$5,100～22,500</strong>（口徑：冷氣安裝 3 台、燈具安裝 5 盞，工資不含設備本體）。<span class="src">以上為市場公開報價區間，同工種各站數字不一致是常態，全部並列不取平均；實際費用以現場估價為準。</span></span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">本案 26.22 坪（不含車位）落在 21～30 坪級距約 <strong>$15,000／戶</strong>、新成屋整體 <strong>$12,000～24,000／戶</strong>（PRO360 驗屋頁，2025-06-12）；新成屋中坪數 <strong>$15,000～25,000／戶</strong>（房屋管家，2026-04-29）；新成屋 21～30 坪 <strong>$10,000～15,000／戶</strong>（鴻宇健康驗屋，2025-07-06，該價格標示為雙北，桃園以業者報價為準）；複驗 <strong>$4,000～6,000／次</strong>（PRO360 驗屋頁，2025-06-12）。驗出來的瑕疵在保固期內可要求建商或賣方修復，這是新成屋驗屋最值錢的地方。</span></div>
+            <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>把本條上限 $22,500 加進入住總成本（見下方「把修繕算進去」）；想把裝修配置費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。<br><strong>交易結構：</strong>驗屋報告可當議價依據；可約定賣方於交屋前修復驗出項目或價金保留；建商保固文件可要求隨契約移轉；交屋前可要求複驗。<br><strong>處理順序：</strong>安全（電）→ 漏水防水 → 管線 → 美化；驗屋是第一段，交屋前做；冷氣燈具配置屬美化段，可入住前一週做。<br><strong>阿宏協助：</strong>陪同驗屋、代約冷氣燈具估價與比價、把驗屋修復條件寫進要約或契約建議、交屋當天逐項清點（含保固文件）。<br><strong>政府補助：</strong>修繕住宅貸款利息補貼依《修繕住宅貸款利息及簡易修繕住宅費用補貼辦法》第 5 條須使用執照核發逾十年，本案屋齡 0.4 年不適用，不列。</span></div>
+          </div>
+        </div></div>
     </div>
   </section>
 
@@ -657,6 +716,23 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
         按上面的按鈕會帶著本案總價 1498 萬進入試算工具，你可以直接改成新青安 40 年、寬限期或升息後的月付款做壓力測試。<strong>工具站的預設是兩段式利率（前 2 年 2.185%、第 3 年起 2.435%），算出來是首期月付 45,412 元、跳息後 46,856 元</strong>，跟上面這張卡的 46,947 元差在利率設定不同，不是哪一邊算錯——這也正好說明利率條件差 0.25%，月付就差一千多。買房前先做貸款預審，順序不要顛倒——先知道銀行給你多少，再決定看哪個總價帶。
       </p>
     </div>
+    <div class="afford">
+      <div class="afford-top">
+        <div class="abox a-total"><small>把修繕算進去：本頁合計</small><strong>0.5～2.3 萬</strong><span>$5,100～22,500；本頁無已揭露屋況瑕疵，合計是入住前配置工資（冷氣安裝 3 台、燈具 5 盞），修繕費以現場估價為準</span></div>
+        <div class="abox a-pay"><small>入住總成本＝開價＋這筆</small><strong>1,498.5～1,500.3 萬</strong><span>開價 1498 萬（含車位）＋ 0.5～2.3 萬；開價不等於成交價</span></div>
+        <div class="abox"><small>全額自備時，首付要多準備</small><strong>0.5～2.3 萬</strong><span>首付 299.6 萬 → 入住前要備妥的現金 300.1～301.9 萬；不計入貸款，月付款不變 46,947 元</span></div>
+      </div>
+
+      <div class="arow"><span>試算參數<i>沿用上卡，未另創</i></span><b>8 成・30 年・2.435%</b></div>
+      <div class="arow"><span>公式<i>入住前現金＝開價 ×（1 − 8 成）＋合計上限；下限同式帶入</i></span><b>1498 × 0.2 ＋ 2.3</b></div>
+      <div class="arow"><span>另加驗屋<i>新成屋，不在合計內</i></span><b>$12,000～24,000／戶</b></div>
+
+      <p class="anote">
+        <strong>修繕預算另計，實際以現場估價為準。</strong>合計口徑：「該講的我在這頁講完」第 6 條 $5,100～22,500（冷氣安裝 $1,200～5,000／台 × 3、燈具安裝 $300～1,500／盞 × 5，PRO360 水電頁 2025-08-11，工資不含設備本體）；第 1～5 條無修繕費用。下限＝全部拿到最低報價，上限＝全部最高報價。<br>
+        驗屋：新成屋 $12,000～24,000／戶（PRO360 驗屋頁，2025-06-12；26.22 坪落在 21～30 坪級距約 $15,000）、$15,000～25,000／戶（房屋管家，2026-04-29），不在合計內。<br>
+        想把配置費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定；本卡不推薦任何銀行或商品，也不是核貸結果。
+      </p>
+    </div>
   </section>
 
   <section>
@@ -665,19 +741,11 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <h2>2 房 1 廳 2 衛<br>兩個人剛好</h2>
     </div>
     <div class="plan">
-      <!-- 座向大字卡（.plan-orient）需要委託資料上明載的座向才會掛上；本案座向尚未核對完成，
-           依「不編造物件事實」原則不放、也不猜方位，改以下方待補說明如實揭露。 -->
-      <div class="pending">
-        <h3>格局圖與座向：待核對，不猜</h3>
-        <p>本案的格局圖與座向，目前還沒有可以對外公布的核對版本。<strong>與其畫一張示意圖給你當依據，不如直接說這一項還沒核對完。</strong></p>
-        <ul>
-          <li><strong>格局：</strong>2 房 1 廳 2 衛（依委託資料）。兩套衛浴已於現場影片確認。</li>
-          <li><strong>座向：</strong>尚未核對完成，本頁不寫、也不猜。帶看前我會用謄本與現場羅盤一起確認給你。</li>
-          <li><strong>樓層配置：</strong>本戶 7 樓，社區地上 10 層、每層 2 戶（依委託資料）。</li>
-          <li><strong>視野：</strong>前方無建物遮擋，窗外為坑子溪河堤方向——這一項影片裡看得到，你也可以現場自己站一次。</li>
-        </ul>
+      <div class="plan-frame">
+        <button type="button" data-full="a/k_floorplan.jpg" aria-label="放大格局圖，D2／F2 戶型 2 房 1 廳 2 衛，座向未複核"><img src="a/k_floorplan.jpg" alt="佳陞豐川 F2 戶格局圖：主臥含更衣空間、次臥、客廳、餐廳、廚房、主衛、客衛與陽台露台，2 房 1 廳 2 衛，座向未複核"></button>
+        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座向 未複核（以現場實測為準）</span>
       </div>
-      <p class="cap">格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準。</p>
+      <p class="cap">格局圖取自委託方帶看資料（D2／F2 戶型線圖，圖上註明依建商配置圖比例繪製、僅供參考、仍以現況為準）：主臥含更衣空間、次臥、客廳、餐廳、廚房、主衛與客衛、陽台／露台，2 房 1 廳 2 衛（依委託資料，兩套衛浴已於現場影片確認）。<strong>座向：</strong>尚未核對完成，本頁不寫、也不猜，大字卡標「未複核」；帶看前我會用謄本與現場羅盤一起確認給你。本戶 7 樓，社區地上 10 層、每層 2 戶（依委託資料）；前方無建物遮擋，窗外為坑子溪河堤方向。格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準。</p>
     </div>
   </section>
 
@@ -1034,6 +1102,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="fbtns">
       <a href="https://lin.ee/IV8bl9H" target="_blank" rel="noopener">用官方 LINE 問我</a>
       <a href="tel:0226878822">打公司電話 02-2687-8822</a>
+      <a href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">看我的電子名片</a>
     </div>
     <p class="tags">#何志宏 #蘆竹 #佳陞豐川</p>
     <div class="legal">
@@ -1041,7 +1110,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       營業員　何志宏　(114)年登字第495065號<br>
       經紀人　林秀嫻　(96)北縣字第001399號<br>
       新北市板橋區金門街288-2號<br>
-      公司電話　<a href="tel:0226878822">02-2687-8822</a>
+      公司電話　<a href="tel:0226878822">02-2687-8822</a><br>
+      電子名片　<a href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">https://0930848000.com/mingpian/</a>
     </div>
   </div>
 </div>
