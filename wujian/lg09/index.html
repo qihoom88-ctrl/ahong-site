@@ -246,6 +246,14 @@ tr.self td:first-child{color:var(--gold)}
 }
 .anote{margin:11px 0 0;color:var(--muted);font-size:.83rem;line-height:1.75}
 
+.riskkit{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);display:grid;gap:8px}
+.rk{display:grid;grid-template-columns:104px 1fr;gap:9px;align-items:start;font-size:.87rem;line-height:1.7}
+.rk b{color:var(--warm);font-weight:900;font-size:.82rem;padding-top:1px}
+.rk .v{color:var(--muted)}
+.rk .v strong{color:var(--ink);font-weight:800}
+.rk .src{display:block;margin-top:3px;font-size:.76rem;color:var(--muted)}
+@media(max-width:420px){.rk{grid-template-columns:1fr}.rk b{padding-top:0}}
+
 /* 格局圖 */
 .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px}
 .plan-frame{position:relative}
@@ -503,7 +511,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <p class="hero-meta">新北市土城區・龍傳家社區｜捷運萬大線 LG09 站（興建中）生活圈<br>資料查核日期 2026-08-21｜公開版不揭露完整門牌與委託內部價格資訊<br>要看屋直接用官方 LINE 跟我約，屋主自住中，我幫你排時間</p>
 
     <div class="hero-media">
-      <img src="a/k_hero.jpg" alt="龍傳家社區外觀，畫面為開箱影片截圖">
+      <img src="a/k_hero.jpg" alt="龍傳家社區外觀現場實拍">
       <div class="hero-badge">地上 12 層電梯大樓・本戶 6 樓</div>
     </div>
 
@@ -564,7 +572,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <div class="sec-head">
       <div class="kicker">屋況直球</div>
       <h2>屋主住了 32 年<br>現況就是這樣</h2>
-      <p class="lead">以下照片全部從上面那支影片截出來，沒有另外修圖。點照片可以放大看細節。</p>
+      <p class="lead">以下照片為現場實拍，沒有另外修圖。點照片可以放大看細節。</p>
     </div>
     <div class="gallery">
       <button class="wide" type="button" data-full="a/k_living.jpg" aria-label="放大客廳照片">
@@ -583,7 +591,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
         <img src="a/k_mrt.jpg" alt="往萬大線LG09站方向街景"><span class="cap">往萬大線 LG09 站（興建中）方向，約 50 公尺（距離依 Google 地圖）</span>
       </button>
       <button type="button" data-full="a/k_street.jpg" aria-label="放大周邊街景照片">
-        <img src="a/k_street.jpg" alt="周邊街景現況"><span class="cap">周邊街景現況（影片截圖）</span>
+        <img src="a/k_street.jpg" alt="周邊街景現況"><span class="cap">周邊街景現況</span>
       </button>
     </div>
     <p class="zoomhint">照片與影片皆為現況實拍，未經修飾。本頁不使用任何虛擬佈置或裝潢示意圖。</p>
@@ -596,12 +604,35 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <p class="lead">這一頁是完整揭露版，不是等你私訊才肯講的版本。以下每一項都可以到現場、到謄本、到官方網站驗證。</p>
     </div>
     <div class="tlist">
-      <div class="titem"><div class="tnum">1</div><div><strong>屋主自住中，不是空屋</strong><p>住了 32 年、東西都還在，雜物滿屋是原始現況。看屋要先約時間，交屋後的清運與整理成本要自己抓進預算。</p></div></div>
-      <div class="titem"><div class="tnum">2</div><div><strong>廚房天花板有明顯水漬與發黑痕跡</strong><p>疑似滲水或壁癌，成因還沒查證，我不做任何修復保證。帶看時我陪你現場複驗，建議正式簽約前自費請驗屋單位確認。</p></div></div>
+      <div class="titem">
+        <div class="tnum">1</div>
+        <div>
+          <strong>屋主自住中，不是空屋</strong>
+          <p>住了 32 年、東西都還在，雜物滿屋是原始現況。看屋要先約時間，交屋後的清運與整理成本要自己抓進預算。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">屋主現況物品量大，交屋後若自己動手清運，時間與人力成本容易低估，也可能耽誤後續裝修排程。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">找清運公司整批估價一次清空／自己分類留用物品後找搬家公司載運／混合處理（大型家具找清運、貴重物品自己搬）。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">家戶廢棄物 $4,000～7,500／車（PRO360，2025-06-12）；廢棄物處理 $3,000～8,000／3.5噸車（找師傅945，2026-03-24）；大型家具（沙發）$400～5,000／件、大型家電（冰箱）$700～1,000／件（PRO360）；樓層搬運加價約＋$500／層。18.8 坪一戶原始屋況，抓 1～2 車家戶廢棄物＋數件大型家具家電，粗抓約 $8,000～20,000 區間，實際以現場估價與物品量為準。<span class="src">以上為市場公開報價區間，實際費用以現場估價為準。</span></span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">清運完成、屋況淨空後，建議再約一次現場複驗，把清運前被雜物擋住看不到的地板、牆角、插座位置一起看過。</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="titem">
+        <div class="tnum">2</div>
+        <div>
+          <strong>廚房天花板有明顯水漬與發黑痕跡</strong>
+          <p>疑似滲水或壁癌，成因還沒查證，我不做任何修復保證。帶看時我陪你現場複驗，建議正式簽約前自費請驗屋單位確認。</p>
+          <div class="riskkit">
+            <div class="rk"><b>不處理的風險</b><span class="v">滲水成因不明時放著不處理，壁癌範圍可能隨時間擴大，也可能是樓上或管線滲漏，牽涉到需不需要協調樓上住戶一起處理。</span></div>
+            <div class="rk"><b>維修策略選項</b><span class="v">先做漏水初勘找出成因／用儀器抓漏精準定位／確認是防水層老化就重做防水，是管線問題就抓漏灌注或換管。</span></div>
+            <div class="rk"><b>參考費用</b><span class="v">漏水初勘（含車馬費）$1,500～3,000／次、壁癌處理 $2,500～5,000／坪、高壓灌注（打針）$500～1,000／針（皆 PRO360，2023-11～2025-06）；儀器抓漏檢測 $8,000～20,000／次（找師傅945，2026-03-24）；若需重做防水，浴室防水（彈性水泥）$2,000～4,000／坪（100室內設計，2025-05-30）可作同類工法參考。<span class="src">以上為市場公開報價區間，實際費用以現場估價為準；廚房與浴室防水工法類似但非同一空間，僅供成本量級參考。</span></span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">建議正式簽約前自費安排局部驗屋，針對廚房天花板與樓上對應位置做儀器檢測；複驗行情約 $4,000～6,000／次（PRO360，2025-06-12）。</span></div>
+          </div>
+        </div>
+      </div>
       <div class="titem"><div class="tnum">3</div><div><strong>本戶沒有車位</strong><p>周邊停車場的位置與月租費用，看屋時我陪你走一趟實際確認。</p></div></div>
       <div class="titem"><div class="tnum">4</div><div><strong>屋齡 32 年</strong><p>民國 82 年 12 月建築完成。屋齡會影響銀行核貸年限與成數，出價前建議先做貸款預審。</p></div></div>
       <div class="titem"><div class="tnum">5</div><div><strong>LG09 站是「興建中」，不是通車了</strong><p>約 50 公尺買的是未來性，不是現在就有捷運可搭。通車時程以主管機關公告為準，施工期間的圍籬、動線與噪音請自己到現場感受一次。</p></div></div>
-      <div class="titem"><div class="tnum">6</div><div><strong>座向與格局圖尚未核對完成</strong><p>這兩項我手上還沒有可以對外掛保證的版本，本頁不寫、也不猜。帶看前我會用委託資料與現場一起確認給你。</p></div></div>
     </div>
   </section>
 
@@ -646,19 +677,13 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <h2>2 房 1 廳 1 衛<br>方正好規劃</h2>
     </div>
     <div class="plan">
-      <!-- 座向大字卡（.plan-orient）需要委託資料上明載的座向才會掛上；本案座向尚未核對完成，
-           依「不編造物件事實」原則不放、也不猜方位，改以下方待補說明如實揭露。 -->
-      <div class="pending">
-        <h3>格局圖與座向：待核對，不猜</h3>
-        <p>本案的格局圖與座向，目前還沒有可以對外公布的核對版本。<strong>與其畫一張示意圖給你當依據，不如直接說這一項還沒核對完。</strong></p>
-        <ul>
-          <li><strong>格局：</strong>2 房 1 廳 1 衛（依委託資料），兩個房間皆有對外窗，屋型方正。</li>
-          <li><strong>座向：</strong>尚未核對完成，本頁不寫、也不猜。帶看前我會用委託資料與現場一起確認給你。</li>
-          <li><strong>格局圖：</strong>待補。要先看，用官方 LINE 跟我說一聲，我核對完直接傳你。</li>
-          <li><strong>樓層配置：</strong>本戶 6 樓，社區地上 12 層、地下 1 層，有電梯（依委託資料）。</li>
-        </ul>
+      <div class="plan-frame">
+        <button type="button" data-full="a/k_floorplan.jpg" aria-label="放大格局圖，座向朝東">
+          <img src="a/k_floorplan.jpg" alt="龍傳家委託資料格局圖，座向朝東">
+        </button>
+        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座向朝東</span>
       </div>
-      <p class="cap">格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準。</p>
+      <p class="cap">本案<strong>座向朝東</strong>、格局圖如上（皆依委託資料），2 房 1 廳 1 衛、兩個房間皆有對外窗、屋型方正；本戶 6 樓，社區地上 12 層、地下 1 層，有電梯。格局圖僅供參考，實際仍以現況格局為主；格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準。</p>
     </div>
   </section>
 
@@ -938,10 +963,10 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <ul>
       <li><strong>本頁產權、面積、格局、現況等資訊整理自委託方提供之售屋資料與現場紀錄，僅供參考；如與地政機關核發之正式謄本、建物測量成果圖或使用執照不符，一律以官方謄本及正式登記資料為準。</strong>簽約前請自行申請最新謄本查證。</li>
       <li>開價、面積、格局、樓層、屋齡、管理費與生活機能：住商不動產樹林站前加盟店委託銷售資料，資料查核日期 2026 年 8 月 21 日。登記面積與範圍以地政機關登載為準。</li>
-      <li>影片與照片：現場實拍原始素材，未使用虛擬佈置、AI 生成裝潢示意或修圖。本頁照片皆自該支影片截取。</li>
+      <li>影片與照片：現場實拍原始素材，未使用虛擬佈置、AI 生成裝潢示意或修圖。</li>
       <li>廚房天花板水漬與發黑痕跡：現場實拍所見，成因未經查證，本頁不就滲水、壁癌之有無或修復做任何聲明或保證，請以現場複驗與驗屋結果為準。</li>
       <li>捷運萬大線 LG09 站：興建中，尚未通車；距離約 50 公尺依 Google 地圖量測，通車時程以主管機關公告為準。</li>
-      <li>座向與格局圖：尚未核對完成，本頁未列，核對完成後提供。</li>
+      <li>座向與格局圖：依委託資料，座向朝東、格局圖如「格局與座向」區塊所示，僅供參考，實際仍以現況與地政謄本、測量成果圖為準。</li>
       <li>同社區成交紀錄：本頁未列具體成交數字，請自行至<a href="https://lvr.land.moi.gov.tw" target="_blank" rel="noopener">內政部不動產交易實價查詢服務網</a>查證，以該網站公告為準。</li>
       <li>房貸試算：以一般房貸常見預設條件模擬，非銀行核貸承諾；實際成數、利率與月付以承貸銀行核准為準。</li>
       <li>成屋交易應揭露事項：內政部公告之成屋買賣定型化契約應記載及不得記載事項、不動產標的現況說明書，原文見<a href="https://law.moj.gov.tw" target="_blank" rel="noopener">全國法規資料庫</a>。</li>
