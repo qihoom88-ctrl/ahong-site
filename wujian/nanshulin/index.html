@@ -322,7 +322,8 @@ h2{margin:4px 0 0;color:var(--trust);font-size:clamp(1.5rem,4.8vw,2.1rem);line-h
 .disc ol{margin:0;padding-left:1.15rem;display:grid;gap:6px}
 .disc strong{color:var(--ink)}
 
-.footer{margin:28px -15px 0;background:#B4501C;color:#fff;padding:28px 15px 22px}
+/* .footer 位於 .page 之外＝本身已滿版，不可再用負 margin，否則手機會多出 15px 橫向捲動（40-0822-12 修） */
+.footer{margin:28px 0 0;background:#B4501C;color:#fff;padding:28px 15px 22px}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .footer{background:#8F3D14}}
 :root[data-theme="dark"] .footer{background:#8F3D14}
 .footer-in{width:min(100%,870px);margin:auto}
@@ -388,7 +389,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 @media (min-width:680px){
   .page{padding-left:22px;padding-right:22px}
   .topbar{margin-left:-22px;margin-right:-22px;padding-left:22px;padding-right:22px}
-  .footer{margin-left:-22px;margin-right:-22px;padding-left:22px;padding-right:22px}
+  .footer{padding-left:22px;padding-right:22px}
   .keys{grid-template-columns:repeat(4,1fr)}
   .grid2{grid-template-columns:repeat(2,1fr)}
   .split{grid-template-columns:repeat(2,1fr)}
