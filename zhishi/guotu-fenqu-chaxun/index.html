@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>國土功能分區查詢三步驟｜國土計畫法延到2031前先查的三件事｜何志宏 新北房仲</title>
+<meta name="lazypack-type" content="knowledge">
+<meta name="robots" content="index,follow">
+<meta name="description" content="國土計畫法沒有取消，是國土功能分區圖的公告期限延到民國120年4月30日。都市計畫外的山坡地與農地，分區換了規則就換了。這一頁把調地籍謄本、查未來分區、排時程三個步驟拆成可以照著做的動作，附官方查詢入口與查核依據。">
+<meta name="keywords" content="國土計畫法,國土功能分區,國土功能分區查詢,土地使用分區查詢,地籍謄本怎麼看,農地能不能蓋,山坡地,非都市土地,樹林買房,三峽土地,新莊買房,何志宏,新北房仲">
+<meta name="theme-color" content="#F6F3EC">
+<meta name="color-scheme" content="light">
+<meta property="og:title" content="國土功能分區查詢三步驟｜家裡有都市計畫外的土地，先查這三件事">
+<meta property="og:description" content="國土計畫法不是取消，是分區圖公告期限延到民國120年4月30日。調謄本、查未來分區、排時程，三步驟一頁看完。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://0930848000.com/zhishi/guotu-fenqu-chaxun/">
+<link rel="canonical" href="https://0930848000.com/zhishi/guotu-fenqu-chaxun/">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="新北房仲 阿宏">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="國土功能分區查詢三步驟">
+<meta name="twitter:description" content="都市計畫外的土地，分區換了規則就換了。三個步驟今天就查得出來。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%97%BA%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#F6F3EC;
+  --card:#FFFDF8;
+  --ink:#23282B;
+  --body:#3E464A;
+  --muted:#6E767B;
+  --line:#DED8CA;
+  --line-soft:#EBE6DA;
+  --brand:#D9342B;
+  --z-conserve:#3F7A55;
+  --z-ocean:#2E6E8E;
+  --z-agri:#C08A17;
+  --z-urban:#C4553D;
+  --warn:#7A4F10;
+  --warn-bg:#FDF4E3;
+  --stop-bg:#FDF0EE;
+  --mono:ui-monospace,"SFMono-Regular","Cascadia Mono",Consolas,"Roboto Mono","Noto Sans Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--body);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.8;
+}
+img,svg{max-width:100%;height:auto}
+a{color:var(--ink)}
+.wrap{max-width:660px;margin:0 auto;padding:0 20px}
+
+.grid-bg{
+  background-image:
+    linear-gradient(to right,rgba(35,40,43,.045) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(35,40,43,.045) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+
+/* ---------- Hero ---------- */
+header.hero{padding:34px 0 30px;border-bottom:1px solid var(--line)}
+.crumb{font-family:var(--mono);font-size:12px;color:var(--muted);margin:0 0 14px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.crumb a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.crumb a:hover,.crumb a:focus-visible{color:var(--brand);border-color:var(--brand)}
+.crumb b{color:var(--ink);font-weight:600}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);display:flex;align-items:center;gap:9px;margin-bottom:16px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--muted);flex:none}
+h1{
+  font-family:var(--serif);
+  font-size:clamp(28px,7.4vw,40px);
+  line-height:1.28;font-weight:900;color:var(--ink);
+  margin:0 0 14px;letter-spacing:-.01em;text-wrap:balance;
+}
+h1 .mark{background:linear-gradient(180deg,transparent 62%,#F7DFA6 62%);padding:0 3px}
+.lede{font-size:17px;color:var(--body);margin:0 0 20px}
+.stamp{
+  display:inline-flex;flex-wrap:wrap;gap:6px 14px;align-items:center;
+  font-family:var(--mono);font-size:12.5px;color:var(--muted);
+  border:1px solid var(--line);border-radius:4px;padding:8px 12px;background:var(--card);
+}
+.stamp b{color:var(--ink);font-weight:600}
+.hero-pull{
+  margin:22px 0 0;padding:18px 20px;background:var(--card);border-left:4px solid var(--brand);
+  border-radius:0 8px 8px 0;font-family:var(--serif);font-size:19px;font-weight:700;
+  color:var(--ink);line-height:1.65;
+}
+
+.plat{margin:24px 0 4px;border:1px solid var(--line);border-radius:6px;background:var(--card);padding:14px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:12px;font-size:13px;color:var(--body)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.swatch{width:11px;height:11px;border-radius:2px;flex:none}
+
+/* ---------- 導覽 ---------- */
+nav.toc{padding:22px 0;border-bottom:1px solid var(--line)}
+nav.toc .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+nav.toc a{
+  display:block;text-decoration:none;font-size:14.5px;color:var(--ink);
+  border:1px solid var(--line);border-radius:999px;padding:6px 14px;background:var(--card);
+}
+nav.toc a:hover,nav.toc a:focus-visible{border-color:var(--brand);color:var(--brand)}
+
+/* ---------- 區塊 ---------- */
+section{padding:38px 0;border-bottom:1px solid var(--line-soft)}
+.sec-head{margin-bottom:20px}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);margin-bottom:7px}
+h2{
+  font-family:var(--serif);font-size:clamp(22px,5.4vw,27px);line-height:1.35;
+  font-weight:800;color:var(--ink);margin:0;letter-spacing:-.005em;text-wrap:balance;
+}
+h3{font-size:18px;font-weight:700;color:var(--ink);margin:0 0 8px;line-height:1.45}
+h4{font-size:16px;font-weight:700;color:var(--ink);margin:18px 0 8px;line-height:1.5}
+p{margin:0 0 14px}
+p:last-child{margin-bottom:0}
+strong{color:var(--ink);font-weight:700}
+.em{color:var(--brand);font-weight:700}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink)}
+.gloss{color:var(--muted);font-weight:400}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px 20px}
+.stack{display:flex;flex-direction:column;gap:16px}
+.note{font-size:14.5px;color:var(--muted);line-height:1.75}
+
+.status{border-left:4px solid var(--z-conserve)}
+.status .kicker{color:var(--z-conserve)}
+
+/* 迷思卡 */
+.myth{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px}
+.myth .wrong{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--brand);font-size:16px;margin-bottom:10px;display:block}
+.myth .right{display:block;font-size:16.5px;color:var(--body)}
+.myth .right::before{content:"實際上　";font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--brand);text-transform:uppercase}
+.srcline{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--body)}
+.srcline a{color:var(--brand);word-break:break-all}
+
+/* 數字卡 */
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px}
+.fig .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:26px;font-weight:700;color:var(--ink);line-height:1.15;letter-spacing:-.02em}
+.fig .v small{font-size:14px;font-weight:600;color:var(--muted)}
+.fig .k{font-size:14.5px;color:var(--ink);font-weight:600;margin-top:8px}
+.fig .s{font-size:13.5px;color:var(--body);margin-top:5px;line-height:1.7}
+
+/* 步驟 */
+.step{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:0;overflow:hidden}
+.step-top{display:flex;gap:14px;align-items:baseline;padding:20px 20px 0}
+.step-n{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:#FFF;background:var(--ink);border-radius:3px;padding:3px 8px;flex:none}
+.step-body{padding:14px 20px 22px}
+.do{list-style:none;margin:14px 0 0;padding:0}
+.do li{position:relative;padding-left:22px;margin-bottom:10px;font-size:16px}
+.do li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:9px;border:1.5px solid var(--brand);border-radius:2px}
+.do li:last-child{margin-bottom:0}
+.sub{list-style:none;margin:10px 0 0;padding:0}
+.sub li{position:relative;padding-left:16px;margin-bottom:7px;font-size:15.5px}
+.sub li::before{content:"・";position:absolute;left:0;top:0;color:var(--muted);border:0;width:auto;height:auto}
+.honest{margin-top:16px;background:var(--warn-bg);border-left:3px solid var(--warn);border-radius:0 6px 6px 0;padding:14px 16px;font-size:15.5px;color:var(--warn)}
+.honest b,.honest strong{color:var(--warn)}
+.urlbox{margin:14px 0;padding:13px 15px;background:#F2EEE4;border:1px dashed var(--line);border-radius:6px}
+.urlbox .ul{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.urlbox a{font-family:var(--mono);font-size:14px;color:var(--brand);word-break:break-all;display:block}
+
+/* 出門包／講稿 */
+.kit{margin-top:16px;background:#EFF3EE;border:1px solid #CBD9CD;border-radius:8px;padding:16px 18px}
+.kit .kt{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--z-conserve);margin-bottom:8px}
+.kit dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:15.5px}
+.kit dt{font-weight:700;color:var(--ink);white-space:nowrap}
+.kit dd{margin:0;color:var(--body)}
+.script{margin-top:14px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);border-radius:0 8px 8px 0;padding:16px 18px}
+.script .st{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.script q{display:block;font-size:16px;color:var(--body);line-height:1.85;quotes:none}
+.script q + q{margin-top:10px}
+
+/* 分流 */
+.fork{display:grid;grid-template-columns:1fr;gap:14px}
+.fork .b{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--ink);border-radius:8px;padding:20px}
+.fork .b.rural{border-top-color:var(--muted)}
+.fork .cond{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-bottom:8px}
+
+/* 紅旗 */
+.flags{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.flags li{background:var(--stop-bg);border-left:3px solid var(--brand);border-radius:0 6px 6px 0;padding:14px 16px;font-size:16px}
+.flags li b{display:block;color:var(--ink);margin-bottom:4px}
+.flags li .act{display:block;margin-top:8px;padding-top:8px;border-top:1px dashed #E3C4BF;font-size:15.5px;color:var(--body)}
+.flags li .act::before{content:"那我現在怎麼辦　";font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--brand);text-transform:uppercase}
+
+/* 檢核表 */
+.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.checks li{border-bottom:1px solid var(--line-soft)}
+.checks li:last-child{border-bottom:0}
+.checks label{display:flex;gap:12px;align-items:flex-start;padding:13px 2px;cursor:pointer;font-size:16px}
+.checks input{margin:.36em 0 0;width:19px;height:19px;accent-color:var(--brand);flex:none}
+.tally{margin-top:16px;padding:14px 16px;background:#F2EEE4;border-radius:6px;font-size:15.5px;color:var(--ink)}
+.tally b{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--brand)}
+.soft-cta{
+  display:block;margin-top:14px;padding:15px 18px;background:var(--ink);color:#FBF8F1;
+  border-radius:6px;text-decoration:none;font-size:15.5px;line-height:1.7;
+}
+.soft-cta[hidden]{display:none}
+.soft-cta:hover,.soft-cta:focus-visible{background:var(--brand)}
+
+/* 入口清單 */
+.portals{display:flex;flex-direction:column;gap:0}
+.portals a{
+  display:flex;justify-content:space-between;gap:14px;align-items:center;
+  padding:16px 2px;border-bottom:1px solid var(--line-soft);text-decoration:none;color:var(--ink);
+}
+.portals a:last-child{border-bottom:0}
+.portals b{display:block;font-size:16px;font-weight:700}
+.portals small{display:block;font-size:13.5px;color:var(--muted);font-weight:400;line-height:1.65;margin-top:2px}
+.portals .arw{color:var(--brand);font-size:18px;flex:none}
+
+/* FAQ */
+details{border-bottom:1px solid var(--line-soft)}
+details summary{
+  cursor:pointer;padding:16px 2px;font-size:16.5px;font-weight:700;color:var(--ink);
+  list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:flex-start;
+}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";color:var(--brand);font-family:var(--mono);font-size:19px;flex:none;line-height:1.2}
+details[open] summary::after{content:"–"}
+details .ans{padding:0 2px 18px;font-size:16px}
+
+/* 來源 */
+.sources{list-style:none;counter-reset:s;margin:0;padding:0}
+.sources li{counter-increment:s;position:relative;padding:12px 0 12px 34px;border-bottom:1px solid var(--line-soft);font-size:15.5px}
+.sources li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:14px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.sources a{color:var(--brand)}
+
+/* 收尾 */
+.closing{background:var(--ink);color:#EFE9DC;border-radius:10px;padding:30px 24px;margin:0}
+.closing p{font-size:17.5px;line-height:1.9;color:#EFE9DC}
+.closing .big{font-family:var(--serif);font-size:21px;font-weight:700;color:#FFF;line-height:1.65}
+.closing .gold{color:#E6B85C}
+
+/* 免責 */
+.disclaimer{background:#F0ECE2;border:1px solid var(--line);border-radius:8px;padding:20px;font-size:15px;color:var(--body);line-height:1.8}
+.disclaimer .warm{font-size:16px;color:var(--body);margin-bottom:14px}
+.disclaimer ol{margin:0;padding-left:20px}
+.disclaimer li{margin-bottom:8px}
+.disclaimer li:last-child{margin-bottom:0}
+.disclaimer strong{color:var(--ink)}
+
+.tags{user-select:all;-webkit-user-select:all;background:var(--card);border:1px dashed var(--line);border-radius:8px;padding:16px;font-size:15px;color:var(--ink);line-height:2;word-break:break-word}
+
+/* 頁尾 */
+footer{background:#EDE8DD;border-top:1px solid var(--line);margin-top:8px;padding:34px 0 150px}
+footer .brandline{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.6}
+footer .transition{font-size:14.5px;color:var(--muted);margin-bottom:20px}
+footer .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+footer .ctas a{
+  flex:1 1 190px;text-align:center;text-decoration:none;font-size:15.5px;font-weight:700;
+  padding:13px 16px;border-radius:6px;background:var(--ink);color:#FBF8F1;
+}
+footer .ctas a:hover,footer .ctas a:focus-visible{background:var(--brand)}
+.legal{font-size:13.5px;color:var(--body);line-height:1.9;border-top:1px solid var(--line);padding-top:18px}
+.legal a{color:var(--body)}
+.backtop{display:inline-block;margin-top:16px;font-size:14px;color:var(--body);text-decoration:none}
+
+/* 浮動 */
+.fab{position:fixed;right:16px;bottom:18px;display:flex;flex-direction:column;gap:10px;z-index:50}
+.fab a{
+  width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 18px rgba(35,40,43,.28);text-decoration:none;
+}
+.fab a svg{width:26px;height:26px;fill:#FFF}
+.fab-line{background:#06C755}
+.fab-phone{background:var(--brand)}
+
+a:focus-visible,summary:focus-visible,label:focus-visible,input:focus-visible{outline:2.5px solid var(--brand);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+@media (min-width:600px){.fork{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body id="top">
+
+<div class="grid-bg">
+<div class="wrap">
+<header class="hero">
+  <nav class="crumb" aria-label="麵包屑"><a href="/">首頁</a><span>›</span><a href="/zhishi/">房產知識</a><span>›</span><b>國土功能分區查詢</b></nav>
+  <div class="eyebrow">給家裡有都市計畫外土地的人</div>
+  <h1>家裡那塊地，<span class="mark">規則要換了</span><br>國土功能分區查詢三步驟</h1>
+  <p class="lede">國土計畫法沒有取消，是分區圖的公告期限往後挪。這一頁把「怎麼查自己受不受影響」拆成三個今天就做得完的動作，連要帶什麼、跟櫃檯怎麼開口都寫給你。</p>
+  <div class="stamp"><span>資料查核日期　<b>2026-08-23</b></span><span>法令依主管機關最新公告為準</span></div>
+
+  <p class="hero-pull">你要的從來不是「把分區查清楚」。你要的是——有一天孩子問起這塊地，你答得出來。</p>
+
+  <div class="plat" role="img" aria-label="四種國土功能分區的示意圖例：國土保育地區、海洋資源地區、農業發展地區、城鄉發展地區">
+    <svg viewBox="0 0 640 250" aria-hidden="true">
+      <defs>
+        <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="7" stroke="#23282B" stroke-opacity=".18" stroke-width="1.4"/>
+        </pattern>
+      </defs>
+      <rect x="0" y="0" width="640" height="250" fill="#FFFDF8"/>
+      <g stroke="#23282B" stroke-opacity=".07" stroke-width="1">
+        <line x1="0" y1="50" x2="640" y2="50"/><line x1="0" y1="100" x2="640" y2="100"/>
+        <line x1="0" y1="150" x2="640" y2="150"/><line x1="0" y1="200" x2="640" y2="200"/>
+        <line x1="120" y1="0" x2="120" y2="250"/><line x1="240" y1="0" x2="240" y2="250"/>
+        <line x1="360" y1="0" x2="360" y2="250"/><line x1="480" y1="0" x2="480" y2="250"/>
+      </g>
+      <path d="M18 196 L18 74 L128 44 L246 66 L238 196 Z" fill="#3F7A55" fill-opacity=".22" stroke="#3F7A55" stroke-width="2"/>
+      <path d="M246 66 L392 40 L452 108 L400 200 L238 196 Z" fill="#C08A17" fill-opacity=".22" stroke="#C08A17" stroke-width="2"/>
+      <path d="M452 108 L560 96 L604 152 L556 216 L400 200 Z" fill="#C4553D" fill-opacity=".22" stroke="#C4553D" stroke-width="2"/>
+      <path d="M18 196 L238 196 L400 200 L556 216 L604 152 L622 232 L18 232 Z" fill="#2E6E8E" fill-opacity=".18" stroke="#2E6E8E" stroke-width="2"/>
+      <path d="M60 90 Q140 70 200 100 T300 118" fill="none" stroke="#23282B" stroke-opacity=".22" stroke-width="1.2"/>
+      <path d="M62 112 Q142 94 202 122 T302 140" fill="none" stroke="#23282B" stroke-opacity=".16" stroke-width="1.2"/>
+      <rect x="286" y="96" width="96" height="58" fill="url(#hatch)" stroke="#23282B" stroke-opacity=".5" stroke-width="1.6" stroke-dasharray="5 4"/>
+      <text x="334" y="130" text-anchor="middle" font-family="ui-monospace,Consolas,monospace" font-size="16" fill="#23282B" fill-opacity=".78">你家那塊</text>
+      <circle cx="334" cy="125" r="52" fill="none" stroke="#D9342B" stroke-width="2.4"/>
+      <line x1="334" y1="177" x2="334" y2="212" stroke="#D9342B" stroke-width="2.4"/>
+      <text x="334" y="230" text-anchor="middle" font-family="ui-monospace,Consolas,monospace" font-size="14" fill="#D9342B">地號　？</text>
+    </svg>
+    <div class="legend">
+      <span><i class="swatch" style="background:#3F7A55"></i>國土保育地區</span>
+      <span><i class="swatch" style="background:#2E6E8E"></i>海洋資源地區</span>
+      <span><i class="swatch" style="background:#C08A17"></i>農業發展地區</span>
+      <span><i class="swatch" style="background:#C4553D"></i>城鄉發展地區</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="本頁章節">
+  <div class="lbl">這一頁有什麼</div>
+  <ol>
+    <li><a href="#shouying">你受不受影響</a></li>
+    <li><a href="#wujie">三個誤會</a></li>
+    <li><a href="#shuzi">四個數字</a></li>
+    <li><a href="#sanbu">查詢三步驟</a></li>
+    <li><a href="#fenliu">你是哪一種</a></li>
+    <li><a href="#jicun">地上有東西怎麼辦</a></li>
+    <li><a href="#hongqi">看到這些先停手</a></li>
+    <li><a href="#jianhe">自我檢核表</a></li>
+    <li><a href="#rukou">官方入口</a></li>
+    <li><a href="#faq">常見問題</a></li>
+    <li><a href="#laiyuan">查核依據</a></li>
+  </ol>
+</nav>
+</div>
+</div>
+
+<main class="wrap">
+
+<section id="shouying" aria-labelledby="shouying-t">
+  <div class="sec-head">
+    <div class="kicker">先講最多人不知道的</div>
+    <h2 id="shouying-t">你受不受影響</h2>
+  </div>
+  <div class="card status">
+    <p>先講清楚，免得你白擔心一整晚。</p>
+    <p>如果家裡的房子和土地在<strong>都市計畫區內</strong>，這一輪換的那一套管制不是在管你——你的地照舊歸都市計畫法管，該怎樣還是怎樣。（國土計畫法第 23 條第 2 項但書有寫）</p>
+    <p>真正會換規則的，是<span class="em">都市計畫外</span>的那些地——山坡地、農地、鄉村區、森林區。它們現在歸區域計畫法管，將來歸國土功能分區管。<strong>公告分區圖的那一天，舊的那一套就從那天起停止適用。</strong>（國土計畫法第 45 條）</p>
+    <p>要補一句誠實話：都市計畫區內的土地不是「永遠不會被影響」。同法第 8 條規定都市計畫要遵循國土計畫，第 16 條也規定縣市國土計畫公告實施後，都市計畫主管機關要按國土計畫的指導辦理擬訂或變更。正確的講法是——<strong>這一輪的分區換軌不直接動到你的管制</strong>。</p>
+    <p class="note">怎麼一眼分辨自己是都內還是都外？答案在一份每張二十塊錢的紙上，看〈查詢三步驟〉的第 1 步。</p>
+  </div>
+</section>
+
+<section id="wujie" aria-labelledby="wujie-t">
+  <div class="sec-head">
+    <div class="kicker">先把三件事講清楚</div>
+    <h2 id="wujie-t">三個誤會</h2>
+  </div>
+  <div class="stack">
+
+    <div class="myth">
+      <span class="wrong">國土計畫法已經取消了，不用理它</span>
+      <span class="right">沒有取消。國土計畫法民國 105 年 5 月 1 日就施行了，一直在跑。民國 113 年 12 月 31 日立法院三讀通過的是「部分條文修正」，民國 114 年 1 月 20 日修正公布<strong>第 7、8、23、35、45 條</strong>共五條；其中真正動到時程的是第 45 條——國土功能分區圖從「直轄市、縣（市）國土計畫公告實施後四年內公告」改成「<span class="em">十年內</span>公告」，往後挪了六年。法沒有停，是圖的公告期限延了。</span>
+      <div class="srcline">立法院｜國土計畫法修正部分條文（第 11 屆第 2 會期第 15 次會議）<br>
+        <a href="https://www.ly.gov.tw/Pages/Detail.aspx?nodeid=33324&amp;pid=248601" target="_blank" rel="noopener noreferrer">https://www.ly.gov.tw/Pages/Detail.aspx?nodeid=33324&amp;pid=248601</a>
+      </div>
+    </div>
+
+    <div class="myth">
+      <span class="wrong">延到 2031，那還有五年多可以慢慢來</span>
+      <span class="right">先更正一個數字：從今天算起是<strong>四年八個月</strong>，不是五年多。更要緊的是「怎麼上路」這件事很多人搞錯——第 45 條的原文是「於直轄市、縣（市）國土計畫公告實施後十年內，依中央主管機關指定之日期，<span class="em">一併</span>公告國土功能分區圖」。關鍵在「一併」兩個字：全國各縣市會在中央主管機關指定的<strong>同一天一起公告</strong>，不是誰先誰後。上一輪就是這樣走的——應擬訂國土計畫的縣市，在民國 110 年 4 月 30 日同一天公告實施。所以該盯的是<strong>中央哪一天指定那個日期</strong>，那一天隨時可能落在民國 120 年之前。</span>
+      <div class="srcline">全國法規資料庫｜國土計畫法（民國 114 年 1 月 20 日修正公布）第 45 條<br>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070230" target="_blank" rel="noopener noreferrer">https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070230</a>
+      </div>
+    </div>
+
+    <div class="myth">
+      <span class="wrong">分區圖都還沒公告，現在查也是白查</span>
+      <span class="right">現在查得到的是<strong>草案</strong>，官方系統自己就標著「查詢結果僅供參考，仍以直轄市、縣（市）政府公告內容為準」。但草案是你目前唯一看得到的東西——它讓你在規則定下來之前，先知道自己可能被劃到哪一區，也才有時間把該問的問完。<strong>先弄清楚狀況再決定要不要動，跟趕在公告前搶辦手續，是兩回事。</strong></span>
+      <div class="srcline">內政部國土管理署｜直轄市、縣（市）國土功能分區圖展示資訊查詢系統<br>
+        <a href="https://nluz.nlma.gov.tw/ex3s/" target="_blank" rel="noopener noreferrer">https://nluz.nlma.gov.tw/ex3s/</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="shuzi" aria-labelledby="shuzi-t">
+  <div class="sec-head">
+    <div class="kicker">記住這四個就好</div>
+    <h2 id="shuzi-t">四個數字</h2>
+  </div>
+  <div class="figs">
+    <div class="fig">
+      <div class="v">0 <small>個縣市</small></div>
+      <div class="k">到今天為止已正式公告的</div>
+      <div class="s">你可以自己去確認：國土管理署系統的「內政部核定階段」那一欄，目前一個縣市都沒有。審議進度另算——民國 115 年 6 月 16 日審竣臺北市後，全國只剩桃園市尚未審竣。審竣不等於公告。</div>
+    </div>
+    <div class="fig">
+      <div class="v">120.04.30</div>
+      <div class="k">分區圖最遲公告日</div>
+      <div class="s">算法：縣市國土計畫民國 110 年 4 月 30 日公告實施，依第 45 條加十年，就是民國 120 年 4 月 30 日，即西元 2031 年 4 月 30 日。從今天算起約四年八個月。</div>
+    </div>
+    <div class="fig">
+      <div class="v">4 <small>種＋第幾類</small></div>
+      <div class="k">你會查到的答案長這樣</div>
+      <div class="s">四種分區是國土保育地區、海洋資源地區、農業發展地區、城鄉發展地區（第 3 條第 7 款）。每一種底下還會再分「第一類、第二類…」，所以答案通常長成「農業發展地區第三類」。</div>
+    </div>
+    <div class="fig">
+      <div class="v">20 <small>元／張</small></div>
+      <div class="k">電腦列印謄本的規費</div>
+      <div class="s">登記謄本、地價謄本、地籍圖謄本都是每張 20 元。一份謄本可能不只一張，所以帶一百塊零錢過去比較保險。</div>
+    </div>
+  </div>
+</section>
+
+<section id="sanbu" aria-labelledby="sanbu-t">
+  <div class="sec-head">
+    <div class="kicker">這一段是整頁的重點</div>
+    <h2 id="sanbu-t">查詢三步驟</h2>
+  </div>
+  <p>三步的<strong>順序不能顛倒</strong>：第 2 步的官方系統要用<strong>地號</strong>去查，而地號要從第 1 步的謄本上抄下來。</p>
+
+  <div class="stack">
+
+    <div class="step">
+      <div class="step-top"><span class="step-n">STEP 1</span><h3>調謄本，先看清楚現在是什麼</h3></div>
+      <div class="step-body">
+        <p>很多人手上只有一張泛黃的權狀，甚至連權狀放哪都要找半天。那不代表你查不了——謄本在地政事務所隨時調得到，而且不限土地所在地那一間。</p>
+
+        <ul class="do">
+          <li>要調的是「<strong>土地登記謄本</strong>」，另外加一張「地籍圖謄本」會更好懂。謄本分三類：
+            <ul class="sub">
+              <li><strong>第一類</strong>：完整資料，只有登記名義人本人 <span class="gloss">（就是權狀上寫名字的那個人）</span> 或依法令得申請的人能調。</li>
+              <li><strong>第二類</strong>：任何人都能調，會遮掉自然人的出生日期、部分姓名與部分統一編號。<span class="em">查「都內還是都外」用這個就夠。</span></li>
+              <li><strong>第三類</strong>：登記名義人本人，或跟這塊地有法律上利害關係的人 <span class="gloss">（例如債權人）</span> 才能調。</li>
+            </ul>
+          </li>
+          <li>拿到之後翻到<strong>標示部</strong>。謄本印出來分三段——<strong>標示部</strong>寫這塊地本身的資料（面積、地號、用途），所有權部寫誰的名字，他項權利部寫有沒有設定抵押。你只要看第一段。</li>
+          <li>標示部只看兩欄：「<strong>使用分區</strong>」和「<strong>使用地類別</strong>」。<span class="gloss">使用分區是這一整區被規劃成什麼，使用地類別是你這一筆地被編定成什麼，兩欄要一起看。</span></li>
+          <li>順手把完整<strong>地號</strong>抄下來（鄉鎮市區＋段小段＋地號）。第 2 步就是靠這串字查的。</li>
+        </ul>
+
+        <div class="honest"><b>兩欄怎麼讀（有例外，別自己猜）：</b><br>
+          兩欄<strong>有記載</strong>（例如使用分區「一般農業區」、使用地類別「農牧用地」）＝非都市土地，就是這次要換軌的那一塊——從現在的區域計畫法，換到國土計畫法那一套。<br>
+          兩欄<strong>都是空白</strong>則有兩種可能：一種是都市土地，都市計畫發布後身分改依都市計畫認定，就不再登載在謄本上；另一種是非都市土地但<strong>尚未編定</strong>使用分區與使用地類別。這兩種在謄本上長得一模一樣，光看謄本分不出來。<strong>遇到空白，當場請櫃檯幫你確認是哪一種</strong>，屬於未編定的還可以申請補辦編定。</div>
+
+        <div class="kit">
+          <div class="kt">明天早上的出門包</div>
+          <dl>
+            <dt>要帶</dt><dd>身分證正本、一百塊零錢。印章不用帶。</dd>
+            <dt>去哪</dt><dd>任何一間地政事務所都收件，不限土地所在地。地在樹林、鶯歌、三峽的，就近去新北市樹林地政事務所——新北市樹林區地政街 12 號，電話 <a href="tel:0226808001">02-2680-8001</a>。</dd>
+            <dt>時間</dt><dd>週一至週五 08:00 至 17:30，中午照常受理謄本。</dd>
+            <dt>填什麼</dt><dd>櫃檯的「土地登記及地價資料謄本申請書」，不會填就請櫃檯幫你。</dd>
+          </dl>
+        </div>
+
+        <div class="script">
+          <div class="st">站在櫃檯前，照著念這一段就好</div>
+          <q>「你好，我要申請<strong>第二類</strong>土地登記謄本，還有地籍圖謄本，各一張。地在三峽，我不知道地段地號，只知道大概位置（或旁邊那間的門牌），麻煩你幫我查一下地號好嗎？」</q>
+          <q>拿到謄本之後，再問這一句：「麻煩你幫我看一下，這張謄本<strong>標示部</strong>的『使用分區』和『使用地類別』這兩欄，是空白的還是有寫字？如果是空白，是都市土地，還是非都市土地還沒編定？」</q>
+        </div>
+
+        <div class="script">
+          <div class="st">如果地還登記在過世的長輩名下，改念這一段</div>
+          <q>「你好，這塊地登記的名字是我父親（母親），他已經過世了，我是繼承人。第一件事，我想確認這塊地的<strong>繼承登記</strong>辦過了沒有，要怎麼查？第二件事，如果我要申請第一類謄本，還要補什麼文件？」</q>
+          <q>先講一句實在話：一塊地放三十年沒動過，最常見的原因就是繼承登記從來沒辦。這件事有法定期限，逾期會有罰鍰，比查分區還急。查分區用第二類謄本就夠，但繼承這一題請當場問清楚，或找地政士 <span class="gloss">（就是一般講的代書）</span> 處理。</q>
+        </div>
+
+        <h4>不知道地號怎麼辦</h4>
+        <p>用內政部地政司的「地籍圖資網路便民服務系統」，免費、不用登入，可以用門牌反查地號，也可以直接在地圖上點你那塊地。</p>
+        <div class="urlbox">
+          <div class="ul">地籍圖資網路便民服務系統</div>
+          <a href="https://easymap.moi.gov.tw/" target="_blank" rel="noopener noreferrer">https://easymap.moi.gov.tw/</a>
+        </div>
+        <p class="note">誠實提醒：這個系統首頁目前掛著一則公告，說介接的圖資主機異常、定位查詢無法正常使用，正在排除中。查不動就別跟它耗，直接去地政事務所請櫃檯幫你查。</p>
+
+        <h4>線上申領這條路，先看你有沒有這些東西</h4>
+        <p>「全國地政電子謄本系統」可以線上申領，但它不是點進去就能用：要有<strong>中華電信 HiNet 帳號或關貿網路帳號</strong>，非用戶要線上買點數卡；電子謄本每張 20 元、按月計收；申領服務時間是<strong>週一至週六 08:00 至 21:00</strong>。只有一支手機、沒有這些帳號的人，臨櫃反而最快。狀況特殊（例如繼承人要申請第一類）先打客服 <a href="tel:0800080212">0800-080-212</a> 問清楚再上網，別白跑一趟網路。</p>
+        <div class="urlbox">
+          <div class="ul">全國地政電子謄本系統</div>
+          <a href="https://ep.land.nat.gov.tw/" target="_blank" rel="noopener noreferrer">https://ep.land.nat.gov.tw/</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-top"><span class="step-n">STEP 2</span><h3>上官方系統，查未來會被劃進哪一區</h3></div>
+      <div class="step-body">
+        <p>這一步最多人卡住，因為以為要有專業背景才看得懂。其實它只要一個地號，跟查包裹寄到哪了差不多。麻煩的地方在於那個網站的第一頁不是查詢框，是一整面公告牆，很多人以為自己點錯連結。</p>
+
+        <ul class="do">
+          <li>開系統，先把跳出來的「注意事項」視窗關掉。</li>
+          <li>往下滑，會看到三個階段的分頁：<strong>公開展覽階段 / 報部審議階段 / 內政部核定階段</strong>。</li>
+          <li>底下有兩排縣市名單：<strong>【報部版】</strong>和<strong>【公展版】</strong>。這是同一個縣市的兩張不同的圖，年份不一樣。<span class="em">要查最新的，點【報部版】那一排。</span></li>
+          <li>會再跳一個「系統使用規範」視窗，按同意進入。</li>
+          <li>右邊才會出現查詢面板，依序選／填：<strong>鄉鎮市區 → 段名 → 地號</strong>，按查詢。</li>
+          <li>結果跳出來，<span class="em">第一件事是核對結果上的「地段」和「地號」跟你謄本上的字一不一樣</span>。段名選單裡同名的選項可能出現不只一個，對不上就換另一個同名選項再查一次。這一步不核對，你看到的可能是隔壁那塊地。</li>
+        </ul>
+
+        <h4>查出來的答案怎麼讀</h4>
+        <ul class="sub">
+          <li><strong>國土功能分區</strong>：這是答案。格式像「農業發展地區第三類」——前面是四大分區之一，後面的「第幾類」是這一區裡的細分，鬆緊不一樣。</li>
+          <li><strong>使用地</strong>：可能是空白的，空白是正常的，不代表查錯。</li>
+          <li>這張表不會告訴你「所以我能蓋什麼」。要問到那一層，把這行結果抄下來，打新北市政府地政局 <a href="tel:0229603456">02-2960-3456</a> 問。</li>
+        </ul>
+
+        <div class="honest"><b>誠實講：</b>現在查到的還是草案，不是定案。兩個系統自己都標了「僅供參考」，意思是你可以拿來判斷，不能拿去當證明。要一張能用的正式文件，得向你那個縣市的政府或地政事務所申請。</div>
+
+        <div class="urlbox">
+          <div class="ul">國土功能分區圖展示資訊查詢系統</div>
+          <a href="https://nluz.nlma.gov.tw/ex3s/" target="_blank" rel="noopener noreferrer">https://nluz.nlma.gov.tw/ex3s/</a>
+        </div>
+        <div class="urlbox">
+          <div class="ul">全國土地使用分區資料查詢系統（查現況分區）</div>
+          <a href="https://luz.nlma.gov.tw/web/" target="_blank" rel="noopener noreferrer">https://luz.nlma.gov.tw/web/</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-top"><span class="step-n">STEP 3</span><h3>有打算的，把時程往前排</h3></div>
+      <div class="step-body">
+        <p>這一步不是催你現在就去動那塊地。是先把「到底要不要動」這一題分清楚——很多人卡了三十年，卡的其實就是這一題。</p>
+        <ul class="do">
+          <li><strong>沒有開發、變更、分割、興建打算的</strong>：把前兩步的結果拍照存起來，設一個提醒，盯著正式公告。放著也是一種決定；但要是弄清楚狀況之後才決定放著，那才叫做決定。</li>
+          <li><strong>有打算的</strong>：現在就去確認三件事——現行編定 <span class="gloss">（謄本「使用地類別」那一欄寫的用途，決定這塊地現在能做什麼）</span> 能不能做你想做的事、要不要辦變更、變更流程要走多久。</li>
+          <li>要盯的是<strong>中央指定、全國一併公告的那一天</strong>（〈三個誤會〉第二則講過為什麼）。查到縣市之後，把你那個縣市地政或城鄉發展主管機關的公告頁設成書籤，每季看一次就好。</li>
+          <li>找誰談：
+            <ul class="sub">
+              <li><strong>想蓋、想開發</strong> → 建築師。</li>
+              <li><strong>繼承、分割、過戶、權利問題</strong> → 地政士 <span class="gloss">（代書）</span>。</li>
+              <li><strong>農地要農用、要蓋農業設施</strong> → 你那個縣市的農業局（處）。</li>
+              <li><strong>要辦分區或編定變更</strong> → 只有縣市政府受理，別人說了都不算。</li>
+            </ul>
+          </li>
+        </ul>
+        <div class="honest"><b>提醒：</b>草案在審議過程中還會變動，公告後才是定案。所以第 3 步要排的是「多久之內要有結論」，不是「哪一天去辦」。</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="fenliu" aria-labelledby="fenliu-t">
+  <div class="sec-head">
+    <div class="kicker">照你謄本上的字走</div>
+    <h2 id="fenliu-t">你是哪一種</h2>
+  </div>
+  <div class="fork">
+    <div class="b">
+      <div class="cond">標示部兩欄　＝有記載</div>
+      <h3>非都市土地</h3>
+      <p>例如使用分區寫「特定農業區」「一般農業區」「山坡地保育區」「森林區」「鄉村區」，使用地類別寫「農牧用地」「甲種建築用地」「林業用地」這一類。</p>
+      <p class="note">這就是這次要換軌的那一塊。〈查詢三步驟〉的第 2、3 步請照著走完，並把公告進度列入追蹤。</p>
+    </div>
+    <div class="b rural">
+      <div class="cond">標示部兩欄　＝空白</div>
+      <h3>先確認是哪一種空白</h3>
+      <p>空白有兩種：<strong>都市土地</strong>，或<strong>非都市土地但尚未編定</strong>。請櫃檯幫你確認過再往下走。</p>
+      <p class="note">確認是都市土地 → 這一輪的分區換軌不直接改你的管制，想知道能蓋多高、能蓋多滿（容積率與建蔽率），要查的是「都市計畫土地使用分區證明」，向你那個縣市政府的都市發展主管機關申請。<br>確認是尚未編定 → 請照左邊「非都市土地」那一欄走，並問櫃檯要不要申請補辦編定。</p>
+    </div>
+  </div>
+</section>
+
+<section id="jicun" aria-labelledby="jicun-t">
+  <div class="sec-head">
+    <div class="kicker">最多人漏掉的那一塊</div>
+    <h2 id="jicun-t">地上有東西怎麼辦</h2>
+  </div>
+  <p>地上有農舍、資材室 <span class="gloss">（放農具、肥料的小屋）</span>、鐵皮工廠，或被鄰居走成一條路——這是三十年沒動的土地最常見的狀況，也是最多人不敢問的一題。怕一問，就把自己問出問題來。</p>
+  <p>先講一件會讓你鬆一口氣的事。國土管理署在分區圖系統上寫得很明白：</p>
+  <div class="card" style="border-left:4px solid var(--z-conserve)">
+    <p style="margin:0"><strong>「即使土地未來劃設為國土保育地區，如於國土功能分區圖公告前，已取得區域計畫法同意的使用項目及使用強度都會予以確保。」</strong></p>
+  </div>
+  <h4>所以真正要做的是「把當年的紙找出來」</h4>
+  <p>關鍵字是<strong>已取得同意</strong>。有沒有那張紙，決定你是「既有合法使用」還是「說不清楚」。請在家先找這四樣：</p>
+  <ul class="do">
+    <li><strong>建造執照、使用執照</strong>——蓋房子當年核發的。</li>
+    <li><strong>容許使用同意文件</strong> <span class="gloss">（在農地或林地上蓋非農用設施，要先向主管機關申請的那張同意書）</span>。</li>
+    <li><strong>農業設施容許使用</strong>相關的核准函或申請書副本。</li>
+    <li>當年的<strong>繳費單據、規費收據、申請書存根</strong>——這些常常夾在權狀那個袋子裡。</li>
+  </ul>
+  <p>四樣都找不到也不用慌，這不代表就是違建。帶著身分證去地政事務所問一句「<strong>這塊地上有沒有登記過建物</strong>」，先確認有沒有建物登記；再看要不要找建築師或地政士往下追。合法既存的使用與新管制之間怎麼銜接，屬於個案認定，不是網頁上能替你判斷的事。</p>
+  <p class="note">還有一種情況要另外處理：地被走成既成道路、或被鄰居占用。這牽涉到通行權與相鄰關係，跟分區換軌是兩條線，請直接找律師或地政士。</p>
+</section>
+
+<section id="hongqi" aria-labelledby="hongqi-t">
+  <div class="sec-head">
+    <div class="kicker">遇到這些先別急著簽</div>
+    <h2 id="hongqi-t">看到這些先停手</h2>
+  </div>
+  <ul class="flags">
+    <li><b>有人拿分區圖草案跟你打包票，說這塊地將來鐵定蓋得起來</b>草案不是公告，官方系統自己標僅供參考，而且草案還會因審議而變動。
+      <span class="act">請他當著你的面，用你的地段地號在【報部版】查一次給你看。螢幕上就會出現系統自己的但書。他不肯查，這件事就到此為止。</span></li>
+    <li><b>有人說「趁公告前趕快辦變更，我有管道」</b>公告前先把事情想清楚沒有錯，有問題的是「我有管道」——分區與編定變更的受理與審議都在政府機關，程序不會因為誰認識誰而不用走。
+      <span class="act">打新北市政府地政局 02-2960-3456 問一句「這種變更要走什麼程序」。任何要你先付打點費、疏通費的，直接停。</span></li>
+    <li><b>有人用「2031 就沒救了」催你降價出售</b>民國 120 年 4 月 30 日是分區圖公告的最後期限，不是土地作廢日。把期限講成末日，通常是為了讓你來不及思考。
+      <span class="act">今天就可以自己確認：進國土管理署系統，「內政部核定階段」那一欄目前一個縣市都沒有。沒有任何一塊地會在那天憑空消失。</span></li>
+    <li><b>談買賣談到一半，對方只給口頭說法、不給謄本</b>一份每張 20 元、隨時調得到的東西不給看，通常不是因為嫌麻煩。
+      <span class="act">你自己去調就好，帶身分證去地政事務所，第二類任何人都能申請，不用經過他。</span></li>
+    <li><b>土地上有既存使用，但拿不出相關合法文件</b>農舍、資材室、工廠、既成道路都算，換軌前後都是問題，不會因為換了分區就自動解決。
+      <span class="act">照〈地上有東西怎麼辦〉那一節，先把四樣文件找出來，再決定要不要找建築師或地政士。</span></li>
+    <li><b>有人自稱仲介來談這塊地，卻不給你看名片上的證號</b>合法的不動產經紀人員都有證號，可以在內政部不動產經紀業資訊系統查得到。
+      <span class="act">當場請他報證號，回家查得到再談。查不到的人，後面講什麼都不用聽。</span></li>
+  </ul>
+</section>
+
+<section id="jianhe" aria-labelledby="jianhe-t">
+  <div class="sec-head">
+    <div class="kicker">勾起來的是還沒確認的</div>
+    <h2 id="jianhe-t">自我檢核表</h2>
+  </div>
+  <p>勾選的意思是「這一項我還沒弄清楚」。<strong>勾越少代表你越有底</strong>，弄清楚一項就把勾拿掉。這張表會記在你這台裝置上，關掉再打開還在。</p>
+  <ul class="checks">
+    <li><label><input type="checkbox" class="ck"><span>我還沒調過這塊地的土地登記謄本。</span></label></li>
+    <li><label><input type="checkbox" class="ck"><span>我不確定謄本標示部的「使用分區」欄是空白還是有字；如果是空白，我也還沒問過是哪一種空白。</span></label></li>
+    <li><label><input type="checkbox" class="ck"><span>我手上沒有完整地號（鄉鎮市區＋段小段＋地號）。</span></label></li>
+    <li><label><input type="checkbox" class="ck"><span>我還沒上國土管理署的系統查過未來會被劃到哪一區。</span></label></li>
+    <li><label><input type="checkbox" class="ck"><span>這塊地還登記在過世的長輩名下，我不確定繼承登記辦過了沒有。</span></label></li>
+    <li><label><input type="checkbox" class="ck"><span>這塊地上有既存使用（農舍、資材室、工廠、道路），但我沒有相關合法文件。</span></label></li>
+    <li><label><input type="checkbox" class="ck"><span>家裡對這塊地將來要留、要賣還是要蓋，還沒有共識。</span></label></li>
+  </ul>
+  <div class="tally" id="tally" aria-live="polite">還沒開始也沒關係。先從〈查詢三步驟〉的第 1 步去調謄本，第 1、2、3 項通常會一起解決。</div>
+  <a class="soft-cta" id="softcta" href="https://line.me/R/ti/p/@798ulmws" target="_blank" rel="noopener noreferrer" hidden>不知道從哪一項開始，就把謄本標示部那兩欄的字拍下來傳到官方 LINE，當場幫你看是都市計畫內還是計畫外 不用先決定要不要賣</a>
+</section>
+
+<section id="rukou" aria-labelledby="rukou-t">
+  <div class="sec-head">
+    <div class="kicker">全部是官方或半官方入口</div>
+    <h2 id="rukou-t">官方入口</h2>
+  </div>
+  <div class="portals">
+    <a href="https://nluz.nlma.gov.tw/ex3s/" target="_blank" rel="noopener noreferrer">
+      <span><b>國土管理署｜國土功能分區圖展示資訊查詢系統</b><small>用地號查未來分區。三個階段分頁，記得點【報部版】那一排</small></span><span class="arw">→</span>
+    </a>
+    <a href="https://easymap.moi.gov.tw/" target="_blank" rel="noopener noreferrer">
+      <span><b>內政部地政司｜地籍圖資網路便民服務系統</b><small>不知道地號時用這個，可用門牌反查或在地圖上點選</small></span><span class="arw">→</span>
+    </a>
+    <a href="https://luz.nlma.gov.tw/web/" target="_blank" rel="noopener noreferrer">
+      <span><b>全國土地使用分區資料查詢系統</b><small>查現況使用分區，涵蓋都市計畫、非都市土地及國家公園</small></span><span class="arw">→</span>
+    </a>
+    <a href="https://ep.land.nat.gov.tw/" target="_blank" rel="noopener noreferrer">
+      <span><b>全國地政電子謄本系統</b><small>線上申領。需中華電信或關貿帳號，非用戶可買點數卡</small></span><span class="arw">→</span>
+    </a>
+    <a href="tel:0800080212">
+      <span><b>電子謄本系統客服專線</b><small>0800-080-212。申領服務時間 週一至週六 08:00 至 21:00</small></span><span class="arw">→</span>
+    </a>
+    <a href="tel:0226808001">
+      <span><b>新北市樹林地政事務所</b><small>02-2680-8001。管轄樹林區、鶯歌區、三峽區，週一至週五 08:00 至 17:30</small></span><span class="arw">→</span>
+    </a>
+    <a href="tel:0229603456">
+      <span><b>新北市政府地政局</b><small>02-2960-3456。分區、編定與非都市土地相關洽詢</small></span><span class="arw">→</span>
+    </a>
+    <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070230" target="_blank" rel="noopener noreferrer">
+      <span><b>全國法規資料庫｜國土計畫法</b><small>第 3 條分區定義、第 23 條管制方式、第 45 條時程與區域計畫法停止適用</small></span><span class="arw">→</span>
+    </a>
+    <a href="https://www.nlma.gov.tw/" target="_blank" rel="noopener noreferrer">
+      <span><b>內政部國土管理署</b><small>國土計畫子法、審議進度與政策公告的第一手來源</small></span><span class="arw">→</span>
+    </a>
+  </div>
+  <p class="note" style="margin-top:16px">各縣市核發土地使用分區證明的機關與規費不同，以你那個縣市政府的公告為準。</p>
+</section>
+
+<section id="faq" aria-labelledby="faq-t">
+  <div class="sec-head">
+    <div class="kicker">查完之後才會卡住的那幾題</div>
+    <h2 id="faq-t">常見問題</h2>
+  </div>
+
+  <details>
+    <summary><span>這塊地還登記在我過世的父親名下，我查得到嗎</span></summary>
+    <div class="ans">查得到，而且比你想的簡單。<strong>只想知道是都市計畫內還是計畫外</strong>：申請第二類謄本就好，任何人都能申請，標示部的使用分區、使用地類別、面積、地號全部看得到。<strong>要完整資料（第一類）</strong>：你是繼承人，屬於依法令得申請的人，臨櫃辦最單純，帶被繼承人的除戶戶籍謄本、能證明你是繼承人的戶籍謄本，加上你自己的身分證正本；線上申領有沒有辦法驗證繼承人身分，各系統規定不同，先打客服 0800-080-212 問清楚。另外順便問櫃檯這一句，比查分區更要緊：「這塊地的繼承登記辦過了嗎？」地放三十年沒動，很多時候名字還在長輩身上，這件事有法定期限，逾期會有罰鍰。</div>
+  </details>
+  <details>
+    <summary><span>我家的地在都市計畫區內，那我完全不用管嗎</span></summary>
+    <div class="ans">土地使用管制這一塊，仍依都市計畫法辦理，這一輪的分區換軌不會直接改你的容積率與建蔽率。不過同法第 8 條規定都市計畫要遵循國土計畫，第 16 條也規定縣市國土計畫公告實施後，都市計畫主管機關要按國土計畫的指導辦理擬訂或變更。所以答案是：這一輪不急，但別當成永遠沒事。</div>
+  </details>
+  <details>
+    <summary><span>分區圖公告以後，我原本的農舍、資材室會不會變違建</span></summary>
+    <div class="ans">國土管理署的原則是：在分區圖公告前已取得區域計畫法同意的使用項目及使用強度，都會予以確保。所以關鍵在你手上有沒有那張「同意」的文件。合法既存的使用與新管制之間怎麼銜接屬於個案認定，要看建照、使用執照、容許使用同意文件與實際使用狀況，沒辦法在網頁上替你判斷，也不該拿別人的案子套。請照〈地上有東西怎麼辦〉那一節先把文件找齊，再問你那個縣市的主管機關，或委任地政士、建築師確認。</div>
+  </details>
+  <details>
+    <summary><span>現在查到的分區，跟以後正式公告的不一樣怎麼辦</span></summary>
+    <div class="ans">草案在審議過程中本來就可能調整。公告前會有法定的公開展覽與陳情程序，那是表達意見的正式管道。所以查到之後真正該做的，是把你那個縣市的公開展覽與審議進度列入追蹤，而不是把草案當定案。</div>
+  </details>
+  <details>
+    <summary><span>土地要賣，該在公告前賣還是公告後賣</span></summary>
+    <div class="ans">沒有一體適用的答案。決定價格的不是「公告」這個動作本身，是你那塊地被劃進哪一區、現行編定能做什麼、以及買方要拿它做什麼。先把〈查詢三步驟〉的第 1、2 步做完，手上有分區與編定的事實，才談得上時機。凡是動到金額、稅負與履約條件的判斷，請一併問地政士與稅務機關。</div>
+  </details>
+</section>
+
+<section id="laiyuan" aria-labelledby="laiyuan-t">
+  <div class="sec-head">
+    <div class="kicker">每一條都可以自己點開對</div>
+    <h2 id="laiyuan-t">查核依據</h2>
+  </div>
+  <ol class="sources">
+    <li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070230" target="_blank" rel="noopener noreferrer">全國法規資料庫｜國土計畫法</a>（民國 114 年 1 月 20 日修正公布）第 3、8、16、23、45 條</li>
+    <li><a href="https://law.moj.gov.tw/LawClass/LawHistory.aspx?pcode=D0070230" target="_blank" rel="noopener noreferrer">全國法規資料庫｜國土計畫法沿革</a>（民國 114 年 1 月 20 日修正公布第 7、8、23、35、45 條）</li>
+    <li><a href="https://www.ly.gov.tw/Pages/Detail.aspx?nodeid=33324&amp;pid=248601" target="_blank" rel="noopener noreferrer">立法院｜國土計畫法修正部分條文</a>（民國 113 年 12 月 31 日三讀，第 11 屆第 2 會期第 15 次會議）</li>
+    <li><a href="https://www.moi.gov.tw/News_Content.aspx?n=4&amp;s=324437" target="_blank" rel="noopener noreferrer">內政部｜立法院通過國土計畫法延期上路</a>（新聞稿，說明延的是國土功能分區圖作業期程）</li>
+    <li><a href="https://nluz.nlma.gov.tw/ex3s/" target="_blank" rel="noopener noreferrer">內政部國土管理署｜直轄市、縣（市）國土功能分區圖展示資訊查詢系統</a>（三階段分頁、報部版與公展版、既有合法使用確保原則）</li>
+    <li><a href="https://luz.nlma.gov.tw/web/" target="_blank" rel="noopener noreferrer">內政部國土管理署城鄉發展分署｜全國土地使用分區資料查詢系統</a></li>
+    <li><a href="https://easymap.moi.gov.tw/" target="_blank" rel="noopener noreferrer">內政部地政司｜地籍圖資網路便民服務系統</a>（門牌反查地號）</li>
+    <li><a href="https://ep.land.nat.gov.tw/" target="_blank" rel="noopener noreferrer">全國地政電子謄本系統</a></li>
+    <li><a href="https://www.land.ntpc.gov.tw/News_Content.aspx?n=32&amp;s=52528" target="_blank" rel="noopener noreferrer">新北市政府地政局｜網路申領電子謄本說明</a>（帳號、費用與服務時間）</li>
+    <li><a href="https://www.xizhi.land.ntpc.gov.tw/News_Content.aspx?n=10310&amp;s=53172" target="_blank" rel="noopener noreferrer">新北市汐止地政事務所｜地籍謄本收費標準</a></li>
+    <li><a href="https://land.gov.taipei/cp.aspx?n=A0439A6FCE44FADA" target="_blank" rel="noopener noreferrer">臺北市政府地政局｜新制三類謄本</a>（第一、二、三類申請資格與隱匿範圍）</li>
+    <li><a href="https://www.shulin.land.ntpc.gov.tw/" target="_blank" rel="noopener noreferrer">新北市樹林地政事務所</a>（地址、電話、辦公時間與管轄區域）</li>
+    <li><a href="https://www.cna.com.tw/news/aipl/202606160354.aspx" target="_blank" rel="noopener noreferrer">中央社｜內政部審竣臺北市國土功能分區圖，全國剩桃園未完成</a>（民國 115 年 6 月 16 日）</li>
+  </ol>
+</section>
+
+<section aria-labelledby="closing-t" style="border-bottom:0">
+  <div class="closing">
+    <h2 id="closing-t" class="big gold" style="font-family:var(--serif);margin-bottom:16px">最後講一句人話</h2>
+    <p>上面講了三個步驟、一堆欄位名稱跟官方網址。但說真的，那些都不是重點。</p>
+    <p>那塊地對你來說，從來就不只是一塊地。它可能是爸媽當年一分一分省下來的，是家裡為它吵過又和好的那幾次，是你嘴上不說、心裡卻一直記著要留給孩子的那一份。</p>
+    <p>會點開這一頁，多半也不是因為你想懂法規。是因為那塊地放在心上很久了，你只是不想在該做決定的那天，發現自己什麼都不知道。</p>
+    <p class="big">你要的從來不是「把分區查清楚」。你要的是——有一天孩子問起這塊地，你答得出來。</p>
+    <p>答得出它是什麼、能做什麼、不能做什麼，以及當年為什麼留著。</p>
+    <p>地放著不會壞，會換的是規則。<span class="gold">而規則這種東西，查得到，就不可怕。</span></p>
+    <p>願你家那塊地，在你想用它的那一天剛好幫得上忙；也願你在那一天，是家裡最清楚狀況的那個人。</p>
+  </div>
+</section>
+
+<section aria-labelledby="disc-t" style="border-bottom:0;padding-top:24px">
+  <h2 id="disc-t" style="font-size:17px;font-family:var(--sans);font-weight:700;margin-bottom:12px">免責聲明</h2>
+  <div class="disclaimer">
+    <p class="warm">這一頁能幫你把方向抓對，也能讓你走進地政事務所的時候知道要問什麼。但每一塊地的狀況都不一樣——真的要動手之前，還是找專業的人幫你看過一次，那一趟不會白跑。</p>
+    <ol>
+      <li>本頁為一般性資訊整理，不構成法律、稅務、財務或投資建議，也不因閱讀本頁而成立任何委任或諮詢關係。</li>
+      <li>資訊可能因法令修訂或個案事實而變動，作者與所屬經紀業<strong>不負擔因依本頁內容所為決定而生之法律責任</strong>。</li>
+      <li>實際個案請洽<strong>律師、地政士、會計師、稅務機關或各該主管機關</strong>確認後再行動。</li>
+      <li>資料查核日期 2026-08-23，法令以主管機關最新公告為準。國土功能分區圖在正式公告前均屬草案，<strong>三讀通過不等於公告實施、審議完竣也不等於公告實施</strong>，正式生效以官方公告為準。</li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="tags-t" style="border-bottom:0;padding-top:24px">
+  <h2 id="tags-t" style="font-size:17px;font-family:var(--sans);font-weight:700;margin-bottom:6px">要轉貼的話，標籤在這裡</h2>
+  <p class="note" style="margin-bottom:12px">整塊點一下就會全選，複製走。</p>
+  <div class="tags">#何志宏 #新北房仲 #國土計畫法 #國土功能分區 #土地使用分區查詢 #地籍謄本怎麼看 #農地 #山坡地 #樹林買房 #三峽土地</div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="brandline">阿宏賣房不賣夢 陪你完成夢 但不陪你做錯夢</p>
+    <p class="transition">上面這些是給所有人的 下面這塊只給真的要處理那塊地的人 不急 先收藏</p>
+    <div class="ctas">
+      <a href="https://line.me/R/ti/p/@798ulmws" target="_blank" rel="noopener noreferrer">加官方 LINE 問一句</a>
+      <a href="https://0930848000.com/mingpian/" target="_blank" rel="noopener noreferrer">阿宏的電子名片</a>
+    </div>
+    <div class="legal">
+      經紀業名稱：住商不動產樹林站前加盟店 鴻石不動產經紀有限公司<br>
+      經紀人：林秀嫻（96）北縣字第001399號｜營業員：何志宏（114）年登字第495065號<br>
+      地址：新北市板橋區金門街288-2號｜電話：<a href="tel:0226878822">02-2687-8822</a><br>
+      服務區域：新北市
+    </div>
+    <a class="backtop" href="#top">回到最上方 ↑</a><a class="backtop" href="/zhishi/" style="margin-left:20px">← 回房產知識</a>
+  </div>
+</footer>
+
+<div class="fab" aria-label="聯絡阿宏">
+  <a class="fab-line" href="https://line.me/R/ti/p/@798ulmws" target="_blank" rel="noopener noreferrer" aria-label="加官方 LINE 私訊">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.03 3.57 7.4 8.4 8.04.33.07.78.22.89.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1.01.89.55 1.09-.46 5.87-3.46 8.01-5.92C21.56 13.35 22 11.8 22 10.13 22 5.64 17.52 2 12 2zM8.39 12.8H6.16a.53.53 0 0 1-.53-.53V8.51a.53.53 0 0 1 1.06 0v3.23h1.7a.53.53 0 1 1 0 1.06zm1.83-.53a.53.53 0 0 1-1.06 0V8.51a.53.53 0 0 1 1.06 0v3.76zm4.51 0a.53.53 0 0 1-.36.5.55.55 0 0 1-.17.03.53.53 0 0 1-.42-.21l-1.92-2.61v2.29a.53.53 0 0 1-1.06 0V8.51a.53.53 0 0 1 .95-.32l1.92 2.62V8.51a.53.53 0 0 1 1.06 0v3.76zm3.38-2.41a.53.53 0 1 1 0 1.06h-1.7v.82h1.7a.53.53 0 1 1 0 1.06h-2.23a.53.53 0 0 1-.53-.53V8.51c0-.29.24-.53.53-.53h2.23a.53.53 0 1 1 0 1.06h-1.7v.82h1.7z"/></svg>
+  </a>
+  <a class="fab-phone" href="tel:0226878822" aria-label="撥打電話 02-2687-8822">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "mainEntityOfPage":{"@type":"WebPage","@id":"https://0930848000.com/zhishi/guotu-fenqu-chaxun/"},
+  "url":"https://0930848000.com/zhishi/guotu-fenqu-chaxun/",
+  "headline":"國土功能分區查詢三步驟｜家裡有都市計畫外的土地，先查這三件事",
+  "description":"國土計畫法沒有取消，是國土功能分區圖的公告期限延到民國120年4月30日。調地籍謄本、查未來分區、排時程三個步驟。",
+  "inLanguage":"zh-Hant",
+  "datePublished":"2026-08-23",
+  "dateModified":"2026-08-23",
+  "author":{"@type":"Person","name":"何志宏","jobTitle":"不動產經紀營業員"},
+  "publisher":{
+    "@type":"RealEstateAgent",
+    "name":"住商不動產樹林站前加盟店 鴻石不動產經紀有限公司",
+    "telephone":"02-2687-8822",
+    "areaServed":"新北市",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"金門街288-2號",
+      "addressLocality":"板橋區",
+      "addressRegion":"新北市",
+      "addressCountry":"TW"
+    }
+  }
+}
+</script>
+
+<script>
+(function(){
+  var KEY = 'lazypack-guotu-20260823';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.ck'));
+  var tally = document.getElementById('tally');
+  var cta = document.getElementById('softcta');
+  var touched = false;
+
+  var MSG_START = '還沒開始也沒關係。先從〈查詢三步驟〉的第 1 步去調謄本，第 1、2、3 項通常會一起解決。';
+  var MSG_DONE  = '七項都確認過了。剩下的只有一件事：盯著正式公告，每季看一次就好。';
+
+  function render(){
+    var n = 0;
+    for (var i = 0; i < boxes.length; i++){ if (boxes[i].checked) n++; }
+    if (n === 0){
+      tally.innerHTML = touched ? MSG_DONE : MSG_START;
+      cta.hidden = true;
+    } else {
+      tally.innerHTML = '還有 <b>' + n + '</b> 項沒確認。沒關係，這張表就是拿來一項一項劃掉的——先做第 1 步，第 1、2、3 項通常會一起解決。';
+      cta.hidden = false;
+    }
+  }
+  function save(){
+    try{
+      var state = { t: touched ? 1 : 0, v: [] };
+      for (var i = 0; i < boxes.length; i++){ state.v.push(boxes[i].checked ? 1 : 0); }
+      localStorage.setItem(KEY, JSON.stringify(state));
+    }catch(e){}
+  }
+  function load(){
+    try{
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return;
+      var state = JSON.parse(raw);
+      if (!state || Object.prototype.toString.call(state.v) !== '[object Array]') return;
+      touched = state.t === 1;
+      for (var i = 0; i < boxes.length; i++){ boxes[i].checked = state.v[i] === 1; }
+    }catch(e){}
+  }
+  for (var j = 0; j < boxes.length; j++){
+    boxes[j].addEventListener('change', function(){ touched = true; save(); render(); });
+  }
+  load();
+  render();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"首頁","item":"https://0930848000.com/"},
+    {"@type":"ListItem","position":2,"name":"房產知識","item":"https://0930848000.com/zhishi/"},
+    {"@type":"ListItem","position":3,"name":"國土功能分區查詢三步驟","item":"https://0930848000.com/zhishi/guotu-fenqu-chaxun/"}
+  ]
+}
+</script>
+
+</body>
+</html>
