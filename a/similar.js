@@ -44,6 +44,16 @@
     return parts.length ? parts[parts.length - 1].replace(/\.html?$/i, '') : '';
   }
 
+  /* 縣市＝「行政區」欄前 3 字（「新北市樹林區」→「新北市」）。 */
+  function city(x) {
+    var v = x && x['行政區'] ? String(x['行政區']) : '';
+    return v.length >= 3 ? v.slice(0, 3) : v;
+  }
+
+  /* 三層挑選，依序補到 3 筆為止：
+     ① 同行政區 ② 同縣市 ③ 開價 ±20%
+     沒有第②層時，桃園的物件會直接被新北的物件填滿（實測 jiasheng 蘆竹區
+     推出三間新北老三房，而同為桃園的 puxin 反而落選），故補上。 */
   function pick(list, me) {
     var live = list.filter(function (x) {
       return x && x.slug && x.slug !== me.slug && x.status === '在售';
@@ -58,14 +68,20 @@
       return me['行政區'] && x['行政區'] === me['行政區'];
     }).sort(byPrice);
 
+    var meCity = city(me);
+    var sameCity = live.filter(function (x) {
+      return same.indexOf(x) < 0 && meCity && city(x) === meCity;
+    }).sort(byPrice);
+
     var near = [];
     if (me['開價萬'] != null) {
       near = live.filter(function (x) {
-        return same.indexOf(x) < 0 && x['開價萬'] != null &&
+        return same.indexOf(x) < 0 && sameCity.indexOf(x) < 0 &&
+          x['開價萬'] != null &&
           Math.abs(x['開價萬'] - me['開價萬']) <= me['開價萬'] * 0.2;
       }).sort(byPrice);
     }
-    return same.concat(near).slice(0, 3);
+    return same.concat(sameCity, near).slice(0, 3);
   }
 
   function esc(v) {
