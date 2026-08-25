@@ -357,7 +357,7 @@
         <li><a href="https://www.land.moi.gov.tw/" target="_blank" rel="noopener noreferrer">內政部地政司全球資訊網</a></li>
         <li><a href="https://tph.judicial.gov.tw/tw/cp-11115-2429868-ece56-051.html" target="_blank" rel="noopener noreferrer">臺灣高等法院｜民事法律座談：民法第 824 條分割方法</a></li>
       </ol>
-      <div class="disclaimer">本頁為一般性法律與不動產資訊整理，不構成個案法律、稅務或投資意見。條文以全國法規資料庫最新公告版本為準，個案結果依法院裁判與地政機關認定</div>
+      <div class="disclaimer">本頁為一般性法律與不動產資訊整理，不構成個案法律、稅務或投資意見。條文以全國法規資料庫最新公告版本為準，個案結果依法院裁判與地政機關認定。作者與所屬經紀業對依本頁內容所為之決定<strong>不負法律責任</strong>，實際個案請洽<strong>律師、地政士或地政主管機關</strong>確認後再行動</div>
     </section>
   </main>
 
@@ -376,6 +376,9 @@
         地址：新北市板橋區金門街288-2號｜電話：<a href="tel:0226878822" style="color:inherit">02-26878822</a><br>
         服務區域：新北市
       </div>
+      <p class="closing" style="margin:18px 0 0;font-size:14px;line-height:1.9">希望你家那一排名字，最後是好好坐下來談完的，不是上法院才談得完</p>
+      <p style="margin:20px 0 6px;font-size:14px;font-weight:900;letter-spacing:.08em;color:#8B6D09">轉發時可以一起複製（點一下全選）</p>
+      <p style="margin:0;font-size:16px;line-height:2;word-break:break-word;user-select:all;-webkit-user-select:all">#何志宏　#新北房仲　#祖產掛一排名字</p>
       <a class="backtop" href="#top">回到最上方 ↑</a>
     </div>
   </footer>
@@ -407,7 +410,22 @@
         }
         cta.hidden = (count === 0);
       }
-      boxes.forEach(box => box.addEventListener('change', update));
+      const KEY = 'zuchan-check-v1';
+      function save(){
+        try{ localStorage.setItem(KEY, JSON.stringify(boxes.map(b => b.checked ? 1 : 0))); }catch(e){}
+      }
+      function load(){
+        try{
+          const raw = localStorage.getItem(KEY);
+          if(!raw) return;
+          const arr = JSON.parse(raw);
+          if(!Array.isArray(arr)) return;
+          boxes.forEach((b,i) => { b.checked = !!arr[i]; });
+        }catch(e){}
+      }
+      boxes.forEach(box => box.addEventListener('change', () => { save(); update(); }));
+      load();
+      update();
     })();
   </script>
 </body>
