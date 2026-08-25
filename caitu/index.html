@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>一鍵裁圖工具 | IG / FB 尺寸自動產出</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="裁圖工具">
+<meta name="theme-color" content="#0f1115">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%233b82f6'/%3E%3Ctext x='50' y='64' font-size='50' text-anchor='middle' fill='white' font-family='sans-serif'%3E✂️%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0f1115; --card:#181b22; --line:#2a2f3a; --text:#eef1f6; --sub:#9aa4b2;
+    --accent:#3b82f6; --accent2:#22c55e; --danger:#ef4444;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:-apple-system,"Segoe UI",Roboto,"PingFang TC","Microsoft JhengHei",sans-serif;
+    background:var(--bg); color:var(--text); min-height:100vh; padding:24px;
+  }
+  .wrap{max-width:960px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--sub);font-size:14px;margin-bottom:20px}
+  #drop{
+    border:2px dashed var(--line); border-radius:16px; padding:48px 20px;
+    text-align:center; cursor:pointer; transition:.15s; background:var(--card);
+  }
+  #drop.hover{border-color:var(--accent); background:#12203a}
+  #drop .big{font-size:18px;margin-bottom:8px}
+  #drop .small{color:var(--sub);font-size:13px}
+  input[type=file]{display:none}
+  #sizes{
+    display:flex; flex-wrap:wrap; gap:10px; margin:20px 0;
+  }
+  .chip{
+    display:flex; align-items:center; gap:6px;
+    background:var(--card); border:1px solid var(--line); border-radius:999px;
+    padding:8px 14px; font-size:13px; cursor:pointer; user-select:none;
+  }
+  .chip input{margin:0}
+  .chip.active{border-color:var(--accent2)}
+  #actions{display:flex; gap:10px; align-items:center; margin:16px 0 24px; flex-wrap:wrap}
+  button{
+    background:var(--accent); color:#fff; border:none; border-radius:10px;
+    padding:12px 20px; font-size:15px; cursor:pointer; font-weight:600;
+  }
+  button.secondary{background:var(--card); border:1px solid var(--line); color:var(--text)}
+  button:disabled{opacity:.4; cursor:not-allowed}
+  #results{display:flex; flex-direction:column; gap:20px}
+  .item{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px}
+  .item-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px}
+  .item-head .name{font-size:14px; color:var(--sub); word-break:break-all}
+  .outs{display:flex; flex-wrap:wrap; gap:12px}
+  .out{
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    background:#12141a; border:1px solid var(--line); border-radius:10px; padding:10px; width:140px;
+  }
+  .out canvas{max-width:120px; max-height:120px; border-radius:6px; background:#000}
+  .out .label{font-size:11px; color:var(--sub); text-align:center}
+  .out a{
+    font-size:12px; color:var(--accent2); text-decoration:none; border:1px solid var(--accent2);
+    border-radius:6px; padding:4px 10px; margin-top:2px;
+  }
+  .out a:hover{background:var(--accent2); color:#fff}
+  #dlall{background:var(--accent2)}
+  footer{margin-top:30px; color:var(--sub); font-size:12px; text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>一鍵裁圖工具</h1>
+  <div class="sub">手機、平板、電腦都能用：電腦拖圖進來、手機點一下選圖，丟進來就自動產出 FB／IG／Threads 各尺寸。全程在你裝置裡跑，不上傳任何伺服器。</div>
+
+  <div id="drop">
+    <div class="big">📥 把圖片拖到這裡，或點一下選擇檔案</div>
+    <div class="small">支援多張同時丟進來，jpg / png / webp 都可以</div>
+    <input type="file" id="fileInput" accept="image/*" multiple>
+  </div>
+
+  <div id="sizes"></div>
+
+  <div id="modeBar" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+    <label class="chip active" style="display:inline-flex">
+      <input type="radio" name="mode" value="contain" checked> 🖼️ 完整保留（不裁切內容，四周補模糊background）
+    </label>
+    <label class="chip" style="display:inline-flex">
+      <input type="radio" name="mode" value="cover"> ✂️ 裁滿版（滿版好看，但會裁掉邊緣）
+    </label>
+  </div>
+
+  <label class="chip active" id="hdrChip" style="margin-bottom:12px;display:inline-flex">
+    <input type="checkbox" id="hdrToggle" checked> ✨ 自動增豔（拉曝光/對比/飽和度，模擬HDR）
+  </label>
+
+  <div id="actions">
+    <button id="processBtn" disabled>開始裁切</button>
+    <button id="dlall" class="secondary" style="display:none">全部下載</button>
+    <button id="clearBtn" class="secondary" style="display:none">清空重來</button>
+  </div>
+
+  <div id="results"></div>
+
+  <footer>離線工具・免安裝・免費使用・裁切邏輯全在瀏覽器本機執行</footer>
+</div>
+
+<script>
+const SIZE_DEFS = [
+  {key:"square",    label:"貼文 1:1（FB／IG／Threads）",     w:1080, h:1080, on:true},
+  {key:"portrait",  label:"貼文 4:5（FB／IG／Threads 直式）", w:1080, h:1350, on:true},
+  {key:"story",     label:"限動／Reels 9:16（IG／FB）",       w:1080, h:1920, on:true},
+  {key:"landscape", label:"連結貼文 1.91:1（FB）",            w:1200, h:630,  on:false},
+  {key:"fb_cover",  label:"FB 封面",                         w:820,  h:312,  on:false},
+];
+
+const dropZone = document.getElementById('drop');
+const fileInput = document.getElementById('fileInput');
+const sizesBar = document.getElementById('sizes');
+const processBtn = document.getElementById('processBtn');
+const dlAllBtn = document.getElementById('dlall');
+const clearBtn = document.getElementById('clearBtn');
+const resultsEl = document.getElementById('results');
+
+let queuedFiles = [];
+let producedLinks = [];
+
+SIZE_DEFS.forEach(def => {
+  const chip = document.createElement('label');
+  chip.className = 'chip' + (def.on ? ' active' : '');
+  chip.innerHTML = `<input type="checkbox" data-key="${def.key}" ${def.on ? 'checked' : ''}> ${def.label} (${def.w}×${def.h})`;
+  chip.querySelector('input').addEventListener('change', e => {
+    chip.classList.toggle('active', e.target.checked);
+  });
+  sizesBar.appendChild(chip);
+});
+
+document.querySelectorAll('#modeBar input[name=mode]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    document.querySelectorAll('#modeBar .chip').forEach(c => c.classList.remove('active'));
+    radio.closest('.chip').classList.add('active');
+  });
+});
+function currentMode(){
+  return document.querySelector('#modeBar input[name=mode]:checked').value;
+}
+
+function activeSizeDefs(){
+  const checked = [...sizesBar.querySelectorAll('input[type=checkbox]:checked')].map(i => i.dataset.key);
+  return SIZE_DEFS.filter(d => checked.includes(d.key));
+}
+
+dropZone.addEventListener('click', () => fileInput.click());
+['dragenter','dragover'].forEach(ev => dropZone.addEventListener(ev, e => {
+  e.preventDefault(); dropZone.classList.add('hover');
+}));
+['dragleave','drop'].forEach(ev => dropZone.addEventListener(ev, e => {
+  e.preventDefault(); dropZone.classList.remove('hover');
+}));
+dropZone.addEventListener('drop', e => {
+  addFiles([...e.dataTransfer.files].filter(f => f.type.startsWith('image/')));
+});
+fileInput.addEventListener('change', e => {
+  addFiles([...e.target.files]);
+});
+
+function addFiles(files){
+  if(!files.length) return;
+  queuedFiles = queuedFiles.concat(files);
+  processBtn.disabled = false;
+  dropZone.querySelector('.big').textContent = `✅ 已加入 ${queuedFiles.length} 張圖片`;
+  clearBtn.style.display = 'inline-block';
+  setTimeout(() => { if(!processBtn.disabled) processBtn.click(); }, 60);
+}
+
+clearBtn.addEventListener('click', () => {
+  queuedFiles = [];
+  producedLinks.forEach(u => URL.revokeObjectURL(u));
+  producedLinks = [];
+  resultsEl.innerHTML = '';
+  dlAllBtn.style.display = 'none';
+  clearBtn.style.display = 'none';
+  processBtn.disabled = true;
+  fileInput.value = '';
+  dropZone.querySelector('.big').textContent = '📥 把圖片拖到這裡，或點一下選擇檔案';
+});
+
+processBtn.addEventListener('click', async () => {
+  const defs = activeSizeDefs();
+  if(!defs.length){ alert('至少勾一個尺寸'); return; }
+  resultsEl.innerHTML = '';
+  processBtn.disabled = true;
+  processBtn.textContent = '裁切中…';
+
+  for(const file of queuedFiles){
+    const img = await loadImage(file);
+    const item = document.createElement('div');
+    item.className = 'item';
+    const baseName = file.name.replace(/\.[^.]+$/, '');
+    item.innerHTML = `<div class="item-head"><div class="name">${file.name}</div></div>`;
+    const outs = document.createElement('div');
+    outs.className = 'outs';
+    item.appendChild(outs);
+    resultsEl.appendChild(item);
+
+    for(const def of defs){
+      const mode = currentMode();
+      const enhance = document.getElementById('hdrToggle').checked;
+      const canvas = mode === 'contain'
+        ? containFit(img, def.w, def.h, enhance, 'blur')
+        : coverCrop(img, def.w, def.h, enhance);
+      const blob = await new Promise(res => canvas.toBlob(res, 'image/jpeg', 0.95));
+      const url = URL.createObjectURL(blob);
+      producedLinks.push(url);
+
+      const outEl = document.createElement('div');
+      outEl.className = 'out';
+      const previewCanvas = document.createElement('canvas');
+      const ratio = Math.min(120/def.w, 120/def.h);
+      previewCanvas.width = def.w*ratio; previewCanvas.height = def.h*ratio;
+      previewCanvas.getContext('2d').drawImage(canvas, 0,0, previewCanvas.width, previewCanvas.height);
+
+      const modeTag = mode === 'contain' ? '' : '_滿版裁切';
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${baseName}_${def.key}_${def.w}x${def.h}${modeTag}.jpg`;
+      a.textContent = '下載';
+
+      const label = document.createElement('div');
+      label.className = 'label';
+      label.textContent = `${def.label}`;
+
+      outEl.appendChild(previewCanvas);
+      outEl.appendChild(label);
+      outEl.appendChild(a);
+      // iPhone／Android：走系統分享面板直接「儲存影像」進相簿
+      const shareFile = new File([blob], a.download, {type:'image/jpeg'});
+      if(navigator.canShare && navigator.canShare({files:[shareFile]})){
+        const s = document.createElement('a');
+        s.href = 'javascript:void(0)';
+        s.textContent = '📤 存到手機';
+        s.addEventListener('click', () => {
+          navigator.share({files:[shareFile]}).catch(()=>{});
+        });
+        outEl.appendChild(s);
+      }
+      outs.appendChild(outEl);
+    }
+  }
+
+  processBtn.textContent = '開始裁切';
+  processBtn.disabled = false;
+  dlAllBtn.style.display = 'inline-block';
+});
+
+dlAllBtn.addEventListener('click', () => {
+  const links = [...resultsEl.querySelectorAll('a[download]')];
+  links.forEach((a, i) => setTimeout(() => a.click(), i*150));
+});
+
+function loadImage(file){
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+// 等比例填滿裁切（cover），置中裁掉多餘部分，不變形
+function coverCrop(img, targetW, targetH, enhance){
+  const canvas = document.createElement('canvas');
+  canvas.width = targetW; canvas.height = targetH;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+
+  const srcRatio = img.width / img.height;
+  const targetRatio = targetW / targetH;
+
+  let sx, sy, sw, sh;
+  if(srcRatio > targetRatio){
+    sh = img.height;
+    sw = sh * targetRatio;
+    sx = (img.width - sw) / 2;
+    sy = 0;
+  } else {
+    sw = img.width;
+    sh = sw / targetRatio;
+    sx = 0;
+    sy = (img.height - sh) / 2;
+  }
+
+  if(enhance){
+    // 拉曝光/對比/飽和度，模擬HDR效果：暗部拉起、色彩更飽滿、細節更立體
+    ctx.filter = 'brightness(1.10) contrast(1.15) saturate(1.25)';
+  }
+  ctx.drawImage(img, sx, sy, sw, sh, 0, 0, targetW, targetH);
+  ctx.filter = 'none';
+  return canvas;
+}
+
+// 等比例縮放置中，不裁切原圖任何內容；空白處用模糊放大的同張圖鋪底（IG 官方限動常見手法），不留死白邊
+function containFit(img, targetW, targetH, enhance){
+  const canvas = document.createElement('canvas');
+  canvas.width = targetW; canvas.height = targetH;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+
+  const bg = coverCrop(img, targetW, targetH, false);
+  ctx.filter = 'blur(28px) brightness(0.7)';
+  ctx.drawImage(bg, -24, -24, targetW + 48, targetH + 48);
+  ctx.filter = 'none';
+
+  const srcRatio = img.width / img.height;
+  const targetRatio = targetW / targetH;
+  let dw, dh, dx, dy;
+  if(srcRatio > targetRatio){
+    dw = targetW; dh = dw / srcRatio;
+    dx = 0; dy = (targetH - dh) / 2;
+  } else {
+    dh = targetH; dw = dh * srcRatio;
+    dx = (targetW - dw) / 2; dy = 0;
+  }
+
+  if(enhance){
+    ctx.filter = 'brightness(1.10) contrast(1.15) saturate(1.25)';
+  }
+  ctx.drawImage(img, 0, 0, img.width, img.height, dx, dy, dw, dh);
+  ctx.filter = 'none';
+  return canvas;
+}
+</script>
+</body>
+</html>
