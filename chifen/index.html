@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="賣持分不是賣整戶，400萬自住免稅額要按出售比例打折，簽約前先查 3 件事">
+  <meta name="theme-color" content="#2B3A4A">
+  <meta property="og:title" content="持分出售免稅額怎麼算｜簽約前查核清單">
+  <meta property="og:description" content="住滿 6 年不等於免稅額全拿，北區國稅局真實案例：賣 6 成持分被追稅 10 萬多，訴願還被財政部駁回">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_TW">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%AE%3C/text%3E%3C/svg%3E">
+  <title>持分出售免稅額怎麼算｜簽約前查核清單</title>
+  <style>
+    :root{
+      --trust:#2B3A4A;
+      --gold:#D4AF37;
+      --orange:#ED8B4E;
+      --paper:#F7F4EE;
+      --ink:#25313C;
+      --muted:#64717D;
+      --line:#D8DDE1;
+      --white:#FFFFFF;
+      --danger:#B43B36;
+      --danger-bg:#FFF4F2;
+      --soft-gold:#FFF9E8;
+      --soft-blue:#EEF3F6;
+      --shadow:0 12px 32px rgba(43,58,74,.10);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      font-size:18px;
+      line-height:1.75;
+    }
+    a{color:inherit}
+    .wrap{width:min(100% - 28px,760px);margin:0 auto}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      color:var(--white);
+      background:
+        radial-gradient(circle at 92% 8%,rgba(212,175,55,.28),transparent 32%),
+        linear-gradient(145deg,#22303E 0%,var(--trust) 70%,#364C60 100%);
+      padding:54px 0 40px;
+      border-bottom:7px solid var(--gold);
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      width:220px;height:220px;border:1px solid rgba(255,255,255,.12);
+      border-radius:50%;right:-110px;bottom:-120px;
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(255,255,255,.11);
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:999px;padding:7px 13px;
+      font-size:14px;font-weight:800;letter-spacing:.06em;
+    }
+    h1{
+      margin:20px 0 12px;
+      font-size:clamp(34px,9vw,56px);
+      line-height:1.16;
+      letter-spacing:-.035em;
+    }
+    .hero .lead{font-size:20px;line-height:1.65;margin:0;color:#F1F4F6}
+    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+    .meta span{
+      display:inline-flex;align-items:center;
+      background:rgba(255,255,255,.10);
+      padding:7px 11px;border-radius:10px;font-size:14px
+    }
+    main{padding:26px 0 0}
+    section{margin:22px 0}
+    .section-head{margin:0 0 14px}
+    .kicker{font-size:14px;font-weight:900;color:#8B6D09;letter-spacing:.08em}
+    h2{font-size:29px;line-height:1.3;margin:4px 0 7px;color:var(--trust)}
+    h3{font-size:21px;line-height:1.4;margin:0 0 7px;color:var(--trust)}
+    .section-note{margin:0;color:var(--muted);font-size:16px}
+    .status{
+      background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);
+      border:1px solid #E4E7E9;overflow:hidden
+    }
+    .status-top{
+      background:var(--soft-gold);
+      padding:23px;border-bottom:1px solid #E9DFBC
+    }
+    .status-badge{
+      display:inline-block;background:var(--gold);color:#26323D;
+      border-radius:999px;padding:5px 11px;font-size:13px;font-weight:900
+    }
+    .status h2{margin:11px 0 6px}
+    .status-body{padding:22px}
+    .status-body p{margin:0 0 13px}
+    .status-body p:last-child{margin-bottom:0}
+    .gold-number{color:#A78000;font-size:1.25em;font-weight:950}
+    .alert{
+      border:2px solid var(--danger);
+      background:var(--danger-bg);
+      border-radius:var(--radius);padding:22px
+    }
+    .myth{
+      margin:0 0 16px;padding-bottom:16px;border-bottom:1px dashed #E8B6B2
+    }
+    .myth:last-child{margin:0;padding:0;border:0}
+    .wrong{
+      display:block;color:#8D302C;font-weight:900;text-decoration:line-through;
+      text-decoration-thickness:2px;margin-bottom:5px
+    }
+    .correct{margin:0}
+    .source-link{
+      display:inline-flex;align-items:center;gap:7px;margin-top:9px;
+      color:#6C570A;font-weight:800;font-size:15px;text-decoration:none
+    }
+    .source-link:hover{text-decoration:underline}
+    .grid{display:grid;gap:14px}
+    .card{
+      display:block;text-decoration:none;background:var(--white);
+      border:1px solid #E0E4E7;border-radius:var(--radius);
+      padding:22px;box-shadow:0 6px 20px rgba(43,58,74,.07);
+      transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease
+    }
+    a.card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#CBB35E}
+    .card-icon{
+      width:43px;height:43px;border-radius:14px;background:var(--soft-gold);
+      display:grid;place-items:center;font-size:22px;margin-bottom:13px
+    }
+    .big{
+      color:#9D7B07;font-size:32px;line-height:1.25;font-weight:950;
+      letter-spacing:-.02em;margin:5px 0 10px
+    }
+    .card p{margin:0;color:#4E5B66}
+    .mini{font-size:14px;color:var(--muted);margin-top:12px}
+    .timeline{display:grid;gap:0}
+    .step{
+      position:relative;margin-left:12px;padding:0 0 22px 30px;
+      border-left:2px solid #D8C578
+    }
+    .step:last-child{padding-bottom:0;border-left-color:transparent}
+    .step:before{
+      content:"";position:absolute;left:-8px;top:7px;width:14px;height:14px;
+      background:var(--gold);border-radius:50%;box-shadow:0 0 0 5px var(--soft-gold)
+    }
+    .step strong{color:var(--trust)}
+    .step p{margin:4px 0 0}
+    .checklist{
+      background:var(--trust);color:var(--white);
+      border-radius:var(--radius);padding:23px;box-shadow:var(--shadow)
+    }
+    .checklist h2{color:var(--white)}
+    .checklist .section-note{color:#DDE5EA}
+    .check-item{
+      display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);padding:14px;border-radius:15px;
+      margin-top:10px;cursor:pointer
+    }
+    .check-item input{width:22px;height:22px;accent-color:var(--gold);flex:0 0 auto;margin-top:4px}
+    .check-item span{font-weight:700}
+    .check-result{
+      margin-top:15px;padding:14px 16px;border-radius:14px;
+      background:var(--gold);color:#26323D;font-weight:900
+    }
+    .official{
+      display:grid;gap:12px
+    }
+    .official a{
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      text-decoration:none;background:var(--white);border:1px solid #DFE4E7;
+      border-radius:18px;padding:17px 18px
+    }
+    .official a:hover{border-color:var(--gold)}
+    .official strong{display:block;color:var(--trust)}
+    .official small{display:block;color:var(--muted);margin-top:2px}
+    .arrow{color:#9B7900;font-size:23px;font-weight:900}
+    details{
+      background:var(--white);border:1px solid #DFE3E6;border-radius:16px;
+      padding:15px 17px;margin-top:10px
+    }
+    summary{cursor:pointer;font-weight:850;color:var(--trust)}
+    details p{margin:12px 0 0;color:#53606A}
+    .sources{
+      padding:20px;background:var(--soft-blue);border-radius:var(--radius);
+      border:1px solid #DDE5EA
+    }
+    .sources ol{padding-left:22px;margin:12px 0 0}
+    .sources li{margin:9px 0}
+    .sources a{color:#344F66;font-weight:750;word-break:break-word}
+    .disclaimer{
+      font-size:14px;color:#66737D;background:#ECEBE6;border-radius:14px;
+      padding:14px 16px;margin-top:13px
+    }
+    footer{
+      margin-top:30px;background:var(--orange);color:#2C2D2E;
+      padding:36px 0 28px;border-top:7px solid var(--gold)
+    }
+    .brand{
+      font-size:28px;line-height:1.38;font-weight:950;letter-spacing:-.02em;
+      margin:0 0 13px
+    }
+    .transition{font-size:17px;font-weight:750;margin:0 0 20px}
+    .cta{display:grid;gap:10px}
+    .cta a{
+      text-align:center;text-decoration:none;font-weight:900;
+      background:var(--trust);color:var(--white);padding:14px 16px;border-radius:14px;
+      box-shadow:0 7px 18px rgba(43,58,74,.18)
+    }
+    .cta a:nth-child(2){background:var(--white);color:var(--trust)}
+    .legal{
+      margin-top:22px;padding-top:17px;border-top:1px solid rgba(43,58,74,.27);
+      font-size:12px;line-height:1.7
+    }
+    .backtop{
+      display:inline-block;margin-top:18px;color:#2B3A4A;font-weight:850
+    }
+    .check-cta{
+      display:block;text-align:center;margin-top:11px;padding:13px 16px;
+      background:var(--white);color:var(--trust);border-radius:14px;
+      font-weight:900;text-decoration:none;border:2px solid var(--gold)
+    }
+    .check-cta[hidden]{display:none}
+    .fab{
+      position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));
+      display:flex;flex-direction:column;gap:10px;z-index:50
+    }
+    .fab a{
+      width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
+      text-decoration:none;box-shadow:0 6px 18px rgba(43,58,74,.28)
+    }
+    .fab .fab-line{background:#06C755}
+    .fab .fab-phone{background:var(--trust)}
+    .fab svg{width:27px;height:27px;fill:#fff}
+    @media (min-width:680px){
+      body{font-size:19px}
+      .hero{padding:72px 0 52px}
+      .grid.two{grid-template-columns:1fr 1fr}
+      .cta{grid-template-columns:1fr 1fr 1fr}
+      .status-top,.status-body{padding:28px}
+    }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *{transition:none!important}
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">國稅局真實案例｜房地合一稅・持分交易</div>
+      <h1>住滿 6 年仍補稅 10 萬多<br>賣 6 成持分讓 400 萬免稅額縮水</h1>
+      <p class="lead">符合自住資格，不代表部分出售也能扣滿 400 萬，真正關鍵是這次出售了幾成產權</p>
+      <div class="meta">
+        <span>資料查核日期：2026-08-09</span>
+        <span>案例：北區國稅局公布（2026-07-22）</span>
+        <span>訴願結果：遭財政部駁回</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="status" aria-labelledby="status-title">
+      <div class="status-top">
+        <span class="status-badge">先看這不是個案特例</span>
+        <h2 id="status-title">已提訴願，遭財政部駁回定讞</h2>
+        <p class="section-note">不是國稅局一次認定就算數，是打過訴願、財政部維持原核定的通案原則</p>
+      </div>
+      <div class="status-body">
+        <p>當事人 2017 年取得新北市房地（權利範圍 1/1），2023 年把其中 6/10 持分賣給兒子，申報課稅所得 345 萬多元，直接扣掉 400 萬自住房地免稅額，以為應納稅額是 0 元</p>
+        <p>北區國稅局查核後認定<strong>免稅額要按出售權利範圍計算</strong>，核定免稅額為 <span class="gold-number">240 萬元</span>（400 萬 × 6/10），課稅所得超過免稅額的部分依 10% 核算，補徵稅款逾 <span class="gold-number">10 萬元</span></p>
+        <p>當事人不服提起訴願，<strong>財政部維持原核定、駁回訴願</strong>——理由是所得稅法所稱的自住房地是指「完整房地所有權」，若不按比例計算，同一戶分次移轉就會變成重複享有多個 400 萬免稅額</p>
+        <a class="source-link" href="https://house.udn.com/house/story/123589/9644441" target="_blank" rel="noopener noreferrer">查看 udn 完整報導 ↗</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="myth-title">
+      <div class="section-head">
+        <div class="kicker">最容易誤會的重點</div>
+        <h2 id="myth-title">不是「符合自住資格」就能扣好扣滿</h2>
+      </div>
+      <div class="alert">
+        <div class="myth">
+          <span class="wrong">錯誤說法：住滿 6 年、所得沒超過 400 萬，就一定免稅</span>
+          <p class="correct"><strong>更正 1：</strong>400 萬自住房地免稅額，是給「完整房地所有權」（權利範圍 1/1）的額度，出售的是部分持分時，要按出售比例打折計算</p>
+          <a class="source-link" href="https://www.ntbca.gov.tw/singlehtml/9d087e8054ea4ea1a7dae372c99ce934?cntId=dce0fc24be7f40e4b596c561814b2442" target="_blank" rel="noopener noreferrer">財政部中區國稅局說明 ↗</a>
+        </div>
+        <div class="myth">
+          <span class="wrong">錯誤說法：反正課稅所得沒超過 400 萬，怎麼算都不用繳</span>
+          <p class="correct"><strong>更正 2：</strong>案例只賣出 6 成持分，可扣免稅額只有 240 萬（400 萬 × 60%），課稅所得 345 萬多元扣掉 240 萬，剩下的部分還是要課稅</p>
+          <a class="source-link" href="https://finance.ettoday.net/news/3205918" target="_blank" rel="noopener noreferrer">ETtoday 完整報導 ↗</a>
+        </div>
+        <div class="myth">
+          <span class="wrong">錯誤說法：這次沒扣好，以後這戶就不能再用免稅額了</span>
+          <p class="correct"><strong>更正 3：</strong>剩下沒賣的持分不會消失，日後出售仍符合自住要件時，原則上還能再主張剩餘比例的免稅額，不是一次用完就沒有</p>
+          <a class="source-link" href="https://house.udn.com/house/story/123589/9644441" target="_blank" rel="noopener noreferrer">udn 完整報導 ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="core-title">
+      <div class="section-head">
+        <div class="kicker">核心公式卡</div>
+        <h2 id="core-title">案例的錢是怎麼算出來的</h2>
+        <p class="section-note">套進去就是你的持分交易要注意的數字</p>
+      </div>
+      <div class="grid two">
+        <a class="card" href="https://www.ntbca.gov.tw/singlehtml/9d087e8054ea4ea1a7dae372c99ce934?cntId=dce0fc24be7f40e4b596c561814b2442" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">🧮</div>
+          <h3>免稅額公式</h3>
+          <div class="big">400 萬 × 出售比例</div>
+          <p>不是整戶固定扣 400 萬，賣多少比例，免稅額就打多少折，先套公式再申報</p>
+          <div class="mini">財政部中區國稅局說明</div>
+        </a>
+
+        <a class="card" href="https://finance.ettoday.net/news/3205918" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">🏠</div>
+          <h3>案例套進公式</h3>
+          <div class="big">免稅額剩 240 萬</div>
+          <p>賣 6 成持分，400 萬 × 60% = 240 萬，課稅所得 345 萬多元扣掉後仍有約 105 萬要課稅</p>
+          <div class="mini">依 10% 稅率核算</div>
+        </a>
+
+        <a class="card" href="https://house.udn.com/house/story/123589/9644441" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">💸</div>
+          <h3>以為不用繳，結果</h3>
+          <div class="big">補稅逾 10 萬元</div>
+          <p>當事人原本申報應納稅額為 0 元，後續提起訴願，遭財政部維持原核定、駁回定讞</p>
+          <div class="mini">訴願結果已確定</div>
+        </a>
+
+        <a class="card" href="https://www.mof.gov.tw/houseandland/multiplehtml/de144e74630c4ac59f2d84a068c889c9" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">🔁</div>
+          <h3>剩下的持分沒有消失</h3>
+          <div class="big">最多還有 160 萬額度</div>
+          <p>案例中未出售的 4 成持分，日後符合自住要件出售，原則上還能再主張 400 萬 × 40% 的免稅額</p>
+          <div class="mini">財政部房地合一稅制設計</div>
+        </a>
+      </div>
+    </section>
+
+    <section aria-labelledby="plan-title">
+      <div class="section-head">
+        <div class="kicker">簽約前先查</div>
+        <h2 id="plan-title">合約簽下去之前，先確認 3 件事</h2>
+      </div>
+      <div class="card">
+        <div class="timeline">
+          <div class="step">
+            <strong>第 1 步｜這次賣的是整戶還是部分持分</strong>
+            <p>只要不是權利範圍 1/1，就屬於部分持分交易，免稅額規則會不一樣</p>
+          </div>
+          <div class="step">
+            <strong>第 2 步｜400 萬免稅額是否要按出售比例計算</strong>
+            <p>賣多少比例，就用「400 萬 × 出售比例」重新算一次可扣額度，不要直接套整戶的 400 萬</p>
+          </div>
+          <div class="step">
+            <strong>第 3 步｜交易前 6 年有沒有出租、營業或使用過</strong>
+            <p>這會影響是否符合自住房地的要件，出租、營業期間都要如實盤點，不要漏算</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="checklist" aria-labelledby="check-title">
+      <div class="section-head">
+        <div class="kicker" style="color:#F4D66E">適用對象自我檢核</div>
+        <h2 id="check-title">符合任一項，先把比例算清楚再簽約</h2>
+        <p class="section-note">不是稅務資格審查，而是提醒哪些持分交易最容易漏算</p>
+      </div>
+      <label class="check-item"><input type="checkbox" class="risk-check"><span>我名下的房子是跟家人（配偶、子女、兄弟姊妹）共有</span></label>
+      <label class="check-item"><input type="checkbox" class="risk-check"><span>我是繼承來的持分，還沒完全過戶到我一人名下</span></label>
+      <label class="check-item"><input type="checkbox" class="risk-check"><span>我正在考慮把房子的一部分持分賣給家人或其他共有人</span></label>
+      <label class="check-item"><input type="checkbox" class="risk-check"><span>我已經賣掉一部分持分，還沒確認免稅額算對了沒</span></label>
+      <label class="check-item"><input type="checkbox" class="risk-check"><span>我不確定自己這戶算不算「完整房地」（權利範圍 1/1）</span></label>
+      <div class="check-result" id="check-result" aria-live="polite">尚未勾選｜先把這頁收藏，簽約前再核對一次</div>
+      <a class="check-cta" id="check-cta" href="https://line.me/ti/g2/pZKH6Eemjn8O9Ld08ILLpSulELvi8GDNeynb-g?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener noreferrer" hidden>不確定自己這筆怎麼算 → 加官方 LINE，先把情況說清楚</a>
+    </section>
+
+    <section aria-labelledby="where-title">
+      <div class="section-head">
+        <div class="kicker">不確定就先查</div>
+        <h2 id="where-title">先從這 3 個官方入口開始</h2>
+      </div>
+      <div class="official">
+        <a href="tel:0800000321">
+          <span><strong>國稅局免付費諮詢專線</strong><small>0800-000-321，實際稅額由國稅局個案認定</small></span><span class="arrow">→</span>
+        </a>
+        <a href="https://www.etax.nat.gov.tw/etwmain/alien-tax-service/alien-tax-faq/28VVDQM" target="_blank" rel="noopener noreferrer">
+          <span><strong>財政部稅務入口網｜自住房地優惠稅率</strong><small>查自住要件、免稅額與稅率規定</small></span><span class="arrow">→</span>
+        </a>
+        <a href="https://www.mof.gov.tw/houseandland/multiplehtml/de144e74630c4ac59f2d84a068c889c9" target="_blank" rel="noopener noreferrer">
+          <span><strong>財政部｜房地合一稅制設計</strong><small>官方稅制總說明頁</small></span><span class="arrow">→</span>
+        </a>
+      </div>
+      <div class="disclaimer">上述為全國通用的官方入口，實際個案的免稅額與稅額計算，仍以國稅局核定為準</div>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <div class="section-head">
+        <div class="kicker">再提醒 3 件事</div>
+        <h2 id="faq-title">算完免稅額，不代表就結束了</h2>
+      </div>
+      <details>
+        <summary>賣給自己兒子、家人，算不算「出售」，也要算稅嗎</summary>
+        <p>算。房地合一稅是看有沒有發生所有權移轉，賣給誰不影響課稅認定，賣給家人一樣要照規則算</p>
+      </details>
+      <details>
+        <summary>這個案例是特殊個案，還是以後大家都比照辦理</summary>
+        <p>當事人已提訴願，財政部維持原核定、駁回訴願，等於全國同類案件都比照這個「按出售權利範圍計算免稅額」的算法辦理</p>
+      </details>
+      <details>
+        <summary>如果不是用賣的，改用贈與或繼承移轉，會不會不一樣</summary>
+        <p>贈與、繼承適用的是贈與稅、遺產稅，跟房地合一稅是不同稅制，計算方式不同，不要直接拿本案的公式套用，個案請先問清楚</p>
+      </details>
+    </section>
+
+    <section class="sources" aria-labelledby="sources-title">
+      <div class="kicker">官方資料來源</div>
+      <h2 id="sources-title">查核依據</h2>
+      <ol>
+        <li><a href="https://house.udn.com/house/story/123589/9644441" target="_blank" rel="noopener noreferrer">udn 房地產｜房子住滿 6 年出售竟不能用 400 萬元免稅額 他提訴願遭財部駁回（2026-07-22）</a></li>
+        <li><a href="https://finance.ettoday.net/news/3205918" target="_blank" rel="noopener noreferrer">ETtoday 財經雲｜賣房少算一步噴 10 萬！房地合一踩「持分」地雷 免稅額打折扣（2026-07-22）</a></li>
+        <li><a href="https://news.586.com.tw/2026/07/645548/" target="_blank" rel="noopener noreferrer">NEWS586｜房地合一稅應按出售權利範圍計算自住房地免稅額</a></li>
+        <li><a href="https://www.ntbca.gov.tw/singlehtml/9d087e8054ea4ea1a7dae372c99ce934?cntId=dce0fc24be7f40e4b596c561814b2442" target="_blank" rel="noopener noreferrer">財政部中區國稅局｜房地合一自住優惠免稅所得額 400 萬元說明</a></li>
+        <li><a href="https://www.etax.nat.gov.tw/etwmain/alien-tax-service/alien-tax-faq/28VVDQM" target="_blank" rel="noopener noreferrer">財政部稅務入口網｜自住房地優惠稅率</a></li>
+        <li><a href="https://www.mof.gov.tw/houseandland/multiplehtml/de144e74630c4ac59f2d84a068c889c9" target="_blank" rel="noopener noreferrer">財政部｜房地合一稅制設計</a></li>
+      </ol>
+      <div class="disclaimer">本頁為一般性稅務資訊整理，依公開新聞報導與官方說明彙整，不構成個案稅務意見，實際稅額請以國稅局核定為準</div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="brand">阿宏賣房不賣夢 陪你完成夢 但不陪你做錯夢</p>
+      <p class="transition">上面是查稅制的公開資訊 下面這塊是家裡剛好有共有房要處理的人 不急 先收藏</p>
+      <div class="cta">
+        <a href="https://reurl.cc/zQVzg7" target="_blank" rel="noopener noreferrer">鴻觀社團（可匿名）</a>
+        <a href="https://line.me/ti/g2/pZKH6Eemjn8O9Ld08ILLpSulELvi8GDNeynb-g?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener noreferrer">官方 LINE</a>
+        <a href="/mingpian/" target="_blank" rel="noopener noreferrer">阿宏電子名片</a>
+      </div>
+      <div class="legal">
+        經紀業名稱：住商不動產樹林站前加盟店 鴻石不動產經紀有限公司<br>
+        經紀人：林秀嫻（96）北縣字第001399號｜營業員：何志宏（114）年登字第495065號<br>
+        地址：新北市板橋區金門街288-2號｜電話：<a href="tel:0226878822" style="color:inherit">02-26878822</a>（office）／<a href="tel:0930848000" style="color:inherit">0930-848000</a>（何志宏）
+      </div>
+      <a class="backtop" href="#top">回到最上方 ↑</a>
+    </div>
+  </footer>
+
+  <div class="fab" aria-label="聯絡阿宏">
+    <a class="fab-line" href="https://line.me/ti/g2/pZKH6Eemjn8O9Ld08ILLpSulELvi8GDNeynb-g?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener noreferrer" aria-label="加官方 LINE 私訊">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.03 3.57 7.4 8.4 8.04.33.07.78.22.89.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1.01.89.55 1.09-.46 5.87-3.46 8.01-5.92C21.56 13.35 22 11.8 22 10.13 22 5.64 17.52 2 12 2zM8.39 12.8H6.16a.53.53 0 0 1-.53-.53V8.51a.53.53 0 0 1 1.06 0v3.23h1.7a.53.53 0 1 1 0 1.06zm1.83-.53a.53.53 0 0 1-1.06 0V8.51a.53.53 0 0 1 1.06 0v3.76zm4.51 0a.53.53 0 0 1-.36.5.55.55 0 0 1-.17.03.53.53 0 0 1-.42-.21l-1.92-2.61v2.29a.53.53 0 0 1-1.06 0V8.51a.53.53 0 0 1 .95-.32l1.92 2.62V8.51a.53.53 0 0 1 1.06 0v3.76zm3.38-2.41a.53.53 0 1 1 0 1.06h-1.7v.82h1.7a.53.53 0 1 1 0 1.06h-2.23a.53.53 0 0 1-.53-.53V8.51c0-.29.24-.53.53-.53h2.23a.53.53 0 1 1 0 1.06h-1.7v.82h1.7z"/></svg>
+    </a>
+    <a class="fab-phone" href="tel:0930848000" aria-label="撥打電話 0930-848000">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+  </div>
+
+  <script>
+    (function(){
+      const boxes = Array.from(document.querySelectorAll('.risk-check'));
+      const result = document.getElementById('check-result');
+      const cta = document.getElementById('check-cta');
+      function update(){
+        const count = boxes.filter(box => box.checked).length;
+        if(count === 0){
+          result.textContent = '尚未勾選｜先把這頁收藏，簽約前再核對一次';
+        }else if(count === 1){
+          result.textContent = '已符合 1 項｜建議先套公式算一次免稅額';
+        }else{
+          result.textContent = '已符合 ' + count + ' 項｜建議簽約前先跟專業確認一次';
+        }
+        cta.hidden = (count === 0);
+      }
+      boxes.forEach(box => box.addEventListener('change', update));
+    })();
+  </script>
+</body>
+</html>
