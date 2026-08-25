@@ -1,0 +1,611 @@
+﻿<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2B3A4A">
+  <meta name="description" content="買中古屋看懂他項權利，辨認合資持分跟真二胎三胎的差別，抵押設定、限制登記與簽約前自保重點">
+  <meta property="og:title" content="謄本寫 1200 萬，不代表屋主欠 1200 萬｜他項權利防雷懶人包">
+  <meta property="og:description" content="合資買房也會好幾筆，但那不是二胎三胎。看債務人、權利範圍、次序這 3 個欄位，一次分清楚">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_TW">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%84%3C/text%3E%3C/svg%3E">
+  <title>謄本寫 1200 萬，不代表屋主欠 1200 萬｜他項權利防雷懶人包</title>
+  <style>
+    :root{
+      --ink:#2B3A4A;
+      --gold:#D4AF37;
+      --orange:#ED8B4E;
+      --paper:#FFFDF8;
+      --soft:#F5F1E8;
+      --white:#FFFFFF;
+      --muted:#627080;
+      --danger:#C73E3A;
+      --danger-bg:#FFF1F0;
+      --line:#E7DFD0;
+      --ok:#1F7A59;
+      --shadow:0 18px 55px rgba(43,58,74,.12);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 12% 4%, rgba(212,175,55,.15), transparent 28rem),
+        radial-gradient(circle at 90% 20%, rgba(237,139,78,.12), transparent 24rem),
+        var(--paper);
+      font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      line-height:1.75;
+      letter-spacing:.02em;
+    }
+    a{color:inherit}
+    button,input{font:inherit}
+    .wrap{width:min(760px,calc(100% - 28px));margin:auto}
+    .hero{
+      padding:28px 0 22px;
+    }
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      padding:34px 24px 30px;
+      border-radius:32px;
+      color:var(--white);
+      background:linear-gradient(145deg,#243240 0%,var(--ink) 62%,#3B4E61 100%);
+      box-shadow:var(--shadow);
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      width:230px;height:230px;border-radius:50%;
+      right:-82px;top:-88px;
+      background:rgba(212,175,55,.2);
+      border:1px solid rgba(255,255,255,.15);
+    }
+    .eyebrow{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:6px 12px;
+      border:1px solid rgba(255,255,255,.26);
+      border-radius:999px;
+      font-size:14px;
+      font-weight:800;
+      background:rgba(255,255,255,.08);
+    }
+    h1{
+      margin:18px 0 12px;
+      font-size:clamp(34px,9vw,56px);
+      line-height:1.12;
+      letter-spacing:-.035em;
+    }
+    .gold{color:#F3D66B}
+    .hero-sub{
+      margin:0;
+      font-size:19px;
+      font-weight:700;
+      color:#F7F0DF;
+    }
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:22px;
+      font-size:13px;
+      color:#E8EDF1;
+    }
+    .meta span{
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.09);
+    }
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .btn{
+      border:0;
+      border-radius:999px;
+      padding:12px 17px;
+      font-weight:900;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+    }
+    .btn-primary{background:var(--gold);color:#27323D}
+    .btn-ghost{background:rgba(255,255,255,.1);color:white;border:1px solid rgba(255,255,255,.22)}
+    section{padding:18px 0}
+    .section-title{
+      margin:0 0 6px;
+      font-size:28px;
+      line-height:1.25;
+      letter-spacing:-.02em;
+    }
+    .section-note{margin:0 0 16px;color:var(--muted);font-weight:650}
+    .panel{
+      background:rgba(255,255,255,.93);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:0 12px 35px rgba(43,58,74,.07);
+      padding:22px;
+    }
+    .danger-zone{
+      border:2px solid var(--danger);
+      background:linear-gradient(180deg,var(--danger-bg),#fff);
+    }
+    .myths{display:grid;gap:14px}
+    .myth{
+      padding:17px;
+      border-radius:18px;
+      background:#fff;
+      border:1px solid #F0C2BE;
+    }
+    .wrong{
+      margin:0 0 8px;
+      color:#8A2E2A;
+      font-weight:900;
+      text-decoration:line-through;
+      text-decoration-thickness:3px;
+    }
+    .correct{margin:0;font-weight:750}
+    .source-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      margin-top:10px;
+      color:#795C00;
+      font-size:14px;
+      font-weight:900;
+      text-decoration:none;
+    }
+    .story-grid{display:grid;gap:16px}
+    .story-card{
+      position:relative;
+      display:block;
+      overflow:hidden;
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.94);
+      box-shadow:0 12px 34px rgba(43,58,74,.07);
+      text-decoration:none;
+    }
+    .story-card:hover{transform:translateY(-2px);transition:.2s ease;box-shadow:0 18px 42px rgba(43,58,74,.11)}
+    .num{
+      display:inline-grid;
+      place-items:center;
+      width:42px;height:42px;
+      border-radius:14px;
+      background:var(--ink);
+      color:white;
+      font-weight:950;
+      margin-bottom:13px;
+    }
+    .story-card h3{
+      margin:0 0 10px;
+      font-size:23px;
+      line-height:1.35;
+    }
+    .big-number{
+      display:block;
+      margin:10px 0 4px;
+      color:#A7830F;
+      font-size:clamp(36px,10vw,58px);
+      font-weight:950;
+      line-height:1;
+      letter-spacing:-.04em;
+    }
+    .story-card p{margin:8px 0}
+    .story-card ul,.story-card ol{padding-left:22px;margin:10px 0 0}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .chip{
+      background:var(--soft);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:13px;
+      font-weight:850;
+    }
+    .warning{
+      margin-top:14px;
+      padding:12px 14px;
+      border-left:5px solid var(--orange);
+      border-radius:12px;
+      background:#FFF7F0;
+      font-weight:750;
+    }
+    .three{
+      display:grid;
+      gap:11px;
+      margin-top:12px;
+    }
+    .mini{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+      background:#FCFBF8;
+    }
+    .mini strong{display:block;color:#876B13}
+    .checklist{
+      display:grid;
+      gap:10px;
+    }
+    .check-row{
+      display:flex;
+      align-items:flex-start;
+      gap:11px;
+      padding:13px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:15px;
+      cursor:pointer;
+    }
+    .check-row input{margin-top:6px;accent-color:var(--ok);transform:scale(1.18)}
+    .check-result{
+      margin-top:14px;
+      border-radius:16px;
+      padding:15px;
+      background:var(--soft);
+      font-weight:850;
+    }
+    .entry-grid{display:grid;gap:12px}
+    .entry{
+      display:block;
+      text-decoration:none;
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:18px;
+      padding:17px;
+    }
+    .entry b{display:block;font-size:18px}
+    .entry span{color:var(--muted);font-size:14px}
+    .source-list{display:grid;gap:10px}
+    .source-list a{
+      display:block;
+      padding:13px 15px;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid var(--line);
+      text-decoration:none;
+      font-weight:800;
+    }
+    details{
+      margin-top:12px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+      padding:13px 15px;
+    }
+    summary{font-weight:900;cursor:pointer}
+    .legal-note{color:var(--muted);font-size:13px;margin:13px 0 0}
+    .footer{
+      margin-top:22px;
+      background:var(--orange);
+      color:#2A2F35;
+      padding:34px 0 calc(34px + env(safe-area-inset-bottom));
+    }
+    .brand{
+      margin:0;
+      font-size:27px;
+      line-height:1.35;
+      font-weight:950;
+      letter-spacing:-.02em;
+    }
+    .transition{
+      margin:15px 0 20px;
+      font-weight:800;
+      white-space:pre-line;
+    }
+    .cta-grid{display:grid;gap:11px}
+    .cta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:16px 17px;
+      border-radius:18px;
+      background:rgba(255,255,255,.9);
+      color:var(--ink);
+      text-decoration:none;
+      font-weight:950;
+      box-shadow:0 7px 18px rgba(43,58,74,.12);
+    }
+    .fraud-alert{
+      margin-top:18px;
+      padding:16px 17px;
+      border-radius:16px;
+      background:rgba(255,255,255,.94);
+      border:2px solid #8A2E2A;
+      color:#2A2F35;
+    }
+    .fraud-alert strong{display:block;margin-bottom:6px;color:#8A2E2A}
+    .fraud-alert p{margin:4px 0}
+    .to-top{
+      position:fixed;
+      right:14px;
+      bottom:14px;
+      width:46px;height:46px;
+      border-radius:50%;
+      border:0;
+      background:var(--ink);
+      color:white;
+      box-shadow:0 8px 22px rgba(43,58,74,.24);
+      cursor:pointer;
+      z-index:10;
+    }
+    @media(min-width:680px){
+      .hero-card{padding:44px}
+      .story-grid{grid-template-columns:1fr 1fr}
+      .story-card.wide{grid-column:1/-1}
+      .entry-grid{grid-template-columns:repeat(3,1fr)}
+      .cta-grid{grid-template-columns:repeat(3,1fr)}
+      .cta{min-height:92px;align-items:flex-start;flex-direction:column}
+    }
+    @media print{
+      .hero-actions,.to-top,.footer{display:none!important}
+      body{background:white}
+      .panel,.story-card{box-shadow:none;break-inside:avoid}
+      a{text-decoration:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <span class="eyebrow">買中古屋防雷懶人包</span>
+        <h1>謄本寫 <span class="gold">1200 萬</span><br>不代表屋主欠 1200 萬</h1>
+        <p class="hero-sub">看懂「他項權利」，別被大數字嚇到，也別漏看真正的產權警訊</p>
+        <div class="meta">
+          <span>資料查核日期 2026-08-10</span>
+          <span>適用全台灣本島與離島</span>
+          <span>公開版資訊整理</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#myths">先看 3 個誤區</a>
+          <button class="btn btn-ghost" type="button" onclick="window.print()">列印或存成 PDF</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="myths">
+      <div class="wrap">
+        <div class="panel danger-zone">
+          <h2 class="section-title">最容易誤會的重點</h2>
+          <p class="section-note">這 3 句不能照字面講死，否則容易讓買方白緊張或看走眼</p>
+          <div class="myths">
+            <article class="myth">
+              <p class="wrong">謄本金額固定是貸款的 1.2 倍</p>
+              <p class="correct">不能用固定倍數倒推貸款，登記金額是擔保範圍，不等於目前實際欠款，最高限額抵押權還可能擔保一定範圍內的不特定債權</p>
+              <a class="source-link" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=881-1&amp;pcode=B0000001" target="_blank" rel="noopener noreferrer">看民法第 881-1 條 ↗</a>
+            </article>
+            <article class="myth">
+              <p class="wrong">查封、假扣押只要看他項權利部</p>
+              <p class="correct">查核限制登記時，要看所有權部的其他登記事項，不要只翻他項權利部，未塗銷前原則上會停止與權利有關的新登記，但法規另有例外</p>
+              <a class="source-link" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=141&amp;pcode=D0060003" target="_blank" rel="noopener noreferrer">看土地登記規則第 141 條 ↗</a>
+            </article>
+            <article class="myth">
+              <p class="wrong">二胎、三胎或自然人抵押，就代表屋主一定缺錢急售</p>
+              <p class="correct">多筆抵押只代表有多筆權利設定，仍要查實際債務、清償條件、出售時程與能否安全塗銷，不能直接當成急售或大砍價依據</p>
+              <a class="source-link" href="https://www.land.moi.gov.tw/" target="_blank" rel="noopener noreferrer">到內政部地政司查證 ↗</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">8 張重點，一次看懂</h2>
+        <p class="section-note">每張卡都能點進官方資料，先看結論，再看法規</p>
+
+        <div class="story-grid">
+          <a class="story-card" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=881-1&amp;pcode=B0000001" target="_blank" rel="noopener noreferrer">
+            <span class="num">1</span>
+            <h3>1200 萬不等於欠 1200 萬</h3>
+            <span class="big-number">1200 萬</span>
+            <p>謄本記載的是抵押權的擔保範圍，不是屋主目前剩餘欠款</p>
+            <div class="warning">不能直接當成原始貸款，也不能直接當成現在欠款</div>
+          </a>
+
+          <a class="story-card" href="https://epaper.land.moi.gov.tw/Home/SNEpaperKind" target="_blank" rel="noopener noreferrer">
+            <span class="num">2</span>
+            <h3>他項權利部看得到什麼</h3>
+            <ul>
+              <li>權利種類</li>
+              <li>登記順位</li>
+              <li>權利人</li>
+              <li>擔保債權金額或最高限額</li>
+              <li>其他登記內容</li>
+            </ul>
+            <p class="warning">第二類謄本任何人均得申請，但部分個人資料會被隱匿</p>
+          </a>
+
+          <a class="story-card" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=881-1&amp;pcode=B0000001" target="_blank" rel="noopener noreferrer">
+            <span class="num">3</span>
+            <h3>沒有固定 1.2 倍公式</h3>
+            <p>實際借款可能已部分清償，也可能因增借、循環動用或最高限額抵押權而變動</p>
+            <div class="chips">
+              <span class="chip">不能倒推本金</span>
+              <span class="chip">不能判斷剩餘欠款</span>
+              <span class="chip">要向債權人確認</span>
+            </div>
+          </a>
+
+          <a class="story-card" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=141&amp;pcode=D0060003" target="_blank" rel="noopener noreferrer">
+            <span class="num">4</span>
+            <h3>這幾個字出現，先別下斡旋</h3>
+            <p>不在他項權利部，在所有權部的「其他登記事項」欄，出現以下字樣先停手查清楚</p>
+            <div class="chips">
+              <span class="chip">預告登記</span>
+              <span class="chip">假扣押</span>
+              <span class="chip">假處分</span>
+              <span class="chip">查封</span>
+              <span class="chip">破產或清算</span>
+            </div>
+            <p class="warning">看到限制登記先停止簽約節奏，不是直接判死刑，是先確認案件狀態與塗銷條件再決定</p>
+          </a>
+
+          <a class="story-card wide" href="https://www.land.moi.gov.tw/" target="_blank" rel="noopener noreferrer">
+            <span class="num">5</span>
+            <h3>合資買房好幾筆，跟真二胎三胎，差在哪</h3>
+            <p>同樣是他項權利部出現好幾筆，意思完全不一樣，看這 3 個欄位就分得出來</p>
+            <div class="three">
+              <div class="mini">
+                <strong>第 1 看債務人</strong>
+                好幾筆全押在同一個人身上，是同一個屋主一直拿房子去借；不同持分人各借各的，才是合資買房
+              </div>
+              <div class="mini">
+                <strong>第 2 看權利範圍</strong>
+                寫「全部」跟寫「持分幾分之幾」，是兩個世界——持分抵押通常對應的是共有人各自的融資，不是整戶欠款
+              </div>
+              <div class="mini">
+                <strong>第 3 看次序</strong>
+                出現第二順位，就是拿同一份產權再借一次，市場上俗稱二胎；再來一筆第三順位，就是三胎
+              </div>
+            </div>
+            <div class="warning">30 秒短片講的是通例，這張卡補的是例外，兩個合起來才是完整判讀——不是「有好幾筆就是二胎三胎」，也不是「有好幾筆就一定沒事」，看這 3 欄再下結論</div>
+          </a>
+
+          <a class="story-card" href="https://law.moj.gov.tw/LawClass/LawParaDeatil.aspx?bp=94&amp;pcode=B0000001" target="_blank" rel="noopener noreferrer">
+            <span class="num">6</span>
+            <h3>抵押權不會因過戶自動消失</h3>
+            <p>民法規定，不動產設定抵押權後，即使讓與他人，抵押權也不因此受影響</p>
+            <p class="warning">清償、塗銷、付款與過戶順序，都要寫進契約並由地政士確認</p>
+          </a>
+
+          <a class="story-card" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=79-1&amp;pcode=D0060001" target="_blank" rel="noopener noreferrer">
+            <span class="num">7</span>
+            <h3>看到限制登記，不是立刻判死刑</h3>
+            <p>查封、假扣押、假處分未塗銷前，原則上會影響新登記，預告登記則是保全特定請求權</p>
+            <p class="warning">重點不是「一定不能買」，而是能否依法完成清償、塗銷與安全付款</p>
+          </a>
+
+          <a class="story-card wide" href="https://epaper.land.moi.gov.tw/Home/SNPayNote" target="_blank" rel="noopener noreferrer">
+            <span class="num">8</span>
+            <h3>簽約前自保清單</h3>
+            <ol>
+              <li>調閱最新土地及建物謄本</li>
+              <li>同時看所有權部與他項權利部</li>
+              <li>核對所有權人、持分與標的</li>
+              <li>查看其他登記事項有無限制登記</li>
+              <li>查明每筆抵押權的順位與權利人</li>
+              <li>要求賣方提出實際貸款餘額或清償資料</li>
+              <li>把清償、塗銷、過戶與付款順序寫進契約</li>
+              <li>交由地政士依個案確認，不靠口頭保證</li>
+            </ol>
+            <p class="warning">電子謄本以張計費，每張 20 元</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="self-check">
+      <div class="wrap">
+        <div class="panel">
+          <h2 class="section-title">適用對象自我檢核</h2>
+          <p class="section-note">符合任一項，就值得在簽約前多做一次產權查核</p>
+          <div class="checklist" id="checks">
+            <label class="check-row"><input type="checkbox"><span>正在看中古屋，準備下斡旋或簽約</span></label>
+            <label class="check-row"><input type="checkbox"><span>謄本出現 2 筆以上抵押權</span></label>
+            <label class="check-row"><input type="checkbox"><span>權利人是自然人或不熟悉的機構</span></label>
+            <label class="check-row"><input type="checkbox"><span>所有權部其他登記事項出現限制登記</span></label>
+            <label class="check-row"><input type="checkbox"><span>賣方只口頭保證「交屋前會處理」</span></label>
+            <label class="check-row"><input type="checkbox"><span>付款、清償、塗銷與過戶順序還沒寫清楚</span></label>
+          </div>
+          <div class="check-result" id="checkResult">尚未勾選，先從最新謄本開始查</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="where">
+      <div class="wrap">
+        <h2 class="section-title">不知道去哪辦</h2>
+        <p class="section-note">3 個中央官方入口，適用全台灣本島與離島</p>
+        <div class="entry-grid">
+          <a class="entry" href="https://epaper.land.moi.gov.tw/Home/SNEpaperKind" target="_blank" rel="noopener noreferrer">
+            <b>全國地政電子謄本</b>
+            <span>查謄本種類、申請資格與個資隱匿說明</span>
+          </a>
+          <a class="entry" href="https://dcland.moi.gov.tw/" target="_blank" rel="noopener noreferrer">
+            <b>內政部數位櫃臺</b>
+            <span>辦理線上地政服務與案件查詢</span>
+          </a>
+          <a class="entry" href="https://www.land.moi.gov.tw/" target="_blank" rel="noopener noreferrer">
+            <b>內政部地政司</b>
+            <span>查最新地政法規、公告與服務入口</span>
+          </a>
+        </div>
+        <p class="legal-note">全國通用原則如上，個案受理方式與登記細節仍以不動產所在地地政事務所及官方最新公告為準</p>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="wrap">
+        <div class="panel">
+          <h2 class="section-title">官方資料來源</h2>
+          <div class="source-list">
+            <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=881-1&amp;pcode=B0000001" target="_blank" rel="noopener noreferrer">全國法規資料庫｜民法第 881-1 條 最高限額抵押權</a>
+            <a href="https://law.moj.gov.tw/LawClass/LawParaDeatil.aspx?bp=94&amp;pcode=B0000001" target="_blank" rel="noopener noreferrer">全國法規資料庫｜民法抵押權章 第 860 條以下</a>
+            <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=141&amp;pcode=D0060003" target="_blank" rel="noopener noreferrer">全國法規資料庫｜土地登記規則第 141 條</a>
+            <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=79-1&amp;pcode=D0060001" target="_blank" rel="noopener noreferrer">全國法規資料庫｜土地法第 79-1 條 預告登記</a>
+            <a href="https://epaper.land.moi.gov.tw/Home/SNEpaperKind" target="_blank" rel="noopener noreferrer">全國地政電子謄本系統｜謄本分級制說明</a>
+            <a href="https://epaper.land.moi.gov.tw/Home/SNPayNote" target="_blank" rel="noopener noreferrer">全國地政電子謄本系統｜計費、繳費說明</a>
+            <a href="https://www.land.moi.gov.tw/" target="_blank" rel="noopener noreferrer">內政部地政司全球資訊網</a>
+          </div>
+          <details>
+            <summary>使用提醒</summary>
+            <p>本頁是公開版資訊整理，不取代地政士、律師或受理機關依個案提供的專業判斷，遇到限制登記、多筆抵押或清償安排不明時，請先停止簽約節奏並查清楚</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p class="brand">阿宏賣房不賣夢 陪你完成夢 但不陪你做錯夢</p>
+      <p class="transition">上面是給所有人的
+下面這塊只給真的要處理房子的人
+不急 先收藏</p>
+      <div class="cta-grid">
+        <a class="cta" href="https://reurl.cc/zQVzg7" target="_blank" rel="noopener noreferrer">
+          <span>鴻觀社團<br>可匿名</span><span>↗</span>
+        </a>
+        <a class="cta" href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446" target="_blank" rel="noopener noreferrer">
+          <span>官方 LINE<br>直接詢問</span><span>↗</span>
+        </a>
+        <a class="cta" href="/mingpian/" target="_blank" rel="noopener noreferrer">
+          <span>阿宏電子名片<br>聯絡資訊</span><span>↗</span>
+        </a>
+      </div>
+      <div class="fraud-alert">
+        <strong>提醒一句</strong>
+        <p>這是免費懶人包連結，不是匯款連結，也不會要求你輸入帳號、密碼、信用卡或驗證碼</p>
+        <p>阿宏不會因為你留言「謄本」就要求你匯款、轉帳、繳費或操作網路銀行</p>
+        <p>若有人冒用阿宏或鴻觀名義要求付款，先不要理會、不要點陌生連結，直接撥打 165 查證</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="回到頁首" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    const checks = [...document.querySelectorAll('#checks input')];
+    const result = document.getElementById('checkResult');
+    function updateCheck(){
+      const count = checks.filter(item => item.checked).length;
+      if(count === 0){
+        result.textContent = '尚未勾選，先從最新謄本開始查';
+      }else if(count <= 2){
+        result.textContent = `你勾了 ${count} 項，建議在簽約前補齊謄本與清償資料`;
+      }else{
+        result.textContent = `你勾了 ${count} 項，先不要只靠口頭保證，請地政士把清償、塗銷與付款流程寫清楚`;
+      }
+    }
+    checks.forEach(item => item.addEventListener('change', updateCheck));
+  </script>
+</body>
+</html>

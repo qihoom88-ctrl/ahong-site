@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="房貸繳清後的抵押權塗銷、地籍異動即時通與稅籍異動即時通辦理懶人包">
+  <meta name="theme-color" content="#2B3A4A">
+  <title>房貸繳清不代表抵押權登記已經消失</title>
+
+  <style>
+    :root {
+      --trust-gray: #2B3A4A;
+      --grace-gold: #D4AF37;
+      --home-orange: #ED8B4E;
+      --paper: #F7F5EF;
+      --white: #FFFFFF;
+      --ink: #202A34;
+      --muted: #66717C;
+      --line: #E6E0D3;
+      --soft-gold: #FFF9E8;
+      --soft-orange: #FFF1E7;
+      --shadow: 0 14px 35px rgba(43, 58, 74, 0.1);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .page {
+      width: min(100%, 780px);
+      margin: 0 auto;
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .hero {
+      position: relative;
+      padding: 54px 22px 42px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(212, 175, 55, 0.24), transparent 32%),
+        linear-gradient(150deg, #24313F 0%, var(--trust-gray) 65%, #354B60 100%);
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -70px;
+      bottom: -90px;
+      width: 220px;
+      height: 220px;
+      content: "";
+      border: 34px solid rgba(237, 139, 78, 0.15);
+      border-radius: 50%;
+    }
+
+    .eyebrow {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 7px 13px;
+      color: var(--grace-gold);
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(36px, 10vw, 62px);
+      line-height: 1.16;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1 strong {
+      color: var(--grace-gold);
+    }
+
+    .subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 650px;
+      margin: 22px 0 0;
+      color: #F5F1E7;
+      font-size: clamp(18px, 4.8vw, 23px);
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .updated {
+      position: relative;
+      z-index: 1;
+      margin-top: 25px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 14px;
+    }
+
+    main {
+      padding: 28px 16px 42px;
+    }
+
+    .alert {
+      margin-bottom: 30px;
+      padding: 22px;
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: var(--radius);
+      background: var(--soft-gold);
+      box-shadow: var(--shadow);
+    }
+
+    .alert-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--trust-gray);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .alert p {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 800;
+      line-height: 1.65;
+    }
+
+    .alert strong {
+      color: #A67F00;
+    }
+
+    .section {
+      margin-top: 42px;
+    }
+
+    .section-heading {
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      color: var(--home-orange);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+
+    .section h2 {
+      margin: 4px 0 8px;
+      color: var(--trust-gray);
+      font-size: clamp(27px, 7vw, 38px);
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+    }
+
+    .section-intro {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .cards {
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      padding: 24px 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .card-number {
+      margin-bottom: 8px;
+      color: var(--grace-gold);
+      font-size: clamp(42px, 13vw, 68px);
+      font-weight: 950;
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .card-label {
+      margin-bottom: 10px;
+      color: var(--trust-gray);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .official-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      margin-top: 18px;
+      padding: 10px 16px;
+      color: var(--trust-gray);
+      border: 2px solid var(--grace-gold);
+      border-radius: 999px;
+      background: var(--soft-gold);
+      font-weight: 900;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .official-link:hover,
+    .official-link:focus-visible {
+      transform: translateY(-2px);
+      background: #FFF2B8;
+      outline: none;
+    }
+
+    .steps {
+      display: grid;
+      gap: 16px;
+    }
+
+    .step {
+      position: relative;
+      padding: 25px 20px 23px 74px;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .step-index {
+      position: absolute;
+      top: 22px;
+      left: 20px;
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      color: var(--white);
+      border-radius: 50%;
+      background: var(--trust-gray);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      color: var(--trust-gray);
+      font-size: 21px;
+      line-height: 1.4;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .document-list {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .document-list li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .document-list li::before {
+      position: absolute;
+      top: 2px;
+      left: 0;
+      color: var(--home-orange);
+      content: "✓";
+      font-weight: 950;
+    }
+
+    .notice-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .notice-card {
+      padding: 24px 20px;
+      border-radius: var(--radius);
+      background: var(--trust-gray);
+      box-shadow: var(--shadow);
+    }
+
+    .notice-card.orange {
+      color: var(--trust-gray);
+      background: var(--soft-orange);
+      border: 2px solid rgba(237, 139, 78, 0.45);
+    }
+
+    .notice-card:not(.orange) {
+      color: var(--white);
+    }
+
+    .notice-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 5px 11px;
+      color: var(--trust-gray);
+      border-radius: 999px;
+      background: var(--grace-gold);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .notice-card h3 {
+      margin: 0 0 10px;
+      font-size: 25px;
+      line-height: 1.35;
+    }
+
+    .notice-card p {
+      margin: 0;
+    }
+
+    .notice-card:not(.orange) p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .notice-card .official-link {
+      border-color: var(--grace-gold);
+      background: var(--grace-gold);
+    }
+
+    .checklist {
+      display: grid;
+      gap: 12px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      padding: 18px;
+      border: 2px solid transparent;
+      border-radius: 18px;
+      background: var(--white);
+      box-shadow: 0 8px 24px rgba(43, 58, 74, 0.07);
+      cursor: pointer;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .check-item:hover {
+      transform: translateY(-1px);
+      border-color: rgba(212, 175, 55, 0.6);
+    }
+
+    .check-item input {
+      width: 22px;
+      height: 22px;
+      margin: 3px 0 0;
+      flex: 0 0 auto;
+      accent-color: var(--home-orange);
+    }
+
+    .check-copy strong {
+      display: block;
+      color: var(--trust-gray);
+      font-size: 17px;
+    }
+
+    .check-copy span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .check-result {
+      margin-top: 16px;
+      padding: 19px;
+      color: var(--trust-gray);
+      border-left: 6px solid var(--home-orange);
+      border-radius: 14px;
+      background: var(--soft-orange);
+      font-weight: 800;
+    }
+
+    .reminder {
+      margin-top: 38px;
+      padding: 22px;
+      border-radius: var(--radius);
+      background: #E9EDF1;
+    }
+
+    .reminder h2 {
+      margin: 0 0 10px;
+      color: var(--trust-gray);
+      font-size: 23px;
+    }
+
+    .reminder p {
+      margin: 0;
+      color: #4E5B67;
+    }
+
+    .reminder a {
+      color: var(--trust-gray);
+      font-weight: 900;
+    }
+
+    .footer-cta {
+      padding: 40px 20px 46px;
+      color: var(--trust-gray);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.26), transparent 30%),
+        var(--home-orange);
+    }
+
+    .brand-line {
+      margin: 0;
+      font-size: clamp(28px, 8vw, 42px);
+      font-weight: 950;
+      line-height: 1.35;
+      letter-spacing: -0.03em;
+    }
+
+    .transition {
+      max-width: 650px;
+      margin: 16px 0 24px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .cta-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 60px;
+      padding: 14px 18px;
+      color: var(--white);
+      border: 2px solid var(--trust-gray);
+      border-radius: 16px;
+      background: var(--trust-gray);
+      font-size: 17px;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(43, 58, 74, 0.18);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .cta:hover,
+    .cta:focus-visible {
+      transform: translateY(-2px);
+      background: #1E2A36;
+      outline: none;
+    }
+
+    .cta span:last-child {
+      color: var(--grace-gold);
+      font-size: 22px;
+    }
+
+    .source-note {
+      margin-top: 24px;
+      color: rgba(43, 58, 74, 0.78);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    @media (min-width: 680px) {
+      main {
+        padding: 38px 28px 54px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .notice-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cta-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .cta {
+        min-height: 100px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="eyebrow">房貸清償後必看</div>
+
+      <h1>
+        房貸繳清<br>
+        不代表抵押權登記<br>
+        <strong>已經消失</strong>
+      </h1>
+
+      <p class="subtitle">
+        最後 1 期繳完只代表債務清償
+        登記資料不會自動完成塗銷
+        還要補上產權安全通知
+      </p>
+
+      <div class="updated">資料更新日期 2026/07/03　適用全台灣本島與離島</div>
+    </header>
+
+    <main>
+      <section class="alert" aria-label="重要觀念">
+        <span class="alert-label">先釐清一件事</span>
+        <p>
+          房貸清償後抵押權所擔保的債權已經消滅
+          但地籍上的抵押權登記仍須另外申請塗銷
+          <strong>不是繳完最後 1 期就會自動刪除</strong>
+        </p>
+      </section>
+
+      <section class="section" aria-labelledby="core-title">
+        <div class="section-heading">
+          <div class="section-kicker">核心資訊</div>
+          <h2 id="core-title">房貸繳清後要知道的 4 件事</h2>
+          <p class="section-intro">把貸款還完只是第 1 階段，後續登記與通知才是完整收尾</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-number">0</div>
+            <div class="card-label">不會自動塗銷</div>
+            <p>
+              銀行收到全部款項後
+              地籍資料上的抵押權登記不會自動移除
+              必須向地政事務所申請塗銷登記
+            </p>
+            <a
+              class="official-link"
+              href="https://www.land.moi.gov.tw/chhtml/content/1124?mcid=3739"
+              target="_blank"
+              rel="noopener noreferrer"
+            >查官方辦理說明 ↗</a>
+          </article>
+
+          <article class="card">
+            <div class="card-number">4</div>
+            <div class="card-label">常見核心文件</div>
+            <p>
+              通常包含土地登記申請書
+              抵押權塗銷同意書或清償證明
+              他項權利證明書及身分證明文件
+              實際文件依個案審查
+            </p>
+            <a
+              class="official-link"
+              href="https://dcland.moi.gov.tw"
+              target="_blank"
+              rel="noopener noreferrer"
+            >查官方文件清單 ↗</a>
+          </article>
+
+          <article class="card">
+            <div class="card-number">0 元</div>
+            <div class="card-label">塗銷登記免登記費</div>
+            <p>
+              依土地法規定
+              塗銷登記免納登記規費
+              如另行申請換發權利書狀
+              每張書狀費為 80 元
+            </p>
+            <a
+              class="official-link"
+              href="https://www.land.moi.gov.tw/chhtml/content/1124?mcid=3739"
+              target="_blank"
+              rel="noopener noreferrer"
+            >查官方規費說明 ↗</a>
+          </article>
+
+          <article class="card">
+            <div class="card-number">2 種</div>
+            <div class="card-label">產權異動通知</div>
+            <p>
+              建議同時申請地籍異動即時通
+              以及稅籍異動即時通
+              從地政登記與稅務申報增加 2 道提醒
+            </p>
+            <a
+              class="official-link"
+              href="https://www.fia.gov.tw/singlehtml/5?cntId=bbb5362644ad41cd8e74dd4331bac128"
+              target="_blank"
+              rel="noopener noreferrer"
+            >查官方防詐說明 ↗</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="steps-title">
+        <div class="section-heading">
+          <div class="section-kicker">辦理流程</div>
+          <h2 id="steps-title">房貸繳清後這樣做</h2>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-index">1</div>
+            <h3>向承貸銀行確認貸款已清償</h3>
+            <p>
+              確認本金 利息 違約金與其他費用均已結清
+              並詢問銀行領取塗銷文件的方式與時間
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-index">2</div>
+            <h3>領取銀行核發的塗銷文件</h3>
+            <p>常見文件如下</p>
+
+            <ul class="document-list">
+              <li>抵押權塗銷同意書或債務清償證明</li>
+              <li>他項權利證明書</li>
+              <li>銀行要求或提供的其他文件</li>
+            </ul>
+          </article>
+
+          <article class="step">
+            <div class="step-index">3</div>
+            <h3>向地政事務所申請抵押權塗銷</h3>
+            <p>
+              攜帶銀行核發文件 身分證明文件 印章及登記申請書辦理
+              抵押權人為金融機構的塗銷 依官方規定可跨縣市收辦
+              全台任一地政事務所 含澎湖 金門 連江等離島地政事務所 皆可就近辦理
+              實際受理方式依地政機關審查
+            </p>
+
+            <a
+              class="official-link"
+              href="https://www.land.moi.gov.tw/chhtml/content/1124?mcid=3739"
+              target="_blank"
+              rel="noopener noreferrer"
+            >查地政司跨所收辦說明 ↗</a>
+          </article>
+
+          <article class="step">
+            <div class="step-index">4</div>
+            <h3>完成後確認登記結果</h3>
+            <p>
+              可申請最新土地或建物登記謄本
+              確認原銀行抵押權登記已經塗銷
+              不要只以銀行口頭通知作為完成依據
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="notice-title">
+        <div class="section-heading">
+          <div class="section-kicker">產權安全加強</div>
+          <h2 id="notice-title">再補上 2 道異動通知</h2>
+          <p class="section-intro">兩項服務通知的案件與階段不同，建議分別申請</p>
+        </div>
+
+        <div class="notice-grid">
+          <article class="notice-card">
+            <span class="notice-tag">地政登記提醒</span>
+            <h3>地籍異動即時通</h3>
+            <p>
+              名下土地或建物遇到買賣 贈與 信託 抵押權設定
+              書狀補給 查封 預告登記等指定案件時
+              系統會在收件及異動完成階段發送簡訊或電子郵件
+            </p>
+
+            <a
+              class="official-link"
+              href="https://dcland.moi.gov.tw"
+              target="_blank"
+              rel="noopener noreferrer"
+            >查官方與線上申辦 ↗</a>
+          </article>
+
+          <article class="notice-card orange">
+            <span class="notice-tag">稅務申報提醒</span>
+            <h3>稅籍異動即時通</h3>
+            <p>
+              名下不動產發生土地增值稅或契稅申報時
+              系統會在案件收件時發送電子郵件 簡訊或 LINE 通知
+              申請後須在 7 日內完成電子郵件驗證
+              可於任一縣市一次申請全國通知 連江縣除外
+            </p>
+
+            <a
+              class="official-link"
+              href="https://www.fia.gov.tw/singlehtml/5?cntId=bbb5362644ad41cd8e74dd4331bac128"
+              target="_blank"
+              rel="noopener noreferrer"
+            >查官方與申請方式 ↗</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="check-title">
+        <div class="section-heading">
+          <div class="section-kicker">適用對象自我檢核</div>
+          <h2 id="check-title">以下任一項符合就該確認</h2>
+          <p class="section-intro">點選符合你的狀況查看提醒</p>
+        </div>
+
+        <div class="checklist">
+          <label class="check-item">
+            <input type="checkbox" class="check-input">
+            <span class="check-copy">
+              <strong>房貸已經全部繳清</strong>
+              <span>但從未親自辦理或委託辦理抵押權塗銷</span>
+            </span>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" class="check-input">
+            <span class="check-copy">
+              <strong>銀行曾寄來一包清償文件</strong>
+              <span>文件仍放在家中或不確定是否送過地政事務所</span>
+            </span>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" class="check-input">
+            <span class="check-copy">
+              <strong>權狀在手上但沒有查過最新謄本</strong>
+              <span>權狀本身不一定能反映後續抵押權異動情形</span>
+            </span>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" class="check-input">
+            <span class="check-copy">
+              <strong>名下有房屋或土地</strong>
+              <span>但尚未申請地籍異動與稅籍異動即時通</span>
+            </span>
+          </label>
+        </div>
+
+        <div class="check-result" id="checkResult" aria-live="polite">
+          尚未勾選任何項目
+        </div>
+      </section>
+
+      <aside class="reminder">
+        <h2>辦理前再確認</h2>
+        <p>
+          各銀行核發文件 各地政事務所收件方式
+          以及非金融機構抵押權案件的應備文件可能不同
+          實際辦理依承貸銀行與受理地政機關最新公告為準
+          可先查看
+          <a
+            href="https://www.land.moi.gov.tw/chhtml/content/1124?mcid=3739"
+            target="_blank"
+            rel="noopener noreferrer"
+          >內政部地政司官方說明頁</a>
+        </p>
+      </aside>
+    </main>
+
+    <footer class="footer-cta">
+      <p class="brand-line">阿宏賣房不賣夢 陪你完成夢 但不陪你做錯夢</p>
+
+      <p class="transition">
+        房貸收尾後
+        也別忘了定期檢查家庭名下的不動產資料
+        把權利狀態與居住規劃一起看清楚
+      </p>
+
+      <div class="cta-list">
+        <a
+          class="cta"
+          href="https://reurl.cc/zQVzg7"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>鴻觀社團<br>可匿名</span>
+          <span>↗</span>
+        </a>
+
+        <a
+          class="cta"
+          href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>官方 LINE</span>
+          <span>↗</span>
+        </a>
+
+        <a
+          class="cta"
+          href="/mingpian/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>阿宏電子名片</span>
+          <span>↗</span>
+        </a>
+      </div>
+
+      <div class="source-note">
+        本頁為全國通用公開資訊整理 抵押權塗銷登記全台一致 各縣市地政事務所皆受理
+        個案權利狀態與應備文件仍依銀行 地政機關及主管機關最新公告為準
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const inputs = document.querySelectorAll(".check-input")
+    const result = document.getElementById("checkResult")
+
+    function updateResult() {
+      const checked = document.querySelectorAll(".check-input:checked").length
+
+      if (checked === 0) {
+        result.textContent = "尚未勾選任何項目"
+        return
+      }
+
+      if (checked === 1) {
+        result.textContent = "你有 1 項需要確認 建議先調閱最新登記謄本或洽地政事務所"
+        return
+      }
+
+      result.textContent = `你有 ${checked} 項需要確認 建議儘快確認抵押權塗銷並申請 2 項異動通知`
+    }
+
+    inputs.forEach((input) => {
+      input.addEventListener("change", updateResult)
+    })
+  </script>
+</body>
+</html>
