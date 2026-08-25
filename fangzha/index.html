@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07152b" />
+  <meta name="description" content="阿宏防詐完整懶人包：假客服、假扣款、簡訊驗證碼、投資詐騙、假檢警與官方165查證管道。" />
+  <title>阿宏防詐完整懶人包</title>
+  <style>
+    :root{
+      --bg:#07152b;
+      --card:#10233f;
+      --card2:#142b4a;
+      --text:#f7fbff;
+      --muted:#b9c8d9;
+      --yellow:#ffd54a;
+      --red:#ff5b61;
+      --green:#3ddc97;
+      --line:rgba(255,255,255,.12);
+      --shadow:0 18px 45px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(63,111,179,.28), transparent 35%),
+        linear-gradient(180deg,#07152b 0%,#091a32 52%,#06101f 100%);
+      color:var(--text);
+      line-height:1.72;
+    }
+    a{color:inherit}
+    .wrap{width:min(920px,calc(100% - 32px));margin:auto}
+    .hero{padding:58px 0 32px;text-align:center}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 14px;border:1px solid rgba(255,213,74,.42);
+      border-radius:999px;color:var(--yellow);background:rgba(255,213,74,.08);
+      font-size:14px;font-weight:800;letter-spacing:.04em
+    }
+    h1{font-size:clamp(34px,7vw,58px);line-height:1.08;margin:18px 0 16px}
+    .lead{font-size:clamp(18px,3vw,23px);color:#dbe9f5;max-width:760px;margin:0 auto}
+    .hero strong{color:var(--yellow)}
+    .alert{
+      margin:30px auto 0;padding:18px 20px;border-radius:18px;
+      background:linear-gradient(135deg,rgba(255,91,97,.18),rgba(255,91,97,.06));
+      border:1px solid rgba(255,91,97,.45);box-shadow:var(--shadow);
+      text-align:left
+    }
+    .alert b{color:#ff9ca0}
+    .nav{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:26px 0 6px
+    }
+    .nav a{
+      text-decoration:none;padding:12px 10px;border-radius:14px;background:rgba(255,255,255,.07);
+      border:1px solid var(--line);font-weight:800;font-size:14px;text-align:center
+    }
+    section{padding:28px 0}
+    .section-title{font-size:28px;margin:0 0 14px}
+    .section-title span{color:var(--yellow)}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .card{
+      background:linear-gradient(180deg,var(--card2),var(--card));
+      border:1px solid var(--line);border-radius:22px;padding:22px;
+      box-shadow:var(--shadow)
+    }
+    .card h3{margin:0 0 10px;font-size:21px}
+    .card p{margin:0;color:var(--muted)}
+    .big-list{display:grid;gap:12px}
+    .row{
+      display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start;
+      padding:17px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid var(--line)
+    }
+    .num{
+      width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+      background:rgba(255,213,74,.14);color:var(--yellow);font-weight:900
+    }
+    .row b{display:block;font-size:18px;margin-bottom:3px}
+    .row span{color:var(--muted)}
+    .danger{color:#ff9ca0!important}
+    .good{color:#8ff0bd!important}
+    .quote{
+      margin:18px 0;padding:22px;border-left:5px solid var(--yellow);
+      background:rgba(255,213,74,.08);border-radius:0 18px 18px 0;
+      font-size:22px;font-weight:900
+    }
+    .steps{counter-reset:item;display:grid;gap:12px}
+    .step{
+      position:relative;padding:18px 18px 18px 64px;background:rgba(255,255,255,.055);
+      border:1px solid var(--line);border-radius:18px
+    }
+    .step:before{
+      counter-increment:item;content:counter(item);
+      position:absolute;left:16px;top:17px;width:34px;height:34px;border-radius:50%;
+      display:grid;place-items:center;background:var(--red);font-weight:900
+    }
+    .step b{font-size:18px}
+    .official{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:14px
+    }
+    .btn{
+      display:flex;align-items:center;justify-content:center;gap:9px;
+      min-height:58px;padding:14px 18px;border-radius:16px;text-decoration:none;
+      font-weight:900;text-align:center;transition:.18s transform ease
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn.primary{background:var(--yellow);color:#161205}
+    .btn.secondary{background:#fff;color:#12213a}
+    .btn.green{background:var(--green);color:#032016}
+    .btn.dark{background:#193452;border:1px solid var(--line)}
+    .note{font-size:14px;color:var(--muted);margin-top:12px}
+    .brand{
+      margin-top:24px;padding:24px;border-radius:22px;
+      background:linear-gradient(135deg,#173c66,#10233f);
+      border:1px solid rgba(255,255,255,.16);text-align:center
+    }
+    .brand h2{margin:0 0 8px}
+    .brand p{color:#d4e1ed;margin:0 0 17px}
+    footer{padding:35px 0 52px;color:#98abc0;text-align:center;font-size:14px}
+    .sticky{
+      position:sticky;bottom:12px;z-index:20;
+      width:min(920px,calc(100% - 24px));margin:10px auto 0;
+      display:grid;grid-template-columns:1fr 1fr;gap:10px;
+      padding:10px;background:rgba(7,21,43,.88);backdrop-filter:blur(14px);
+      border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)
+    }
+    @media (max-width:700px){
+      .grid,.official{grid-template-columns:1fr}
+      .nav{grid-template-columns:1fr 1fr}
+      .hero{padding-top:38px}
+      .sticky{grid-template-columns:1fr 1fr}
+      .btn{font-size:15px}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="badge">🛡️ 阿宏防詐完整懶人包</div>
+      <h1>沒買東西卻收到扣款通知<br><strong>先別急著取消</strong></h1>
+      <p class="lead">詐騙最想要的不是你的密碼，是你慌張時，親手把卡號、身分資料和簡訊驗證碼交出去。</p>
+
+      <div class="alert">
+        <b>先記住一句：</b><br>
+        沒買就不要點，沒交易就不要填，任何人跟你要簡訊驗證碼，直接停止。
+      </div>
+
+      <nav class="nav">
+        <a href="#five">五不一查</a>
+        <a href="#tricks">常見話術</a>
+        <a href="#help">已經點了怎麼辦</a>
+        <a href="#official">165官方連結</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="five">
+      <h2 class="section-title">先背起來｜<span>五不一查</span></h2>
+      <div class="big-list">
+        <div class="row"><div class="num">1</div><div><b>不點陌生連結</b><span>簡訊、LINE、Email 裡的取消訂單、退款、補繳連結都不要直接點。</span></div></div>
+        <div class="row"><div class="num">2</div><div><b>不加陌生客服</b><span>對方自稱銀行、綠界、電商、警察，都要自己找官方電話查證。</span></div></div>
+        <div class="row"><div class="num">3</div><div><b>不填身分證、卡號、帳戶資料</b><span>取消交易卻叫你補完整資料，就是大警訊。</span></div></div>
+        <div class="row"><div class="num">4</div><div><b>不提供簡訊驗證碼</b><span class="danger">驗證碼不是客服要的，是交易最後一道鎖。</span></div></div>
+        <div class="row"><div class="num">5</div><div><b>不照指示操作 ATM、網銀、無卡提款</b><span>所謂解除分期、驗證帳戶、監管帳戶，都是常見話術。</span></div></div>
+        <div class="row"><div class="num">查</div><div><b>自己查官方，不用對方給的網址</b><span class="good">直接撥 165，或自己進入警政署官方網站查證。</span></div></div>
+      </div>
+    </section>
+
+    <section id="tricks">
+      <h2 class="section-title">看到這些話｜<span>先當詐騙</span></h2>
+      <div class="grid">
+        <div class="card"><h3>📱 假扣款、假客服</h3><p>「你買了 iPhone」「已扣款 28,500 元」「點這裡取消」「加客服退款」。</p></div>
+        <div class="card"><h3>💳 解除分期</h3><p>「訂單設定錯誤」「會連續扣款」「去 ATM 或網銀解除」。</p></div>
+        <div class="card"><h3>👮 假檢警</h3><p>「你涉及洗錢」「偵查不公開」「把錢匯到監管帳戶」。</p></div>
+        <div class="card"><h3>📈 假投資</h3><p>「穩賺不賠」「老師帶單」「出金前先繳稅金或保證金」。</p></div>
+        <div class="card"><h3>👨‍👩‍👧 假親友</h3><p>突然換 LINE、換手機，接著急著借錢或要求代付款。</p></div>
+        <div class="card"><h3>📦 假包裹、假繳費</h3><p>通行費、電費、包裹、電子發票或稅金未繳，要求點短網址。</p></div>
+      </div>
+
+      <div class="quote">你以為你在取消交易，<br>其實可能是在幫詐騙把資料補齊。</div>
+    </section>
+
+    <section>
+      <h2 class="section-title">假扣款詐騙｜<span>最常見流程</span></h2>
+      <div class="steps">
+        <div class="step"><b>先用一筆你沒買的商品嚇你</b><br><span>例如 iPhone、高額訂單、第三方支付扣款。</span></div>
+        <div class="step"><b>逼你立刻處理</b><br><span>叫你點連結、加客服、取消交易或退款。</span></div>
+        <div class="step"><b>讓你自己填資料</b><br><span>身分證、信用卡號、有效期限、背面碼。</span></div>
+        <div class="step"><b>最後騙走驗證碼</b><br><span>你以為在取消，其實可能是在確認盜刷或授權。</span></div>
+      </div>
+    </section>
+
+    <section id="help">
+      <h2 class="section-title">已經操作了｜<span>現在立刻做</span></h2>
+      <div class="grid">
+        <div class="card">
+          <h3>只點連結，還沒填資料</h3>
+          <p>立刻關閉網頁，不下載 App，不開螢幕共享，不再回覆對方。</p>
+        </div>
+        <div class="card">
+          <h3>已填信用卡或驗證碼</h3>
+          <p>馬上聯絡發卡銀行，確認交易、停卡或換卡，檢查近期消費紀錄。</p>
+        </div>
+        <div class="card">
+          <h3>已轉帳或操作網銀</h3>
+          <p>立刻聯絡銀行協助攔阻，同時撥打 165 或 110，越快越有機會。</p>
+        </div>
+        <div class="card">
+          <h3>保留所有證據</h3>
+          <p>簡訊、網址、對話、電話、帳號、匯款紀錄與畫面全部截圖保存。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="official">
+      <h2 class="section-title">官方查證｜<span>不要用對方給的網址</span></h2>
+      <div class="official">
+        <a class="btn primary" href="tel:165">📞 直接撥打 165</a>
+        <a class="btn secondary" href="https://165.npa.gov.tw/" target="_blank" rel="noopener">🔎 165 全民防騙網</a>
+        <a class="btn green" href="https://165dashboard.tw/" target="_blank" rel="noopener">📊 165 打詐儀錶板</a>
+        <a class="btn dark" href="https://www.cib.npa.gov.tw/" target="_blank" rel="noopener">🏛️ 刑事警察局官網</a>
+      </div>
+      <p class="note">提醒：遇到可疑訊息，請自行輸入官方網址或撥打 165，不要從陌生簡訊、廣告或對話中的連結進入。</p>
+    </section>
+
+    <section>
+      <div class="brand">
+        <h2>阿宏賣房不賣夢，陪你完成夢，但不陪你做錯夢</h2>
+        <p>上面是給所有人的，下面這塊只給真的要處理房子的人，不急，先收藏。</p>
+        <div class="official">
+          <a class="btn primary" href="https://reurl.cc/zQVzg7" target="_blank" rel="noopener">加入鴻觀資產交流社｜可匿名加入</a>
+          <a class="btn green" href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446" target="_blank" rel="noopener">加入阿宏官方 LINE</a>
+          <a class="btn secondary" href="/mingpian/" target="_blank" rel="noopener">開啟阿宏電子名片</a>
+          <a class="btn dark" href="https://165.npa.gov.tw/" target="_blank" rel="noopener">165 全民防騙網</a>
+          <a class="btn dark" href="https://165dashboard.tw/" target="_blank" rel="noopener">165 打詐儀錶板</a>
+          <a class="btn secondary" href="tel:165">直接撥打 165</a>
+        </div>
+        <p class="note">防詐提醒：阿宏不會要求你匯款、付款，也不會索取銀行帳號、信用卡資料、網銀密碼或簡訊驗證碼。可疑訊息請自行進入 165 官方網站查證，不要點陌生連結。</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky">
+    <a class="btn primary" href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446" target="_blank" rel="noopener">阿宏官方 LINE</a>
+    <a class="btn green" href="https://165.npa.gov.tw/" target="_blank" rel="noopener">165 官方查證</a>
+  </div>
+
+  <footer class="wrap">
+    阿宏賣房不賣夢，陪你完成夢，但不陪你做錯夢<br>
+    住商不動產樹林站前店｜何志宏<br><br>
+    本頁為公開防詐宣導頁，不含粉絲回覆工具或任何後台文字。實際案件請以警政署、刑事警察局、銀行及司法機關處理為準。
+  </footer>
+</body>
+</html>

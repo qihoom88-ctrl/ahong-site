@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2B3A4A">
+  <meta name="description" content="房子不是突然被騙走，是權狀、印章、印鑑證明先交出去。家人自查清單＋兩個免費官方預警怎麼辦">
+  <meta property="og:title" content="家人自查清單｜房子不是突然被騙走">
+  <meta property="og:description" content="兩個免費官方預警一起辦：稅籍管有報稅的移轉，地籍管所有進地政的案件。附 12 題家人自查清單">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_TW">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%A1%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <title>家人自查清單｜房子不是突然被騙走</title>
+  <style>
+    :root{
+      --ink:#2B3A4A;
+      --gold:#D4AF37;
+      --orange:#ED8B4E;
+      --paper:#FFFDF8;
+      --soft:#F5F1E8;
+      --white:#FFFFFF;
+      --muted:#627080;
+      --danger:#C73E3A;
+      --danger-bg:#FFF1F0;
+      --line:#E7DFD0;
+      --ok:#1F7A59;
+      --shadow:0 18px 55px rgba(43,58,74,.12);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 12% 4%, rgba(212,175,55,.15), transparent 28rem),
+        radial-gradient(circle at 90% 20%, rgba(237,139,78,.12), transparent 24rem),
+        var(--paper);
+      font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      line-height:1.75;
+      letter-spacing:.02em;
+    }
+    a{color:inherit}
+    button,input{font:inherit}
+    .wrap{width:min(760px,calc(100% - 28px));margin:auto}
+    .hero{padding:28px 0 22px}
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      padding:34px 24px 30px;
+      border-radius:32px;
+      color:var(--white);
+      background:linear-gradient(145deg,#243240 0%,var(--ink) 62%,#3B4E61 100%);
+      box-shadow:var(--shadow);
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      width:230px;height:230px;border-radius:50%;
+      right:-82px;top:-88px;
+      background:rgba(212,175,55,.2);
+      border:1px solid rgba(255,255,255,.15);
+    }
+    .eyebrow{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:6px 12px;
+      border:1px solid rgba(255,255,255,.26);
+      border-radius:999px;
+      font-size:14px;font-weight:800;
+      background:rgba(255,255,255,.08);
+    }
+    h1{
+      margin:18px 0 12px;
+      font-size:clamp(32px,8.5vw,54px);
+      line-height:1.14;
+      letter-spacing:-.035em;
+    }
+    .gold{color:#F3D66B}
+    .hero-sub{margin:0;font-size:19px;font-weight:700;color:#F7F0DF}
+    .meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px;font-size:13px;color:#E8EDF1}
+    .meta span{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.09)}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .btn{
+      border:0;border-radius:999px;padding:12px 17px;
+      font-weight:900;cursor:pointer;text-decoration:none;
+      display:inline-flex;align-items:center;justify-content:center;gap:7px;
+    }
+    .btn-primary{background:var(--gold);color:#27323D}
+    .btn-ghost{background:rgba(255,255,255,.1);color:white;border:1px solid rgba(255,255,255,.22)}
+    section{padding:18px 0}
+    .section-title{margin:0 0 6px;font-size:28px;line-height:1.25;letter-spacing:-.02em}
+    .section-note{margin:0 0 16px;color:var(--muted);font-weight:650}
+    .panel{
+      background:rgba(255,255,255,.93);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:0 12px 35px rgba(43,58,74,.07);
+      padding:22px;
+    }
+    .status-top{
+      margin:-22px -22px 20px;
+      padding:20px 22px;
+      background:#FFF9E8;
+      border-bottom:1px solid #E9DFBC;
+      border-radius:var(--radius) var(--radius) 0 0;
+    }
+    .status-badge{
+      display:inline-block;background:var(--gold);color:#26323D;
+      border-radius:999px;padding:5px 11px;font-size:13px;font-weight:900;
+    }
+    .status-top h2{margin:11px 0 6px;font-size:27px;line-height:1.3}
+    .panel p{margin:0 0 13px}
+    .panel p:last-child{margin-bottom:0}
+    .gold-number{color:#A78000;font-size:1.2em;font-weight:950}
+    .danger-zone{border:2px solid var(--danger);background:linear-gradient(180deg,var(--danger-bg),#fff)}
+    .myths{display:grid;gap:14px}
+    .myth{padding:17px;border-radius:18px;background:#fff;border:1px solid #F0C2BE}
+    .asked{
+      display:inline-block;margin-bottom:8px;padding:4px 10px;border-radius:999px;
+      background:#FDECEA;color:#8A2E2A;font-size:13px;font-weight:900;
+    }
+    .wrong{margin:0 0 8px;color:#8A2E2A;font-weight:900;text-decoration:line-through;text-decoration-thickness:3px}
+    .correct{margin:0;font-weight:750}
+    .source-link{
+      display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+      color:#795C00;font-size:14px;font-weight:900;text-decoration:none;
+    }
+    .compare{display:grid;gap:14px;margin-top:4px}
+    .col{
+      border:1px solid var(--line);border-radius:var(--radius);
+      background:rgba(255,255,255,.94);padding:20px;
+      box-shadow:0 12px 34px rgba(43,58,74,.07);
+    }
+    .col.tax{border-top:6px solid var(--orange)}
+    .col.land{border-top:6px solid var(--ink)}
+    .col h3{margin:0 0 4px;font-size:22px;line-height:1.35}
+    .col .who{color:var(--muted);font-size:14px;font-weight:800;margin:0 0 14px}
+    .row{display:flex;gap:10px;padding:9px 0;border-top:1px dashed #E4DCCB}
+    .row:first-of-type{border-top:0}
+    .row b{flex:0 0 74px;color:#876B13;font-size:14px}
+    .row span{flex:1}
+    .pill{
+      display:inline-block;margin-top:13px;padding:9px 12px;border-radius:12px;
+      background:var(--soft);font-weight:850;font-size:15px;
+    }
+    .keypoint{
+      margin-top:16px;padding:16px 18px;border-radius:18px;
+      background:var(--ink);color:#fff;font-weight:800;
+    }
+    .keypoint b{color:#F3D66B}
+    .warning{
+      margin-top:14px;padding:12px 14px;
+      border-left:5px solid var(--orange);border-radius:12px;
+      background:#FFF7F0;font-weight:750;
+    }
+    .checklist{display:grid;gap:9px}
+    .group-label{
+      margin:18px 0 2px;font-weight:950;color:#F4D66E;font-size:15px;letter-spacing:.04em;
+    }
+    .group-label:first-child{margin-top:0}
+    .check-panel{
+      background:var(--ink);color:var(--white);
+      border-radius:var(--radius);padding:23px;box-shadow:var(--shadow);
+    }
+    .check-panel .section-title{color:#fff}
+    .check-panel .section-note{color:#DDE5EA}
+    .check-row{
+      display:flex;align-items:flex-start;gap:11px;padding:13px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:15px;cursor:pointer;font-weight:700;
+    }
+    .check-row input{margin-top:5px;accent-color:var(--gold);flex:0 0 auto;width:21px;height:21px}
+    .check-result{
+      margin-top:15px;padding:15px 16px;border-radius:14px;
+      background:var(--gold);color:#26323D;font-weight:900;
+    }
+    .check-cta{
+      display:block;text-align:center;margin-top:11px;padding:13px 16px;
+      background:var(--white);color:var(--ink);border-radius:14px;
+      font-weight:900;text-decoration:none;border:2px solid var(--gold);
+    }
+    .check-cta[hidden]{display:none}
+    .timeline{display:grid;gap:0;margin-top:4px}
+    .step{position:relative;margin-left:12px;padding:0 0 22px 30px;border-left:2px solid #D8C578}
+    .step:last-child{padding-bottom:0;border-left-color:transparent}
+    .step:before{
+      content:"";position:absolute;left:-8px;top:7px;width:14px;height:14px;
+      background:var(--gold);border-radius:50%;box-shadow:0 0 0 5px #FFF9E8;
+    }
+    .step strong{color:var(--ink)}
+    .step p{margin:4px 0 0}
+    .entry-grid{display:grid;gap:12px}
+    .entry{
+      display:block;text-decoration:none;border:1px solid var(--line);
+      background:#fff;border-radius:18px;padding:17px;
+    }
+    .entry:hover{border-color:var(--gold)}
+    .entry b{display:block;font-size:18px}
+    .entry span{color:var(--muted);font-size:14px}
+    details{
+      margin-top:12px;border:1px solid var(--line);border-radius:16px;
+      background:#fff;padding:13px 15px;
+    }
+    summary{font-weight:900;cursor:pointer;color:var(--ink)}
+    details p{margin:12px 0 0;color:#53606A}
+    .source-list{display:grid;gap:10px}
+    .source-list a{
+      display:block;padding:13px 15px;border-radius:14px;background:#fff;
+      border:1px solid var(--line);text-decoration:none;font-weight:800;
+      font-size:15px;word-break:break-word;
+    }
+    .legal-note{color:var(--muted);font-size:13px;margin:13px 0 0}
+    .footer{
+      margin-top:22px;background:var(--orange);color:#2A2F35;
+      padding:34px 0 calc(34px + env(safe-area-inset-bottom));
+    }
+    .brand{margin:0;font-size:27px;line-height:1.35;font-weight:950;letter-spacing:-.02em}
+    .transition{margin:15px 0 20px;font-weight:800;white-space:pre-line}
+    .cta-grid{display:grid;gap:11px}
+    .cta{
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+      padding:16px 17px;border-radius:18px;background:rgba(255,255,255,.9);
+      color:var(--ink);text-decoration:none;font-weight:950;
+      box-shadow:0 7px 18px rgba(43,58,74,.12);
+    }
+    .fraud-alert{
+      margin-top:18px;padding:16px 17px;border-radius:16px;
+      background:rgba(255,255,255,.94);border:2px solid #8A2E2A;color:#2A2F35;
+    }
+    .fraud-alert strong{display:block;margin-bottom:6px;color:#8A2E2A}
+    .fraud-alert p{margin:4px 0}
+    .legal{
+      margin-top:22px;padding-top:17px;
+      border-top:1px solid rgba(43,58,74,.27);
+      font-size:12px;line-height:1.7;
+    }
+    .fab{
+      position:fixed;right:14px;
+      bottom:calc(14px + env(safe-area-inset-bottom,0px));
+      display:flex;flex-direction:column;gap:10px;z-index:50;
+    }
+    .fab a{
+      width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
+      text-decoration:none;box-shadow:0 6px 18px rgba(43,58,74,.28);
+    }
+    .fab .fab-line{background:#06C755}
+    .fab .fab-phone{background:var(--ink)}
+    .fab svg{width:27px;height:27px;fill:#fff}
+    @media(min-width:680px){
+      .hero-card{padding:44px}
+      .compare{grid-template-columns:1fr 1fr}
+      .entry-grid{grid-template-columns:repeat(3,1fr)}
+      .cta-grid{grid-template-columns:repeat(3,1fr)}
+      .cta{min-height:92px;align-items:flex-start;flex-direction:column}
+    }
+    @media print{
+      .hero-actions,.fab,.footer{display:none!important}
+      body{background:white}
+      .panel,.col,.check-panel{box-shadow:none;break-inside:avoid}
+      .check-panel{background:white;color:#000;border:2px solid #000}
+      .check-panel .section-title,.group-label{color:#000}
+      .check-row{background:white;border:1px solid #666}
+      a{text-decoration:none}
+    }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *{transition:none!important}
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <span class="eyebrow">家人自查清單｜房產防詐</span>
+        <h1>房子不是突然被騙走<br>是<span class="gold">權狀、印章、印鑑證明</span>先交出去</h1>
+        <p class="hero-sub">家裡有長輩、獨居親人，先把這 12 題問完，再決定要不要辦那兩個免費預警</p>
+        <div class="meta">
+          <span>資料查核日期 2026-08-10</span>
+          <span>官方制度整理</span>
+          <span>兩項服務皆免費</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#checklist">直接看自查清單</a>
+          <button class="btn btn-ghost" type="button" onclick="window.print()">列印或存成 PDF</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <div class="panel">
+          <div class="status-top">
+            <span class="status-badge">先看目前狀態</span>
+            <h2>兩個預警都上線了，而且 9 天前才剛升級</h2>
+            <p class="section-note">很多人是在舊資訊裡打轉，現在的辦法比以前簡單</p>
+          </div>
+          <p><strong>地籍異動即時通</strong>民國 105 年就有，主管機關是內政部。<strong>民國 115 年 8 月 1 日起</strong>再開放兩件事：線上申辦除了自然人憑證，<strong>已完成網路服務註冊的健保卡也能用</strong>；臨櫃改為<strong>全臺各地政事務所跨所受理</strong>，不必再跑房子所在地那一間</p>
+          <p><strong>稅籍異動即時通</strong>是新的，財政部民國 <span class="gold-number">114 年 7 月 1 日</span>才全國上線，很多人根本還不知道有這個</p>
+          <p><strong>兩個都免費，而且要一起辦</strong>——它們管的範圍不一樣，只辦一個會有破口，下面那張對照表會講清楚差在哪</p>
+          <a class="source-link" href="https://www.moi.gov.tw/News_Content.aspx?n=4&amp;s=339881" target="_blank" rel="noopener noreferrer">看內政部 115/8/1 新聞稿 ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="panel danger-zone">
+          <h2 class="section-title">影片底下最多人問的 3 件事</h2>
+          <p class="section-note">這 3 題答錯，辦了也可能白辦</p>
+          <div class="myths">
+            <article class="myth">
+              <span class="asked">粉絲問：只有戶籍地的房子才可以用即時通嗎</span>
+              <p class="wrong">錯誤說法：房子要在戶籍地才能申請</p>
+              <p class="correct"><strong>正解：</strong>兩個都跟你戶籍設在哪裡完全無關，法規全文沒有「戶籍」兩個字。但門檻不一樣——<strong>地籍</strong>要房子或土地確實登記在你名下（沒辦保存登記的老屋、加蓋不行）；<strong>稅籍</strong>沒有這個限制，未保存登記的房子可以，甚至目前名下還沒有不動產的人也能先申請</p>
+              <a class="source-link" href="https://glrs.moi.gov.tw/LawContent.aspx?id=GL001486" target="_blank" rel="noopener noreferrer">看內政部作業原則原文 ↗</a>
+            </article>
+            <article class="myth">
+              <span class="asked">粉絲問：不是要本人帶權狀印章才能過戶嗎，怎麼還會被騙</span>
+              <p class="wrong">錯誤說法：本人沒去，房子就過不了戶</p>
+              <p class="correct"><strong>正解：</strong>可以委託代理人辦。所以真正的關口不是「本人有沒有到場」，而是<strong>印鑑章、印鑑證明、權狀這三樣有沒有離開你手上</strong>。另外「書狀補給登記」本身就是把權狀補發一份出來——這也是即時通會通知的案件之一，正因為它是被利用的環節</p>
+              <a class="source-link" href="https://glrs.moi.gov.tw/LawContent.aspx?id=GL001486" target="_blank" rel="noopener noreferrer">看通知案件清單 ↗</a>
+            </article>
+            <article class="myth">
+              <p class="wrong">錯誤說法：辦了即時通，房子就不會被賣掉</p>
+              <p class="correct"><strong>正解：</strong>它是<strong>警報器不是鐵門</strong>，只通知不阻擋。真正有用的是它在<strong>「收件」當下就先響一次</strong>，讓你在登記完成前還來得及去地政事務所提異議。另外它<strong>不是申請當天就生效</strong>，臨櫃與網路申請原則 4 個工作天內才建檔完成</p>
+              <a class="source-link" href="https://glrs.moi.gov.tw/LawContent.aspx?id=GL001486" target="_blank" rel="noopener noreferrer">看生效時程規定 ↗</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">兩個預警，差在哪裡</h2>
+        <p class="section-note">一句話記起來：稅籍管「有報稅的移轉」，地籍管「所有進地政的案件」</p>
+        <div class="compare">
+          <div class="col tax">
+            <h3>稅籍異動即時通</h3>
+            <p class="who">財政部｜各縣市地方稅稽徵機關</p>
+            <div class="row"><b>何時響</b><span>有人去申報<strong>土地增值稅或契稅</strong>的時候</span></div>
+            <div class="row"><b>誰能辦</b><span>不限所有權人，<strong>未辦保存登記的房子也可以</strong>，名下目前沒有不動產也能先辦</span></div>
+            <div class="row"><b>怎麼辦</b><span>地方稅網路申報網站線上辦，或臨櫃到各縣市地方稅務機關</span></div>
+            <div class="row"><b>怎麼通知</b><span>電子郵件、手機簡訊、LINE 推播</span></div>
+            <div class="row"><b>範圍</b><span>可一次申請全國，<strong>連江縣除外</strong></span></div>
+            <div class="pill">⚠️ 線上申請後<strong>7 天內要去點信箱那封驗證信</strong>，沒點等於沒申請</div>
+          </div>
+          <div class="col land">
+            <h3>地籍異動即時通</h3>
+            <p class="who">內政部｜各地政事務所</p>
+            <div class="row"><b>何時響</b><span>13 種登記案件的<strong>收件時響一次、登記完成再響一次</strong></span></div>
+            <div class="row"><b>誰能辦</b><span>限<strong>已辦所有權登記的本人</strong>（網路申請只能本人；臨櫃可由法定代理人或經公證的被授權人代辦）</span></div>
+            <div class="row"><b>怎麼辦</b><span>全臺任一地政事務所臨櫃，或數位櫃臺用自然人憑證／已註冊健保卡線上辦</span></div>
+            <div class="row"><b>怎麼通知</b><span>手機簡訊、電子郵件，可擇一或兩者併行</span></div>
+            <div class="row"><b>範圍</b><span>買賣、拍賣、贈與、配偶贈與、信託、抵押權設定、預告登記、查封、假扣押、判決／調解／和解移轉，加上書狀補給</span></div>
+            <div class="pill">✅ 本人之外<strong>還能再指定 1 組信任親友</strong>接收通知</div>
+          </div>
+        </div>
+        <div class="keypoint">
+          <b>為什麼一定要兩個都辦：</b>有人拿你的房子去<b>設定抵押</b>、申請<b>書狀補給</b>，或是遇到<b>查封、假扣押、預告登記</b>——這些根本沒有契稅或土增稅要申報，稅籍那邊<b>一聲都不會響</b>，只有地籍會通知你。反過來，未辦保存登記的老屋地籍收不到，只有稅籍管得到
+        </div>
+        <div class="warning"><strong>⚠️ 一個容易誤會的空隙：</strong>「繼承登記」不在地籍異動即時通的 13 種通知案件裡，也沒有契稅要申報。也就是說，這兩個預警都<strong>不會</strong>通知你有人在辦繼承登記，這一段要靠自己定期調謄本確認</div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="wrap">
+        <div class="check-panel">
+          <h2 class="section-title">家人自查清單</h2>
+          <p class="section-note">先不要問爸媽，憑自己現在的記憶勾，勾不下去的那幾題就是你要補的洞</p>
+
+          <div class="group-label">第一關｜東西在哪裡</div>
+          <div class="checklist">
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>我知道爸媽的房屋、土地權狀放在哪裡，而且最近一年親眼看過</span></label>
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>我知道爸媽的印鑑章放在哪裡，沒有交給任何人保管</span></label>
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>爸媽最近一年沒有申請過印鑑證明，或申請了我知道用途</span></label>
+          </div>
+
+          <div class="group-label">第二關｜產權現在長什麼樣</div>
+          <div class="checklist">
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>我知道爸媽名下總共有幾筆不動產，分別在哪個縣市</span></label>
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>最近一年有調過謄本，確認過房子還登記在爸媽名下</span></label>
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>謄本上他項權利部沒有我不認識的抵押權，或有但我知道原因</span></label>
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>所有權部的「其他登記事項」欄沒有查封、假扣押、假處分、預告登記</span></label>
+          </div>
+
+          <div class="group-label">第三關｜預警有沒有真的裝上</div>
+          <div class="checklist">
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>爸媽已經申請地籍異動即時通，而且收到過「服務已生效」的通知</span></label>
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>爸媽已經申請稅籍異動即時通，線上申請的話已完成信箱驗證</span></label>
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>地籍那邊的第二組通知對象已經填我或其他信得過的家人</span></label>
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>登記的手機號碼跟信箱是現在還在用的，不是舊號碼舊信箱</span></label>
+          </div>
+
+          <div class="group-label">第四關｜萬一真的響了</div>
+          <div class="checklist">
+            <label class="check-row"><input type="checkbox" class="risk-check"><span>我知道收到通知後第一通電話要打去哪裡，也知道 165 可以查證</span></label>
+          </div>
+
+          <div class="check-result" id="check-result" aria-live="polite">尚未勾選｜12 題全部勾得下去的人非常少，勾不下去很正常</div>
+          <a class="check-cta" id="check-cta" href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446" target="_blank" rel="noopener noreferrer" hidden>有幾題勾不下去 → 加阿宏 LINE，先講你的狀況，不用急著決定</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">如果有一天真的響了</h2>
+        <p class="section-note">收件時那一通是黃金時間，動作要在登記完成前</p>
+        <div class="panel">
+          <div class="timeline">
+            <div class="step">
+              <strong>第 1 步｜不要先打給通知裡的任何號碼</strong>
+              <p>假通知也是詐騙手法之一。真的簡訊不會叫你回撥某支手機、更不會叫你匯款或給驗證碼</p>
+            </div>
+            <div class="step">
+              <strong>第 2 步｜直接打去地政事務所或稅捐機關問案件</strong>
+              <p>用自己查到的官方電話，不要用簡訊裡給的。問清楚是哪一種登記、誰送的件、進度到哪</p>
+            </div>
+            <div class="step">
+              <strong>第 3 步｜不是本人送的件，當場提出異議</strong>
+              <p>收件時就通知的意義就在這裡——登記還沒完成，來得及擋。同時撥 165 通報</p>
+            </div>
+            <div class="step">
+              <strong>第 4 步｜調一份最新謄本存起來</strong>
+              <p>電子謄本每張 20 元，線上就能申請。留下當下的產權狀態，之後要主張什麼都用得上</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">要辦去哪辦</h2>
+        <p class="section-note">兩個分開辦，部分縣市有整合櫃檯可一次辦完</p>
+        <div class="entry-grid">
+          <a class="entry" href="https://dcland.moi.gov.tw/" target="_blank" rel="noopener noreferrer">
+            <b>內政部地政司 數位櫃臺</b>
+            <span>線上辦地籍異動即時通，自然人憑證或已註冊健保卡</span>
+          </a>
+          <a class="entry" href="https://net.tax.nat.gov.tw/" target="_blank" rel="noopener noreferrer">
+            <b>地方稅網路申報作業網站</b>
+            <span>線上辦稅籍異動即時通，記得 7 天內收信驗證</span>
+          </a>
+          <a class="entry" href="https://ep.land.nat.gov.tw/" target="_blank" rel="noopener noreferrer">
+            <b>全國地政電子謄本系統</b>
+            <span>線上調謄本，每張 20 元</span>
+          </a>
+        </div>
+        <p class="legal-note">臨櫃辦理帶身分證等政府核發的附照片證件正本即可，兩項服務都免費。各縣市地方稅稽徵機關的臨櫃作業細節略有差異，出門前建議先電話確認</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">再多問幾句</h2>
+        <details>
+          <summary>房子已經過戶給小孩了，我還能自己申請地籍異動即時通嗎</summary>
+          <p>不行。地籍異動即時通的申請人限「已辦理所有權登記的登記名義人」，房子過戶後你已經不是所有權人。實務上的作法是請已成為所有權人的子女去申請，並把通知的手機與信箱填成你的</p>
+        </details>
+        <details>
+          <summary>已經過戶了，當初說好「我住到終老」，還有效嗎</summary>
+          <p>對子女本人可以主張，但擋不住外人——子女把房子賣掉或拿去抵押，新屋主與銀行不受你們私下約定拘束，房子被查封拍賣一樣要搬。台灣現行法沒有明文的「居住權」制度，想要真的保障，要在過戶前把居住條件寫進契約，並辦理預告登記；但預告登記依土地法第 79 條之 1，對徵收、法院判決、強制執行仍無排除效力。個案請找律師或地政士</p>
+        </details>
+        <details>
+          <summary>小孩拿了房子卻不照顧我，房子要得回來嗎</summary>
+          <p>民法第 416 條規定，受贈人對贈與人有扶養義務而不履行，贈與人得撤銷贈與。但有兩個很容易錯過的時效陷阱：<strong>撤銷權自你知道那天起 1 年內不行使就消滅</strong>，而且一旦你對子女表示原諒（法律上稱宥恕），撤銷權也直接消滅。另外要提醒，就算最後房子登記回你名下，土地增值稅依財政部函釋仍然要繳。這條路一定要先諮詢律師，不要自己判斷</p>
+        </details>
+        <details>
+          <summary>沒辦過保存登記的老家，這兩個服務用得上嗎</summary>
+          <p>地籍異動即時通用不上，因為它要求已辦理所有權登記。稅籍異動即時通可以，未辦保存登記建物本來就在它的服務範圍內，但前提是那間房子要有房屋稅籍、納稅義務人是本人，系統才對得上</p>
+        </details>
+        <details>
+          <summary>爸媽名下的房子分散在好幾個縣市，要辦幾次</summary>
+          <p>地籍異動即時通從 115 年 8 月 1 日起臨櫃可全臺跨所受理，權利分屬不同縣市也能填在同一張申請書；不過跨轄區的實際覆蓋範圍建議直接向地政事務所確認清楚。稅籍異動即時通可一次申請全國，連江縣除外</p>
+        </details>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="panel">
+          <h2 class="section-title">官方資料來源</h2>
+          <div class="source-list">
+            <a href="https://glrs.moi.gov.tw/LawContent.aspx?id=GL001486" target="_blank" rel="noopener noreferrer">內政部主管法規查詢系統｜地籍異動即時通便民服務作業原則（115 年 6 月 23 日修正）</a>
+            <a href="https://www.moi.gov.tw/News_Content.aspx?n=4&amp;s=339881" target="_blank" rel="noopener noreferrer">內政部新聞稿｜地籍異動即時通 健保卡也能線上申辦、開放全臺跨所受理（115 年 8 月 1 日）</a>
+            <a href="https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=825e5feb5456454d98eb36e5ec64d996" target="_blank" rel="noopener noreferrer">財政部｜「稅籍異動即時通」7 月上線</a>
+            <a href="https://www.etax.nat.gov.tw/etwmain/announcement/news/bneM3Jk" target="_blank" rel="noopener noreferrer">財政部稅務入口網｜不動產防詐新防線 稅籍異動即時通正式上線</a>
+            <a href="https://tytax.tycg.gov.tw/cp.aspx?n=25112" target="_blank" rel="noopener noreferrer">桃園市政府地方稅務局｜稅籍 X 地籍異動即時通專區（兩項服務差異比較）</a>
+            <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&amp;flno=416" target="_blank" rel="noopener noreferrer">全國法規資料庫｜民法第 416 條 贈與之撤銷</a>
+            <a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060001&amp;flno=79-1" target="_blank" rel="noopener noreferrer">全國法規資料庫｜土地法第 79 條之 1 預告登記</a>
+            <a href="https://ep.land.nat.gov.tw/" target="_blank" rel="noopener noreferrer">全國地政電子謄本系統</a>
+          </div>
+          <div class="legal-note">本頁為一般性資訊整理，依官方公告與現行法規彙整，不構成個案法律、稅務或財產規劃意見。兩項服務均為便民措施而非法定業務，官方載明系統異常或資料填寫錯誤導致未通知者不負賠償責任，實際申請條件與作業方式請以主管機關最新公告為準</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p class="brand">阿宏賣房不賣夢 陪你完成夢 但不陪你做錯夢</p>
+      <p class="transition">上面是給所有人的
+下面這塊只給真的要處理房子的人
+不急 先收藏</p>
+      <div class="cta-grid">
+        <a class="cta" href="https://reurl.cc/zQVzg7" target="_blank" rel="noopener noreferrer">
+          <span>鴻觀社團<br>可匿名</span><span>↗</span>
+        </a>
+        <a class="cta" href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446" target="_blank" rel="noopener noreferrer">
+          <span>官方 LINE<br>直接詢問</span><span>↗</span>
+        </a>
+        <a class="cta" href="/mingpian/" target="_blank" rel="noopener noreferrer">
+          <span>阿宏電子名片<br>聯絡資訊</span><span>↗</span>
+        </a>
+      </div>
+      <div class="fraud-alert">
+        <strong>提醒一句</strong>
+        <p>這是免費懶人包連結，不是匯款連結，也不會要求你輸入帳號、密碼、信用卡或驗證碼</p>
+        <p>阿宏不會因為你留言「防詐」就要求你匯款、轉帳、繳費或操作網路銀行</p>
+        <p>若有人冒用阿宏或鴻觀名義要求付款，先不要理會、不要點陌生連結，直接撥打 165 查證</p>
+      </div>
+      <div class="legal">
+        經紀業名稱：住商不動產樹林站前加盟店 鴻石不動產經紀有限公司<br>
+        經紀人：林秀嫻（96）北縣字第001399號｜營業員：何志宏（114）年登字第495065號<br>
+        地址：新北市板橋區金門街288-2號｜電話：<a href="tel:0226878822" style="color:inherit">02-26878822</a>（公司）／<a href="tel:0930848000" style="color:inherit">0930-848000</a>（何志宏）
+      </div>
+    </div>
+  </footer>
+
+  <div class="fab" aria-label="聯絡阿宏">
+    <a class="fab-line" href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446" target="_blank" rel="noopener noreferrer" aria-label="加官方 LINE 私訊">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.03 3.57 7.4 8.4 8.04.33.07.78.22.89.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1.01.89.55 1.09-.46 5.87-3.46 8.01-5.92C21.56 13.35 22 11.8 22 10.13 22 5.64 17.52 2 12 2zM8.39 12.8H6.16a.53.53 0 0 1-.53-.53V8.51a.53.53 0 0 1 1.06 0v3.23h1.7a.53.53 0 1 1 0 1.06zm1.83-.53a.53.53 0 0 1-1.06 0V8.51a.53.53 0 0 1 1.06 0v3.76zm4.51 0a.53.53 0 0 1-.36.5.55.55 0 0 1-.17.03.53.53 0 0 1-.42-.21l-1.92-2.61v2.29a.53.53 0 0 1-1.06 0V8.51a.53.53 0 0 1 .95-.32l1.92 2.62V8.51a.53.53 0 0 1 1.06 0v3.76zm3.38-2.41a.53.53 0 1 1 0 1.06h-1.7v.82h1.7a.53.53 0 1 1 0 1.06h-2.23a.53.53 0 0 1-.53-.53V8.51c0-.29.24-.53.53-.53h2.23a.53.53 0 1 1 0 1.06h-1.7v.82h1.7z"/></svg>
+    </a>
+    <a class="fab-phone" href="tel:0930848000" aria-label="撥打電話 0930-848000">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
+    </a>
+  </div>
+
+  <script>
+    (function(){
+      const boxes = Array.from(document.querySelectorAll('.risk-check'));
+      const result = document.getElementById('check-result');
+      const cta = document.getElementById('check-cta');
+      const total = boxes.length;
+      function update(){
+        const count = boxes.filter(box => box.checked).length;
+        const gaps = total - count;
+        if(count === 0){
+          result.textContent = '尚未勾選｜12 題全部勾得下去的人非常少，勾不下去很正常';
+        }else if(gaps === 0){
+          result.textContent = '12 題全過｜你家的防線很完整，把這頁轉給還沒做的親戚';
+        }else if(gaps <= 3){
+          result.textContent = '還有 ' + gaps + ' 題勾不下去｜缺口不大，這週就能補完';
+        }else{
+          result.textContent = '還有 ' + gaps + ' 題勾不下去｜建議先從調一份謄本開始，把現況看清楚';
+        }
+        cta.hidden = (count === 0);
+      }
+      boxes.forEach(box => box.addEventListener('change', update));
+    })();
+  </script>
+</body>
+</html>

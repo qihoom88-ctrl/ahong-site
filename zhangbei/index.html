@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>家有70歲以上長輩｜6項福利檢查懶人包</title>
+
+<meta name="description"
+content="家中有70歲以上長輩，這6項福利一定要逐項查。多數老人福利其實從65歲就能開始確認。">
+
+<meta name="theme-color" content="#2B3A4A">
+
+<style>
+:root{
+  --trust:#2B3A4A;
+  --trust2:#42566b;
+  --gold:#D4AF37;
+  --gold2:#f0d87a;
+  --orange:#ED8B4E;
+  --warm:#fffaf2;
+  --cream:#f6efe3;
+  --white:#ffffff;
+  --ink:#24303b;
+  --muted:#687582;
+  --line:#e5dac9;
+  --red:#aa3e38;
+  --redbg:#fff1ef;
+  --green:#28765c;
+  --shadow:0 14px 38px rgba(43,58,74,.11);
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",Arial,sans-serif;
+  color:var(--ink);
+  line-height:1.75;
+  background:
+    radial-gradient(circle at top right,rgba(212,175,55,.18),transparent 29rem),
+    linear-gradient(180deg,#fffdf8,#f6efe4);
+}
+
+a{color:inherit}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(43,58,74,.97);
+  color:white;
+  box-shadow:0 7px 24px rgba(0,0,0,.16);
+  backdrop-filter:blur(9px);
+}
+
+.header-inner{
+  max-width:980px;
+  min-height:62px;
+  margin:auto;
+  padding:9px 18px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand{
+  display:grid;
+  line-height:1.2;
+}
+
+.brand strong{
+  font-size:15px;
+  letter-spacing:.05em;
+}
+
+.brand span{
+  color:var(--gold2);
+  font-size:11px;
+  letter-spacing:.08em;
+}
+
+.header-actions{
+  margin-left:auto;
+  display:flex;
+  gap:7px;
+}
+
+.small-btn{
+  border:1px solid rgba(255,255,255,.4);
+  border-radius:999px;
+  padding:8px 12px;
+  color:white;
+  background:transparent;
+  font-family:inherit;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.container{
+  width:min(calc(100% - 30px),920px);
+  margin:auto;
+}
+
+.hero{
+  padding:52px 0 34px;
+}
+
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 13px;
+  border:1px solid rgba(212,175,55,.6);
+  border-radius:999px;
+  background:rgba(255,255,255,.85);
+  color:#876b15;
+  font-size:14px;
+  font-weight:900;
+}
+
+.hero h1{
+  margin:18px 0 12px;
+  color:var(--trust);
+  font-size:clamp(35px,8vw,61px);
+  line-height:1.13;
+  letter-spacing:-.04em;
+}
+
+.hero h1 span{
+  color:#ad861c;
+}
+
+.hero-lead{
+  max-width:730px;
+  margin:0;
+  color:var(--trust2);
+  font-size:clamp(18px,3.8vw,23px);
+  font-weight:800;
+}
+
+.update{
+  margin-top:18px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.key-note{
+  margin-top:24px;
+  padding:17px 19px;
+  border-left:5px solid var(--gold);
+  border-radius:5px 17px 17px 5px;
+  background:white;
+  box-shadow:var(--shadow);
+  font-weight:800;
+}
+
+.key-note strong{color:var(--red)}
+
+.section{
+  padding:20px 0 42px;
+}
+
+.section-title{
+  margin:0 0 6px;
+  color:var(--trust);
+  font-size:clamp(25px,5vw,35px);
+  line-height:1.3;
+}
+
+.section-desc{
+  margin:0 0 20px;
+  color:var(--muted);
+}
+
+.fact-check{
+  overflow:hidden;
+  border:1px solid #ecc1bd;
+  border-radius:22px;
+  background:var(--redbg);
+  box-shadow:var(--shadow);
+}
+
+.fact-title{
+  padding:16px 20px;
+  color:white;
+  background:var(--red);
+  font-weight:900;
+  font-size:18px;
+}
+
+.fact-body{
+  padding:21px;
+}
+
+.false{
+  margin:0 0 15px;
+  padding:14px;
+  border-radius:13px;
+  background:white;
+  color:var(--red);
+  text-align:center;
+  font-size:18px;
+  font-weight:900;
+  text-decoration:line-through;
+  text-decoration-thickness:2px;
+}
+
+.fact-list{
+  margin:0;
+  padding-left:21px;
+}
+
+.fact-list li+li{margin-top:7px}
+
+.cards{
+  display:grid;
+  gap:17px;
+}
+
+.card{
+  position:relative;
+  overflow:hidden;
+  display:block;
+  padding:23px;
+  border:1px solid var(--line);
+  border-radius:21px;
+  color:var(--ink);
+  background:rgba(255,255,255,.96);
+  box-shadow:var(--shadow);
+  text-decoration:none;
+  transition:.2s ease;
+}
+
+a.card:hover{
+  transform:translateY(-3px);
+  border-color:var(--gold);
+}
+
+.card-number{
+  position:absolute;
+  top:10px;
+  right:17px;
+  color:rgba(212,175,55,.25);
+  font-size:55px;
+  font-weight:1000;
+  line-height:1;
+}
+
+.card h3{
+  position:relative;
+  margin:0 0 9px;
+  padding-right:52px;
+  color:var(--trust);
+  font-size:21px;
+  line-height:1.4;
+}
+
+.card p{
+  position:relative;
+  margin:0 0 10px;
+}
+
+.tags{
+  position:relative;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:13px 0;
+}
+
+.tag{
+  padding:4px 9px;
+  border-radius:999px;
+  background:var(--cream);
+  color:var(--trust);
+  font-size:12px;
+  font-weight:800;
+}
+
+.official{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  margin-top:5px;
+  padding:9px 13px;
+  border:1px solid var(--gold);
+  border-radius:11px;
+  color:var(--trust);
+  background:#fffdf6;
+  font-weight:900;
+}
+
+.alert{
+  margin-top:13px;
+  padding:11px 13px;
+  border-radius:12px;
+  background:#fff5e8;
+  color:#8a4f22;
+  font-weight:800;
+}
+
+.multi-links{
+  position:relative;
+  display:grid;
+  gap:9px;
+  margin-top:14px;
+}
+
+.multi-links a{
+  display:block;
+  padding:11px 13px;
+  border:1px solid var(--gold);
+  border-radius:11px;
+  color:var(--trust);
+  background:#fffdf6;
+  font-weight:900;
+  text-decoration:none;
+}
+
+.multi-links a:hover{
+  color:white;
+  background:var(--trust);
+}
+
+.check-panel{
+  padding:24px;
+  border-radius:22px;
+  color:white;
+  background:var(--trust);
+  box-shadow:var(--shadow);
+}
+
+.check-panel h2{
+  margin:0 0 6px;
+  font-size:27px;
+}
+
+.check-panel>p{
+  margin-top:0;
+  color:#dae2e8;
+}
+
+.check-list{
+  display:grid;
+  gap:9px;
+  margin-top:18px;
+}
+
+.check-item{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:12px 13px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:12px;
+  background:rgba(255,255,255,.08);
+}
+
+.tick{
+  color:var(--gold2);
+  font-weight:1000;
+}
+
+.where-grid{
+  display:grid;
+  gap:13px;
+}
+
+.where{
+  padding:18px;
+  border:1px solid #d2eadf;
+  border-radius:17px;
+  background:#eff9f4;
+}
+
+.where strong{
+  display:block;
+  color:var(--green);
+  font-size:18px;
+}
+
+.where a{
+  display:inline-block;
+  margin-top:8px;
+  color:var(--green);
+  font-weight:900;
+}
+
+.sources{
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:21px;
+  background:rgba(255,255,255,.8);
+}
+
+.sources ul{
+  margin:12px 0 0;
+  padding-left:21px;
+}
+
+.sources li+li{margin-top:8px}
+
+.sources a{
+  color:var(--trust);
+  font-weight:800;
+}
+
+.private-area{
+  margin-top:35px;
+  padding:43px 0;
+  color:#2a211a;
+  background:
+    radial-gradient(circle at top right,rgba(255,255,255,.35),transparent 31%),
+    linear-gradient(135deg,var(--orange),#f3aa75);
+}
+
+.private-box{
+  padding:25px;
+  border-radius:23px;
+  background:rgba(255,255,255,.92);
+  box-shadow:0 17px 43px rgba(91,49,19,.18);
+}
+
+.private-box h2{
+  margin:0 0 7px;
+  color:var(--trust);
+  line-height:1.35;
+}
+
+.cta-grid{
+  display:grid;
+  gap:10px;
+  margin-top:19px;
+}
+
+.cta{
+  display:block;
+  padding:13px 15px;
+  border-radius:12px;
+  text-align:center;
+  text-decoration:none;
+  font-weight:1000;
+}
+
+.cta-dark{
+  color:white;
+  background:var(--trust);
+}
+
+.cta-gold{
+  color:#1d252c;
+  background:var(--gold);
+}
+
+.cta-white{
+  color:var(--trust);
+  border:2px solid var(--trust);
+  background:white;
+}
+
+.fixed-line{
+  position:fixed;
+  right:17px;
+  bottom:17px;
+  z-index:80;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:12px 16px;
+  border-radius:999px;
+  color:white;
+  background:#06c755;
+  box-shadow:0 13px 32px rgba(6,199,85,.32);
+  font-weight:1000;
+  text-decoration:none;
+}
+
+.footer{
+  padding:25px 0 42px;
+  color:var(--muted);
+  background:#fffaf2;
+  text-align:center;
+  font-size:13px;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:75px;
+  z-index:100;
+  transform:translate(-50%,20px);
+  padding:10px 15px;
+  border-radius:999px;
+  color:white;
+  background:var(--trust);
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  font-weight:900;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+@media(min-width:720px){
+  .cards{grid-template-columns:1fr 1fr}
+  .where-grid{grid-template-columns:repeat(3,1fr)}
+  .cta-grid{grid-template-columns:1.3fr 1fr 1fr}
+}
+
+@media(max-width:560px){
+  .container{width:min(calc(100% - 22px),920px)}
+  .hero{padding-top:38px}
+  .card,.check-panel,.private-box{padding:19px}
+  .fixed-line{
+    right:11px;
+    bottom:11px;
+    padding:11px 14px;
+    font-size:14px;
+  }
+}
+
+@media print{
+  .header,.fixed-line,.private-area,.toast{display:none!important}
+  body{background:white}
+  .card,.fact-check,.check-panel,.sources{box-shadow:none;break-inside:avoid}
+  .check-panel{color:black;background:white;border:1px solid #aaa}
+  .check-panel>p{color:#555}
+}
+</style>
+</head>
+
+<body>
+
+<a class="fixed-line"
+   href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446"
+   target="_blank"
+   rel="noopener noreferrer">
+  LINE 詢問阿宏
+</a>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <strong>SOLID ROCK PROMISE</strong>
+      <span>阿宏民生福利懶人包</span>
+    </div>
+
+    <div class="header-actions">
+      <button class="small-btn" type="button" onclick="sharePage()">分享</button>
+      <button class="small-btn" type="button" onclick="window.print()">列印</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">長輩福利檢查表</div>
+
+    <h1>
+      家有<span>70歲以上</span>長輩<br>
+      這6項福利別漏查
+    </h1>
+
+    <p class="hero-lead">
+      福利少查一項，家庭照顧支出就可能多扛一點。
+      多數老人福利其實從65歲就能開始確認。
+    </p>
+
+    <div class="update">資料查核日期：2026年6月28日</div>
+
+    <div class="key-note">
+      年齡只是第一關，真正要查的是
+      <strong>戶籍地、設籍時間、所得財產、失能程度與個人身分</strong>。
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="fact-check">
+      <div class="fact-title">先打掉最常見的假消息</div>
+
+      <div class="fact-body">
+        <div class="false">滿65歲或70歲，全國健保費一律免費</div>
+
+        <ul class="fact-list">
+          <li>目前沒有所有滿65歲或70歲長者，全國健保費一律全免的新制。</li>
+          <li>符合中低收入老人資格且年滿70歲者，健保費由中央全額補助。</li>
+          <li>其他長者是否有補助，要看低收入資格及各縣市地方規定。</li>
+        </ul>
+
+        <p>
+          <a class="official"
+             href="https://www.nhi.gov.tw/ch/cp-4721-0d598-2645-1.html"
+             target="_blank"
+             rel="noopener noreferrer">
+            查健保署官方資料 ↗
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="benefits">
+  <div class="container">
+    <h2 class="section-title">6項福利逐項查</h2>
+    <p class="section-desc">
+      點擊每張卡片，就會直接開啟對應的官方網站。
+    </p>
+
+    <div class="cards">
+
+      <a class="card"
+         href="https://www.sfaa.gov.tw/sfaa/faq/5eQ"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="card-number">1</div>
+        <h3>中低收入老人生活津貼</h3>
+
+        <p>
+          通常從65歲開始確認，但仍會審查家庭所得、存款、
+          投資、不動產、戶籍及家庭人口。
+        </p>
+
+        <div class="tags">
+          <span class="tag">所得</span>
+          <span class="tag">財產</span>
+          <span class="tag">戶籍</span>
+          <span class="tag">家庭人口</span>
+        </div>
+
+        <div class="official">查官方申請資格 ↗</div>
+      </a>
+
+      <a class="card"
+         href="https://1966.gov.tw/LTC/cp-6533-70777-207.html"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="card-number">2</div>
+        <h3>長照服務</h3>
+
+        <p>
+          長輩有失能、失智，或洗澡、吃飯、走路、如廁等生活需求，
+          可撥1966申請評估。
+        </p>
+
+        <div class="tags">
+          <span class="tag">居家服務</span>
+          <span class="tag">交通接送</span>
+          <span class="tag">輔具</span>
+          <span class="tag">喘息服務</span>
+        </div>
+
+        <div class="official">撥1966／查官方 ↗</div>
+      </a>
+
+      <a class="card"
+         href="https://www.nhi.gov.tw/ch/cp-4721-0d598-2645-1.html"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="card-number">3</div>
+        <h3>老人健保費補助</h3>
+
+        <p>
+          各縣市的設籍時間、所得、投保類別、補助額度與補助方式不同。
+        </p>
+
+        <div class="alert">
+          70歲中央全額補助，指符合中低收入老人資格者，
+          不是所有70歲以上長者。
+        </div>
+
+        <div class="official">查各級政府健保補助 ↗</div>
+      </a>
+
+      <a class="card"
+         href="https://dep.mohw.gov.tw/DOSAASW/fp-540-4696-103.html"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="card-number">4</div>
+        <h3>敬老卡與交通補助</h3>
+
+        <p>
+          公車、捷運、計程車、臺鐵、YouBike及其他使用範圍，
+          各縣市點數與規定不同。
+        </p>
+
+        <div class="tags">
+          <span class="tag">地方制度</span>
+          <span class="tag">通常需申請</span>
+          <span class="tag">使用範圍不同</span>
+        </div>
+
+        <div class="official">查戶籍地社會局／處 ↗</div>
+      </a>
+
+      <a class="card"
+         href="https://dep.mohw.gov.tw/DOSAASW/fp-540-4696-103.html"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="card-number">5</div>
+        <h3>重陽敬老禮金</h3>
+
+        <p>
+          發放年齡、金額、設籍期間與領取方式不是全台統一，
+          應依戶籍所在地公告確認。
+        </p>
+
+        <div class="tags">
+          <span class="tag">設籍條件</span>
+          <span class="tag">金額不同</span>
+          <span class="tag">領取方式不同</span>
+        </div>
+
+        <div class="official">查戶籍地最新公告 ↗</div>
+      </a>
+
+      <article class="card">
+        <div class="card-number">6</div>
+        <h3>假牙、健康檢查與公費疫苗</h3>
+
+        <p>
+          三項資格與流程不同。假牙補助通常須符合特定弱勢身分，
+          並先完成申請或牙醫評估。
+        </p>
+
+        <div class="alert">
+          假牙補助不要先自費做好才詢問，應先找戶籍地公所確認資格。
+        </div>
+
+        <div class="multi-links">
+          <a href="https://dep.mohw.gov.tw/DOSAASW/fp-540-4696-103.html"
+             target="_blank"
+             rel="noopener noreferrer">
+            假牙補助｜查各縣市社會局／處 ↗
+          </a>
+
+          <a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=189"
+             target="_blank"
+             rel="noopener noreferrer">
+            成人預防保健｜查國健署 ↗
+          </a>
+
+          <a href="https://www.cdc.gov.tw/Category/Page/U_hY1WCfa5BU6fuqW9FIXg"
+             target="_blank"
+             rel="noopener noreferrer">
+            公費肺炎鏈球菌疫苗｜查疾管署 ↗
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="check-panel">
+      <h2>長輩福利自我檢核</h2>
+      <p>符合其中一項，就值得進一步詢問。</p>
+
+      <div class="check-list">
+        <div class="check-item">
+          <span class="tick">✓</span>
+          <span>家中有65歲以上長輩，還沒有完整查過戶籍地福利。</span>
+        </div>
+
+        <div class="check-item">
+          <span class="tick">✓</span>
+          <span>長輩有失能、失智或日常生活需要家人協助。</span>
+        </div>
+
+        <div class="check-item">
+          <span class="tick">✓</span>
+          <span>家庭所得不高，但不確定是否符合中低收入資格。</span>
+        </div>
+
+        <div class="check-item">
+          <span class="tick">✓</span>
+          <span>長輩缺牙，需要假牙，但尚未開始製作。</span>
+        </div>
+
+        <div class="check-item">
+          <span class="tick">✓</span>
+          <span>不清楚敬老卡、敬老禮金或健保補助是否已生效。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">不知道去哪裡辦？</h2>
+    <p class="section-desc">先用以下三個官方入口查詢。</p>
+
+    <div class="where-grid">
+
+      <div class="where">
+        <strong>一般社會福利</strong>
+        撥打1957福利諮詢專線。
+        <br>
+        <a href="https://1957.mohw.gov.tw/"
+           target="_blank"
+           rel="noopener noreferrer">
+          前往1957官方網站 ↗
+        </a>
+      </div>
+
+      <div class="where">
+        <strong>長照服務</strong>
+        直接撥打1966申請需求評估。
+        <br>
+        <a href="https://1966.gov.tw/LTC/cp-6533-70777-207.html"
+           target="_blank"
+           rel="noopener noreferrer">
+          前往1966長照專區 ↗
+        </a>
+      </div>
+
+      <div class="where">
+        <strong>地方申請窗口</strong>
+        洽戶籍地區公所、鄉鎮市公所社會課。
+        <br>
+        <a href="https://dep.mohw.gov.tw/DOSAASW/fp-540-4696-103.html"
+           target="_blank"
+           rel="noopener noreferrer">
+          全國社會局／處入口 ↗
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="sources">
+      <h2 class="section-title">官方資料來源</h2>
+
+      <ul>
+        <li>
+          <a href="https://www.sfaa.gov.tw/sfaa/faq/5eQ"
+             target="_blank"
+             rel="noopener noreferrer">
+            社家署｜中低收入老人生活津貼
+          </a>
+        </li>
+
+        <li>
+          <a href="https://1966.gov.tw/LTC/cp-6533-70777-207.html"
+             target="_blank"
+             rel="noopener noreferrer">
+            衛福部｜1966長照服務申請
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.nhi.gov.tw/ch/cp-4721-0d598-2645-1.html"
+             target="_blank"
+             rel="noopener noreferrer">
+            健保署｜各級政府健保費補助
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.hpa.gov.tw/Pages/List.aspx?nodeid=189"
+             target="_blank"
+             rel="noopener noreferrer">
+            國民健康署｜成人預防保健
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.cdc.gov.tw/Category/Page/U_hY1WCfa5BU6fuqW9FIXg"
+             target="_blank"
+             rel="noopener noreferrer">
+            疾病管制署｜成人肺炎鏈球菌疫苗
+          </a>
+        </li>
+
+        <li>
+          <a href="https://1957.mohw.gov.tw/"
+             target="_blank"
+             rel="noopener noreferrer">
+            衛福部｜1957福利諮詢專線
+          </a>
+        </li>
+
+        <li>
+          <a href="https://dep.mohw.gov.tw/DOSAASW/fp-540-4696-103.html"
+             target="_blank"
+             rel="noopener noreferrer">
+            衛福部｜全國各縣市社會局、社會處
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="private-area">
+  <div class="container">
+    <div class="private-box">
+      <h2>阿宏賣房不賣夢</h2>
+
+      <p>
+        陪你完成夢，但不陪你做錯夢。
+      </p>
+
+      <p>
+        上面是給所有人的，下面這塊只給真的要處理房子的人。
+        不急，先收藏。
+      </p>
+
+      <p>
+        這篇免費資訊看完，真的要動到房子／資產，再來找阿宏，
+        平常不打擾。
+      </p>
+
+      <div class="cta-grid">
+        <a class="cta cta-dark"
+           href="https://reurl.cc/zQVzg7"
+           target="_blank"
+           rel="noopener noreferrer">
+          加入鴻觀資產交流社團｜可匿名加入
+        </a>
+
+        <a class="cta cta-gold"
+           href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446"
+           target="_blank"
+           rel="noopener noreferrer">
+          加入阿宏官方 LINE
+        </a>
+
+        <a class="cta cta-white"
+           href="/mingpian/"
+           target="_blank"
+           rel="noopener noreferrer">
+          查看阿宏電子名片
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    本頁為一般資訊整理，不代表個案一定符合資格。<br>
+    政策、金額與地方規定可能調整，申請前請以主管機關最新公告及審核結果為準。
+  </div>
+</footer>
+
+<div class="toast" id="toast">已複製</div>
+
+<script>
+function showToast(message){
+  const toast=document.getElementById("toast");
+  toast.textContent=message;
+  toast.classList.add("show");
+
+  clearTimeout(window.toastTimer);
+
+  window.toastTimer=setTimeout(function(){
+    toast.classList.remove("show");
+  },1800);
+}
+
+async function sharePage(){
+  const data={
+    title:document.title,
+    text:"家中有70歲以上長輩，這6項福利一定要逐項查。",
+    url:window.location.href
+  };
+
+  try{
+    if(navigator.share){
+      await navigator.share(data);
+    }else{
+      await navigator.clipboard.writeText(window.location.href);
+      showToast("網址已複製");
+    }
+  }catch(error){
+    if(error.name!=="AbortError"){
+      showToast("請複製瀏覽器網址分享");
+    }
+  }
+}
+</script>
+
+</body>
+</html>

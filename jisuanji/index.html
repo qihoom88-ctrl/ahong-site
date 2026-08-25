@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLID ROCK PROMISE｜房產萬能計算機</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#c79433; --gold-lt:#f4dca0; --gold-md:#d9a948; --gold-dk:#9c6f22;
+  --grey:#9ca1a6; --grey-lt:#e9e6df; --grey-dk:#5f6469;
+  --orange:#e0602a;
+  --ink:#23211d; --ink-soft:#55514a;
+  --ivory:#f6f1e7; --ivory-2:#efe8db; --card:#fffdf8; --line:#e4dccb;
+  --plaque:#211f1c;
+  --muted:#938d80;
+  --shadow:0 1px 1px rgba(35,33,29,.05),0 10px 34px rgba(35,33,29,.10);
+  --gold-foil:linear-gradient(135deg,#f7e7b4 0%,#d9a948 28%,#9c6f22 52%,#d9a948 70%,#f7e7b4 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{color:var(--ink);font-family:"Noto Sans TC",sans-serif;-webkit-font-smoothing:antialiased}
+body{max-width:560px;margin:0 auto;padding:0 0 64px;position:relative;background:var(--ivory)}
+/* 大理石底紋 */
+.marble{position:fixed;inset:0;z-index:-2;background:var(--ivory)}
+.marble svg{width:100%;height:100%;opacity:.5}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(820px 300px at 82% -6%,rgba(199,148,51,.10),transparent 62%),
+  radial-gradient(680px 280px at -12% 4%,rgba(95,100,105,.08),transparent 60%),
+  radial-gradient(1000px 600px at 50% 120%,rgba(95,100,105,.07),transparent 60%)}
+
+/* gold foil text */
+.foil{background:var(--gold-foil);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 1px 0 rgba(120,86,20,.25))}
+
+/* ---------- header ---------- */
+header{padding:30px 22px 20px;text-align:center;position:relative}
+.logo-wrap{width:96px;height:96px;margin:0 auto 12px;position:relative}
+#logo{width:100%;height:100%;object-fit:contain;display:none}
+.emblem{width:96px;height:74px}
+.brand{font-family:"Cormorant Garamond",serif;font-weight:700;letter-spacing:.05em;font-size:30px;line-height:1;
+  background:var(--gold-foil);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand-sub{font-family:"Cormorant Garamond",serif;font-size:14px;letter-spacing:.5em;color:var(--grey-dk);margin-top:7px;font-weight:600;text-indent:.5em}
+.hair{display:flex;align-items:center;justify-content:center;gap:11px;margin:15px auto 0}
+.hair i{height:1px;width:48px;background:linear-gradient(90deg,transparent,var(--gold))}
+.hair i:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
+.hair b{width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
+.tool-name{margin-top:14px;font-family:"Noto Serif TC",serif;font-weight:900;font-size:27px;color:var(--ink);letter-spacing:.04em}
+.tool-tag{margin-top:5px;font-size:12.5px;color:var(--muted);letter-spacing:.06em}
+
+/* ---------- tabs ---------- */
+.tabs{position:sticky;top:0;z-index:20;display:flex;gap:7px;overflow-x:auto;padding:13px 15px;margin-top:6px;
+  background:rgba(246,241,231,.9);backdrop-filter:blur(12px);border-top:1px solid rgba(199,148,51,.25);border-bottom:1px solid rgba(199,148,51,.25);scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);
+  padding:9px 14px;border-radius:3px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:6px;position:relative}
+.tab .i{font-size:14px;filter:grayscale(.3)}
+.tab.on{background:var(--plaque);color:var(--gold-lt);border-color:var(--plaque)}
+.tab.on::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:2px;background:var(--gold-foil)}
+.tab.on .i{filter:none}
+
+/* ---------- panels ---------- */
+main{padding:20px 16px 0}
+.panel{display:none;animation:rise .3s ease both}
+.panel.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px 17px;box-shadow:var(--shadow);position:relative}
+.card::before{content:"";position:absolute;inset:5px;border:1px solid rgba(199,148,51,.18);border-radius:3px;pointer-events:none}
+.p-head{display:flex;align-items:center;gap:10px;margin-bottom:5px;position:relative}
+.p-head .badge{font-size:19px}
+.p-head h2{font-family:"Noto Serif TC",serif;font-size:21px;font-weight:900;color:var(--ink);letter-spacing:.02em}
+.p-desc{font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:17px}
+
+/* fields */
+.field{margin-bottom:13px}
+.field>label{display:block;font-size:12.5px;font-weight:700;color:var(--ink-soft);margin-bottom:6px;letter-spacing:.02em}
+.field>label .hint{font-weight:400;color:var(--muted);font-size:11.5px}
+.in{position:relative}
+.in input{width:100%;border:1px solid var(--line);background:#fffefb;border-radius:5px;padding:12px 46px 12px 13px;
+  font-size:16px;font-family:"Noto Serif TC",serif;font-weight:700;color:var(--ink);outline:none;transition:.16s;-webkit-appearance:none;font-variant-numeric:tabular-nums}
+.in input:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(199,148,51,.14)}
+.in .unit{position:absolute;right:13px;top:50%;transform:translateY(-50%);font-size:12.5px;color:var(--muted);font-weight:700;pointer-events:none;font-family:"Noto Sans TC"}
+.row{display:flex;gap:10px}
+.row .field{flex:1}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{flex:1 1 auto;min-width:62px;border:1px solid var(--line);background:#fffefb;border-radius:5px;padding:10px 8px;
+  font-size:12.5px;font-weight:700;color:var(--ink-soft);cursor:pointer;font-family:inherit;transition:.16s}
+.seg button.on{background:linear-gradient(135deg,#d9a948,#b6841f);border-color:var(--gold-dk);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.chk{display:flex;align-items:center;gap:10px;background:#fffefb;border:1px solid var(--line);border-radius:5px;padding:12px;cursor:pointer}
+.chk input{width:19px;height:19px;accent-color:var(--gold)}
+.chk span{font-size:12.5px;font-weight:700;color:var(--ink-soft)}
+.chk b{color:var(--gold-dk)}
+
+/* result plaque */
+.res{margin-top:18px;background:
+   linear-gradient(160deg,#2b2925,#1b1916);border-radius:8px;padding:20px 18px;color:#efe7d6;position:relative;overflow:hidden;
+   box-shadow:0 14px 30px rgba(35,33,29,.28)}
+.res::before{content:"";position:absolute;inset:6px;border:1px solid rgba(199,148,51,.4);border-radius:4px;pointer-events:none}
+.res::after{content:"";position:absolute;right:-40px;top:-50px;width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(199,148,51,.22),transparent 70%)}
+.res .lab{font-size:11.5px;color:#c9b27e;letter-spacing:.16em;font-weight:700;position:relative}
+.res .big{font-family:"Noto Serif TC",serif;font-size:37px;font-weight:900;line-height:1.05;margin-top:6px;position:relative;font-variant-numeric:tabular-nums}
+.res .big small{font-size:16px;font-weight:700;color:#c9b27e;margin-left:3px;font-family:"Noto Sans TC"}
+.res .big .gold{background:var(--gold-foil);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:9px;position:relative}
+.sub .b{background:rgba(255,255,255,.05);border:1px solid rgba(199,148,51,.16);border-radius:5px;padding:10px 11px}
+.sub .b .k{font-size:11px;color:#a8a293}
+.sub .b .v{font-size:16px;font-weight:800;margin-top:3px;color:#f0e7d4;font-family:"Noto Serif TC",serif;font-variant-numeric:tabular-nums}
+.sub .b.full{grid-column:1/-1}
+
+/* breakdown */
+.bd{margin-top:15px;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fffdf8}
+.bd .ln{display:flex;justify-content:space-between;padding:10px 14px;font-size:13px;border-bottom:1px solid var(--line)}
+.bd .ln:last-child{border-bottom:none}
+.bd .ln .k{color:var(--ink-soft)}
+.bd .ln .v{font-weight:800;color:var(--ink);font-family:"Noto Serif TC",serif;font-variant-numeric:tabular-nums}
+.bd .ln.tot{background:linear-gradient(90deg,#f7efdc,#fbf5e6)}
+.bd .ln.tot .k{font-weight:900}
+.bd .ln.tot .v{color:var(--gold-dk);font-size:15px}
+.note{margin-top:13px;font-size:11.5px;color:var(--muted);line-height:1.7;background:var(--ivory-2);border-left:2px solid var(--gold);border-radius:0 5px 5px 0;padding:11px 13px}
+.note b{color:var(--ink-soft)}
+
+/* convert */
+.conv{display:flex;align-items:center;gap:10px}
+.conv .field{flex:1;margin-bottom:0}
+.conv .swap{flex:0 0 auto;width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#d9a948,#b6841f);color:#fff;border:1px solid var(--gold-dk);font-size:18px;cursor:pointer;margin-top:11px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+.formula{text-align:center;font-size:12px;color:var(--muted);margin-top:15px;letter-spacing:.03em;font-family:"Noto Serif TC",serif}
+
+/* footer */
+footer{text-align:center;margin-top:28px;padding:0 22px}
+.cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#d9a948,#b6841f);color:#fff;text-decoration:none;
+  padding:14px 26px;border-radius:4px;font-weight:900;font-size:15px;letter-spacing:.03em;border:1px solid var(--gold-dk);
+  box-shadow:0 10px 24px rgba(156,111,34,.28),inset 0 1px 0 rgba(255,255,255,.35)}
+.cta .h{color:#ffd9c4}
+.sign{margin-top:16px;font-size:13px;color:var(--ink-soft);font-weight:700;letter-spacing:.04em}
+.slogan{margin-top:4px;font-family:"Noto Serif TC",serif;font-size:13.5px;color:var(--gold-dk);font-weight:700}
+.disc{margin-top:13px;font-size:10.5px;color:var(--muted);line-height:1.65}
+
+/* ---- 隱藏式需求調查 ---- */
+.whisper{margin-top:17px;display:inline-flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;
+  font-family:"Noto Serif TC",serif;font-size:12px;color:var(--muted);letter-spacing:.1em;
+  border-bottom:1px dashed rgba(199,148,51,.55);padding:3px 3px 5px;transition:.2s}
+.whisper:hover{color:var(--gold-dk)}
+.whisper .d{width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
+.ov{position:fixed;inset:0;z-index:60;background:rgba(27,25,22,.55);backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center}
+.ov.on{display:flex;animation:fade .25s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.sheet{width:100%;max-width:560px;max-height:93vh;overflow-y:auto;background:var(--ivory);border-radius:16px 16px 0 0;
+  box-shadow:0 -22px 60px rgba(0,0,0,.42);animation:up .32s cubic-bezier(.2,.8,.2,1);position:relative;-webkit-overflow-scrolling:touch}
+@keyframes up{from{transform:translateY(50px);opacity:.6}to{transform:none;opacity:1}}
+.sheet-h{position:sticky;top:0;z-index:3;background:linear-gradient(165deg,#2b2925,#1b1916);color:#f0e7d4;padding:19px 18px 16px;border-radius:16px 16px 0 0}
+.sheet-h::before{content:"";position:absolute;inset:5px 5px auto;height:auto;border:1px solid rgba(199,148,51,.32);border-bottom:none;border-radius:11px 11px 0 0;bottom:-1px;pointer-events:none}
+.sheet-h .x{position:absolute;right:14px;top:15px;width:30px;height:30px;border:1px solid rgba(199,148,51,.4);background:none;color:#cbb27e;border-radius:50%;font-size:15px;cursor:pointer;line-height:1}
+.sheet-h .kk{font-size:10.5px;letter-spacing:.34em;color:#c9b27e;font-weight:700}
+.sheet-h .ttl{font-family:"Noto Serif TC",serif;font-weight:900;font-size:20px;margin-top:5px}
+.sheet-h .ttl b{background:var(--gold-foil);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sheet-h .sb{font-size:11.5px;color:#a8a293;margin-top:3px}
+.mand{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:15px 18px 2px}
+.mand .c{aspect-ratio:1.05;border:1px solid var(--line);border-radius:7px;background:#fffdf8;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:10.5px;font-weight:700;color:var(--ink-soft);padding:4px;line-height:1.25;cursor:pointer;transition:.16s}
+.mand .c .n{font-size:8.5px;color:var(--gold-dk);margin-bottom:2px}
+.mand .c:active{transform:scale(.96)}
+.mand .c.mid{background:linear-gradient(135deg,#d9a948,#9c6f22);color:#fff;border-color:var(--gold-dk);font-size:11.5px;box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.mand .c.mid .n{color:#ffe9bf}
+.s-body{padding:8px 18px 22px}
+.s-hint{font-size:11px;color:var(--muted);text-align:center;margin:8px 18px 0;letter-spacing:.04em}
+.q{margin-top:15px;scroll-margin-top:90px}
+.q .ql{display:block;font-family:"Noto Serif TC",serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:7px;line-height:1.5}
+.q .ql i{font-style:normal;color:var(--gold-dk)}
+.q .ql .n{display:inline-block;min-width:18px;color:var(--gold-dk);font-size:12px}
+.s-send{position:sticky;bottom:0;background:linear-gradient(0deg,var(--ivory) 70%,transparent);padding:14px 0 6px;margin-top:18px}
+.s-send button{width:100%;background:linear-gradient(135deg,#d9a948,#9c6f22);color:#fff;border:1px solid var(--gold-dk);border-radius:6px;
+  padding:15px;font-family:"Noto Serif TC",serif;font-weight:900;font-size:16px;letter-spacing:.06em;cursor:pointer;box-shadow:0 10px 24px rgba(156,111,34,.3),inset 0 1px 0 rgba(255,255,255,.35)}
+.s-ok{display:none;text-align:center;padding:6px 0 2px;font-size:12px;color:var(--ok);font-weight:700}
+</style>
+</head>
+<body>
+<div class="marble">
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <filter id="m"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="5" seed="7" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 .61  0 0 0 0 .63  0 0 0 0 .65  0 0 0 .5 0"/></filter>
+  <rect width="100%" height="100%" filter="url(#m)"/>
+</svg>
+</div>
+
+<header>
+  <div class="logo-wrap">
+    <img id="logo" src="srp-logo.png" alt="SOLID ROCK PROMISE" onload="this.style.display='block';this.nextElementSibling.style.display='none'">
+    <svg class="emblem" viewBox="0 0 120 92" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#f4dca0"/><stop offset=".5" stop-color="#d9a948"/><stop offset="1" stop-color="#9c6f22"/>
+        </linearGradient>
+        <linearGradient id="mb" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#dfe1e3"/><stop offset="1" stop-color="#a9adb1"/>
+        </linearGradient>
+      </defs>
+      <path d="M14 76 C30 34 52 20 96 11" stroke="url(#g)" stroke-width="8.5" stroke-linecap="round"/>
+      <path d="M106 76 C90 34 68 20 24 11" stroke="url(#g)" stroke-width="8.5" stroke-linecap="round"/>
+      <path d="M101 4 l2.6 9 9 2.6 -9 2.6 -2.6 9 -2.6 -9 -9 -2.6 9 -2.6 z" fill="url(#g)"/>
+      <path d="M60 48 c-5 -8 -16 -3 -12 5 c2.4 5.4 12 11 12 11 s9.6 -5.6 12 -11 c4 -8 -7 -13 -12 -5 z" fill="none" stroke="url(#g)" stroke-width="3"/>
+      <path d="M30 73 h60 l-7 13 h-46 z" fill="url(#mb)"/>
+      <path d="M40 86 h40" stroke="#8a8f93" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="brand">SOLID ROCK PROMISE</div>
+  <div class="brand-sub">BUSINESS &amp; MEDIA</div>
+  <div class="hair"><i></i><b></b><i></i></div>
+  <div class="tool-name">房產萬能計算機</div>
+  <div class="tool-tag">買賣前先算清楚 不被話術帶著走</div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab on" data-t="land"><span class="i">📐</span>房地合一</button>
+  <button class="tab" data-t="afford"><span class="i">💼</span>購屋能力</button>
+  <button class="tab" data-t="mort"><span class="i">🏡</span>房貸試算</button>
+  <button class="tab" data-t="fee"><span class="i">📗</span>買賣雜費</button>
+  <button class="tab" data-t="ping"><span class="i">🔁</span>坪數換算</button>
+  <button class="tab" data-t="park"><span class="i">🚗</span>車位拆算</button>
+  <button class="tab" data-t="net"><span class="i">💰</span>賣方實拿</button>
+</nav>
+
+<main>
+
+<!-- 房地合一 -->
+<section class="panel on" data-p="land">
+  <div class="card">
+    <div class="p-head"><span class="badge">📐</span><h2>房地合一稅</h2></div>
+    <p class="p-desc">115年新制個人房地合一所得稅試算 賣房前先抓出這筆 才知道實拿剩多少</p>
+    <div class="field"><label>賣出總價</label><div class="in"><input id="l_sale" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    <div class="field"><label>取得成本 <span class="hint">當初買進價</span></label><div class="in"><input id="l_cost" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    <div class="row">
+      <div class="field"><label>取得相關費用 <span class="hint">仲介稅費</span></label><div class="in"><input id="l_acq" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+      <div class="field"><label>土地漲價總數額</label><div class="in"><input id="l_land" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    </div>
+    <div class="field"><label>移轉費用扣除方式</label>
+      <div class="seg" id="l_tfmode"><button class="on" data-v="auto">預設 3%（上限30萬）</button><button data-v="manual">手動輸入</button></div>
+    </div>
+    <div class="field" id="l_tfwrap" style="display:none"><label>移轉費用</label><div class="in"><input id="l_tf" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    <div class="field"><label>持有期間</label>
+      <div class="seg" id="l_hold"><button data-v="0.45">2年內</button><button class="on" data-v="0.35">2–5年</button><button data-v="0.20">5–10年</button><button data-v="0.15">10年以上</button></div>
+    </div>
+    <label class="chk"><input type="checkbox" id="l_self"><span>符合<b>自用住宅滿6年</b>優惠（免稅額400萬＋超過部分10%）</span></label>
+    <div class="res">
+      <div class="lab">應納房地合一稅</div>
+      <div class="big"><span class="gold" id="l_tax">—</span><small>萬</small></div>
+      <div class="sub">
+        <div class="b"><div class="k">課稅所得（稅基）</div><div class="v" id="l_base">—</div></div>
+        <div class="b"><div class="k">適用稅率</div><div class="v" id="l_rate">—</div></div>
+        <div class="b full"><div class="k">採用移轉費用</div><div class="v" id="l_tfval">—</div></div>
+      </div>
+    </div>
+    <div class="note"><b>提醒</b>　自用優惠須符合本人/配偶/直系設籍滿6年且無出租營業 重購退稅、繼承取得另有算法 實際以國稅局核定為準</div>
+  </div>
+</section>
+
+<!-- 購屋能力 -->
+<section class="panel" data-p="afford">
+  <div class="card">
+    <div class="p-head"><span class="badge">💼</span><h2>購屋能力</h2></div>
+    <p class="p-desc">從月收入反推「你大概買得起多少錢的房」 試算利率 2.3%</p>
+    <div class="field"><label>月收入 <span class="hint">家庭可支配</span></label><div class="in"><input id="a_inc" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    <div class="field"><label>現有自備款</label><div class="in"><input id="a_down" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    <div class="field"><label>負債比上限 <span class="hint">月房貸佔月收比</span></label>
+      <div class="seg" id="a_dti"><button class="on" data-v="0.33">保守 33%</button><button data-v="0.50">積極 50%</button><button data-v="0.60">緊繃 60%</button></div>
+    </div>
+    <div class="field"><label>貸款年限</label>
+      <div class="seg" id="a_yr"><button data-v="20">20年</button><button class="on" data-v="30">30年</button></div>
+    </div>
+    <div class="res">
+      <div class="lab">建議房屋總價上限</div>
+      <div class="big">$<span class="gold" id="a_price">—</span><small>萬</small></div>
+      <div class="sub">
+        <div class="b"><div class="k">可貸金額</div><div class="v" id="a_loan">—</div></div>
+        <div class="b"><div class="k">每月房貸支出</div><div class="v" id="a_pay">—</div></div>
+      </div>
+    </div>
+    <div class="note"><b>怎麼看</b>　這是「銀行肯借＋你還得動」的上限 不是建議你買到頂 緊繃60%是壓力測試用 日子要過 抓保守33%才安全</div>
+  </div>
+</section>
+
+<!-- 房貸試算 -->
+<section class="panel" data-p="mort">
+  <div class="card">
+    <div class="p-head"><span class="badge">🏡</span><h2>房貸試算</h2></div>
+    <p class="p-desc">本利均攤 每月還多少、總共付多少利息 支援寬限期</p>
+    <div class="field"><label>貸款金額</label><div class="in"><input id="m_loan" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    <div class="row">
+      <div class="field"><label>年利率</label><div class="in"><input id="m_rate" type="number" inputmode="decimal" value="2.3" step="0.01"><span class="unit">%</span></div></div>
+      <div class="field"><label>貸款期限</label><div class="in"><input id="m_yr" type="number" inputmode="decimal" value="30"><span class="unit">年</span></div></div>
+    </div>
+    <div class="field"><label>寬限期 <span class="hint">只繳息</span></label><div class="in"><input id="m_grace" type="number" inputmode="decimal" value="0"><span class="unit">年</span></div></div>
+    <div class="res">
+      <div class="lab">每月應繳（本息攤還）</div>
+      <div class="big">$<span class="gold" id="m_pay">—</span></div>
+      <div class="sub">
+        <div class="b"><div class="k">寬限期內每月（只繳息）</div><div class="v" id="m_grpay">—</div></div>
+        <div class="b"><div class="k">總利息支出</div><div class="v" id="m_int">—</div></div>
+        <div class="b full"><div class="k">本息總還款金額</div><div class="v" id="m_total">—</div></div>
+      </div>
+    </div>
+    <div class="note"><b>真話</b>　寬限期前幾年只繳息很輕鬆 但本金一毛沒少 寬限一過月繳會跳上去 還款年限也被壓縮 別把寬限當常態</div>
+  </div>
+</section>
+
+<!-- 買賣雜費 -->
+<section class="panel" data-p="fee">
+  <div class="card">
+    <div class="p-head"><span class="badge">📗</span><h2>買賣雜費</h2></div>
+    <p class="p-desc">成交價之外 還要準備多少規費稅金 買方賣方各一份</p>
+    <div class="field"><label>成交總價</label><div class="in"><input id="f_price" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    <div class="field"><label>您的身分</label>
+      <div class="seg" id="f_role"><button class="on" data-v="buyer">買方</button><button data-v="seller">賣方</button></div>
+    </div>
+    <div id="f_buyerin">
+      <div class="row">
+        <div class="field"><label>貸款金額 <span class="hint">算設定費</span></label><div class="in"><input id="f_loan" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+        <div class="field"><label>房屋評定現值 <span class="hint">留空估12%</span></label><div class="in"><input id="f_assess" type="number" inputmode="decimal" placeholder="估"><span class="unit">萬</span></div></div>
+      </div>
+    </div>
+    <div class="bd" id="f_bd"></div>
+    <div class="res">
+      <div class="lab" id="f_lab">買方預估雜項費用</div>
+      <div class="big">$<span class="gold" id="f_tot">—</span><small>萬</small></div>
+    </div>
+    <div class="note"><b>政府規費說明</b>　契稅＝評定現值×6%、印花稅＝公契房地總價×0.1%、登記規費＝（申報地價＋評定現值）×0.1%、書狀費每張80元<br>公部門費用依實際稅單為準 代書費依事務所報價</div>
+  </div>
+</section>
+
+<!-- 坪數換算 -->
+<section class="panel" data-p="ping">
+  <div class="card">
+    <div class="p-head"><span class="badge">🔁</span><h2>坪數換算</h2></div>
+    <p class="p-desc">坪 ⇌ 平方公尺 讀權狀謄本時直接換</p>
+    <div class="conv">
+      <div class="field"><label>坪</label><div class="in"><input id="pg_ping" type="number" inputmode="decimal" placeholder="0"><span class="unit">坪</span></div></div>
+      <button class="swap" aria-label="互換" tabindex="-1">⇌</button>
+      <div class="field"><label>平方公尺</label><div class="in"><input id="pg_m2" type="number" inputmode="decimal" placeholder="0"><span class="unit">m²</span></div></div>
+    </div>
+    <div class="formula">1 坪 = 3.305785 m²　｜　1 m² = 0.3025 坪</div>
+  </div>
+</section>
+
+<!-- 車位拆算 -->
+<section class="panel" data-p="park">
+  <div class="card">
+    <div class="p-head"><span class="badge">🚗</span><h2>車位拆算</h2></div>
+    <p class="p-desc">實價登錄和傳單常把車位灌進總價總坪 拆掉車位 才看得到房屋的真實單價</p>
+    <div class="row">
+      <div class="field"><label>房屋總價 <span class="hint">含車位</span></label><div class="in"><input id="k_price" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+      <div class="field"><label>權狀總坪數 <span class="hint">含車位</span></label><div class="in"><input id="k_ping" type="number" inputmode="decimal" placeholder="0"><span class="unit">坪</span></div></div>
+    </div>
+    <div class="row">
+      <div class="field"><label>車位價格</label><div class="in"><input id="k_pkprice" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+      <div class="field"><label>車位坪數</label><div class="in"><input id="k_pkping" type="number" inputmode="decimal" placeholder="0"><span class="unit">坪</span></div></div>
+    </div>
+    <div class="res">
+      <div class="lab">扣除車位後 房屋真實單價</div>
+      <div class="big"><span class="gold" id="k_unit">—</span><small>萬/坪</small></div>
+      <div class="sub">
+        <div class="b"><div class="k">房屋價格（扣車位）</div><div class="v" id="k_hp">—</div></div>
+        <div class="b"><div class="k">房屋坪數（扣車位）</div><div class="v" id="k_hping">—</div></div>
+      </div>
+    </div>
+    <div class="note"><b>比價一律用這個</b>　別人拿含車位單價跟你拚便宜 你拿扣車位單價回他 才是同一把尺</div>
+  </div>
+</section>
+
+<!-- 賣方實拿 -->
+<section class="panel" data-p="net">
+  <div class="card">
+    <div class="p-head"><span class="badge">💰</span><h2>賣方實拿速算</h2></div>
+    <p class="p-desc">屋主最關心一句「賣掉到底拿多少」 全部費用稅金貸款一次扣完 還能反推開價</p>
+    <div class="row">
+      <div class="field"><label>總坪數 <span class="hint">含車位</span></label><div class="in"><input id="n_ping" type="number" inputmode="decimal" placeholder="0"><span class="unit">坪</span></div></div>
+      <div class="field"><label>車位坪數</label><div class="in"><input id="n_pkping" type="number" inputmode="decimal" placeholder="0"><span class="unit">坪</span></div></div>
+    </div>
+    <div class="field"><label>車位價格</label><div class="in"><input id="n_pkprice" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    <div class="row">
+      <div class="field"><label>房屋取得價格 <span class="hint">當年買多少</span></label><div class="in"><input id="n_cost" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+      <div class="field"><label>取得相關成本 <span class="hint">仲契印代</span></label><div class="in"><input id="n_acq" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    </div>
+    <div class="field"><label>持有期間 <span class="hint">算房地合一稅率</span></label>
+      <div class="seg" id="n_hold"><button data-v="0.45">2年內</button><button class="on" data-v="0.20">5–10年</button><button data-v="0.35">2–5年</button><button data-v="0.15">10年以上</button></div>
+    </div>
+    <label class="chk" style="margin-bottom:13px"><input type="checkbox" id="n_self"><span>符合<b>自用滿6年</b>優惠</span></label>
+    <div class="row">
+      <div class="field"><label>土增稅 <span class="hint">依稅單</span></label><div class="in"><input id="n_lvit" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+      <div class="field"><label>剩餘貸款餘額</label><div class="in"><input id="n_debt" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    </div>
+    <div class="field"><label>想賣的總價 <span class="hint">與單價雙向連動</span></label><div class="in"><input id="n_total" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+    <div class="field"><label>房屋單價 <span class="hint">已扣車位</span></label><div class="in"><input id="n_unit" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬/坪</span></div></div>
+    <div class="res">
+      <div class="lab">屋主實拿（扣全部費用＋稅＋貸款）</div>
+      <div class="big">$<span class="gold" id="n_net">—</span><small>萬</small></div>
+      <div class="sub">
+        <div class="b"><div class="k">談價用房屋單價</div><div class="v" id="n_unitshow">—</div></div>
+        <div class="b"><div class="k">房地合一稅</div><div class="v" id="n_lhtax">—</div></div>
+      </div>
+    </div>
+    <div class="bd" id="n_bd"></div>
+    <div class="field" style="margin-top:16px"><label>🔄 反推實拿　屋主說「我要拿 ___ 萬」</label><div class="in"><input id="n_want" type="number" inputmode="decimal" placeholder="輸入想實拿金額"><span class="unit">萬</span></div></div>
+    <div class="res" style="background:linear-gradient(160deg,#7a5417,#5a3d10)">
+      <div class="lab" style="color:#f0d9a8">建議開價（其他欄位需先填好）</div>
+      <div class="sub" style="margin-top:8px">
+        <div class="b"><div class="k">建議掛總價</div><div class="v" id="n_sgtot">—</div></div>
+        <div class="b"><div class="k">建議單價</div><div class="v" id="n_sgunit">—</div></div>
+      </div>
+    </div>
+    <div class="note"><b>提醒</b>　房地合一稅基此處以「成交－取得－成本－移轉費用」簡算 未含土地漲價額扣除 精算請切房地合一分頁 履保費萬分之三、服務費以4%估</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <a class="cta" href="https://lin.ee/IV8bl9H" target="_blank" rel="noopener"><span class="h">❤</span> LINE 找何志宏估價</a>
+  <div class="sign">何志宏｜住商不動產樹林站前</div>
+  <div class="slogan">賣房不賣低　先估價再委託</div>
+  <br>
+  <button class="whisper" id="surveyOpen"><span class="d"></span>算完還是沒方向　點我 60 秒抓出你的房事<span class="d"></span></button>
+  <div class="disc">© 2026 SOLID ROCK PROMISE 房產萬能計算機<br>本工具僅供參考 實際金額以銀行核貸與政府核定稅單為準</div>
+</footer>
+
+<!-- ===== 隱藏式需求調查（曼陀羅九宮＋倒裝句） ===== -->
+<div class="ov" id="surveyOv">
+  <div class="sheet" role="dialog" aria-label="需求調查">
+    <div class="sheet-h">
+      <button class="x" id="surveyClose" aria-label="關閉">✕</button>
+      <div class="kk">SOLID ROCK PROMISE</div>
+      <div class="ttl">先把你的房事<b>講清楚</b></div>
+      <div class="sb">填的不是表格 是幫你少走冤枉路的一張圖</div>
+    </div>
+
+    <!-- 曼陀羅九宮：中心＝你要幹嘛 八格＝抓全的八個面向 點格子跳到該題 -->
+    <div class="mand" id="mand">
+      <div class="c" data-go="q1"><span class="n">①</span>角色</div>
+      <div class="c" data-go="q2"><span class="n">②</span>區域</div>
+      <div class="c" data-go="q3"><span class="n">③</span>價位</div>
+      <div class="c" data-go="q8"><span class="n">⑧</span>現況</div>
+      <div class="c mid"><span class="n">核心</span>你的房事</div>
+      <div class="c" data-go="q4"><span class="n">④</span>物件</div>
+      <div class="c" data-go="q7"><span class="n">⑦</span>聯絡</div>
+      <div class="c" data-go="q6"><span class="n">⑥</span>資金</div>
+      <div class="c" data-go="q5"><span class="n">⑤</span>時間</div>
+    </div>
+    <div class="s-hint">點上面任一格 直接跳到那題</div>
+
+    <div class="s-body">
+      <div class="q" id="q1"><label class="ql"><span class="n">①</span>會找上門的　多半心裡先有個方向了 — <i>你這次是想</i></label>
+        <div class="seg" id="sv_role"><button data-v="想買">想買</button><button data-v="想賣">想賣</button><button data-v="買也賣">買也想賣</button><button data-v="先看看">先看看</button></div></div>
+
+      <div class="q" id="q2"><label class="ql"><span class="n">②</span>看上哪　通常已經有譜 — <i>你鎖定的區域是</i></label>
+        <div class="in"><input id="sv_area" type="text" placeholder="樹林／板橋／新莊／中和／土城…"></div></div>
+
+      <div class="q" id="q3"><label class="ql"><span class="n">③</span>怕買貴 也怕賣低　錢的底線最該先講 — <i>你的預算或期待價落在</i></label>
+        <div class="in"><input id="sv_price" type="number" inputmode="decimal" placeholder="0"><span class="unit">萬</span></div></div>
+
+      <div class="q" id="q4"><label class="ql"><span class="n">④</span>住得下住不下　坪數格局先決定 — <i>你想要的物件條件</i></label>
+        <div class="in"><input id="sv_obj" type="text" placeholder="例：3房2廳 約35坪 要車位"></div></div>
+
+      <div class="q" id="q5"><label class="ql"><span class="n">⑤</span>晚一步就被別人定走了 — <i>你大概多久內要成</i></label>
+        <div class="seg" id="sv_time"><button data-v="1個月內">1個月內</button><button data-v="3個月內">3個月內</button><button data-v="半年內">半年內</button><button data-v="不急再看">不急</button></div></div>
+
+      <div class="q" id="q6"><label class="ql"><span class="n">⑥</span>貸不貸得下來　早點知道才不慌 — <i>你的自備或貸款狀況</i></label>
+        <div class="in"><input id="sv_fund" type="text" placeholder="例：自備300萬／剩貸500萬／想問成數"></div></div>
+
+      <div class="q" id="q7"><label class="ql"><span class="n">⑦</span>真正卡住的　常常不是房子 是這個 — <i>你現在最頭痛的一件事</i></label>
+        <div class="in"><input id="sv_pain" type="text" placeholder="一句話講你最在意的"></div></div>
+
+      <div class="q" id="q8"><label class="ql"><span class="n">⑧</span>方便回你 我才幫得上 — <i>留個稱呼與聯絡方式</i></label>
+        <div class="in" style="margin-bottom:8px"><input id="sv_name" type="text" placeholder="怎麼稱呼你"></div>
+        <div class="in" style="margin-bottom:8px"><input id="sv_contact" type="text" inputmode="tel" placeholder="LINE ID 或電話"></div>
+        <div class="seg" id="sv_when"><button data-v="白天">白天方便</button><button data-v="晚上">晚上方便</button><button data-v="假日">假日方便</button></div></div>
+
+      <div class="s-send">
+        <button id="surveySend">整理好　傳給何志宏 →</button>
+        <div class="s-ok" id="surveyOk">✓ 已複製你的需求 正在打開 LINE 貼上送出就好</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const num=id=>{const v=parseFloat($(id).value);return isFinite(v)?v:0;};
+const fmt=(n,d=0)=>{if(!isFinite(n))return '—';return n.toLocaleString('zh-TW',{minimumFractionDigits:d,maximumFractionDigits:d});};
+const M2_PER_PING=3.3057851, PING_PER_M2=0.3025;
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t===b));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.dataset.p===b.dataset.t));});
+function seg(wrapId,cb){const w=$(wrapId);w.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  [...w.children].forEach(x=>x.classList.toggle('on',x===b));cb(b.dataset.v);});return ()=>{const on=w.querySelector('.on');return on?on.dataset.v:null;};}
+function amort(P,annual,years,grace){const r=annual/100/12,n=Math.round(years*12),g=Math.round((grace||0)*12),k=n-g;
+  if(P<=0||n<=0||k<=0)return{gr:0,pay:0,total:0,interest:0};let pay;if(r===0)pay=P/k;else pay=P*r*Math.pow(1+r,k)/(Math.pow(1+r,k)-1);
+  const gr=P*r,total=gr*g+pay*k;return{gr,pay,total,interest:total-P};}
+function principalFromPay(M,annual,years){const r=annual/100/12,n=Math.round(years*12);if(M<=0)return 0;if(r===0)return M*n;
+  return M*(Math.pow(1+r,n)-1)/(r*Math.pow(1+r,n));}
+/* 房地合一 */
+const getTfMode=seg('l_tfmode',v=>{$('l_tfwrap').style.display=v==='manual'?'block':'none';calcLand();});
+const getHold=seg('l_hold',calcLand);
+function calcLand(){const sale=num('l_sale'),cost=num('l_cost'),acq=num('l_acq'),land=num('l_land');
+  let tf=getTfMode()==='manual'?num('l_tf'):Math.min(sale*0.03,30);
+  let base=sale-cost-acq-land-tf;const self=$('l_self').checked;const rate=parseFloat(getHold());let tax,useRate;
+  if(base<=0){tax=0;useRate=self?0.10:rate;}else if(self){tax=Math.max(0,base-400)*0.10;useRate=0.10;}else{tax=base*rate;useRate=rate;}
+  $('l_tax').textContent=fmt(tax,1);$('l_base').textContent=fmt(base,1)+' 萬';
+  $('l_rate').textContent=self?'10%（自用）':(useRate*100)+'%';
+  $('l_tfval').textContent=fmt(tf,1)+' 萬'+(getTfMode()==='manual'?'':'　(成交3%上限30)');}
+['l_sale','l_cost','l_acq','l_land','l_tf'].forEach(id=>$(id).addEventListener('input',calcLand));
+$('l_self').addEventListener('change',calcLand);
+/* 購屋能力 */
+const getDti=seg('a_dti',calcAfford);const getAyr=seg('a_yr',calcAfford);
+function calcAfford(){const inc=num('a_inc'),down=num('a_down'),dti=parseFloat(getDti()),yr=parseFloat(getAyr());
+  const mp=inc*10000*dti,loan=principalFromPay(mp,2.3,yr),loanW=loan/10000,priceW=loanW+down;
+  $('a_price').textContent=fmt(priceW,0);$('a_loan').textContent=fmt(loanW,0)+' 萬';$('a_pay').textContent='$'+fmt(mp,0);}
+['a_inc','a_down'].forEach(id=>$(id).addEventListener('input',calcAfford));
+/* 房貸 */
+function calcMort(){const P=num('m_loan')*10000,r=amort(P,num('m_rate'),num('m_yr'),num('m_grace'));
+  $('m_pay').textContent=fmt(r.pay,0);$('m_grpay').textContent=num('m_grace')>0?'$'+fmt(r.gr,0):'無寬限';
+  $('m_int').textContent='$'+fmt(r.interest,0);$('m_total').textContent='$'+fmt(r.total,0);}
+['m_loan','m_rate','m_yr','m_grace'].forEach(id=>$(id).addEventListener('input',calcMort));
+/* 買賣雜費 */
+const getRole=seg('f_role',v=>{$('f_buyerin').style.display=v==='buyer'?'block':'none';calcFee();});
+function calcFee(){const price=num('f_price'),role=getRole(),bd=$('f_bd');let lines=[];
+  if(role==='buyer'){$('f_lab').textContent='買方預估雜項費用';
+    const loan=num('f_loan'),assess=num('f_assess')||price*0.12,landv=price*0.10;
+    lines=[['契稅（評現×6%）',assess*0.06],['印花稅',(assess+landv)*0.001],['登記規費＋書狀',(assess+landv)*0.001+0.016],
+      ['抵押設定規費',loan*1.2*0.001],['代書費',1.8],['銀行開辦／徵信',loan>0?0.6:0],['履保費',price*0.0003],['火險＋地震險',loan>0?0.35:0]];
+  }else{$('f_lab').textContent='賣方預估雜項費用';
+    lines=[['仲介服務費（4%）',price*0.04],['履保費（萬分之三）',price*0.0003],['代書費（潤筆）',0.1],['實價登錄費',0.2],['塗銷費＋稅籍',0.6]];}
+  const tot=lines.reduce((s,l)=>s+l[1],0);
+  bd.innerHTML=lines.map(l=>`<div class="ln"><span class="k">${l[0]}</span><span class="v">${fmt(l[1],2)} 萬</span></div>`).join('')
+    +`<div class="ln tot"><span class="k">費用總計</span><span class="v">${fmt(tot,2)} 萬</span></div>`;
+  $('f_tot').textContent=fmt(tot,1);}
+['f_price','f_loan','f_assess'].forEach(id=>$(id).addEventListener('input',calcFee));
+/* 坪數 */
+let pgLock=false;
+$('pg_ping').addEventListener('input',()=>{if(pgLock)return;pgLock=true;const v=num('pg_ping');$('pg_m2').value=v?(v*M2_PER_PING).toFixed(4):'';pgLock=false;});
+$('pg_m2').addEventListener('input',()=>{if(pgLock)return;pgLock=true;const v=num('pg_m2');$('pg_ping').value=v?(v*PING_PER_M2).toFixed(4):'';pgLock=false;});
+/* 車位 */
+function calcPark(){const hp=num('k_price')-num('k_pkprice'),hping=num('k_ping')-num('k_pkping'),unit=hping>0?hp/hping:NaN;
+  $('k_unit').textContent=isFinite(unit)&&hping>0?fmt(unit,2):'—';$('k_hp').textContent=fmt(hp,0)+' 萬';$('k_hping').textContent=fmt(hping,2)+' 坪';}
+['k_price','k_ping','k_pkprice','k_pkping'].forEach(id=>$(id).addEventListener('input',calcPark));
+/* 賣方實拿 */
+const getNHold=seg('n_hold',calcNet);
+function lhTaxNet(total){const cost=num('n_cost'),acq=num('n_acq'),self=$('n_self').checked,rate=parseFloat(getNHold());
+  const tf=Math.min(total*0.03,30);let base=total-cost-acq-tf;if(base<=0)return 0;
+  return self?Math.max(0,base-400)*0.10:base*rate;}
+function netFromTotal(total){const escrow=total*0.0003,svc=total*0.04,lvit=num('n_lvit'),debt=num('n_debt'),lh=lhTaxNet(total);
+  const fees=0.1+0.2+0.6+escrow+svc+lvit+lh+debt;return{net:total-fees,escrow,svc,lh,lvit,debt,fees};}
+let nLock=false;
+function syncUnitToTotal(){const hP=num('n_total')-num('n_pkprice'),hG=num('n_ping')-num('n_pkping');$('n_unit').value=hG>0?(hP/hG).toFixed(2):'';}
+function syncTotalToUnit(){const hG=num('n_ping')-num('n_pkping');$('n_total').value=hG>0?(num('n_unit')*hG+num('n_pkprice')).toFixed(1):'';}
+function calcNet(){const total=num('n_total'),r=netFromTotal(total),hG=num('n_ping')-num('n_pkping');
+  const unit=hG>0?(total-num('n_pkprice'))/hG:NaN;
+  $('n_net').textContent=total>0?fmt(r.net,1):'—';
+  $('n_unitshow').textContent=isFinite(unit)&&hG>0?fmt(unit,2)+' 萬/坪':'—';$('n_lhtax').textContent=fmt(r.lh,1)+' 萬';
+  $('n_bd').innerHTML=[['代書費（潤筆）',0.1],['實價登錄費',0.2],['履保費（萬分之三）',r.escrow],['仲介服務費（4%）',r.svc],
+    ['塗銷費＋稅籍',0.6],['土增稅',r.lvit],['房地合一稅',r.lh],['剩餘貸款',r.debt]]
+    .map(l=>`<div class="ln"><span class="k">${l[0]}</span><span class="v">${fmt(l[1],2)} 萬</span></div>`).join('')
+    +`<div class="ln tot"><span class="k">合計扣除</span><span class="v">${fmt(r.fees,2)} 萬</span></div>`;
+  calcReverse();}
+function calcReverse(){const want=num('n_want');if(want<=0){$('n_sgtot').textContent='—';$('n_sgunit').textContent='—';return;}
+  let lo=want,hi=want*3+2000;for(let i=0;i<70;i++){const m=(lo+hi)/2;if(netFromTotal(m).net<want)lo=m;else hi=m;}
+  const sg=(lo+hi)/2,hG=num('n_ping')-num('n_pkping'),sgU=hG>0?(sg-num('n_pkprice'))/hG:NaN;
+  $('n_sgtot').textContent=fmt(sg,0)+' 萬';$('n_sgunit').textContent=isFinite(sgU)&&hG>0?fmt(sgU,2)+' 萬/坪':'—';}
+$('n_total').addEventListener('input',()=>{if(nLock)return;nLock=true;syncUnitToTotal();nLock=false;calcNet();});
+$('n_unit').addEventListener('input',()=>{if(nLock)return;nLock=true;syncTotalToUnit();nLock=false;calcNet();});
+['n_ping','n_pkping','n_pkprice','n_cost','n_acq','n_lvit','n_debt'].forEach(id=>$(id).addEventListener('input',()=>{syncUnitToTotal();calcNet();}));
+$('n_self').addEventListener('change',calcNet);$('n_want').addEventListener('input',calcReverse);
+/* ===== 隱藏式需求調查 ===== */
+const LINE_URL="https://lin.ee/IV8bl9H";
+const ov=$('surveyOv');
+const openSv=()=>{ov.classList.add('on');document.body.style.overflow='hidden';};
+const closeSv=()=>{ov.classList.remove('on');document.body.style.overflow='';};
+$('surveyOpen').addEventListener('click',openSv);
+$('surveyClose').addEventListener('click',closeSv);
+ov.addEventListener('click',e=>{if(e.target===ov)closeSv();});
+$('mand').addEventListener('click',e=>{const c=e.target.closest('[data-go]');if(!c)return;
+  const t=$(c.dataset.go);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});
+/* 單選按鈕群（記錄選取值） */
+const svPick={};
+['sv_role','sv_time','sv_when'].forEach(gid=>{const w=$(gid);
+  w.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+    [...w.children].forEach(x=>x.classList.toggle('on',x===b));svPick[gid]=b.dataset.v;});});
+const tval=id=>{const v=$(id).value.trim();return v||'—';};
+function buildSurvey(){
+  const price=$('sv_price').value.trim();
+  return [
+    '【SOLID ROCK PROMISE｜需求調查】',
+    '① 角色：'+(svPick.sv_role||'—'),
+    '② 區域：'+tval('sv_area'),
+    '③ 預算／期待價：'+(price?price+' 萬':'—'),
+    '④ 物件條件：'+tval('sv_obj'),
+    '⑤ 時間：'+(svPick.sv_time||'—'),
+    '⑥ 資金／貸款：'+tval('sv_fund'),
+    '⑦ 最頭痛：'+tval('sv_pain'),
+    '────────',
+    '稱呼：'+tval('sv_name'),
+    '聯絡：'+tval('sv_contact'),
+    '方便時段：'+(svPick.sv_when||'—'),
+  ].join('\n');
+}
+$('surveySend').addEventListener('click',()=>{
+  const txt=buildSurvey();
+  const done=()=>{$('surveyOk').style.display='block';setTimeout(()=>window.open(LINE_URL,'_blank'),650);};
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>{fallbackCopy(txt);done();});
+  }else{fallbackCopy(txt);done();}
+});
+function fallbackCopy(t){const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+
+calcLand();calcAfford();calcMort();calcFee();calcPark();calcNet();
+</script>
+<p style="text-align:center;margin:18px 0;font-size:.95rem"><a href="/mingpian/" target="_blank" rel="noopener">電子名片（證號 · 服務區域 · 聯絡方式）</a></p>
+</body>
+</html>

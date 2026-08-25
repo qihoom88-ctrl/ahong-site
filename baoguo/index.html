@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2B3A4A">
+  <meta name="description" content="反毒代收包裹運毒踩雷懶人包，整理18個危險訊號、EZ WAY冒名申報處理、拒絕話術、證據保存清單、165與官方反毒諮詢管道">
+  <meta name="keywords" content="何志宏,新北房仲,樹林買房,鴻觀,代收包裹,運輸毒品,網路交友詐騙,反毒,法律風險,EZ WAY,冒名申報">
+  <meta property="og:title" content="代收包裹不是小忙：18個運毒踩雷訊號">
+  <meta property="og:description" content="不要領、不要拆、不要轉交，先查證收件人、報關資料與交付對象">
+  <title>代收包裹運毒踩雷懶人包｜何志宏 樹林阿宏</title>
+  <style>
+    :root{
+      --trust:#2B3A4A;
+      --gold:#D4AF37;
+      --orange:#ED8B4E;
+      --paper:#F4F1E9;
+      --white:#FFFFFF;
+      --ink:#16212B;
+      --muted:#5D6872;
+      --red:#B42318;
+      --red2:#D92D20;
+      --red-soft:#FFF1F0;
+      --green:#157A5B;
+      --green-soft:#EAF8F2;
+      --blue-soft:#EAF1F7;
+      --line:#D7DDE2;
+      --shadow:0 12px 32px rgba(43,58,74,.10);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 92% 1%,rgba(212,175,55,.18),transparent 25rem),
+        linear-gradient(180deg,#EDF1F4 0,#F8F6F0 32rem,var(--paper) 100%);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      line-height:1.75;
+      letter-spacing:.02em;
+    }
+    a{color:inherit}
+    .wrap{width:min(100% - 28px,790px);margin:auto}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      margin:18px auto 22px;
+      padding:34px 23px 28px;
+      color:#fff;
+      background:var(--trust);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+    }
+    .hero:before{
+      content:"";
+      position:absolute;
+      width:220px;height:220px;
+      top:-120px;right:-74px;
+      border:30px solid rgba(212,175,55,.20);
+      border-radius:50%;
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      width:150px;height:150px;
+      left:-72px;bottom:-95px;
+      border-radius:50%;
+      background:rgba(237,139,78,.22);
+    }
+    .eyebrow,.badge{
+      position:relative;
+      z-index:1;
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:6px 11px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:.84rem;
+    }
+    .eyebrow{color:var(--trust);background:var(--gold)}
+    .badge{color:#F0F3F5;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.20)}
+    h1{
+      position:relative;
+      z-index:1;
+      margin:18px 0 12px;
+      max-width:42rem;
+      font-size:clamp(2rem,8.6vw,3.75rem);
+      line-height:1.09;
+      letter-spacing:-.045em;
+    }
+    .hero .pain{
+      position:relative;
+      z-index:1;
+      margin:0 0 20px;
+      max-width:37rem;
+      color:#F5EBCB;
+      font-size:1.12rem;
+      font-weight:800;
+    }
+    .meta{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px}
+    .byline{
+      position:relative;
+      z-index:1;
+      margin:16px 0 0;
+      padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.16);
+      color:#E2E7EA;
+      font-size:.88rem;
+    }
+    .jump{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:9px;
+      margin:0 0 22px;
+    }
+    .jump a{
+      padding:11px 12px;
+      color:var(--trust);
+      background:rgba(255,255,255,.76);
+      border:1px solid rgba(43,58,74,.10);
+      border-radius:13px;
+      text-align:center;
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:900;
+    }
+    section{margin:24px 0}
+    .section-head{margin:0 0 14px}
+    .kicker{
+      display:block;
+      margin-bottom:3px;
+      color:var(--orange);
+      font-size:.82rem;
+      font-weight:950;
+      letter-spacing:.15em;
+    }
+    h2{margin:0;color:var(--trust);font-size:1.57rem;line-height:1.3}
+    h3{line-height:1.4}
+    .lead{margin:7px 0 0;color:var(--muted)}
+    .misunderstanding{
+      padding:20px;
+      background:var(--red-soft);
+      border:2px solid var(--red);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .false-line{
+      margin:0 0 15px;
+      padding:12px 14px;
+      color:var(--red);
+      background:#fff;
+      border-radius:14px;
+      font-weight:950;
+      text-decoration:line-through;
+      text-decoration-thickness:3px;
+    }
+    .fix-list{display:grid;gap:12px}
+    .fix{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+    .num{
+      display:grid;
+      place-items:center;
+      width:34px;height:34px;
+      color:#fff;background:var(--red);
+      border-radius:50%;
+      font-weight:950;
+    }
+    .fix strong{color:var(--trust)}
+    .source-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      margin-top:13px;
+      color:var(--red);
+      border-bottom:2px solid currentColor;
+      text-decoration:none;
+      font-weight:950;
+    }
+    .cards{display:grid;gap:13px}
+    .card{
+      display:block;
+      padding:20px;
+      background:var(--white);
+      border:1px solid rgba(43,58,74,.10);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      text-decoration:none;
+      transition:transform .18s ease,box-shadow .18s ease;
+    }
+    .card:hover,.card:focus-visible{transform:translateY(-3px);box-shadow:0 18px 38px rgba(43,58,74,.16)}
+    .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .card h3{margin:0;color:var(--trust);font-size:1.15rem}
+    .arrow{
+      flex:none;
+      display:grid;place-items:center;
+      width:32px;height:32px;
+      color:var(--trust);
+      background:#F0F2F4;
+      border-radius:50%;
+      font-weight:950;
+    }
+    .big{
+      margin:14px 0 8px;
+      color:var(--gold);
+      font-size:clamp(1.8rem,8vw,2.7rem);
+      line-height:1.08;
+      font-weight:950;
+      letter-spacing:-.04em;
+    }
+    .card p{margin:0;color:var(--muted)}
+    .law-grid{display:grid;gap:12px}
+    .law{
+      padding:19px;
+      color:#fff;
+      background:var(--trust);
+      border-radius:20px;
+    }
+    .law .level{color:#E9D785;font-weight:950}
+    .law .penalty{display:block;margin:7px 0 5px;font-size:1.43rem;line-height:1.28;font-weight:950}
+    .law small{color:#DCE2E6}
+    .risk-board{display:grid;gap:13px}
+    .risk-group{
+      overflow:hidden;
+      background:#fff;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+    }
+    .risk-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin:0;
+      padding:15px 17px;
+      color:#fff;
+      background:var(--trust);
+      font-size:1.08rem;
+    }
+    .risk-title span{
+      display:grid;place-items:center;
+      width:34px;height:34px;
+      color:var(--trust);
+      background:var(--gold);
+      border-radius:10px;
+      font-weight:950;
+    }
+    .risk-list{margin:0;padding:5px 17px 10px;list-style:none}
+    .risk-list li{
+      position:relative;
+      padding:12px 2px 12px 30px;
+      border-bottom:1px solid var(--line);
+    }
+    .risk-list li:last-child{border-bottom:0}
+    .risk-list li:before{
+      content:"!";
+      position:absolute;
+      left:0;top:13px;
+      display:grid;place-items:center;
+      width:20px;height:20px;
+      color:#fff;background:var(--red2);
+      border-radius:50%;
+      font-size:.78rem;
+      font-weight:950;
+    }
+    .risk-list strong{color:var(--red)}
+    .rule{
+      margin-top:13px;
+      padding:17px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--red),#841A14);
+      border-radius:18px;
+      font-weight:900;
+      box-shadow:var(--shadow);
+    }
+    .scenario-grid{display:grid;gap:12px}
+    .scenario{
+      padding:18px;
+      background:#fff;
+      border-left:6px solid var(--orange);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+    }
+    .scenario h3{margin:0 0 8px;color:var(--trust);font-size:1.08rem}
+    .scenario p{margin:0;color:var(--muted)}
+    .scenario .do{
+      display:block;
+      margin-top:9px;
+      color:var(--green);
+      font-weight:950;
+    }
+    .ezway{
+      overflow:hidden;
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+    .ezway-head{padding:19px;color:#fff;background:var(--trust)}
+    .ezway-head h3{margin:0;font-size:1.25rem}
+    .ezway-head p{margin:5px 0 0;color:#DEE5E9}
+    .ezway-steps{counter-reset:ez;padding:8px 18px 17px}
+    .ez{
+      position:relative;
+      padding:14px 0 14px 47px;
+      border-bottom:1px solid var(--line);
+    }
+    .ez:last-child{border-bottom:0}
+    .ez:before{
+      counter-increment:ez;
+      content:counter(ez);
+      position:absolute;
+      left:0;top:14px;
+      display:grid;place-items:center;
+      width:32px;height:32px;
+      color:var(--trust);background:var(--gold);
+      border-radius:50%;
+      font-weight:950;
+    }
+    .ez strong{display:block;color:var(--trust)}
+    .warning{
+      margin:0 18px 18px;
+      padding:14px;
+      color:var(--red);
+      background:var(--red-soft);
+      border:1px solid #F2B8B5;
+      border-radius:14px;
+      font-weight:900;
+    }
+    .checklist{
+      display:grid;
+      gap:0;
+      padding:9px 18px;
+      background:#fff;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .check{
+      display:grid;
+      grid-template-columns:29px 1fr;
+      gap:10px;
+      align-items:start;
+      padding:12px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .check:last-child{border-bottom:0}
+    .box{
+      display:grid;place-items:center;
+      width:27px;height:27px;
+      color:var(--orange);
+      border:2px solid var(--orange);
+      border-radius:7px;
+      font-weight:950;
+    }
+    .action{
+      margin-top:13px;
+      padding:19px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--orange),#D96B30);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .action h3{margin:0 0 8px;font-size:1.22rem}
+    .action p{margin:0;font-size:1.08rem;font-weight:950}
+    .evidence{
+      display:grid;
+      gap:11px;
+      padding:18px;
+      background:var(--blue-soft);
+      border:1px solid #C9D7E4;
+      border-radius:var(--radius);
+    }
+    .evidence-row{
+      display:grid;
+      grid-template-columns:36px 1fr;
+      gap:10px;
+      align-items:start;
+    }
+    .evidence-row span{
+      display:grid;place-items:center;
+      width:36px;height:36px;
+      color:#fff;background:var(--trust);
+      border-radius:11px;
+      font-weight:950;
+    }
+    .evidence-row strong{display:block;color:var(--trust)}
+    .scripts{display:grid;gap:11px}
+    .script{
+      padding:17px;
+      color:var(--trust);
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:17px;
+      box-shadow:var(--shadow);
+    }
+    .script small{
+      display:block;
+      margin-bottom:6px;
+      color:var(--orange);
+      font-weight:950;
+    }
+    .script p{margin:0;font-weight:850}
+    .channels{display:grid;gap:12px}
+    .channel{
+      display:grid;
+      grid-template-columns:50px 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:15px;
+      background:#fff;
+      border-radius:18px;
+      text-decoration:none;
+      box-shadow:var(--shadow);
+    }
+    .icon{
+      display:grid;place-items:center;
+      width:50px;height:50px;
+      color:var(--trust);
+      background:#F4E7BC;
+      border-radius:15px;
+      font-size:1.08rem;
+      font-weight:950;
+    }
+    .channel strong{display:block;color:var(--trust)}
+    .channel span span{display:block;color:var(--muted);font-size:.88rem}
+    .go{color:var(--orange);font-weight:950}
+    .sources{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+    .sources a{
+      display:block;
+      padding:14px 16px;
+      color:var(--trust);
+      background:rgba(255,255,255,.78);
+      border:1px solid var(--line);
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:850;
+    }
+    .disclaimer{
+      padding:15px 17px;
+      color:var(--muted);
+      background:#E9EDF0;
+      border-radius:16px;
+      font-size:.88rem;
+    }
+    footer{
+      margin-top:30px;
+      padding:34px 0 28px;
+      color:#2B211D;
+      background:var(--orange);
+    }
+    .brand{
+      margin:0;
+      font-size:clamp(1.65rem,7vw,2.35rem);
+      line-height:1.25;
+      font-weight:950;
+      letter-spacing:-.03em;
+    }
+    .transition{margin:14px 0 20px;max-width:35rem;font-weight:850}
+    .cta-grid{display:grid;gap:10px}
+    .cta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding:15px 17px;
+      color:#fff;background:var(--trust);
+      border-radius:15px;
+      box-shadow:0 10px 22px rgba(43,58,74,.18);
+      text-decoration:none;
+      font-weight:950;
+    }
+    .footer-note{
+      margin:18px 0 0;
+      padding-top:16px;
+      border-top:1px solid rgba(43,58,74,.25);
+      font-size:.84rem;
+      font-weight:750;
+    }
+    @media (min-width:660px){
+      .hero{padding:46px 42px 36px}
+      .jump{grid-template-columns:repeat(4,1fr)}
+      .cards.two{grid-template-columns:repeat(2,1fr)}
+      .law-grid{grid-template-columns:repeat(3,1fr)}
+      .law .penalty{font-size:1.22rem}
+      .risk-board{grid-template-columns:repeat(2,1fr)}
+      .scenario-grid{grid-template-columns:repeat(2,1fr)}
+      .scripts{grid-template-columns:repeat(2,1fr)}
+      .cta-grid{grid-template-columns:repeat(3,1fr)}
+      .cta{min-height:92px;align-items:flex-start;flex-direction:column}
+    }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .card{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <span class="eyebrow">反毒 × 代收包裹防雷手冊</span>
+      <h1>代收不是小忙<br>18 個訊號可能把你推進運毒案件</h1>
+      <p class="pain">對方看上的可能不是你的熱心，而是你的姓名、手機、地址、EZ WAY 實名資料，以及能替犯罪集團製造斷點的雙手</p>
+      <div class="meta">
+        <span class="badge">資料查核日期：2026-07-15</span>
+        <span class="badge">適用全台灣本島與離島</span>
+      </div>
+      <p class="byline">整理：何志宏｜樹林阿宏｜0930-848000</p>
+    </header>
+
+    <nav class="jump" aria-label="快速跳轉">
+      <a href="#risks">18 個踩雷訊號</a>
+      <a href="#scenarios">現場怎麼做</a>
+      <a href="#ezway">EZ WAY 處理</a>
+      <a href="#help">官方管道</a>
+    </nav>
+
+    <section aria-labelledby="misunderstanding-title">
+      <div class="section-head">
+        <span class="kicker">先拆掉錯誤安全感</span>
+        <h2 id="misunderstanding-title">最容易誤會的 3 件事</h2>
+      </div>
+      <div class="misunderstanding">
+        <p class="false-line">「我只是幫忙領、沒有拆、沒有拿錢，所以一定沒事」</p>
+        <div class="fix-list">
+          <div class="fix">
+            <span class="num">1</span>
+            <div><strong>不是碰到包裹就自動有罪</strong><br>但對話內容、報酬、取件方式、轉交地點、收件資料與行為是否反常，都可能成為司法機關判斷是否知情的證據</div>
+          </div>
+          <div class="fix">
+            <span class="num">2</span>
+            <div><strong>「不知道內容」不保證法院採信</strong><br>臺北地檢署整理的案例中，男子替多年未聯絡者領取藏有大麻的包裹，辯稱不知情，法院仍判處 11 年</div>
+          </div>
+          <div class="fix">
+            <span class="num">3</span>
+            <div><strong>風險不只在親手領貨</strong><br>提供姓名、手機、地址、證件或 EZ WAY 委任，替人取件、轉送、改寄、載運，都可能讓自己進入調查範圍，個案責任仍由司法機關依證據判斷</div>
+          </div>
+        </div>
+        <a class="source-link" href="https://www.tpc.moj.gov.tw/292885/976681/661783/1184292/post" target="_blank" rel="noopener noreferrer">查看臺北地檢署法律宣導 ↗</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="core-title">
+      <div class="section-head">
+        <span class="kicker">核心刑責</span>
+        <h2 id="core-title">大麻是第二級毒品，運輸重罪起跳</h2>
+      </div>
+      <div class="cards two">
+        <a class="card" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=2&amp;pcode=C0000008" target="_blank" rel="noopener noreferrer">
+          <div class="card-top"><h3>大麻在台灣的分級</h3><span class="arrow">↗</span></div>
+          <div class="big">第二級毒品</div>
+          <p>別用其他國家的合法化新聞判斷台灣刑責</p>
+        </a>
+        <a class="card" href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=4&amp;pcode=C0000008" target="_blank" rel="noopener noreferrer">
+          <div class="card-top"><h3>運輸第二級毒品</h3><span class="arrow">↗</span></div>
+          <div class="big">10 年以上</div>
+          <p>法定刑為無期徒刑或 10 年以上有期徒刑，得併科 1,500 萬元以下罰金</p>
+        </a>
+      </div>
+      <div class="law-grid" style="margin-top:13px">
+        <div class="law">
+          <span class="level">第 1 級毒品</span>
+          <span class="penalty">死刑或無期徒刑</span>
+          <small>處無期徒刑者，得併科 3,000 萬元以下罰金</small>
+        </div>
+        <div class="law">
+          <span class="level">第 2 級毒品</span>
+          <span class="penalty">無期徒刑或 10 年以上</span>
+          <small>得併科 1,500 萬元以下罰金</small>
+        </div>
+        <div class="law">
+          <span class="level">第 3 級毒品</span>
+          <span class="penalty">7 年以上</span>
+          <small>得併科 1,000 萬元以下罰金</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="risks" aria-labelledby="risks-title">
+      <div class="section-head">
+        <span class="kicker">乾貨重點</span>
+        <h2 id="risks-title">18 個踩雷訊號，符合 1 個就先停</h2>
+        <p class="lead">不要因為對方說是禮物、樣品、生活用品或只是幫轉交，就省略查證</p>
+      </div>
+      <div class="risk-board">
+        <article class="risk-group">
+          <h3 class="risk-title"><span>名</span>借你的身分資料</h3>
+          <ul class="risk-list">
+            <li>要借你的<strong>姓名、手機、地址</strong>當海外包裹收件人</li>
+            <li>要你傳<strong>身分證、居留證或證件照片</strong>做報關</li>
+            <li>要求你用自己的<strong>EZ WAY 實名委任</strong>確認不是你買的貨</li>
+            <li>說自己的地址不方便，長期把你家、公司或管理室當收貨站</li>
+          </ul>
+        </article>
+
+        <article class="risk-group">
+          <h3 class="risk-title"><span>包</span>包裹資訊說不清</h3>
+          <ul class="risk-list">
+            <li>寄件人、購買平台、品名、金額、用途<strong>講不清楚</strong></li>
+            <li>物流單、報關品名與對方說法<strong>互相不一致</strong></li>
+            <li>不准你問內容，只叫你<strong>照指示領取</strong></li>
+            <li>說是驚喜禮物，卻要求你支付關稅、保證金或解凍費</li>
+          </ul>
+        </article>
+
+        <article class="risk-group">
+          <h3 class="risk-title"><span>轉</span>領完還要再轉手</h3>
+          <ul class="risk-list">
+            <li>領到後不能留在原地，必須立刻送到<strong>陌生地址</strong></li>
+            <li>寄件人、收件人、取件人、最後接貨人<strong>全部不同</strong></li>
+            <li>中途不停更換碰面地點、電話或接貨帳號</li>
+            <li>要求改包裝、拆成數件、換箱、改寄或交給外送員與計程車</li>
+          </ul>
+        </article>
+
+        <article class="risk-group">
+          <h3 class="risk-title"><span>利</span>用報酬與感情壓你</h3>
+          <ul class="risk-list">
+            <li>只是代領或轉送，就給<strong>不合理高報酬</strong></li>
+            <li>網路戀人用老公、老婆、未來家庭要求你證明信任</li>
+            <li>叫你瞞家人、不要問警方、刪除對話或使用暗語</li>
+            <li>以急件、住院、軍務、海關扣留等理由催你立刻處理</li>
+          </ul>
+        </article>
+
+        <article class="risk-group">
+          <h3 class="risk-title"><span>行</span>不只包裹，行李也危險</h3>
+          <ul class="risk-list">
+            <li>免費機票、住宿或旅費，交換你替人帶<strong>行李過境</strong></li>
+            <li>行李不是你打包，或中途離開過你的視線</li>
+            <li>對方要你帶「樣品、茶葉、保健品、零件」但拒絕完整說明</li>
+            <li>過海關前才臨時把物品塞進你的行李或隨身包</li>
+          </ul>
+        </article>
+      </div>
+      <div class="rule">防雷底線：不是自己下單、不是自己打包、不能完整說明內容與流向，就不要用自己的姓名、手機、地址、證件或 EZ WAY 幫忙</div>
+    </section>
+
+    <section id="scenarios" aria-labelledby="scenarios-title">
+      <div class="section-head">
+        <span class="kicker">遇到當下怎麼做</span>
+        <h2 id="scenarios-title">5 種現場情境處理方式</h2>
+      </div>
+      <div class="scenario-grid">
+        <article class="scenario">
+          <h3>情境 1｜還沒同意代收</h3>
+          <p>不要提供姓名、手機、地址、證件、超商會員或 EZ WAY 資料，也不要替對方測試能不能收</p>
+          <span class="do">直接做：拒絕＋保留完整對話＋撥 165 查證</span>
+        </article>
+        <article class="scenario">
+          <h3>情境 2｜EZ WAY 突然跳出陌生報關</h3>
+          <p>不要因為對方催促就點「申報相符」，先檢查品名、金額、報關業者與近期訂單</p>
+          <span class="do">直接做：聯絡 APP 顯示的報關業者，確認冒名後點「遭冒名申報」</span>
+        </article>
+        <article class="scenario">
+          <h3>情境 3｜物流已送到門口</h3>
+          <p>不是自己或家人確認下單的貨，不簽收、不代墊、不交付驗證碼，也不替陌生人暫放</p>
+          <span class="do">直接做：拒收，記下物流單號、寄件資料與聯絡紀錄</span>
+        </article>
+        <article class="scenario">
+          <h3>情境 4｜包裹已經在你手上</h3>
+          <p>不要繼續轉交、改寄、拆包、分裝或丟棄，避免破壞可能的證據或增加移動風險</p>
+          <span class="do">直接做：先撥 110 或 165 說明現況，依執法人員指示處理</span>
+        </article>
+        <article class="scenario">
+          <h3>情境 5｜已經轉交或發現被利用</h3>
+          <p>不要刪訊息、重設手機、補做假對話或自行找對方理論，完整時間線比零散截圖更有用</p>
+          <span class="do">直接做：整理人、事、時、地、物與金流，儘速報警並諮詢律師</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="ezway" aria-labelledby="ezway-title">
+      <div class="section-head">
+        <span class="kicker">最常被忽略的數位收件風險</span>
+        <h2 id="ezway-title">EZ WAY 陌生推播，照這 4 步做</h2>
+      </div>
+      <div class="ezway">
+        <div class="ezway-head">
+          <h3>不是自己的貨，不要亂按「申報相符」</h3>
+          <p>官方說明顯示，推播資料可查看報關日期、報單號碼、分提單號碼、申報金額與貨物品項</p>
+        </div>
+        <div class="ezway-steps">
+          <div class="ez"><strong>先核對近期是否真的有境外訂單</strong>連同家人、代購、境外親友與社群賣家的訂單一起查</div>
+          <div class="ez"><strong>核對推播中的品名、金額與報關業者</strong>資料不一致就先不要確認委任</div>
+          <div class="ez"><strong>聯絡 APP 顯示的報關業者</strong>確認派送地址、委任來源與是否有人冒用你的資料</div>
+          <div class="ez"><strong>確認遭冒名時選「申報不符」中的「遭冒名申報」</strong>並保存畫面、時間與聯絡紀錄</div>
+        </div>
+        <p class="warning">不要把 EZ WAY 驗證碼、帳號、密碼或手機交給網友操作，也不要替不是自己的貨完成實名委任</p>
+      </div>
+      <a class="source-link" href="https://web.customs.gov.tw/singlehtml/3150?cntId=cus1_3150_3150_1471" target="_blank" rel="noopener noreferrer">查看關務署 EZ WAY 操作說明 ↗</a>
+    </section>
+
+    <section aria-labelledby="check-title">
+      <div class="section-head">
+        <span class="kicker">適用對象自我檢核</span>
+        <h2 id="check-title">家中符合任一種人，建議先把這頁傳給他</h2>
+      </div>
+      <div class="checklist">
+        <div class="check"><span class="box">✓</span><div>容易不好意思拒絕，親友或網友開口就幫忙</div></div>
+        <div class="check"><span class="box">✓</span><div>常使用交友軟體、社群私訊或跨國聊天</div></div>
+        <div class="check"><span class="box">✓</span><div>願意出租地址、手機門號、證件或收件名義換取報酬</div></div>
+        <div class="check"><span class="box">✓</span><div>常替別人收超商、郵局、管理室或海外快遞包裹</div></div>
+        <div class="check"><span class="box">✓</span><div>準備出國，可能替朋友、網友或陌生人攜帶行李</div></div>
+        <div class="check"><span class="box">✓</span><div>不知道 EZ WAY 的「申報相符」代表正在確認報關委任資料</div></div>
+      </div>
+      <div class="action">
+        <h3>一句話記住</h3>
+        <p>不要領　不要拆　不要轉交　不要借名實名委任</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="evidence-title">
+      <div class="section-head">
+        <span class="kicker">真的出事時先保留什麼</span>
+        <h2 id="evidence-title">證據保存 6 件套</h2>
+      </div>
+      <div class="evidence">
+        <div class="evidence-row"><span>1</span><div><strong>完整聊天紀錄</strong>包含帳號首頁、時間、語音、通話紀錄、撤回訊息提示，不只截對自己有利的片段</div></div>
+        <div class="evidence-row"><span>2</span><div><strong>包裹與物流資料</strong>外箱、託運單、條碼、分提單號碼、寄件人、收件人、派送地址與簽收狀態</div></div>
+        <div class="evidence-row"><span>3</span><div><strong>EZ WAY 畫面</strong>報關日期、品名、金額、報關業者、申報相符或不符的操作紀錄</div></div>
+        <div class="evidence-row"><span>4</span><div><strong>金流與報酬</strong>匯款帳號、電子支付、現金約定、車資、跑腿費、禮物或免費旅費</div></div>
+        <div class="evidence-row"><span>5</span><div><strong>交付路線與人物</strong>取件地點、轉交地址、車牌、外送單、計程車紀錄、接貨者帳號或電話</div></div>
+        <div class="evidence-row"><span>6</span><div><strong>完整時間線</strong>何時認識、何時被要求、何時提供資料、何時收件、何時起疑、何時報警</div></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="scripts-title">
+      <div class="section-head">
+        <span class="kicker">不必解釋太多</span>
+        <h2 id="scripts-title">4 句可直接複製的拒絕話術</h2>
+      </div>
+      <div class="scripts">
+        <div class="script">
+          <small>借地址或姓名</small>
+          <p>我的姓名、手機、地址和實名資料不提供他人收件，請你改用自己的資料處理</p>
+        </div>
+        <div class="script">
+          <small>要求按 EZ WAY</small>
+          <p>這不是我本人購買的貨，我不會確認實名委任，也不會提供驗證碼</p>
+        </div>
+        <div class="script">
+          <small>要求領完轉交</small>
+          <p>來路、內容和最後接貨人無法完整確認，我不代領、不拆封、不轉交</p>
+        </div>
+        <div class="script">
+          <small>用感情或急事施壓</small>
+          <p>真正安全合法的事情不需要我隱瞞家人或避開警方，我會先撥 165 查證</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="help" aria-labelledby="help-title">
+      <div class="section-head">
+        <span class="kicker">不知道去哪辦</span>
+        <h2 id="help-title">3 個全國官方入口</h2>
+      </div>
+      <div class="channels">
+        <a class="channel" href="https://165.npa.gov.tw/" target="_blank" rel="noopener noreferrer">
+          <span class="icon">165</span>
+          <span><strong>165 全民防騙網</strong><span>網路交友、陌生包裹與可疑指示先查證，急迫危險請撥 110</span></span>
+          <span class="go">↗</span>
+        </a>
+        <a class="channel" href="https://antidrug.moj.gov.tw/mp-4.html" target="_blank" rel="noopener noreferrer">
+          <span class="icon">反毒</span>
+          <span><strong>毒品危害防制諮詢專線</strong><span>24 小時免付費 0800-770-885</span></span>
+          <span class="go">↗</span>
+        </a>
+        <a class="channel" href="https://web.customs.gov.tw/singlehtml/2222?cntId=19260e265f154a8d830b5be053f032ba" target="_blank" rel="noopener noreferrer">
+          <span class="icon">海關</span>
+          <span><strong>海關毒品走私情資</strong><span>檢舉專線 0800-003131，EZ WAY 與通關服務 0800-005-055</span></span>
+          <span class="go">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section aria-labelledby="sources-title">
+      <div class="section-head">
+        <span class="kicker">查核依據</span>
+        <h2 id="sources-title">官方資料來源</h2>
+      </div>
+      <ul class="sources">
+        <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=4&amp;pcode=C0000008" target="_blank" rel="noopener noreferrer">全國法規資料庫｜毒品危害防制條例第 4 條</a></li>
+        <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?flno=2&amp;pcode=C0000008" target="_blank" rel="noopener noreferrer">全國法規資料庫｜毒品危害防制條例第 2 條</a></li>
+        <li><a href="https://www.tpc.moj.gov.tw/292885/976681/661783/1184292/post" target="_blank" rel="noopener noreferrer">臺灣臺北地方檢察署｜收受或運送來路不明包裹小心變成運毒共犯</a></li>
+        <li><a href="https://web.customs.gov.tw/singlehtml/2222?cntId=19260e265f154a8d830b5be053f032ba" target="_blank" rel="noopener noreferrer">財政部關務署｜代領代收不明貨物風險高，運毒坐牢坐到老</a></li>
+        <li><a href="https://web.customs.gov.tw/singlehtml/3150?cntId=cus1_3150_3150_1471" target="_blank" rel="noopener noreferrer">財政部關務署｜EZ WAY 實名認證簡介與操作說明</a></li>
+        <li><a href="https://www.cib.npa.gov.tw/ch/app/data/view?id=1909&amp;module=wg116&amp;serno=064fe6c9-ae2c-40d2-a7df-2e5a4223091f" target="_blank" rel="noopener noreferrer">內政部警政署刑事警察局｜假愛情交友話術解析與因應</a></li>
+        <li><a href="https://165.npa.gov.tw/" target="_blank" rel="noopener noreferrer">內政部警政署｜165 全民防騙網</a></li>
+        <li><a href="https://antidrug.moj.gov.tw/mp-4.html" target="_blank" rel="noopener noreferrer">法務部｜反毒大本營</a></li>
+      </ul>
+    </section>
+
+    <p class="disclaimer">本頁為一般反詐與反毒資訊，不是個案法律意見，是否成立犯罪與法律責任須由檢警、法院依完整證據認定，必要時請尋求專業律師協助，法規、服務內容與案件處理方式依官方最新公告為準</p>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="brand">阿宏賣房不賣夢 陪你完成夢 但不陪你做錯夢</p>
+      <p class="transition">上面是給所有人的 下面這塊只給真的要處理房子的人 不急 先收藏</p>
+      <div class="cta-grid">
+        <a class="cta" href="https://reurl.cc/zQVzg7" target="_blank" rel="noopener noreferrer"><span>鴻觀社團<br>可匿名</span><span>↗</span></a>
+        <a class="cta" href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446" target="_blank" rel="noopener noreferrer"><span>官方 LINE<br>直接聯絡</span><span>↗</span></a>
+        <a class="cta" href="/mingpian/" target="_blank" rel="noopener noreferrer"><span>阿宏電子名片<br>服務資訊</span><span>↗</span></a>
+      </div>
+      <p class="footer-note">作者：何志宏，樹林阿宏｜電話：0930-848000</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>預售屋換約・賣方實拿速算｜鴻觀資產</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2B2D33;          /* 信任灰（主文字） */
+    --ink-soft:#6A6E78;     /* 次文字 */
+    --ink-faint:#9CA0AA;    /* 弱文字 */
+    --gold:#C9A24B;         /* 恩典金（主強調） */
+    --gold-deep:#A8842F;    /* 深金 */
+    --gold-soft:#F3E9CE;    /* 淺金底 */
+    --orange:#E08A4B;       /* 家的暖橙 */
+    --orange-deep:#C56A2C;
+    --paper:#FBF8F2;        /* 暖白紙底 */
+    --card:#FFFFFF;
+    --line:#EAE3D5;
+    --warn-bg:#FCEFE7;
+    --warn-line:#E7B79C;
+    --warn-ink:#9C4220;
+    --shadow:0 1px 2px rgba(43,45,51,.04), 0 8px 28px rgba(43,45,51,.06);
+    --shadow-lg:0 2px 6px rgba(43,45,51,.06), 0 18px 48px rgba(43,45,51,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Noto Sans TC",sans-serif;
+    background:
+      radial-gradient(1200px 500px at 85% -8%, rgba(201,162,75,.10), transparent 60%),
+      radial-gradient(900px 480px at -5% 8%, rgba(224,138,75,.07), transparent 60%),
+      var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding:28px 16px 56px;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+
+  /* ── 品牌頂部 ── */
+  .brand{text-align:center;margin-bottom:22px}
+  .brand .mark{
+    width:54px;height:54px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;
+    border-radius:14px;background:linear-gradient(145deg,var(--gold),var(--gold-deep));
+    box-shadow:0 6px 18px rgba(168,132,47,.35);
+  }
+  .brand .mark svg{width:30px;height:30px}
+  .brand .who{font-size:13px;color:var(--ink-soft);letter-spacing:.5px}
+  .brand .who b{color:var(--gold-deep);font-weight:700}
+
+  /* ── 標題 ── */
+  .head{
+    display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+    border-left:5px solid var(--gold);padding-left:16px;margin:6px 2px 22px;
+  }
+  .head h1{
+    font-family:"Noto Serif TC",serif;font-weight:900;font-size:27px;letter-spacing:.5px;
+    color:var(--ink);line-height:1.25;
+  }
+  .head .sub{font-size:13.5px;color:var(--ink-soft);margin-top:5px}
+  .reset{
+    flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);
+    font-family:inherit;font-size:13px;border-radius:10px;padding:8px 14px;cursor:pointer;
+    transition:.18s;white-space:nowrap;
+  }
+  .reset:hover{border-color:var(--gold);color:var(--gold-deep)}
+
+  /* ── 法規警語 ── */
+  .warn{
+    background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:16px;
+    padding:16px 18px;margin-bottom:20px;
+  }
+  .warn .wt{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--warn-ink);font-size:14.5px;margin-bottom:6px}
+  .warn .wt svg{width:18px;height:18px;flex:none}
+  .warn p{font-size:13px;color:#7A4B33;line-height:1.7}
+  .warn .ex{margin-top:8px;font-size:12.5px;color:#8A5B40;background:rgba(255,255,255,.55);border-radius:10px;padding:8px 11px}
+  .warn .ex b{color:var(--warn-ink)}
+
+  /* ── 卡片 ── */
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:22px 20px;margin-bottom:16px;box-shadow:var(--shadow);
+  }
+  .card.fill{
+    background:linear-gradient(155deg,#FFFDF8,#FBF3E2);
+    border-color:#EEDFB8;
+  }
+  .ctitle{display:flex;align-items:center;gap:9px;margin-bottom:16px}
+  .ctitle h2{font-family:"Noto Serif TC",serif;font-weight:700;font-size:18px}
+  .pill{
+    font-size:11px;font-weight:500;padding:3px 10px;border-radius:999px;
+    background:var(--gold-soft);color:var(--gold-deep);
+  }
+  .pill.grey{background:#F0EEE9;color:var(--ink-soft)}
+
+  /* ── 輸入 ── */
+  .field{margin-bottom:16px}
+  .field:last-child{margin-bottom:0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  label .lab{display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:7px}
+  label .lab .hint{font-weight:400;font-size:12px;color:var(--ink-faint);margin-left:6px}
+  .inp{
+    position:relative;display:flex;align-items:center;
+    border:1.5px solid var(--line);border-radius:13px;background:#fff;
+    transition:.16s;overflow:hidden;
+  }
+  .inp:focus-within{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,162,75,.12)}
+  .inp input{
+    flex:1;border:0;outline:0;background:transparent;font-family:inherit;
+    font-size:21px;font-weight:700;color:var(--ink);padding:14px 12px 14px 16px;width:100%;
+  }
+  .inp input::placeholder{color:#C9C5BC;font-weight:400}
+  .inp .unit{padding:0 16px;color:var(--ink-faint);font-size:14px;font-weight:500}
+  .inp.locked{background:#F6F3EC}
+  .inp.locked input{color:var(--ink-soft)}
+  .note{font-size:12px;color:var(--ink-faint);margin-top:11px;line-height:1.6}
+
+  /* 稅率切換 */
+  .rate{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+  .rate button{
+    border:1.5px solid var(--line);background:#fff;border-radius:13px;padding:12px 6px;
+    font-family:inherit;cursor:pointer;text-align:center;transition:.16s;
+  }
+  .rate button .r{font-family:"Noto Serif TC",serif;font-size:22px;font-weight:900;color:var(--ink);line-height:1}
+  .rate button .y{font-size:11px;color:var(--ink-faint);margin-top:5px}
+  .rate button.on{border-color:var(--gold);background:var(--gold-soft)}
+  .rate button.on .r{color:var(--gold-deep)}
+  .rate button.on .y{color:var(--gold-deep)}
+
+  /* ── 主結果條 ── */
+  .hero{
+    background:linear-gradient(150deg,var(--gold-deep),#8C6B23);
+    border-radius:18px;padding:22px 22px;margin-bottom:16px;color:#fff;
+    box-shadow:var(--shadow-lg);
+  }
+  .hero .tag{
+    display:inline-block;font-size:11.5px;background:rgba(255,255,255,.18);
+    padding:4px 12px;border-radius:999px;margin-bottom:14px;font-weight:500;
+  }
+  .hrow{display:flex;align-items:baseline;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+  .hrow:last-child{border-bottom:0;padding-bottom:0}
+  .hrow .k{font-size:14px;color:rgba(255,255,255,.85)}
+  .hrow .v{font-family:"Noto Serif TC",serif;font-weight:700;font-size:18px}
+  .hrow.big .k{font-size:15px;font-weight:700;color:#fff}
+  .hrow.big .v{font-size:30px}
+  .hrow .v .u{font-size:14px;font-weight:400;margin-left:3px;opacity:.85}
+  .pos{color:#FFE8C2}
+  .neg{color:#FFC9AE}
+
+  /* ── 列舉 vs 不列舉 ── */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:4px}
+  .opt{
+    border:1.5px solid var(--line);border-radius:15px;padding:16px 14px;background:#fff;
+    position:relative;transition:.16s;
+  }
+  .opt.best{border-color:var(--gold)}
+  .opt .rec{
+    position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+    background:var(--gold);color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:999px;
+    white-space:nowrap;
+  }
+  .opt h3{text-align:center;font-size:15px;font-weight:700;margin-bottom:12px}
+  .oline{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-soft);padding:3px 0}
+  .oline b{color:var(--ink);font-weight:700}
+  .otax{text-align:center;border-top:1px dashed var(--line);margin-top:10px;padding-top:11px}
+  .otax .lbl{font-size:12px;color:var(--ink-faint)}
+  .otax .num{font-family:"Noto Serif TC",serif;font-size:26px;font-weight:900;color:var(--orange-deep);line-height:1.1;margin-top:2px}
+  .oget{text-align:center;margin-top:8px}
+  .oget .lbl{font-size:12px;color:var(--ink-faint)}
+  .oget .num{font-family:"Noto Serif TC",serif;font-size:17px;font-weight:700;color:var(--ink)}
+  .pick{
+    width:100%;margin-top:12px;border:0;border-radius:11px;padding:11px;cursor:pointer;
+    font-family:inherit;font-size:13.5px;font-weight:700;transition:.16s;
+    background:#F0EEE9;color:var(--ink-soft);
+  }
+  .pick:hover{background:#E7E3DA}
+  .opt.active .pick{background:linear-gradient(145deg,var(--gold),var(--gold-deep));color:#fff}
+  .opt.active{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,162,75,.12)}
+  .vs-note{font-size:12px;color:var(--ink-faint);margin-top:12px}
+
+  /* ── 計算明細 ── */
+  .detail .drow{display:flex;align-items:baseline;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line)}
+  .detail .drow .k{font-size:14px;color:var(--ink-soft)}
+  .detail .drow .v{font-family:"Noto Serif TC",serif;font-weight:700;font-size:16px;color:var(--ink)}
+  .detail .drow.final{border-bottom:0;border-top:2px solid var(--ink);margin-top:6px;padding-top:15px}
+  .detail .drow.final .k{font-size:16px;font-weight:700;color:var(--ink)}
+  .detail .drow.final .v{font-size:26px;color:var(--gold-deep)}
+  .detail .drow.final .v.neg{color:var(--orange-deep)}
+
+  /* ── 頁尾 ── */
+  .foot{text-align:center;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+  .foot .cta{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    background:linear-gradient(145deg,var(--gold),var(--gold-deep));color:#fff;
+    font-weight:700;font-size:15px;padding:13px 28px;border-radius:14px;
+    box-shadow:0 8px 22px rgba(168,132,47,.3);transition:.16s;
+  }
+  .foot .cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(168,132,47,.4)}
+  .foot .sign{margin-top:16px;font-size:13px;color:var(--ink-soft)}
+  .foot .sign b{color:var(--ink);font-weight:700}
+  .foot .law{margin-top:16px;font-size:11.5px;color:var(--ink-faint);line-height:1.8;text-align:left;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .foot .law b{color:var(--ink-soft)}
+
+  @media(max-width:560px){
+    .head h1{font-size:23px}
+    .grid2{grid-template-columns:1fr}
+    .vs{grid-template-columns:1fr}
+    .hrow.big .v{font-size:26px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 品牌 -->
+  <div class="brand">
+    <div class="mark">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 11L12 3l9 8" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 10v10h14V10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 20v-5h4v5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="who"><b>鴻觀資產</b>｜住商不動產 樹林站前 何志宏 製作</div>
+  </div>
+
+  <!-- 標題 -->
+  <div class="head">
+    <div>
+      <h1>預售屋換約・賣方實拿速算</h1>
+      <div class="sub">房地合一稅 列舉／不列舉自己選，先看清楚到手剩多少再決定</div>
+    </div>
+    <button class="reset" onclick="resetAll()">↺ 清空</button>
+  </div>
+
+  <!-- 法規警語 -->
+  <div class="warn">
+    <div class="wt">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.3 3.9 2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#9C4220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      換約前先確認「能不能換」，再算「拿多少」
+    </div>
+    <p>自 112/7/1 起《平均地權條例》第47條之4上路，預售屋／新建成屋簽約後<b>原則禁止</b>讓與或轉售給第三人，違規最高罰 5,000 萬，協助換約的建商也罰 50～300 萬。這張速算只適用於「<b>合法可換約</b>」的情形。</p>
+    <div class="ex">
+      <b>可換約例外（仍需地方政府核准、每 2 年限 1 戶）：</b>讓與配偶／直系或二親等內旁系血親；或非自願離職、本人或家人重病失能、住屋災損須另租、重大意外致第三人失能、繼承變價分配、共同買受人讓與等六種情形。實際以國稅局與地政局核定為準。
+    </div>
+  </div>
+
+  <!-- 基礎輸入 -->
+  <div class="card fill">
+    <div class="ctitle"><h2>基礎輸入</h2><span class="pill">這幾欄填了就會算</span></div>
+    <div class="field">
+      <label><span class="lab">取得總價<span class="hint">原與建商簽約的總價</span></span>
+        <div class="inp"><input id="buyPrice" type="number" inputmode="decimal" placeholder="例：2348" oninput="calc()"><span class="unit">萬</span></div>
+      </label>
+    </div>
+    <div class="grid2">
+      <label><span class="lab">已付款項<span class="hint">累計</span></span>
+        <div class="inp"><input id="paid" type="number" inputmode="decimal" placeholder="例：447" oninput="calc()"><span class="unit">萬</span></div>
+      </label>
+      <label><span class="lab">出售總價<span class="hint">換約價</span></span>
+        <div class="inp"><input id="sellPrice" type="number" inputmode="decimal" placeholder="例：2450" oninput="calc()"><span class="unit">萬</span></div>
+      </label>
+    </div>
+    <div class="note">已付款項＝簽約金＋訂金＋已繳工程款累計（預售屋通常還沒撥貸款，所以不計貸款）。出售總價＝下一手承接的新總價，價差就是你的換約利潤。</div>
+  </div>
+
+  <!-- 費用設定 -->
+  <div class="card">
+    <div class="ctitle"><h2>費用設定</h2><span class="pill grey">可調整</span></div>
+    <div class="grid2">
+      <label><span class="lab">服務費率</span>
+        <div class="inp"><input id="feeRate" type="number" inputmode="decimal" value="4" oninput="calc()"><span class="unit">%</span></div>
+      </label>
+      <label><span class="lab">實價登錄費</span>
+        <div class="inp"><input id="regFee" type="number" inputmode="decimal" value="0.2" oninput="calc()"><span class="unit">萬</span></div>
+      </label>
+    </div>
+    <div class="field" style="margin-top:16px">
+      <label><span class="lab">履保費<span class="hint">出售 × 萬分之三</span></span>
+        <div class="inp locked"><input id="escrow" type="text" value="自動" readonly><span class="unit">萬</span></div>
+      </label>
+    </div>
+    <div class="field" style="margin-top:16px">
+      <span class="lab">稅率（依持有期間）</span>
+      <div class="rate" id="rateBox">
+        <button class="on" data-r="45" onclick="setRate(this,45)"><span class="r">45%</span><span class="y">持有 2 年內</span></button>
+        <button data-r="35" onclick="setRate(this,35)"><span class="r">35%</span><span class="y">2–5 年</span></button>
+        <button data-r="20" onclick="setRate(this,20)"><span class="r">20%</span><span class="y">5–10 年</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 主結果 -->
+  <div class="hero">
+    <span class="tag" id="planTag">採用：費用列舉（建議）</span>
+    <div class="hrow"><span class="k">房地合一稅</span><span class="v" id="heroTax">0 <span class="u">萬</span></span></div>
+    <div class="hrow"><span class="k">換約利潤（差價）</span><span class="v" id="heroProfit">0 <span class="u">萬</span></span></div>
+    <div class="hrow big"><span class="k">屋主淨拿回現金</span><span class="v pos" id="heroGet">0 <span class="u">萬</span></span></div>
+    <div class="hrow"><span class="k">其中實際淨賺</span><span class="v" id="heroNet">0 <span class="u">萬</span></span></div>
+  </div>
+
+  <!-- 列舉 vs 不列舉 -->
+  <div class="card">
+    <div class="ctitle"><h2>列舉 vs 不列舉 — 點一欄採用</h2></div>
+    <div class="vs">
+      <div class="opt" id="optA">
+        <h3>不列舉費用</h3>
+        <div class="oline"><span>收入 × 3%</span><b id="a_fee">0</b></div>
+        <div class="oline"><span>課稅所得</span><b id="a_income">0</b></div>
+        <div class="otax"><div class="lbl">房地合一稅</div><div class="num" id="a_tax">0</div></div>
+        <div class="oget"><div class="lbl">屋主拿回</div><div class="num" id="a_get">0 萬</div></div>
+        <button class="pick" onclick="setPlan('A')">點此採用</button>
+      </div>
+      <div class="opt best active" id="optB">
+        <div class="rec">建議</div>
+        <h3>列舉費用</h3>
+        <div class="oline"><span>憑證合計</span><b id="b_fee">0</b></div>
+        <div class="oline"><span>課稅所得</span><b id="b_income">0</b></div>
+        <div class="otax"><div class="lbl">房地合一稅</div><div class="num" id="b_tax">0</div></div>
+        <div class="oget"><div class="lbl">屋主拿回</div><div class="num" id="b_get">0 萬</div></div>
+        <button class="pick" onclick="setPlan('B')">✓ 已採用</button>
+      </div>
+    </div>
+    <div class="vs-note">填入金額後，兩種方案的稅與拿回會自動算給你選。系統預設幫你點「比較省稅」那一欄。</div>
+  </div>
+
+  <!-- 計算明細 -->
+  <div class="card detail">
+    <div class="ctitle"><h2>計算明細</h2></div>
+    <div class="drow"><span class="k">換約利潤（出售 − 取得）</span><span class="v" id="d_profit">0 萬</span></div>
+    <div class="drow"><span class="k">收入＝已付款 ＋ 利潤</span><span class="v" id="d_income">0 萬</span></div>
+    <div class="drow"><span class="k" id="d_feeLab">服務費（出售 × 4%）</span><span class="v" id="d_service">0 萬</span></div>
+    <div class="drow"><span class="k">履保費 ＋ 實價登錄費</span><span class="v" id="d_escrowReg">0 萬</span></div>
+    <div class="drow"><span class="k">費用合計（實際付出）</span><span class="v" id="d_feeTotal">0 萬</span></div>
+    <div class="drow"><span class="k">房地合一稅（採用方案）</span><span class="v" id="d_tax">0 萬</span></div>
+    <div class="drow final"><span class="k">屋主淨拿回現金</span><span class="v" id="d_final">0 萬</span></div>
+  </div>
+
+  <!-- 頁尾 -->
+  <div class="foot">
+    <a class="cta" href="https://lin.ee/IV8bl9H" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.5 2 2 5.6 2 10c0 3.9 3.5 7.2 8.3 7.9.3.07.7.2.8.5.07.27.05.7 0 .96l-.13.8c-.04.24-.2.94.82.5 1-.42 5.5-3.2 7.5-5.5C20.5 13.5 22 11.9 22 10c0-4.4-4.5-8-10-8Z"/></svg>
+      預約一對一換約諮詢
+    </a>
+    <div class="sign"><b>鴻觀資產</b>｜住商不動產 樹林站前加盟店・何志宏</div>
+    <div class="law">
+      <b>試算依據｜</b>房地合一 2.0（所得稅法第 4 條之 4、第 14 條之 6）：預售屋換約以「已付款＋利潤」為收入、已付款為成本，費用採「列舉憑證」與「收入 3%（上限 30 萬）」二擇一。稅率依持有期間 45 / 35 / 20% 自選。<br>
+      <b>法規限制｜</b>《平均地權條例》第 47 條之 4（112/7/1 起）原則禁止預售屋換約轉售，僅特定親屬或六種非自願情形經核准例外。<br>
+      <b>免責｜</b>本工具僅供概算參考，實際申報與可否換約以稅捐機關、地政機關核定為準，必要時請搭配代書／會計師確認。
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let plan = 'B';   // A=不列舉  B=列舉
+  let rate = 0.45;
+
+  const num = id => parseFloat(document.getElementById(id).value) || 0;
+  const fmt = v => {
+    const r = Math.round(v*100)/100;
+    return (Number.isInteger(r) ? r : r.toFixed(2));
+  };
+
+  function setRate(btn,r){
+    document.querySelectorAll('#rateBox button').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    rate = r/100;
+    calc();
+  }
+
+  function setPlan(p){
+    plan = p;
+    document.getElementById('optA').classList.toggle('active', p==='A');
+    document.getElementById('optB').classList.toggle('active', p==='B');
+    document.querySelector('#optA .pick').textContent = p==='A' ? '✓ 已採用' : '點此採用';
+    document.querySelector('#optB .pick').textContent = p==='B' ? '✓ 已採用' : '點此採用';
+    document.getElementById('planTag').textContent =
+      p==='B' ? '採用：費用列舉（建議）' : '採用：費用不列舉';
+    calc(true);   // 手動切換後不再自動覆蓋
+  }
+
+  let userPicked = false;
+
+  function calc(fromUser){
+    if(fromUser) userPicked = true;
+
+    const buy   = num('buyPrice');
+    const paid  = num('paid');
+    const sell  = num('sellPrice');
+    const feeRate = num('feeRate')/100;
+    const reg   = num('regFee');
+
+    const profit  = sell - buy;                 // 換約利潤
+    const income  = paid + profit;              // 房地合一收入
+    const service = sell * feeRate;             // 服務費
+    const escrow  = sell * 0.0003;              // 履保費 萬分之三
+    const feeTotal = service + escrow + reg;    // 實際付出費用
+
+    document.getElementById('escrow').value = sell>0 ? fmt(escrow) : '自動';
+
+    // 房地合一稅 — 課稅所得 = 利潤 − 費用，下限 0
+    // 不列舉：費用 = 收入×3%（上限30萬）
+    const feeA = Math.min(income * 0.03, 30);
+    const incomeA = Math.max(profit - feeA, 0);
+    const taxA = incomeA * rate;
+    const getA = income - feeTotal - taxA;      // 屋主拿回 = 收入 − 實際付出 − 稅
+
+    // 列舉：費用 = 憑證合計（服務費+履保費+實價登錄費）
+    const feeB = feeTotal;
+    const incomeB = Math.max(profit - feeB, 0);
+    const taxB = incomeB * rate;
+    const getB = income - feeTotal - taxB;
+
+    // 自動建議省稅方案（使用者尚未手動點選前）
+    if(!userPicked){
+      const auto = taxB <= taxA ? 'B' : 'A';
+      if(auto !== plan){
+        plan = auto;
+        document.getElementById('optA').classList.toggle('active', auto==='A');
+        document.getElementById('optB').classList.toggle('active', auto==='B');
+        document.querySelector('#optA .pick').textContent = auto==='A' ? '✓ 已採用' : '點此採用';
+        document.querySelector('#optB .pick').textContent = auto==='B' ? '✓ 已採用' : '點此採用';
+        document.getElementById('planTag').textContent =
+          auto==='B' ? '採用：費用列舉（建議）' : '採用：費用不列舉';
+      }
+    }
+
+    // 兩欄明細
+    document.getElementById('a_fee').textContent    = fmt(feeA);
+    document.getElementById('a_income').textContent = fmt(incomeA);
+    document.getElementById('a_tax').textContent    = fmt(taxA);
+    document.getElementById('a_get').textContent    = fmt(getA)+' 萬';
+    document.getElementById('b_fee').textContent    = fmt(feeB);
+    document.getElementById('b_income').textContent = fmt(incomeB);
+    document.getElementById('b_tax').textContent    = fmt(taxB);
+    document.getElementById('b_get').textContent    = fmt(getB)+' 萬';
+
+    // 採用方案
+    const tax  = plan==='B' ? taxB : taxA;
+    const get  = plan==='B' ? getB : getA;
+    const net  = get - paid;                    // 實際淨賺 = 拿回 − 已付款
+
+    // 主結果條
+    setVal('heroTax', tax, true);
+    setVal('heroProfit', profit, true);
+    setVal('heroGet', get, true);
+    setVal('heroNet', net, true);
+    document.getElementById('heroGet').className = 'v ' + (get<0?'neg':'pos');
+    document.getElementById('heroNet').className = 'v ' + (net<0?'neg':'pos');
+
+    // 明細
+    document.getElementById('d_profit').textContent   = fmt(profit)+' 萬';
+    document.getElementById('d_income').textContent   = fmt(income)+' 萬';
+    document.getElementById('d_feeLab').textContent   = '服務費（出售 × '+num('feeRate')+'%）';
+    document.getElementById('d_service').textContent  = fmt(service)+' 萬';
+    document.getElementById('d_escrowReg').textContent= fmt(escrow+reg)+' 萬';
+    document.getElementById('d_feeTotal').textContent = fmt(feeTotal)+' 萬';
+    document.getElementById('d_tax').textContent      = fmt(tax)+' 萬';
+    const df = document.getElementById('d_final');
+    df.textContent = fmt(get)+' 萬';
+    df.className = 'v ' + (get<0?'neg':'');
+  }
+
+  function setVal(id,v,unit){
+    const el = document.getElementById(id);
+    el.innerHTML = fmt(v) + (unit?' <span class="u">萬</span>':'');
+  }
+
+  function resetAll(){
+    ['buyPrice','paid','sellPrice'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('feeRate').value = 4;
+    document.getElementById('regFee').value = 0.2;
+    userPicked = false;
+    plan = 'B';
+    setRate(document.querySelector('#rateBox button[data-r="45"]'),45);
+  }
+
+  calc();
+</script>
+<p style="text-align:center;margin:18px 0;font-size:.95rem"><a href="/mingpian/" target="_blank" rel="noopener">電子名片（證號 · 服務區域 · 聯絡方式）</a></p>
+</body>
+</html>

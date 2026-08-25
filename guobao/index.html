@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="65歲國民年金老年年金、喪葬給付與遺屬年金重點整理">
+<title>65歲國保完整檢查表</title>
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --trust: #2B3A4A;
+    --gold: #D4AF37;
+    --orange: #ED8B4E;
+    --white: #FFFFFF;
+    --background: #F7F5F0;
+    --text: #2B3A4A;
+    --muted: rgba(43, 58, 74, 0.7);
+    --border: rgba(43, 58, 74, 0.14);
+    --trust-soft: rgba(43, 58, 74, 0.08);
+    --gold-soft: rgba(212, 175, 55, 0.14);
+    --orange-soft: rgba(237, 139, 78, 0.14);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .header {
+    background: var(--trust);
+    padding: 50px 24px 42px;
+    text-align: center;
+  }
+
+  .header-kicker {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 5px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .header-title {
+    color: var(--white);
+    font-family: "Noto Serif TC", "PMingLiU", serif;
+    font-size: clamp(30px, 8vw, 44px);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+
+  .header-title span {
+    color: var(--gold);
+  }
+
+  .header-sub {
+    max-width: 520px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 15px;
+  }
+
+  .update-date {
+    margin-top: 14px;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 12px;
+  }
+
+  .alert-strip {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 22px;
+    background: var(--orange);
+    color: var(--white);
+  }
+
+  .alert-strip p {
+    max-width: 590px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 16px 42px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin: 34px 0 15px;
+  }
+
+  .section-number {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--trust);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .section-title {
+    color: var(--trust);
+    font-size: 19px;
+    font-weight: 800;
+  }
+
+  .money-card {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    margin: 25px 0;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--white);
+    box-shadow: 0 10px 28px rgba(43, 58, 74, 0.06);
+  }
+
+  .money-icon {
+    display: flex;
+    width: 58px;
+    height: 58px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--gold-soft);
+    font-size: 26px;
+  }
+
+  .money-label {
+    margin-bottom: 4px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .money-amount {
+    color: var(--gold);
+    font-family: Georgia, "Noto Serif TC", serif;
+    font-size: clamp(29px, 8vw, 38px);
+    font-weight: 800;
+    line-height: 1.05;
+  }
+
+  .money-note {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .official-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 11px;
+    color: var(--trust);
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .official-link:hover {
+    color: var(--orange);
+  }
+
+  .cards {
+    display: grid;
+    gap: 13px;
+  }
+
+  .info-card {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--gold);
+    border-radius: 14px;
+    background: var(--white);
+    padding: 18px;
+  }
+
+  .info-card:nth-child(2) {
+    border-left-color: var(--orange);
+  }
+
+  .info-card:nth-child(3) {
+    border-left-color: var(--trust);
+  }
+
+  .card-label {
+    display: inline-block;
+    margin-bottom: 9px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    background: var(--gold-soft);
+    color: var(--trust);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+  }
+
+  .info-card:nth-child(2) .card-label {
+    background: var(--orange-soft);
+  }
+
+  .info-card:nth-child(3) .card-label {
+    background: var(--trust-soft);
+  }
+
+  .card-title {
+    margin-bottom: 7px;
+    color: var(--trust);
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .card-description {
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .result-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+
+  .result-tag {
+    padding: 8px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  .result-positive {
+    background: var(--gold-soft);
+    color: var(--trust);
+  }
+
+  .result-warning {
+    background: var(--orange-soft);
+    color: var(--trust);
+  }
+
+  .progress-wrapper {
+    margin-bottom: 15px;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .progress-bar {
+    height: 7px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--border);
+  }
+
+  .progress-fill {
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    background: var(--gold);
+    transition: width 0.35s ease;
+  }
+
+  .checklist {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--white);
+  }
+
+  .checklist-header {
+    padding: 13px 18px;
+    background: var(--trust);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s ease;
+  }
+
+  .check-item:last-child {
+    border-bottom: none;
+  }
+
+  .check-item:hover {
+    background: var(--trust-soft);
+  }
+
+  .check-box {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    border: 2px solid rgba(43, 58, 74, 0.3);
+    border-radius: 7px;
+    background: var(--white);
+    pointer-events: none;
+    transition: all 0.2s ease;
+  }
+
+  .check-tick {
+    display: none;
+    color: var(--trust);
+    font-size: 16px;
+    font-weight: 900;
+  }
+
+  .check-item.checked .check-box {
+    border-color: var(--gold);
+    background: var(--gold);
+  }
+
+  .check-item.checked .check-tick {
+    display: block;
+  }
+
+  .check-item.checked .check-text {
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+
+  .check-text {
+    color: var(--trust);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    pointer-events: none;
+  }
+
+  .check-sub {
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.55;
+    pointer-events: none;
+  }
+
+  .situation-title {
+    margin-bottom: 12px;
+    color: var(--trust);
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .situation-buttons {
+    display: grid;
+    gap: 10px;
+  }
+
+  .situation-button {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 13px;
+    padding: 15px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    background: var(--white);
+    color: var(--trust);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+  }
+
+  .situation-button:hover,
+  .situation-button.active {
+    border-color: var(--gold);
+    background: var(--gold-soft);
+  }
+
+  .situation-number {
+    display: flex;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--trust-soft);
+    color: var(--trust);
+    font-size: 15px;
+    font-weight: 800;
+    pointer-events: none;
+  }
+
+  .situation-button.active .situation-number {
+    background: var(--gold);
+  }
+
+  .situation-text {
+    font-size: 14px;
+    font-weight: 800;
+    pointer-events: none;
+  }
+
+  .situation-sub {
+    color: var(--muted);
+    font-size: 12px;
+    pointer-events: none;
+  }
+
+  .situation-result {
+    display: none;
+    margin-top: 14px;
+    padding: 17px;
+    border: 1px solid rgba(212, 175, 55, 0.42);
+    border-radius: 12px;
+    background: var(--gold-soft);
+    color: var(--trust);
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .situation-result.show {
+    display: block;
+  }
+
+  .situation-result strong {
+    color: var(--trust);
+    font-weight: 900;
+  }
+
+  .official-help {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--white);
+  }
+
+  .official-help h2 {
+    margin-bottom: 8px;
+    color: var(--trust);
+    font-size: 16px;
+  }
+
+  .official-help p {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .official-help a {
+    color: var(--trust);
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .disclaimer {
+    padding: 22px 8px 4px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .lead-footer {
+    background: var(--orange);
+    color: var(--white);
+    padding: 40px 18px;
+  }
+
+  .lead-footer-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .lead-eyebrow {
+    display: inline-block;
+    margin-bottom: 13px;
+    padding: 5px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.48);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .lead-brand {
+    margin-bottom: 13px;
+    font-family: "Noto Serif TC", "PMingLiU", serif;
+    font-size: clamp(22px, 6vw, 30px);
+    font-weight: 900;
+    line-height: 1.45;
+  }
+
+  .lead-transition {
+    max-width: 520px;
+    margin: 0 auto 23px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .cta-list {
+    display: grid;
+    gap: 11px;
+  }
+
+  .cta-button {
+    display: flex;
+    min-height: 58px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 17px;
+    border: 2px solid transparent;
+    border-radius: 13px;
+    background: var(--white);
+    color: var(--trust);
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(43, 58, 74, 0.12);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(43, 58, 74, 0.18);
+  }
+
+  .cta-content {
+    text-align: left;
+  }
+
+  .cta-title {
+    display: block;
+    font-size: 15px;
+    font-weight: 900;
+  }
+
+  .cta-description {
+    display: block;
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .cta-arrow {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--trust);
+    font-size: 16px;
+    font-weight: 900;
+  }
+
+  .footer-note {
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 11px;
+  }
+
+  @media (min-width: 600px) {
+    .container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .cta-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-kicker">65歲國保完整檢查表</div>
+  <h1 class="header-title">65歲前後<br><span>3筆錢差很多</span></h1>
+  <p class="header-sub">國保繳了多年，請領時間、身分與家屬順位都可能影響權益</p>
+  <div class="update-date">更新日期 2026年6月28日</div>
+</header>
+
+<div class="alert-strip">
+  <span aria-hidden="true">⚠️</span>
+  <p><strong>別等需要申請時才開始找資料</strong>　老年年金、喪葬給付與遺屬年金的請領條件並不相同</p>
+</div>
+
+<main class="container">
+
+  <section class="money-card" aria-label="喪葬給付金額">
+    <div class="money-icon" aria-hidden="true">💰</div>
+    <div>
+      <div class="money-label">115年國保喪葬給付金額</div>
+      <div class="money-amount">105,515 元</div>
+      <div class="money-note">死亡當月月投保金額 21,103 元 × 5 個月<br>限被保險人於國保加保期間死亡</div>
+      <a class="official-link" href="https://www.bli.gov.tw/0014359.html" target="_blank" rel="noopener noreferrer">
+        查官方資料 ↗
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2 class="section-title">3個關鍵差異先看懂</h2>
+    </div>
+
+    <div class="cards">
+      <article class="info-card">
+        <div class="card-label">喪葬給付</div>
+        <h3 class="card-title">關鍵是死亡當下是否仍在國保加保期間</h3>
+        <p class="card-description">被保險人於參加國保期間死亡，支出殯葬費的人可依規定申請，年滿65歲退出國保後死亡，通常不符合國保喪葬給付資格</p>
+        <div class="result-row">
+          <div class="result-tag result-positive">國保加保期間死亡<br>可依規定申請</div>
+          <div class="result-tag result-warning">退出國保後死亡<br>通常不符合</div>
+        </div>
+        <a class="official-link" href="https://www.bli.gov.tw/0014359.html" target="_blank" rel="noopener noreferrer">
+          查喪葬給付官方規定 ↗
+        </a>
+      </article>
+
+      <article class="info-card">
+        <div class="card-label">老年年金</div>
+        <h3 class="card-title">年滿65歲且有國保年資即可提出申請</h3>
+        <p class="card-description">勞保局通常會在年滿65歲前主動寄發通知與申請書，也可透過線上、郵寄或各地辦事處辦理，申請人死亡後，家屬不能代為補申請本人老年年金</p>
+        <div class="result-row">
+          <div class="result-tag result-positive">本人完成申請<br>依核定按月領取</div>
+          <div class="result-tag result-warning">未申請即死亡<br>家屬不能代辦本人年金</div>
+        </div>
+        <a class="official-link" href="https://www.bli.gov.tw/0017678.html" target="_blank" rel="noopener noreferrer">
+          查老年年金官方規定 ↗
+        </a>
+      </article>
+
+      <article class="info-card">
+        <div class="card-label">遺屬年金</div>
+        <h3 class="card-title">必須同時符合遺屬順位與個別請領條件</h3>
+        <p class="card-description">遺屬順位依序為配偶及子女、父母、祖父母、孫子女、兄弟姊妹，必須是最前面順位且符合資格的遺屬才能請領</p>
+        <div class="result-row">
+          <div class="result-tag result-positive">符合當序順位<br>且符合資格</div>
+          <div class="result-tag result-warning">不是當序遺屬<br>或資格不符</div>
+        </div>
+        <a class="official-link" href="https://www.bli.gov.tw/0017735.html" target="_blank" rel="noopener noreferrer">
+          查遺屬年金官方規定 ↗
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2 class="section-title">爸媽快65歲先完成這6項</h2>
+    </div>
+
+    <div class="progress-wrapper">
+      <div class="progress-label">
+        <span>完成進度</span>
+        <span id="progressText">0 / 6</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-header">📋 65歲前後檢查清單</div>
+
+      <div class="check-item" role="checkbox" tabindex="0" aria-checked="false">
+        <div class="check-box"><span class="check-tick">✓</span></div>
+        <div>
+          <div class="check-text">查詢國保投保年資與繳費紀錄</div>
+          <div class="check-sub">可使用勞保局 e 化服務系統，或洽勞保局確認個人資料</div>
+        </div>
+      </div>
+
+      <div class="check-item" role="checkbox" tabindex="0" aria-checked="false">
+        <div class="check-box"><span class="check-tick">✓</span></div>
+        <div>
+          <div class="check-text">試算國保老年年金金額</div>
+          <div class="check-sub">實際金額會依國保年資、繳費情形與適用公式核定</div>
+        </div>
+      </div>
+
+      <div class="check-item" role="checkbox" tabindex="0" aria-checked="false">
+        <div class="check-box"><span class="check-tick">✓</span></div>
+        <div>
+          <div class="check-text">確認是否收到勞保局寄發的申請書</div>
+          <div class="check-sub">未收到仍可下載表格、線上申請或至各地辦事處辦理</div>
+        </div>
+      </div>
+
+      <div class="check-item" role="checkbox" tabindex="0" aria-checked="false">
+        <div class="check-box"><span class="check-tick">✓</span></div>
+        <div>
+          <div class="check-text">了解喪葬給付的加保期間限制</div>
+          <div class="check-sub">是否符合資格，以死亡當時的國保身分與官方個案核定為準</div>
+        </div>
+      </div>
+
+      <div class="check-item" role="checkbox" tabindex="0" aria-checked="false">
+        <div class="check-box"><span class="check-tick">✓</span></div>
+        <div>
+          <div class="check-text">確認家中可能符合遺屬年金的當序遺屬</div>
+          <div class="check-sub">每一順位另有年齡、婚姻、收入、就學或身心狀況等資格條件</div>
+        </div>
+      </div>
+
+      <div class="check-item" role="checkbox" tabindex="0" aria-checked="false">
+        <div class="check-box"><span class="check-tick">✓</span></div>
+        <div>
+          <div class="check-text">存下勞保局官方聯絡方式</div>
+          <div class="check-sub">勞保局總機 (02) 2396-1266，實際承辦窗口依官方網站公告為準</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2 class="section-title">快速檢查你家是哪一種狀況</h2>
+    </div>
+
+    <div class="situation-title">點選最接近的情況查看提醒</div>
+
+    <div class="situation-buttons">
+      <button class="situation-button" type="button" data-situation="1">
+        <div class="situation-number">1</div>
+        <div>
+          <div class="situation-text">長輩還沒滿65歲</div>
+          <div class="situation-sub">先確認年資、欠費與聯絡資料</div>
+        </div>
+      </button>
+
+      <button class="situation-button" type="button" data-situation="2">
+        <div class="situation-number">2</div>
+        <div>
+          <div class="situation-text">長輩剛滿65歲</div>
+          <div class="situation-sub">確認申請書並辦理老年年金</div>
+        </div>
+      </button>
+
+      <button class="situation-button" type="button" data-situation="3">
+        <div class="situation-number">3</div>
+        <div>
+          <div class="situation-text">長輩已超過65歲</div>
+          <div class="situation-sub">確認是否已申請及目前領取狀況</div>
+        </div>
+      </button>
+    </div>
+
+    <div class="situation-result" id="situationResult" aria-live="polite"></div>
+  </section>
+
+  <section class="official-help">
+    <h2>需要查個人年資或申請進度</h2>
+    <p>
+      可使用
+      <a href="https://www.bli.gov.tw/0021882.html" target="_blank" rel="noopener noreferrer">勞保局 e 化服務系統</a>
+      或洽勞保局總機
+      <a href="tel:0223961266">(02) 2396-1266</a>
+    </p>
+  </section>
+
+  <p class="disclaimer">
+    本頁為一般資訊整理，不代表個案核定結果<br>
+    資格、金額、申請期限與應備文件，均依勞動部勞工保險局最新公告及個案核定為準
+  </p>
+
+</main>
+
+<footer class="lead-footer">
+  <div class="lead-footer-inner">
+    <div class="lead-eyebrow">把重要資訊留在身邊</div>
+
+    <div class="lead-brand">
+      阿宏賣房不賣夢<br>
+      陪你完成夢 但不陪你做錯夢
+    </div>
+
+    <p class="lead-transition">
+      政策權益先查清楚，家庭資產與居住規劃也要提早準備<br>
+      選擇適合你的方式，和阿宏保持聯絡
+    </p>
+
+    <div class="cta-list">
+      <a class="cta-button" href="https://reurl.cc/zQVzg7" target="_blank" rel="noopener noreferrer">
+        <span class="cta-content">
+          <span class="cta-title">加入鴻觀社團</span>
+          <span class="cta-description">可匿名交流房產、生活與家庭資產問題</span>
+        </span>
+        <span class="cta-arrow">›</span>
+      </a>
+
+      <a class="cta-button" href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446" target="_blank" rel="noopener noreferrer">
+        <span class="cta-content">
+          <span class="cta-title">加入官方 LINE</span>
+          <span class="cta-description">接收最新懶人包與實用資訊</span>
+        </span>
+        <span class="cta-arrow">›</span>
+      </a>
+
+      <a class="cta-button" href="/mingpian/" target="_blank" rel="noopener noreferrer">
+        <span class="cta-content">
+          <span class="cta-title">查看阿宏電子名片</span>
+          <span class="cta-description">認識阿宏與聯絡服務方式</span>
+        </span>
+        <span class="cta-arrow">›</span>
+      </a>
+    </div>
+
+    <div class="footer-note">鴻觀資產交流社 × 阿宏</div>
+  </div>
+</footer>
+
+<script>
+  const checklistItems = document.querySelectorAll(".check-item")
+  const progressText = document.getElementById("progressText")
+  const progressFill = document.getElementById("progressFill")
+
+  function updateProgress() {
+    const total = checklistItems.length
+    const completed = document.querySelectorAll(".check-item.checked").length
+    progressText.textContent = completed + " / " + total
+    progressFill.style.width = (completed / total * 100) + "%"
+  }
+
+  function toggleChecklistItem(item) {
+    item.classList.toggle("checked")
+    item.setAttribute("aria-checked", item.classList.contains("checked") ? "true" : "false")
+    updateProgress()
+  }
+
+  checklistItems.forEach(function(item) {
+    item.addEventListener("click", function() {
+      toggleChecklistItem(item)
+    })
+
+    item.addEventListener("keydown", function(event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault()
+        toggleChecklistItem(item)
+      }
+    })
+  })
+
+  const situationMessages = {
+    1: "<strong>還沒滿65歲，現在適合先盤點資料</strong><br><br>① 查詢國保年資與欠費紀錄<br>② 試算可能領取的老年年金<br>③ 確認勞保局留存的地址是否正確<br>④ 了解喪葬給付與遺屬年金條件",
+    2: "<strong>剛滿65歲，先確認老年年金申請</strong><br><br>① 查看是否收到勞保局通知與申請書<br>② 可選擇線上、郵寄或臨櫃辦理<br>③ 準備本人帳戶資料<br>④ 實際給付月份與金額依官方核定為準",
+    3: "<strong>已超過65歲，先確認目前請領狀況</strong><br><br>① 已領取者可核對核定金額與入帳紀錄<br>② 尚未申請者應盡快洽勞保局確認<br>③ 本人死亡後家屬不能代為補申請本人老年年金<br>④ 符合條件的當序遺屬仍可另查遺屬年金資格"
+  }
+
+  document.querySelectorAll(".situation-button").forEach(function(button) {
+    button.addEventListener("click", function() {
+      document.querySelectorAll(".situation-button").forEach(function(item) {
+        item.classList.remove("active")
+      })
+
+      button.classList.add("active")
+
+      const result = document.getElementById("situationResult")
+      result.innerHTML = situationMessages[button.getAttribute("data-situation")]
+      result.classList.add("show")
+    })
+  })
+</script>
+
+</body>
+</html>

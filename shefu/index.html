@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#2B3A4A">
+
+  <title>六大社福津貼預計 7 月調整 現在衝去領多數會白跑</title>
+  <meta name="description" content="六大社福津貼調升 23.5% 是政策規劃，不代表現在已經入帳，快速看懂調整項目、國民年金修法進度、預算程序與資格查詢方式">
+
+  <style>
+    :root {
+      --trust-gray: #2B3A4A;
+      --grace-gold: #D4AF37;
+      --home-orange: #ED8B4E;
+      --paper: #FFFDF8;
+      --soft-gray: #F2F4F6;
+      --soft-gold: #FFF8DD;
+      --soft-orange: #FFF0E6;
+      --text: #25313D;
+      --muted: #66717C;
+      --white: #FFFFFF;
+      --border: rgba(43, 58, 74, 0.14);
+      --shadow: 0 14px 34px rgba(43, 58, 74, 0.09);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      font-size: 18px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    a:focus-visible {
+      outline: 4px solid rgba(212, 175, 55, 0.45);
+      outline-offset: 4px;
+    }
+
+    .page {
+      width: min(100%, 780px);
+      margin: 0 auto;
+      overflow: hidden;
+      background: var(--paper);
+    }
+
+    .hero {
+      position: relative;
+      padding: 48px 22px 36px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 92% 8%, rgba(212, 175, 55, 0.28), transparent 30%),
+        linear-gradient(145deg, #2B3A4A 0%, #34485B 100%);
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -54px;
+      bottom: -72px;
+      width: 190px;
+      height: 190px;
+      content: "";
+      border: 2px solid rgba(237, 139, 78, 0.34);
+      border-radius: 50%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 7px 13px;
+      color: var(--trust-gray);
+      background: var(--grace-gold);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 18px;
+      font-size: clamp(36px, 10vw, 58px);
+      line-height: 1.13;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-subtitle {
+      position: relative;
+      z-index: 1;
+      max-width: 650px;
+      margin-bottom: 22px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .update {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .status-box {
+      position: relative;
+      z-index: 2;
+      margin-top: 28px;
+      padding: 20px;
+      color: var(--trust-gray);
+      background: var(--white);
+      border-left: 7px solid var(--home-orange);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .status-label {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: #A34C1C;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .status-box strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 23px;
+      line-height: 1.45;
+    }
+
+    .status-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    main {
+      padding: 34px 18px 52px;
+    }
+
+    section + section {
+      margin-top: 46px;
+    }
+
+    .section-heading {
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      margin-bottom: 5px;
+      color: #9C7920;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+
+    h2 {
+      margin-bottom: 8px;
+      color: var(--trust-gray);
+      font-size: 30px;
+      line-height: 1.3;
+      letter-spacing: -0.025em;
+    }
+
+    .section-intro {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .card-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-card {
+      padding: 23px 20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .info-card.warning {
+      background: var(--soft-orange);
+      border-color: rgba(237, 139, 78, 0.35);
+    }
+
+    .info-card.gold {
+      background: var(--soft-gold);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .card-label {
+      margin-bottom: 6px;
+      color: var(--trust-gray);
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .big-number {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--grace-gold);
+      font-size: clamp(38px, 12vw, 57px);
+      font-weight: 950;
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+    }
+
+    .big-number.compact {
+      font-size: clamp(32px, 10vw, 48px);
+    }
+
+    .card-title {
+      margin-bottom: 9px;
+      color: var(--trust-gray);
+      font-size: 23px;
+      line-height: 1.4;
+    }
+
+    .card-text {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .official-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 9px 14px;
+      color: var(--trust-gray);
+      background: var(--white);
+      border: 1px solid rgba(43, 58, 74, 0.2);
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .official-link::after {
+      content: "↗";
+      color: var(--home-orange);
+      font-size: 18px;
+    }
+
+    .allowance-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .allowance-card {
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      box-shadow: 0 9px 24px rgba(43, 58, 74, 0.07);
+    }
+
+    .allowance-card h3 {
+      margin-bottom: 10px;
+      color: var(--trust-gray);
+      font-size: 21px;
+      line-height: 1.45;
+    }
+
+    .amount {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--grace-gold);
+      font-size: 32px;
+      font-weight: 950;
+      line-height: 1.2;
+      letter-spacing: -0.035em;
+    }
+
+    .amount-note {
+      margin-bottom: 13px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .notice {
+      margin-top: 17px;
+      padding: 18px;
+      color: var(--trust-gray);
+      background: var(--soft-gray);
+      border-radius: 17px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .process {
+      display: grid;
+      gap: 0;
+      overflow: hidden;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .process-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+      padding: 22px 19px;
+    }
+
+    .process-item + .process-item {
+      border-top: 1px solid var(--border);
+    }
+
+    .process-number {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      color: var(--trust-gray);
+      background: var(--grace-gold);
+      border-radius: 50%;
+      font-size: 19px;
+      font-weight: 950;
+    }
+
+    .process-item h3 {
+      margin-bottom: 5px;
+      color: var(--trust-gray);
+      font-size: 20px;
+    }
+
+    .process-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .process-item.pending .process-number {
+      color: var(--white);
+      background: var(--home-orange);
+    }
+
+    .check-panel {
+      padding: 23px 20px;
+      background: var(--trust-gray);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .check-panel h2,
+    .check-panel .section-intro {
+      color: var(--white);
+    }
+
+    .check-panel .section-intro {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .check-item {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 11px;
+      align-items: start;
+      padding: 16px;
+      color: var(--trust-gray);
+      background: var(--white);
+      border-radius: 16px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .check-icon {
+      display: grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      color: var(--white);
+      background: var(--home-orange);
+      border-radius: 9px;
+      font-size: 17px;
+      font-weight: 950;
+    }
+
+    .check-warning {
+      margin: 0;
+      padding: 16px;
+      color: var(--trust-gray);
+      background: var(--grace-gold);
+      border-radius: 15px;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .action-card {
+      padding: 23px 20px;
+      background: var(--soft-orange);
+      border: 1px solid rgba(237, 139, 78, 0.34);
+      border-radius: var(--radius);
+    }
+
+    .action-card h3 {
+      margin-bottom: 15px;
+      color: var(--trust-gray);
+      font-size: 25px;
+    }
+
+    .action-list {
+      display: grid;
+      gap: 12px;
+      margin: 0 0 19px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .action-list li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .action-list li::before {
+      position: absolute;
+      top: 1px;
+      left: 0;
+      color: var(--home-orange);
+      content: "✓";
+      font-size: 20px;
+      font-weight: 950;
+    }
+
+    .hotline {
+      display: block;
+      padding: 19px;
+      color: var(--white);
+      background: var(--trust-gray);
+      border-radius: 17px;
+      text-decoration: none;
+    }
+
+    .hotline small {
+      display: block;
+      margin-bottom: 2px;
+      color: rgba(255, 255, 255, 0.67);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .hotline strong {
+      display: block;
+      color: var(--grace-gold);
+      font-size: 34px;
+      line-height: 1.2;
+    }
+
+    .hotline span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+    }
+
+    .source-box {
+      padding: 22px 20px;
+      background: var(--soft-gray);
+      border-radius: var(--radius);
+    }
+
+    .source-box h2 {
+      font-size: 25px;
+    }
+
+    .source-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 17px;
+    }
+
+    .source-links a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      min-height: 52px;
+      padding: 13px 15px;
+      color: var(--trust-gray);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 850;
+      line-height: 1.45;
+      text-decoration: none;
+    }
+
+    .source-links a::after {
+      flex: 0 0 auto;
+      color: var(--home-orange);
+      content: "↗";
+      font-size: 19px;
+    }
+
+    footer {
+      padding: 42px 20px 48px;
+      color: var(--trust-gray);
+      background: var(--home-orange);
+    }
+
+    .brand {
+      margin-bottom: 13px;
+      font-size: 30px;
+      font-weight: 950;
+      line-height: 1.35;
+      letter-spacing: -0.025em;
+    }
+
+    .transition {
+      margin-bottom: 24px;
+      color: rgba(43, 58, 74, 0.86);
+      font-weight: 750;
+    }
+
+    .cta-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .cta {
+      display: block;
+      min-height: 58px;
+      padding: 15px 17px;
+      color: var(--trust-gray);
+      background: var(--white);
+      border: 2px solid rgba(43, 58, 74, 0.16);
+      border-radius: 16px;
+      font-size: 17px;
+      font-weight: 950;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 8px 0 rgba(43, 58, 74, 0.12);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 0 rgba(43, 58, 74, 0.12);
+    }
+
+    .footer-note {
+      margin: 25px 0 0;
+      color: rgba(43, 58, 74, 0.68);
+      font-size: 13px;
+      font-weight: 750;
+      text-align: center;
+    }
+
+    @media (min-width: 640px) {
+      .hero {
+        padding: 62px 44px 44px;
+      }
+
+      main {
+        padding: 44px 34px 64px;
+      }
+
+      footer {
+        padding: 50px 38px 58px;
+      }
+
+      .info-card,
+      .allowance-card,
+      .action-card,
+      .check-panel,
+      .source-box {
+        padding: 27px;
+      }
+    }
+
+    @media print {
+      body {
+        background: var(--white);
+      }
+
+      .page {
+        width: 100%;
+      }
+
+      .info-card,
+      .allowance-card,
+      .process,
+      .check-panel,
+      .action-card,
+      .source-box {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="eyebrow">政策查核懶人包</div>
+
+      <h1>六大社福津貼預計 7 月調整<br>現在衝去領多數會白跑</h1>
+
+      <p class="hero-subtitle">
+        調升規劃是真的，但預計上路不等於已經入帳
+        修法與預算程序沒走完前，先查資格、等正式公告
+      </p>
+
+      <p class="update">更新日期 2026-07-01</p>
+
+      <div class="status-box">
+        <span class="status-label">本頁查核結論</span>
+        <strong>目前不能把政策規劃直接說成已經正式開領</strong>
+        <p>
+          行政院與衛福部公開資料載明預計於 115 年 7 月實施
+          國民年金調升仍是修正草案
+          115 年度中央政府總預算仍在立法院審查程序
+          實際生效、入帳與補發方式依官方最新公告為準
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section aria-labelledby="summary-title">
+        <div class="section-heading">
+          <p class="section-kicker">先看 3 個重點</p>
+          <h2 id="summary-title">是真的，但還不能省略程序</h2>
+          <p class="section-intro">把政策內容、法律進度與實際入帳分開看</p>
+        </div>
+
+        <div class="card-stack">
+          <article class="info-card gold">
+            <p class="card-label">行政院核定的規劃</p>
+            <span class="big-number">23.5%</span>
+            <h3 class="card-title">六大社福津貼規劃調升</h3>
+            <p class="card-text">
+              行政院於 115 年 3 月 12 日通過調整規劃
+              預計照顧約 89 萬名弱勢民眾
+              這是調整方向，不代表所有款項已經撥入帳戶
+            </p>
+            <a class="official-link" href="https://www.ey.gov.tw/Page/5B2FC62D288F4DB7/3db750ed-9c8b-4b51-b380-cd1417954cf6" target="_blank" rel="noopener noreferrer">查行政院官方資料</a>
+          </article>
+
+          <article class="info-card warning">
+            <p class="card-label">國民年金基本數規劃</p>
+            <span class="big-number compact">4,049 → 5,000</span>
+            <h3 class="card-title">目前仍是國民年金法修正草案</h3>
+            <p class="card-text">
+              行政院版規劃將部分國民年金給付基本數調高至每月 5,000 元
+              截至本頁更新日 仍待立法院完成三讀與公告施行
+              尚不能直接解讀成所有人現在都能領 5,000 元
+            </p>
+            <a class="official-link" href="https://dep.mohw.gov.tw/DOSI/cp-324-85416-102.html" target="_blank" rel="noopener noreferrer">查衛福部國保修法說明</a>
+          </article>
+
+          <article class="info-card">
+            <p class="card-label">原定政策目標</p>
+            <span class="big-number compact">115 年 7 月</span>
+            <h3 class="card-title">預計實施不等於當月立即入帳</h3>
+            <p class="card-text">
+              行政院曾表示希望各項調整於 7 月 1 日同步實施
+              衛福部資料則使用預計與力拚等文字
+              是否如期生效、何時撥款、是否補發都要看後續正式公告
+            </p>
+            <a class="official-link" href="https://www.ey.gov.tw/PageRedirect.aspx?l=942a40f0-cddc-497a-b158-e720b2624c60" target="_blank" rel="noopener noreferrer">查行政院院會說明</a>
+          </article>
+
+          <article class="info-card">
+            <p class="card-label">規劃所需程序</p>
+            <span class="big-number compact">335.6 億元</span>
+            <h3 class="card-title">新增經費規劃採追加預算</h3>
+            <p class="card-text">
+              衛福部載明社福津貼調增推估一年所需經費約 335.6 億元
+              須在中央政府總預算完成法定程序後，再辦理追加預算
+              預算尚在審查時，不能把預定日期直接當成撥款完成日
+            </p>
+            <a class="official-link" href="https://www.mohw.gov.tw/cp-7397-85763-1.html" target="_blank" rel="noopener noreferrer">查衛福部經費說明</a>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="items-title">
+        <div class="section-heading">
+          <p class="section-kicker">六大調整項目</p>
+          <h2 id="items-title">官方公布的規劃金額</h2>
+          <p class="section-intro">以下為行政院 115 年 3 月公布的預計調整後月領金額，實際金額依官方對照表與核定為準</p>
+        </div>
+
+        <div class="allowance-list">
+          <article class="allowance-card">
+            <h3>低收入戶家庭生活補助</h3>
+            <span class="amount">最高約 25,168 元</span>
+            <p class="amount-note">依家庭人口、所得、財產與各縣市規定不同，最高者較調整前約增加 3,789 元</p>
+            <a class="official-link" href="https://www.mohw.gov.tw/cp-7397-85763-1.html" target="_blank" rel="noopener noreferrer">查官方金額對照</a>
+          </article>
+
+          <article class="allowance-card">
+            <h3>低收入戶兒童生活補助</h3>
+            <span class="amount">至少 5,000 元</span>
+            <p class="amount-note">規劃至少提供每月 5,000 元，實際金額依核定資格</p>
+            <a class="official-link" href="https://www.mohw.gov.tw/cp-7397-85763-1.html" target="_blank" rel="noopener noreferrer">查官方金額對照</a>
+          </article>
+
+          <article class="allowance-card">
+            <h3>低收入戶就學生活補助</h3>
+            <span class="amount">調升 23.5%</span>
+            <p class="amount-note">實際資格與核發方式依主管機關審查</p>
+            <a class="official-link" href="https://www.mohw.gov.tw/cp-7397-85763-1.html" target="_blank" rel="noopener noreferrer">查官方金額對照</a>
+          </article>
+
+          <article class="allowance-card">
+            <h3>身心障礙者生活補助費</h3>
+            <span class="amount">調升 23.5%</span>
+            <p class="amount-note">依障礙程度、家庭所得與相關資格而有不同</p>
+            <a class="official-link" href="https://www.mohw.gov.tw/cp-7397-85763-1.html" target="_blank" rel="noopener noreferrer">查官方金額對照</a>
+          </article>
+
+          <article class="allowance-card">
+            <h3>中低收入老人生活津貼</h3>
+            <span class="amount">調升 23.5%</span>
+            <p class="amount-note">仍須符合年齡、所得、財產與戶籍等規定</p>
+            <a class="official-link" href="https://www.mohw.gov.tw/cp-7397-85763-1.html" target="_blank" rel="noopener noreferrer">查官方金額對照</a>
+          </article>
+
+          <article class="allowance-card">
+            <h3>弱勢兒童及少年生活扶助</h3>
+            <span class="amount">至少 5,000 元</span>
+            <p class="amount-note">各縣市受理資格與所需文件仍依正式公告</p>
+            <a class="official-link" href="https://www.mohw.gov.tw/cp-7397-85763-1.html" target="_blank" rel="noopener noreferrer">查官方金額對照</a>
+          </article>
+        </div>
+
+        <div class="notice">
+          上述為官方調整規劃，並納入 115 年 1 月至 116 年 1 月的弱勢加發生活補助計算
+          不代表每位民眾都能領到最高金額
+          各項精確金額、生效日與入帳方式，請以衛福部官方對照表與最新公告為準
+        </div>
+      </section>
+
+      <section aria-labelledby="process-title">
+        <div class="section-heading">
+          <p class="section-kicker">為什麼現在去可能白跑</p>
+          <h2 id="process-title">從拍板到入帳還有幾道程序</h2>
+          <p class="section-intro">政策新聞不是領款通知，日期也不是看到就能直接申請</p>
+        </div>
+
+        <div class="process">
+          <article class="process-item">
+            <div class="process-number">1</div>
+            <div>
+              <h3>政策規劃通過</h3>
+              <p>行政院通過六大社福津貼調增方向與預計金額</p>
+            </div>
+          </article>
+
+          <article class="process-item pending">
+            <div class="process-number">2</div>
+            <div>
+              <h3>相關法律完成審議</h3>
+              <p>國民年金與老農津貼涉及修法，須由立法院完成三讀與公告施行</p>
+            </div>
+          </article>
+
+          <article class="process-item pending">
+            <div class="process-number">3</div>
+            <div>
+              <h3>總預算與追加預算到位</h3>
+              <p>新增經費須依預算程序取得法定支用依據</p>
+            </div>
+          </article>
+
+          <article class="process-item pending">
+            <div class="process-number">4</div>
+            <div>
+              <h3>主管機關公布核發方式</h3>
+              <p>包含生效日期、是否自動調整、是否補發、入帳月份與申請文件</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="check-panel" aria-labelledby="check-title">
+        <div class="section-heading">
+          <p class="section-kicker">適用對象自我檢核</p>
+          <h2 id="check-title">家中是否可能涉及這次調整</h2>
+          <p class="section-intro">符合任一類別可先查詢，但不代表已經通過資格審查</p>
+        </div>
+
+        <div class="check-list">
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span>家中目前是低收入戶，正在領家庭、兒童或就學生活補助</span>
+          </div>
+
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span>家中有身心障礙者，目前正在領取生活補助費</span>
+          </div>
+
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span>家中有符合中低收入資格的長者，正在領老人生活津貼</span>
+          </div>
+
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span>正在照顧經地方政府核定的弱勢兒童或少年</span>
+          </div>
+
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span>家中有人正在領國民年金基本保障類給付，或即將年滿 65 歲</span>
+          </div>
+
+          <div class="check-item">
+            <span class="check-icon">✓</span>
+            <span>過去曾因所得、財產、戶籍或文件問題未通過，想重新確認資格</span>
+          </div>
+        </div>
+
+        <p class="check-warning">
+          最終仍須依各項補助的年齡、所得、財產、戶籍、家庭人口與文件規定審查
+          各縣市受理方式可能不同
+        </p>
+      </section>
+
+      <section aria-labelledby="action-title">
+        <div class="action-card">
+          <h3 id="action-title">現在最實際的 3 個動作</h3>
+
+          <ul class="action-list">
+            <li>已經在領補助的人，先等主管機關或地方政府正式通知</li>
+            <li>還沒申請或不確定資格，先詢問戶籍所在地社會局處或區公所</li>
+            <li>詢問時說清楚補助名稱、年齡、戶籍縣市、目前是否已領其他津貼</li>
+          </ul>
+
+          <a class="hotline" href="tel:1957" aria-label="撥打 1957 福利諮詢專線">
+            <small>衛生福利部福利諮詢專線</small>
+            <strong>1957</strong>
+            <span>可諮詢福利資格與受理單位，服務時間依官方最新公告為準</span>
+          </a>
+
+          <div style="margin-top: 14px">
+            <a class="official-link" href="https://1957.mohw.gov.tw/" target="_blank" rel="noopener noreferrer">查 1957 官方服務</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="source-box" aria-labelledby="sources-title">
+        <h2 id="sources-title">官方查核來源</h2>
+        <p class="section-intro">政策可能隨修法與預算進度更新，轉傳前建議再點一次官方頁面</p>
+
+        <div class="source-links">
+          <a href="https://www.ey.gov.tw/Page/5B2FC62D288F4DB7/3db750ed-9c8b-4b51-b380-cd1417954cf6" target="_blank" rel="noopener noreferrer">行政院 六大社福津貼調整規劃</a>
+          <a href="https://www.mohw.gov.tw/cp-7397-85763-1.html" target="_blank" rel="noopener noreferrer">衛生福利部 六大社福津貼新聞稿（含金額對照）</a>
+          <a href="https://dep.mohw.gov.tw/DOSI/cp-324-85416-102.html" target="_blank" rel="noopener noreferrer">衛生福利部 國民年金修法宣導專區</a>
+          <a href="https://www.bli.gov.tw/0013618.html" target="_blank" rel="noopener noreferrer">勞動部勞工保險局 國民年金常見問答</a>
+          <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050152" target="_blank" rel="noopener noreferrer">全國法規資料庫 國民年金法</a>
+          <a href="https://1957.mohw.gov.tw/" target="_blank" rel="noopener noreferrer">衛生福利部 1957 福利諮詢專線</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="brand">阿宏賣房不賣夢 陪你完成夢 但不陪你做錯夢</div>
+
+      <p class="transition">
+        政策先查清楚，家庭的重要選擇也別只聽一句話
+        找一個能安心交流、慢慢釐清問題的地方
+      </p>
+
+      <div class="cta-list">
+        <a class="cta" href="https://reurl.cc/zQVzg7" target="_blank" rel="noopener noreferrer">加入鴻觀社團（可匿名）</a>
+        <a class="cta" href="https://line.me/R/ti/p/@798ulmws?oat_content=url&amp;ts=11021446" target="_blank" rel="noopener noreferrer">加入官方 LINE</a>
+        <a class="cta" href="/mingpian/" target="_blank" rel="noopener noreferrer">查看阿宏電子名片</a>
+      </div>
+
+      <p class="footer-note">本頁為政策資訊整理，資格認定與實際核發依主管機關最新公告為準</p>
+    </footer>
+  </div>
+</body>
+</html>
