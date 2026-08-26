@@ -1,0 +1,426 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>估價神獸</title>
+<meta name="theme-color" content="#131311">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{
+  --ground:#E7E7E3; --surface:#FBFBF8; --raise:#FFFFFF;
+  --line:#D5D4CC; --ink:#1A1A17; --ink2:#5C5B54; --ink3:#8A897F;
+  --accent:#A9761A; --accent-soft:#F0E3C7;
+  --bad:#B2412C; --bad-soft:#F6DED8;
+  --good:#43713A; --good-soft:#DEEBD9;
+  --ind:#6D4E9C; --ind-soft:#E7DFF4;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ground:#131311; --surface:#1C1C19; --raise:#2B2B26;
+    --line:#33332E; --ink:#ECECE6; --ink2:#ADACA3; --ink3:#77766D;
+    --accent:#E3B155; --accent-soft:#3A2F17;
+    --bad:#E0684D; --bad-soft:#3A211B;
+    --good:#7FB06F; --good-soft:#1F2B1B;
+    --ind:#A98BD8; --ind-soft:#282039;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding:0 14px 90px}
+header{position:sticky;top:0;z-index:9;background:var(--ground);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;gap:10px}
+header .mark{width:32px;height:32px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:900}
+header b{font-size:15px}
+header span{display:block;font-size:11px;color:var(--ink3)}
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:9;display:flex;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.tabs button{flex:1;border:0;background:none;color:var(--ink3);font:inherit;font-size:11px;padding:8px 2px 10px;cursor:pointer}
+.tabs button .ic{display:block;font-size:19px;margin-bottom:1px}
+.tabs button[aria-selected="true"]{color:var(--accent);font-weight:700}
+.sec{display:none;padding-top:12px}
+.sec.on{display:block}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+.box h4{margin:0 0 10px;font-size:13px;letter-spacing:.04em;color:var(--ink2)}
+label.fl{display:block;font-size:12.5px;font-weight:700;margin:10px 0 4px}
+label.fl i{font-weight:400;color:var(--ink3);font-style:normal}
+.inp{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--raise);color:var(--ink);font:inherit;font-size:16px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{display:block;width:100%;padding:12px;border:0;border-radius:10px;background:var(--accent);color:#fff;font:inherit;font-weight:800;cursor:pointer;margin-top:10px}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--ink2);font-weight:600}
+.btn.sm{padding:8px;font-size:13px;margin-top:8px}
+.btn:disabled{opacity:.4}
+.hero{background:var(--accent-soft);border-radius:12px;padding:14px;margin-bottom:12px}
+.hero .lab{font-size:11px;color:var(--ink2);letter-spacing:.06em}
+.hero .val{font-size:30px;font-weight:900;font-variant-numeric:tabular-nums}
+.hero .note{font-size:12px;color:var(--ink2)}
+.verdict{border-radius:10px;padding:11px 13px;font-size:13.5px;margin-top:10px}
+.verdict b{display:block;margin-bottom:2px}
+.verdict.g{background:var(--good-soft);color:var(--good)}
+.verdict.y{background:var(--accent-soft);color:var(--accent)}
+.verdict.r{background:var(--bad-soft);color:var(--bad)}
+.kv{font-size:13.5px}
+.kv .r{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
+.kv .r:last-child{border:0}
+.kv .n{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.hint{font-size:12px;color:var(--ink3);margin:6px 0 0}
+.chk{display:flex;gap:9px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.chk:last-child{border:0}
+.chk input{margin-top:3px;width:17px;height:17px;flex:none}
+.pill{font-size:10.5px;font-weight:800;padding:1px 7px;border-radius:99px;white-space:nowrap}
+.p-bad{background:var(--bad-soft);color:var(--bad)}
+.p-good{background:var(--good-soft);color:var(--good)}
+.p-acc{background:var(--accent-soft);color:var(--accent)}
+.ladder{font-size:13.5px}
+.ladder .row{display:flex;justify-content:space-between;gap:8px;padding:8px 10px;border-radius:8px;margin-bottom:6px;background:var(--raise);border:1px solid var(--line)}
+.ladder .row.me{border-color:var(--ind);background:var(--ind-soft)}
+.ladder .row .n{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.case-row{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--raise)}
+.case-row b{font-size:14px}
+.case-row .sub{font-size:11.5px;color:var(--ink3)}
+.case-row button{border:1px solid var(--line);background:none;color:var(--ink2);border-radius:8px;padding:6px 10px;font:inherit;font-size:12px;cursor:pointer}
+.disc{font-size:11px;color:var(--ink3);margin-top:10px;line-height:1.55}
+#toast{position:fixed;left:50%;bottom:70px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--ground);padding:8px 16px;border-radius:99px;font-size:13px;opacity:0;transition:.25s;pointer-events:none;z-index:99;white-space:nowrap}
+#toast.on{opacity:1;transform:translateX(-50%)}
+textarea.inp{font-size:14px}
+</style>
+
+<header>
+  <div class="mark">獸</div>
+  <div><b>估價神獸</b><span>三價 × 競品 × 風險 × 防翻車　內部工具</span></div>
+</header>
+
+<div class="wrap">
+
+<!-- ═══ 1 案件 ═══ -->
+<div class="sec on" id="s0">
+  <div class="box">
+    <h4>物件基本（案件會存在這支手機裡）</h4>
+    <label class="fl">社區名／案名</label><input class="inp" id="c_name" placeholder="例：凱旋門兩房">
+    <label class="fl">地址／位置 <i>對外不寫門牌</i></label><input class="inp" id="c_addr" placeholder="例：樹林中正路，近樹林車站">
+    <div class="f2">
+      <div><label class="fl">權狀總坪 <i>含車位</i></label><input class="inp" id="c_all" inputmode="decimal" placeholder="42.5"></div>
+      <div><label class="fl">車位登記坪 <i>無填0</i></label><input class="inp" id="c_pk" inputmode="decimal" placeholder="0"></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">車位行情價 <i>萬</i></label><input class="inp" id="c_pkp" inputmode="decimal" placeholder="0"></div>
+      <div><label class="fl">屋主開價 <i>萬</i></label><input class="inp" id="c_ask" inputmode="decimal" placeholder="1580"></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">屋齡 <i>年</i></label><input class="inp" id="c_age" inputmode="decimal"></div>
+      <div><label class="fl">樓層 <i>例 8/14</i></label><input class="inp" id="c_fl"></div>
+    </div>
+    <label class="fl">條件備註 <i>採光/邊間/屋況/格局</i></label>
+    <textarea class="inp" id="c_note" rows="2"></textarea>
+    <p class="hint">🔴 沒權狀謄本＝概估版，所有數字標「未經權狀謄本核實」；口述坪數以權狀為準</p>
+  </div>
+</div>
+
+<!-- ═══ 2 三價 ═══ -->
+<div class="sec" id="s1">
+  <div class="box">
+    <h4>實價登錄定錨（已扣車位單價）</h4>
+    <label class="fl">同社區／同路段成交單價 <i>萬/坪，不含車位</i></label>
+    <input class="inp" id="v_up" inputmode="decimal" placeholder="42">
+    <label class="fl">實登揭露至 <i>年月，必填才能對外</i></label>
+    <input class="inp" id="v_src" placeholder="例：115年6月">
+    <label class="fl">個案條件調整 <i>%（劣勢-6 持平0 優勢+6）</i></label>
+    <input class="inp" id="v_adj" inputmode="numeric" value="0">
+  </div>
+  <div id="v_out"></div>
+  <div class="disc">單價以實價登錄同社區近一年成交為主。含車位單價是假單價，一律用已扣車位。本頁只做價格帶定位，不構成價格保證。含地下室物件要拆開算：地下室單價＝一樓 1/2~1/3（銀行鑑價天花板）。</div>
+</div>
+
+<!-- ═══ 3 競品 ═══ -->
+<div class="sec" id="s2">
+  <div class="box">
+    <h4>加一筆競品（四同：同社區/同路段/同總價帶/同產品型）</h4>
+    <label class="fl">名稱</label><input class="inp" id="r_name" placeholder="例：同社區12樓三房">
+    <div class="f2">
+      <div><label class="fl">開價 <i>萬</i></label><input class="inp" id="r_price" inputmode="decimal"></div>
+      <div><label class="fl">坪數 <i>不含車位</i></label><input class="inp" id="r_ping" inputmode="decimal"></div>
+    </div>
+    <label class="fl">來源＋查證日 <i>必填，過期資料＝假資料</i></label>
+    <input class="inp" id="r_src" placeholder="例：591實頁 8/26查">
+    <button class="btn sm" id="r_add">加入天梯</button>
+  </div>
+  <div class="box"><h4>價格天梯（本案紫框）</h4><div class="ladder" id="r_ladder"></div></div>
+  <div id="r_verdict"></div>
+  <div class="disc">🔴 沒有競品資料時不得產生任何價格保證，只能列待查清單。結論三選一：高估／合理／可強推。</div>
+</div>
+
+<!-- ═══ 4 風險 ═══ -->
+<div class="sec" id="s3">
+  <div class="box">
+    <h4>嫌惡設施距離取整器（對外版自動算）</h4>
+    <label class="fl">設施／機能名稱</label><input class="inp" id="n_name" placeholder="例：變電所／捷運站">
+    <div class="f2">
+      <div><label class="fl">實測距離 <i>公尺，Google 地圖</i></label><input class="inp" id="n_dist" inputmode="numeric"></div>
+      <div><label class="fl">類型</label><select class="inp" id="n_type"><option value="bad">嫌惡減分（往下取整）</option><option value="good">機能加分（往上進位）</option></select></div>
+    </div>
+    <button class="btn sm" id="n_add">加入清單</button>
+    <p class="hint">🟢加分項往上進位（432→約500）🔴減分項往下取整（154→約100）；不足100寫「約100公尺內」不寫0。原始值留內部，對外只用取整版＋標「距離依 Google 地圖」，禁寫分鐘。</p>
+  </div>
+  <div class="box"><h4>已記錄</h4><div class="kv" id="n_list"></div></div>
+  <div class="box">
+    <h4>嫌惡設施查證備忘</h4>
+    <p class="hint" style="margin:0 0 8px">✅算：殯葬／宮廟金爐／加油站／瓦斯行／變電所／高壓電塔／基地台／垃圾場／掩埋場／焚化爐／汙水處理廠／八大行業／工業用地工廠／航空噪音防制區／鐵路高架噪音<br>🚫不算：檳榔店、小吃店、一般零售餐飲、便利商店、一般店面——多列是抹黑<br>🚫絕不寫「無嫌惡設施」，查不到寫：「本次外網查證未發現，以現場勘查與最新不動產說明書為準」</p>
+    <label class="fl">謄本狀態</label>
+    <select class="inp" id="n_deed"><option value="none">未提供謄本（報告註明建議調閱）</option><option value="clean">已看謄本：無查封無異常設定</option><option value="red">已看謄本：有查封/假扣押/民間設定 🔴停手</option></select>
+  </div>
+</div>
+
+<!-- ═══ 5 閘門＋摘要 ═══ -->
+<div class="sec" id="s4">
+  <div class="box">
+    <h4>防翻車閘門（全勾才給摘要）</h4>
+    <div id="g_list"></div>
+  </div>
+  <div id="g_out"></div>
+  <button class="btn" id="g_copy" disabled>複製神獸摘要（內部底稿）</button>
+  <button class="btn ghost sm" id="c_save">💾 存這個案件到手機</button>
+  <div class="disc">摘要是內部資料底稿，對外文案仍要走寫手技能＋A0 出關；對外數字沒過 20 財務不出門。開價≠成交價。</div>
+</div>
+
+<!-- ═══ 6 案件庫 ═══ -->
+<div class="sec" id="s5">
+  <div class="box">
+    <h4>存在這支手機裡的案件</h4>
+    <div id="k_list"></div>
+    <p class="hint">資料只存在這支手機的瀏覽器裡，不上傳。換手機不會跟著走，重要案件記得回 Notion 建檔。</p>
+  </div>
+</div>
+
+<div class="disc" style="text-align:center">
+鴻石不動產經紀有限公司｜住商不動產 樹林站前加盟店<br>
+經紀營業員 何志宏（114）年登字第495065號｜經紀人證號 (96)北縣字第001399號<br>
+本頁為內部作業工具，所有估算為決策輔助，行情以實價登錄揭露為準，屋況產權以謄本與現場為準
+</div>
+</div>
+
+<div class="tabs" role="tablist">
+  <button aria-selected="true" data-s="0"><span class="ic">📋</span>案件</button>
+  <button aria-selected="false" data-s="1"><span class="ic">💰</span>三價</button>
+  <button aria-selected="false" data-s="2"><span class="ic">🪜</span>競品</button>
+  <button aria-selected="false" data-s="3"><span class="ic">⚠️</span>風險</button>
+  <button aria-selected="false" data-s="4"><span class="ic">🥊</span>閘門</button>
+  <button aria-selected="false" data-s="5"><span class="ic">💾</span>調閱</button>
+</div>
+<div id="toast"></div>
+
+<script>
+function $(id){return document.getElementById(id)}
+function v(id){var n=parseFloat(String($(id).value).replace(/,/g,''));return isNaN(n)?0:n}
+function nf(n,d){if(!isFinite(n))n=0;d=d||0;return n.toLocaleString('zh-TW',{minimumFractionDigits:d,maximumFractionDigits:d})}
+function toast(m){var t=$('toast');t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on')},1500)}
+function copyText(txt,msg){
+  var ta=document.createElement('textarea');ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');toast(msg)}catch(e){toast('複製失敗，長按選取')}
+  document.body.removeChild(ta);
+}
+
+/* ── tabs ── */
+var tabs=document.querySelectorAll('.tabs button');
+for(var i=0;i<tabs.length;i++){tabs[i].onclick=function(){
+  for(var j=0;j<tabs.length;j++)tabs[j].setAttribute('aria-selected','false');
+  this.setAttribute('aria-selected','true');
+  for(var k=0;k<6;k++)$('s'+k).classList.remove('on');
+  $('s'+this.dataset.s).classList.add('on');
+  window.scrollTo(0,0);recalc();
+}}
+
+/* ── state ── */
+var rivals=[], nuis=[];
+
+/* ── 三價 ── */
+function calcVal(){
+  var all=v('c_all'),pk=v('c_pk'),pkp=v('c_pkp')*10000;
+  var up=v('v_up')*10000,adj=v('v_adj')/100;
+  var bldg=Math.max(all-pk,0);
+  if(!bldg||!up){$('v_out').innerHTML='<div class="verdict y"><b>還缺資料</b>填「案件」頁的坪數＋本頁實登單價才算得出來——🚫沒有實登定錨不出三價，只列待查</div>';return null}
+  var base=up*(1+adj),dn=base*.92,opt=base*1.08;
+  var lo=dn*bldg+pkp,mid=base*bldg+pkp,hi=opt*bldg+pkp;
+  var ask=v('c_ask')*10000;
+  var h='<div class="hero"><div class="lab">合理總價（含車位）</div><div class="val">'+nf(mid/10000)+' <small style="font-size:14px">萬</small></div>'+
+    '<div class="note">建物 '+nf(bldg,2)+' 坪 × '+nf(base/10000,2)+' 萬/坪 ＋ 車位 '+nf(pkp/10000)+' 萬</div></div>'+
+    '<div class="box"><div class="kv">'+
+    '<div class="r"><div>🟢 保守</div><div class="n">'+nf(lo/10000)+' 萬</div></div>'+
+    '<div class="r"><div>🟡 合理</div><div class="n">'+nf(mid/10000)+' 萬</div></div>'+
+    '<div class="r"><div>🔴 樂觀</div><div class="n">'+nf(hi/10000)+' 萬</div></div>'+
+    (ask?'<div class="r"><div>屋主開價（真單價 '+(bldg>0?nf((ask-pkp)/bldg/10000,2):'—')+' 萬/坪）</div><div class="n">'+nf(ask/10000)+' 萬</div></div>':'')+
+    '</div></div>';
+  if(ask){
+    var diff=(ask-mid)/mid*100;
+    var cls=diff>12?'r':(diff>4?'y':'g');
+    var txt=diff>12?'開價高於合理價 '+nf(diff,1)+'%，超出樂觀帶——不先修價就上架只會養成滯銷案'
+          :diff>4?'開價高於合理價 '+nf(diff,1)+'%，有議價空間，先跟屋主講清楚這個價會過濾掉大部分自住買方'
+          :diff<-8?'開價低於合理價 '+nf(Math.abs(diff),1)+'%——先查為什麼便宜（急售？屋況？產權？）再推'
+          :'開價落在合理帶（差 '+nf(diff,1)+'%），價格可推，接下來卡的是素材跟通路';
+    h+='<div class="verdict '+cls+'"><b>定價判讀</b>'+txt+'</div>';
+  }
+  $('v_out').innerHTML=h;
+  return {lo:lo,mid:mid,hi:hi,bldg:bldg,base:base,pkp:pkp};
+}
+
+/* ── 競品 ── */
+$('r_add').onclick=function(){
+  var name=$('r_name').value.trim(),p=v('r_price'),ping=v('r_ping'),src=$('r_src').value.trim();
+  if(!name||!p){toast('名稱跟開價要填');return}
+  if(!src){toast('🔴 來源＋查證日必填，沒來源＝假資料');return}
+  rivals.push({name:name,price:p,ping:ping,src:src});
+  $('r_name').value='';$('r_price').value='';$('r_ping').value='';$('r_src').value='';
+  recalc();toast('已加入天梯');
+};
+function renderLadder(){
+  var ask=v('c_ask'),myPing=Math.max(v('c_all')-v('c_pk'),0);
+  var rows=rivals.slice();
+  if(ask)rows.push({name:'★ 本案',price:ask,ping:myPing,me:true});
+  rows.sort(function(a,b){return b.price-a.price});
+  var h='';
+  for(var i=0;i<rows.length;i++){
+    var r=rows[i],u=r.ping>0?'　'+nf(r.price/r.ping,1)+'萬/坪':'';
+    h+='<div class="row'+(r.me?' me':'')+'"><div>'+r.name+(r.src?'<div style="font-size:10.5px;color:var(--ink3)">'+r.src+'</div>':'')+'</div><div class="n">'+nf(r.price)+'萬'+u+'</div></div>';
+  }
+  $('r_ladder').innerHTML=h||'<p class="hint">還沒有競品——🔴 沒有競品資料時不得產生任何價格保證</p>';
+  if(rivals.length&&ask){
+    var below=rivals.filter(function(r){return r.price<ask}).length;
+    var cls=below>rivals.length/2?'y':'g';
+    $('r_verdict').innerHTML='<div class="verdict '+cls+'"><b>天梯位置</b>比較 '+rivals.length+' 件，開價低於本案 '+below+' 件——'+
+      (below>rivals.length/2?'本案在天梯上半部，要嘛有稀缺理由（樓層/車位/景觀/屋況），要嘛就是高估':'本案位置不高，條件補齊可推')+
+      '。結論自己三選一：高估／合理／可強推，稀缺理由要寫得出來才算數</div>';
+  } else $('r_verdict').innerHTML='';
+}
+
+/* ── 嫌惡距離取整 ── */
+function roundDist(d,type){
+  if(type==='bad'){ if(d<100)return '約 100 公尺內'; return '約 '+(Math.floor(d/100)*100)+' 公尺' }
+  return '約 '+(Math.ceil(d/100)*100)+' 公尺';
+}
+$('n_add').onclick=function(){
+  var name=$('n_name').value.trim(),d=v('n_dist'),type=$('n_type').value;
+  if(!name||!d){toast('名稱跟距離要填');return}
+  nuis.push({name:name,dist:d,type:type});
+  $('n_name').value='';$('n_dist').value='';
+  recalc();toast('已記錄');
+};
+function renderNuis(){
+  var h='';
+  for(var i=0;i<nuis.length;i++){
+    var n=nuis[i];
+    h+='<div class="r"><div>'+(n.type==='bad'?'🔴':'🟢')+' '+n.name+'<div style="font-size:10.5px;color:var(--ink3)">內部實測 '+n.dist+'m</div></div>'+
+       '<div class="n">'+roundDist(n.dist,n.type)+'</div></div>';
+  }
+  $('n_list').innerHTML=h||'<p class="hint">還沒記錄。對外寫法＝取整值＋「（距離依 Google 地圖）」</p>';
+}
+
+/* ── 閘門 ── */
+var GATES=[
+ '所有單價都是「已扣車位」（含車位單價＝假單價）',
+ '開價與成交價分清楚，沒拿開價當行情錨',
+ '三價有標實價登錄揭露年月',
+ '沒有寫「無嫌惡設施」四個字',
+ '距離只寫公尺＋標Google，取整方向對（好的講遠壞的講近）',
+ '嫌惡清單沒自己擴充（一般商家沒列進去）',
+ '含地下室物件有拆開算銀行天花板（無地下室勾過）',
+ '增建/夾層坪數沒算進估值（無增建勾過）',
+ '每個數字都指得出來源，指不出的已改「待查」',
+ '照片推估尺寸都標了「以現場丈量為準」（無照片推估勾過）',
+ '沒有漲跌保證、沒有恐嚇句',
+ '概估版有標「未經權狀謄本核實」（完整版勾過）'
+];
+(function(){
+  var h='';
+  for(var i=0;i<GATES.length;i++)
+    h+='<label class="chk"><input type="checkbox" class="gk"><span>'+(i+1)+'　'+GATES[i]+'</span></label>';
+  $('g_list').innerHTML=h;
+  var cs=document.querySelectorAll('.gk');
+  for(var j=0;j<cs.length;j++)cs[j].onchange=recalc;
+})();
+function gateCheck(){
+  var cs=document.querySelectorAll('.gk'),pass=0;
+  for(var i=0;i<cs.length;i++)if(cs[i].checked)pass++;
+  var ok=pass===cs.length;
+  $('g_out').innerHTML= ok
+    ?'<div class="verdict g"><b>閘門全過 '+pass+'/'+cs.length+'</b>可以出內部摘要。對外仍要過寫手技能＋A0</div>'
+    :'<div class="verdict '+(pass>cs.length-4?'y':'r')+'"><b>閘門 '+pass+'/'+cs.length+'</b>沒全過不給摘要——第一個沒勾的就是現在會翻車的地方</div>';
+  $('g_copy').disabled=!ok;
+  return ok;
+}
+
+/* ── 摘要 ── */
+function buildSummary(){
+  var val=calcVal();
+  var deedMap={none:'未提供謄本，建議調閱確認設定與限制登記',clean:'謄本已閱：無查封、無異常設定',red:'🔴 謄本有查封/假扣押/民間設定——先解決，不推進'};
+  var s='【估價神獸卡】'+($('c_name').value||'未命名')+'\n';
+  s+='位置：'+($('c_addr').value||'—')+'\n';
+  s+='權狀 '+nf(v('c_all'),2)+' 坪（車位 '+nf(v('c_pk'),2)+' 坪）　屋齡 '+($('c_age').value||'—')+' 年　樓層 '+($('c_fl').value||'—')+'\n';
+  if($('c_note').value)s+='條件：'+$('c_note').value+'\n';
+  s+='───────────\n';
+  if(val){
+    s+='🟢保守 '+nf(val.lo/10000)+'／🟡合理 '+nf(val.mid/10000)+'／🔴樂觀 '+nf(val.hi/10000)+' 萬（含車位）\n';
+    s+='採用單價 '+nf(val.base/10000,2)+' 萬/坪（已扣車位）　實登揭露至 '+($('v_src').value||'⚠️待填')+'\n';
+  } else s+='三價：待實登定錨（🚫無定錨不出價）\n';
+  if(v('c_ask'))s+='屋主開價 '+nf(v('c_ask'))+' 萬\n';
+  s+='───────────\n競品天梯（'+rivals.length+' 件）：\n';
+  for(var i=0;i<rivals.length;i++){var r=rivals[i];
+    s+='・'+r.name+'　'+nf(r.price)+'萬'+(r.ping?'（'+nf(r.price/r.ping,1)+'萬/坪）':'')+'　['+r.src+']\n'}
+  if(!rivals.length)s+='（無——不得產生價格保證，列入待查）\n';
+  s+='───────────\n風險揭露：\n';
+  if(nuis.length){for(var j=0;j<nuis.length;j++){var n=nuis[j];
+    s+='・'+(n.type==='bad'?'🔴':'🟢')+n.name+'　'+roundDist(n.dist,n.type)+'（距離依 Google 地圖）\n'}}
+  s+='・嫌惡設施：本次外網查證'+(nuis.filter(function(x){return x.type==='bad'}).length?'見上列':'未發現')+'，以現場勘查與最新不動產說明書為準\n';
+  s+='・'+deedMap[$('n_deed').value]+'\n';
+  s+='───────────\n※ 內部底稿。對外文案走寫手技能＋A0，對外數字過20財務。開價≠成交價\n';
+  s+='※ 產出時間 '+new Date().toLocaleString('zh-TW');
+  return s;
+}
+$('g_copy').onclick=function(){ if(gateCheck())copyText(buildSummary(),'摘要已複製') };
+
+/* ── 案件庫（localStorage） ── */
+var KEY='shenshou-cases';
+function loadCases(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
+function saveCases(a){try{localStorage.setItem(KEY,JSON.stringify(a))}catch(e){toast('儲存失敗（瀏覽器擋了）')}}
+$('c_save').onclick=function(){
+  var name=$('c_name').value.trim()||('未命名 '+new Date().toLocaleDateString('zh-TW'));
+  var cases=loadCases();
+  var data={name:name,ts:Date.now(),
+    fields:{c_name:$('c_name').value,c_addr:$('c_addr').value,c_all:$('c_all').value,c_pk:$('c_pk').value,
+      c_pkp:$('c_pkp').value,c_ask:$('c_ask').value,c_age:$('c_age').value,c_fl:$('c_fl').value,
+      c_note:$('c_note').value,v_up:$('v_up').value,v_src:$('v_src').value,v_adj:$('v_adj').value,
+      n_deed:$('n_deed').value},
+    rivals:rivals,nuis:nuis};
+  var idx=-1;for(var i=0;i<cases.length;i++)if(cases[i].name===name)idx=i;
+  if(idx>=0)cases[idx]=data;else cases.unshift(data);
+  saveCases(cases);renderCases();toast('已存：'+name);
+};
+function renderCases(){
+  var cases=loadCases(),h='';
+  for(var i=0;i<cases.length;i++){
+    var c=cases[i];
+    h+='<div class="case-row"><div><b>'+c.name+'</b><div class="sub">'+new Date(c.ts).toLocaleString('zh-TW')+'　競品'+(c.rivals||[]).length+'筆</div></div>'+
+       '<div style="display:flex;gap:6px"><button data-i="'+i+'" class="k_open">開啟</button><button data-i="'+i+'" class="k_del">刪</button></div></div>';
+  }
+  $('k_list').innerHTML=h||'<p class="hint">還沒存過案件。在「閘門」頁按 💾 存案件</p>';
+  var os=document.querySelectorAll('.k_open');
+  for(var a=0;a<os.length;a++)os[a].onclick=function(){
+    var c=loadCases()[+this.dataset.i];if(!c)return;
+    for(var k in c.fields){var el=$(k);if(el)el.value=c.fields[k]}
+    rivals=c.rivals||[];nuis=c.nuis||[];
+    recalc();tabs[0].click();toast('已載入：'+c.name);
+  };
+  var ds=document.querySelectorAll('.k_del');
+  for(var b=0;b<ds.length;b++)ds[b].onclick=function(){
+    var cases=loadCases(),c=cases[+this.dataset.i];
+    if(!confirm('刪除「'+c.name+'」？刪了就沒了'))return;
+    cases.splice(+this.dataset.i,1);saveCases(cases);renderCases();toast('已刪除');
+  };
+}
+
+/* ── recalc ── */
+function recalc(){calcVal();renderLadder();renderNuis();gateCheck();renderCases()}
+var inputs=document.querySelectorAll('input.inp,select.inp,textarea.inp');
+for(var q=0;q<inputs.length;q++){inputs[q].addEventListener('input',recalc)}
+recalc();
+
+/* ── SW（可加入主畫面＋離線） ── */
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}
+</script>

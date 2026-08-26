@@ -1,0 +1,17 @@
+{
+  "name": "估價神獸",
+  "short_name": "估價神獸",
+  "start_url": "/shenshou/",
+  "scope": "/shenshou/",
+  "display": "standalone",
+  "background_color": "#131311",
+  "theme_color": "#131311",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
