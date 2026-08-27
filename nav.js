@@ -188,7 +188,7 @@
     '<div><h4>判斷所服務</h4>'+(S.services||[]).join('｜')+'<br>屋況與謄本判讀</div>'+
     '<div><h4>網站導覽</h4>'+(S.nav||[]).slice(1).map(function(n){return '<a href="'+n.u+'">'+n.t+'</a>'}).join('<br>')+'</div>'+
     '<div><h4>聯絡阿宏</h4>公司電話 '+S.tel+'<br>LINE　<a href="'+S.line+'">'+S.lineId+'</a><br>'+
-      '<a href="'+S.fb+'">Facebook 開箱</a>　<a href="'+S.social+'">'+S.socialName+'</a><br>服務區域　'+S.area+'</div>'+
+      '<a href="'+S.fb+'">Facebook 開箱</a>　<a href="'+S.social+'">'+S.socialName+'</a></div>'+
     '</div><div class="ahlegal">'+
     S.agentName+'｜'+S.agentTitle+S.agentLic+'<br>'+
     S.company+'｜'+S.companyLtd+'｜經紀人 '+S.brokerLic+'<br>'+
