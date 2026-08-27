@@ -140,6 +140,15 @@ h1{
 .hero-sub{margin:15px 0 0;font-size:clamp(1.05rem,3.9vw,1.32rem);font-weight:800;color:var(--ink)}
 .hero-sub .price{color:var(--gold);font-weight:900}
 .hero-meta{margin:11px 0 0;color:var(--muted);font-size:.85rem;line-height:1.7}
+.hero-id{margin:13px 0 0;background:var(--soft-trust);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
+.hero-id b{display:block;color:var(--trust);font-weight:900;font-size:.83rem;letter-spacing:.08em}
+.hero-id span{display:block;margin-top:6px;color:var(--ink);font-size:.89rem;line-height:1.8}
+.hero-id-go{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
+.hero-id-go a{display:inline-block;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--trust);font-weight:900;font-size:.86rem;text-decoration:none}
+.hero-fit{margin:15px 0 0;background:var(--soft-teal);border:1px solid var(--line);border-radius:18px;padding:15px 16px}
+.hero-fit b{display:block;color:var(--teal);font-weight:900;font-size:.83rem;letter-spacing:.08em}
+.hero-fit ul{margin:9px 0 0;padding-left:1.15em}
+.hero-fit li{margin:4px 0;color:var(--ink);font-size:.95rem;line-height:1.7}
 .hero-media{margin-top:18px;position:relative;border-radius:24px;overflow:hidden;background:var(--trust);box-shadow:var(--shadow)}
 .hero-media img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .hero-badge{
@@ -511,6 +520,24 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
     <h1>950萬<br>硬擠出4房2廳2衛</h1>
 
+
+
+    <div class="hero-fit">
+      <b>這間房子適合誰</b>
+      <ul>
+        <li>預算 900 萬帶，但家庭人口需要最多的房間數</li>
+        <li>能接受加蓋部分只當使用空間、不當產權坪數</li>
+        <li>能接受每天爬 5 樓，體力不是問題</li>
+      </ul>
+    </div>
+    <div class="hero-id">
+      <b>這一頁是誰做的</b>
+      <span>何志宏｜鴻石不動產經紀有限公司（住商不動產樹林站前加盟店）<br>營業員　(114)年登字第495065號</span>
+      <div class="hero-id-go">
+        <a href="tel:0930848000">打 0930-848000</a>
+        <a href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">看我的電子名片</a>
+      </div>
+    </div>
     <p class="hero-sub"><span class="price">開價 950 萬</span>｜登記 22.52 坪｜4房2廳2衛（含加蓋）</p>
     <p class="hero-meta">新北市新莊區・富國路生活圈・捷運丹鳳站生活圈<br>資料查核日期 2026-08-21｜公開版不揭露完整門牌與委託內部價格資訊<br>空屋看屋好約，用官方 LINE 跟我說一聲就排</p>
 
@@ -559,6 +586,35 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
   <section>
     <div class="sec-head">
+      <div class="kicker">先看合不合</div>
+      <h2>這間不是給所有人的</h2>
+    </div>
+    <div class="split">
+      <div class="fit good">
+        <h3>這些條件，你會很有感</h3>
+        <ul>
+          <li>預算 900 萬帶，但家庭人口需要最多的房間數</li>
+          <li>能接受加蓋部分只當使用空間、不當產權坪數</li>
+          <li>能接受每天爬 5 樓，體力不是問題</li>
+          <li>要空屋，看了喜歡就能直接規劃</li>
+          <li>通勤靠捷運中和新蘆線</li>
+        </ul>
+      </div>
+      <div class="fit check">
+        <h3>這些狀況，先確認再說</h3>
+        <ul>
+          <li>一定要電梯，或家中有長輩不便爬樓</li>
+          <li>一定要有車位</li>
+          <li>對未登記增建、違建查報風險零容忍</li>
+          <li>預算抓到頂，沒有衛浴廚房換新的餘裕</li>
+          <li>還沒做過貸款預審，不確定 46 年公寓能貸多少</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
       <div class="kicker">影片</div>
       <h2>27 秒<br>先看過一次</h2>
       <p class="lead">這支是社群版無人開箱剪輯，畫面全部是現場實拍照片，沒有虛擬佈置、沒有修圖，字卡是剪輯留下的。</p>
@@ -599,6 +655,44 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       </button>
     </div>
     <p class="zoomhint">照片與影片皆為現況實拍，未經修飾。本頁不使用任何虛擬佈置或裝潢示意圖。</p>
+  </section>
+
+  <section class="notice">
+    <div class="sec-head">
+      <div class="kicker">同路段行情</div>
+      <h2>這裡先不放數字</h2>
+    </div>
+    <p>同路段的實際成交行情，我手上還沒有整理出可以對外公開引用的查證資料，與其給你不確定的數字，不如請你直接查官方來源——下面「官方查核入口」就有內政部實價登錄的連結，自己查最準。特別提醒：比價時請用登記坪數 22.52 坪比，不要把加蓋的使用空間算進坪數去除，那樣算出來的單價是失真的。開價不等於成交價，也不代表議價空間，最終金額由買賣雙方議定。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">格局與座向</div>
+      <h2>4 房 2 廳 2 衛<br>其中一組是加蓋的</h2>
+    </div>
+    <div class="plan">
+      <div class="plan-frame">
+        <button type="button" data-full="a/k_floorplan.jpg" aria-label="放大格局圖，含未登記加蓋部分，座向未複核"><img src="a/k_floorplan.jpg" alt="丹鳳捷運加倍屋格局圖：一側為客廳、廚房、衛浴、三間臥室與前陽台，另一側為後陽台、衛浴、開放式空間與平台，含未登記加蓋，座向未複核"></button>
+        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座向 未複核（以現場實測為準）</span>
+      </div>
+      <p class="cap"><strong>含未登記加蓋，以登記謄本為準。</strong>格局圖取自委託方提供的帶看資料，圖上註明：並非依原尺寸之比例及座向製作、示意圖僅供參考、建物面積仍依地政機關謄本登載為準。圖上畫了兩個區塊（客廳、廚房、衛浴、三間臥室、前陽台；後陽台、衛浴、開放式空間、平台），但沒有標示哪一區是加蓋——依委託資料 4 房 2 廳 2 衛中含加蓋 1 房 1 廳 1 衛，哪一塊是登記、哪一塊是加蓋，帶看時現場走一次最清楚。<strong>座向：</strong>委託資料未載明，本頁不寫、也不猜，大字卡標「未複核」，以現場實測為準。本戶為公寓 5 層之 5 樓，無電梯（依委託資料）。格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準；加蓋部分未登記，不在謄本面積內。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">生活機能</div>
+      <h2>走出巷口有什麼</h2>
+      <p class="lead">本案委託資料對周邊機能的記載有限，我沒查證過的不寫，寧可帶你現場走一圈。</p>
+    </div>
+    <div class="verify">
+      <div class="vlink"><b>捷</b><div><strong>捷運丹鳳站（中和新蘆線，營運中）</strong><small>公尺數待查證（距離依 Google 地圖）；本頁不寫步行分鐘</small></div></div>
+      <div class="vlink"><b>學</b><div><strong>學區：查證後補上</strong><small>學區以完整門牌與當學年度官方公告為準，我不先猜學校名</small></div></div>
+      <div class="vlink"><b>生</b><div><strong>富國路周邊生活圈</strong><small>採買與日常機能，看屋時我陪你實際走一圈</small></div></div>
+      <div class="vlink"><b>梯</b><div><strong>公寓 5 樓・無電梯</strong><small>爬樓梯這件事，請看屋當天親自爬一次再決定</small></div></div>
+      <div class="vlink"><b>車</b><div><strong>無車位</strong><small>周邊停車場位置與月租，看屋時現場確認</small></div></div>
+      <div class="vlink"><b>空</b><div><strong>空屋</strong><small>看屋時間好約，白天傍晚各看一次最準</small></div></div>
+    </div>
   </section>
 
   <section class="truth">
@@ -665,14 +759,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
   </section>
 
-  <section class="notice">
-    <div class="sec-head">
-      <div class="kicker">同路段行情</div>
-      <h2>這裡先不放數字</h2>
-    </div>
-    <p>同路段的實際成交行情，我手上還沒有整理出可以對外公開引用的查證資料，與其給你不確定的數字，不如請你直接查官方來源——下面「官方查核入口」就有內政部實價登錄的連結，自己查最準。特別提醒：比價時請用登記坪數 22.52 坪比，不要把加蓋的使用空間算進坪數去除，那樣算出來的單價是失真的。開價不等於成交價，也不代表議價空間，最終金額由買賣雙方議定。</p>
-  </section>
-
   <section>
     <div class="sec-head">
       <div class="kicker">買之前先算自己</div>
@@ -714,65 +800,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
         驗屋：中古屋 $15,000～24,000／戶（PRO360 驗屋頁，2025-06-12；22.52 坪落在 21～30 坪級距約 $15,000）、雙北中古屋 21～30 坪 $10,000～15,000／戶（鴻宇健康驗屋，2025-07-06），不在合計內。<br>
         想把修繕費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。本卡不推薦任何銀行或商品，也不是核貸結果；本案 46 年公寓含未登記增建，8 成是上限不是預期，自備款照最壞情況抓，務必先做貸款預審。
       </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">格局與座向</div>
-      <h2>4 房 2 廳 2 衛<br>其中一組是加蓋的</h2>
-    </div>
-    <div class="plan">
-      <div class="plan-frame">
-        <button type="button" data-full="a/k_floorplan.jpg" aria-label="放大格局圖，含未登記加蓋部分，座向未複核"><img src="a/k_floorplan.jpg" alt="丹鳳捷運加倍屋格局圖：一側為客廳、廚房、衛浴、三間臥室與前陽台，另一側為後陽台、衛浴、開放式空間與平台，含未登記加蓋，座向未複核"></button>
-        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座向 未複核（以現場實測為準）</span>
-      </div>
-      <p class="cap"><strong>含未登記加蓋，以登記謄本為準。</strong>格局圖取自委託方提供的帶看資料，圖上註明：並非依原尺寸之比例及座向製作、示意圖僅供參考、建物面積仍依地政機關謄本登載為準。圖上畫了兩個區塊（客廳、廚房、衛浴、三間臥室、前陽台；後陽台、衛浴、開放式空間、平台），但沒有標示哪一區是加蓋——依委託資料 4 房 2 廳 2 衛中含加蓋 1 房 1 廳 1 衛，哪一塊是登記、哪一塊是加蓋，帶看時現場走一次最清楚。<strong>座向：</strong>委託資料未載明，本頁不寫、也不猜，大字卡標「未複核」，以現場實測為準。本戶為公寓 5 層之 5 樓，無電梯（依委託資料）。格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準；加蓋部分未登記，不在謄本面積內。</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">生活機能</div>
-      <h2>走出巷口有什麼</h2>
-      <p class="lead">本案委託資料對周邊機能的記載有限，我沒查證過的不寫，寧可帶你現場走一圈。</p>
-    </div>
-    <div class="verify">
-      <div class="vlink"><b>捷</b><div><strong>捷運丹鳳站（中和新蘆線，營運中）</strong><small>公尺數待查證（距離依 Google 地圖）；本頁不寫步行分鐘</small></div></div>
-      <div class="vlink"><b>學</b><div><strong>學區：查證後補上</strong><small>學區以完整門牌與當學年度官方公告為準，我不先猜學校名</small></div></div>
-      <div class="vlink"><b>生</b><div><strong>富國路周邊生活圈</strong><small>採買與日常機能，看屋時我陪你實際走一圈</small></div></div>
-      <div class="vlink"><b>梯</b><div><strong>公寓 5 樓・無電梯</strong><small>爬樓梯這件事，請看屋當天親自爬一次再決定</small></div></div>
-      <div class="vlink"><b>車</b><div><strong>無車位</strong><small>周邊停車場位置與月租，看屋時現場確認</small></div></div>
-      <div class="vlink"><b>空</b><div><strong>空屋</strong><small>看屋時間好約，白天傍晚各看一次最準</small></div></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">先看合不合</div>
-      <h2>這間不是給所有人的</h2>
-    </div>
-    <div class="split">
-      <div class="fit good">
-        <h3>這些條件，你會很有感</h3>
-        <ul>
-          <li>預算 900 萬帶，但家庭人口需要最多的房間數</li>
-          <li>能接受加蓋部分只當使用空間、不當產權坪數</li>
-          <li>能接受每天爬 5 樓，體力不是問題</li>
-          <li>要空屋，看了喜歡就能直接規劃</li>
-          <li>通勤靠捷運中和新蘆線</li>
-        </ul>
-      </div>
-      <div class="fit check">
-        <h3>這些狀況，先確認再說</h3>
-        <ul>
-          <li>一定要電梯，或家中有長輩不便爬樓</li>
-          <li>一定要有車位</li>
-          <li>對未登記增建、違建查報風險零容忍</li>
-          <li>預算抓到頂，沒有衛浴廚房換新的餘裕</li>
-          <li>還沒做過貸款預審，不確定 46 年公寓能貸多少</li>
-        </ul>
-      </div>
     </div>
   </section>
 

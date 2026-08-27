@@ -142,6 +142,15 @@ h1{
 .hero-sub{margin:15px 0 0;font-size:clamp(1.05rem,3.9vw,1.32rem);font-weight:800;color:var(--ink)}
 .hero-sub .price{color:var(--gold);font-weight:900}
 .hero-meta{margin:11px 0 0;color:var(--muted);font-size:.85rem;line-height:1.7}
+.hero-id{margin:13px 0 0;background:var(--soft-trust);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
+.hero-id b{display:block;color:var(--trust);font-weight:900;font-size:.83rem;letter-spacing:.08em}
+.hero-id span{display:block;margin-top:6px;color:var(--ink);font-size:.89rem;line-height:1.8}
+.hero-id-go{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
+.hero-id-go a{display:inline-block;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--trust);font-weight:900;font-size:.86rem;text-decoration:none}
+.hero-fit{margin:15px 0 0;background:var(--soft-teal);border:1px solid var(--line);border-radius:18px;padding:15px 16px}
+.hero-fit b{display:block;color:var(--teal);font-weight:900;font-size:.83rem;letter-spacing:.08em}
+.hero-fit ul{margin:9px 0 0;padding-left:1.15em}
+.hero-fit li{margin:4px 0;color:var(--ink);font-size:.95rem;line-height:1.7}
 .hero-media{margin-top:18px;position:relative;border-radius:24px;overflow:hidden;background:var(--trust);box-shadow:var(--shadow)}
 .hero-media img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .hero-badge{
@@ -512,6 +521,24 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
     <h1>格局不是別人決定的<br>是你自己決定的</h1>
 
+
+
+    <div class="hero-fit">
+      <b>這間房子適合誰</b>
+      <ul>
+        <li>想要一間完全照自己想法規劃的房子</li>
+        <li>正在準備新婚成家，格局想從零開始想</li>
+        <li>手上有裝潢預算，不急著馬上入住</li>
+      </ul>
+    </div>
+    <div class="hero-id">
+      <b>這一頁是誰做的</b>
+      <span>何志宏｜鴻石不動產經紀有限公司（住商不動產樹林站前加盟店）<br>營業員　(114)年登字第495065號</span>
+      <div class="hero-id-go">
+        <a href="tel:0930848000">打 0930-848000</a>
+        <a href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">看我的電子名片</a>
+      </div>
+    </div>
     <p class="hero-sub"><span class="price">委託總價 1098 萬</span>｜31 坪｜全開放空間・1 衛</p>
     <p class="hero-meta">新北市樹林區・國凱街｜捷運萬大線 LG15 站（二期興建中，站體位置未定案，本頁不列步行距離）<br>資料查核日期 2026-08-16｜公開版已移除完整門牌與內部價格資訊<br>要看屋直接打 <a href="tel:0930848000" style="font-weight:900;color:var(--warm)">0930-848000</a>　何志宏</p>
 
@@ -554,6 +581,35 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
         <div class="n">04</div>
         <h3>空屋、屋齡 43.8 年，等於要從零裝潢</h3>
         <p>這不是「稍微整理」，是要重新做隔間、水電管路、廚房與衛浴配置。這件事我一定要先講清楚，見下面「缺點我先講完」與「全室重新裝潢怎麼抓」。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">先看合不合</div>
+      <h2>這間不是給所有人的</h2>
+    </div>
+    <div class="split">
+      <div class="fit good">
+        <h3>這些條件，你會很有感</h3>
+        <ul>
+          <li>想要一間完全照自己想法規劃的房子</li>
+          <li>正在準備新婚成家，格局想從零開始想</li>
+          <li>手上有裝潢預算，不急著馬上入住</li>
+          <li>想收租，可依租客需求彈性隔間</li>
+          <li>在意學區，家中有國小國中適齡孩子</li>
+        </ul>
+      </div>
+      <div class="fit check">
+        <h3>這些狀況，先確認再說</h3>
+        <ul>
+          <li>希望買了就能直接入住，沒有裝潢預算</li>
+          <li>需要短期內交屋，等不了設計與施工期</li>
+          <li>一定要有電梯或有車位</li>
+          <li>還沒做過貸款預審，不確定能貸多少</li>
+          <li>對周邊仍在興建中的工地會在意噪音</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -603,6 +659,59 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       </button>
     </div>
     <p class="zoomhint">全開放空間、屋齡 43.8 年——要花多少錢重新裝潢，我把估法整理在下面「買之前先算」。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">空間格局</div>
+      <h2>31 坪全開放<br>你想怎麼隔</h2>
+      <p class="lead">現況為 0 房 1 廳 1 衛，主建物 25.35 坪＋附屬建物 5.65 坪，土地持分 13.26 坪。沒有隔好的房間，也代表沒有拆錯間隔要花的拆除費。</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>項目</th><th>數字</th></tr></thead>
+        <tbody>
+          <tr class="self"><td>登記總坪數</td><td>31 坪</td></tr>
+          <tr><td>主建物</td><td>25.35 坪</td></tr>
+          <tr><td>附屬建物</td><td>5.65 坪</td></tr>
+          <tr><td>土地持分</td><td>13.26 坪</td></tr>
+          <tr><td>座向</td><td>座西北朝東南</td></tr>
+          <tr><td>每層戶數</td><td>2 戶</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="plan">
+      <div class="plan-frame">
+        <button type="button" data-full="a/k_plan.jpg" aria-label="放大格局圖，本案座向座西北朝東南"><img src="a/k_plan.jpg" alt="127 學區捷運大戶格局圖（來源：住商售屋資料），現況 0 房 1 廳 1 衛全開放，前後陽台，座向座西北朝東南"></button>
+        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座西北朝東南</span>
+      </div>
+      <p class="cap">本案<strong>格局圖</strong>（來源：住商不動產售屋資料，2026-08-26 版）。現況 0 房 1 廳 1 衛全開放，前後雙陽台（圖面標示既有增建鐵窗）；座向<strong>座西北朝東南</strong>。格局圖未依實際比例及座向繪製，格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準。</p>
+    </div>
+    <p class="tnote">
+      <strong>我的解讀，一句話講完：</strong>全開放格局適合想自己規劃的人，但它同時代表你要多負擔一筆「從零開始」的裝潢成本。這筆錢多少要看你想隔幾房、廚衛做多大，沒有標準答案，只能依你的需求找設計師報價。<br>
+      公共設施坪數售屋資料表未填寫登記數字，實際依地政機關登載資料為準。
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">捷運與生活圈</div>
+      <h2>萬大線 LG15 站<br>站體位置尚未定案</h2>
+      <p class="lead">本線二期尚未通車，官方預定民國120年通車；站體出入口位置官方尚未定案，本頁不列步行距離。</p>
+    </div>
+    <div class="gallery">
+      <button class="wide" type="button" data-full="a/p_aerial.jpg" aria-label="放大空拍區位圖">
+        <img src="a/p_aerial.jpg" alt="LG15站區位示意圖"><span class="cap">萬大線 LG15（彭福）站區位示意；圖中綠色範圍為出入口預定地，官方尚未定案</span>
+      </button>
+    </div>
+    <div class="verify" style="margin-top:12px">
+      <div class="vlink"><b>捷</b><div><strong>捷運萬大線 LG15 站</strong><small>本線二期尚未通車，官方預定民國120年通車；站體出入口位置官方尚未定案，本頁不列步行距離（2026-08-26 查 Google 地圖無此站點）</small></div></div>
+      <div class="vlink"><b>學</b><div><strong>市立彭福國小・樹林高中國中部</strong><small>學區以完整門牌與當學年度官方公告為準</small></div></div>
+      <div class="vlink"><b>市</b><div><strong>彭厝市場</strong><small>日常採買機能</small></div></div>
+      <div class="vlink"><b>園</b><div><strong>彭福公園</strong><small>周邊綠地</small></div></div>
+      <div class="vlink"><b>公</b><div><strong>公車 847、852</strong><small>大同國小站</small></div></div>
+      <div class="vlink"><b>路</b><div><strong>面臨路寬 5 米</strong><small>社區巷弄型道路</small></div></div>
+    </div>
   </section>
 
   <section class="truth">
@@ -759,129 +868,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
   <section>
     <div class="sec-head">
-      <div class="kicker">先看合不合</div>
-      <h2>這間不是給所有人的</h2>
-    </div>
-    <div class="split">
-      <div class="fit good">
-        <h3>這些條件，你會很有感</h3>
-        <ul>
-          <li>想要一間完全照自己想法規劃的房子</li>
-          <li>正在準備新婚成家，格局想從零開始想</li>
-          <li>手上有裝潢預算，不急著馬上入住</li>
-          <li>想收租，可依租客需求彈性隔間</li>
-          <li>在意學區，家中有國小國中適齡孩子</li>
-        </ul>
-      </div>
-      <div class="fit check">
-        <h3>這些狀況，先確認再說</h3>
-        <ul>
-          <li>希望買了就能直接入住，沒有裝潢預算</li>
-          <li>需要短期內交屋，等不了設計與施工期</li>
-          <li>一定要有電梯或有車位</li>
-          <li>還沒做過貸款預審，不確定能貸多少</li>
-          <li>對周邊仍在興建中的工地會在意噪音</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">空間格局</div>
-      <h2>31 坪全開放<br>你想怎麼隔</h2>
-      <p class="lead">現況為 0 房 1 廳 1 衛，主建物 25.35 坪＋附屬建物 5.65 坪，土地持分 13.26 坪。沒有隔好的房間，也代表沒有拆錯間隔要花的拆除費。</p>
-    </div>
-    <div class="tablewrap">
-      <table>
-        <thead><tr><th>項目</th><th>數字</th></tr></thead>
-        <tbody>
-          <tr class="self"><td>登記總坪數</td><td>31 坪</td></tr>
-          <tr><td>主建物</td><td>25.35 坪</td></tr>
-          <tr><td>附屬建物</td><td>5.65 坪</td></tr>
-          <tr><td>土地持分</td><td>13.26 坪</td></tr>
-          <tr><td>座向</td><td>座西北朝東南</td></tr>
-          <tr><td>每層戶數</td><td>2 戶</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="plan">
-      <div class="plan-frame">
-        <button type="button" data-full="a/k_plan.jpg" aria-label="放大格局圖，本案座向座西北朝東南"><img src="a/k_plan.jpg" alt="127 學區捷運大戶格局圖（來源：住商售屋資料），現況 0 房 1 廳 1 衛全開放，前後陽台，座向座西北朝東南"></button>
-        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座西北朝東南</span>
-      </div>
-      <p class="cap">本案<strong>格局圖</strong>（來源：住商不動產售屋資料，2026-08-26 版）。現況 0 房 1 廳 1 衛全開放，前後雙陽台（圖面標示既有增建鐵窗）；座向<strong>座西北朝東南</strong>。格局圖未依實際比例及座向繪製，格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準。</p>
-    </div>
-    <p class="tnote">
-      <strong>我的解讀，一句話講完：</strong>全開放格局適合想自己規劃的人，但它同時代表你要多負擔一筆「從零開始」的裝潢成本。這筆錢多少要看你想隔幾房、廚衛做多大，沒有標準答案，只能依你的需求找設計師報價。<br>
-      公共設施坪數售屋資料表未填寫登記數字，實際依地政機關登載資料為準。
-    </p>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">捷運與生活圈</div>
-      <h2>萬大線 LG15 站<br>站體位置尚未定案</h2>
-      <p class="lead">本線二期尚未通車，官方預定民國120年通車；站體出入口位置官方尚未定案，本頁不列步行距離。</p>
-    </div>
-    <div class="gallery">
-      <button class="wide" type="button" data-full="a/p_aerial.jpg" aria-label="放大空拍區位圖">
-        <img src="a/p_aerial.jpg" alt="LG15站區位示意圖"><span class="cap">萬大線 LG15（彭福）站區位示意；圖中綠色範圍為出入口預定地，官方尚未定案</span>
-      </button>
-    </div>
-    <div class="verify" style="margin-top:12px">
-      <div class="vlink"><b>捷</b><div><strong>捷運萬大線 LG15 站</strong><small>本線二期尚未通車，官方預定民國120年通車；站體出入口位置官方尚未定案，本頁不列步行距離（2026-08-26 查 Google 地圖無此站點）</small></div></div>
-      <div class="vlink"><b>學</b><div><strong>市立彭福國小・樹林高中國中部</strong><small>學區以完整門牌與當學年度官方公告為準</small></div></div>
-      <div class="vlink"><b>市</b><div><strong>彭厝市場</strong><small>日常採買機能</small></div></div>
-      <div class="vlink"><b>園</b><div><strong>彭福公園</strong><small>周邊綠地</small></div></div>
-      <div class="vlink"><b>公</b><div><strong>公車 847、852</strong><small>大同國小站</small></div></div>
-      <div class="vlink"><b>路</b><div><strong>面臨路寬 5 米</strong><small>社區巷弄型道路</small></div></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">買之前先算</div>
-      <h2>四件事，點開就有</h2>
-      <p class="lead">這幾件是決定要不要買的關鍵，我整理成可以直接照著做的版本。</p>
-    </div>
-    <div class="tools">
-      <button class="tool" type="button" data-modal="m-budget">
-        <div class="tool-t"><strong>全室重新裝潢怎麼抓</strong><span>從零開始的隔間水電廚衛，拆成三層估</span></div>
-        <div class="tool-go">→</div>
-      </button>
-      <button class="tool t-warm" type="button" data-modal="m-open">
-        <div class="tool-t"><strong>開放格局跟隔好的房子怎麼比</strong><span>自由度換來的是責任，不是省事</span></div>
-        <div class="tool-go">→</div>
-      </button>
-      <button class="tool t-teal" type="button" data-modal="m-check">
-        <div class="tool-t"><strong>看屋當天檢核表</strong><span>12 項，可以勾，會記在你手機裡</span></div>
-        <div class="tool-go">→</div>
-      </button>
-      <button class="tool t-trust" type="button" data-modal="m-flag">
-        <div class="tool-t"><strong>看到什麼就該停手</strong><span>六個訊號，出現任一個先暫停</span></div>
-        <div class="tool-go">→</div>
-      </button>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">官方查核入口</div>
-      <h2>這些不要只聽我說</h2>
-    </div>
-    <div class="verify">
-      <a class="vlink" href="https://lvr.land.moi.gov.tw" target="_blank" rel="noopener"><b>價</b><div><strong>內政部實價登錄</strong><small>查同路段成交紀錄</small></div></a>
-      <a class="vlink" href="https://dcland.moi.gov.tw/" target="_blank" rel="noopener"><b>權</b><div><strong>地政司數位櫃臺</strong><small>申請謄本、查地籍資料</small></div></a>
-      <a class="vlink" href="https://building-management.publicwork.ntpc.gov.tw/" target="_blank" rel="noopener"><b>照</b><div><strong>新北建管便民服務網</strong><small>查使用執照基本資料</small></div></a>
-      <a class="vlink" href="https://icdc-pub.ntpc.gov.tw/ntpcpb/" target="_blank" rel="noopener"><b>建</b><div><strong>新北違章建築案件查詢</strong><small>查有無查報紀錄</small></div></a>
-      <a class="vlink" href="https://web.metro.taipei" target="_blank" rel="noopener"><b>捷</b><div><strong>台北捷運公司官網</strong><small>查萬大線工程進度公告</small></div></a>
-      <a class="vlink" href="https://law.moj.gov.tw" target="_blank" rel="noopener"><b>法</b><div><strong>全國法規資料庫</strong><small>查法條原文</small></div></a>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
       <div class="kicker">買之前先算自己</div>
       <h2>1098 萬<br>你的月付會是多少</h2>
       <p class="lead">總價是一個數字，能不能扛得住是另一個。先把首付、月付款、月息攤開來看，再決定要不要花時間來看屋。</p>
@@ -924,6 +910,47 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <div class="arow"><span><strong>合計（修繕＋清運）</strong><i>206,800～455,000 元</i></span><b>20.7～45.5 萬</b></div>
       <div class="arow"><span>驗屋另計，不在合計內<i>中古屋 31～40 坪約 18,000／戶、區間 15,000～24,000／戶・PRO360 驗屋頁 2025-06-12</i></span><b>1.5～2.4 萬</b></div>
       <p class="rs-note">算法：<strong>入住總成本＝委託總價 1098 萬＋修繕＋清運合計</strong>。銀行房貸的成數只算房價，本卡沿用上面試算卡的設定（貸款 8 成＝878.4 萬、30 年期、年利率 2.435%、無寬限期、本息平均攤還），貸款金額與月付款 34,411 元都不變；修繕預算若全額自備，首付就從 219.6 萬變成 <strong>240.3～265.1 萬</strong>（219.6 萬＋20.7～45.5 萬）。想把裝潢費一起分攤，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。廚具、門片、木地板、系統櫃這些偵查表沒有整戶包價或屬第二、三層的工項不在合計內，所以這個數字是「最少要抓」，不是「全部」。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">買之前先算</div>
+      <h2>四件事，點開就有</h2>
+      <p class="lead">這幾件是決定要不要買的關鍵，我整理成可以直接照著做的版本。</p>
+    </div>
+    <div class="tools">
+      <button class="tool" type="button" data-modal="m-budget">
+        <div class="tool-t"><strong>全室重新裝潢怎麼抓</strong><span>從零開始的隔間水電廚衛，拆成三層估</span></div>
+        <div class="tool-go">→</div>
+      </button>
+      <button class="tool t-warm" type="button" data-modal="m-open">
+        <div class="tool-t"><strong>開放格局跟隔好的房子怎麼比</strong><span>自由度換來的是責任，不是省事</span></div>
+        <div class="tool-go">→</div>
+      </button>
+      <button class="tool t-teal" type="button" data-modal="m-check">
+        <div class="tool-t"><strong>看屋當天檢核表</strong><span>12 項，可以勾，會記在你手機裡</span></div>
+        <div class="tool-go">→</div>
+      </button>
+      <button class="tool t-trust" type="button" data-modal="m-flag">
+        <div class="tool-t"><strong>看到什麼就該停手</strong><span>六個訊號，出現任一個先暫停</span></div>
+        <div class="tool-go">→</div>
+      </button>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">官方查核入口</div>
+      <h2>這些不要只聽我說</h2>
+    </div>
+    <div class="verify">
+      <a class="vlink" href="https://lvr.land.moi.gov.tw" target="_blank" rel="noopener"><b>價</b><div><strong>內政部實價登錄</strong><small>查同路段成交紀錄</small></div></a>
+      <a class="vlink" href="https://dcland.moi.gov.tw/" target="_blank" rel="noopener"><b>權</b><div><strong>地政司數位櫃臺</strong><small>申請謄本、查地籍資料</small></div></a>
+      <a class="vlink" href="https://building-management.publicwork.ntpc.gov.tw/" target="_blank" rel="noopener"><b>照</b><div><strong>新北建管便民服務網</strong><small>查使用執照基本資料</small></div></a>
+      <a class="vlink" href="https://icdc-pub.ntpc.gov.tw/ntpcpb/" target="_blank" rel="noopener"><b>建</b><div><strong>新北違章建築案件查詢</strong><small>查有無查報紀錄</small></div></a>
+      <a class="vlink" href="https://web.metro.taipei" target="_blank" rel="noopener"><b>捷</b><div><strong>台北捷運公司官網</strong><small>查萬大線工程進度公告</small></div></a>
+      <a class="vlink" href="https://law.moj.gov.tw" target="_blank" rel="noopener"><b>法</b><div><strong>全國法規資料庫</strong><small>查法條原文</small></div></a>
     </div>
   </section>
 
