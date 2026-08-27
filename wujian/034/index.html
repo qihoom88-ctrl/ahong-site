@@ -142,6 +142,15 @@ h1{
 .hero-sub{margin:15px 0 0;font-size:clamp(1.05rem,3.9vw,1.32rem);font-weight:800;color:var(--ink)}
 .hero-sub .price{color:var(--gold);font-weight:900}
 .hero-meta{margin:11px 0 0;color:var(--muted);font-size:.85rem;line-height:1.7}
+.hero-id{margin:13px 0 0;background:var(--soft-trust);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
+.hero-id b{display:block;color:var(--trust);font-weight:900;font-size:.83rem;letter-spacing:.08em}
+.hero-id span{display:block;margin-top:6px;color:var(--ink);font-size:.89rem;line-height:1.8}
+.hero-id-go{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
+.hero-id-go a{display:inline-block;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--trust);font-weight:900;font-size:.86rem;text-decoration:none}
+.hero-fit{margin:15px 0 0;background:var(--soft-teal);border:1px solid var(--line);border-radius:18px;padding:15px 16px}
+.hero-fit b{display:block;color:var(--teal);font-weight:900;font-size:.83rem;letter-spacing:.08em}
+.hero-fit ul{margin:9px 0 0;padding-left:1.15em}
+.hero-fit li{margin:4px 0;color:var(--ink);font-size:.95rem;line-height:1.7}
 .hero-media{margin-top:18px;position:relative;border-radius:24px;overflow:hidden;background:var(--trust);box-shadow:var(--shadow)}
 .hero-media img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .hero-badge{
@@ -511,6 +520,24 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
     <h1>一張產權<br>一套出租一套空屋</h1>
 
+    <div class="hero-fit">
+      <b>這間房子適合誰</b>
+      <ul>
+        <li>想買了馬上有租金收入，不想等裝潢</li>
+        <li>預算有限，想用低總價卡進市場</li>
+        <li>能接受漏水與外推需要進一步處理與查證</li>
+      </ul>
+    </div>
+
+    <div class="hero-id">
+      <b>這一頁是誰做的</b>
+      <span>何志宏｜鴻石不動產經紀有限公司（住商不動產樹林站前加盟店）<br>營業員　(114)年登字第495065號</span>
+      <div class="hero-id-go">
+        <a href="tel:0930848000">打 0930-848000</a>
+        <a href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">看我的電子名片</a>
+      </div>
+    </div>
+
     <p class="hero-sub"><span class="price">委託總價 1068 萬</span>｜22.07 坪｜產權登記一戶</p>
     <p class="hero-meta">新北市板橋區・溪崑商圈｜樹林火車站約 450 公尺（距離依 Google 地圖）<br>資料查核日期 2026-08-17｜公開版已移除完整門牌與內部價格資訊<br>要看屋直接打 <a href="tel:0930848000" style="font-weight:900;color:var(--warm)">0930-848000</a>　何志宏</p>
 
@@ -553,6 +580,35 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
         <div class="n">04</div>
         <h3>三件事我一定要先講：無電梯、陽台外推、樓上漏水處理中</h3>
         <p>45.3 年公寓 2 樓沒有電梯；陽台是外推的；正樓上目前因漏水滲到本戶天花板，鄰居正在處理。三件事詳情都在下面「缺點我先講完」，不要看完影片才知道。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">先看合不合</div>
+      <h2>這間不是給所有人的</h2>
+    </div>
+    <div class="split">
+      <div class="fit good">
+        <h3>這些條件，你會很有感</h3>
+        <ul>
+          <li>想買了馬上有租金收入，不想等裝潢</li>
+          <li>預算有限，想用低總價卡進市場</li>
+          <li>能接受漏水與外推需要進一步處理與查證</li>
+          <li>通勤靠火車，希望走路就到車站</li>
+          <li>能接受無電梯，2 樓對你不是問題</li>
+        </ul>
+      </div>
+      <div class="fit check">
+        <h3>這些狀況，先確認再說</h3>
+        <ul>
+          <li>希望買了就完全沒有任何現況問題要處理</li>
+          <li>對漏水糾紛或責任歸屬特別在意</li>
+          <li>一定要有車位或電梯</li>
+          <li>不確定銀行對「一張產權隔兩間收租」的貸款怎麼認定</li>
+          <li>還沒做過貸款預審，不確定能貸多少</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -633,6 +689,57 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <strong>我的解讀，一句話講完：</strong>同路段三筆成交單價落在 40.9 萬至 42.4 萬／坪，本案單價 48.4 萬明顯偏高，這件事我不迴避。差價主要反映兩點：一是本案一張產權內隔成兩間，現況一套出租中（月租13,000元，租約116年5月1日到期）一套空屋，等於買下後立刻就有一間在收租，租約依買賣不破租賃原則隨產權移轉，另一間空屋可以自己規劃；二是全屋無公設，22.07 坪全部是室內實坪。<br>
       但單價偏高是事實，你可以拿這三筆去談價格。開價不等於成交價，實際成交由買賣雙方議定；同路段單價會因屋況、有無外推、漏水處理進度等實際條件而有落差，購屋前請自行查證。
     </p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">格局</div>
+      <h2>兩間怎麼分</h2>
+      <p class="lead">登記 22.07 坪＝主建物 20.69＋附屬建物 1.38，沒有一坪是公設。拿這個數字去跟電梯大樓比價之前，先把口徑對齊，不然會整組比錯。</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>項目</th><th>數字</th></tr></thead>
+        <tbody>
+          <tr class="self"><td>登記總坪數</td><td>22.07 坪</td></tr>
+          <tr><td>主建物</td><td>20.69 坪</td></tr>
+          <tr><td>附屬建物</td><td>1.38 坪</td></tr>
+          <tr><td>土地持分</td><td>5.42 坪</td></tr>
+          <tr><td>法定用途</td><td>住家用</td></tr>
+          <tr><td>座向</td><td>座東南朝西北</td></tr>
+          <tr><td>每層戶數</td><td>2 戶</td></tr>
+          <tr><td>面臨路寬</td><td>10 米</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="plan">
+      <div class="plan-frame">
+        <button type="button" data-full="a/k_floorplan.jpg?v=851db216" aria-label="放大格局圖，座東南朝西北"><img src="a/k_floorplan.jpg?v=851db216" alt="034車站2樓 2房4廳2衛格局圖，座東南朝西北，含陽台外推標示"></button>
+        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座東南朝西北</span>
+      </div>
+      <p class="cap">座東南朝西北（依委託資料）。上下兩套各自獨立的客廳、餐廳、廚房、衛浴，中間樓梯間相連。<strong>圖上已標示「陽台外推」與「陽台外推電箱」</strong>。格局圖僅供參考，未依實際比例與座向繪製，建築面積與登記範圍以地政機關登載為準。</p>
+    </div>
+    <p class="tnote">
+      <strong>我的解讀，一句話講完：</strong>每層 2 戶、地上 5 層、面臨路寬 10 米——低密度老公寓出入單純，門口不是窄巷，搬家與清運車輛的進出條件比巷弄型物件寬鬆；土地持分 5.42 坪則是與建物分開的另一筆，比價時不要把它算進 22.07 坪裡。<br>
+      主建物、附屬建物、土地持分、法定用途、每層戶數與面臨路寬均依委託資料所載，最終以地政謄本、建物測量成果圖、不動產說明書及買賣契約記載為準。
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">生活機能</div>
+      <h2>走出巷口有什麼</h2>
+      <p class="lead">以下為委託資料所載的機能點，實際路線與距離請以 Google 地圖確認。</p>
+    </div>
+    <div class="verify">
+      <div class="vlink"><b>車</b><div><strong>樹林火車站約 450 公尺</strong><small>距離依 Google 地圖</small></div></div>
+      <div class="vlink"><b>捷</b><div><strong>捷運萬大線 LG14 溪洲站</strong><small>興建中，通車時程以主管機關公告為準</small></div></div>
+      <div class="vlink"><b>學</b><div><strong>市立溪崑國中・市立沙崙國小</strong><small>學區以完整門牌與當學年度官方公告為準</small></div></div>
+      <div class="vlink"><b>市</b><div><strong>保安市場</strong><small>日常採買機能</small></div></div>
+      <div class="vlink"><b>園</b><div><strong>崑崙公園</strong><small>周邊綠地</small></div></div>
+      <div class="vlink"><b>路</b><div><strong>面臨路寬 10 米</strong><small>依委託資料</small></div></div>
+      <div class="vlink"><b>清</b><div><strong>垃圾定點清運</strong><small>週一二四五六，表定 14:08／19:03</small></div></div>
+    </div>
   </section>
 
   <section class="truth">
@@ -789,81 +896,44 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
   <section>
     <div class="sec-head">
-      <div class="kicker">先看合不合</div>
-      <h2>這間不是給所有人的</h2>
+      <div class="kicker">買之前先算自己</div>
+      <h2>1068 萬<br>你的月付會是多少</h2>
+      <p class="lead">總價是一個數字，能不能扛得住是另一個。先把首付、月付款、月息攤開來看，再決定要不要花時間來看屋。</p>
     </div>
-    <div class="split">
-      <div class="fit good">
-        <h3>這些條件，你會很有感</h3>
-        <ul>
-          <li>想買了馬上有租金收入，不想等裝潢</li>
-          <li>預算有限，想用低總價卡進市場</li>
-          <li>能接受漏水與外推需要進一步處理與查證</li>
-          <li>通勤靠火車，希望走路就到車站</li>
-          <li>能接受無電梯，2 樓對你不是問題</li>
-        </ul>
+    <div class="afford">
+      <div class="afford-top">
+        <div class="abox a-total"><small>首付（自備款）</small><strong>213.6 萬</strong><span>總價 1068 萬 − 貸款 854.4 萬</span></div>
+        <div class="abox a-pay"><small>月付款</small><strong>33,471 元</strong><span>本息平均攤還，每月固定</span></div>
+        <div class="abox"><small>月息（首月利息）</small><strong>17,337 元</strong><span>首月本金約 16,134 元</span></div>
       </div>
-      <div class="fit check">
-        <h3>這些狀況，先確認再說</h3>
-        <ul>
-          <li>希望買了就完全沒有任何現況問題要處理</li>
-          <li>對漏水糾紛或責任歸屬特別在意</li>
-          <li>一定要有車位或電梯</li>
-          <li>不確定銀行對「一張產權隔兩間收租」的貸款怎麼認定</li>
-          <li>還沒做過貸款預審，不確定能貸多少</li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
-  <section>
-    <div class="sec-head">
-      <div class="kicker">格局</div>
-      <h2>兩間怎麼分</h2>
-      <p class="lead">登記 22.07 坪＝主建物 20.69＋附屬建物 1.38，沒有一坪是公設。拿這個數字去跟電梯大樓比價之前，先把口徑對齊，不然會整組比錯。</p>
-    </div>
-    <div class="tablewrap">
-      <table>
-        <thead><tr><th>項目</th><th>數字</th></tr></thead>
-        <tbody>
-          <tr class="self"><td>登記總坪數</td><td>22.07 坪</td></tr>
-          <tr><td>主建物</td><td>20.69 坪</td></tr>
-          <tr><td>附屬建物</td><td>1.38 坪</td></tr>
-          <tr><td>土地持分</td><td>5.42 坪</td></tr>
-          <tr><td>法定用途</td><td>住家用</td></tr>
-          <tr><td>座向</td><td>座東南朝西北</td></tr>
-          <tr><td>每層戶數</td><td>2 戶</td></tr>
-          <tr><td>面臨路寬</td><td>10 米</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="plan">
-      <div class="plan-frame">
-        <button type="button" data-full="a/k_floorplan.jpg?v=851db216" aria-label="放大格局圖，座東南朝西北"><img src="a/k_floorplan.jpg?v=851db216" alt="034車站2樓 2房4廳2衛格局圖，座東南朝西北，含陽台外推標示"></button>
-        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座東南朝西北</span>
-      </div>
-      <p class="cap">座東南朝西北（依委託資料）。上下兩套各自獨立的客廳、餐廳、廚房、衛浴，中間樓梯間相連。<strong>圖上已標示「陽台外推」與「陽台外推電箱」</strong>。格局圖僅供參考，未依實際比例與座向繪製，建築面積與登記範圍以地政機關登載為準。</p>
-    </div>
-    <p class="tnote">
-      <strong>我的解讀，一句話講完：</strong>每層 2 戶、地上 5 層、面臨路寬 10 米——低密度老公寓出入單純，門口不是窄巷，搬家與清運車輛的進出條件比巷弄型物件寬鬆；土地持分 5.42 坪則是與建物分開的另一筆，比價時不要把它算進 22.07 坪裡。<br>
-      主建物、附屬建物、土地持分、法定用途、每層戶數與面臨路寬均依委託資料所載，最終以地政謄本、建物測量成果圖、不動產說明書及買賣契約記載為準。
-    </p>
-  </section>
+      <div class="arow"><span>本案委託總價<i>無車位</i></span><b>1068 萬</b></div>
+      <div class="arow"><span>貸款金額<i>總價 × 8 成</i></span><b>854.4 萬</b></div>
+      <div class="arow"><span>試算條件<i>30 年期・年利率 2.435%・無寬限期</i></span><b>本息平均攤還</b></div>
 
-  <section>
-    <div class="sec-head">
-      <div class="kicker">生活機能</div>
-      <h2>走出巷口有什麼</h2>
-      <p class="lead">以下為委託資料所載的機能點，實際路線與距離請以 Google 地圖確認。</p>
+      <a class="abtn" href="/tools/?price=1068#/loan" target="_blank" rel="noopener">用試算工具改成你的成數與利率（已帶入 1068 萬）</a>
+
+      <p class="anote">
+        試算條件：總價 1068 萬、貸款 8 成、30 年期、年利率 2.435%、無寬限期，本息平均攤還。<br>
+        <strong>這些是預設值，不是你的條件。</strong>成數、利率、年限每個人不一樣，實際以銀行核准為準；老屋的核貸年限與成數請先做貸款預審。首付之外還要另外準備契稅、印花稅、代書費、規費、火險地震險與整理費用，本卡都未計入；修繕與清運的區間見下方「把修繕算進去」。<br>
+        按上面的按鈕會帶著本案總價 1068 萬進入試算工具，你可以直接改成新青安 40 年、寬限期或升息後的月付款做壓力測試。<strong>工具站的預設是兩段式利率（前 2 年 2.185%、第 3 年起 2.435%），算出來是首期月付 32,377 元、跳息後 33,406 元</strong>，跟上面這張卡的 33,471 元差在利率設定不同，不是哪一邊算錯。買房前先做貸款預審，順序不要顛倒——先知道銀行給你多少，再決定看哪個總價帶。
+      </p>
     </div>
-    <div class="verify">
-      <div class="vlink"><b>車</b><div><strong>樹林火車站約 450 公尺</strong><small>距離依 Google 地圖</small></div></div>
-      <div class="vlink"><b>捷</b><div><strong>捷運萬大線 LG14 溪洲站</strong><small>興建中，通車時程以主管機關公告為準</small></div></div>
-      <div class="vlink"><b>學</b><div><strong>市立溪崑國中・市立沙崙國小</strong><small>學區以完整門牌與當學年度官方公告為準</small></div></div>
-      <div class="vlink"><b>市</b><div><strong>保安市場</strong><small>日常採買機能</small></div></div>
-      <div class="vlink"><b>園</b><div><strong>崑崙公園</strong><small>周邊綠地</small></div></div>
-      <div class="vlink"><b>路</b><div><strong>面臨路寬 10 米</strong><small>依委託資料</small></div></div>
-      <div class="vlink"><b>清</b><div><strong>垃圾定點清運</strong><small>週一二四五六，表定 14:08／19:03</small></div></div>
+      <div class="repairsum" id="repairsum">
+      <h3>把修繕算進去</h3>
+      <p class="rs-lead">把上面「缺點我先講完」每一條的修繕＋清運區間加總。這不是報價，是用公開報價站有出處的區間抓量級；同工種各站數字不一致時，下限取各站最低、上限取各站最高，不取平均。樓上漏水源頭的修復費用屬樓上住戶責任範圍，本卡只算本戶天花板復原。<strong>修繕預算另計，實際以現場估價為準。</strong></p>
+      <div class="afford-top">
+        <div class="abox a-total"><small>修繕＋清運合計</small><strong>3.0～6.6 萬</strong><span>含「若需拆除復原」情境；未被查報則扣掉該項</span></div>
+        <div class="abox a-pay"><small>入住總成本</small><strong>1071.0～1074.6 萬</strong><span>委託總價 1068 萬＋這筆</span></div>
+        <div class="abox"><small>首付要多準備</small><strong>3.0～6.6 萬</strong><span>修繕全額自備：213.6 萬 → 216.6～220.2 萬</span></div>
+      </div>
+      <div class="arow"><span>天花板復原<i>壁癌 2 坪＋天花油漆 5 坪概估・PRO360 廁所防水頁 2023-11-06（⚠️最舊）／PRO360 油漆頁 2025-09-30</i></span><b>0.8～1.7 萬</b></div>
+      <div class="arow"><span>陽台外推拆除復原（若需）<i>拆除 1.38 坪＋清運 1 車＋填縫 1 式・PRO360 泥作頁 2025-06-26／PRO360 清運頁 2025-06-12／找師傅945 2026-03-24</i></span><b>1.2～2.9 萬</b></div>
+      <div class="arow"><span>水電分項<i>檢測 1 次＋專用迴路 2 迴＋通水管 2 支・PRO360 2025-08-11／100室內設計 2025-12-11／找師傅945 2026-03-24</i></span><b>1.0～2.0 萬</b></div>
+      <div class="arow"><span><strong>合計（修繕＋清運）</strong><i>30,480～65,770 元</i></span><b>3.0～6.6 萬</b></div>
+      <div class="arow"><span>抓漏檢測另計，不在合計內<i>不用儀器 500～1,000／儀器 8,000～20,000・找師傅945 2026-03-24</i></span><b>0.05～2.0 萬</b></div>
+      <div class="arow"><span>驗屋另計，不在合計內<i>21～30 坪約 15,000／戶・PRO360 驗屋頁 2025-06-12；雙北中古屋 10,000～15,000／戶・鴻宇健康驗屋 2025-07-06</i></span><b>1.0～1.5 萬</b></div>
+      <p class="rs-note">算法：<strong>入住總成本＝委託總價 1068 萬＋修繕＋清運合計</strong>。銀行房貸的成數只算房價，本卡沿用上面試算卡的設定（貸款 8 成＝854.4 萬、30 年期、年利率 2.435%、無寬限期、本息平均攤還），貸款金額與月付款 33,471 元都不變；修繕預算若全額自備，首付就從 213.6 萬變成 <strong>216.6～220.2 萬</strong>（213.6 萬＋3.0～6.6 萬）。想把修繕費一起分攤，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。第 3 項「一戶兩間」若預審成數低於 8 成，首付要另外重算；全戶換管換線、恢復單戶的拆除工程偵查表沒有整戶包價，不在合計內，所以這個數字是「最少要抓」，不是「全部」。</p>
     </div>
   </section>
 
@@ -905,49 +975,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       <a class="vlink" href="https://icdc-pub.ntpc.gov.tw/ntpcpb/" target="_blank" rel="noopener"><b>建</b><div><strong>新北違章建築案件查詢</strong><small>查陽台外推有無查報紀錄</small></div></a>
       <a class="vlink" href="/lajiche/"><b>清</b><div><strong>垃圾車到點時間查詢</strong><small>輸入路名查一般垃圾／回收／廚餘</small></div></a>
       <a class="vlink" href="https://law.moj.gov.tw" target="_blank" rel="noopener"><b>法</b><div><strong>全國法規資料庫</strong><small>查法條原文</small></div></a>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">買之前先算自己</div>
-      <h2>1068 萬<br>你的月付會是多少</h2>
-      <p class="lead">總價是一個數字，能不能扛得住是另一個。先把首付、月付款、月息攤開來看，再決定要不要花時間來看屋。</p>
-    </div>
-    <div class="afford">
-      <div class="afford-top">
-        <div class="abox a-total"><small>首付（自備款）</small><strong>213.6 萬</strong><span>總價 1068 萬 − 貸款 854.4 萬</span></div>
-        <div class="abox a-pay"><small>月付款</small><strong>33,471 元</strong><span>本息平均攤還，每月固定</span></div>
-        <div class="abox"><small>月息（首月利息）</small><strong>17,337 元</strong><span>首月本金約 16,134 元</span></div>
-      </div>
-
-      <div class="arow"><span>本案委託總價<i>無車位</i></span><b>1068 萬</b></div>
-      <div class="arow"><span>貸款金額<i>總價 × 8 成</i></span><b>854.4 萬</b></div>
-      <div class="arow"><span>試算條件<i>30 年期・年利率 2.435%・無寬限期</i></span><b>本息平均攤還</b></div>
-
-      <a class="abtn" href="/tools/?price=1068#/loan" target="_blank" rel="noopener">用試算工具改成你的成數與利率（已帶入 1068 萬）</a>
-
-      <p class="anote">
-        試算條件：總價 1068 萬、貸款 8 成、30 年期、年利率 2.435%、無寬限期，本息平均攤還。<br>
-        <strong>這些是預設值，不是你的條件。</strong>成數、利率、年限每個人不一樣，實際以銀行核准為準；老屋的核貸年限與成數請先做貸款預審。首付之外還要另外準備契稅、印花稅、代書費、規費、火險地震險與整理費用，本卡都未計入；修繕與清運的區間見下方「把修繕算進去」。<br>
-        按上面的按鈕會帶著本案總價 1068 萬進入試算工具，你可以直接改成新青安 40 年、寬限期或升息後的月付款做壓力測試。<strong>工具站的預設是兩段式利率（前 2 年 2.185%、第 3 年起 2.435%），算出來是首期月付 32,377 元、跳息後 33,406 元</strong>，跟上面這張卡的 33,471 元差在利率設定不同，不是哪一邊算錯。買房前先做貸款預審，順序不要顛倒——先知道銀行給你多少，再決定看哪個總價帶。
-      </p>
-    </div>
-      <div class="repairsum" id="repairsum">
-      <h3>把修繕算進去</h3>
-      <p class="rs-lead">把上面「缺點我先講完」每一條的修繕＋清運區間加總。這不是報價，是用公開報價站有出處的區間抓量級；同工種各站數字不一致時，下限取各站最低、上限取各站最高，不取平均。樓上漏水源頭的修復費用屬樓上住戶責任範圍，本卡只算本戶天花板復原。<strong>修繕預算另計，實際以現場估價為準。</strong></p>
-      <div class="afford-top">
-        <div class="abox a-total"><small>修繕＋清運合計</small><strong>3.0～6.6 萬</strong><span>含「若需拆除復原」情境；未被查報則扣掉該項</span></div>
-        <div class="abox a-pay"><small>入住總成本</small><strong>1071.0～1074.6 萬</strong><span>委託總價 1068 萬＋這筆</span></div>
-        <div class="abox"><small>首付要多準備</small><strong>3.0～6.6 萬</strong><span>修繕全額自備：213.6 萬 → 216.6～220.2 萬</span></div>
-      </div>
-      <div class="arow"><span>天花板復原<i>壁癌 2 坪＋天花油漆 5 坪概估・PRO360 廁所防水頁 2023-11-06（⚠️最舊）／PRO360 油漆頁 2025-09-30</i></span><b>0.8～1.7 萬</b></div>
-      <div class="arow"><span>陽台外推拆除復原（若需）<i>拆除 1.38 坪＋清運 1 車＋填縫 1 式・PRO360 泥作頁 2025-06-26／PRO360 清運頁 2025-06-12／找師傅945 2026-03-24</i></span><b>1.2～2.9 萬</b></div>
-      <div class="arow"><span>水電分項<i>檢測 1 次＋專用迴路 2 迴＋通水管 2 支・PRO360 2025-08-11／100室內設計 2025-12-11／找師傅945 2026-03-24</i></span><b>1.0～2.0 萬</b></div>
-      <div class="arow"><span><strong>合計（修繕＋清運）</strong><i>30,480～65,770 元</i></span><b>3.0～6.6 萬</b></div>
-      <div class="arow"><span>抓漏檢測另計，不在合計內<i>不用儀器 500～1,000／儀器 8,000～20,000・找師傅945 2026-03-24</i></span><b>0.05～2.0 萬</b></div>
-      <div class="arow"><span>驗屋另計，不在合計內<i>21～30 坪約 15,000／戶・PRO360 驗屋頁 2025-06-12；雙北中古屋 10,000～15,000／戶・鴻宇健康驗屋 2025-07-06</i></span><b>1.0～1.5 萬</b></div>
-      <p class="rs-note">算法：<strong>入住總成本＝委託總價 1068 萬＋修繕＋清運合計</strong>。銀行房貸的成數只算房價，本卡沿用上面試算卡的設定（貸款 8 成＝854.4 萬、30 年期、年利率 2.435%、無寬限期、本息平均攤還），貸款金額與月付款 33,471 元都不變；修繕預算若全額自備，首付就從 213.6 萬變成 <strong>216.6～220.2 萬</strong>（213.6 萬＋3.0～6.6 萬）。想把修繕費一起分攤，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。第 3 項「一戶兩間」若預審成數低於 8 成，首付要另外重算；全戶換管換線、恢復單戶的拆除工程偵查表沒有整戶包價，不在合計內，所以這個數字是「最少要抓」，不是「全部」。</p>
     </div>
   </section>
 

@@ -140,6 +140,15 @@ h1{
 .hero-sub{margin:15px 0 0;font-size:clamp(1.05rem,3.9vw,1.32rem);font-weight:800;color:var(--ink)}
 .hero-sub .price{color:var(--gold);font-weight:900}
 .hero-meta{margin:11px 0 0;color:var(--muted);font-size:.85rem;line-height:1.7}
+.hero-id{margin:13px 0 0;background:var(--soft-trust);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
+.hero-id b{display:block;color:var(--trust);font-weight:900;font-size:.83rem;letter-spacing:.08em}
+.hero-id span{display:block;margin-top:6px;color:var(--ink);font-size:.89rem;line-height:1.8}
+.hero-id-go{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
+.hero-id-go a{display:inline-block;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--trust);font-weight:900;font-size:.86rem;text-decoration:none}
+.hero-fit{margin:15px 0 0;background:var(--soft-teal);border:1px solid var(--line);border-radius:18px;padding:15px 16px}
+.hero-fit b{display:block;color:var(--teal);font-weight:900;font-size:.83rem;letter-spacing:.08em}
+.hero-fit ul{margin:9px 0 0;padding-left:1.15em}
+.hero-fit li{margin:4px 0;color:var(--ink);font-size:.95rem;line-height:1.7}
 .hero-media{margin-top:18px;position:relative;border-radius:24px;overflow:hidden;background:var(--trust);box-shadow:var(--shadow)}
 .hero-media img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .hero-badge{
@@ -511,6 +520,24 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
     <h1>打開窗<br>前面沒有樓</h1>
 
+    <div class="hero-fit">
+      <b>這間房子適合誰</b>
+      <ul>
+        <li>兩個人住，不需要第三房</li>
+        <li>受不了開窗就看到對面的陽台</li>
+        <li>要新成屋，不想接手別人的裝潢與屋況</li>
+      </ul>
+    </div>
+
+    <div class="hero-id">
+      <b>這一頁是誰做的</b>
+      <span>何志宏｜鴻石不動產經紀有限公司（住商不動產樹林站前加盟店）<br>營業員　(114)年登字第495065號</span>
+      <div class="hero-id-go">
+        <a href="tel:0930848000">打 0930848000</a>
+        <a href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">看我的電子名片</a>
+      </div>
+    </div>
+
     <p class="hero-sub"><span class="price">開價 1498 萬（含車位）</span>｜26.22 坪（不含車位）｜2 房 1 廳 2 衛</p>
     <p class="hero-meta">桃園市蘆竹區・機捷 A10 山鼻站生活圈｜佳陞豐川社區 F2 戶<br>資料查核日期 2026-08-09｜公開版不揭露完整門牌與委託內部價格資訊<br>要看屋直接用官方 LINE 跟我約，我幫你排時間</p>
 
@@ -559,6 +586,35 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
   <section>
     <div class="sec-head">
+      <div class="kicker">先看合不合</div>
+      <h2>這間不是給所有人的</h2>
+    </div>
+    <div class="split">
+      <div class="fit good">
+        <h3>這些條件，你會很有感</h3>
+        <ul>
+          <li>兩個人住，不需要第三房</li>
+          <li>受不了開窗就看到對面的陽台</li>
+          <li>要新成屋，不想接手別人的裝潢與屋況</li>
+          <li>要有車位，而且希望是平面不是機械</li>
+          <li>通勤靠機場捷運，A10 就在生活圈裡</li>
+        </ul>
+      </div>
+      <div class="fit check">
+        <h3>這些狀況，先確認再說</h3>
+        <ul>
+          <li>一定要三房，或家庭人口會再增加</li>
+          <li>想買在社區均價，把「便宜」放在第一順位</li>
+          <li>預算已經抓到頂，沒有裝潢與家電的餘裕</li>
+          <li>還沒做過貸款預審，不確定能貸多少</li>
+          <li>非常在意周邊嫌惡設施，需要先完成現場勘查才敢決定</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
       <div class="kicker">室內原檔</div>
       <h2>48 秒<br>逐間走完</h2>
       <p class="lead">實際到現場拍的原始素材，沒有虛擬佈置、沒有修圖、沒有電腦合成的裝潢示意。從大門進去一路走到後陽台，中間沒有剪掉任何一段。</p>
@@ -599,6 +655,78 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
       </button>
     </div>
     <p class="zoomhint">照片與影片皆為現況實拍，未經修飾。本頁不使用任何虛擬佈置或裝潢示意圖。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">價格怎麼看</div>
+      <h2>開價不等於成交價<br>這句不是免責，是實話</h2>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>項目</th><th>本案</th><th>怎麼查證</th></tr>
+        </thead>
+        <tbody>
+          <tr class="self"><td>開價（含車位）</td><td>1498 萬</td><td>由賣方委託之開價，非成交價</td></tr>
+          <tr><td>權狀坪數（含車位）</td><td>33.87 坪</td><td>地政謄本建物面積</td></tr>
+          <tr><td>車位持分</td><td>7.64 坪</td><td>謄本共有部分持分拆算</td></tr>
+          <tr><td>坪數（不含車位）</td><td>26.22 坪</td><td>權狀含車位扣除車位持分</td></tr>
+          <tr><td>同社區成交紀錄</td><td>請自行查證</td><td>內政部實價登錄（連結見下方）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tnote">
+      <strong>我的解讀，一句話講完：</strong>很多人第一眼會先看單價。老實講，這間站在社區的高位，不是撿便宜；想買在均價的，這間可以直接劃走。留下來的人買的是同一件事——前面沒有樓，窗打開就是河堤，十樓的社區裡不是每一戶都有。<br>
+      <strong>這頁為什麼不貼同社區成交表：</strong>因為我手上還沒有核對完成、可以直接對外引用的成交清單。與其貼一張我自己都還沒對過的數字讓你當依據，不如把查證入口給你，你自己上內政部實價登錄查，我再跟你逐筆解釋差在哪裡。<br>
+      <strong>比價的時候記得：</strong>含車位 33.87 坪與不含車位 26.22 坪是兩個數字，不能混著算；含車位的成交單價也不能直接拿來跟不含車位的比，這一點最容易誤判。<br>
+      開價不等於成交價，也不代表議價空間，最終金額由買賣雙方議定；成交資料以內政部網站公告為準。
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">格局與座向</div>
+      <h2>2 房 1 廳 2 衛<br>兩個人剛好</h2>
+    </div>
+    <div class="plan">
+      <div class="plan-frame">
+        <button type="button" data-full="a/k_floorplan.jpg" aria-label="放大格局圖，D2／F2 戶型 2 房 1 廳 2 衛，座向未複核"><img src="a/k_floorplan.jpg" alt="佳陞豐川 F2 戶格局圖：主臥含更衣空間、次臥、客廳、餐廳、廚房、主衛、客衛與陽台露台，2 房 1 廳 2 衛，座向未複核"></button>
+        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座向 未複核（以現場實測為準）</span>
+      </div>
+      <p class="cap">格局圖取自委託方帶看資料（D2／F2 戶型線圖，圖上註明依建商配置圖比例繪製、僅供參考、仍以現況為準）：主臥含更衣空間、次臥、客廳、餐廳、廚房、主衛與客衛、陽台／露台，2 房 1 廳 2 衛（依委託資料，兩套衛浴已於現場影片確認）。<strong>座向：</strong>尚未核對完成，本頁不寫、也不猜，大字卡標「未複核」；帶看前我會用謄本與現場羅盤一起確認給你。本戶 7 樓，社區地上 10 層、每層 2 戶（依委託資料）；前方無建物遮擋，窗外為坑子溪河堤方向。格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">社區環境</div>
+      <h2>樓下長這樣</h2>
+    </div>
+    <div class="gallery">
+      <button class="wide" type="button" data-full="a/p_community.jpg" aria-label="放大社區外觀照片">
+        <img src="a/p_community.jpg" alt="佳陞豐川社區外觀與中庭植栽"><span class="cap">社區外觀與中庭植栽，屋齡 0.4 年的新社區</span>
+      </button>
+      <button class="wide" type="button" data-full="a/v_mrt.jpg" aria-label="放大機場捷運高架與聯外道路照片">
+        <img src="a/v_mrt.jpg" alt="窗外可見機場捷運高架與聯外道路"><span class="cap">窗外可以看到機場捷運高架與聯外道路</span>
+      </button>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="kicker">生活機能</div>
+      <h2>走出社區有什麼</h2>
+      <p class="lead">以下距離引自委託資料，依 Google 地圖直線與路徑量測，實際路線請自己再確認一次。</p>
+    </div>
+    <div class="verify">
+      <div class="vlink"><b>捷</b><div><strong>機場捷運 A10 山鼻站</strong><small>約 350 公尺（距離依 Google 地圖）</small></div></div>
+      <div class="vlink"><b>園</b><div><strong>山鼻之戀公園</strong><small>約 450 公尺（距離依 Google 地圖）</small></div></div>
+      <div class="vlink"><b>學</b><div><strong>山腳國小</strong><small>約 950 公尺（距離依 Google 地圖）；學區以完整門牌與當學年度官方公告為準</small></div></div>
+      <div class="vlink"><b>景</b><div><strong>坑子溪河堤</strong><small>本戶前方無建物遮擋，窗景方向即為河堤</small></div></div>
+      <div class="vlink"><b>車</b><div><strong>坡道平面車位</strong><small>產權含於建物內，車位持分 7.64 坪已計入權狀</small></div></div>
+      <div class="vlink"><b>費</b><div><strong>管理費</strong><small>金額尚未核對完成，帶看前提供管委會版本，本頁不寫推估值</small></div></div>
+    </div>
   </section>
 
   <section class="truth">
@@ -668,33 +796,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
   <section>
     <div class="sec-head">
-      <div class="kicker">價格怎麼看</div>
-      <h2>開價不等於成交價<br>這句不是免責，是實話</h2>
-    </div>
-    <div class="tablewrap">
-      <table>
-        <thead>
-          <tr><th>項目</th><th>本案</th><th>怎麼查證</th></tr>
-        </thead>
-        <tbody>
-          <tr class="self"><td>開價（含車位）</td><td>1498 萬</td><td>由賣方委託之開價，非成交價</td></tr>
-          <tr><td>權狀坪數（含車位）</td><td>33.87 坪</td><td>地政謄本建物面積</td></tr>
-          <tr><td>車位持分</td><td>7.64 坪</td><td>謄本共有部分持分拆算</td></tr>
-          <tr><td>坪數（不含車位）</td><td>26.22 坪</td><td>權狀含車位扣除車位持分</td></tr>
-          <tr><td>同社區成交紀錄</td><td>請自行查證</td><td>內政部實價登錄（連結見下方）</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="tnote">
-      <strong>我的解讀，一句話講完：</strong>很多人第一眼會先看單價。老實講，這間站在社區的高位，不是撿便宜；想買在均價的，這間可以直接劃走。留下來的人買的是同一件事——前面沒有樓，窗打開就是河堤，十樓的社區裡不是每一戶都有。<br>
-      <strong>這頁為什麼不貼同社區成交表：</strong>因為我手上還沒有核對完成、可以直接對外引用的成交清單。與其貼一張我自己都還沒對過的數字讓你當依據，不如把查證入口給你，你自己上內政部實價登錄查，我再跟你逐筆解釋差在哪裡。<br>
-      <strong>比價的時候記得：</strong>含車位 33.87 坪與不含車位 26.22 坪是兩個數字，不能混著算；含車位的成交單價也不能直接拿來跟不含車位的比，這一點最容易誤判。<br>
-      開價不等於成交價，也不代表議價空間，最終金額由買賣雙方議定；成交資料以內政部網站公告為準。
-    </p>
-  </section>
-
-  <section>
-    <div class="sec-head">
       <div class="kicker">買之前先算自己</div>
       <h2>1498 萬<br>你的月付會是多少</h2>
       <p class="lead">總價是一個數字，能不能扛得住是另一個。先把首付、月付款、月息攤開來看，再決定要不要花時間來看屋。</p>
@@ -734,80 +835,6 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
         驗屋：新成屋 $12,000～24,000／戶（PRO360 驗屋頁，2025-06-12；26.22 坪落在 21～30 坪級距約 $15,000）、$15,000～25,000／戶（房屋管家，2026-04-29），不在合計內。<br>
         想把配置費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定；本卡不推薦任何銀行或商品，也不是核貸結果。
       </p>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">格局與座向</div>
-      <h2>2 房 1 廳 2 衛<br>兩個人剛好</h2>
-    </div>
-    <div class="plan">
-      <div class="plan-frame">
-        <button type="button" data-full="a/k_floorplan.jpg" aria-label="放大格局圖，D2／F2 戶型 2 房 1 廳 2 衛，座向未複核"><img src="a/k_floorplan.jpg" alt="佳陞豐川 F2 戶格局圖：主臥含更衣空間、次臥、客廳、餐廳、廚房、主衛、客衛與陽台露台，2 房 1 廳 2 衛，座向未複核"></button>
-        <span class="plan-orient" aria-hidden="true"><span class="compass">🧭</span>座向 未複核（以現場實測為準）</span>
-      </div>
-      <p class="cap">格局圖取自委託方帶看資料（D2／F2 戶型線圖，圖上註明依建商配置圖比例繪製、僅供參考、仍以現況為準）：主臥含更衣空間、次臥、客廳、餐廳、廚房、主衛與客衛、陽台／露台，2 房 1 廳 2 衛（依委託資料，兩套衛浴已於現場影片確認）。<strong>座向：</strong>尚未核對完成，本頁不寫、也不猜，大字卡標「未複核」；帶看前我會用謄本與現場羅盤一起確認給你。本戶 7 樓，社區地上 10 層、每層 2 戶（依委託資料）；前方無建物遮擋，窗外為坑子溪河堤方向。格局、面積、座向與範圍最終以地政謄本、測量成果圖、不動產說明書及買賣契約記載為準。</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">社區環境</div>
-      <h2>樓下長這樣</h2>
-    </div>
-    <div class="gallery">
-      <button class="wide" type="button" data-full="a/p_community.jpg" aria-label="放大社區外觀照片">
-        <img src="a/p_community.jpg" alt="佳陞豐川社區外觀與中庭植栽"><span class="cap">社區外觀與中庭植栽，屋齡 0.4 年的新社區</span>
-      </button>
-      <button class="wide" type="button" data-full="a/v_mrt.jpg" aria-label="放大機場捷運高架與聯外道路照片">
-        <img src="a/v_mrt.jpg" alt="窗外可見機場捷運高架與聯外道路"><span class="cap">窗外可以看到機場捷運高架與聯外道路</span>
-      </button>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">生活機能</div>
-      <h2>走出社區有什麼</h2>
-      <p class="lead">以下距離引自委託資料，依 Google 地圖直線與路徑量測，實際路線請自己再確認一次。</p>
-    </div>
-    <div class="verify">
-      <div class="vlink"><b>捷</b><div><strong>機場捷運 A10 山鼻站</strong><small>約 350 公尺（距離依 Google 地圖）</small></div></div>
-      <div class="vlink"><b>園</b><div><strong>山鼻之戀公園</strong><small>約 450 公尺（距離依 Google 地圖）</small></div></div>
-      <div class="vlink"><b>學</b><div><strong>山腳國小</strong><small>約 950 公尺（距離依 Google 地圖）；學區以完整門牌與當學年度官方公告為準</small></div></div>
-      <div class="vlink"><b>景</b><div><strong>坑子溪河堤</strong><small>本戶前方無建物遮擋，窗景方向即為河堤</small></div></div>
-      <div class="vlink"><b>車</b><div><strong>坡道平面車位</strong><small>產權含於建物內，車位持分 7.64 坪已計入權狀</small></div></div>
-      <div class="vlink"><b>費</b><div><strong>管理費</strong><small>金額尚未核對完成，帶看前提供管委會版本，本頁不寫推估值</small></div></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <div class="kicker">先看合不合</div>
-      <h2>這間不是給所有人的</h2>
-    </div>
-    <div class="split">
-      <div class="fit good">
-        <h3>這些條件，你會很有感</h3>
-        <ul>
-          <li>兩個人住，不需要第三房</li>
-          <li>受不了開窗就看到對面的陽台</li>
-          <li>要新成屋，不想接手別人的裝潢與屋況</li>
-          <li>要有車位，而且希望是平面不是機械</li>
-          <li>通勤靠機場捷運，A10 就在生活圈裡</li>
-        </ul>
-      </div>
-      <div class="fit check">
-        <h3>這些狀況，先確認再說</h3>
-        <ul>
-          <li>一定要三房，或家庭人口會再增加</li>
-          <li>想買在社區均價，把「便宜」放在第一順位</li>
-          <li>預算已經抓到頂，沒有裝潢與家電的餘裕</li>
-          <li>還沒做過貸款預審，不確定能貸多少</li>
-          <li>非常在意周邊嫌惡設施，需要先完成現場勘查才敢決定</li>
-        </ul>
-      </div>
     </div>
   </section>
 
