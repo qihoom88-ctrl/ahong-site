@@ -532,6 +532,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .pk .riskcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:15px;overflow:hidden}
 .pk .riskhead{background:var(--soft-danger);border-bottom:1px solid var(--line);padding:13px 15px}
 .pk .riskhead .no{font-size:.76rem;font-weight:900;color:var(--danger);letter-spacing:.08em}
+.pk .riskcard.minor .riskhead{background:var(--card)}
+.pk .riskcard.minor .riskhead .no{color:var(--muted)}
 .pk .riskhead h3{margin:2px 0 0;color:var(--ink)}
 .pk .risklane{padding:13px 15px;border-bottom:1px dashed var(--line)}
 .pk .risklane:last-child{border-bottom:0}
@@ -724,12 +726,12 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   </div>
 </section>
 <section id="matrix">
-  <h2>風險・維修・費用・驗屋</h2>
-  <p class="lead">你現在心裡最想問的其實是一句話：「這間要再花多少才能住？」我不能給你報價，但我可以把每一項風險攤開，告訴你市場行情大概落在哪個區間、資料是哪一年、哪個網站來的，還有這一項到底該怎麼驗。<strong>所有區間僅供參考，實際費用以現場估價為準。</strong>每一項最後多一列「買方對策」：這筆錢怎麼算進預算、契約怎麼談、先做哪個、我能幫什麼——全頁合計在下面「<a href="#zongchengben">把修繕算進去</a>」那張卡。</p>
+  <h2>缺點・維修・費用・驗屋</h2>
+  <p class="lead">你現在心裡最想問的其實是一句話：「這間要再花多少才能住？」我不能給你報價，但我可以把每一項缺點攤開，告訴你市場行情大概落在哪個區間、資料是哪一年、哪個網站來的，還有這一項到底該怎麼驗。<strong>所有區間僅供參考，實際費用以現場估價為準。</strong>每一項最後多一列「買方對策」：這筆錢怎麼算進預算、契約怎麼談、先做哪個、我能幫什麼——全頁合計在下面「<a href="#zongchengben">把修繕算進去</a>」那張卡。</p>
 
-  <div class="riskcard">
+  <div class="riskcard minor">
     <div class="riskhead">
-      <div class="no">風險 01</div>
+      <div class="no">缺點 01</div>
       <h3>屋主自住中，滿屋家具家電不是空屋</h3>
     </div>
     <div class="risklane">
@@ -774,9 +776,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
   </div>
 
-  <div class="riskcard">
+  <div class="riskcard minor">
     <div class="riskhead">
-      <div class="no">風險 02</div>
+      <div class="no">缺點 02</div>
       <h3>屋齡 31 年，室內水電管線是否更新過待查</h3>
     </div>
     <div class="risklane">
@@ -822,9 +824,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
   </div>
 
-  <div class="riskcard">
+  <div class="riskcard minor">
     <div class="riskhead">
-      <div class="no">風險 03</div>
+      <div class="no">缺點 03</div>
       <h3>31 年原始衛浴與廚房：浴室沒有乾濕分離</h3>
     </div>
     <div class="risklane">
@@ -874,9 +876,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
   </div>
 
-  <div class="riskcard">
+  <div class="riskcard minor">
     <div class="riskhead">
-      <div class="no">風險 04</div>
+      <div class="no">缺點 04</div>
       <h3>要住進去之前的基本整理：清空之後的粉刷</h3>
     </div>
     <div class="risklane">
@@ -922,9 +924,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
   </div>
 
-  <div class="riskcard">
+  <div class="riskcard minor">
     <div class="riskhead">
-      <div class="no">風險 05</div>
+      <div class="no">缺點 05</div>
       <h3>31 年共用設施：294 戶社區的電梯、水塔、外牆與修繕基金——21 樓要看得更仔細</h3>
     </div>
     <div class="risklane">
@@ -968,9 +970,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     </div>
   </div>
 
-  <div class="riskcard">
+  <div class="riskcard minor">
     <div class="riskhead">
-      <div class="no">風險 06</div>
+      <div class="no">缺點 06</div>
       <h3>沒有車位、公設比 29%、捷運沒有官方公尺數</h3>
     </div>
     <div class="risklane">
@@ -1272,7 +1274,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     <p class="src"><strong>為什麼要把這件事寫在這裡：</strong>因為你找師傅估價時，第一句話就是「幾坪」。委託方交付的兩份文件在「主建物與附屬建物分項坪數」這一格對不上，我已經在向委託方確認，確認完會更正這一頁。<strong>在那之前，本頁不拿任何一個版本去乘任何費用</strong>——上面「風險 04」的粉刷估算，用的是「登記 21.36 坪 − 公設 6.22 坪 ＝ 15.14 坪」這個兩份文件都對得上的口徑，抓 15 坪估算，而且我把這件事註明在那一段裡。<br>正式報價請等謄本與測量成果圖出來再定坪數，也不要拿登記總坪數 21.36 坪去乘——那 6.22 坪的公設不在你家裡，報錯會多花錢。</p>
   </div>
 
-  <div class="card danger">
+  <div class="card">
     <h3>格局與屋況上的四個缺點，我直接講</h3>
     <ul>
       <li><strong>只有一套衛浴，而且沒有乾濕分離。</strong>兩房一廳一衛，兩人以上同時作息會互相卡；浴室現況洗衣機也放在裡面。格局圖上看不到可以再增設第二套衛浴的位置。這一項不是缺陷，是產品定位——它適合一到兩人，不適合三代同堂。</li>
