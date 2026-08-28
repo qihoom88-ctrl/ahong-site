@@ -245,6 +245,23 @@
 .ogshot figcaption{margin-top:9px;font-size:14px;line-height:1.75;color:var(--muted,#6E767B)}
 .ogshot figcaption b{display:block;color:var(--ink,#23282B);font-size:15px;margin-bottom:3px}
 .ogshot figcaption .src{display:block;margin-top:5px;font-size:12px;color:var(--muted,#6E767B)}
+/* 逐條查核表（規格對標 /xiushan/：一條一個知識點、標題本身是判斷句、每條附出處與查證日） */
+.rl{display:grid;gap:14px;margin:18px 0 0}
+.rl-item{border:1px solid var(--line,#DED8CA);border-radius:14px;background:#fff;padding:16px 17px}
+.rl-item h3{margin:0 0 7px;font-size:17px;line-height:1.5;color:var(--ink,#23282B)}
+.rl-item h3 .n{display:inline-grid;place-items:center;width:24px;height:24px;margin-right:8px;border-radius:50%;background:#8B6D09;color:#fff;font-size:12.5px;font-weight:900;vertical-align:2px}
+.rl-item p{margin:0 0 8px;font-size:15px;line-height:1.85}
+.rl-item p:last-of-type{margin-bottom:0}
+.rl-quote{margin:9px 0;padding:10px 13px;border-left:4px solid #8B6D09;background:#FBF7E9;border-radius:0 10px 10px 0;font-size:14.5px;line-height:1.8}
+.rl-src{display:block;margin-top:9px;font-size:12px;line-height:1.65;color:var(--muted,#6E767B)}
+.rl-src a{color:inherit}
+.rl-none{border-style:dashed;background:#FAFAF7}
+.rl-none h3{color:#6E767B}
+/* 防詐提醒（與 /tengben/ 同一塊，2026-08-28 補進本頁） */
+.fraud-alert{margin-top:18px;padding:16px 17px;border-radius:16px;background:rgba(255,255,255,.94);border:2px solid #8A2E2A;color:#2A2F35;text-align:left;font-size:14px;line-height:1.8}
+.fraud-alert strong{display:block;margin-bottom:6px;color:#8A2E2A}
+.fraud-alert p{margin:4px 0}
+.ogshot-wide{margin:18px auto 0;max-width:600px}
 </style>
 </head>
 <body>
@@ -384,7 +401,7 @@
       <span class="kicker">一張圖判斷</span>
       <h2>翻開建物謄本，30 秒初判</h2>
       <p class="section-note">建物謄本任何人都能申請：地政事務所臨櫃，或「全國地政電子謄本系統」線上調，一份幾十元。</p>
-      <p class="section-note">謄本上每一格實際長什麼樣子、第一類與第二類差在哪一欄，另有圖解頁：<a href="/zhishi/tengben-guide/">謄本三秒判讀圖解</a></p>
+      <p class="section-note">謄本上每一格實際長什麼樣子、第一類與第二類差在哪一欄，另有圖解頁：<a href="/zhishi/tengben-guide/">謄本三秒判讀圖解</a>。謄本上他項權利那一段（抵押權、二胎三胎、限制登記）另有專頁：<a href="/tengben/">謄本寫 1200 萬，不代表屋主欠 1200 萬</a></p>
 
       <div class="card">
         <div class="tree">
@@ -433,6 +450,88 @@
             <span class="src">出處｜臺北市政府地政局 不動產說明書應記載及不得記載事項(成屋) 填寫範例．擷取日期 2026-08-28</span>
           </figcaption>
         </figure>
+      </div>
+
+      <figure class="ogshot ogshot-wide">
+        <span class="ogshot-frame">
+          <img src="/zhishi/tengben-guide/img/不動產說明書停車位記載情形欄位_臺北市地政局_20260828.png" width="1800" height="1548" loading="lazy" decoding="async" alt="不動產說明書停車位記載情形表格，框出停車位性質三個選項、車位型式六個選項與備註欄的編號認定規則">
+          <span class="mk" style="--x:14.17%;--y:30.23%;--w:56.83%;--h:7.17%"><i>1</i></span>
+          <span class="mk" style="--x:37.78%;--y:37.53%;--w:33.22%;--h:28.17%"><i>2</i></span>
+          <span class="mk" style="--x:71.11%;--y:37.53%;--w:13.22%;--h:28.17%"><i>3</i></span>
+        </span>
+        <figcaption>
+          <b>同一張表，還有三格多數人不會翻到</b>
+          ①<strong>停車位性質</strong>——法定／自行增設／獎勵增設，三個框框就是本頁在講的三種身分，仲介依法必須勾一個。
+          ②<strong>車位型式</strong>——官方認六種：坡道平面、升降平面、坡道機械、升降機械、塔式車位、一樓平面，還要填長寬淨高與機械可承載重量。
+          ③<strong>備註欄</strong>——「已辦理產權登記且有登記車位編號者，依其登記之編號，未辦理者，依分管編號為準」，這一行決定哪一格算你的。
+          <span class="src">出處｜臺北市政府地政局 不動產說明書應記載及不得記載事項(成屋) 填寫範例．擷取日期 2026-08-28</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- 6.5 逐條查核表（40-0828 新增：逐條式＋每條附出處與查證日） -->
+    <section id="rules">
+      <span class="kicker">逐條查核</span>
+      <h2>七條規則，一條一件事</h2>
+      <p class="section-note">上面是流程，這裡是依據。每一條都附得出官方出處與查證日期——查得到的才寫，查不到的直接說沒有。</p>
+
+      <div class="rl">
+
+        <div class="rl-item">
+          <h3><span class="n">1</span>建商把法定車位賣給社區以外的人，法律本來就禁止</h3>
+          <p>高雄那 42 戶的起點不是運氣不好，是這件事一開始就不該發生。條文寫得很直白：</p>
+          <p class="rl-quote">公寓大廈之起造人或建築業者，<strong>不得將共用部分，包含法定空地、法定停車空間及法定防空避難設備，讓售於特定人</strong>或為區分所有權人以外之特定人設定專用使用權或為其他有損害區分所有權人權益之行為。</p>
+          <p>所以聽到「這格法定位可以賣你，我們都這樣處理」——那不是慣例，是條文明文禁止的事。</p>
+          <span class="rl-src">出處｜全國法規資料庫 公寓大廈管理條例第 58 條第 2 項．查證日 2026-08-28<br><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0070118&amp;flno=58" target="_blank" rel="noopener">law.moj.gov.tw 公寓大廈管理條例第 58 條</a></span>
+        </div>
+
+        <div class="rl-item">
+          <h3><span class="n">2</span>「獎勵」兩個字，是拿開放給公眾停車換來的</h3>
+          <p>獎勵車位為什麼有那個「極端狀況外人可以主張來停」的尾巴？看條文的第一句就知道，獎勵的前提寫在裡面：</p>
+          <p class="rl-quote">為鼓勵建築物增設營業使用之停車空間，並<strong>依停車場法或相關法令規定開放供公眾停車使用</strong>，有關建築物之樓層數、高度、樓地板面積之核計標準或其他限制事項，直轄市、縣（市）建築機關得另定鼓勵要點……<br><strong>本條施行期限至中華民國一百零一年十二月三十一日止。</strong></p>
+          <p>兩件事一次確定：獎勵位的出身就是要供公眾使用；而這條在民國 101 年（2012）年底就到期了，之後再也生不出新的獎勵位。</p>
+          <span class="rl-src">出處｜全國法規資料庫 建築技術規則建築設計施工編第 59-2 條．查證日 2026-08-28<br><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0070115&amp;flno=59-2" target="_blank" rel="noopener">law.moj.gov.tw 建築技術規則第 59-2 條</a></span>
+        </div>
+
+        <div class="rl-item">
+          <h3><span class="n">3</span>法定車位登記成共有部分，是法令白紙黑字寫的，不是建商偷懶</h3>
+          <p>很多人以為「沒給我車位權狀」是建商省事。不是，是登記法令規定只能這樣登：</p>
+          <p class="rl-quote">區分所有建物地下層依法附建之防空避難設備或停車空間<strong>應為共有部分</strong>。</p>
+          <p>所以你手上沒有一張獨立的車位權狀，多數情況是正常的，不是被坑。要確認的是下一層——共有部分附表裡有沒有你的車位編號。</p>
+          <span class="rl-src">出處｜內政部 建物所有權第一次登記法令補充規定第 10 點，轉引自新北市政府地政局公開文件．查證日 2026-08-28<br><a href="https://www-ws.land.ntpc.gov.tw/001/upload/oldFile/doc/news/201905071150310.pdf" target="_blank" rel="noopener">新北市政府地政局 停車空間產權登記法令彙編（PDF）</a></span>
+        </div>
+
+        <div class="rl-item">
+          <h3><span class="n">4</span>有獨立建號的車位，主要用途欄會寫「停車空間」四個字</h3>
+          <p>怎麼分辨手上那張權狀是真的獨立車位權狀？函釋把長相描述得很具體：</p>
+          <p class="rl-quote">單獨編列建號以主建物方式登記，<strong>主要用途欄記載「停車空間」</strong>……所有權部及權狀登載「車位編號○○號」。</p>
+          <p>對照組就是本頁上面那張共有部分樣張——主要用途欄一次列出十三項公設，那種就是沒有獨立建號的。</p>
+          <span class="rl-src">出處｜內政部 85.2.27 台內地字第 8573716 號函，轉引自新北市政府地政局公開文件．查證日 2026-08-28<br><a href="https://www-ws.land.ntpc.gov.tw/001/upload/oldFile/doc/news/201905071150310.pdf" target="_blank" rel="noopener">新北市政府地政局 停車空間產權登記法令彙編（PDF）</a></span>
+        </div>
+
+        <div class="rl-item">
+          <h3><span class="n">5</span>官方表格認的車位型式有六種，不是一般人以為的三種</h3>
+          <p>坡道平面、機械——多數人只講得出這兩三種。不動產說明書的正式欄位其實列了六個選項：</p>
+          <p class="rl-quote"><strong>坡道平面／升降平面／坡道機械／升降機械／塔式車位／一樓平面</strong>，另加「其他」，並要填車位規格長寬淨高、所在樓層別、機械式可承載重量。</p>
+          <p>為什麼要分這麼細：升降機械跟坡道機械的維修費、車重限制、進出時間完全不同。看物件時直接問「這是六種裡的哪一種」，比問「是不是機械位」精準得多。</p>
+          <span class="rl-src">出處｜臺北市政府地政局 不動產說明書應記載及不得記載事項（成屋）填寫範例 第（七）項．查證日 2026-08-28</span>
+        </div>
+
+        <div class="rl-item">
+          <h3><span class="n">6</span>沒去登記車位編號的，就以社區的分管編號為準</h3>
+          <p>不動產說明書的備註欄藏了一句很多人沒注意的話，它決定了「哪一格是你的」這件事怎麼認定：</p>
+          <p class="rl-quote">已辦理產權登記且有登記車位編號者，<strong>依其登記之編號</strong>；未辦理者，<strong>依分管編號為準</strong>。</p>
+          <p>這就是為什麼本頁一直要你「把車位編號寫進契約」。有登記的看登記；沒登記的，分管協議或規約就是你唯一的依據——什麼都沒有的話，你手上是空的。</p>
+          <span class="rl-src">出處｜臺北市政府地政局 不動產說明書應記載及不得記載事項（成屋）填寫範例 第（七）項備註欄．查證日 2026-08-28</span>
+        </div>
+
+        <div class="rl-item rl-none">
+          <h3><span class="n">7</span>「有獨立建號 vs 掛共有部分」的車位謄本並排樣張，官方沒有做</h3>
+          <p>這條是誠實交代，不是內容。我們把地政機關公開的謄本導讀、樣張、宣導摺頁逐份查過一遍：政府文件講車位產權<strong>一律用法條與函釋的文字在講</strong>，沒有任何一份做出「單獨建號車位謄本」與「共有部分車位謄本」的並排對照圖。</p>
+          <p>所以本頁不會生一張那樣的圖給你看——生得出來的只會是自製示意圖，那不算證據。能給的是上面第 3、4 條的函釋原文，以及本頁那兩張真的來自官方的樣張。看得到出處的才叫查證。</p>
+          <span class="rl-src">查核範圍｜新北市地政局、臺北市政府地政局、臺北地政電子報、高雄市政府地政局、內政部地政司公開文件．查證日 2026-08-28</span>
+        </div>
+
       </div>
     </section>
 
@@ -555,6 +654,9 @@
           <li><a href="https://www.ly.gov.tw/Pages/Detail.aspx?nodeid=6590&pid=231481" target="_blank" rel="noopener">立法院法制局｜建築物停車獎勵制度之法制探討（獎勵車位應供公眾使用與落日）</a></li>
           <li><a href="https://www.banqiao.land.ntpc.gov.tw/News_Content.aspx?n=9811&s=53107" target="_blank" rel="noopener">新北市板橋地政事務所｜區分所有建物停車空間及防空避難設備如何辦理產權登記</a></li>
           <li><a href="https://www.moi.gov.tw/News_Content.aspx?n=4&sms=9009&s=329331" target="_blank" rel="noopener">內政部｜防空避難指引</a></li>
+          <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0070118&amp;flno=58" target="_blank" rel="noopener">全國法規資料庫｜公寓大廈管理條例第 58 條（起造人不得將法定停車空間讓售於特定人）</a></li>
+          <li><a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0070115&amp;flno=59-2" target="_blank" rel="noopener">全國法規資料庫｜建築技術規則建築設計施工編第 59-2 條（獎勵停車開放供公眾使用，施行期限至 101 年底）</a></li>
+          <li><a href="https://www-ws.land.ntpc.gov.tw/001/upload/oldFile/doc/news/201905071150310.pdf" target="_blank" rel="noopener">新北市政府地政局｜停車空間產權登記法令彙編（含內政部 85.2.27 台內地字第 8573716 號函、建物所有權第一次登記法令補充規定第 10 點）</a></li>
         </ul>
         <p class="disclaimer">本頁為一般性產權知識整理，資料查核日期 2026-08-13，不構成法律、稅務或財務建議，也不針對任何個案。每一格車位的登記狀況都要以謄本與使用執照為準，實際交易請委任地政士辦理，或向地政機關、建管單位確認。使用本頁資訊所做的任何決定由使用者自行判斷，本頁提供者不負擔法律責任。法規與函釋可能修正，正式適用以官方公告為準。</p>
       </div>
@@ -586,6 +688,12 @@
       <a class="c1" href="https://reurl.cc/zQVzg7" target="_blank" rel="noopener">加入鴻觀資產交流社</a>
       <a class="c2" href="https://line.me/R/ti/p/@798ulmws" target="_blank" rel="noopener">官方 LINE 一對一</a>
       <a class="c3" href="/mingpian/" target="_blank" rel="noopener">電子名片</a>
+    </div>
+    <div class="fraud-alert">
+      <strong>提醒一句</strong>
+      <p>這是免費的公開知識整理，不是匯款連結，也不會要求你輸入帳號、密碼、信用卡或驗證碼</p>
+      <p>阿宏不會因為你留言「車位」就要求你匯款、轉帳、繳費或操作網路銀行</p>
+      <p>若有人冒用阿宏或鴻觀名義要求付款，先不要理會、不要點陌生連結，直接撥打 165 查證</p>
     </div>
     <div class="legal">
       經紀業名稱：住商不動產樹林站前加盟店 鴻石不動產經紀有限公司<br>
