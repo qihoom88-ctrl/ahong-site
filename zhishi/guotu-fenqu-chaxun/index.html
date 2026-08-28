@@ -276,6 +276,29 @@ footer .ctas a:hover,footer .ctas a:focus-visible{background:var(--brand)}
 
 a:focus-visible,summary:focus-visible,label:focus-visible,input:focus-visible{outline:2.5px solid var(--brand);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+/* ---------- 40-0828-04 官方截圖與框線標示 ---------- */
+.shotwrap{margin:18px 0 4px}
+.shot{margin:0}
+.shot-frame{position:relative;display:block;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:0 6px 20px rgba(35,40,43,.07)}
+.shot-frame img{display:block;width:100%;height:auto}
+.shot .mark{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);border:3px solid var(--brand);border-radius:4px;pointer-events:none}
+.shot .mark i{position:absolute;left:-10px;top:-10px;display:grid;place-items:center;width:21px;height:21px;border-radius:50%;background:var(--brand);color:#fff;font-style:normal;font-size:12px;font-weight:900;line-height:1}
+.shot .mark.edge i{left:2px;top:2px}
+.shot figcaption{margin-top:10px;font-size:14.5px;color:var(--body);line-height:1.75}
+.shot figcaption b{display:block;color:var(--ink);font-size:15px;margin-bottom:3px}
+.shot figcaption .src{display:block;margin-top:7px;font-size:12.5px;color:var(--muted);line-height:1.7}
+.shot figcaption .src a{color:var(--muted);word-break:break-all}
+
+/* ---------- 逐條式條目 ---------- */
+.items{display:flex;flex-direction:column;gap:14px}
+.item{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);border-radius:0 8px 8px 0;padding:18px 20px}
+.item h3{font-size:17.5px;margin:0 0 9px;line-height:1.5}
+.item p{font-size:16px;margin:0 0 10px}
+.item p:last-of-type{margin-bottom:0}
+.stampline{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--muted);line-height:1.75}
+.stampline a{color:var(--brand);word-break:break-all}
+.stampline b{color:var(--ink);font-weight:600}
 @media (min-width:600px){.fork{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -341,6 +364,7 @@ a:focus-visible,summary:focus-visible,label:focus-visible,input:focus-visible{ou
     <li><a href="#rukou">官方入口</a></li>
     <li><a href="#faq">常見問題</a></li>
     <li><a href="#laiyuan">查核依據</a></li>
+    <li><a href="#yanshen">接下來看哪一頁</a></li>
   </ol>
 </nav>
 </div>
@@ -353,13 +377,29 @@ a:focus-visible,summary:focus-visible,label:focus-visible,input:focus-visible{ou
     <div class="kicker">先講最多人不知道的</div>
     <h2 id="shouying-t">你受不受影響</h2>
   </div>
-  <div class="card status">
-    <p>先講清楚，免得你白擔心一整晚。</p>
-    <p>如果家裡的房子和土地在<strong>都市計畫區內</strong>，這一輪換的那一套管制不是在管你——你的地照舊歸都市計畫法管，該怎樣還是怎樣。（國土計畫法第 23 條第 2 項但書有寫）</p>
-    <p>真正會換規則的，是<span class="em">都市計畫外</span>的那些地——山坡地、農地、鄉村區、森林區。它們現在歸區域計畫法管，將來歸國土功能分區管。<strong>公告分區圖的那一天，舊的那一套就從那天起停止適用。</strong>（國土計畫法第 45 條）</p>
-    <p>要補一句誠實話：都市計畫區內的土地不是「永遠不會被影響」。同法第 8 條規定都市計畫要遵循國土計畫，第 16 條也規定縣市國土計畫公告實施後，都市計畫主管機關要按國土計畫的指導辦理擬訂或變更。正確的講法是——<strong>這一輪的分區換軌不直接動到你的管制</strong>。</p>
-    <p class="note">怎麼一眼分辨自己是都內還是都外？答案在一份每張二十塊錢的紙上，看〈查詢三步驟〉的第 1 步。</p>
+  <p>先講清楚，免得你白擔心一整晚。下面三條，看你是哪一條。</p>
+  <div class="items">
+
+    <div class="item">
+      <h3>地在都市計畫區內，這一輪換的不是你</h3>
+      <p>你的地照舊歸<strong>都市計畫法</strong>管，容積率、建蔽率、能蓋什麼，該怎樣還是怎樣。國土計畫法第 23 條第 2 項但書把都市計畫區的土地使用管制留在原來那套。</p>
+      <p class="stampline"><b>依據</b>國土計畫法第 23 條第 2 項但書｜<b>查證日</b>2026-08-23<br><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070230" target="_blank" rel="noopener noreferrer">https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070230</a></p>
+    </div>
+
+    <div class="item">
+      <h3>地在都市計畫外，公告那天起就換一套規則</h3>
+      <p>山坡地、農地、鄉村區、森林區這些，現在歸<strong>區域計畫法</strong>管，將來歸<strong>國土功能分區</strong>管。<strong class="em">公告分區圖的那一天，舊的那一套就從那天起停止適用</strong>——不是慢慢過渡，是那天起換。</p>
+      <p class="stampline"><b>依據</b>國土計畫法第 45 條（區域計畫法停止適用）｜<b>查證日</b>2026-08-23<br><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070230" target="_blank" rel="noopener noreferrer">https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070230</a></p>
+    </div>
+
+    <div class="item">
+      <h3>都內不等於永遠沒事，只是這一輪不動到你</h3>
+      <p>誠實補一句：同法第 8 條規定都市計畫要遵循國土計畫，第 16 條規定縣市國土計畫公告實施後，都市計畫主管機關要按國土計畫的指導辦理擬訂或變更。所以正確的講法是——<strong>這一輪的分區換軌不直接動到你的管制</strong>，不是「永遠不會被影響」。</p>
+      <p class="stampline"><b>依據</b>國土計畫法第 8 條、第 16 條｜<b>查證日</b>2026-08-23<br><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070230" target="_blank" rel="noopener noreferrer">https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070230</a></p>
+    </div>
+
   </div>
+  <p class="note" style="margin-top:16px">怎麼一眼分辨自己是都內還是都外？答案在一份每張二十塊錢的紙上，看〈查詢三步驟〉的第 1 步。</p>
 </section>
 
 <section id="wujie" aria-labelledby="wujie-t">
@@ -423,6 +463,7 @@ a:focus-visible,summary:focus-visible,label:focus-visible,input:focus-visible{ou
       <div class="s">登記謄本、地價謄本、地籍圖謄本都是每張 20 元。一份謄本可能不只一張，所以帶一百塊零錢過去比較保險。</div>
     </div>
   </div>
+  <p class="stampline">四個數字的依據：國土計畫法第 3、45 條（全國法規資料庫）、內政部國土管理署分區圖展示查詢系統各階段名單、各地政事務所謄本規費收費標準｜<b>查證日</b>2026-08-23，系統名單狀態另於 2026-08-28 回查一次<br><a href="https://nluz.nlma.gov.tw/ex3s/" target="_blank" rel="noopener noreferrer">https://nluz.nlma.gov.tw/ex3s/</a></p>
 </section>
 
 <section id="sanbu" aria-labelledby="sanbu-t">
@@ -451,6 +492,38 @@ a:focus-visible,summary:focus-visible,label:focus-visible,input:focus-visible{ou
           <li>標示部只看兩欄：「<strong>使用分區</strong>」和「<strong>使用地類別</strong>」。<span class="gloss">使用分區是這一整區被規劃成什麼，使用地類別是你這一筆地被編定成什麼，兩欄要一起看。</span></li>
           <li>順手把完整<strong>地號</strong>抄下來（鄉鎮市區＋段小段＋地號）。第 2 步就是靠這串字查的。</li>
         </ul>
+
+        <div class="shotwrap">
+          <figure class="shot">
+            <span class="shot-frame">
+              <img src="/zhishi/tengben-guide/img/二類謄本完整樣張含使用分區_高雄市地政局_20260828.png" width="794" height="848" loading="lazy" decoding="async" alt="土地登記第二類謄本官方樣張，紅框標出土地標示部、使用分區、使用地類別與土地所有權部四處位置">
+              <span class="mark" style="--x:37.8%;--y:24.2%;--w:24%;--h:3.2%"><i>1</i></span>
+              <span class="mark" style="--x:2.8%;--y:32.2%;--w:23.7%;--h:2.7%"><i>2</i></span>
+              <span class="mark" style="--x:57.9%;--y:32.2%;--w:24.6%;--h:2.7%"><i>3</i></span>
+              <span class="mark" style="--x:37.8%;--y:51.9%;--w:25.2%;--h:3.2%"><i>4</i></span>
+            </span>
+            <figcaption>
+              <b>你要看的是這一格</b>
+              ① 這行印著「土地標示部」，你要看的那一段從這裡開始。② 使用分區，這張寫「特定農業區」。③ 使用地類別，這張寫「農牧用地」。②③ 兩欄都有字＝非都市土地，就是這次要換軌的那一塊。④ 再往下是「土地所有權部」，那段寫誰的名字，查分區用不到，可以先跳過。
+              <span class="src">官方樣張出處：高雄市政府地政局「土地謄本導讀」範例圖，畫面帶「測試使用」浮水印，所有權人為中華民國、管理者為財政部國有財產署，非私人資料。擷取日期 2026-08-28。<br><a href="https://landp-ws.kcg.gov.tw/FS01/FilePath/18/relfile/279/175/84215a42-5592-48a4-ac02-46007caad89a.pdf" target="_blank" rel="noopener noreferrer">https://landp-ws.kcg.gov.tw/FS01/FilePath/18/relfile/279/175/84215a42-5592-48a4-ac02-46007caad89a.pdf</a></span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="shotwrap">
+          <figure class="shot">
+            <span class="shot-frame">
+              <img src="/zhishi/tengben-guide/img/土地標示部使用分區特定農業區農牧用地_高雄市地政局_20260828.png" width="790" height="236" loading="lazy" decoding="async" alt="土地標示部特寫，紅框標出使用分區欄寫特定農業區、使用地類別欄寫農牧用地">
+              <span class="mark" style="--x:2.2%;--y:30.5%;--w:24.3%;--h:11.5%"><i>1</i></span>
+              <span class="mark" style="--x:57.8%;--y:32.5%;--w:26%;--h:11%"><i>2</i></span>
+            </span>
+            <figcaption>
+              <b>放大之後，你要對的就是這兩欄</b>
+              ① 使用分區。② 使用地類別。這張樣張兩欄都有字，所以它是非都市土地。順帶一提，這張右上角「登記原因」寫的是「補辦編定」——就是下面講到「尚未編定」時，補辦完之後謄本上會長的樣子。
+              <span class="src">官方樣張出處：高雄市政府地政局「土地謄本導讀」範例圖，畫面帶「測試使用」浮水印，所有權人為中華民國、管理者為財政部國有財產署，非私人資料。擷取日期 2026-08-28。<br><a href="https://landp-ws.kcg.gov.tw/FS01/FilePath/18/relfile/279/175/84215a42-5592-48a4-ac02-46007caad89a.pdf" target="_blank" rel="noopener noreferrer">https://landp-ws.kcg.gov.tw/FS01/FilePath/18/relfile/279/175/84215a42-5592-48a4-ac02-46007caad89a.pdf</a></span>
+            </figcaption>
+          </figure>
+        </div>
 
         <div class="honest"><b>兩欄怎麼讀（有例外，別自己猜）：</b><br>
           兩欄<strong>有記載</strong>（例如使用分區「一般農業區」、使用地類別「農牧用地」）＝非都市土地，就是這次要換軌的那一塊——從現在的區域計畫法，換到國土計畫法那一套。<br>
@@ -486,6 +559,21 @@ a:focus-visible,summary:focus-visible,label:focus-visible,input:focus-visible{ou
         </div>
         <p class="note">誠實提醒：這個系統首頁目前掛著一則公告，說介接的圖資主機異常、定位查詢無法正常使用，正在排除中。查不動就別跟它耗，直接去地政事務所請櫃檯幫你查。</p>
 
+        <div class="shotwrap">
+          <figure class="shot">
+            <span class="shot-frame">
+              <img src="/zhishi/tengben-guide/img/地籍圖資網路便民服務系統首頁系統公告_內政部地政司_20260828.jpg" width="1400" height="950" loading="lazy" decoding="async" alt="地籍圖資網路便民服務系統首頁，紅框標出系統公告中定位查詢異常的那一則，以及入口一的位置">
+              <span class="mark" style="--x:5.4%;--y:24.4%;--w:28.2%;--h:6.1%"><i>1</i></span>
+              <span class="mark" style="--x:35.5%;--y:45.5%;--w:6.7%;--h:20.5%"><i>2</i></span>
+            </span>
+            <figcaption>
+              <b>你要看的是這一格</b>
+              ① 這則就是上面說的那則公告，官網自己寫「導致本系統無法正常定位查詢，已通告相關人員盡速排除中」——不是你操作錯。② 真的要用就點「入口一」，那是最新版、手機也能開。同一頁的公告還寫著圖資日期版本，你可以順手確認資料新不新。
+              <span class="src">畫面出處：內政部地政司「地籍圖資網路便民服務系統」首頁，本站自行操作該公開查詢介面之螢幕擷取，未輸入任何地號或門牌。擷取日期 2026-08-28。該站footer標示「©Copyright All Rights Reserved By 內政部地政司」，未針對網站畫面揭露開放授權條款。<br><a href="https://easymap.moi.gov.tw/" target="_blank" rel="noopener noreferrer">https://easymap.moi.gov.tw/</a></span>
+            </figcaption>
+          </figure>
+        </div>
+
         <h4>線上申領這條路，先看你有沒有這些東西</h4>
         <p>「全國地政電子謄本系統」可以線上申領，但它不是點進去就能用：要有<strong>中華電信 HiNet 帳號或關貿網路帳號</strong>，非用戶要線上買點數卡；電子謄本每張 20 元、按月計收；申領服務時間是<strong>週一至週六 08:00 至 21:00</strong>。只有一支手機、沒有這些帳號的人，臨櫃反而最快。狀況特殊（例如繼承人要申請第一類）先打客服 <a href="tel:0800080212">0800-080-212</a> 問清楚再上網，別白跑一趟網路。</p>
         <div class="urlbox">
@@ -508,6 +596,52 @@ a:focus-visible,summary:focus-visible,label:focus-visible,input:focus-visible{ou
           <li>右邊才會出現查詢面板，依序選／填：<strong>鄉鎮市區 → 段名 → 地號</strong>，按查詢。</li>
           <li>結果跳出來，<span class="em">第一件事是核對結果上的「地段」和「地號」跟你謄本上的字一不一樣</span>。段名選單裡同名的選項可能出現不只一個，對不上就換另一個同名選項再查一次。這一步不核對，你看到的可能是隔壁那塊地。</li>
         </ul>
+
+        <div class="shotwrap">
+          <figure class="shot">
+            <span class="shot-frame">
+              <img src="/zhishi/tengben-guide/img/國土功能分區圖查詢系統進站注意事項視窗_內政部國土管理署_20260828.png" width="1280" height="900" loading="lazy" decoding="async" alt="國土功能分區圖展示資訊查詢系統一進站跳出的注意事項視窗，紅框標出右下角我知道了按鈕">
+              <span class="mark" style="--x:69.5%;--y:85.3%;--w:11%;--h:5.2%"><i>1</i></span>
+            </span>
+            <figcaption>
+              <b>你要按的是這一顆</b>
+              一進站就會被這面「注意事項」蓋住，很多人以為點錯連結就關掉了。① 右下角「我知道了!」，按下去才會看到後面的東西。順帶一提，這面視窗第二段就是本頁〈地上有東西怎麼辦〉引用的那句「已取得區域計畫法同意的使用項目及使用強度都會予以確保」。
+              <span class="src">畫面出處：內政部國土管理署「直轄市、縣（市）國土功能分區圖展示資訊查詢系統」，本站自行操作該公開查詢介面之螢幕擷取，未輸入任何真實地號。擷取日期 2026-08-28。該站頁尾標示「中華民國內政部國土管理署 版權所有©copyright2026」，未揭露開放授權條款。<br><a href="https://nluz.nlma.gov.tw/ex3s/" target="_blank" rel="noopener noreferrer">https://nluz.nlma.gov.tw/ex3s/</a></span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="shotwrap">
+          <figure class="shot">
+            <span class="shot-frame">
+              <img src="/zhishi/tengben-guide/img/國土功能分區圖查詢系統三階段與報部版縣市選單_內政部國土管理署_20260828.png" width="1400" height="950" loading="lazy" decoding="async" alt="國土功能分區圖查詢系統首頁下半，紅框標出公開展覽階段報部審議階段內政部核定階段三個分頁、報部版縣市選單，以及內政部核定階段那一列">
+              <span class="mark" style="--x:7.4%;--y:32.9%;--w:39.2%;--h:19%"><i>1</i></span>
+              <span class="mark" style="--x:50.5%;--y:7.7%;--w:31%;--h:2.7%"><i>2</i></span>
+              <span class="mark" style="--x:7.4%;--y:47.9%;--w:39.2%;--h:4.1%"><i>3</i></span>
+            </span>
+            <figcaption>
+              <b>你要看的是這一格</b>
+              ① 關掉注意事項、往下滑，三個階段的分頁在這裡：公開展覽階段、報部審議階段、內政部核定階段。② 右邊這行寫著「【報部版】請選擇縣市查詢國土功能分區圖展示平台」，<span class="em">要查最新的就從這一排點你的縣市</span>。③ 想自己確認「到今天為止公告了幾個縣市」，點開這一列的「內政部核定階段」看名單。這張畫面的頁尾同時印著系統的最後更新日期，可以拿來對資料新不新。
+              <span class="src">畫面出處：內政部國土管理署「直轄市、縣（市）國土功能分區圖展示資訊查詢系統」，本站自行操作該公開查詢介面之螢幕擷取，未輸入任何真實地號。擷取日期 2026-08-28。該站頁尾標示「中華民國內政部國土管理署 版權所有©copyright2026」，未揭露開放授權條款。<br><a href="https://nluz.nlma.gov.tw/ex3s/" target="_blank" rel="noopener noreferrer">https://nluz.nlma.gov.tw/ex3s/</a></span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="shotwrap">
+          <figure class="shot">
+            <span class="shot-frame">
+              <img src="/zhishi/tengben-guide/img/國土功能分區查詢面板鄉鎮市區段名地號_內政部國土管理署_20260828.jpg" width="1400" height="950" loading="lazy" decoding="async" alt="點進縣市之後的地圖畫面，右上角國土功能分區查詢面板，紅框標出報部版標記、鄉鎮市區段名地號三個欄位與查詢按鈕">
+              <span class="mark" style="--x:3.75%;--y:9.2%;--w:7.75%;--h:2.6%"><i>1</i></span>
+              <span class="mark" style="--x:73%;--y:27.6%;--w:22%;--h:11.8%"><i>2</i></span>
+              <span class="mark" style="--x:82.3%;--y:41.2%;--w:4.4%;--h:3.4%"><i>3</i></span>
+            </span>
+            <figcaption>
+              <b>你要填的是這三格</b>
+              ① 先確認左上角這個標記寫的是「報部版」，點錯排會查到舊的那張圖。② 查詢面板依序選／填：鄉鎮市區 → 段名 → 地號，地號那格就是你從謄本標示部抄下來的那串數字。③ 按「查詢」，結果會出現在同一個面板裡。<strong>本站示範畫面的地號欄刻意留空</strong>——真實地號屬於別人家的資料，我們不把它截圖放上網，你自己查的時候填自己的就好。
+              <span class="src">畫面出處：內政部國土管理署「直轄市、縣（市）國土功能分區圖展示資訊查詢系統」，本站自行操作該公開查詢介面之螢幕擷取，未輸入任何真實地號。擷取日期 2026-08-28。該站頁尾標示「中華民國內政部國土管理署 版權所有©copyright2026」，未揭露開放授權條款。<br><a href="https://nluz.nlma.gov.tw/ex3s/" target="_blank" rel="noopener noreferrer">https://nluz.nlma.gov.tw/ex3s/</a></span>
+            </figcaption>
+          </figure>
+        </div>
 
         <h4>查出來的答案怎麼讀</h4>
         <ul class="sub">
@@ -572,6 +706,21 @@ a:focus-visible,summary:focus-visible,label:focus-visible,input:focus-visible{ou
       <p class="note">確認是都市土地 → 這一輪的分區換軌不直接改你的管制，想知道能蓋多高、能蓋多滿（容積率與建蔽率），要查的是「都市計畫土地使用分區證明」，向你那個縣市政府的都市發展主管機關申請。<br>確認是尚未編定 → 請照左邊「非都市土地」那一欄走，並問櫃檯要不要申請補辦編定。</p>
     </div>
   </div>
+
+  <div class="shotwrap">
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="/zhishi/tengben-guide/img/非都市土地使用分區與使用地類別對照表_全國法規資料庫_20260828.png" width="1241" height="1286" loading="lazy" decoding="async" alt="非都市土地使用管制規則第27條附表三，使用分區內各種使用地變更編定原則表，紅框標出上方使用分區欄與左側使用地類別欄">
+        <span class="mark" style="--x:25%;--y:10.5%;--w:58%;--h:10.9%"><i>1</i></span>
+        <span class="mark" style="--x:16.1%;--y:21.4%;--w:8.9%;--h:68%"><i>2</i></span>
+      </span>
+      <figcaption>
+        <b>你要對的是這兩軸</b>
+        謄本上那兩欄，在法規裡就是這張表的兩個方向。① 橫的這排是<strong>使用分區</strong>：特定農業區、一般農業區、鄉村區、工業區、森林區、山坡地保育區、風景區、河川區、特定專用區。② 直的這排是<strong>使用地類別</strong>：甲乙丙丁種建築用地、農牧用地、林業用地等等。拿你謄本上的兩個字各找一次，交叉點上的「＋」是允許依本規則申請變更編定、「×」是不允許。<strong>看得懂這張表，不等於你那筆地就辦得成</strong>——實際能不能辦，只有縣市政府受理審議說了算。
+        <span class="src">出處：非都市土地使用管制規則第 27 條附表三「使用分區內各種使用地變更編定原則表」，全國法規資料庫。法規附表依著作權法第 9 條不得為著作權標的。擷取日期 2026-08-28。<br><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0060013" target="_blank" rel="noopener noreferrer">https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0060013</a></span>
+      </figcaption>
+    </figure>
+  </div>
 </section>
 
 <section id="jicun" aria-labelledby="jicun-t">
@@ -593,6 +742,7 @@ a:focus-visible,summary:focus-visible,label:focus-visible,input:focus-visible{ou
     <li>當年的<strong>繳費單據、規費收據、申請書存根</strong>——這些常常夾在權狀那個袋子裡。</li>
   </ul>
   <p>四樣都找不到也不用慌，這不代表就是違建。帶著身分證去地政事務所問一句「<strong>這塊地上有沒有登記過建物</strong>」，先確認有沒有建物登記；再看要不要找建築師或地政士往下追。合法既存的使用與新管制之間怎麼銜接，屬於個案認定，不是網頁上能替你判斷的事。</p>
+  <p class="stampline"><b>依據</b>內政部國土管理署國土功能分區圖展示資訊查詢系統「注意事項」第二點「確保既有合法使用之項目及其強度」原文｜<b>查證日</b>2026-08-28（該段原文可在本頁〈查詢三步驟〉第 2 步第一張圖的視窗裡看到）<br><a href="https://nluz.nlma.gov.tw/ex3s/" target="_blank" rel="noopener noreferrer">https://nluz.nlma.gov.tw/ex3s/</a></p>
   <p class="note">還有一種情況要另外處理：地被走成既成道路、或被鄰居占用。這牽涉到通行權與相鄰關係，跟分區換軌是兩條線，請直接找律師或地政士。</p>
 </section>
 
@@ -733,6 +883,25 @@ a:focus-visible,summary:focus-visible,label:focus-visible,input:focus-visible{ou
     <p>答得出它是什麼、能做什麼、不能做什麼，以及當年為什麼留著。</p>
     <p>地放著不會壞，會換的是規則。<span class="gold">而規則這種東西，查得到，就不可怕。</span></p>
     <p>願你家那塊地，在你想用它的那一天剛好幫得上忙；也願你在那一天，是家裡最清楚狀況的那個人。</p>
+  </div>
+</section>
+
+<section id="yanshen" aria-labelledby="yanshen-t">
+  <div class="sec-head">
+    <div class="kicker">同一張謄本，還能看出這些</div>
+    <h2 id="yanshen-t">接下來看哪一頁</h2>
+  </div>
+  <p>這一頁只用到謄本的<strong>標示部</strong>那兩欄。同一張紙上的另外兩段——寫誰的名字的「所有權部」、寫有沒有抵押的「他項權利部」——是另外幾題，各有一頁。</p>
+  <div class="portals">
+    <a href="/zhishi/tengben-guide/">
+      <span><b>謄本判讀完整版：三種謄本、三個部分怎麼看</b><small>一二三類差在哪、哪些欄位會被遮、標示部所有權部他項權利部每一欄的意思，附官方樣張與框線標示</small></span><span class="arw">→</span>
+    </a>
+    <a href="/tengben/">
+      <span><b>謄本自查表</b><small>拿到謄本之後照著對一遍，設定、限制登記、持分這些會卡住交易的事，先自己查過</small></span><span class="arw">→</span>
+    </a>
+    <a href="/chewei/">
+      <span><b>三種車位自查表</b><small>坡道平面、機械、增設——車位有沒有獨立建號、能不能單獨賣，也是從謄本上看</small></span><span class="arw">→</span>
+    </a>
   </div>
 </section>
 
