@@ -163,6 +163,33 @@ strong{color:var(--ink)}
 .shot figcaption b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:2px}
 .shot-note>:last-child{margin-bottom:0}
 
+
+/* ---------- 40-0828-03 掛官方圖：多框版型 ----------
+   一張圖多個框時關掉聚光罩（box-shadow 會層層疊黑），只留紅框＋序號。
+   框貼邊時序號徽章要收進框內，否則被 .shot-frame 的 overflow:hidden 切掉。 */
+.shotwide{margin:0 0 20px}
+.shotpair{display:grid;gap:16px;margin:0 0 18px}
+@media(min-width:760px){.shotpair{grid-template-columns:1fr 1fr}}
+.shot-frame.multi .mark{box-shadow:none;border-width:3px}
+.shot .mark.edge i{left:2px;top:2px}
+.shot-frame.crop-top{max-height:300px}
+.shot-frame.crop-top img{object-fit:cover;object-position:top center}
+.shot figcaption .src{display:block;margin-top:5px;font-size:12px;color:var(--muted);line-height:1.6}
+.shot figcaption .src b{display:inline;font-size:12px;font-weight:800;color:var(--muted)}
+.gapnote{
+  margin:0 0 18px;padding:13px 15px;border-radius:11px;
+  border:1px dashed var(--line);background:#FBF8F1;font-size:14.5px;
+}
+.gapnote>:last-child{margin-bottom:0}
+.gapnote b{color:var(--ink)}
+blockquote.law{
+  margin:0 0 14px;padding:11px 15px;border-left:4px solid var(--line);
+  background:var(--card);font-family:var(--serif);font-size:15px;color:var(--ink);
+}
+blockquote.law p{margin:0 0 6px}
+blockquote.law p:last-child{margin:0}
+blockquote.law cite{display:block;margin-top:7px;font-style:normal;font-size:12.5px;color:var(--muted);font-family:var(--sans)}
+
 /* ---------- 表格 ---------- */
 .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 16px;
   border:1px solid var(--line);border-radius:12px;background:var(--card)}
@@ -238,7 +265,7 @@ td .no{color:var(--muted)}
 <header class="pagehd"><div class="wrap">
   <p class="eyebrow">給第一次自己調謄本的人</p>
   <h1>你要看的<br>是這一格</h1>
-  <p class="lede">謄本不難，難的是沒有人告訴你眼睛該放哪裡。這一頁不背法條，只做一件事——把該看的欄位一格一格指出來，並且老實說明哪一格你根本看不到、為什麼看不到。</p>
+  <p class="lede">謄本不難，難的是沒有人告訴你眼睛該放哪裡。這一頁不背法條，只做一件事——把該看的欄位一格一格指出來——<strong>全頁 25 張圖都是政府機關的官方樣張，紅框標在哪一格就看哪一格</strong>——並且老實說明哪一格你根本看不到、為什麼看不到。</p>
   <p class="stamp"><span>資料查核日期　2026-08-28</span><span>法規以主管機關最新公告為準</span><span>公開版整理</span></p>
 </div></header>
 
@@ -278,6 +305,29 @@ td .no{color:var(--muted)}
       <div class="step"><span class="n">3</span><div>要再往下分「合資還是二胎」，得看<strong>債務人</strong>與<strong>權利範圍</strong>——這兩欄要第一類謄本才印得出來。</div></div>
       <div class="verdict">筆數多不等於屋主有事。先數筆數，再看是誰，最後才下結論。</div>
     </div>
+  </div>
+
+  <div class="shotpair">
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="img/土地謄本判讀說明全欄位標註_新北市瑞芳地政事務所_20260828.png" width="1273" height="1800" loading="lazy" decoding="async" alt="土地登記謄本全頁樣張，左右兩側以箭頭標註標示部、所有權部、他項權利部每一個欄位的意思">
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：中間那三個五角星分隔線</b>
+        整份土地謄本被三條星號線切成三段，每一段的欄位意思都由機關自己拉線標好了。這張是官方原圖，上面的框與箭頭是機關畫的，不是我們加的。
+        <span class="src"><b>出處｜</b>新北市政府地政局 謄本介紹（新北市瑞芳地政事務所 登記謄本判讀說明）．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="img/建物謄本判讀說明全欄位標註_新北市瑞芳地政事務所_20260828.png" width="1273" height="1800" loading="lazy" decoding="async" alt="建物登記謄本全頁樣張，兩側以箭頭標註建物標示部、建物所有權部、建物他項權利部每個欄位的意思">
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：建物版的三段，位置跟土地版一樣</b>
+        建物謄本比土地謄本多了層數、層次面積、附屬建物用途與共有部分。段落順序完全一樣，所以土地版看懂了，建物版直接照搬。
+        <span class="src"><b>出處｜</b>新北市政府地政局 謄本介紹（新北市瑞芳地政事務所 登記謄本判讀說明）．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
   </div>
 
   <div class="note">
@@ -322,6 +372,128 @@ td .no{color:var(--muted)}
     </table>
   </div>
 
+  <h3>三類長什麼樣，官方樣張直接對照</h3>
+  <p>下面四張是同一筆地號（板橋區民族段 1099-0000）的官方樣張，人名地號都是機關的測試資料。<strong>紅框裡就是三類之間唯一會動的那幾格</strong>，其餘欄位三類完全一樣。</p>
+
+  <div class="shotrow">
+    <figure class="shot">
+      <span class="shot-frame multi">
+        <img src="img/一類謄本樣張第1頁_新北市地政局_20260828.png" width="1273" height="1800" loading="lazy" decoding="async" alt="土地登記第一類謄本官方樣張第一頁，所有權人姓名、統一編號、出生日期、住址全部完整顯示，他項權利部的債務人欄也有印出來">
+        <span class="mark" style="--x:8.27%;--y:37.89%;--w:76.58%;--h:5.04%"><i>1</i></span>
+        <span class="mark" style="--x:5.98%;--y:82.95%;--w:44.68%;--h:1.95%"><i>2</i></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：① 所有權部的身分列，② 他項權利部的債務人列</b>
+        第一類這兩格都印滿：①「陳小明／F123456789／民國033年11月11日／完整住址」，②「債務人及債務額比例：陳小明，債務額比例全部」。把這張記住，後面三張的差別就是從這兩格開始扣的。
+        <span class="src"><b>出處｜</b>新北市政府地政局 謄本介紹．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p><strong>第一類＝沒有東西被拿掉。</strong>只有登記名義人本人或依法令得申請的人調得到。</p>
+      <p>買方拿不到它，這不是刁難——這一類會把屋主的完整身分資料印出來，本來就不該讓任何人都調得走。</p>
+      <p>所以買方需要「債務人」那一欄時，正確做法不是想辦法自己調，是<strong>請賣方提出</strong>。</p>
+    </div>
+  </div>
+
+  <div class="shotpair">
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="img/二類謄本樣張未申請住址隱匿_新北市地政局_20260828.png" width="1273" height="1800" loading="lazy" decoding="async" alt="土地登記第二類謄本官方樣張，機關以紅框標出被遮蔽的欄位：姓名只剩姓氏、統一編號只剩頭尾、出生日期整欄消失">
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：紅框裡少了一整行</b>
+        機關自己畫的紅框。姓名變「陳＊＊」、統編變「E121＊＊＊＊＊3」、<strong>出生日期整欄不見了</strong>——第一類有四行，這裡只剩三行。住址這時還是完整的。
+        <span class="src"><b>出處｜</b>新北市政府地政局 謄本介紹．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="img/二類謄本樣張已申請住址隱匿_新北市地政局_20260828.png" width="1273" height="1800" loading="lazy" decoding="async" alt="屋主另外申請住址隱匿後的第二類謄本官方樣張，紅框內住址只顯示到路街道，門牌號碼被隱去">
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：住址結尾多了三顆星</b>
+        同樣是第二類，但屋主另外申請了住址隱匿。住址只印到「忠孝路」，後面的號、樓變成「＊＊＊」。<strong>這是屋主主動申請才會有的狀態，不是所有第二類都長這樣。</strong>
+        <span class="src"><b>出處｜</b>新北市政府地政局 謄本介紹．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="shotpair">
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="img/三類謄本樣張指定所有權人_新北市地政局_20260828.png" width="1273" height="1800" loading="lazy" decoding="async" alt="土地登記第三類謄本官方樣張（指定所有權人），紅框內顯示完整姓名與完整住址，統一編號與出生日期兩行被整個拿掉">
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：名字回來了，統編整行不見</b>
+        第三類指定所有權人版。紅框裡只剩「所有權人：陳小明」與完整住址兩行——<strong>統一編號、出生日期兩行是整行拿掉，不是打星號</strong>。跟第二類剛好互補：二類遮名字留統編頭尾，三類給名字不給統編。
+        <span class="src"><b>出處｜</b>新北市政府地政局 謄本介紹．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <figure class="shot">
+      <span class="shot-frame multi">
+        <img src="img/三類謄本樣張指定他項權利人_新北市地政局_20260828.png" width="1273" height="1800" loading="lazy" decoding="async" alt="土地登記第三類謄本官方樣張（指定他項權利人），所有權人姓名被遮成陳兩星，但他項權利部的債務人欄位完整顯示">
+        <span class="mark edge" style="--x:6.62%;--y:39.40%;--w:55.25%;--h:5.30%"><i>1</i></span>
+        <span class="mark" style="--x:6.30%;--y:83.00%;--w:43.41%;--h:1.95%"><i>2</i></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：① 名字被遮了，② 債務人卻印得出來</b>
+        同一份第三類，申請人換成他項權利人，遮的位置就跟著換：①所有權人變「陳＊＊」，②<strong>他項權利部的「債務人及債務額比例：陳小明」反而完整</strong>。三類遮什麼不是固定的，看你是以誰的身分申請。
+        <span class="src"><b>出處｜</b>新北市政府地政局 謄本介紹．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <figure class="shot shotwide">
+    <span class="shot-frame">
+      <img src="img/三類謄本欄位遮蔽對照海報_內政部_20260828.jpg" width="1273" height="1800" loading="lazy" decoding="async" alt="內政部官方海報，以表格列出三類謄本對姓名、出生日期、統一編號、住址、債務人及債務額比例、設定義務人六個欄位的顯示與隱匿狀態">
+    </span>
+    <figcaption>
+      <b>你要看的是這一格：表格裡的三角形</b>
+      一張表講完三類 × 六個欄位。打勾＝完整顯示，叉號＝不顯示，<strong>三角形＝部分顯示（就是打星號那種）</strong>。上面四張樣張的差別，全部收在這張表裡。
+      <span class="src"><b>出處｜</b>內政部（土地登記謄本 104.2.2 新制上路 保護個資不外漏，由臺北市政府地政局頁面提供）．擷取日期 2026-08-28</span>
+    </figcaption>
+  </figure>
+
+  <div class="shotpair">
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="img/三類謄本宣導摺頁內頁欄位對照表_內政部_20260828.jpg" width="1800" height="1166" loading="lazy" decoding="async" alt="內政部宣導摺頁內頁，列出土地登記規則第24條之1修正重點、利害關係人九類申請對象與應檢附文件對照表，以及登記名義人請求隱匿住址的流程">
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：九類利害關係人那張表</b>
+        你能不能調第三類，看的是自己屬不屬於表上那九類，以及要帶什麼文件。右半邊是屋主申請住址隱匿的流程。
+        <span class="src"><b>出處｜</b>內政部（宣導摺頁內頁，由臺北市政府地政局頁面提供）．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="img/三類謄本宣導摺頁外頁_內政部_20260828.jpg" width="1800" height="1166" loading="lazy" decoding="async" alt="內政部宣導摺頁外頁，列出異動索引與異動清冊的申請資格對照表及四則常見問答">
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：異動索引的申請資格</b>
+        謄本之外還有「異動索引」與「異動清冊」，能看到這筆地號歷來被動過什麼。誰能調、調得到哪一種，在這張表上。
+        <span class="src"><b>出處｜</b>內政部（宣導摺頁外頁，由臺北市政府地政局頁面提供）．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <div class="shotrow flip">
+    <figure class="shot">
+      <span class="shot-frame crop-top">
+        <img src="img/一類謄本樣張第2頁_新北市地政局_20260828.png" width="1273" height="1800" loading="lazy" decoding="async" alt="第一類謄本官方樣張第二頁上半，只有共同擔保地號、共同擔保建號、其他登記事項與本謄本列印完畢字樣">
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：「本謄本列印完畢」</b>
+        這是同一份第一類的第 2 頁（畫面只截上半，下面整片是空白）。<strong>沒看到這六個字就代表還有下一頁</strong>。謄本常常不只一張，收到影本先數頁次。
+        <span class="src"><b>出處｜</b>新北市政府地政局 謄本介紹．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p><strong>規費是按「張」算的，不是按「份」。</strong>電腦列印謄本每張 20 元，一份土地謄本可能兩張、三張。</p>
+      <p>拿到別人給的謄本影本，先看兩件事：<strong>頁次</strong>（第 1 頁的右上角會寫 000001），還有最後一張有沒有「本謄本列印完畢」。少一頁，少的常常就是他項權利部。</p>
+    </div>
+  </div>
+
   <h3>第二類有一個很多人不知道的但書</h3>
   <p>同一條規定裡寫著：<strong>限制登記，以及非自然人的姓名與統一編號，不在隱匿之列。</strong>拆成白話就是兩件事——</p>
   <ul>
@@ -363,9 +535,53 @@ td .no{color:var(--muted)}
     </div>
   </div>
 
+  <figure class="shot shotwide">
+    <span class="shot-frame">
+      <img src="img/建物謄本快易懂範例_新北市瑞芳地政事務所_20260828.png" width="1273" height="1800" loading="lazy" decoding="async" alt="建物謄本快易懂範例大圖，紅色虛線框標出建物標示部、建物所有權部、建物他項權利部三段，左右兩側以藍色箭頭逐欄說明，下方另附一二三類謄本的所有權人顯示差異">
+    </span>
+    <figcaption>
+      <b>你要看的是這一格：三個紅色虛線框</b>
+      機關自己框好的三段——<strong>建物標示部、建物所有權部、建物他項權利部</strong>，由上往下照這個順序排。左右兩側的藍色箭頭是逐欄說明，圖最下面還附了一二三類的所有權人顯示差異。這張是官方原圖，框線是機關畫的。
+      <span class="src"><b>出處｜</b>新北市瑞芳地政事務所 建物謄本快易懂（範例）．擷取日期 2026-08-28</span>
+    </figcaption>
+  </figure>
+
   <div class="stop">
     <p><strong>最常見的一個找錯地方：</strong>要確認有沒有被查封，很多人一路翻到他項權利部去找。<strong>查封、假扣押、假處分、預告登記都不在他項權利部</strong>，它們登在<strong>所有權部的「其他登記事項」</strong>欄。只翻他項權利部，會漏掉整組限制登記。</p>
   </div>
+
+  <h3>標示部裡最容易被跳過的一欄：附屬建物用途</h3>
+  <p>買中古屋的人幾乎都會問「權狀坪數是怎麼算出來的」。答案有一半在標示部這一欄——<strong>陽台、平台、露台、花台各自佔多少面積，這裡是分開列的</strong>。</p>
+
+  <div class="shotrow">
+    <figure class="shot">
+      <span class="shot-frame multi">
+        <img src="img/建物標示部附屬建物用途陽台平台露台花台_高雄市地政局_20260828.png" width="1336" height="666" loading="lazy" decoding="async" alt="建物標示部特寫，附屬建物用途欄依序列出陽台、平台、露台、花台，右側對應各自的面積平方公尺">
+        <span class="mark edge" style="--x:1.05%;--y:66.67%;--w:22.68%;--h:21.47%"><i>1</i></span>
+        <span class="mark" style="--x:57.26%;--y:66.67%;--w:40.72%;--h:20.50%"><i>2</i></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：① 用途名稱，② 同一列的面積</b>
+        ①「附屬建物用途」底下垂直列出陽台、平台、露台、花台；②右邊「面積」欄一行對一行：10.29、8.80、8.00、3.23 平方公尺。<strong>把兩欄橫著對，才知道你買的坪數裡有多少不是室內。</strong>
+        <span class="src"><b>出處｜</b>高雄市政府地政局 謄本導讀系列．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p><strong>不是每一戶都會有這四項。</strong>登記得到什麼、登記不到什麼，看的是這棟房子當年取得建照的時間點。</p>
+      <p>所以同社區、同格局、權狀坪數卻差幾坪，多半不是誰算錯，是<strong>當年那條規則長什麼樣</strong>。右邊那張時間軸就是在講這件事。</p>
+    </div>
+  </div>
+
+  <figure class="shot shotwide">
+    <span class="shot-frame">
+      <img src="img/附屬建物登記法令沿革時間軸_臺北地政電子報_20260828.png" width="1095" height="1273" loading="lazy" decoding="async" alt="附屬建物登記法令沿革時間軸，從民國46年到107年，逐條列出陽台、露台、雨遮、花台在各時期准不准予登記">
+    </span>
+    <figcaption>
+      <b>你要看的是這一格：最下面那一列「107.1.1」</b>
+      民國 107 年 1 月 1 日以後取得建照的建案，<strong>屋簷、雨遮不登記</strong>。往上每一列都是一次改動：85 年露台不予登記、90 年花台雨棚均不予登記、95 年入口雨遮不予登記。手上這間是哪一年的建照，就往那一列對。
+      <span class="src"><b>出處｜</b>臺北地政電子報 幫你解讀買屋實坪?虛坪?．擷取日期 2026-08-28</span>
+    </figcaption>
+  </figure>
 </div></section>
 
 <!-- ============ c 使用分區與使用地類別 ============ -->
@@ -379,6 +595,26 @@ td .no{color:var(--muted)}
     <li><strong>使用分區</strong>＝這一整片區域被劃成什麼（例如一般農業區、特定農業區、山坡地保育區、鄉村區、森林區）。</li>
     <li><strong>使用地類別</strong>＝你這一筆地被編定成什麼（例如農牧用地、林業用地、甲種建築用地）。</li>
   </ul>
+  <div class="shotrow">
+    <figure class="shot">
+      <span class="shot-frame multi">
+        <img src="img/土地標示部使用分區特定農業區農牧用地_高雄市地政局_20260828.png" width="790" height="236" loading="lazy" decoding="async" alt="土地標示部特寫，地目欄為空白、等則欄為兩個橫槓，下一行使用分區登載特定農業區、使用地類別登載農牧用地">
+        <span class="mark edge" style="--x:2.91%;--y:22.46%;--w:44.68%;--h:11.44%"><i>1</i></span>
+        <span class="mark edge" style="--x:3.04%;--y:30.51%;--w:33.80%;--h:12.29%"><i>2</i></span>
+        <span class="mark" style="--x:57.47%;--y:30.51%;--w:24.18%;--h:11.44%"><i>3</i></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：② 跟 ③ 要一起念</b>
+        ①「地目：（空白）　等則：--」——這一欄已經廢了，空白是正常的。②「使用分區：特定農業區」，③同一行右邊「使用地類別：農牧用地」。<strong>兩個字一起念出來是「特定農業區的農牧用地」，只講「農地」等於沒講。</strong>
+        <span class="src"><b>出處｜</b>高雄市政府地政局 謄本導讀系列．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p><strong>位置固定在標示部，緊接在登記日期下面。</strong>翻到標示部，由上往下數第三、四行就是。</p>
+      <p>把這兩格的字原封不動抄下來，帶去問地政事務所或建管單位，對方就答得出來。<strong>不用背十九種使用地，要會抄。</strong></p>
+    </div>
+  </div>
+
   <p>同樣是「農牧用地」，落在一般農業區跟落在山坡地保育區，能申請的項目與強度並不一樣。所以只講「我那塊是農地」，資訊量幾乎是零——要把兩欄的字一起念出來，對方才有辦法回答你。</p>
 
   <h3>甲、乙、丙、丁——分的是建築用地，不是農地</h3>
@@ -397,6 +633,25 @@ td .no{color:var(--muted)}
     </table>
   </div>
 
+  <div class="shotrow flip">
+    <figure class="shot">
+      <span class="shot-frame multi">
+        <img src="img/非都市土地使用分區與使用地類別對照表_全國法規資料庫_20260828.png" width="1241" height="1286" loading="lazy" decoding="async" alt="非都市土地使用管制規則第27條附表三，使用分區內各種使用地變更編定原則表，橫軸九種使用分區、縱軸十八種使用地類別，交叉格為叉號或加號">
+        <span class="mark" style="--x:16.28%;--y:21.38%;--w:66.56%;--h:15.24%"><i>1</i></span>
+        <span class="mark" style="--x:16.28%;--y:36.63%;--w:66.56%;--h:3.81%"><i>2</i></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：① 最上面那四列，② 緊接著的農牧用地那一列</b>
+        ①甲、乙、丙、丁四種<strong>建築</strong>用地排在最前面，橫過去九個欄位幾乎全是叉號。②農牧用地那一列剛好相反，九格全是加號。表最下面寫著：<strong>叉號＝不允許變更編定為該類使用地，加號＝允許依本規則申請變更編定</strong>。
+        <span class="src"><b>出處｜</b>全國法規資料庫（法務部）非都市土地使用管制規則 第27條附表三．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p><strong>這張表在講的是「能不能變過去」，不是「現在能蓋什麼」。</strong>看到一整列叉號，意思是別人的地很難變成甲種建築用地，不是甲建比較高級。</p>
+      <p>這是命令的附表，依著作權法第 9 條不得為著作權標的——<strong>可以整張拿去用，來源也查得到</strong>。</p>
+    </div>
+  </div>
+
   <div class="note">
     <p><strong>所以「甲建、乙建」在講的是位置，不是等級。</strong>不是甲比乙好、乙比丙好。它們對應的是不同的分區環境，各自的建蔽率、容積率與可申請項目都由該分區的管制規定決定，不能互相換算，也不會因為你想改用途就自動變更。</p>
   </div>
@@ -404,6 +659,29 @@ td .no{color:var(--muted)}
   <h3>那農地要看哪裡</h3>
   <p>農地在謄本上的使用地類別，通常寫的是<strong>農牧用地</strong>，山上那些多半是<strong>林業用地</strong>，魚塭是<strong>養殖用地</strong>。真正決定它能不能蓋農舍、能不能設農業設施的，是「使用分區 ＋ 使用地類別 ＋ 個案審查」三件事，不是謄本上單一個詞。</p>
   <p>非都市土地的使用地類別共有十九種，除了上面提到的建築、農牧、林業、養殖之外，還有鹽業、礦業、窯業、交通、水利、遊憩、古蹟保存、生態保護、國土保安、殯葬、海域、特定目的事業等類別。你只要在自己那張謄本上找到寫著的那一個，抄下來去問主管機關就好——<strong>不用背，要會抄</strong>。</p>
+
+
+  <h3>「地目」那一欄，現在是空的</h3>
+  <p>常有人拿著舊資料問「我這塊地目是建還是田」。<strong>地目等則制度已於民國 106 年 1 月 1 日正式廢除</strong>，現行謄本不再登載。下面這張剛好是舊制年代的謄本，看得到那一欄留在原位、內容是空的。</p>
+
+  <div class="shotrow">
+    <figure class="shot">
+      <span class="shot-frame multi">
+        <img src="img/二類謄本完整樣張含使用分區_高雄市地政局_20260828.png" width="794" height="848" loading="lazy" decoding="async" alt="土地登記第二類謄本完整樣張，帶測試使用浮水印，標示部的地目欄顯示空白、等則欄顯示兩個橫槓，下一行為使用分區與使用地類別">
+        <span class="mark edge" style="--x:2.64%;--y:29.65%;--w:45.97%;--h:3.00%"><i>1</i></span>
+        <span class="mark edge" style="--x:2.77%;--y:31.60%;--w:78.46%;--h:3.42%"><i>2</i></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：① 空的那一欄，② 下一行才是真的答案</b>
+        ①「地　目：（空白）　等則：--」——欄位還在，但已經不填了。②往下一行「使用分區：特定農業區　　使用地類別：農牧用地」，<strong>分區細目現在改看這兩欄</strong>。地目空白不是漏印，也不用回頭去補。
+        <span class="src"><b>出處｜</b>高雄市政府地政局 謄本導讀系列．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p>整張是完整的第二類謄本，帶著機關的「測試使用」浮水印，上半標示部、下半所有權部一次看完。</p>
+      <p>順便注意所有權人那一欄寫的是「中華民國」、管理者「財政部國有財產署」——<strong>公有土地的長相就是這樣</strong>，沒有自然人的名字。</p>
+    </div>
+  </div>
 
   <div class="stop">
     <p><strong>兩欄都空白的時候不要自己猜。</strong>空白有兩種完全不同的意思：一種是<strong>都市土地</strong>（都市計畫發布後改依都市計畫認定，不再登載於謄本），另一種是<strong>非都市土地但尚未編定</strong>。這兩種在紙上長得一模一樣。當場請櫃檯幫你確認是哪一種，屬於尚未編定的還可以申請補辦編定。</p>
@@ -444,6 +722,43 @@ td .no{color:var(--muted)}
     </table>
   </div>
 
+  <div class="shotrow">
+    <figure class="shot">
+      <span class="shot-frame multi">
+        <img src="img/建物所有權部兩共有人各三分之一持分_高雄市地政局_20260828.png" width="1338" height="799" loading="lazy" decoding="async" alt="建物所有權部樣張，同一建號兩筆登記次序0002與0003，兩位所有權人的權利範圍各為三分之一，姓名與統編由機關塗黑">
+        <span class="mark edge" style="--x:0.30%;--y:34.54%;--w:42.08%;--h:5.88%"><i>1</i></span>
+        <span class="mark edge" style="--x:0.30%;--y:79.35%;--w:42.08%;--h:5.63%"><i>2</i></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：兩個框裡都寫「3分之1」</b>
+        同一個建號，上下兩筆各是一位所有權人（登記次序 0002、0003），①②<strong>權利範圍各寫「3分之1」——這就是持分共有的長相</strong>。姓名與統編是機關自己塗黑的。看到這種，他項權利部有好幾筆是正常的。
+        <span class="src"><b>出處｜</b>高雄市政府地政局 謄本導讀系列．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p><strong>先數所有權部有幾個「（000n）登記次序」。</strong>一個人一筆，數字就是共有人數。</p>
+      <p>圖上只有兩筆，實務上三筆、四筆都有。<strong>把每一筆的權利範圍加起來要等於 1</strong>；加不起來就是還有一頁沒印到。</p>
+    </div>
+  </div>
+
+  <div class="shotrow flip">
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="img/土地所有權部權利範圍全部樣張_高雄市地政局_20260828.jpg" width="711" height="374" loading="lazy" decoding="async" alt="土地所有權部樣張，權利範圍欄登載為全部一分之一，所有權人為中華民國、管理者為財政部國有財產署">
+        <span class="mark" style="--x:2.81%;--y:47.33%;--w:46.41%;--h:6.95%"></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：「全部　1分之1」</b>
+        對照組。同樣是所有權部，這一筆寫的是<strong>「權利範圍：全部　＊＊＊＊1分之1＊＊＊＊」＝單獨所有</strong>，整筆地就這一個人的。所有權部只有這一筆、他項權利部卻有三筆權利範圍寫「全部」——那就不是合資。
+        <span class="src"><b>出處｜</b>高雄市政府地政局 謄本導讀系列．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p><strong>「全部」跟「1分之1」是同一件事講兩次</strong>，不是兩個欄位。</p>
+      <p>所以判斷合資只要比兩個數字：<strong>所有權部有幾筆、每筆權利範圍是不是 1分之1</strong>。兩個問題都不需要第一類謄本。</p>
+    </div>
+  </div>
+
   <h3>從所有權部先抓線索，不用等第一類</h3>
   <p>債務人那一欄第二類看不到，但你可以從另一頭反推：<strong>翻到所有權部，數有幾個所有權人</strong>。</p>
   <ul>
@@ -480,6 +795,26 @@ td .no{color:var(--muted)}
     </table>
   </div>
 
+  <div class="shotrow">
+    <figure class="shot">
+      <span class="shot-frame multi">
+        <img src="img/土地他項權利部最高限額抵押權全欄位_高雄市地政局_20260828.png" width="1166" height="847" loading="lazy" decoding="async" alt="土地他項權利部樣張，權利種類為最高限額抵押權，完整列出權利人、債權額比例、擔保債權總金額240萬元、擔保債權確定期日、債務人及債務額比例等欄位">
+        <span class="mark edge" style="--x:3.00%;--y:16.77%;--w:31.90%;--h:5.43%"><i>1</i></span>
+        <span class="mark edge" style="--x:0.60%;--y:29.87%;--w:62.44%;--h:4.84%"><i>2</i></span>
+        <span class="mark edge" style="--x:0.77%;--y:71.66%;--w:54.55%;--h:5.43%"><i>3</i></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：① 權利人，② 擔保債權總金額，③ 債務人</b>
+        ①<strong>權利人＝錢是跟誰借的</strong>，法人名稱第二類照印，看得到。②擔保債權總金額「新台幣＊＊＊2,400,000元正」——右上角寫著<strong>「最高限額抵押權」，這 240 萬是上限不是欠款</strong>。③債務人那格被機關塗黑，第二類本來就不印。
+        <span class="src"><b>出處｜</b>高雄市政府地政局 謄本導讀系列．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p><strong>圖上還有一格值得看：「擔保債權確定期日：民國134年2月4日」。</strong></p>
+      <p>那是這個最高限額還能循環動用到哪一天，不是還款日。看到日期在很久以後，不代表債還很久——<strong>實際欠多少只有債權人說了算</strong>。</p>
+    </div>
+  </div>
+
   <h3>登記的金額，不是現在欠的金額</h3>
   <p>他項權利部寫著「擔保債權總金額」或「最高限額」，那是<strong>擔保範圍的上限</strong>，不是屋主此刻的欠款。</p>
   <ul>
@@ -488,8 +823,41 @@ td .no{color:var(--muted)}
   </ul>
   <div class="verdict" style="margin:0 0 16px">沒有任何固定倍數可以從登記金額倒推貸款或餘額。要知道現在欠多少，只有一條路：向債權人取得清償金額。</div>
 
+
+  <h3>一胎二胎三胎，看的是括號裡那四個數字</h3>
+  <p>市場上講的一胎、二胎，在謄本上沒有這三個字。它藏在每一筆他項權利最前面的括號裡。</p>
+
+  <div class="shotrow">
+    <figure class="shot">
+      <span class="shot-frame multi">
+        <img src="img/他項權利部多筆設定順位0001與0002_高雄市地政局_20260828.png" width="700" height="585" loading="lazy" decoding="async" alt="他項權利部樣張，同一標的上下並列兩筆抵押權，開頭括號內分別為0001與0002，代表第一順位與第二順位">
+        <span class="mark edge" style="--x:5.00%;--y:1.00%;--w:37.86%;--h:3.30%"><i>1</i></span>
+        <span class="mark" style="--x:4.71%;--y:51.00%;--w:38.00%;--h:3.60%"><i>2</i></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：每一筆開頭的「（000n）」</b>
+        同一個標的上下兩筆抵押權，①開頭是「（0001）」，②開頭是「（0002）」。<strong>括號裡的四位數字就是順位</strong>——0001 是第 1 順位（一胎），0002 是第 2 順位（二胎）。往下有幾筆就數幾筆，不用另外查。
+        <span class="src"><b>出處｜</b>高雄市政府地政局 謄本導讀系列．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p>高雄市政府地政局的導讀原文把這條規則寫得最直接：</p>
+      <blockquote class="law">
+        <p>登記次序前面括弧內所顯示的四位數字是（0002），則表示這個登記次序在該宗土地上是第 2 順位的他項權利。</p>
+        <cite>高雄市政府地政局　土地及建物謄本導讀</cite>
+      </blockquote>
+      <p>規則會了，三筆、四筆都是同一招——<strong>不需要一張「三胎樣張」才看得懂。</strong></p>
+    </div>
+  </div>
+
+  <div class="gapnote">
+    <p><b>這裡老實說一句：三筆以上他項權利同時出現的官方樣張，我們沒找到。</b></p>
+    <p>查過新北市政府地政局的五種官方樣張（各只有一筆）、高雄市政府地政局的三份謄本導讀（最多兩筆）、新北市瑞芳地政事務所的建物謄本快易懂（一筆）——政府文件不會為了示範二胎三胎去做一張多筆樣張。<strong>與其自己畫一張假的謄本充數，不如把上面兩筆這張講透</strong>：括號裡的數字怎麼跳，三筆四筆都是同一個讀法。</p>
+  </div>
+
   <h3>抵押權不會因為過戶就消失</h3>
   <p>民法規定，不動產所有人設定抵押權後，把不動產讓與他人，<strong>抵押權不因此而受影響</strong>。房子換了名字，抵押權還在上面。所以「清償、塗銷、付款、過戶」這四件事的先後順序，一定要白紙黑字寫進買賣契約，並由地政士依個案安排，<strong>不能靠賣方一句「交屋前我會處理」</strong>。</p>
+  <p style="font-size:14.5px;color:var(--muted)">只想快速看懂「登記 1200 萬不等於欠 1200 萬」與二胎三胎那幾件事的，另有速讀版：<a href="/tengben/">謄本他項權利防雷懶人包</a>。</p>
 </div></section>
 
 <!-- ============ e 車位在謄本 ============ -->
@@ -516,6 +884,61 @@ td .no{color:var(--muted)}
       <p>翻遍謄本，沒有獨立建號，共有部分也沒有你的車位編號——你手上只有一張收據、一份合約，或一句「永久使用權」。</p>
       <p>這代表這格車位<strong>從來沒有走過登記</strong>。使用權在法拍面前保護不了持有人。</p>
     </div>
+  </div>
+
+  <div class="shotrow">
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="img/共有部分建號標示部含機車停車空間_臺北地政電子報_20260828.png" width="676" height="591" loading="lazy" decoding="async" alt="共有部分建號的建物標示部樣張，主要用途欄一次列出機械房、機車停車空間、管委會使用空間等十三項公共設施">
+        <span class="mark" style="--x:4.73%;--y:42.81%;--w:86.69%;--h:11.00%"></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：主要用途欄那三行字</b>
+        這是「長法二」的實際長相——一個<strong>共有部分</strong>的建號，主要用途欄一口氣列出機械房、<strong>機車停車空間</strong>、管委會使用空間、管理室、台電配電場所、發電機房、消防機房、水箱等共 13 項。你那格車位如果沒有獨立建號，就是掛在這種建號底下。
+        <span class="src"><b>出處｜</b>臺北地政電子報 建物標示大、小公 產權登記有保障．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p><strong>看到這種建號，接著要找的是你自己的「權利範圍幾分之幾」。</strong>它會出現在你那戶建物謄本的共有部分欄，不在這一張上。</p>
+      <p>圖上這張是第一類謄本的標示部，門牌與地號都用「○○」代稱。</p>
+    </div>
+  </div>
+
+  <h3>官方文件怎麼定義「有沒有獨立產權」</h3>
+  <p>政府文件講車位產權，一律用法條與函釋的文字在講，<strong>沒有做過「單獨建號車位謄本 vs 共有部分車位謄本」的並排樣張</strong>。所以這一段不放圖，直接把兩則原文列出來——來源可查，比自己畫一張示意圖可靠。</p>
+
+  <blockquote class="law">
+    <p>單獨編列建號以主建物方式登記，主要用途欄記載「停車空間」……所有權部及權狀登載「車位編號○○號」。</p>
+    <cite>內政部 85.2.27 台內地字第 8573716 號函</cite>
+  </blockquote>
+  <blockquote class="law">
+    <p>區分所有建物地下層依法附建之防空避難設備或停車空間應為共有部分。</p>
+    <cite>建物所有權第一次登記法令補充規定 第 10 點</cite>
+  </blockquote>
+
+  <div class="tablewrap">
+    <table>
+      <caption>把兩則原文對起來看</caption>
+      <thead><tr><th>　</th><th>謄本上長怎樣</th><th>權狀</th><th>能不能單獨賣</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>單獨編列建號</strong></td>
+          <td>自己一個建號，標示部主要用途寫「停車空間」，所有權部登載「車位編號○○號」</td>
+          <td>有自己的所有權狀</td>
+          <td>可以單獨移轉</td>
+        </tr>
+        <tr>
+          <td><strong>法定停車空間</strong></td>
+          <td>沒有獨立建號，登記在<strong>共有部分</strong>，你名下是權利範圍幾分之幾</td>
+          <td>依土地登記規則第 81 條，共有部分不另發給所有權狀，改在本戶權狀上註明</td>
+          <td>依法附建，隨主建物走，不能賣給社區以外的人</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="gapnote">
+    <p><b>為什麼這裡用法條原文不用圖：</b>我們實際開過新北市政府地政局的謄本介紹頁、高雄市政府地政局的建物謄本導讀、臺北市政府地政局與新北市政府地政局的車位專頁，都沒有這種並排樣張。<strong>與其自製一張「示意圖」讓人以為是官方謄本，不如把可以回頭查的原文擺出來。</strong></p>
   </div>
 
   <h3>權狀上為什麼看不到車位</h3>
@@ -548,6 +971,24 @@ td .no{color:var(--muted)}
   <div class="card">
     <h4>條件四　專用權有規約或分管協議撐著</h4>
     <p>持分型的車位，靠的是社區的分管協議或規約載明專用權。什麼都沒有的，趁現在補——把車位編號與專用權寫進規約（經區分所有權人會議通過），或由全體共有人另立分管協議。</p>
+  </div>
+
+  <div class="shotrow">
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="img/不動產說明書停車位記載情形欄位_臺北市地政局_20260828.png" width="1800" height="1548" loading="lazy" decoding="async" alt="不動產說明書應記載事項填寫範例的停車位記載情形表格，第一列為是否辦理單獨區分所有建物登記，下方依序為權利種類、停車位性質、車位編號與型式">
+        <span class="mark" style="--x:14.14%;--y:15.85%;--w:70.33%;--h:10.60%"></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：「是否辦理單獨區分所有建物登記」勾了哪一個</b>
+        這是官方不動產說明書的正式欄位。<strong>勾「有」＝有獨立建號、有獨立權狀、可以單獨買賣；勾「否」＝掛在共有部分，跟著房子走。</strong>整份文件裡，這一格是分岔點，往下的權利種類（專有／共有）、停車位性質（法定／自行增設／獎勵增設）都跟著它走。
+        <span class="src"><b>出處｜</b>臺北市政府地政局 不動產說明書應記載及不得記載事項(成屋) 填寫範例．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p><strong>這格不是我們設計的問法，是仲介依法必須填的欄位。</strong>看物件時直接翻不動產說明書，翻到「(七)停車位記載情形」。</p>
+      <p>最下面那格「車位編號、停車位之型式及位置」右邊的備註寫得很清楚：<strong>已辦理產權登記且有登記車位編號者，依其登記之編號；未辦理者，依分管編號為準。</strong>問「我那格是幾號」，答案該從這裡出來。</p>
+    </div>
   </div>
 
   <div class="stop">
@@ -627,6 +1068,43 @@ td .no{color:var(--muted)}
     </table>
   </div>
 
+  <div class="shotrow">
+    <figure class="shot">
+      <span class="shot-frame">
+        <img src="img/土地所有權部查封限制登記事項樣張_高雄市地政局_20260828.png" width="1536" height="689" loading="lazy" decoding="async" alt="土地所有權部樣張，其他登記事項欄實際登載限制登記事項，內容為法院查封登記，含債務人、限制範圍與債權人">
+        <span class="mark" style="--x:0.98%;--y:79.10%;--w:98.11%;--h:18.87%"></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：最後一欄「其他登記事項」</b>
+        查封長這樣：<strong>「（限制登記事項）高雄地院 105 年 8 月 5 日……號函辦理　債務人：□　限制範圍：298分之28　債權人：□……查封登記」</strong>。注意它登在<strong>所有權部</strong>的最後一欄，不在他項權利部。只翻他項權利部，這一整段會整個漏掉。
+        <span class="src"><b>出處｜</b>高雄市政府地政局 謄本導讀系列．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p><strong>「限制範圍」那個數字要看。</strong>圖上寫 298分之28——查封的是這位共有人的持分，不是整筆地。</p>
+      <p>所以看到查封先問兩件事：<strong>查的是誰的持分、範圍多少</strong>。這兩個答案會決定它跟你要買的那部分有沒有關係。</p>
+    </div>
+  </div>
+
+  <div class="shotrow flip">
+    <figure class="shot">
+      <span class="shot-frame multi">
+        <img src="img/不動產說明書限制登記與設定負擔欄位_臺北市地政局_20260828.png" width="1800" height="1410" loading="lazy" decoding="async" alt="不動產說明書基地權利種類及其登記狀態表格，第三列為基地權利有無設定負擔，內容欄列出他項權利之設定、限制登記情形、其他事項三個勾選項，備註欄逐一列舉各自包含哪些登記">
+        <span class="mark" style="--x:37.86%;--y:72.27%;--w:14.28%;--h:11.28%"><i>1</i></span>
+        <span class="mark" style="--x:56.65%;--y:72.27%;--w:26.56%;--h:11.16%"><i>2</i></span>
+      </span>
+      <figcaption>
+        <b>你要看的是這一格：① 勾選項，② 右邊那一行定義</b>
+        ①不動產說明書裡「限制登記情形」是一個必填的勾選項；②右邊備註直接寫出它<strong>「包括：預告登記、查封、假扣押、假處分及其他禁止處分之登記」</strong>。這一行是官方定義——上面那張謄本圖看到的字，就是往這裡對。
+        <span class="src"><b>出處｜</b>臺北市政府地政局 不動產說明書應記載及不得記載事項(成屋) 填寫範例．擷取日期 2026-08-28</span>
+      </figcaption>
+    </figure>
+    <div class="shot-note">
+      <p>同一格上面那一列還有一行定義值得抄：<strong>他項權利「包括：地上權、永佃權、農育權、不動產役權、抵押權、典權、耕作權」</strong>——七種，抵押權只是其中一種。</p>
+      <p>所以「他項權利部有東西」不等於「有貸款」。<strong>先看權利種類寫什麼，再往下判斷。</strong></p>
+    </div>
+  </div>
+
   <div class="note">
     <p><strong>真正需要停手的只有一種情況：</strong>你問了、對方答不出來，而且不願意提供可以查證的書面。現象本身不可怕，可怕的是沒有人能說清楚它怎麼收尾。</p>
   </div>
@@ -698,6 +1176,19 @@ td .no{color:var(--muted)}
     <a href="https://ep.land.nat.gov.tw/" target="_blank" rel="noopener noreferrer">全國地政電子謄本系統｜申領資格、規費與服務時間</a>
   </div>
 
+
+  <h3>這一頁的圖，出自哪裡</h3>
+  <p>全頁 25 張圖<strong>全部取自台灣政府機關官網</strong>，人名地號皆為機關的測試資料，無任何真實個人資料。各來源的資料開放宣告均要求註明出處，因此每張圖下方都標了機關全銜與擷取日期。<strong>圖上原有的紅框與箭頭是機關自己畫的；我們加的框一律是紅色細框加圓形序號</strong>，兩者不混用。</p>
+  <div class="srcs">
+    <a href="https://www.land.ntpc.gov.tw/cp.aspx?n=12855" target="_blank" rel="noopener noreferrer">新北市政府地政局｜謄本介紹（一類二類三類官方樣張、謄本判讀說明）</a>
+    <a href="https://land.gov.taipei/cp.aspx?n=A0439A6FCE44FADA" target="_blank" rel="noopener noreferrer">內政部｜土地登記謄本 104.2.2 新制上路 保護個資不外漏（海報與宣導摺頁，由臺北市政府地政局頁面提供）</a>
+    <a href="https://www.ntpc.gov.tw/uploaddowndoc?dis=news&amp;file=news/202306301508252.pdf&amp;flag=doc" target="_blank" rel="noopener noreferrer">新北市瑞芳地政事務所｜建物謄本快易懂（範例）</a>
+    <a href="https://landp.kcg.gov.tw/" target="_blank" rel="noopener noreferrer">高雄市政府地政局｜謄本導讀系列（土地謄本導讀、建物謄本導讀、土地及建物謄本導讀）</a>
+    <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0060013" target="_blank" rel="noopener noreferrer">全國法規資料庫（法務部）｜非都市土地使用管制規則 第27條附表三</a>
+    <a href="https://land.gov.taipei/News_Content.aspx?n=DB82B17E94CD6BF5&amp;sms=75D9F7CBA80AB816&amp;s=85648EDDC6F9174E" target="_blank" rel="noopener noreferrer">臺北市政府地政局｜不動產說明書應記載及不得記載事項(成屋) 填寫範例</a>
+    <a href="https://epaper.land.gov.taipei/" target="_blank" rel="noopener noreferrer">臺北地政電子報｜建物標示大、小公 產權登記有保障／幫你解讀買屋實坪?虛坪?</a>
+  </div>
+  <p class="legal">授權狀態逐一查證：新北市政府地政局、內政部地政司（政府資料開放授權條款第 1 版）、臺北市政府地政局與臺北地政電子報，均為無償非專屬、可重製改作、使用時應註明出處，授權範圍不及於機關標誌。全國法規資料庫附表三為命令之一部分，依著作權法第 9 條不得為著作權之標的。<strong>高雄市政府地政局的頁面層級資料開放宣告，官網未揭露</strong>——推測網址四個實測皆為 404，目前能引用的是高雄市政府資料開放平台的市府層級總則（無償、非專屬、可重製改作、應註明資料來源主管機關）。本頁引用該局圖片共 8 張，出處均已標明至機關全銜與文件名稱，如經該局通知即撤換。</p>
   <p class="legal">本頁為一般性產權知識整理，資料查核日期 2026-08-28，不構成法律、稅務或財務建議，也不針對任何個案。<strong>每一筆土地與建物的登記狀況，一律以地政事務所核發之謄本記載為準</strong>；車位的法定、增設、獎勵身分以使用執照竣工圖與建管單位認定為準。法規與函釋可能修正，正式適用以主管機關最新公告為準。實際交易請委任地政士辦理，或向地政機關、建管單位確認。使用本頁資訊所做的任何決定由使用者自行判斷，本頁提供者不負擔法律責任。</p>
 </div></section>
 

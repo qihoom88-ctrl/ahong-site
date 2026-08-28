@@ -347,6 +347,18 @@
       .panel,.story-card{box-shadow:none;break-inside:avoid}
       a{text-decoration:none}
     }
+
+/* ---- 40-0828-03 官方樣張圖塊（自帶樣式，不吃本頁既有 class） ---- */
+.ogshot{margin:0}
+.ogshot-grid{display:grid;gap:16px;margin:18px 0 0}
+@media(min-width:760px){.ogshot-grid{grid-template-columns:1fr 1fr}}
+.ogshot-frame{position:relative;display:block;overflow:hidden;border:1px solid var(--line,#DED8CA);border-radius:14px;background:#fff}
+.ogshot-frame img{display:block;width:100%;height:auto}
+.ogshot-frame .mk{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);border:3px solid #D9342B;border-radius:5px;pointer-events:none}
+.ogshot-frame .mk i{position:absolute;left:2px;top:2px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#D9342B;color:#fff;font-style:normal;font-size:12.5px;font-weight:900;line-height:1}
+.ogshot figcaption{margin-top:9px;font-size:14px;line-height:1.75;color:var(--muted,#6E767B)}
+.ogshot figcaption b{display:block;color:var(--ink,#23282B);font-size:15px;margin-bottom:3px}
+.ogshot figcaption .src{display:block;margin-top:5px;font-size:12px;color:var(--muted,#6E767B)}
   </style>
 </head>
 <body>
@@ -498,6 +510,40 @@
             </ol>
             <p class="warning">電子謄本以張計費，每張 20 元</p>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">他項權利部實際長什麼樣</h2>
+        <p class="section-note">兩張政府機關官方樣張，紅框標的就是上面在講的那幾格</p>
+        <div class="ogshot-grid">
+          <figure class="ogshot">
+            <span class="ogshot-frame">
+              <img src="/zhishi/tengben-guide/img/土地他項權利部最高限額抵押權全欄位_高雄市地政局_20260828.png" width="1166" height="847" loading="lazy" decoding="async" alt="土地他項權利部樣張，權利種類為最高限額抵押權，列出權利人、擔保債權總金額240萬元、擔保債權確定期日與債務人及債務額比例等欄位">
+              <span class="mk" style="--x:3.00%;--y:16.77%;--w:31.90%;--h:5.43%"><i>1</i></span>
+              <span class="mk" style="--x:0.60%;--y:29.87%;--w:62.44%;--h:4.84%"><i>2</i></span>
+              <span class="mk" style="--x:0.77%;--y:71.66%;--w:54.55%;--h:5.43%"><i>3</i></span>
+            </span>
+            <figcaption>
+              <b>你要看的是這一格：① 權利人 ② 擔保債權總金額 ③ 債務人</b>
+              ②寫著「新台幣＊＊＊2,400,000元正」，右上角同時寫著「最高限額抵押權」——<strong>這 240 萬是擔保上限，不是屋主現在欠的錢</strong>。③債務人那格被機關塗黑，第二類謄本本來就不印。
+              <span class="src">出處｜高雄市政府地政局 謄本導讀系列．擷取日期 2026-08-28</span>
+            </figcaption>
+          </figure>
+          <figure class="ogshot">
+            <span class="ogshot-frame">
+              <img src="/zhishi/tengben-guide/img/他項權利部多筆設定順位0001與0002_高雄市地政局_20260828.png" width="700" height="585" loading="lazy" decoding="async" alt="他項權利部樣張，同一標的上下並列兩筆抵押權，開頭括號內分別為0001與0002，代表第一順位與第二順位">
+              <span class="mk" style="--x:5.00%;--y:1.00%;--w:37.86%;--h:3.30%"><i>1</i></span>
+              <span class="mk" style="--x:4.71%;--y:51.00%;--w:38.00%;--h:3.60%"><i>2</i></span>
+            </span>
+            <figcaption>
+              <b>你要看的是這一格：每一筆開頭的「（000n）」</b>
+              市場上講的一胎二胎，謄本上沒有這三個字。<strong>括號裡的四位數字就是順位</strong>——①（0001）是第 1 順位，②（0002）是第 2 順位。有幾筆就數幾筆。
+              <span class="src">出處｜高雄市政府地政局 謄本導讀系列．擷取日期 2026-08-28</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>

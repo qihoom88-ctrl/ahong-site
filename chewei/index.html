@@ -233,6 +233,18 @@
   .fab-line svg,.fab-phone svg{width:30px;height:30px;fill:#fff}
   .fab-line:focus-visible,.fab-phone:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* ---- 40-0828-03 官方樣張圖塊（自帶樣式，不吃本頁既有 class） ---- */
+.ogshot{margin:0}
+.ogshot-grid{display:grid;gap:16px;margin:18px 0 0}
+@media(min-width:760px){.ogshot-grid{grid-template-columns:1fr 1fr}}
+.ogshot-frame{position:relative;display:block;overflow:hidden;border:1px solid var(--line,#DED8CA);border-radius:14px;background:#fff}
+.ogshot-frame img{display:block;width:100%;height:auto}
+.ogshot-frame .mk{position:absolute;left:var(--x);top:var(--y);width:var(--w);height:var(--h);border:3px solid #D9342B;border-radius:5px;pointer-events:none}
+.ogshot-frame .mk i{position:absolute;left:2px;top:2px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#D9342B;color:#fff;font-style:normal;font-size:12.5px;font-weight:900;line-height:1}
+.ogshot figcaption{margin-top:9px;font-size:14px;line-height:1.75;color:var(--muted,#6E767B)}
+.ogshot figcaption b{display:block;color:var(--ink,#23282B);font-size:15px;margin-bottom:3px}
+.ogshot figcaption .src{display:block;margin-top:5px;font-size:12px;color:var(--muted,#6E767B)}
 </style>
 </head>
 <body>
@@ -396,6 +408,31 @@
         <h3>謄本上還要看兩個地方</h3>
         <p><strong>①「主要用途」欄</strong>——共有部分寫「防空避難室兼停車空間」，基本上就是法定車位的典型長相。</p>
         <p style="margin-bottom:0"><strong>② 共有部分附表</strong>——找「停車位共計幾個」「車位編號」「含停車位權利範圍幾分之幾」。你的車位編號有沒有寫在上面，這行字就是你停那一格的依據。⚠️ 法定車位「沒有獨立權狀」不代表位置不固定——有編號註記，哪一格是你的跑不掉。差別在<strong>能賣給誰</strong>，不在能不能停。</p>
+      </div>
+
+      <div class="ogshot-grid">
+        <figure class="ogshot">
+          <span class="ogshot-frame">
+            <img src="/zhishi/tengben-guide/img/共有部分建號標示部含機車停車空間_臺北地政電子報_20260828.png" width="676" height="591" loading="lazy" decoding="async" alt="共有部分建號的建物標示部樣張，主要用途欄一次列出機械房、機車停車空間、管委會使用空間等十三項公共設施">
+            <span class="mk" style="--x:4.73%;--y:42.81%;--w:86.69%;--h:11.00%"></span>
+          </span>
+          <figcaption>
+            <b>你要看的是這一格：主要用途欄那三行字</b>
+            ①「主要用途」——共有部分建號的實際長相，一口氣列出機械房、<strong>機車停車空間</strong>、管委會使用空間、管理室、消防機房、水箱等 13 項。沒有獨立建號的車位就掛在這種建號底下。
+            <span class="src">出處｜臺北地政電子報 建物標示大、小公 產權登記有保障．擷取日期 2026-08-28</span>
+          </figcaption>
+        </figure>
+        <figure class="ogshot">
+          <span class="ogshot-frame">
+            <img src="/zhishi/tengben-guide/img/不動產說明書停車位記載情形欄位_臺北市地政局_20260828.png" width="1800" height="1548" loading="lazy" decoding="async" alt="不動產說明書應記載事項填寫範例的停車位記載情形表格，第一列為是否辦理單獨區分所有建物登記，下方為權利種類、停車位性質、車位編號與型式">
+            <span class="mk" style="--x:14.14%;--y:15.85%;--w:70.33%;--h:10.60%"></span>
+          </span>
+          <figcaption>
+            <b>你要看的是這一格：「是否辦理單獨區分所有建物登記」勾了哪一個</b>
+            這是官方不動產說明書的正式欄位，仲介依法必須填。<strong>勾「有」＝有獨立建號、有獨立權狀、可單獨買賣；勾「否」＝掛在共有部分，跟著房子走。</strong>看物件時直接翻到「(七)停車位記載情形」。
+            <span class="src">出處｜臺北市政府地政局 不動產說明書應記載及不得記載事項(成屋) 填寫範例．擷取日期 2026-08-28</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
