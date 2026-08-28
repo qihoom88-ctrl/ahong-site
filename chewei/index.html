@@ -227,11 +227,6 @@
   .cta3 .c3{background:var(--white);border:2px solid var(--trust);color:var(--trust)}
   .legal{font-size:14px;line-height:1.85;color:var(--muted)}
   .backtop{display:inline-block;margin-top:18px;font-size:15px;font-weight:800;color:var(--trust);text-decoration:none;border-bottom:1px solid var(--gold)}
-  .fab-line,.fab-phone{position:fixed;right:16px;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.24);z-index:50}
-  .fab-line{bottom:86px;background:#06C755}
-  .fab-phone{bottom:18px;background:var(--trust)}
-  .fab-line svg,.fab-phone svg{width:30px;height:30px;fill:#fff}
-  .fab-line:focus-visible,.fab-phone:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
 /* ---- 40-0828-03 官方樣張圖塊（自帶樣式，不吃本頁既有 class） ---- */
@@ -706,12 +701,6 @@
   </div>
 </footer>
 
-<a class="fab-line" href="https://line.me/R/ti/p/@798ulmws" target="_blank" rel="noopener" aria-label="用 LINE 詢問">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 5.69 2 10.23c0 4.07 3.58 7.48 8.41 8.12.33.07.78.22.89.5.1.26.07.66.03.92l-.14.86c-.04.26-.2.99.87.54 1.07-.45 5.77-3.4 7.87-5.82 1.45-1.59 2.07-3.2 2.07-4.99C22 5.69 17.52 2 12 2zM8.2 13.2H6.13a.4.4 0 0 1-.4-.4V9.05a.4.4 0 0 1 .8 0v3.35H8.2a.4.4 0 0 1 0 .8zm1.62-.4a.4.4 0 0 1-.8 0V9.05a.4.4 0 0 1 .8 0v3.75zm4.2 0a.4.4 0 0 1-.72.24l-1.92-2.61v2.37a.4.4 0 0 1-.8 0V9.05a.4.4 0 0 1 .72-.24l1.92 2.62V9.05a.4.4 0 0 1 .8 0v3.75zm2.87-2.28a.4.4 0 0 1 0 .8h-1.44v.68h1.44a.4.4 0 0 1 0 .8h-1.84a.4.4 0 0 1-.4-.4V9.05a.4.4 0 0 1 .4-.4h1.84a.4.4 0 0 1 0 .8h-1.44v.68h1.44z"/></svg>
-</a>
-<a class="fab-phone" href="tel:0226878822" aria-label="撥打電話 02-26878822">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
-</a>
 
 <script>
 (function(){
@@ -749,5 +738,6 @@
   load(); render();
 })();
 </script>
+<script src="/cta.js" defer></script>
 </body>
 </html>

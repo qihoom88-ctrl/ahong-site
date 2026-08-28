@@ -5,6 +5,7 @@
 <meta name="theme-color" content="#131311">
 <link rel="manifest" href="manifest.webmanifest">
 <style>
+:root{--ahfab-bottom:72px}
 :root{
   --ground:#E7E7E3; --surface:#FBFBF8; --raise:#FFFFFF;
   --line:#D5D4CC; --ink:#1A1A17; --ink2:#5C5B54; --ink3:#8A897F;
@@ -424,3 +425,4 @@ recalc();
 /* ── SW（可加入主畫面＋離線） ── */
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}
 </script>
+<script src="/cta.js" defer></script>
