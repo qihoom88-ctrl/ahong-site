@@ -80,7 +80,7 @@
   '.ahdrop a.on{color:var(--brand);font-weight:900;background:var(--brandsoft)}'+
   '@media(min-width:1080px){.ahmenu{display:flex}.ahburger{display:none}}'+
   /* 手機窄版（<600px）：原本 logo／CTA／漢堡全是 flex:none 不可縮，三者加間距共 436px 超過 375px 畫面
-     → 整列撐出 79px 橫向溢出，固定定位的 ahdock／tkbtn 跟著被推出畫面。改成可縮＋縮小尺寸，從根因解（40-0822-13） */
+     → 整列撐出 79px 橫向溢出，固定定位的浮動元件跟著被推出畫面。改成可縮＋縮小尺寸，從根因解（40-0822-13） */
   '@media(max-width:599px){'+
     '.ahnav-in{gap:8px;padding:8px 10px}'+
     '.ahlogo{flex:0 1 auto;min-width:0;gap:6px}'+
@@ -99,9 +99,8 @@
   '.ahfoot a:hover{color:#fff}'+
   '.ahlegal{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);font-size:11.5px;color:rgba(255,255,255,.5);line-height:1.9}'+
   /* 技術 Q&A 浮動面板 */
-  '.tkbtn{position:fixed;right:14px;bottom:96px;z-index:72;width:56px;height:56px;border-radius:50%;border:0;cursor:pointer;background:var(--gold);color:#1A1508;font-size:11px;font-weight:900;line-height:1.2;box-shadow:0 6px 20px -4px rgba(16,22,19,.5);display:grid;place-items:center;letter-spacing:.02em}'+
+  '.tkbtn{position:fixed;right:14px;bottom:142px;z-index:72;width:56px;height:56px;border-radius:50%;border:0;cursor:pointer;background:var(--gold);color:#1A1508;font-size:11px;font-weight:900;line-height:1.2;box-shadow:0 6px 20px -4px rgba(16,22,19,.5);display:grid;place-items:center;letter-spacing:.02em}'+
   '.tkbtn:hover{background:var(--gold-dk);color:#fff}'+
-  '@media(min-width:1080px){.tkbtn{bottom:24px}}'+
   '.tkmask{position:fixed;inset:0;z-index:80;background:rgba(10,14,12,.72);display:none}'+
   '.tkmask.on{display:block}'+
   '.tkpanel{position:fixed;right:0;top:0;bottom:0;z-index:81;width:min(100%,420px);background:var(--paper);display:none;flex-direction:column;box-shadow:-12px 0 40px -16px rgba(0,0,0,.6)}'+
@@ -129,10 +128,6 @@
   '.tkfixbtn{display:inline-block;background:var(--brand);color:#fff;font-size:13px;font-weight:900;'+
     'padding:9px 16px;border-radius:999px;text-decoration:none}'+
   '.tkfixbtn:hover{background:var(--brand-dk);color:#fff}'+
-  '.ahdock{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;gap:8px;padding:8px 14px 12px;background:rgba(16,22,19,.96);border-top:1px solid rgba(201,162,75,.3)}'+
-  '.ahdock a{flex:1;text-align:center;border-radius:999px;padding:12px;font-size:14.5px;font-weight:700}'+
-  '.ahdock .g{background:var(--gold);color:#1A1508}.ahdock .l{background:#06C755;color:#fff}'+
-  '@media(min-width:1080px){.ahdock{display:none}}'+
   '.ahviewtoggle{display:none;margin-top:12px;padding:0;font:inherit;font-size:11.5px;color:rgba(255,255,255,.55);background:none;border:0;text-decoration:underline;cursor:pointer}'+
   '.ahviewtoggle:hover{color:#fff}'+
   /* 版面比例切換晶片：常駐可見，顯示當下模式與比例 */
@@ -151,10 +146,6 @@
   '.vchip .vsw{padding:5px 11px;margin-left:2px;border-radius:999px;font-size:13px;font-weight:900}'+
   '.vchip.m .vsw{background:var(--gold);color:#1A1508}'+
   '.vchip.d .vsw{background:var(--brand);color:#fff}'+
-  '.ahdock{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;gap:8px;padding:8px 14px 12px;background:rgba(16,22,19,.96);border-top:1px solid rgba(201,162,75,.3)}'+
-  '.ahdock a{flex:1;text-align:center;border-radius:999px;padding:12px;font-size:14.5px;font-weight:700}'+
-  '.ahdock .g{background:var(--gold);color:#1A1508}.ahdock .l{background:#06C755;color:#fff}'+
-  '@media(min-width:1080px){.ahdock{display:none}}'+
   '.ahviewtoggle{display:none;margin-top:12px;padding:0;font:inherit;font-size:11.5px;color:rgba(255,255,255,.55);background:none;border:0;text-decoration:underline;cursor:pointer}'+
   '.ahviewtoggle:hover{color:#fff}'+
   /* 版面比例切換晶片：常駐可見，顯示當下模式與比例 */
@@ -194,8 +185,7 @@
     S.company+'｜'+S.companyLtd+'｜經紀人 '+S.brokerLic+'<br>'+
     S.legal+'<br>'+S.privacy+
     '<button class="ahviewtoggle" id="ahViewToggle" type="button"></button>'+
-    '</div></div></div>'+
-    '<div class="ahdock"><a class="g" href="/wujian/">看在售物件</a><a class="l" href="'+S.line+'">LINE 諮詢</a></div>';
+    '</div></div></div>';
 
   var n=document.getElementById('ahnav'); if(n) n.innerHTML=nav;
   var f=document.getElementById('ahfoot'); if(f) f.innerHTML=foot;

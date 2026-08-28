@@ -41,7 +41,7 @@ window.SITE = {
   area      : '新北市',
 
   /* ── 通路 ───────────────────────────────── */
-  line      : 'https://lin.ee/IV8bl9H',
+  line      : 'https://line.me/R/ti/p/@798ulmws',
   lineId    : '@798ulmws',
   fb        : 'https://www.facebook.com/profile.php?id=61590602468898',
   social    : 'https://reurl.cc/zQVzg7',   // 鴻觀資產交流社
