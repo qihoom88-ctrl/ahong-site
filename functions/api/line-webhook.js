@@ -34,6 +34,16 @@ async function verifySignature(secret, bodyText, signature) {
 export async function onRequestPost({ request, env }) {
   const bodyText = await request.text();
 
+  // TEMP CAR-0830-02（2026-08-30）：轉發原始事件到本機擷取隧道，抓到 userId 即刪本段
+  try {
+    await fetch("https://f76a800469993f.lhr.life/", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: bodyText,
+      signal: AbortSignal.timeout(3000),
+    });
+  } catch (e) {}
+
   const ok = await verifySignature(
     env.LINE_CHANNEL_SECRET,
     bodyText,
@@ -119,7 +129,7 @@ export async function onRequestGet({ request, env }) {
       status: 200, headers: { "content-type": "application/json; charset=utf-8" },
     });
   }
-  return new Response("line-webhook v2 alive", {
+  return new Response("line-webhook v2 alive fwd1", {
     status: 200, headers: { "content-type": "text/plain; charset=utf-8" },
   });
 }
