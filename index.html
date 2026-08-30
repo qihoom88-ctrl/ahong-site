@@ -92,6 +92,28 @@
 .bigcard.dark{background:linear-gradient(135deg,var(--brand),var(--brand-dk));border-color:var(--brand);color:#fff}
 .bigcard.dark p{color:rgba(255,255,255,.86)}
 .bigcard.dark:before{color:#fff}
+
+/* 首頁修繕突出區塊（2026-08-30 阿宏：修繕是差異化，不該埋在便民底下） */
+.repairbox{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;
+  background:#fff;border:2px solid var(--gold);border-radius:18px;padding:24px 24px;
+  text-decoration:none;color:inherit;transition:box-shadow .18s ease,transform .18s ease}
+.repairbox:hover{box-shadow:0 10px 28px rgba(0,0,0,.09);transform:translateY(-2px)}
+.repairbox .rb-l{display:flex;gap:16px;align-items:flex-start;flex:1 1 420px;min-width:0}
+.repairbox .ic{flex:0 0 auto;width:48px;height:48px;border-radius:13px;background:var(--gold);
+  color:#fff;display:grid;place-items:center;font-size:20px;font-weight:900}
+.repairbox h3{margin:2px 0 8px;font-size:20px;font-weight:900;line-height:1.4}
+.repairbox p{margin:0;font-size:15px;line-height:1.85;color:var(--ink2)}
+.repairbox p strong{color:var(--ink)}
+.repairbox .rb-r{display:flex;flex-wrap:wrap;gap:8px;align-items:center;flex:0 1 auto}
+.repairbox .rb-tag{font-size:12.5px;font-weight:700;color:var(--brand);background:var(--brandsoft);
+  border-radius:99px;padding:5px 11px;white-space:nowrap}
+.repairbox .rb-go{font-size:15px;font-weight:800;color:var(--gold);white-space:nowrap;margin-left:4px}
+@media(max-width:700px){
+  .repairbox{padding:20px 18px;gap:14px}
+  .repairbox .rb-l{flex:1 1 100%}
+  .repairbox h3{font-size:18px}
+  .repairbox .rb-r{flex:1 1 100%}
+}
 </style>
 </head>
 <body>
@@ -170,6 +192,28 @@
   <div class="cards c3" id="vids"></div>
   <div class="cards" id="posts" style="margin-top:12px"></div>
   <a class="more" href="/kaixiang/">看全部開箱影片 →</a>
+</div></section>
+
+<section><div class="wrap">
+  <p class="eyebrow">AFTER YOU MOVE IN</p>
+  <h2 class="sec">買到之後，才是花錢的開始</h2>
+  <p class="sec-note">看屋看的是價格，住進去之後付的是修繕。這一段沒人幫你算，所以我整理了一份。</p>
+  <a class="repairbox" href="/xiushan/">
+    <div class="rb-l">
+      <div class="ic">修</div>
+      <div>
+        <h3>修繕報價避雷檢核表</h3>
+        <p>九個常見工種的行情區間、報價單必列六項、詢價防雷五步，加上政府修繕補貼的官方入口。<strong>不給你單一數字，給你看懂報價單的方法</strong>——每個工種的價格都標了出處與查詢日期，你自己點得進去對。</p>
+      </div>
+    </div>
+    <div class="rb-r">
+      <span class="rb-tag">九工種行情</span>
+      <span class="rb-tag">報價單六項</span>
+      <span class="rb-tag">防雷五步</span>
+      <span class="rb-tag">政府補貼入口</span>
+      <span class="rb-go">打開檢核表 →</span>
+    </div>
+  </a>
 </div></section>
 
 <section class="alt"><div class="wrap">
