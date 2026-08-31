@@ -248,6 +248,11 @@ table.loan .hi{background:var(--soft-warm);font-weight:900;color:var(--warm)}
 .fitbox.no li::before{content:"\00B7";position:absolute;left:5px;color:var(--warm);font-weight:900}
 
 
+
+table.loan .soft{background:var(--soft-teal);color:var(--teal);font-weight:900}
+table.loan th.soft{background:#D9EDE9}
+table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
+.loan-note{background:var(--soft-teal);border-radius:13px;padding:12px 14px;margin-top:10px;font-size:.86rem;line-height:1.8}
 </style>
 </head>
 <body>
@@ -413,12 +418,13 @@ table.loan .hi{background:var(--soft-warm);font-weight:900;color:var(--warm)}
         <h2>首付與月付，自己對照</h2>
         <p class="lead">以開價 1388 萬、利率 2.435%、貸 30 年、本息均攤試算。<b>這是估算不是核貸結果</b>，實際成數與利率由銀行依你的條件決定。</p>
         <table class="loan">
-          <tr><th>成數</th><th>首付</th><th>月付</th></tr>
-          <tr><td>7 成</td><td>416 萬</td><td>38,062 元</td></tr>
-          <tr><td>7.5 成</td><td>347 萬</td><td>40,781 元</td></tr>
-          <tr><td class="hi">8 成</td><td class="hi">278 萬</td><td class="hi">43,500 元</td></tr>
-          <tr><td>8.5 成</td><td>208 萬</td><td>46,219 元</td></tr>
+          <tr><th>成數</th><th>首付</th><th class="soft">寬限期內<br><small>只繳息</small></th><th>寬限期後<br><small>本息均攤</small></th></tr>
+          <tr><td>7 成</td><td>416 萬</td><td class="soft">19,715 元</td><td>38,062 元</td></tr>
+          <tr><td>7.5 成</td><td>347 萬</td><td class="soft">21,124 元</td><td>40,781 元</td></tr>
+          <tr><td>8 成</td><td>278 萬</td><td class="soft">22,532 元</td><td>43,500 元</td></tr>
+          <tr><td>8.5 成</td><td>208 萬</td><td class="soft">23,940 元</td><td>46,219 元</td></tr>
         </table>
+        <p class="loan-note"><b>先看左邊那欄。</b>房貸多半有寬限期，這段期間只繳利息不還本金，月付大約是右邊那欄的一半。<b>寬限期結束後才會跳到右邊的數字</b>——這一跳是真的，所以兩個數字我都給你，你要用能長期負擔的那個去判斷。</p>
         <p class="video-note">🔴 車位佔登記坪數 37.9%，部分銀行對車位的鑑價方式與房屋不同，會影響實際核貸成數——這一點在你送件前我會先幫你問。另外還有管理費、契稅、代書費、火險，這些不在上表裡。</p>
       </section>
     </div>
