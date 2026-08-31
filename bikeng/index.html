@@ -2,17 +2,14 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-<!-- This site is hosted on Netlify. Anyone can build and deploy a site
-     like this one for free: https://netlify.new/?utm_campaign=ai-legible&utm_source=comment&utm_medium=referral&utm_id=32b11e4c-53da-4360-b250-ae75785f05e9
-     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>阿宏買房避坑透視器｜34條攻略＋買房20問</title>
-  <meta name="description" content="先看34條買房避坑攻略，再按下按鈕完成買房20問，快速整理購屋條件、財務準備與風險盲點。">
+  <meta name="description" content="先看34條買房避坑攻略與10張圖解，再按下按鈕完成買房20問，快速整理購屋條件、財務準備與風險盲點。">
   <meta name="theme-color" content="#0b2530">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://0930848000.com/bikeng/">
 <meta property="og:title" content="買房避坑透視器｜34 條攻略＋買房 20 問">
-<meta property="og:description" content="34 條買房避坑攻略、口袋檢查清單，加上看屋前該問自己的 20 個問題。新北房仲何志宏整理。">
+<meta property="og:description" content="34 條買房避坑攻略、10 張圖解與細節圖、口袋檢查清單，加上看屋前該問自己的 20 個問題。新北房仲何志宏整理。">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:url" content="https://0930848000.com/bikeng/">
@@ -228,6 +225,48 @@
       .quiz-nav{flex-direction:column-reverse}
       .result-line{grid-template-columns:88px 1fr 34px;font-size:13px}
     }
+
+    /* ===== 圖解區塊（2026-09-01 40-0831-01 新增：自繪 SVG 示意圖＋細節圖） ===== */
+    .fig{
+      margin:2px 0 4px;border:1px solid rgba(103,212,230,.2);border-radius:16px;
+      background:rgba(7,26,34,.5);padding:14px 14px 11px;overflow:hidden
+    }
+    .fig+.fig{margin-top:10px}
+    .fig svg{width:100%;height:auto;display:block;font-family:inherit}
+    .fig svg text{font-family:inherit}
+    .fig-h{
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 11px;
+      font-size:14.5px;font-weight:900;color:var(--orange);line-height:1.5
+    }
+    .fig-h em{
+      font-style:normal;font-size:11px;font-weight:800;color:var(--cyan-2);
+      border:1px solid var(--line);border-radius:999px;padding:2px 9px;
+      background:rgba(103,212,230,.08);flex:0 0 auto
+    }
+    .fig-legend{margin:13px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+    .fig-legend li{
+      display:grid;grid-template-columns:23px 1fr;gap:10px;align-items:start;
+      font-size:13.5px;color:var(--muted);line-height:1.66
+    }
+    .fig-legend li i{
+      font-style:normal;width:23px;height:23px;border-radius:7px;display:grid;place-items:center;
+      background:rgba(245,173,66,.15);border:1px solid var(--line-2);color:var(--orange);
+      font-size:12px;font-weight:900;line-height:1
+    }
+    .fig-legend li b{color:var(--cream);font-weight:800}
+    .fig-legend li a{color:var(--cyan-2);border-bottom:1px solid rgba(103,212,230,.4)}
+    .fig figcaption{
+      margin-top:13px;padding-top:10px;border-top:1px dashed rgba(103,212,230,.18);
+      font-size:12px;color:rgba(184,201,207,.82);line-height:1.75
+    }
+    .fig figcaption b{color:var(--cyan-2);font-weight:800}
+    .fig figcaption a{color:var(--cyan-2);word-break:break-all}
+    @media(max-width:520px){
+      .fig{margin-left:-14px;margin-right:-14px;padding:11px 10px 9px;border-radius:13px}
+      .fig-h{font-size:13.5px}
+      .fig-legend li{font-size:13px;grid-template-columns:21px 1fr;gap:9px}
+      .fig-legend li i{width:21px;height:21px;font-size:11px}
+    }
   </style>
 </head>
 <body>
@@ -275,13 +314,49 @@
           <div>
             <h2>34 條買房避坑攻略</h2>
           </div>
-          <p>每一區都可以點開查看，先拿乾貨，不先逼你填資料</p>
+          <p>每一區都可以點開查看，內附自繪示意圖與細節圖，先拿乾貨，不先逼你填資料</p>
         </div>
 
         <div class="guide-grid">
           <details class="guide" open>
             <summary><span class="guide-no">01</span><span class="guide-title">立體看屋與情緒判斷</span><span class="guide-plus">＋</span></summary>
             <div class="tips">
+              <figure class="fig">
+                <div class="fig-h">圖 1｜同一間房，三個時段看到的是三種真相<em>示意圖</em></div>
+                <svg viewBox="0 0 400 174" role="img" aria-label="白天關燈看採光、晚上看鄰居與噪音、下雨天看滲水與排水">
+                  <g>
+                    <rect x="6" y="6" width="124" height="122" rx="12" fill="rgba(103,212,230,.06)" stroke="var(--cyan)" stroke-opacity=".34"/>
+                    <g stroke="var(--orange)" stroke-width="2.2" stroke-linecap="round" fill="none">
+                      <circle cx="68" cy="38" r="11"/>
+                      <path d="M68 20v-6M68 62v-6M87 38h6M43 38h6M81.8 24.2l4.2-4.2M50 56l4.2-4.2M81.8 51.8l4.2 4.2M50 20l4.2 4.2"/>
+                    </g>
+                    <text x="68" y="84" text-anchor="middle" font-size="15" font-weight="900" fill="var(--cyan-2)">白天</text>
+                    <text x="68" y="104" text-anchor="middle" font-size="12" fill="var(--cream)">把燈全關再看採光</text>
+                    <text x="68" y="120" text-anchor="middle" font-size="11.5" fill="var(--muted)">開燈會高估自然光</text>
+                  </g>
+                  <g>
+                    <rect x="138" y="6" width="124" height="122" rx="12" fill="rgba(103,212,230,.06)" stroke="var(--cyan)" stroke-opacity=".34"/>
+                    <path d="M203 27a12.5 12.5 0 1 0 0 23 10 10 0 0 1 0-23z" fill="var(--orange)" fill-opacity=".85"/>
+                    <g fill="var(--cyan-2)" fill-opacity=".8"><circle cx="176" cy="26" r="1.6"/><circle cx="224" cy="33" r="1.9"/><circle cx="186" cy="50" r="1.4"/></g>
+                    <text x="200" y="84" text-anchor="middle" font-size="15" font-weight="900" fill="var(--cyan-2)">晚上</text>
+                    <text x="200" y="104" text-anchor="middle" font-size="12" fill="var(--cream)">聽鄰居、車聲、店家</text>
+                    <text x="200" y="120" text-anchor="middle" font-size="11.5" fill="var(--muted)">白天聽不到的都在這</text>
+                  </g>
+                  <g>
+                    <rect x="270" y="6" width="124" height="122" rx="12" fill="rgba(103,212,230,.06)" stroke="var(--cyan)" stroke-opacity=".34"/>
+                    <g fill="none" stroke="var(--cyan)" stroke-width="2.2" stroke-linecap="round">
+                      <path d="M316 44a8 8 0 0 1 1.4-15.8 11.5 11.5 0 0 1 21.6-3.2A8.6 8.6 0 0 1 347 44z"/>
+                      <path d="M318 52l-3.4 8M330 52l-3.4 8M342 52l-3.4 8"/>
+                    </g>
+                    <text x="332" y="84" text-anchor="middle" font-size="15" font-weight="900" fill="var(--cyan-2)">下雨天</text>
+                    <text x="332" y="104" text-anchor="middle" font-size="12" fill="var(--cream)">看滲水、看排水</text>
+                    <text x="332" y="120" text-anchor="middle" font-size="11.5" fill="var(--muted)">乾的時候看不出來</text>
+                  </g>
+                  <rect x="6" y="138" width="388" height="30" rx="9" fill="rgba(245,173,66,.09)" stroke="var(--orange)" stroke-opacity=".32"/>
+                  <text x="200" y="158" text-anchor="middle" font-size="13" font-weight="800" fill="var(--orange)">只看過一次，等於只看過三分之一</text>
+                </svg>
+                <figcaption><b>出處</b>：阿宏自繪示意圖，內容對應本區攻略第 3、7、28 條，屬看屋實務建議，非法規條文。查證日 2026-09-01。</figcaption>
+              </figure>
               <div class="tip"><div class="tip-id">#1</div><div><b>看屋不要只聽優點</b><span>缺點要自己查、自己看、自己比對</span></div></div>
               <div class="tip"><div class="tip-id">#2</div><div><b>嫌惡設施要看時段</b><span>市場、學校、宮廟與交通，不同時間感受差很多</span></div></div>
               <div class="tip"><div class="tip-id">#3</div><div><b>看完一定要自己再跑一次</b><span>白天、晚上、尖峰與下雨天都可能看到不同真相</span></div></div>
@@ -294,6 +369,76 @@
           <details class="guide">
             <summary><span class="guide-no">02</span><span class="guide-title">漏水、壁癌與外牆</span><span class="guide-plus">＋</span></summary>
             <div class="tips">
+              <figure class="fig">
+                <div class="fig-h">圖 2｜漏水與壁癌的五個熱點，看屋時眼睛往這裡放<em>示意圖</em></div>
+                <svg viewBox="0 0 400 226" role="img" aria-label="房間剖面示意圖，標示天花板與樑交界、窗框四角、牆角踢腳、浴室共壁、外牆五個漏水熱點">
+                  <rect x="12" y="10" width="344" height="204" rx="6" fill="rgba(14,42,53,.85)" stroke="var(--cyan)" stroke-opacity=".38"/>
+                  <rect x="12" y="10" width="344" height="26" fill="rgba(103,212,230,.13)"/>
+                  <text x="20" y="27" font-size="11.5" fill="var(--cyan-2)" fill-opacity=".9">樓上住戶／屋頂</text>
+                  <rect x="90" y="36" width="266" height="13" fill="rgba(103,212,230,.22)"/>
+                  <text x="350" y="46" text-anchor="end" font-size="10.5" fill="var(--cream)" fill-opacity=".75">樑</text>
+                  <path d="M90 36v156" stroke="var(--cyan)" stroke-opacity=".35" stroke-width="1.4" stroke-dasharray="5 4"/>
+                  <text x="51" y="116" text-anchor="middle" font-size="11" fill="var(--muted)">浴室</text>
+                  <text x="51" y="130" text-anchor="middle" font-size="11" fill="var(--muted)">／陽台</text>
+                  <rect x="12" y="192" width="344" height="22" fill="rgba(103,212,230,.09)"/>
+                  <path d="M90 190h266" stroke="var(--cyan)" stroke-opacity=".22" stroke-width="1.2"/>
+                  <g fill="none" stroke="var(--cyan)" stroke-opacity=".55" stroke-width="1.8">
+                    <rect x="228" y="74" width="100" height="70" rx="3"/>
+                    <path d="M278 74v70M228 109h100"/>
+                  </g>
+                  <text x="278" y="160" text-anchor="middle" font-size="11.5" fill="var(--muted)">窗</text>
+                  <rect x="356" y="10" width="32" height="204" rx="4" fill="rgba(245,173,66,.09)" stroke="var(--orange)" stroke-opacity=".34"/>
+                  <text x="372" y="182" text-anchor="middle" font-size="11.5" fill="var(--orange)" writing-mode="tb">外牆</text>
+                  <g font-size="12" font-weight="900" text-anchor="middle">
+                    <circle cx="118" cy="49" r="11.5" fill="rgba(245,173,66,.9)"/><text x="118" y="53.5" fill="#0b2530">1</text>
+                    <circle cx="228" cy="74" r="11.5" fill="rgba(245,173,66,.9)"/><text x="228" y="78.5" fill="#0b2530">2</text>
+                    <circle cx="176" cy="190" r="11.5" fill="rgba(245,173,66,.9)"/><text x="176" y="194.5" fill="#0b2530">3</text>
+                    <circle cx="90" cy="124" r="11.5" fill="rgba(245,173,66,.9)"/><text x="90" y="128.5" fill="#0b2530">4</text>
+                    <circle cx="372" cy="110" r="11.5" fill="rgba(245,173,66,.9)"/><text x="372" y="114.5" fill="#0b2530">5</text>
+                  </g>
+                </svg>
+                <ol class="fig-legend">
+                  <li><i>1</i><span><b>天花板與樑的交界</b>　樓上排水管或屋頂防水層失效時，水最常先從這條線滲出來</span></li>
+                  <li><i>2</i><span><b>窗框四個角</b>　外牆的雨水沿窗框收邊往內走，四個角是整面牆最脆弱的位置</span></li>
+                  <li><i>3</i><span><b>牆角與踢腳板</b>　油漆鼓起、粉化、剝落，通常代表牆體長期含水，不是只有表面問題</span></li>
+                  <li><i>4</i><span><b>浴室與陽台的共壁</b>　防水層失效會滲到背面那一間房，先看衣櫃背後那面牆</span></li>
+                  <li><i>5</i><span><b>外牆本身</b>　生苔、水漬、磁磚剝落，或某一面特別新（可能剛補過），室內室外要一起看</span></li>
+                </ol>
+                <figcaption><b>出處</b>：阿宏自繪示意圖，位置對應本區攻略第 4 至 6 條與補 1。<b>為什麼不能只信屋主勾選</b>：不動產說明書的「是否有滲漏水情形」是法定應記載項目（內政部〈不動產說明書應記載及不得記載事項〉（115 年 4 月 1 日生效版）成屋部分明列「是否有滲漏水情形，若有，應敘明位置」與「是否曾發生…其他非自然死亡之情形」（<a href="https://glrs.moi.gov.tw/LawContent.aspx?id=FL003292" target="_blank" rel="noopener">內政部主管法規查詢系統</a>）），且說明書提供解說前應經委託人簽章（《不動產經紀業管理條例》第 23 條（<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060066&amp;flno=23" target="_blank" rel="noopener">全國法規資料庫</a>））——那是屋主的填載與告知，性質上不是專業檢測報告。查證日 2026-09-01。</figcaption>
+              </figure>
+              <figure class="fig">
+                <div class="fig-h">圖 2-1｜細節圖：牆面該認的三種徵兆長什麼樣<em>細節圖</em></div>
+                <svg viewBox="0 0 400 166" role="img" aria-label="水痕、膨拱、色差三種牆面徵兆的外觀特寫示意">
+                  <g>
+                    <rect x="6" y="6" width="124" height="96" rx="10" fill="rgba(255,255,255,.04)" stroke="var(--cyan)" stroke-opacity=".28"/>
+                    <path d="M28 78c6-26 14-44 30-46 18-2 26 12 32 26 5 12 2 20-10 22-20 3-58 14-52-2z" fill="var(--orange)" fill-opacity=".26" stroke="var(--orange)" stroke-opacity=".8" stroke-width="1.6"/>
+                    <path d="M40 70c6-18 12-30 24-31 14-1 20 9 24 19" fill="none" stroke="var(--orange)" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="3 3"/>
+                  </g>
+                  <g>
+                    <rect x="138" y="6" width="124" height="96" rx="10" fill="rgba(255,255,255,.04)" stroke="var(--cyan)" stroke-opacity=".28"/>
+                    <path d="M152 82h96" stroke="var(--cyan)" stroke-opacity=".4" stroke-width="1.4"/>
+                    <path d="M152 62c14 0 18-26 34-26s22 26 36 26 12-10 26-10" fill="none" stroke="var(--orange)" stroke-opacity=".9" stroke-width="2"/>
+                    <path d="M172 46l-5-8M186 40l1-9M202 44l6-8" stroke="var(--orange)" stroke-opacity=".55" stroke-width="1.5" stroke-linecap="round"/>
+                    <text x="200" y="96" text-anchor="middle" font-size="10.5" fill="var(--muted)">側光照過去最明顯</text>
+                  </g>
+                  <g>
+                    <rect x="270" y="6" width="124" height="96" rx="10" fill="rgba(255,255,255,.04)" stroke="var(--cyan)" stroke-opacity=".28"/>
+                    <rect x="282" y="20" width="52" height="68" fill="rgba(184,201,207,.16)"/>
+                    <rect x="334" y="20" width="48" height="68" fill="rgba(245,241,232,.42)"/>
+                    <path d="M334 20v68" stroke="var(--orange)" stroke-width="2.2"/>
+                    <text x="308" y="98" text-anchor="middle" font-size="10.5" fill="var(--muted)">舊</text>
+                    <text x="358" y="98" text-anchor="middle" font-size="10.5" fill="var(--muted)">新</text>
+                  </g>
+                  <text x="68" y="122" text-anchor="middle" font-size="13.5" font-weight="900" fill="var(--cyan-2)">水痕</text>
+                  <text x="200" y="122" text-anchor="middle" font-size="13.5" font-weight="900" fill="var(--cyan-2)">膨拱</text>
+                  <text x="332" y="122" text-anchor="middle" font-size="13.5" font-weight="900" fill="var(--cyan-2)">色差</text>
+                  <text x="68" y="140" text-anchor="middle" font-size="11.5" fill="var(--muted)">邊界暈開的黃褐圈</text>
+                  <text x="200" y="140" text-anchor="middle" font-size="11.5" fill="var(--muted)">漆面鼓起、敲起來空</text>
+                  <text x="332" y="140" text-anchor="middle" font-size="11.5" fill="var(--muted)">只有一塊特別新</text>
+                  <text x="200" y="161" text-anchor="middle" font-size="11.5" fill="var(--orange)">三種都不是裝潢問題，是水還在走的證據</text>
+                </svg>
+                <figcaption><b>出處</b>：阿宏自繪示意圖，依本區攻略第 5、6 條與補 1 的判讀重點繪製。外觀徵兆僅供看屋初判，實際成因需由防水或土木專業現場檢測認定。查證日 2026-09-01。</figcaption>
+              </figure>
               <div class="tip"><div class="tip-id">#4</div><div><b>不能只相信屋主勾選</b><span>現況說明書是屋主認知，不是專業檢測報告</span></div></div>
               <div class="tip"><div class="tip-id">#5</div><div><b>看牆角、天花板與窗框</b><span>注意水痕、膨拱、裂縫與油漆色差</span></div></div>
               <div class="tip"><div class="tip-id">#6</div><div><b>壁癌不是單純外觀問題</b><span>可能代表滲水、防水層失效或牆體濕氣過重</span></div></div>
@@ -304,6 +449,33 @@
           <details class="guide">
             <summary><span class="guide-no">03</span><span class="guide-title">事故屋與資訊斷層</span><span class="guide-plus">＋</span></summary>
             <div class="tips">
+              <figure class="fig">
+                <div class="fig-h">圖 3｜關於這間房的資訊，其實分成三層<em>示意圖</em></div>
+                <svg viewBox="0 0 400 200" role="img" aria-label="房屋資訊三層：屋主須告知層、文件查得到層、資訊斷層">
+                  <g>
+                    <rect x="8" y="8" width="384" height="44" rx="10" fill="rgba(103,212,230,.13)" stroke="var(--cyan)" stroke-opacity=".55"/>
+                    <circle cx="30" cy="30" r="10" fill="var(--cyan)" fill-opacity=".85"/><text x="30" y="34.5" text-anchor="middle" font-size="12" font-weight="900" fill="#0b2530">1</text>
+                    <text x="48" y="27" font-size="13.5" font-weight="900" fill="var(--cyan-2)">屋主知道，而且法規要求要講</text>
+                    <text x="48" y="44" font-size="11" fill="var(--muted)">滲漏水、非自然死亡，都是明文要求要揭露的項目</text>
+                  </g>
+                  <g>
+                    <rect x="8" y="58" width="384" height="44" rx="10" fill="rgba(103,212,230,.06)" stroke="var(--cyan)" stroke-opacity=".4" stroke-dasharray="6 4"/>
+                    <circle cx="30" cy="80" r="10" fill="var(--cyan)" fill-opacity=".5"/><text x="30" y="84.5" text-anchor="middle" font-size="12" font-weight="900" fill="#0b2530">2</text>
+                    <text x="48" y="77" font-size="13.5" font-weight="900" fill="var(--cyan-2)">屋主沒講，但文件查得到</text>
+                    <text x="48" y="94" font-size="11" fill="var(--muted)">建物謄本、使用執照、登記次序、實價登錄</text>
+                  </g>
+                  <g>
+                    <rect x="8" y="108" width="384" height="44" rx="10" fill="rgba(245,173,66,.08)" stroke="var(--orange)" stroke-opacity=".6" stroke-dasharray="6 4"/>
+                    <circle cx="30" cy="130" r="10" fill="var(--orange)" fill-opacity=".9"/><text x="30" y="134.5" text-anchor="middle" font-size="12" font-weight="900" fill="#0b2530">3</text>
+                    <text x="48" y="127" font-size="13.5" font-weight="900" fill="var(--orange)">資訊斷層：文件上不會有</text>
+                    <text x="48" y="144" font-size="11" fill="var(--muted)">年代久遠、住戶更替，紙上留不下痕跡的事</text>
+                  </g>
+                  <path d="M200 152v12" stroke="var(--orange)" stroke-opacity=".7" stroke-width="1.6" stroke-dasharray="4 3"/>
+                  <rect x="8" y="164" width="384" height="30" rx="9" fill="rgba(245,173,66,.11)" stroke="var(--orange)" stroke-opacity=".35"/>
+                  <text x="200" y="184" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--orange)">第三層只能靠問：資深保全、里長、附近老店家</text>
+                </svg>
+                <figcaption><b>出處</b>：阿宏自繪示意圖，第 1 層的法定範圍依 《不動產經紀業管理條例》第 23 條（<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060066&amp;flno=23" target="_blank" rel="noopener">全國法規資料庫</a>） 與 內政部〈不動產說明書應記載及不得記載事項〉（115 年 4 月 1 日生效版）成屋部分明列「是否有滲漏水情形，若有，應敘明位置」與「是否曾發生…其他非自然死亡之情形」（<a href="https://glrs.moi.gov.tw/LawContent.aspx?id=FL003292" target="_blank" rel="noopener">內政部主管法規查詢系統</a>）；第 2 層對應本頁圖 4 的謄本查證；第 3 層屬實務經驗，非法規範圍。查證日 2026-09-01。</figcaption>
+              </figure>
               <div class="tip"><div class="tip-id">#9</div><div><b>揭露有法律與知情範圍</b><span>不是你介意的事情，都一定會寫在說明書上</span></div></div>
               <div class="tip"><div class="tip-id">#10</div><div><b>年代越久越難查</b><span>老屋鄰居更替，早期事件可能形成資訊斷層</span></div></div>
               <div class="tip"><div class="tip-id">#11</div><div><b>自己問管理員與鄰居</b><span>比起直接問「有沒有死過人」，可改問是否曾有警消大動作處理</span></div></div>
@@ -314,6 +486,96 @@
           <details class="guide">
             <summary><span class="guide-no">04</span><span class="guide-title">一手屋與產權查證</span><span class="guide-plus">＋</span></summary>
             <div class="tips">
+              <figure class="fig">
+                <div class="fig-h">圖 4｜建物登記謄本分三部，各自回答不同的問題<em>示意圖</em></div>
+                <svg viewBox="0 0 400 290" role="img" aria-label="建物登記謄本的標示部、所有權部、他項權利部三段結構與各自欄位">
+                  <rect x="8" y="6" width="384" height="276" rx="10" fill="rgba(14,42,53,.9)" stroke="var(--cyan)" stroke-opacity=".4"/>
+                  <rect x="8" y="6" width="384" height="32" rx="10" fill="rgba(103,212,230,.12)"/>
+                  <rect x="8" y="28" width="384" height="10" fill="rgba(103,212,230,.12)"/>
+                  <text x="22" y="27" font-size="12.5" font-weight="900" fill="var(--cyan-2)">建物登記謄本</text>
+                  <text x="384" y="27" text-anchor="end" font-size="11" fill="var(--muted)">結構示意，非真實謄本</text>
+                  <g>
+                    <rect x="16" y="46" width="368" height="92" rx="8" fill="rgba(103,212,230,.05)" stroke="var(--cyan)" stroke-opacity=".3"/>
+                    <rect x="16" y="46" width="4" height="92" fill="var(--cyan)" fill-opacity=".8"/>
+                    <circle cx="36" cy="64" r="9.5" fill="var(--orange)" fill-opacity=".9"/><text x="36" y="68" text-anchor="middle" font-size="11" font-weight="900" fill="#0b2530">1</text>
+                    <text x="52" y="68" font-size="13.5" font-weight="900" fill="var(--cyan-2)">標示部</text>
+                    <g font-size="11" fill="var(--cream)" text-anchor="middle">
+                      <rect x="26" y="76" width="170" height="22" rx="6" fill="rgba(103,212,230,.12)"/><text x="111" y="91">建物門牌</text>
+                      <rect x="204" y="76" width="170" height="22" rx="6" fill="rgba(103,212,230,.12)"/><text x="289" y="91">建築完成日期</text>
+                      <rect x="26" y="102" width="170" height="22" rx="6" fill="rgba(103,212,230,.12)"/><text x="111" y="117">層次面積・總面積</text>
+                      <rect x="204" y="102" width="170" height="22" rx="6" fill="rgba(103,212,230,.12)"/><text x="289" y="117">附屬建物・共有部分</text>
+                    </g>
+                    <text x="26" y="134" font-size="11.5" fill="var(--muted)">權狀上的坪數，就是從這一部拆出來的</text>
+                  </g>
+                  <g>
+                    <rect x="16" y="146" width="368" height="66" rx="8" fill="rgba(103,212,230,.05)" stroke="var(--cyan)" stroke-opacity=".3"/>
+                    <rect x="16" y="146" width="4" height="66" fill="var(--cyan)" fill-opacity=".8"/>
+                    <circle cx="36" cy="164" r="9.5" fill="var(--orange)" fill-opacity=".9"/><text x="36" y="168" text-anchor="middle" font-size="11" font-weight="900" fill="#0b2530">2</text>
+                    <text x="52" y="168" font-size="13.5" font-weight="900" fill="var(--cyan-2)">所有權部</text>
+                    <g font-size="11" fill="var(--cream)" text-anchor="middle">
+                      <rect x="24" y="176" width="84" height="22" rx="6" fill="rgba(103,212,230,.12)"/><text x="66" y="191">登記次序</text>
+                      <rect x="113" y="176" width="84" height="22" rx="6" fill="rgba(103,212,230,.12)"/><text x="155" y="191">登記原因</text>
+                      <rect x="202" y="176" width="84" height="22" rx="6" fill="rgba(103,212,230,.12)"/><text x="244" y="191">原因發生日期</text>
+                      <rect x="291" y="176" width="84" height="22" rx="6" fill="rgba(103,212,230,.12)"/><text x="333" y="191">所有權人</text>
+                    </g>
+                    <text x="24" y="208" font-size="11.5" fill="var(--muted)">轉手過幾次、什麼時候過的，看這一部</text>
+                  </g>
+                  <g>
+                    <rect x="16" y="220" width="368" height="54" rx="8" fill="rgba(245,173,66,.06)" stroke="var(--orange)" stroke-opacity=".35"/>
+                    <rect x="16" y="220" width="4" height="54" fill="var(--orange)" fill-opacity=".85"/>
+                    <circle cx="36" cy="238" r="9.5" fill="var(--orange)" fill-opacity=".9"/><text x="36" y="242" text-anchor="middle" font-size="11" font-weight="900" fill="#0b2530">3</text>
+                    <text x="52" y="242" font-size="13.5" font-weight="900" fill="var(--orange)">他項權利部</text>
+                    <g font-size="11.5" fill="var(--cream)" text-anchor="middle">
+                      <rect x="24" y="250" width="112" height="22" rx="6" fill="rgba(245,173,66,.14)"/><text x="80" y="265">權利種類（抵押權）</text>
+                      <rect x="142" y="250" width="112" height="22" rx="6" fill="rgba(245,173,66,.14)"/><text x="198" y="265">權利人</text>
+                      <rect x="260" y="250" width="114" height="22" rx="6" fill="rgba(245,173,66,.14)"/><text x="317" y="265">擔保債權總金額</text>
+                    </g>
+                  </g>
+                </svg>
+                <ol class="fig-legend">
+                  <li><i>1</i><span><b>標示部　回答「這間房有多大、什麼時候蓋好」</b>　專有部分（權狀與實務上稱主建物）、附屬建物、共有部分是分開登記的，加起來才是權狀總坪，拆法見下一區圖 5</span></li>
+                  <li><i>2</i><span><b>所有權部　回答「這間房過幾手」</b>　看登記次序知道換過幾個所有權人，再把原因發生日期跟標示部的建築完成日期對一次，就知道是不是真的一手屋</span></li>
+                  <li><i>3</i><span><b>他項權利部　回答「這間房背了什麼」</b>　抵押權設定的是最高限額，不等於屋主現在實際欠的錢，兩者常差很多，細節見<a href="https://0930848000.com/tengben/">他項權利防雷懶人包</a></span></li>
+                </ol>
+                <figcaption><b>出處</b>：阿宏自繪結構示意圖，非任何一份真實謄本，圖上不含任何個人資料。三部式結構與欄位名稱依 《土地登記規則》第 16 條「登記簿用紙…應分標示部、所有權部及他項權利部」（<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060003&amp;flno=16" target="_blank" rel="noopener">全國法規資料庫</a>），欄位名稱對照新北市政府地政局〈謄本介紹〉（<a href="https://www.land.ntpc.gov.tw/cp.aspx?n=12855" target="_blank" rel="noopener">地政局頁面</a>）。查證日 2026-09-01。</figcaption>
+              </figure>
+              <figure class="fig">
+                <div class="fig-h">圖 4-1｜細節圖：「真一手屋」是拿同一份謄本的兩個日期對出來的<em>細節圖</em></div>
+                <svg viewBox="0 0 400 194" role="img" aria-label="謄本標示部的建築完成日期與所有權部的原因發生日期對照示意">
+                  <text x="200" y="14" text-anchor="middle" font-size="11.5" fill="var(--muted)">同一份建物登記謄本，兩個日期分別在不同部</text>
+                  <text x="92" y="34" text-anchor="middle" font-size="12.5" font-weight="900" fill="var(--cyan-2)">標示部</text>
+                  <text x="308" y="34" text-anchor="middle" font-size="12.5" font-weight="900" fill="var(--cyan-2)">所有權部</text>
+                  <g>
+                    <rect x="8" y="42" width="168" height="110" rx="8" fill="rgba(14,42,53,.9)" stroke="var(--cyan)" stroke-opacity=".4"/>
+                    <rect x="20" y="54" width="144" height="24" rx="7" fill="rgba(103,212,230,.12)"/>
+                    <text x="92" y="70" text-anchor="middle" font-size="11" fill="var(--cream)">建物門牌</text>
+                    <rect x="20" y="86" width="144" height="26" rx="7" fill="rgba(245,173,66,.2)" stroke="var(--orange)" stroke-opacity=".8"/>
+                    <text x="92" y="103" text-anchor="middle" font-size="12" font-weight="900" fill="var(--orange)">建築完成日期</text>
+                    <rect x="20" y="120" width="144" height="24" rx="7" fill="rgba(103,212,230,.12)"/>
+                    <text x="92" y="136" text-anchor="middle" font-size="11" fill="var(--cream)">層次面積・總面積</text>
+                  </g>
+                  <g>
+                    <rect x="224" y="42" width="168" height="110" rx="8" fill="rgba(14,42,53,.9)" stroke="var(--cyan)" stroke-opacity=".4"/>
+                    <rect x="236" y="54" width="144" height="24" rx="7" fill="rgba(103,212,230,.12)"/>
+                    <text x="308" y="70" text-anchor="middle" font-size="11" fill="var(--cream)">登記次序</text>
+                    <rect x="236" y="86" width="144" height="26" rx="7" fill="rgba(245,173,66,.2)" stroke="var(--orange)" stroke-opacity=".8"/>
+                    <text x="308" y="103" text-anchor="middle" font-size="12" font-weight="900" fill="var(--orange)">原因發生日期</text>
+                    <rect x="236" y="120" width="144" height="24" rx="7" fill="rgba(103,212,230,.12)"/>
+                    <text x="308" y="136" text-anchor="middle" font-size="11" fill="var(--cream)">所有權人</text>
+                  </g>
+                  <path d="M182 99h36" stroke="var(--orange)" stroke-opacity=".9" stroke-width="2" stroke-dasharray="4 3"/>
+                  <path d="M176 99l7-4v8zM224 99l-7-4v8z" fill="var(--orange)" fill-opacity=".9"/>
+                  <text x="200" y="88" text-anchor="middle" font-size="11" font-weight="900" fill="var(--orange)">對</text>
+                  <rect x="8" y="160" width="384" height="28" rx="9" fill="rgba(245,173,66,.1)" stroke="var(--orange)" stroke-opacity=".35"/>
+                  <text x="200" y="179" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--orange)">兩個日期對得起來，才有機會是真的一手屋</text>
+                </svg>
+                <ol class="fig-legend">
+                  <li><i>1</i><span><b>建築完成日期在標示部</b>　這是這棟建物蓋好的時間點，不必另外調使用執照就查得到</span></li>
+                  <li><i>2</i><span><b>原因發生日期在所有權部</b>　這是現任所有權人「怎麼來的、什麼時候來的」，登記原因會寫買賣或繼承</span></li>
+                  <li><i>3</i><span><b>登記次序告訴你換過幾手</b>　口頭說「一手屋」不算數，登記順序才算數。兩個日期差很多，中間通常過過手</span></li>
+                </ol>
+                <figcaption><b>出處</b>：阿宏自繪對照示意圖，非任何一份真實謄本，圖上不含任何個人資料。欄位名稱與所屬部別依 《土地登記規則》第 16 條「登記簿用紙…應分標示部、所有權部及他項權利部」（<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060003&amp;flno=16" target="_blank" rel="noopener">全國法規資料庫</a>），欄位名稱對照新北市政府地政局〈謄本介紹〉（<a href="https://www.land.ntpc.gov.tw/cp.aspx?n=12855" target="_blank" rel="noopener">地政局頁面</a>）。查證日 2026-09-01。</figcaption>
+              </figure>
               <div class="tip"><div class="tip-id">#12</div><div><b>「一手屋」不一定是真一手</b><span>真正一手屋通常是直接向建商或原始起造人購買，且未曾過戶</span></div></div>
               <div class="tip"><div class="tip-id">#13</div><div><b>要看登記資料</b><span>比對建物謄本、原因發生日期與使用執照竣工日期</span></div></div>
               <div class="tip"><div class="tip-id">#14</div><div><b>查登記次序</b><span>想知道過了幾手，不能靠口頭說法，要查登記順序</span></div></div>
@@ -323,6 +585,64 @@
           <details class="guide">
             <summary><span class="guide-no">05</span><span class="guide-title">權狀坪數、公設與陽台外推</span><span class="guide-plus">＋</span></summary>
             <div class="tips">
+              <figure class="fig">
+                <div class="fig-h">圖 5｜權狀上的坪數，是四段加起來的<em>示意圖</em></div>
+                <svg viewBox="0 0 400 166" role="img" aria-label="權狀總坪數由主建物、附屬建物、共有部分、車位四段組成的結構示意">
+                  <path d="M14 26v-8h372v8" fill="none" stroke="var(--cyan)" stroke-opacity=".55" stroke-width="1.5"/>
+                  <rect x="146" y="6" width="108" height="18" rx="6" fill="rgba(7,26,34,.95)"/>
+                  <text x="200" y="19.5" text-anchor="middle" font-size="12.5" font-weight="900" fill="var(--cyan-2)">權狀總坪數</text>
+                  <g>
+                    <rect x="14" y="34" width="171" height="48" rx="4" fill="var(--cyan)" fill-opacity=".8"/>
+                    <text x="99.5" y="63" text-anchor="middle" font-size="13.5" font-weight="900" fill="#0b2530">主建物</text>
+                    <rect x="185" y="34" width="37" height="48" fill="var(--cyan)" fill-opacity=".34"/>
+                    <text x="203.5" y="62" text-anchor="middle" font-size="10.5" font-weight="800" fill="var(--cream)">附屬</text>
+                    <rect x="222" y="34" width="112" height="48" fill="var(--orange)" fill-opacity=".78"/>
+                    <text x="278" y="63" text-anchor="middle" font-size="12.5" font-weight="900" fill="#0b2530">共有部分</text>
+                    <rect x="334" y="34" width="52" height="48" rx="4" fill="none" stroke="var(--muted)" stroke-opacity=".6" stroke-width="1.4" stroke-dasharray="5 3"/>
+                    <text x="360" y="62" text-anchor="middle" font-size="11.5" font-weight="800" fill="var(--muted)">車位</text>
+                  </g>
+                  <path d="M14 90v8h171v-8" fill="none" stroke="var(--orange)" stroke-opacity=".7" stroke-width="1.5"/>
+                  <text x="99.5" y="114" text-anchor="middle" font-size="11.5" font-weight="800" fill="var(--orange)">日常真正走得到的空間</text>
+                  <rect x="14" y="124" width="372" height="34" rx="9" fill="rgba(245,173,66,.1)" stroke="var(--orange)" stroke-opacity=".35"/>
+                  <text x="200" y="145" text-anchor="middle" font-size="13" font-weight="900" fill="var(--orange)">權狀坪數，不等於室內可用坪數</text>
+                </svg>
+                <ol class="fig-legend">
+                  <li><i>1</i><span><b>主建物</b>　室內主要的居住空間，這一段才是你天天在用的（法規用語是「專有部分」）</span></li>
+                  <li><i>2</i><span><b>附屬建物</b>　陽台、雨遮這類附著在主建物上的部分，登記在權狀裡，但不是室內空間</span></li>
+                  <li><i>3</i><span><b>共有部分（一般說的公設）</b>　門廳、梯廳、機房、管理空間、車道都可能被分攤進來，要問清楚買到的是哪些</span></li>
+                  <li><i>4</i><span><b>車位</b>　有登記才會出現這一段。沒買車位也可能被分攤到車道面積，這是兩件事，要分開確認</span></li>
+                </ol>
+                <figcaption><b>出處</b>：阿宏自繪結構示意圖。<b>圖中四段的寬度只表達「有這四段」，不表達比例</b>——實際比例逐案差異極大，本圖不代表任何一間房的真實數字。三段式面積登記依 《土地登記規則》第 80、81 條與《地籍測量實施規則》第 273、283 條（<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060003&amp;flno=81" target="_blank" rel="noopener">全國法規資料庫</a>）。查證日 2026-09-01。</figcaption>
+              </figure>
+              <figure class="fig">
+                <div class="fig-h">圖 5-1｜細節圖：陽台外推多出來的空間，權狀上沒有<em>細節圖</em></div>
+                <svg viewBox="0 0 400 176" role="img" aria-label="陽台外推前後的平面示意，外推增加的使用面積不會登記進權狀">
+                  <text x="100" y="20" text-anchor="middle" font-size="12.5" font-weight="900" fill="var(--cyan-2)">原始格局</text>
+                  <text x="300" y="20" text-anchor="middle" font-size="12.5" font-weight="900" fill="var(--orange)">陽台外推後</text>
+                  <g>
+                    <rect x="24" y="32" width="104" height="82" fill="rgba(103,212,230,.18)" stroke="var(--cyan)" stroke-opacity=".7" stroke-width="1.8"/>
+                    <text x="76" y="78" text-anchor="middle" font-size="12" font-weight="800" fill="var(--cream)">室內</text>
+                    <rect x="128" y="32" width="42" height="82" fill="none" stroke="var(--cyan)" stroke-opacity=".65" stroke-width="1.6" stroke-dasharray="5 4"/>
+                    <text x="149" y="78" text-anchor="middle" font-size="11" fill="var(--muted)">陽台</text>
+                    <path d="M170 28v90" stroke="var(--cyan)" stroke-opacity=".5" stroke-width="2.4"/>
+                    <text x="97" y="132" text-anchor="middle" font-size="11.5" fill="var(--muted)">權狀：主建物＋附屬建物</text>
+                  </g>
+                  <path d="M182 73h16" stroke="var(--orange)" stroke-opacity=".8" stroke-width="2" marker-end="url(#bkArrow)"/>
+                  <defs><marker id="bkArrow" markerWidth="7" markerHeight="7" refX="5.5" refY="3" orient="auto"><path d="M0 0l6 3-6 3z" fill="var(--orange)" fill-opacity=".85"/></marker></defs>
+                  <g>
+                    <rect x="212" y="32" width="146" height="82" fill="rgba(103,212,230,.18)" stroke="var(--orange)" stroke-opacity=".8" stroke-width="1.8"/>
+                    <path d="M316 32v82" stroke="var(--orange)" stroke-opacity=".85" stroke-width="1.6" stroke-dasharray="5 4"/>
+                    <text x="264" y="78" text-anchor="middle" font-size="12" font-weight="800" fill="var(--cream)">室內</text>
+                    <text x="337" y="70" text-anchor="middle" font-size="10.5" font-weight="800" fill="var(--orange)">外推</text>
+                    <text x="337" y="84" text-anchor="middle" font-size="10.5" font-weight="800" fill="var(--orange)">的部分</text>
+                    <path d="M358 28v90" stroke="var(--orange)" stroke-opacity=".5" stroke-width="2.4"/>
+                    <text x="285" y="132" text-anchor="middle" font-size="11.5" fill="var(--orange)">權狀：完全沒有變</text>
+                  </g>
+                  <rect x="14" y="142" width="372" height="30" rx="9" fill="rgba(245,173,66,.1)" stroke="var(--orange)" stroke-opacity=".35"/>
+                  <text x="200" y="162" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--orange)">用得到，不代表買得到——外推的部分沒有登記進權狀</text>
+                </svg>
+                <figcaption><b>出處</b>：阿宏自繪平面示意圖，非任何實際物件格局。陽台外推屬未經核准之建造行為，依 《建築法》第 25 條、第 86 條第 1 款與《違章建築處理辦法》第 2、5 條（<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0070109&amp;flno=86" target="_blank" rel="noopener">全國法規資料庫</a>） 認定與處理；個案是否列報拆除以主管建築機關認定為準。查證日 2026-09-01。</figcaption>
+              </figure>
               <div class="tip"><div class="tip-id">#15</div><div><b>幾乎沒有真正零公設</b><span>多數產品只是公設低，不代表完全沒有共有部分</span></div></div>
               <div class="tip"><div class="tip-id">#16</div><div><b>權狀坪數不等於室內可用坪數</b><span>主建物、附屬建物與共有部分要分開看</span></div></div>
               <div class="tip"><div class="tip-id">#17</div><div><b>在意坪效就實際丈量</b><span>用家具尺寸或請設計師丈量，比想像更可靠</span></div></div>
@@ -335,6 +655,36 @@
           <details class="guide">
             <summary><span class="guide-no">06</span><span class="guide-title">行情、銀行鑑價與出價</span><span class="guide-plus">＋</span></summary>
             <div class="tips">
+              <figure class="fig">
+                <div class="fig-h">圖 6｜三個價格互相不等於，各自決定不同的事<em>示意圖</em></div>
+                <svg viewBox="0 0 400 188" role="img" aria-label="銀行鑑價、成交行情區間、開價三者在價格軸上的相對關係與各自的作用">
+                  <text x="90" y="30" text-anchor="middle" font-size="13" font-weight="900" fill="var(--cyan-2)">銀行鑑價</text>
+                  <text x="200" y="30" text-anchor="middle" font-size="13" font-weight="900" fill="var(--cyan-2)">成交行情區間</text>
+                  <text x="320" y="30" text-anchor="middle" font-size="13" font-weight="900" fill="var(--orange)">開價</text>
+                  <rect x="155" y="88" width="90" height="26" rx="5" fill="rgba(103,212,230,.22)" stroke="var(--cyan)" stroke-opacity=".7" stroke-width="1.5" stroke-dasharray="5 4"/>
+                  <path d="M20 101h360" stroke="var(--muted)" stroke-opacity=".5" stroke-width="1.6"/>
+                  <path d="M374 96l8 5-8 5z" fill="var(--muted)" fill-opacity=".6"/>
+                  <text x="380" y="88" text-anchor="end" font-size="11" fill="var(--muted)">價格</text>
+                  <path d="M90 38v50" stroke="var(--cyan)" stroke-opacity=".8" stroke-width="2"/>
+                  <circle cx="90" cy="101" r="6" fill="var(--cyan)"/>
+                  <path d="M200 38v46" stroke="var(--cyan)" stroke-opacity=".5" stroke-width="1.6" stroke-dasharray="4 3"/>
+                  <path d="M320 38v50" stroke="var(--orange)" stroke-opacity=".85" stroke-width="2"/>
+                  <circle cx="320" cy="101" r="6" fill="var(--orange)"/>
+                  <text x="90" y="136" text-anchor="middle" font-size="12" font-weight="800" fill="var(--cream)">決定你貸得到多少</text>
+                  <text x="200" y="136" text-anchor="middle" font-size="12" font-weight="800" fill="var(--cream)">決定合理出價位置</text>
+                  <text x="320" y="136" text-anchor="middle" font-size="12" font-weight="800" fill="var(--cream)">是起點，不是終點</text>
+                  <text x="90" y="154" text-anchor="middle" font-size="11.5" fill="var(--muted)">各銀行自行鑑價</text>
+                  <text x="200" y="154" text-anchor="middle" font-size="11.5" fill="var(--muted)">實價登錄多筆交叉比對</text>
+                  <text x="320" y="154" text-anchor="middle" font-size="11.5" fill="var(--muted)">賣方委託的價格</text>
+                  <text x="200" y="181" text-anchor="middle" font-size="12.5" font-weight="900" fill="var(--orange)">開價不等於成交價；鑑價低於成交價，差額要自備</text>
+                </svg>
+                <ol class="fig-legend">
+                  <li><i>1</i><span><b>成數是用「較低者」去乘，不是用成交價</b>　貸款成數上限的計算基準，中央銀行明訂為「鑑價金額與買賣金額<b>較低者</b>」——買貴了不會讓你貸得比較多</span></li>
+                  <li><i>2</i><span><b>鑑價怎麼鑑，沒有官方統一標準</b>　多數本國銀行由行員自行鑑價，外商與保險公司多委外；但成數上限受中央銀行規定拘束</span></li>
+                  <li><i>3</i><span><b>行情要多筆交叉比對</b>　實價登錄是法定申報資料，單看一筆容易被個案條件帶偏，同社區、同時期、多筆一起看</span></li>
+                </ol>
+                <figcaption><b>出處</b>：阿宏自繪示意圖，<b>三個位置只表達「這是三個不同的數字」，不表達任何實際金額或高低幅度</b>。實價登錄與申報登錄義務見 <a href="https://lvr.land.moi.gov.tw/" target="_blank" rel="noopener">內政部不動產交易實價查詢服務網</a>；成交案件申報登錄義務依《平均地權條例》第 47 條第 2 項。鑑價與貸款成數依 中央銀行〈對金融機構辦理不動產抵押貸款業務規定問與答〉明訂貸款成數上限之計算基準「應以原貸金融機構之鑑價或買賣金額較低者為準」；鑑價方法本身查無官方統一標準（<a href="https://www.cbc.gov.tw/tw/cp-4223-124873-79d4c-1.html" target="_blank" rel="noopener">中央銀行</a>）。查證日 2026-09-01。</figcaption>
+              </figure>
               <div class="tip"><div class="tip-id">#20</div><div><b>行情不能只聽口頭說法</b><span>自己查實價登錄，留下可比對的書面資料</span></div></div>
               <div class="tip"><div class="tip-id">#21</div><div><b>至少交叉比對三種來源</b><span>官方實價登錄、比價平台與社區成交資料一起看</span></div></div>
               <div class="tip"><div class="tip-id">#22</div><div><b>先查銀行鑑價</b><span>貸款成數通常看鑑價，不是只看成交價</span></div></div>
@@ -347,6 +697,47 @@
           <details class="guide">
             <summary><span class="guide-no">07</span><span class="guide-title">斡旋、簽約與交屋</span><span class="guide-plus">＋</span></summary>
             <div class="tips">
+              <figure class="fig">
+                <div class="fig-h">圖 7｜從看到房子到拿到鑰匙，退場點只有前面那一段<em>示意圖</em></div>
+                <svg viewBox="0 0 400 268" role="img" aria-label="從取得不動產說明書、斡旋或要約、屋主同意成交、簽約用印完稅到點交交屋的流程時間軸">
+                  <path d="M34 20v218" stroke="var(--cyan)" stroke-opacity=".35" stroke-width="2"/>
+                  <g font-size="12" font-weight="900" text-anchor="middle">
+                    <circle cx="34" cy="20" r="10" fill="var(--orange)" fill-opacity=".92"/><text x="34" y="24.5" fill="#0b2530">1</text>
+                    <circle cx="34" cy="52" r="10" fill="var(--orange)" fill-opacity=".92"/><text x="34" y="56.5" fill="#0b2530">2</text>
+                    <circle cx="34" cy="84" r="10" fill="var(--orange)" fill-opacity=".92"/><text x="34" y="88.5" fill="#0b2530">3</text>
+                    <circle cx="34" cy="116" r="10" fill="var(--cyan)" fill-opacity=".8"/><text x="34" y="120.5" fill="#0b2530">4</text>
+                    <circle cx="34" cy="148" r="10" fill="var(--cyan)" fill-opacity=".8"/><text x="34" y="152.5" fill="#0b2530">5</text>
+                    <circle cx="34" cy="180" r="10" fill="var(--cyan)" fill-opacity=".8"/><text x="34" y="184.5" fill="#0b2530">6</text>
+                    <circle cx="34" cy="212" r="10" fill="var(--orange)" fill-opacity=".92"/><text x="34" y="216.5" fill="#0b2530">7</text>
+                    <circle cx="34" cy="244" r="10" fill="var(--cyan)" fill-opacity=".8"/><text x="34" y="248.5" fill="#0b2530">8</text>
+                  </g>
+                  <g font-size="13" font-weight="800" fill="var(--cream)">
+                    <text x="54" y="18">拿到不動產說明書並看完</text>
+                    <text x="54" y="50">下斡旋金　或　用要約書</text>
+                    <text x="54" y="82">屋主簽名同意　等於成交</text>
+                    <text x="54" y="121">簽約</text>
+                    <text x="54" y="153">用印</text>
+                    <text x="54" y="185">完稅</text>
+                    <text x="54" y="210">尾款交付、銀行撥款</text>
+                    <text x="54" y="242">點交、交屋</text>
+                  </g>
+                  <g font-size="11.5" fill="var(--muted)">
+                    <text x="54" y="32">不是簽約後才補看</text>
+                    <text x="54" y="64">二擇一，經紀業應告知你可以選要約書</text>
+                    <text x="54" y="96">從這一秒起，就進成交流程了</text>
+                    <text x="54" y="224">撥款前，家具清空再看最後一次</text>
+                    <text x="54" y="256">家具家電拍照列冊、註明品牌型號</text>
+                  </g>
+                  <path d="M200 108h176" stroke="var(--cyan)" stroke-opacity=".25" stroke-width="1" stroke-dasharray="4 4"/>
+                  <text x="376" y="105" text-anchor="end" font-size="11" fill="var(--cyan-2)" fill-opacity=".75">以下為制式交易流程</text>
+                </svg>
+                <ol class="fig-legend">
+                  <li><i>2</i><span><b>斡旋金與要約書是二擇一</b>　經紀業要收斡旋金之前，應以<b>書面</b>告知你可以選擇改用內政部版要約書，不是只有一條路</span></li>
+                  <li><i>3</i><span><b>屋主同意的那一秒就綁住了</b>　所以下斡旋之前就要有「真的會買」的準備，不是先丟了再想</span></li>
+                  <li><i>7</i><span><b>撥款前的最後一次看屋，最容易看到真相</b>　家具清空後，原本被櫃子擋住的牆、被地毯蓋住的地板都露出來了</span></li>
+                </ol>
+                <figcaption><b>出處</b>：阿宏自繪流程示意圖。說明書解說義務依 《不動產經紀業管理條例》第 23 條「經紀人員在執行業務過程中，應以不動產說明書向與委託人交易之相對人解說」（<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060066&amp;flno=23" target="_blank" rel="noopener">全國法規資料庫</a>）；斡旋金與要約書二擇一之告知依 《公平交易委員會對於不動產經紀業之規範說明》第 9 點——向買方收取斡旋金前，未以書面告知「買方得選擇支付斡旋金或採用內政部版要約書」，構成欺罔行為並違反《公平交易法》第 25 條（<a href="https://www.ftc.gov.tw/internet/main/doc/docDetail.aspx?uid=170&amp;docid=282&amp;mid=37" target="_blank" rel="noopener">公平交易委員會</a>）。個案流程與順序仍以實際契約約定為準。查證日 2026-09-01。</figcaption>
+              </figure>
               <div class="tip"><div class="tip-id">#23</div><div><b>下斡旋前先拿不動產說明書</b><span>不要等到簽約後才補看關鍵資料</span></div></div>
               <div class="tip"><div class="tip-id">#24</div><div><b>下斡旋前要有成交準備</b><span>屋主一旦接受，就可能進入成交流程</span></div></div>
               <div class="tip"><div class="tip-id">#25</div><div><b>撤斡旋最好親自處理</b><span>避免送達時間與是否已簽收的爭議</span></div></div>
