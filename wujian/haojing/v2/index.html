@@ -81,6 +81,36 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
 .pay-box strong{font-size:1.2rem;font-weight:900}
 .pay-box span{display:block;font-size:.74rem;color:var(--muted)}
 .pay-note{font-size:.78rem;color:var(--muted);margin-top:10px;line-height:1.7}
+/* ===== 貸款成數對照 ===== */
+.loan-tbl{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px;background:var(--card);border-radius:12px;overflow:hidden}
+.loan-tbl th{background:var(--trust);color:#fff;padding:9px 8px;font-size:.8rem;font-weight:800}
+.loan-tbl td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:center}
+.loan-tbl tr:last-child td{border-bottom:none}
+.loan-tbl td.pct{font-weight:900;color:var(--trust)}
+.loan-tbl tr.hi td{background:var(--soft-warm)}
+.loan-tbl tr.hi td.pct{color:var(--warm)}
+.loan-tbl td b{font-weight:900;font-size:1rem}
+.self-check{background:var(--soft-teal);border-radius:14px;padding:14px 16px;margin-top:12px;font-size:.9rem;line-height:1.85}
+.self-check b{color:var(--teal)}
+/* ===== 生活圈地圖 ===== */
+.geo{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.geo-item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px}
+.geo-item .h{display:flex;align-items:center;gap:8px;font-weight:900;font-size:.96rem}
+.geo-item .h .ic{width:26px;height:26px;border-radius:8px;background:var(--soft-teal);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex:0 0 auto}
+.geo-item ul{list-style:none;margin-top:8px}
+.geo-item li{font-size:.88rem;padding:3px 0;display:flex;gap:8px}
+.geo-item li b{color:var(--trust);flex:0 0 auto;font-weight:800}
+.geo-item li span{color:var(--muted)}
+.geo-src{font-size:.76rem;color:var(--muted);margin-top:10px;line-height:1.7}
+/* ===== 第一級風險：嫌惡設施 ===== */
+.redbox{background:#FDF0F0;border:2px solid var(--danger,#B83232);border-radius:var(--radius);padding:18px;margin:14px 0 4px}
+.redbox .rh{display:flex;align-items:center;gap:9px;font-weight:900;font-size:1.05rem;color:#9E2626;margin-bottom:6px}
+.redbox p.why{font-size:.9rem;line-height:1.85;margin-bottom:12px}
+.redbox ul{list-style:none}
+.redbox li{background:#fff;border-radius:11px;padding:10px 13px;margin-bottom:7px;font-size:.9rem}
+.redbox li b{display:block;color:#9E2626;font-weight:900}
+.redbox li span{color:var(--muted);font-size:.85rem}
+.redbox .tail{font-size:.84rem;color:var(--muted);margin-top:10px;line-height:1.75}
 /* ===== Q&A ===== */
 details.qa{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:9px}
 details.qa summary{list-style:none;cursor:pointer;padding:13px 15px;font-weight:800;font-size:.95rem;display:flex;gap:8px}
@@ -88,6 +118,14 @@ details.qa summary::-webkit-details-marker{display:none}
 details.qa summary::before{content:"Q";color:var(--warm);font-weight:900;flex:0 0 auto}
 details.qa .a{padding:0 15px 13px;font-size:.9rem;color:var(--muted)}
 details.qa .a a{color:var(--warm);font-weight:800}
+/* ===== 開頭送禮：避坑透視器 ===== */
+.gift{background:linear-gradient(150deg,#2B3A4A,#3C5063);border-radius:var(--radius);padding:20px 18px;margin:20px 0 4px;color:#fff;box-shadow:var(--shadow)}
+.gift .tagbar{display:inline-block;background:var(--gold,#8A6410);color:#fff;font-size:.75rem;font-weight:900;padding:3px 11px;border-radius:999px;letter-spacing:.06em;margin-bottom:9px}
+.gift h3{font-size:1.22rem;font-weight:900;line-height:1.4;margin-bottom:8px}
+.gift p{font-size:.9rem;opacity:.9;line-height:1.8;margin-bottom:14px}
+.gift p b{color:#E3B857}
+.gift a.gbtn{display:block;background:#fff;color:#2B3A4A;text-align:center;font-weight:900;font-size:1.02rem;padding:14px;border-radius:999px;text-decoration:none}
+.gift small{display:block;opacity:.72;font-size:.78rem;margin-top:9px;text-align:center}
 /* ===== 看完影片的內心台詞 ===== */
 .mind{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 18px;margin:16px 0 4px}
 .mind .lead-in{font-size:.95rem;color:var(--muted);margin-bottom:16px;line-height:1.8}
@@ -169,6 +207,15 @@ details.qa .a a{color:var(--warm);font-weight:800}
     </video>
   </div>
 
+  <!-- 開頭送禮：不用留資料就能用的工具 -->
+  <div class="gift">
+    <span class="tagbar">先送你，不用留資料</span>
+    <h3>買房避坑透視器</h3>
+    <p>不管你最後買不買這一間，這個工具都先拿去用。我把買房會踩的坑做成一份自己就能跑的檢查——<b>你自己對一遍，就知道現在手上這間有沒有問題</b>。不用加好友、不用留電話。</p>
+    <a class="gbtn" href="https://0930848000.com/bikeng/">🔍 直接打開避坑透視器</a>
+    <small>免費、不留資料、手機就能用</small>
+  </div>
+
   <!-- ② 物件現況實拍 -->
   <div class="vlabel"><span class="pill">再看房子</span>室內現況一鏡走完<span class="sec">73 秒</span></div>
   <div class="video-card">
@@ -248,6 +295,76 @@ details.qa .a a{color:var(--warm);font-weight:800}
     <p class="plan-cap">主臥與三房分開配置，客廳、餐廳、廚房在同一動線上，兩套衛浴都有窗。座向朝南（依委託資料）。格局圖為委託方提供之示意圖，圖上原文標註「本格局圖僅供參考，仍需以現況格局為主」，本頁如實保留；已裁除門牌與屋主等不可公開資訊。實際格局與座向以現場、地政謄本與測量成果圖為準。</p>
   </section>
 
+  <!-- 生活圈：偵查隊實測（70-0901-01） -->
+  <section class="sec">
+    <div class="tag">生活圈實測</div>
+    <h2>走出社區有什麼</h2>
+    <div class="geo">
+
+      <div class="geo-item">
+        <div class="h"><span class="ic">🎓</span>學區</div>
+        <ul>
+          <li><b>三多國中</b><span>約 400 公尺</span></li>
+          <li><b>武林國小</b><span>約 1,100 公尺</span></li>
+        </ul>
+        <p class="geo-src">兩校學區依新北市 115 學年度各公立國民中小學學區一覽表逐字核對確認。學區以戶籍完整門牌與當學年度官方公告為準。</p>
+      </div>
+
+      <div class="geo-item">
+        <div class="h"><span class="ic">🚌</span>交通</div>
+        <ul>
+          <li><b>中華電信站</b><span>約 300 公尺</span></li>
+          <li><b>世紀站</b><span>約 400 公尺</span></li>
+          <li><b>公車路線</b><span>701、712、843、橘 26</span></li>
+          <li><b>捷運迴龍站</b><span>約 2,100 公尺</span></li>
+          <li><b>台鐵樹林車站</b><span>約 2,700 公尺</span></li>
+        </ul>
+        <p class="geo-src">距離依 Google 地圖實際量測。🔴 市面上有資料寫本案「鄰近樹林火車站」，實測步行約 2,700 公尺，這句話不成立，我不沿用。</p>
+      </div>
+
+      <div class="geo-item">
+        <div class="h"><span class="ic">🛒</span>市場與生活機能</div>
+        <ul>
+          <li><b>三多市場</b><span>約 300 公尺</span></li>
+          <li><b>獇寮公園</b><span>約 500 公尺</span></li>
+          <li><b>樹林興仁花園夜市</b><span>約 900 公尺</span></li>
+          <li><b>全聯福利中心</b><span>約 1,600 公尺</span></li>
+          <li><b>樹林國民運動中心</b><span>約 1,700 公尺</span></li>
+          <li><b>家樂福</b><span>約 2,100 公尺</span></li>
+          <li><b>樂生療養院迴龍院區</b><span>約 2,500 公尺</span></li>
+        </ul>
+        <p class="geo-src">距離依 Google 地圖實際量測。獇寮公園原為國防部光華營區改建，同一塊營區也劃出三多國中校地與產業專用區。</p>
+      </div>
+
+      <div class="geo-item">
+        <div class="h"><span class="ic">🏗️</span>未來建設</div>
+        <ul>
+          <li><b>捷運 LG19 站</b><span>約 700 公尺・中正路與三多路口附近</span></li>
+          <li><b>工程進度</b><span>45.44%（統計至 2026 年 6 月底）</span></li>
+          <li><b>三多7-1號道路</b><span>已完工通車・西起保安街二段</span></li>
+        </ul>
+        <p class="geo-src">捷運萬大－中和－樹林線第二期（土城樹林線）LG19 站，出入口 A、B 位置已納入官方都市計畫與都市設計審議文件；本線二期尚未通車，官方預定民國 120 年完工。站體實際完工樣貌以主管機關後續公告為準。工程進度數字來源：新北市政府。</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🔴 第一級風險：嫌惡設施（A0 白名單兩類之一，必須主動揭露） -->
+  <section class="sec">
+    <div class="tag">這件事我先講</div>
+    <h2>周邊 200 公尺，有這些</h2>
+    <div class="redbox">
+      <div class="rh">⚠️ 帶看前你就該知道</div>
+      <p class="why">這幾項你到現場一眼就會看到。與其讓你白跑一趟才發現，不如我現在先講——<b>能不能接受是你的事，講不講清楚是我的事。</b></p>
+      <ul>
+        <li><b>樹林區第二公墓及周邊墓區</b><span>距社區不到 100 公尺（依 Google 地圖）。社區基地北側緊鄰，圖資顯示南側與西側亦有墓區範圍。</span></li>
+        <li><b>慈鳳宮</b><span>直線不到 100 公尺。有無金爐待現場確認。</span></li>
+        <li><b>工業用地與樹林產業專用區廠區</b><span>直線不到 200 公尺。實際使用現況待現場確認。</span></li>
+      </ul>
+      <p class="tail">以上為外網官方圖資與 Google 地圖查證結果，查證日期 2026-09-01。現場 200 公尺步行勘查尚未完成；其餘嫌惡設施類別本輪外網查證未發現，<b>「未發現」不等於沒有</b>，以現場勘查與主管機關公告為準。帶看當天我會陪你把這幾項實際走一遍。</p>
+    </div>
+  </section>
+
   <!-- 優點：先給購買慾望 -->
   <section class="sec">
     <div class="tag">這間強在哪</div>
@@ -316,16 +433,22 @@ details.qa .a a{color:var(--warm);font-weight:800}
     </div>
   </section>
 
-  <!-- 首付款先算 -->
+  <!-- 首付與月付：讓他自己算錢夠不夠 -->
   <section class="sec">
-    <div class="tag">買之前先算自己</div>
-    <h2>1080 萬，要準備多少</h2>
-    <div class="pay-card">
-      <div class="pay-grid">
-        <div class="pay-box"><small>首付（自備款）</small><strong>216 萬</strong><span>總價 1080 萬 − 貸款 864 萬</span></div>
-        <div class="pay-box"><small>月付款</small><strong>33,847 元</strong><span>本息平均攤還</span></div>
-      </div>
-      <p class="pay-note">試算條件：貸款 8 成、30 年期、年利率 2.435%、無寬限期。這是預設值不是你的條件，實際以銀行核准為準；屋齡 32 年，出價前先做貸款預審。整理費用另計——完整的修繕＋清運＋入住總成本，在帶看行前資料裡一項一項列，約好帶看就發給你。</p>
+    <div class="tag">先算自己</div>
+    <h2>錢夠不夠，你自己看得出來</h2>
+    <p style="font-size:.9rem;color:var(--muted);margin-bottom:4px">銀行能貸幾成，每個人不一樣。四種成數的首付與月付我都算好了，你對照自己的狀況就知道這間扛不扛得住。</p>
+    <table class="loan-tbl">
+      <tr><th>貸款成數</th><th>你要準備的首付</th><th>每月要繳</th></tr>
+      <tr><td class="pct">7 成</td><td><b>324 萬</b></td><td><b>29,616</b> 元</td></tr>
+      <tr><td class="pct">7.5 成</td><td><b>270 萬</b></td><td><b>31,732</b> 元</td></tr>
+      <tr class="hi"><td class="pct">8 成</td><td><b>216 萬</b></td><td><b>33,847</b> 元</td></tr>
+      <tr><td class="pct">8.5 成</td><td><b>162 萬</b></td><td><b>35,963</b> 元</td></tr>
+    </table>
+    <p class="pay-note">試算條件：總價 1080 萬、30 年期、年利率 2.435%、無寬限期、本息平均攤還。<b>這些是預設值，不是你的條件</b>——成數、利率、年限每個人不一樣，實際以銀行核准為準。</p>
+    <div class="self-check">
+      <b>🔍 屋齡 32 年這件事，先講在前面。</b>老屋的核貸年限與成數，銀行通常會比新屋保守，你未必貸得到 8 成。所以順序是：<b>先做貸款預審，知道銀行給你多少，再決定要不要出價</b>——不要反過來。預審不用錢也不影響信用，我可以幫你約。<br><br>
+      另外，首付之外還要準備契稅、印花稅、代書費、規費、火險地震險，以及這間一定會發生的整理費用，上表都<b>沒有</b>計入。整理費用怎麼抓、每一項多少錢，在帶看行前資料裡一項一項列，約好帶看就發給你。
     </div>
   </section>
 
