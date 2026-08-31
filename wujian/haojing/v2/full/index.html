@@ -42,6 +42,11 @@ details.fold[open] summary .chev{transform:rotate(90deg)}
 details.fold .fold-body{padding:0 16px 16px}
 details.fold[open]{box-shadow:var(--shadow)}
 .tapnote{font-size:.82rem;color:var(--muted);margin:6px 2px 14px}
+details.qa{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:9px}
+details.qa summary{list-style:none;cursor:pointer;padding:13px 15px;font-weight:800;font-size:.95rem;display:flex;gap:8px}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::before{content:"Q";color:var(--warm);font-weight:900;flex:0 0 auto}
+details.qa .a{padding:0 15px 13px;font-size:.9rem;color:var(--muted)}
 .ending{background:var(--soft-trust);border-radius:var(--radius);padding:20px;font-size:.95rem;margin-top:8px}
 .ending b{display:block;color:var(--trust);margin-bottom:6px;font-size:1.05rem}
 .cta-block{margin:30px 0 10px;background:var(--trust);border-radius:var(--radius);padding:24px 20px;color:#fff;text-align:center}
@@ -277,6 +282,13 @@ table{border-collapse:collapse;width:100%;min-width:430px;font-size:.9rem}
       <p class="rs-note">算法：<strong>入住總成本＝開價 1080 萬＋修繕＋清運合計</strong>。銀行房貸的成數只算房價，本卡沿用上面試算卡的設定（貸款 8 成＝864 萬、30 年期、年利率 2.435%、無寬限期、本息平均攤還），貸款金額與月付款 33,847 元都不變；修繕預算若全額自備，首付就從 216 萬變成 <strong>234.4～257.4 萬</strong>（216 萬＋18.4～41.4 萬）。想把修繕費一起分攤，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。廚具、門窗、地板、全戶換管換線這些偵查表沒有整戶包價的工項不在合計內，所以這個數字是「最少要抓」，不是「全部」。</p>
     </div>
   </section>
+  </section>
+
+  <section>
+    <h2 style="font-size:1.3rem;font-weight:900;margin-bottom:10px">你可能還想問</h2>
+    <details class="qa"><summary>整理費可以貸款嗎？</summary><div class="a">可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。另有內政部修繕住宅貸款利息補貼（額度最高 80 萬、限持有一戶且使照逾 10 年，每年受理一次，資格與受理期間以國土署當年度公告為準）——入口連結在上面第 3 條風險卡裡。</div></details>
+    <details class="qa"><summary>除了首付，還有哪些錢要準備？</summary><div class="a">契稅、印花稅、代書費、規費、火險地震險，這些試算卡都未計入；加上上面「把修繕算進去」的整理費區間，才是你真正要準備的現金。出價前把這幾筆一起攤開算，不要只看首付。</div></details>
+    <details class="qa"><summary>屋主什麼時候搬走？我多久能入住？</summary><div class="a">現況屋主自住中，交屋日與搬遷期限在契約裡明訂；留置物哪些留、哪些搬走，看屋時逐項列成清單寫進契約——詳見上面第 5 條風險卡，這件事講清楚，清運費才不會變成你的。</div></details>
   </section>
 
   <div class="ending">
