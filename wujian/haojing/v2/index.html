@@ -88,6 +88,19 @@ details.qa summary::-webkit-details-marker{display:none}
 details.qa summary::before{content:"Q";color:var(--warm);font-weight:900;flex:0 0 auto}
 details.qa .a{padding:0 15px 13px;font-size:.9rem;color:var(--muted)}
 details.qa .a a{color:var(--warm);font-weight:800}
+/* ===== 看完影片的內心台詞 ===== */
+.mind{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 18px;margin:16px 0 4px}
+.mind .lead-in{font-size:.95rem;color:var(--muted);margin-bottom:16px;line-height:1.8}
+.mind .lead-in b{color:var(--ink)}
+.qbox{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+.qbox:first-of-type{border-top:none;padding-top:0;margin-top:0}
+.qbox .say{font-size:1rem;font-weight:900;color:var(--trust);display:flex;gap:8px;line-height:1.6}
+.qbox .say i{font-style:normal;flex:0 0 auto;opacity:.5}
+.qbox .flip{font-size:.9rem;margin-top:7px;line-height:1.85}
+.qbox .flip strong{color:var(--warm);font-weight:900}
+.qbox .tagline{display:inline-block;background:var(--soft-teal);color:var(--teal);font-size:.8rem;font-weight:800;padding:3px 11px;border-radius:999px;margin-top:8px}
+.mind .withyou{background:var(--soft-trust);border-radius:14px;padding:14px 16px;margin-top:18px;font-size:.92rem;line-height:1.85}
+.mind .withyou b{color:var(--trust)}
 /* ===== 建案級規格表 ===== */
 .spec{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:12px 0 4px}
 .spec table{width:100%;border-collapse:collapse;font-size:.9rem}
@@ -165,6 +178,44 @@ details.qa .a a{color:var(--warm);font-weight:800}
     </video>
   </div>
   <p class="video-note">現況實拍，沒有配樂、沒有調色、沒有修飾。</p>
+
+  <!-- 接住看完影片的焦慮：內心台詞→反轉 -->
+  <section class="sec">
+    <div class="tag">看完影片，你在想什麼</div>
+    <h2>那些東西，誰要收？</h2>
+    <div class="mind">
+      <p class="lead-in">我知道你剛剛看到什麼。滿滿的東西、舊舊的牆面、看起來要花很多錢才能住的樣子。<b>這幾個問題我每次帶看都被問，所以我先講。</b></p>
+
+      <div class="qbox">
+        <div class="say"><i>「</i>那些東西會清掉嗎？還是要我自己收？<i>」</i></div>
+        <div class="flip">會。屋內物品是<strong>屋主的生活現況，不是隨房子附贈的</strong>。交屋前清空可以直接寫進契約，留哪些、搬哪些逐項列成清單——這是談判條件，不是你的宿命。真的有大型家具要你處理，清運一車也就幾千塊，在總價前面是小數點。</div>
+        <span class="tagline">✓ 寫進契約就解決</span>
+      </div>
+
+      <div class="qbox">
+        <div class="say"><i>「</i>看起來這麼舊，是不是整間要重做？<i>」</i></div>
+        <div class="flip">你看到的舊，<strong>幾乎都是表面</strong>——牆面、地板、燈具、櫃子，這幾樣是裝修裡最便宜、最好處理的一層。真正貴的是你看不到的：結構、防水、管線、樑柱。<strong>髒是可以洗的，貴的是你看不到的東西。</strong>這間的順序剛好是好的——難看的在表面，該查的在下面，而下面那層我會帶你一項一項驗過。</div>
+        <span class="tagline">✓ 表面便宜・裡面才是重點</span>
+      </div>
+
+      <div class="qbox">
+        <div class="say"><i>「</i>那到底要花多少錢才能住人？<i>」</i></div>
+        <div class="flip">不要問「整間多少錢」，那個問題沒有答案，只會被報一個嚇人的數字。要拆成<strong>三層問</strong>：<br>①<strong>能不能住人</strong>——清運＋水電檢測＋衛浴防水，這層先做<br>②<strong>住得舒不舒服</strong>——油漆、燈具、開關，可以排隊慢慢做<br>③<strong>好不好看</strong>——系統櫃與風格裝修，獨立報價，跟前兩層分開<br>只有第①層是入住前一定要花的。<strong>每一層的公開報價區間我都查好了，含出處。</strong></div>
+        <span class="tagline">✓ 分三層估・錢才不會一次爆</span>
+      </div>
+
+      <div class="qbox">
+        <div class="say"><i>「</i>後續預算我要怎麼抓才不會爆？<i>」</i></div>
+        <div class="flip">先驗再估，順序不能反。<strong>驗屋報告出來才有估價的依據</strong>，沒驗就估等於猜；估價單要求拆三層、註明含不含拆除清運，拿兩家以上比對；驗出來的缺失可以回頭議價，或約定屋主修復、價金保留。<strong>整理費用是可以談進交易條件裡的，不是只能自己吞。</strong></div>
+        <span class="tagline">✓ 先驗→再估→回頭談價</span>
+      </div>
+
+      <div class="withyou">
+        <b>這些不用你一個人扛。</b>驗屋我陪你去、估價單我幫你約兩家比對、清空交屋和修繕條件我幫你寫進契約建議、交屋當天我陪你清點。<br><br>
+        <b>每一項要花多少錢、哪一站的報價、怎麼驗、風險由誰承擔——完整的費用表和拆解方式，在你約好帶看之後我直接發給你。</b>你不用先付出任何代價，就能先知道全部的數字。
+      </div>
+    </div>
+  </section>
 
   <!-- 建案級完整規格表 -->
   <section class="sec">
