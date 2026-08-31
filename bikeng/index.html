@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=ai-legible&utm_source=comment&utm_medium=referral&utm_id=32b11e4c-53da-4360-b250-ae75785f05e9
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>阿宏買房避坑透視器｜34條攻略＋買房20問</title>
+  <meta name="description" content="先看34條買房避坑攻略，再按下按鈕完成買房20問，快速整理購屋條件、財務準備與風險盲點。">
+  <meta name="theme-color" content="#0b2530">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://0930848000.com/bikeng/">
+<meta property="og:title" content="買房避坑透視器｜34 條攻略＋買房 20 問">
+<meta property="og:description" content="34 條買房避坑攻略、口袋檢查清單，加上看屋前該問自己的 20 個問題。新北房仲何志宏整理。">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:url" content="https://0930848000.com/bikeng/">
+<meta property="og:site_name" content="新北房仲 阿宏">
+  <style>
+    :root{
+      --bg:#071a22;
+      --panel:#0e2a35;
+      --panel-2:#113744;
+      --cyan:#67d4e6;
+      --cyan-2:#9ce8f2;
+      --orange:#f5ad42;
+      --cream:#f5f1e8;
+      --muted:#b8c9cf;
+      --line:rgba(103,212,230,.27);
+      --line-2:rgba(245,173,66,.28);
+      --danger:#ffd08a;
+      --shadow:0 24px 70px rgba(0,0,0,.34);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--cream);
+      background:
+        linear-gradient(rgba(103,212,230,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(103,212,230,.035) 1px, transparent 1px),
+        radial-gradient(circle at 12% 0%, rgba(103,212,230,.13), transparent 32%),
+        radial-gradient(circle at 88% 10%, rgba(245,173,66,.08), transparent 26%),
+        var(--bg);
+      background-size:32px 32px,32px 32px,auto,auto,auto;
+      font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+      line-height:1.7;
+    }
+    button,input{font:inherit}
+    a{text-decoration:none;color:inherit}
+    .shell{width:min(1120px,calc(100% - 32px));margin:auto}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(7,26,34,.86);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(14px);
+    }
+    .topbar-inner{
+      height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+    }
+    .brand-mini{font-weight:900;letter-spacing:.04em;color:var(--cyan-2)}
+    .brand-mini span{color:var(--orange)}
+    .nav-btn{
+      border:1px solid var(--line);background:rgba(103,212,230,.08);color:var(--cyan-2);
+      border-radius:999px;padding:9px 15px;font-weight:800;cursor:pointer
+    }
+    .hero{padding:78px 0 56px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+    .kicker{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid var(--line);border-radius:999px;padding:7px 13px;
+      color:var(--cyan-2);font-size:14px;font-weight:800;background:rgba(103,212,230,.07)
+    }
+    h1{font-size:clamp(42px,7vw,78px);line-height:1.08;letter-spacing:-.045em;margin:18px 0}
+    h1 strong{color:var(--orange)}
+    .lead{font-size:clamp(18px,2.2vw,23px);color:var(--muted);max-width:740px}
+    .hero-actions,.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+    .btn{
+      border:0;border-radius:14px;padding:15px 21px;font-weight:900;cursor:pointer;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.18s ease
+    }
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.04)}
+    .btn-primary{background:linear-gradient(135deg,var(--orange),#ffd483);color:#10242b;box-shadow:0 12px 30px rgba(245,173,66,.2)}
+    .btn-secondary{background:rgba(103,212,230,.09);color:var(--cyan-2);border:1px solid var(--line)}
+    .blueprint{
+      min-height:420px;border:1px solid var(--line);border-radius:26px;padding:22px;position:relative;
+      background:
+        linear-gradient(rgba(103,212,230,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(103,212,230,.05) 1px,transparent 1px),
+        linear-gradient(145deg,rgba(17,55,68,.96),rgba(7,26,34,.94));
+      background-size:24px 24px,24px 24px,auto;
+      box-shadow:var(--shadow);overflow:hidden
+    }
+    .bp-frame{position:absolute;inset:14px;border:1px solid rgba(103,212,230,.34);pointer-events:none}
+    .bp-title{font-size:28px;font-weight:950;color:var(--cyan-2);position:relative;z-index:2}
+    .bp-sub{color:var(--orange);font-weight:900;position:relative;z-index:2}
+    .venn{position:relative;height:265px;margin-top:18px}
+    .circle{
+      position:absolute;width:170px;height:170px;border:2px solid var(--cyan);
+      border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;
+      color:var(--cream);font-weight:900;background:rgba(103,212,230,.04)
+    }
+    .c1{left:12%;top:0}.c2{right:12%;top:0}.c3{left:31%;top:92px;border-color:var(--orange)}
+    .center-label{
+      position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);
+      width:110px;text-align:center;color:var(--orange);font-weight:950;z-index:3
+    }
+    section{padding:54px 0}
+    .section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:24px}
+    .section-head h2{font-size:clamp(30px,4.6vw,52px);line-height:1.16;margin:0;color:var(--cyan-2)}
+    .section-head p{max-width:650px;color:var(--muted);margin:0}
+    .guide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    details.guide{
+      border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(14,42,53,.95),rgba(8,29,37,.98));
+      overflow:hidden;box-shadow:0 12px 35px rgba(0,0,0,.15)
+    }
+    details.guide[open]{border-color:rgba(245,173,66,.42)}
+    details.guide summary{
+      list-style:none;cursor:pointer;padding:21px;display:flex;align-items:center;gap:14px;font-weight:950;font-size:20px
+    }
+    details.guide summary::-webkit-details-marker{display:none}
+    .guide-no{
+      width:40px;height:40px;display:grid;place-items:center;border-radius:12px;
+      border:1px solid var(--line);color:var(--cyan-2);background:rgba(103,212,230,.08);flex:0 0 auto
+    }
+    .guide-title{flex:1}
+    .guide-plus{color:var(--orange);font-size:24px}
+    .tips{padding:0 20px 20px;display:grid;gap:10px}
+    .tip{
+      display:grid;grid-template-columns:44px 1fr;gap:10px;padding:13px 14px;
+      border-radius:14px;background:rgba(255,255,255,.035);border:1px solid rgba(103,212,230,.12)
+    }
+    .tip-id{font-weight:950;color:var(--orange)}
+    .tip b{display:block;color:var(--cream);margin-bottom:2px}
+    .tip span{color:var(--muted);font-size:15px}
+    .pocket{
+      border:1px solid var(--line-2);border-radius:24px;padding:26px;
+      background:linear-gradient(145deg,rgba(245,173,66,.08),rgba(14,42,53,.9))
+    }
+    .pocket h3{font-size:30px;margin:0 0 16px;color:var(--orange)}
+    .pocket-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+    .pocket-item{padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(7,26,34,.55)}
+    .pocket-item strong{display:block;color:var(--cyan-2);font-size:20px}
+    .pocket-item span{color:var(--muted);font-size:14px}
+    .quiz-gate{
+      text-align:center;border:1px dashed var(--line);border-radius:28px;padding:42px 22px;
+      background:rgba(14,42,53,.72)
+    }
+    .quiz-gate h2{font-size:clamp(30px,4.5vw,48px);margin:0 0 10px;color:var(--cyan-2)}
+    .quiz-gate p{color:var(--muted);max-width:720px;margin:0 auto}
+    #quizApp{display:none;padding-top:20px}
+    .quiz-panel{
+      border:1px solid var(--line);border-radius:26px;background:linear-gradient(180deg,rgba(14,42,53,.97),rgba(7,26,34,.99));
+      box-shadow:var(--shadow);overflow:hidden
+    }
+    .quiz-top{padding:18px 22px;border-bottom:1px solid var(--line)}
+    .quiz-meta{display:flex;justify-content:space-between;gap:16px;color:var(--muted);font-size:14px}
+    .progress{height:10px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:10px}
+    .progress span{height:100%;display:block;width:5%;background:linear-gradient(90deg,var(--cyan),var(--orange));transition:.25s ease}
+    .question-screen{padding:34px 22px 26px;min-height:430px;display:flex;flex-direction:column}
+    .q-kicker{color:var(--orange);font-weight:900;font-size:14px;letter-spacing:.08em}
+    .q-title{font-size:clamp(25px,4vw,38px);line-height:1.28;margin:8px 0 20px}
+    .q-help{color:var(--muted);margin-top:-10px;margin-bottom:18px}
+    .choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .choice{
+      border:1px solid var(--line);border-radius:16px;padding:15px 16px;text-align:left;
+      background:rgba(103,212,230,.04);color:var(--cream);font-weight:800;cursor:pointer;transition:.16s ease
+    }
+    .choice:hover,.choice.selected{border-color:var(--orange);background:rgba(245,173,66,.11);color:#fff}
+    .quiz-nav{margin-top:auto;padding-top:25px;display:flex;justify-content:space-between;gap:12px}
+    .quiz-nav .btn{min-width:120px}
+    .contact-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+    .contact-fields input{
+      width:100%;padding:14px 15px;border-radius:14px;border:1px solid var(--line);
+      background:rgba(0,0,0,.18);color:var(--cream);outline:none
+    }
+    .contact-fields input:focus{border-color:var(--orange)}
+    .privacy{font-size:13px;color:var(--muted);margin-top:12px}
+    #resultPanel{display:none}
+    .result-wrap{padding:30px 22px}
+    .result-card{
+      border:1px solid var(--line-2);border-radius:22px;padding:24px;background:rgba(245,173,66,.07)
+    }
+    .result-card h2{font-size:36px;line-height:1.2;margin:0 0 12px;color:var(--orange)}
+    .result-score{font-size:54px;font-weight:950;color:var(--cyan-2);line-height:1}
+    .result-bars{display:grid;gap:12px;margin:22px 0}
+    .result-line{display:grid;grid-template-columns:115px 1fr 42px;gap:12px;align-items:center}
+    .mini-bar{height:9px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+    .mini-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--orange))}
+    .summary-box{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+    .summary-item{padding:13px;border:1px solid var(--line);border-radius:14px;background:rgba(7,26,34,.55)}
+    .summary-item small{display:block;color:var(--muted)}
+    .summary-item strong{color:var(--cream)}
+    .final-cta{
+      text-align:center;margin-top:24px;padding:30px 20px;border:1px solid var(--line);
+      border-radius:22px;background:
+        radial-gradient(circle at 80% 10%,rgba(245,173,66,.16),transparent 30%),
+        rgba(14,42,53,.9)
+    }
+    .final-cta h3{font-size:30px;margin:0 0 8px;color:var(--cyan-2)}
+    .final-cta p{color:var(--muted);max-width:720px;margin:0 auto}
+    .signature{margin-top:22px;font-size:20px;font-weight:950;color:var(--orange)}
+    footer{padding:28px 0 50px;color:rgba(184,201,207,.7);text-align:center;font-size:13px}
+    .toast{
+      position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);
+      background:#f6d18f;color:#10242b;padding:11px 16px;border-radius:12px;font-weight:900;
+      opacity:0;pointer-events:none;transition:.2s ease;z-index:99
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .hidden{display:none!important}
+    @media(max-width:860px){
+      .hero-grid,.guide-grid{grid-template-columns:1fr}
+      .blueprint{min-height:380px}
+      .pocket-grid{grid-template-columns:1fr 1fr}
+      .choice-grid,.summary-box,.contact-fields{grid-template-columns:1fr}
+      .section-head{align-items:start;flex-direction:column}
+    }
+    @media(max-width:520px){
+      .shell{width:min(100% - 22px,1120px)}
+      .hero{padding:48px 0 38px}
+      .hero-actions,.cta-row{flex-direction:column}
+      .btn{width:100%}
+      .circle{width:145px;height:145px;font-size:14px}
+      .c1{left:1%}.c2{right:1%}.c3{left:27%;top:100px}
+      .pocket-grid{grid-template-columns:1fr}
+      .question-screen{padding:26px 15px 20px}
+      .quiz-nav{flex-direction:column-reverse}
+      .result-line{grid-template-columns:88px 1fr 34px;font-size:13px}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand-mini">何志宏（阿宏）<span>｜買房透視器</span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+        <a class="nav-btn" href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">電子名片</a>
+        <button class="nav-btn" type="button" onclick="openQuiz()">開始買房20問</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="kicker">34 條買房避坑攻略＋潛藏式電子問卷</div>
+          <h1>買房最怕的不是買貴<br><strong>是買錯了還不知道</strong></h1>
+          <p class="lead">先把漏水、事故屋、坪數公設、行情出價與簽約流程看懂，再按下按鈕完成買房 20 問，整理出真正適合你的購屋方向</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#guide">先看完整攻略</a>
+            <button class="btn btn-secondary" type="button" onclick="openQuiz()">直接開始買房20問</button>
+            <a class="btn btn-secondary" href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">查看阿宏電子名片</a>
+          </div>
+        </div>
+
+        <div class="blueprint" aria-label="預算、理想條件與可接受缺點的交集示意">
+          <div class="bp-frame"></div>
+          <div class="bp-title">買房第一道防線</div>
+          <div class="bp-sub">放棄「完美房子」的幻想</div>
+          <div class="venn">
+            <div class="circle c1">預算範圍</div>
+            <div class="circle c2">理想條件</div>
+            <div class="circle c3">可接受的缺點</div>
+            <div class="center-label">真正能買的房</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="guide">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <h2>34 條買房避坑攻略</h2>
+          </div>
+          <p>每一區都可以點開查看，先拿乾貨，不先逼你填資料</p>
+        </div>
+
+        <div class="guide-grid">
+          <details class="guide" open>
+            <summary><span class="guide-no">01</span><span class="guide-title">立體看屋與情緒判斷</span><span class="guide-plus">＋</span></summary>
+            <div class="tips">
+              <div class="tip"><div class="tip-id">#1</div><div><b>看屋不要只聽優點</b><span>缺點要自己查、自己看、自己比對</span></div></div>
+              <div class="tip"><div class="tip-id">#2</div><div><b>嫌惡設施要看時段</b><span>市場、學校、宮廟與交通，不同時間感受差很多</span></div></div>
+              <div class="tip"><div class="tip-id">#3</div><div><b>看完一定要自己再跑一次</b><span>白天、晚上、尖峰與下雨天都可能看到不同真相</span></div></div>
+              <div class="tip"><div class="tip-id">#7</div><div><b>採光一定要關燈看</b><span>燈全開時，很容易高估自然採光</span></div></div>
+              <div class="tip"><div class="tip-id">#8</div><div><b>喜歡，不等於要立刻出價</b><span>先回家用預算、條件與風險重新檢查</span></div></div>
+              <div class="tip"><div class="tip-id">#28</div><div><b>看房最好分三次</b><span>白天看採光、晚上看鄰居與噪音、下雨天看滲排水</span></div></div>
+            </div>
+          </details>
+
+          <details class="guide">
+            <summary><span class="guide-no">02</span><span class="guide-title">漏水、壁癌與外牆</span><span class="guide-plus">＋</span></summary>
+            <div class="tips">
+              <div class="tip"><div class="tip-id">#4</div><div><b>不能只相信屋主勾選</b><span>現況說明書是屋主認知，不是專業檢測報告</span></div></div>
+              <div class="tip"><div class="tip-id">#5</div><div><b>看牆角、天花板與窗框</b><span>注意水痕、膨拱、裂縫與油漆色差</span></div></div>
+              <div class="tip"><div class="tip-id">#6</div><div><b>壁癌不是單純外觀問題</b><span>可能代表滲水、防水層失效或牆體濕氣過重</span></div></div>
+              <div class="tip"><div class="tip-id">補1</div><div><b>室內外要一起看</b><span>外牆生苔、水漬、磁磚剝落，或某面牆特別新，都要提高警覺</span></div></div>
+            </div>
+          </details>
+
+          <details class="guide">
+            <summary><span class="guide-no">03</span><span class="guide-title">事故屋與資訊斷層</span><span class="guide-plus">＋</span></summary>
+            <div class="tips">
+              <div class="tip"><div class="tip-id">#9</div><div><b>揭露有法律與知情範圍</b><span>不是你介意的事情，都一定會寫在說明書上</span></div></div>
+              <div class="tip"><div class="tip-id">#10</div><div><b>年代越久越難查</b><span>老屋鄰居更替，早期事件可能形成資訊斷層</span></div></div>
+              <div class="tip"><div class="tip-id">#11</div><div><b>自己問管理員與鄰居</b><span>比起直接問「有沒有死過人」，可改問是否曾有警消大動作處理</span></div></div>
+              <div class="tip"><div class="tip-id">補2</div><div><b>問對人、問對問題</b><span>資深保全、里長與附近老店家，常比網路更快掌握社區脈絡</span></div></div>
+            </div>
+          </details>
+
+          <details class="guide">
+            <summary><span class="guide-no">04</span><span class="guide-title">一手屋與產權查證</span><span class="guide-plus">＋</span></summary>
+            <div class="tips">
+              <div class="tip"><div class="tip-id">#12</div><div><b>「一手屋」不一定是真一手</b><span>真正一手屋通常是直接向建商或原始起造人購買，且未曾過戶</span></div></div>
+              <div class="tip"><div class="tip-id">#13</div><div><b>要看登記資料</b><span>比對建物謄本、原因發生日期與使用執照竣工日期</span></div></div>
+              <div class="tip"><div class="tip-id">#14</div><div><b>查登記次序</b><span>想知道過了幾手，不能靠口頭說法，要查登記順序</span></div></div>
+            </div>
+          </details>
+
+          <details class="guide">
+            <summary><span class="guide-no">05</span><span class="guide-title">權狀坪數、公設與陽台外推</span><span class="guide-plus">＋</span></summary>
+            <div class="tips">
+              <div class="tip"><div class="tip-id">#15</div><div><b>幾乎沒有真正零公設</b><span>多數產品只是公設低，不代表完全沒有共有部分</span></div></div>
+              <div class="tip"><div class="tip-id">#16</div><div><b>權狀坪數不等於室內可用坪數</b><span>主建物、附屬建物與共有部分要分開看</span></div></div>
+              <div class="tip"><div class="tip-id">#17</div><div><b>在意坪效就實際丈量</b><span>用家具尺寸或請設計師丈量，比想像更可靠</span></div></div>
+              <div class="tip"><div class="tip-id">#18</div><div><b>問清楚公設買到什麼</b><span>門廳、機房、梯廳、車道、管理空間，都可能被分攤</span></div></div>
+              <div class="tip"><div class="tip-id">#19</div><div><b>沒買車位也可能分到車道</b><span>要確認地下室與車道面積分攤是否合理</span></div></div>
+              <div class="tip"><div class="tip-id">補3</div><div><b>陽台外推不是免費空間</b><span>可能涉及違建，拆除或重建時仍以合法權狀面積為準</span></div></div>
+            </div>
+          </details>
+
+          <details class="guide">
+            <summary><span class="guide-no">06</span><span class="guide-title">行情、銀行鑑價與出價</span><span class="guide-plus">＋</span></summary>
+            <div class="tips">
+              <div class="tip"><div class="tip-id">#20</div><div><b>行情不能只聽口頭說法</b><span>自己查實價登錄，留下可比對的書面資料</span></div></div>
+              <div class="tip"><div class="tip-id">#21</div><div><b>至少交叉比對三種來源</b><span>官方實價登錄、比價平台與社區成交資料一起看</span></div></div>
+              <div class="tip"><div class="tip-id">#22</div><div><b>先查銀行鑑價</b><span>貸款成數通常看鑑價，不是只看成交價</span></div></div>
+              <div class="tip"><div class="tip-id">#26</div><div><b>不要只問底價</b><span>改問合理成交區間與可能談判位置</span></div></div>
+              <div class="tip"><div class="tip-id">#27</div><div><b>出價要先留加價空間</b><span>先抓行情天花板，再規劃自己的談判節奏</span></div></div>
+              <div class="tip"><div class="tip-id">補4</div><div><b>底價是心理期待，不是市場價值</b><span>同社區近半年成交上下約 5%，可作為初步談判區間，不代表保證成交</span></div></div>
+            </div>
+          </details>
+
+          <details class="guide">
+            <summary><span class="guide-no">07</span><span class="guide-title">斡旋、簽約與交屋</span><span class="guide-plus">＋</span></summary>
+            <div class="tips">
+              <div class="tip"><div class="tip-id">#23</div><div><b>下斡旋前先拿不動產說明書</b><span>不要等到簽約後才補看關鍵資料</span></div></div>
+              <div class="tip"><div class="tip-id">#24</div><div><b>下斡旋前要有成交準備</b><span>屋主一旦接受，就可能進入成交流程</span></div></div>
+              <div class="tip"><div class="tip-id">#25</div><div><b>撤斡旋最好親自處理</b><span>避免送達時間與是否已簽收的爭議</span></div></div>
+              <div class="tip"><div class="tip-id">#29</div><div><b>撥款前最後一次看屋</b><span>家具清空後，更容易看出原本被遮住的問題</span></div></div>
+              <div class="tip"><div class="tip-id">#30</div><div><b>家具家電要白紙黑字</b><span>拍照列冊、註明品牌型號與交付狀態</span></div></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="pocket">
+          <h3>買房透視器｜口袋檢查清單</h3>
+          <div class="pocket-grid">
+            <div class="pocket-item"><strong>1</strong><span>跨時段驗證，日夜雨天都要看</span></div>
+            <div class="pocket-item"><strong>2</strong><span>看窗框、牆角、壁癌與外牆水痕</span></div>
+            <div class="pocket-item"><strong>3</strong><span>查謄本與登記次序，不迷信話術</span></div>
+            <div class="pocket-item"><strong>4</strong><span>拆解權狀與公設，丈量實際空間</span></div>
+            <div class="pocket-item"><strong>5</strong><span>實價＋鑑價抓區間，不死問底價</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quizGate">
+      <div class="shell">
+        <div class="quiz-gate">
+          <h2>看完乾貨，再做你的買房 20 問</h2>
+          <p>問卷不會直接攤在頁面上，只有按下按鈕才會開始，一題一題回答，最後整理出購屋階段、財務準備度與最需要補強的風險</p>
+          <div class="cta-row" style="justify-content:center">
+            <button class="btn btn-primary" type="button" onclick="openQuiz()">開始我的買房20問</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quizApp">
+      <div class="shell">
+        <form id="buyerForm" name="buy-house-quiz" method="POST">
+          <input type="hidden" name="form-name" value="buy-house-quiz">
+          <p class="hidden"><label>不要填寫：<input name="bot-field"></label></p>
+          <input type="hidden" name="購屋身分" id="f1">
+          <input type="hidden" name="購屋目的" id="f2">
+          <input type="hidden" name="目前進度" id="f3">
+          <input type="hidden" name="預計購屋時間" id="f4">
+          <input type="hidden" name="主要區域" id="f5">
+          <input type="hidden" name="產品類型" id="f6">
+          <input type="hidden" name="總預算" id="f7">
+          <input type="hidden" name="頭期款" id="f8">
+          <input type="hidden" name="每月房貸安全線" id="f9">
+          <input type="hidden" name="收入結構" id="f10">
+          <input type="hidden" name="貸款預審" id="f11">
+          <input type="hidden" name="可接受屋齡" id="f12">
+          <input type="hidden" name="房數需求" id="f13">
+          <input type="hidden" name="車位需求" id="f14">
+          <input type="hidden" name="第一優先條件" id="f15">
+          <input type="hidden" name="最不能接受" id="f16">
+          <input type="hidden" name="決策者" id="f17">
+          <input type="hidden" name="目前最大困擾" id="f18">
+          <input type="hidden" name="希望協助" id="f19">
+          <input type="hidden" name="後續方式" id="f20">
+          <input type="hidden" name="問卷結果" id="resultField">
+
+          <div class="quiz-panel">
+            <div class="quiz-top">
+              <div class="quiz-meta">
+                <span>阿宏買房 20 問</span>
+                <span id="progressText">第 1 題／共 20 題</span>
+              </div>
+              <div class="progress"><span id="progressBar"></span></div>
+            </div>
+
+            <div id="questionScreen" class="question-screen">
+              <div class="q-kicker" id="qKicker">購屋定位</div>
+              <div class="q-title" id="qTitle"></div>
+              <div class="q-help" id="qHelp"></div>
+              <div class="choice-grid" id="choiceGrid"></div>
+
+              <div id="contactArea" class="hidden">
+                <div class="contact-fields">
+                  <input type="text" name="姓名稱呼" id="contactName" placeholder="姓名／稱呼，可不填">
+                  <input type="text" name="電話或LINE" id="contactValue" placeholder="電話或 LINE ID，可不填">
+                </div>
+                <div class="privacy">聯絡方式為選填，只用於回覆本次購屋需求，不會在網站公開</div>
+              </div>
+
+              <div class="quiz-nav">
+                <button type="button" class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()">上一題</button>
+                <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">下一題</button>
+              </div>
+            </div>
+
+            <div id="resultPanel">
+              <div class="result-wrap">
+                <div class="result-card">
+                  <div class="q-kicker">你的買房初步診斷</div>
+                  <h2 id="resultTitle"></h2>
+                  <div class="result-score"><span id="readyScore">0</span><small style="font-size:18px;color:var(--muted)">／100</small></div>
+                  <p id="resultText"></p>
+
+                  <div class="result-bars">
+                    <div class="result-line"><span>財務準備</span><div class="mini-bar"><span id="financeBar"></span></div><b id="financeNum"></b></div>
+                    <div class="result-line"><span>決策清晰</span><div class="mini-bar"><span id="decisionBar"></span></div><b id="decisionNum"></b></div>
+                    <div class="result-line"><span>風險意識</span><div class="mini-bar"><span id="riskBar"></span></div><b id="riskNum"></b></div>
+                  </div>
+
+                  <div class="summary-box" id="summaryBox"></div>
+
+                  <div id="reqOut" hidden style="margin-top:18px;background:#fff;border:2px solid #0b2530;border-radius:14px;padding:16px 18px">
+                    <h3 style="margin:0 0 6px;font-size:17px">把這張需求單傳給我</h3>
+                    <p style="margin:0 0 12px;font-size:14px;line-height:1.75;opacity:.8">你填的內容<strong>沒有送到任何伺服器</strong>，只在這台裝置上。按複製，貼到 LINE 傳給我，我照這張單幫你找，不用你再講一次。</p>
+                    <pre id="reqText" style="white-space:pre-wrap;word-break:break-word;font-size:13.5px;line-height:1.8;background:#f5f7f8;border:1px solid #dde3e5;border-radius:10px;padding:12px 14px;margin:0 0 12px;max-height:260px;overflow:auto"></pre>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap">
+                      <button type="button" onclick="copyRequest()" style="flex:1 1 150px;padding:12px 16px;font-size:15px;font-weight:800;font-family:inherit;background:#0b2530;color:#fff;border:none;border-radius:10px;cursor:pointer">複製需求單</button>
+                      <a href="https://line.me/R/ti/p/@798ulmws" target="_blank" rel="noopener" style="flex:1 1 150px;padding:12px 16px;font-size:15px;font-weight:800;text-align:center;background:#06C755;color:#fff;text-decoration:none;border-radius:10px">用 LINE 傳給阿宏</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="final-cta">
+                  <h3>有疑問，可以加入鴻觀資產交流社</h3>
+                  <p>問卷只是初步整理，真正要出價前，還是要回到物件、行情、貸款與文件逐項確認</p>
+                  <div class="cta-row" style="justify-content:center">
+                    <a class="btn btn-primary" href="https://line.me/ti/g2/pZKH6Eemjn8O9Ld08ILLpSulELvi8GDNeynb-g?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">加入鴻觀資產交流社</a>
+                    <a class="btn btn-secondary" href="https://0930848000.com/mingpian/" target="_blank" rel="noopener">查看阿宏電子名片</a>
+                  </div>
+                  <div class="signature">阿宏賣房不賣夢，陪你完成夢，但不陪你做錯夢</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">何志宏（阿宏）｜不動產經紀營業員｜住商不動產樹林站前｜鴻石不動產經紀有限公司</div>
+  </footer>
+
+  <div id="toast" class="toast">已記錄</div>
+
+  <script>
+    const questions = [
+      {group:"購屋定位",title:"你這次買房的身分是？",help:"先確認角色，後面的預算與決策邏輯才不會混在一起",field:"f1",opts:["第一次買房","換屋","投資置產","幫家人買","先研究，還沒確定"]},
+      {group:"購屋定位",title:"這次買房最主要的目的？",help:"只能先選最主要的一個",field:"f2",opts:["自己住","結婚成家","小孩就學","換大空間","搬近家人","收租／資產配置"]},
+      {group:"購屋進度",title:"你目前走到哪一個階段？",help:"不同階段，現在最該處理的事情不同",field:"f3",opts:["剛開始研究","已經在看房","已經看中一間","準備出價","準備下斡旋","已簽約等交屋"]},
+      {group:"購屋進度",title:"你希望多久內買到？",help:"時間越短，越需要先把條件與財務底線定清楚",field:"f4",opts:["3個月內","3～6個月","6～12個月","一年以上","沒有時間壓力"]},
+      {group:"地點選擇",title:"你目前最想買哪一區？",help:"先選主要區域，結果頁會幫你整理",field:"f5",opts:["樹林","板橋","新莊","土城","中和","三峽","其他新北","還沒確定"]},
+      {group:"產品選擇",title:"你最想買哪一種房子？",help:"產品不同，公設、屋況、管理與貸款風險也不同",field:"f6",opts:["電梯大樓","華廈","公寓","透天","一樓住店","預售屋","還沒確定"]},
+      {group:"財務準備",title:"你的總預算大約落在哪裡？",help:"用家庭可以承受的總價回答，不要只看銀行願意借多少",field:"f7",opts:["1000萬以下","1000～1500萬","1500～2000萬","2000～2500萬","2500萬以上","還沒算清楚"]},
+      {group:"財務準備",title:"頭期款目前準備到哪裡？",help:"除了頭期款，也要預留稅費、仲介費與裝修緩衝",field:"f8",opts:["已經準備好","大致準備好，還差一點","需要家人支援","還在存","不知道要準備多少"]},
+      {group:"財務準備",title:"你能接受的每月房貸安全線？",help:"不要選銀行上限，要選家庭現金流不會失控的數字",field:"f9",opts:["3萬元以下","3～5萬元","5～8萬元","8萬元以上","還沒算過"]},
+      {group:"財務準備",title:"家庭主要收入結構是？",help:"收入穩定度會直接影響貸款與風險承受力",field:"f10",opts:["單一固定薪資","雙薪固定收入","自營／接案","固定薪資＋業績獎金","收入波動較大"]},
+      {group:"貸款準備",title:"你做過銀行貸款預審或初估嗎？",help:"成交價不等於銀行鑑價，先問清楚能避免資金缺口",field:"f11",opts:["已完成預審","問過銀行，大致知道","只聽房仲說過","完全還沒問","我以為成交價就是貸款基準"]},
+      {group:"物件條件",title:"你可以接受的屋齡？",help:"屋齡越高，越要把外牆、管線、防水與社區修繕一起看",field:"f12",opts:["5年內","5～15年","15～30年","30年以上也可以","只要屋況好都能談","還不會判斷"]},
+      {group:"物件條件",title:"你最基本的房數需求？",help:"先抓必要需求，不要把理想清單全部當成必要條件",field:"f13",opts:["1房","2房","3房","4房以上","格局彈性比房數重要"]},
+      {group:"物件條件",title:"車位對你來說有多重要？",help:"車位會影響總價、轉手性與社區公設分攤",field:"f14",opts:["一定要平面車位","機械車位也可以","有車位就好","不需要車位","目前還不確定"]},
+      {group:"決策排序",title:"買房時，你第一優先看什麼？",help:"只能選一個，這就是你真正的核心條件",field:"f15",opts:["總價","地點","交通","格局坪效","採光通風","學區","未來轉手性","屋況安全"]},
+      {group:"風險底線",title:"哪一個缺點是你最不能接受的？",help:"買房沒有完美，先知道自己的拒絕線",field:"f16",opts:["漏水壁癌","事故屋疑慮","噪音","採光差","屋齡太高","公設太高","貸款不足","轉手性差"]},
+      {group:"決策結構",title:"最後會一起做決定的人有誰？",help:"越早把真正決策者拉進來，越不容易看了很多間又推翻",field:"f17",opts:["我自己決定","夫妻／伴侶","父母或長輩","全家一起","出資者另有其人"]},
+      {group:"目前卡點",title:"你現在買房最大的困擾是？",help:"這一題會決定最後給你的補強方向",field:"f18",opts:["不知道買哪一區","不知道預算抓多少","怕買貴","怕屋況踩雷","怕貸款不足","看很多間都無法決定","已看中但不敢出價"]},
+      {group:"需要協助",title:"你最希望阿宏先幫你看哪一件事？",help:"這不是承諾成交，只是先釐清你現在最需要什麼",field:"f19",opts:["購屋需求整理","區域與產品選擇","行情與出價區間","屋況避坑","貸款壓力","斡旋與簽約流程"]},
+      {group:"最後一步",title:"完成後，你希望用什麼方式繼續？",help:"聯絡方式可以不填，仍可直接看結果與社群入口",field:"f20",opts:["請阿宏聯絡我","我先加入鴻觀資產交流社","我先看電子名片","先看結果，暫時不用聯絡"]}
+    ];
+
+    const answers = new Array(questions.length).fill("");
+    let current = 0;
+
+    function openQuiz(){
+      document.getElementById("quizApp").style.display="block";
+      renderQuestion();
+      setTimeout(()=>document.getElementById("quizApp").scrollIntoView({behavior:"smooth"}),80);
+    }
+
+    function renderQuestion(){
+      const q=questions[current];
+      document.getElementById("qKicker").textContent=q.group;
+      document.getElementById("qTitle").textContent=q.title;
+      document.getElementById("qHelp").textContent=q.help;
+      document.getElementById("progressText").textContent=`第 ${current+1} 題／共 ${questions.length} 題`;
+      document.getElementById("progressBar").style.width=`${((current+1)/questions.length)*100}%`;
+
+      const grid=document.getElementById("choiceGrid");
+      grid.innerHTML="";
+      q.opts.forEach(opt=>{
+        const b=document.createElement("button");
+        b.type="button";
+        b.className="choice"+(answers[current]===opt?" selected":"");
+        b.textContent=opt;
+        b.onclick=()=>{
+          answers[current]=opt;
+          document.getElementById(q.field).value=opt;
+          [...grid.children].forEach(x=>x.classList.remove("selected"));
+          b.classList.add("selected");
+          showToast("已記錄");
+        };
+        grid.appendChild(b);
+      });
+
+      document.getElementById("prevBtn").style.visibility=current===0?"hidden":"visible";
+      document.getElementById("nextBtn").textContent=current===questions.length-1?"送出並看結果":"下一題";
+      document.getElementById("contactArea").classList.toggle("hidden",current!==questions.length-1);
+    }
+
+    function prevQuestion(){
+      if(current>0){current--;renderQuestion()}
+    }
+
+    function nextQuestion(){
+      if(!answers[current]){
+        showToast("請先選一個答案");
+        return;
+      }
+      if(current<questions.length-1){
+        current++;renderQuestion();
+        document.getElementById("quizApp").scrollIntoView({behavior:"smooth",block:"start"});
+      }else{
+        finishQuiz();
+      }
+    }
+
+    function calcScores(){
+      let finance=20, decision=20, risk=20;
+
+      const budget=answers[6], down=answers[7], mortgage=answers[8], income=answers[9], loan=answers[10];
+      if(budget!=="還沒算清楚") finance+=15;
+      if(["已經準備好","大致準備好，還差一點"].includes(down)) finance+=15;
+      if(mortgage!=="還沒算過") finance+=15;
+      if(["單一固定薪資","雙薪固定收入","固定薪資＋業績獎金"].includes(income)) finance+=10;
+      if(["已完成預審","問過銀行，大致知道"].includes(loan)) finance+=25;
+
+      const stage=answers[2], timeline=answers[3], area=answers[4], product=answers[5], priority=answers[14], decider=answers[16];
+      if(area!=="還沒確定") decision+=15;
+      if(product!=="還沒確定") decision+=15;
+      if(priority) decision+=15;
+      if(decider) decision+=15;
+      if(timeline!=="沒有時間壓力") decision+=10;
+      if(["已經在看房","已經看中一間","準備出價","準備下斡旋","已簽約等交屋"].includes(stage)) decision+=10;
+
+      const age=answers[11], reject=answers[15], pain=answers[17], help=answers[18];
+      if(age!=="還不會判斷") risk+=20;
+      if(reject) risk+=20;
+      if(pain) risk+=20;
+      if(["行情與出價區間","屋況避坑","貸款壓力","斡旋與簽約流程"].includes(help)) risk+=20;
+
+      finance=Math.min(100,finance);
+      decision=Math.min(100,decision);
+      risk=Math.min(100,risk);
+      const total=Math.round((finance+decision+risk)/3);
+      return {finance,decision,risk,total};
+    }
+
+    function finishQuiz(){
+      const scores=calcScores();
+      let title="",text="";
+      if(scores.total>=80){
+        title="準備度高，可以進入精準看房";
+        text="你的方向、財務與風險意識已經有基本輪廓，下一步不是再亂看更多房，而是把物件條件、銀行鑑價與出價區間逐一比對";
+      }else if(scores.total>=60){
+        title="方向已經出來，但還有一塊要補";
+        text="你不是不能買，而是目前仍有一項準備不夠完整，先把最低分的區塊補起來，再進入出價與斡旋會更安全";
+      }else{
+        title="先別急著下斡旋";
+        text="你現在最需要的不是看更多房，而是先把購屋目的、預算安全線、貸款能力與不能接受的缺點排清楚";
+      }
+
+      const lowest=Object.entries({財務準備:scores.finance,決策清晰:scores.decision,風險意識:scores.risk}).sort((a,b)=>a[1]-b[1])[0];
+      document.getElementById("resultField").value=`總分${scores.total}，最低項目：${lowest[0]}${lowest[1]}分`;
+
+      document.getElementById("questionScreen").style.display="none";
+      document.getElementById("resultPanel").style.display="block";
+      document.getElementById("resultTitle").textContent=title;
+      document.getElementById("readyScore").textContent=scores.total;
+      document.getElementById("resultText").textContent=text+`，目前最需要先補的是「${lowest[0]}」`;
+
+      setBar("finance",scores.finance);
+      setBar("decision",scores.decision);
+      setBar("risk",scores.risk);
+
+      const summary=[
+        ["購屋身分",answers[0]],["購屋進度",answers[2]],["主要區域",answers[4]],["產品類型",answers[5]],
+        ["總預算",answers[6]],["第一優先",answers[14]],["最大困擾",answers[17]],["希望協助",answers[18]]
+      ];
+      document.getElementById("summaryBox").innerHTML=summary.map(x=>`<div class="summary-item"><small>${x[0]}</small><strong>${x[1]}</strong></div>`).join("");
+
+      submitToNetlify();
+      document.getElementById("quizApp").scrollIntoView({behavior:"smooth"});
+    }
+
+    function setBar(id,val){
+      document.getElementById(id+"Bar").style.width=val+"%";
+      document.getElementById(id+"Num").textContent=val;
+    }
+
+    function buildRequestText(){
+      /* 2026-08-31 搬上自家網域時改寫：原本走 Netlify Forms，但 POST "/" 在
+         Cloudflare Pages 會正常回 200 不會 throw，catch 永遠不觸發 →
+         使用者看到「已送出」但資料進虛空＝假成功。改成不依賴任何平台：
+         在頁面上產生可複製的需求單，由使用者自己傳給我。
+         個資因此完全不經過伺服器，只留在他自己的裝置上。 */
+      const form=document.getElementById("buyerForm");
+      const skip=["form-name","bot-field"];
+      const lines=["【買房需求單】（由買房避坑透視器產生）",""];
+      for(const [k,v] of new FormData(form).entries()){
+        if(skip.indexOf(k)>=0) continue;
+        const val=String(v||"").trim();
+        if(!val) continue;
+        lines.push(k+"："+val);
+      }
+      const d=new Date(), z=n=>(n<10?"0":"")+n;
+      lines.push("","填寫日期："+d.getFullYear()+"-"+z(d.getMonth()+1)+"-"+z(d.getDate()));
+      return lines.join(String.fromCharCode(10));
+    }
+
+    function submitToNetlify(){
+      const box=document.getElementById("reqOut");
+      if(box){
+        document.getElementById("reqText").textContent=buildRequestText();
+        box.hidden=false;
+        box.scrollIntoView({behavior:"smooth",block:"start"});
+      }
+      showToast("需求單已產生，往下複製");
+    }
+
+    function copyRequest(){
+      const txt=document.getElementById("reqText").textContent;
+      const ta=document.createElement("textarea");
+      ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0";
+      document.body.appendChild(ta); ta.select();
+      let ok=false; try{ ok=document.execCommand("copy"); }catch(e){ ok=false; }
+      document.body.removeChild(ta);
+      showToast(ok?"已複製，貼到 LINE 傳給我":"複製失敗，請長按選取文字");
+    }
+
+    function showToast(msg){
+      const t=document.getElementById("toast");
+      t.textContent=msg;t.classList.add("show");
+      setTimeout(()=>t.classList.remove("show"),1500);
+    }
+  </script>
+<footer style="background:#0b2530;color:#c7d3d8;padding:26px 20px 30px;font-size:12.5px;line-height:1.9">
+  <div style="max-width:860px;margin:0 auto">
+    <p style="margin:0 0 10px">
+      <strong style="color:#fff">住商不動產 樹林站前加盟店</strong>｜鴻石不動產經紀有限公司<br>
+      經紀人　林秀嫻　(96) 北縣字第 001399 號<br>
+      營業員　何志宏　(114) 年登字第 495065 號
+    </p>
+    <p style="margin:0 0 10px">
+      本頁為一般性購屋資訊整理，非針對個案之投資、法律或稅務建議。實際條件以標的現況、契約條款與主管機關認定為準；涉及產權、稅務或訴訟爭議，請洽地政士、律師或會計師就個案評估。
+    </p>
+    <p style="margin:0">
+      <a href="https://0930848000.com/" style="color:#8fb3bf">阿宏不動產</a>　·　
+      <a href="https://0930848000.com/mingpian/" style="color:#8fb3bf">電子名片</a>　·　
+      <a href="https://0930848000.com/wujian/" style="color:#8fb3bf">在售物件</a>
+    </p>
+  </div>
+</footer>
+<script src="/cta.js" defer></script>
+</body>
+</html>
