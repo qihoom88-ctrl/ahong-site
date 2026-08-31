@@ -118,14 +118,12 @@ details.qa summary::-webkit-details-marker{display:none}
 details.qa summary::before{content:"Q";color:var(--warm);font-weight:900;flex:0 0 auto}
 details.qa .a{padding:0 15px 13px;font-size:.9rem;color:var(--muted)}
 details.qa .a a{color:var(--warm);font-weight:800}
-/* ===== 開頭送禮：避坑透視器 ===== */
-.gift{background:linear-gradient(150deg,#2B3A4A,#3C5063);border-radius:var(--radius);padding:20px 18px;margin:20px 0 4px;color:#fff;box-shadow:var(--shadow)}
-.gift .tagbar{display:inline-block;background:var(--gold,#8A6410);color:#fff;font-size:.75rem;font-weight:900;padding:3px 11px;border-radius:999px;letter-spacing:.06em;margin-bottom:9px}
-.gift h3{font-size:1.22rem;font-weight:900;line-height:1.4;margin-bottom:8px}
-.gift p{font-size:.9rem;opacity:.9;line-height:1.8;margin-bottom:14px}
-.gift p b{color:#E3B857}
-.gift a.gbtn{display:block;background:#fff;color:#2B3A4A;text-align:center;font-weight:900;font-size:1.02rem;padding:14px;border-radius:999px;text-decoration:none}
-.gift small{display:block;opacity:.72;font-size:.78rem;margin-top:9px;text-align:center}
+/* ===== 開頭送禮：細橫幅 ===== */
+.giftbar{display:flex;align-items:center;gap:10px;background:var(--trust);color:#fff;padding:11px 16px;text-decoration:none;border-top:1px solid rgba(255,255,255,.12)}
+.giftbar .gtag{background:#E3B857;color:#2B3A4A;font-size:.7rem;font-weight:900;padding:3px 9px;border-radius:999px;flex:0 0 auto;letter-spacing:.05em}
+.giftbar .gtxt{font-size:.79rem;line-height:1.5;opacity:.95}
+.giftbar .gtxt b{display:block;font-size:.92rem;color:#E3B857;font-weight:900}
+.giftbar .garr{margin-left:auto;font-weight:900;flex:0 0 auto;opacity:.7;font-size:1.1rem}
 /* ===== 看完影片的內心台詞 ===== */
 .mind{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 18px;margin:16px 0 4px}
 .mind .lead-in{font-size:.95rem;color:var(--muted);margin-bottom:16px;line-height:1.8}
@@ -189,6 +187,12 @@ details.qa .a a{color:var(--warm);font-weight:800}
   </div>
 </div>
 
+<a class="giftbar" href="https://0930848000.com/bikeng/">
+  <span class="gtag">先送你</span>
+  <span class="gtxt"><b>買房避坑透視器</b>不用加好友、不用留電話，自己跑一遍就知道手上這間有沒有問題</span>
+  <span class="garr">→</span>
+</a>
+
 <div class="wrap">
 
   <!-- 鉤子 -->
@@ -207,14 +211,27 @@ details.qa .a a{color:var(--warm);font-weight:800}
     </video>
   </div>
 
-  <!-- 開頭送禮：不用留資料就能用的工具 -->
-  <div class="gift">
-    <span class="tagbar">先送你，不用留資料</span>
-    <h3>買房避坑透視器</h3>
-    <p>不管你最後買不買這一間，這個工具都先拿去用。我把買房會踩的坑做成一份自己就能跑的檢查——<b>你自己對一遍，就知道現在手上這間有沒有問題</b>。不用加好友、不用留電話。</p>
-    <a class="gbtn" href="https://0930848000.com/bikeng/">🔍 直接打開避坑透視器</a>
-    <small>免費、不留資料、手機就能用</small>
-  </div>
+  <!-- 建案級完整規格表 -->
+  <section class="sec">
+    <div class="tag">物件基本資料</div>
+    <h2>一張表看完</h2>
+    <div class="spec">
+      <table>
+        <tr><th>開價</th><td><b>1080 萬</b><small>開價不等於成交價，實際成交由買賣雙方議定</small></td></tr>
+        <tr><th>登記坪數</th><td><b>36.08 坪</b><small>主建物 + 附屬建物 + 共有部分，公設比 14.6%</small></td></tr>
+        <tr><th>格局</th><td><b>4 房 2 廳 2 衛</b><small>主臥 + 3 房・2 套衛浴・廚房・餐廳・客廳・陽台 + 雙花台</small></td></tr>
+        <tr><th>座向</th><td><b>朝南</b><small>依委託資料；房間皆有對外窗，無暗房</small></td></tr>
+        <tr><th>樓層</th><td><b>2 樓</b><small>地上 11 層／每層 3 戶・有電梯</small></td></tr>
+        <tr><th>屋齡</th><td><b>32 年</b><small>民國 83 年 10 月完工</small></td></tr>
+        <tr><th>車位</th><td><b>無</b><small>本案不含任何車位或停車權利</small></td></tr>
+        <tr><th>社區規模</th><td><b>264 戶</b><small>24 小時管理・管理費 1,800 元／月</small></td></tr>
+        <tr><th>面臨路寬</th><td><b>10 米</b><small>社區入口臨路</small></td></tr>
+        <tr><th>地點</th><td><b>樹林區・保安街二段</b><small>台北豪景社區（門牌號碼屬個人資料，本頁不揭露）</small></td></tr>
+        <tr><th>現況</th><td><b>屋主自住中</b><small>帶看需先預約，無法臨時到場</small></td></tr>
+        <tr><th>資料查核日</th><td><b>2026-08-16</b><small>面積、格局、座向以地政謄本與測量成果圖記載為準</small></td></tr>
+      </table>
+    </div>
+  </section>
 
   <!-- ② 物件現況實拍 -->
   <div class="vlabel"><span class="pill">再看房子</span>室內現況一鏡走完<span class="sec">73 秒</span></div>
@@ -225,6 +242,7 @@ details.qa .a a{color:var(--warm);font-weight:800}
     </video>
   </div>
   <p class="video-note">現況實拍，沒有配樂、沒有調色、沒有修飾。</p>
+
 
   <!-- 接住看完影片的焦慮：內心台詞→反轉 -->
   <section class="sec">
@@ -261,28 +279,6 @@ details.qa .a a{color:var(--warm);font-weight:800}
         <b>這些不用你一個人扛。</b>驗屋我陪你去、估價單我幫你約兩家比對、清空交屋和修繕條件我幫你寫進契約建議、交屋當天我陪你清點。<br><br>
         <b>每一項要花多少錢、哪一站的報價、怎麼驗、風險由誰承擔——完整的費用表和拆解方式，在你約好帶看之後我直接發給你。</b>你不用先付出任何代價，就能先知道全部的數字。
       </div>
-    </div>
-  </section>
-
-  <!-- 建案級完整規格表 -->
-  <section class="sec">
-    <div class="tag">物件基本資料</div>
-    <h2>一張表看完</h2>
-    <div class="spec">
-      <table>
-        <tr><th>開價</th><td><b>1080 萬</b><small>開價不等於成交價，實際成交由買賣雙方議定</small></td></tr>
-        <tr><th>登記坪數</th><td><b>36.08 坪</b><small>主建物 + 附屬建物 + 共有部分，公設比 14.6%</small></td></tr>
-        <tr><th>格局</th><td><b>4 房 2 廳 2 衛</b><small>主臥 + 3 房・2 套衛浴・廚房・餐廳・客廳・陽台 + 雙花台</small></td></tr>
-        <tr><th>座向</th><td><b>朝南</b><small>依委託資料；房間皆有對外窗，無暗房</small></td></tr>
-        <tr><th>樓層</th><td><b>2 樓</b><small>地上 11 層／每層 3 戶・有電梯</small></td></tr>
-        <tr><th>屋齡</th><td><b>32 年</b><small>民國 83 年 10 月完工</small></td></tr>
-        <tr><th>車位</th><td><b>無</b><small>本案不含任何車位或停車權利</small></td></tr>
-        <tr><th>社區規模</th><td><b>264 戶</b><small>24 小時管理・管理費 1,800 元／月</small></td></tr>
-        <tr><th>面臨路寬</th><td><b>10 米</b><small>社區入口臨路</small></td></tr>
-        <tr><th>地點</th><td><b>樹林區・保安街二段</b><small>台北豪景社區（門牌號碼屬個人資料，本頁不揭露）</small></td></tr>
-        <tr><th>現況</th><td><b>屋主自住中</b><small>帶看需先預約，無法臨時到場</small></td></tr>
-        <tr><th>資料查核日</th><td><b>2026-08-16</b><small>面積、格局、座向以地政謄本與測量成果圖記載為準</small></td></tr>
-      </table>
     </div>
   </section>
 
