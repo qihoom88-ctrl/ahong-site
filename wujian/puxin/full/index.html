@@ -253,6 +253,28 @@ table.loan .hi{background:var(--soft-warm);font-weight:900;color:var(--warm)}
 .honest b{display:block;font-weight:900;color:var(--teal);font-size:1.02rem;margin-bottom:8px}
 .honest p{font-size:.9rem;line-height:1.85;margin-bottom:9px}
 .honest p:last-child{margin-bottom:0}
+
+/* ===== 風險卡（A0-0901-03 NG-2 補件） ===== */
+.titem{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:14px 16px;margin-top:10px}
+.tnum{flex:0 0 auto;width:27px;height:27px;border-radius:50%;background:var(--soft-warm);color:var(--warm);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:.88rem}
+.titem strong{display:block;font-weight:900;margin-bottom:4px}
+.titem p{font-size:.88rem;line-height:1.8;color:var(--ink)}
+.riskkit{margin-top:10px;background:var(--soft-trust);border-radius:12px;padding:11px 13px}
+.rk{font-size:.85rem;line-height:1.8;margin-bottom:6px}
+.rk:last-child{margin-bottom:0}
+.rk b{color:var(--trust);font-weight:900}
+.rk .v{color:var(--warm);font-weight:900}
+.rk .src{display:block;font-size:.76rem;color:var(--muted);margin-top:2px}
+
+/* ===== CTA 區（A0-0901-03 NG-2 補件） ===== */
+.cta{margin:30px 0 12px;background:var(--trust);border-radius:var(--radius);padding:24px 20px;color:#fff;text-align:center}
+.cta h2{font-size:1.25rem;font-weight:900;margin-bottom:8px;color:#fff}
+.cta p{font-size:.9rem;opacity:.9;margin-bottom:16px;line-height:1.85}
+.cta .btn-line,.cta .btn-tel{display:block;text-decoration:none;font-weight:900;padding:15px;border-radius:999px;margin-bottom:10px;font-size:1.02rem}
+.cta .btn-line{background:#06C755;color:#fff}
+.cta .btn-tel{background:#fff;color:var(--trust)}
+.cta .cta-note{font-size:.8rem;opacity:.72;margin:6px 0 0}
+.lead{font-size:.93rem;line-height:1.85;color:var(--ink);margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -291,7 +313,7 @@ table.loan .hi{background:var(--soft-warm);font-weight:900;color:var(--warm)}
             <div class="rk"><b>不處理的風險</b><span class="v">「免整理」是委託資料的描述，不等於零支出。12 年的通水管、馬桶排水、淋浴間玻璃與五金、插座開關，交屋後才發現要修，小錢變成急件加價。本頁沒有揭露任何已知故障，這一條是預算口徑，不是屋況判定。</span></div>
             <div class="rk"><b>維修策略選項</b><span class="v">看屋當天把水龍頭全開、沖馬桶、看淋浴間玻璃與五金、按每個開關／交屋前複驗再走一次／檢測後沒問題，這條預算就歸零；有問題的，小修先做，設備汰換住半年再說。</span></div>
             <div class="rk"><b>參考費用</b><span class="v">電路檢測 <strong>$100～500／次</strong>（PRO360 水電頁，2025-08-11）、<strong>$300～500／次</strong>（找師傅945，2026-03-24）、線路檢測 <strong>$500～1,200／次</strong>（100室內設計，2025-12-11）；通水管 <strong>$3,000～5,000／支</strong>（PRO360 水電頁，2025-08-11）；馬桶裝修 <strong>$1,000～3,500／次</strong>（PRO360 水電頁，2025-08-11；找師傅945，2026-03-24）；若更換設備產生廢棄物，大型家電清運 <strong>$200～1,000／件</strong>（PRO360 清運頁，2025-06-12）。<br><strong>本條納入合計：$8,300～19,200</strong>（口徑：電路檢測 1 次、通水管 2 支、馬桶裝修 2 次、大型家電清運 1 件；每項取三站最低下限與最高上限，不取平均）。<span class="src">以上為市場公開報價區間，同工種各站數字不一致是常態，全部並列不取平均；檢測後不需修，實際支出只剩檢測費。實際費用以現場估價為準。</span></span></div>
-            <div class="rk"><b>驗屋建議</b><span class="v">本案房屋 38.95 坪（不含車位），落在中古屋 31～40 坪級距約 <strong>$18,000／戶</strong>、中古屋整體 <strong>$15,000～24,000／戶</strong>（PRO360 驗屋頁，2025-06-12）；按坪 <strong>$500～1,000／坪</strong>（PRO360，2025-06-12；鴻宇健康驗屋，2025-07-06）；複驗 <strong>$4,000～6,000／次</strong>（PRO360 驗屋頁，2025-06-12）。驗屋時段要約在房客同意的時間。</span></div>
+            <div class="rk"><b>驗屋建議</b><span class="v">本案房屋 38.95 坪（不含車位），落在中古屋 31～40 坪級距約 <strong>$18,000／戶</strong>、中古屋整體 <strong>$15,000～24,000／戶</strong>（PRO360 驗屋頁，2025-06-12）；按坪 <strong>$500～1,000／坪</strong>（PRO360，2025-06-12；鴻宇健康驗屋，2025-07-06）；複驗 <strong>$4,000～6,000／次</strong>（PRO360 驗屋頁，2025-06-12）。驗屋時段跟我約就好。</span></div>
             <div class="rk"><b>買方對策</b><span class="v"><strong>預算：</strong>把本條上限 $19,200 加進入住總成本（見下方「把修繕算進去」）；想把修繕費一起貸，可向往來銀行詢問裝修／修繕相關貸款方案，條件依各銀行規定。<br><strong>交易結構：</strong>驗屋報告可當議價依據；可約定屋主交屋前修復驗出的項目，或價金保留；交屋前可要求複驗。<br><strong>處理順序：</strong>安全（電）→ 漏水防水 → 管線 → 美化；本條是檢測與小修，交屋前做完，設備汰換可入住後再做。<br><strong>阿宏協助：</strong>陪同驗屋、代約估價與報價單比價、把修繕條件寫進要約或契約建議、交屋當天清點複驗。<br><strong>政府補助：</strong>內政部國土管理署每年度辦理「修繕住宅貸款利息補貼」，依《修繕住宅貸款利息及簡易修繕住宅費用補貼辦法》（最新修正 2026-08-11）第 5 條，住宅須為申請人所有、且使用執照核發已逾十年——買方要先完成過戶才能以所有權人身分申請，是否符合資格由主管機關認定，本頁不判定；受理期間每年公告，線上申請頁 2026-08-22 查看時顯示 114 年度受理期間為 114 年 9 月 1 日至 9 月 30 日、目前非受理期間，115 年度以該署公告為準。線上申請：<br><a href="https://has.nlma.gov.tw/subsidyOnline/" target="_blank" rel="noopener">https://has.nlma.gov.tw/subsidyOnline/</a><br>法規原文：<br><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070206" target="_blank" rel="noopener">https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070206</a><br>桃園市受理窗口以桃園市政府都市發展局住宅發展處當年度公告為準（查到的桃園公告頁為 113 年度舊訊，本頁不附）。</span></div>
           </div></div></div>
         <div class="titem"><div class="tnum">3</div><div><strong>桃園平鎮，不是雙北</strong>
