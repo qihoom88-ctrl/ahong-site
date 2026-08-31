@@ -88,6 +88,37 @@ details.qa summary::-webkit-details-marker{display:none}
 details.qa summary::before{content:"Q";color:var(--warm);font-weight:900;flex:0 0 auto}
 details.qa .a{padding:0 15px 13px;font-size:.9rem;color:var(--muted)}
 details.qa .a a{color:var(--warm);font-weight:800}
+/* ===== 建案級規格表 ===== */
+.spec{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:12px 0 4px}
+.spec table{width:100%;border-collapse:collapse;font-size:.9rem}
+.spec th{background:var(--soft-trust);text-align:left;padding:10px 14px;width:34%;font-weight:800;font-size:.85rem;color:var(--trust);vertical-align:top;white-space:nowrap}
+.spec td{padding:10px 14px;border-bottom:1px solid var(--line)}
+.spec tr:last-child td,.spec tr:last-child th{border-bottom:none}
+.spec td b{font-weight:900}
+.spec td small{display:block;color:var(--muted);font-size:.78rem;margin-top:1px}
+/* ===== 格局圖 ===== */
+.plan-img{width:100%;display:block;border-radius:16px;border:1px solid var(--line);background:#fff}
+.plan-cap{font-size:.78rem;color:var(--muted);margin:8px 2px 0;line-height:1.7}
+.rooms{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
+.rooms span{background:var(--soft-teal);color:var(--teal);font-size:.8rem;font-weight:800;padding:4px 11px;border-radius:999px}
+/* ===== 優點卡 ===== */
+.merits{display:flex;flex-direction:column;gap:11px;margin-top:4px}
+.merit{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:14px;padding:14px 16px}
+.merit b{display:block;font-size:1rem}
+.merit .num{color:var(--teal);font-weight:900;font-size:1.35rem;line-height:1.2;display:block;margin-bottom:2px}
+.merit p{font-size:.88rem;color:var(--muted);margin-top:3px}
+/* ===== 未來生活藍圖 ===== */
+.life{background:linear-gradient(160deg,var(--soft-teal),var(--soft-trust));border-radius:var(--radius);padding:20px 18px;margin-top:6px}
+.life h3{font-size:1.05rem;font-weight:900;color:var(--trust);margin-bottom:10px}
+.room-use{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.room-use div{background:rgba(255,255,255,.75);border-radius:11px;padding:9px 13px;font-size:.9rem;display:flex;gap:9px}
+.room-use div b{color:var(--teal);flex:0 0 auto;font-weight:900}
+.life p.close{font-size:.92rem;line-height:1.85}
+/* ===== 雷點拆彈 ===== */
+.bomb{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--warm);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+.bomb b{display:block;font-size:.98rem}
+.bomb .how{font-size:.87rem;color:var(--muted);margin-top:4px}
+.bomb .how em{font-style:normal;color:var(--teal);font-weight:800}
 /* ===== 懸浮電話 ===== */
 .float-call{position:fixed;left:0;right:0;bottom:0;display:flex;gap:1px;z-index:50;box-shadow:0 -6px 24px rgba(0,0,0,.14)}
 .float-call a{flex:1;text-align:center;padding:15px 0;font-weight:900;font-size:1rem;text-decoration:none}
@@ -112,8 +143,8 @@ details.qa .a a{color:var(--warm);font-weight:800}
   <!-- 鉤子 -->
   <header class="hero">
     <div class="kicker">樹林・保安街二段｜台北豪景社區</div>
-    <h1>公寓的價錢<br>買<span>電梯四房</span></h1>
-    <p class="sub">36.08 坪、公設只有 14.6%、2 樓還有電梯。它便宜有原因，好的壞的我都寫在下面。</p>
+    <h1>36 坪四房<br>公設只收<span>14.6%</span></h1>
+    <p class="sub">同坪數新大樓公設普遍三成起跳——公設每多一成，你等於多付一成的錢買不能住的空間。這間 2 樓還有電梯，開價 1080 萬。它便宜有原因，原因我全寫在下面。</p>
   </header>
 
   <!-- ① 阿宏本人開場（全站共用，正本：/wujian/_shared/kaichang.mp4） -->
@@ -135,33 +166,91 @@ details.qa .a a{color:var(--warm);font-weight:800}
   </div>
   <p class="video-note">現況實拍，沒有配樂、沒有調色、沒有修飾。</p>
 
-  <!-- 基本要點四格 -->
-  <div class="keys">
-    <div class="key"><small>開價</small><strong>1080 萬</strong><span>開價不等於成交價</span></div>
-    <div class="key"><small>登記坪數</small><strong>36.08 坪</strong><span>公設比僅 14.6%</span></div>
-    <div class="key"><small>格局</small><strong>4房2廳2衛</strong><span>朝南・房間皆有對外窗</span></div>
-    <div class="key"><small>樓層與屋齡</small><strong>2 樓・32 年</strong><span>電梯大樓・264 戶管理</span></div>
-    <div class="key"><small>車位</small><strong>無</strong><span>不含任何車位或停車權利</span></div>
-    <div class="key"><small>地點</small><strong>保安街二段</strong><span>新北市樹林區・台北豪景社區</span></div>
-  </div>
-  <p class="pricecap">開價不等於成交價，實際成交由買賣雙方議定。</p>
-
-  <!-- 缺點精簡補充 -->
+  <!-- 建案級完整規格表 -->
   <section class="sec">
-    <div class="tag">先講清楚</div>
-    <h2>它為什麼便宜</h2>
-    <div class="flaws">
-      <div class="flaw">
-        <b>屋況需要大整理</b>
-        <p>這是委託資料的原文，我不修飾。影片和照片全是現況，你先看過再決定。</p>
+    <div class="tag">物件基本資料</div>
+    <h2>一張表看完</h2>
+    <div class="spec">
+      <table>
+        <tr><th>開價</th><td><b>1080 萬</b><small>開價不等於成交價，實際成交由買賣雙方議定</small></td></tr>
+        <tr><th>登記坪數</th><td><b>36.08 坪</b><small>主建物 + 附屬建物 + 共有部分，公設比 14.6%</small></td></tr>
+        <tr><th>格局</th><td><b>4 房 2 廳 2 衛</b><small>主臥 + 3 房・2 套衛浴・廚房・餐廳・客廳・陽台 + 雙花台</small></td></tr>
+        <tr><th>座向</th><td><b>朝南</b><small>依委託資料；房間皆有對外窗，無暗房</small></td></tr>
+        <tr><th>樓層</th><td><b>2 樓</b><small>地上 11 層／每層 3 戶・有電梯</small></td></tr>
+        <tr><th>屋齡</th><td><b>32 年</b><small>民國 83 年 10 月完工</small></td></tr>
+        <tr><th>車位</th><td><b>無</b><small>本案不含任何車位或停車權利</small></td></tr>
+        <tr><th>社區規模</th><td><b>264 戶</b><small>24 小時管理・管理費 1,800 元／月</small></td></tr>
+        <tr><th>面臨路寬</th><td><b>10 米</b><small>社區入口臨路</small></td></tr>
+        <tr><th>地點</th><td><b>樹林區・保安街二段</b><small>台北豪景社區（門牌號碼屬個人資料，本頁不揭露）</small></td></tr>
+        <tr><th>現況</th><td><b>屋主自住中</b><small>帶看需先預約，無法臨時到場</small></td></tr>
+        <tr><th>資料查核日</th><td><b>2026-08-16</b><small>面積、格局、座向以地政謄本與測量成果圖記載為準</small></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 格局與方位 -->
+  <section class="sec">
+    <div class="tag">格局與方位</div>
+    <h2>四房怎麼配</h2>
+    <img class="plan-img" src="../a/floorplan.jpg" alt="台北豪景四房格局圖，主臥與三房分開配置，兩套衛浴">
+    <div class="rooms"><span>主臥</span><span>臥室 ×3</span><span>客廳</span><span>餐廳</span><span>廚房</span><span>衛浴 ×2</span><span>陽臺</span><span>花台 ×2</span></div>
+    <p class="plan-cap">主臥與三房分開配置，客廳、餐廳、廚房在同一動線上，兩套衛浴都有窗。座向朝南（依委託資料）。格局圖為委託方提供之示意圖，圖上原文標註「本格局圖僅供參考，仍需以現況格局為主」，本頁如實保留；已裁除門牌與屋主等不可公開資訊。實際格局與座向以現場、地政謄本與測量成果圖為準。</p>
+  </section>
+
+  <!-- 優點：先給購買慾望 -->
+  <section class="sec">
+    <div class="tag">這間強在哪</div>
+    <h2>三件事，別間換不到</h2>
+    <div class="merits">
+      <div class="merit">
+        <span class="num">14.6%</span>
+        <b>公設比只有一成四</b>
+        <p>同坪數新大樓公設普遍三成起跳。同樣付 36 坪的錢，這裡室內能實際用到的空間多出將近一倍的差距——這是這間最強的一件事，而且是新大樓永遠給不了的。</p>
       </div>
-      <div class="flaw">
-        <b>本戶沒有車位</b>
-        <p>社區車位能不能承租，帶看前我先幫你問管委會。</p>
+      <div class="merit">
+        <span class="num">2 樓 ＋ 電梯</span>
+        <b>爬一層的高度，享電梯的方便</b>
+        <p>低樓層的安心感加上電梯的便利，兩件事通常只能選一個。停電照樣回得了家、搬家不用扛、推嬰兒車與輪椅直接進門——家裡有長輩或小小孩，這一項每天都在發生。</p>
+      </div>
+      <div class="merit">
+        <span class="num">4 房全採光</span>
+        <b>四個房間都有對外窗，沒有暗房</b>
+        <p>主臥與三房分開配置、動線互不干擾，兩套衛浴都有窗。四房格局在同總價帶本來就稀有，四房還全部有窗、又方正好改造的更少。</p>
       </div>
     </div>
+
+    <div class="life">
+      <h3>🏡 入住之後，日子會長這樣</h3>
+      <div class="room-use">
+        <div><b>主臥</b><span>獨立在一側，跟三個房間隔開，睡覺不被吵</span></div>
+        <div><b>第二房</b><span>小孩房——旁邊就是另一間，兩個孩子各睡各的不用擠</span></div>
+        <div><b>第三房</b><span>長輩房，2 樓有電梯，長輩自己出門買菜不用等人載</span></div>
+        <div><b>第四房</b><span>書房、工作間或客房，家裡多一個能關門的空間</span></div>
+        <div><b>雙衛浴</b><span>早上尖峰不用排隊，長輩客人來也不尷尬</span></div>
+        <div><b>雙花台</b><span>種點東西、放洗衣機或收納，陽台不用被佔滿</span></div>
+      </div>
+      <p class="close">這是一個「買下來就照自己意思做」的房子——屋況需要整理，但也正因為要整理，你不用先付別人裝潢的錢，格局和用料都能照你家真正的樣子來。整理完，它就不再是一間 32 年的老公寓，是一個四個房間都有窗、公設只收一成四、還有電梯的家。</p>
+    </div>
+  </section>
+
+  <!-- 雷點：只講大約怎麼拆，不做詳細拆解 -->
+  <section class="sec">
+    <div class="tag">它為什麼便宜</div>
+    <h2>三個雷點，跟大約怎麼拆</h2>
+    <div class="bomb">
+      <b>💣 屋況需要大整理</b>
+      <div class="how">這是委託資料的原文，我不修飾。<em>怎麼拆：</em>拆成三層做——第一層只做清運＋水電檢測＋衛浴防水（決定能不能住人），第二層油漆燈具可以排隊，第三層系統櫃與風格裝修獨立報價。三層分開估，錢才不會一次爆掉。</div>
+    </div>
+    <div class="bomb">
+      <b>💣 屋齡 32 年，管線現況未查證</b>
+      <div class="how"><em>怎麼拆：</em>屋齡不等於要換管線，要看的是現況——主線路有沒有發黑、有沒有亂接、放熱水會不會有鏽水。這幾項現場測一次就知道，狀況好就不用換。另外屋齡會影響銀行核貸年限與成數，出價前先做貸款預審。</div>
+    </div>
+    <div class="bomb">
+      <b>💣 本戶沒有車位</b>
+      <div class="how"><em>怎麼拆：</em>社區車位能不能承租、怎麼候補，帶看前我先幫你問管委會；周邊月租停車場看屋當天陪你走一圈實際確認，把月租直接加進你的月支出一起算。</div>
+    </div>
     <div class="more-note">
-      <b>要花多少錢整理、每一條風險的細節，</b>都在帶看前簡報裡一項一項列給你——含清運、驗屋和你的承擔方式。點下面「預約帶看」就會先看到那一份。
+      <b>每一顆雷要花多少錢拆、怎麼驗、風險由誰承擔——</b>這些我整理成一份完整的行前資料。<b>約好帶看之後我直接發給你</b>，你在來看屋之前就會全部知道，不用到現場才被告知。
     </div>
   </section>
 
@@ -185,7 +274,7 @@ details.qa .a a{color:var(--warm);font-weight:800}
         <div class="pay-box"><small>首付（自備款）</small><strong>216 萬</strong><span>總價 1080 萬 − 貸款 864 萬</span></div>
         <div class="pay-box"><small>月付款</small><strong>33,847 元</strong><span>本息平均攤還</span></div>
       </div>
-      <p class="pay-note">試算條件：貸款 8 成、30 年期、年利率 2.435%、無寬限期。這是預設值不是你的條件，實際以銀行核准為準；屋齡 32 年，出價前先做貸款預審。整理費用另計——完整的修繕＋清運＋入住總成本，都在<a href="full/" style="color:var(--warm);font-weight:800">帶看前簡報</a>裡一項一項列。</p>
+      <p class="pay-note">試算條件：貸款 8 成、30 年期、年利率 2.435%、無寬限期。這是預設值不是你的條件，實際以銀行核准為準；屋齡 32 年，出價前先做貸款預審。整理費用另計——完整的修繕＋清運＋入住總成本，在帶看行前資料裡一項一項列，約好帶看就發給你。</p>
     </div>
   </section>
 
@@ -193,8 +282,8 @@ details.qa .a a{color:var(--warm);font-weight:800}
   <section class="sec">
     <div class="tag">粉絲常問</div>
     <h2>你可能想問的</h2>
-    <details class="qa"><summary>屋況要整理，大概要花多少錢？</summary><div class="a">清運、水電、防水、油漆每一項的公開報價區間、含出處，我全部列在<a href="full/">帶看前簡報</a>——先看完那一頁再決定要不要來，你不會白跑。</div></details>
-    <details class="qa"><summary>開價 1080 萬，有得談嗎？</summary><div class="a">開價不等於成交價，也不代表議價空間，最終金額由買賣雙方議定。我不會在這頁暗示可議幅度，那對你沒有幫助——同社區的實際成交行情，<a href="full/">帶看前簡報</a>裡有整理，你可以自己比。</div></details>
+    <details class="qa"><summary>屋況要整理，大概要花多少錢？</summary><div class="a">清運、水電、防水、油漆每一項的公開報價區間都有出處，整理在帶看行前資料裡。<b>約好帶看就發給你</b>，你在來之前就會知道要花多少，不會白跑一趟。</div></details>
+    <details class="qa"><summary>開價 1080 萬，有得談嗎？</summary><div class="a">開價不等於成交價，也不代表議價空間，最終金額由買賣雙方議定。我不會在這頁暗示可議幅度，那對你沒有幫助——同社區的實際成交紀錄我整理在行前資料裡，約好帶看就給你，你可以自己比。</div></details>
     <details class="qa"><summary>沒有車位，那我的車怎麼辦？</summary><div class="a">社區車位能不能承租、怎麼候補，帶看前我先幫你問管委會；周邊月租停車場看屋當天陪你走一圈實際確認。</div></details>
     <details class="qa"><summary>貸款能貸幾成？</summary><div class="a">成數、利率、年限每個人不一樣，屋齡 32 年銀行對年限與成數可能比較保守——出價前先做貸款預審，先知道銀行給你多少，再決定要不要出價，順序不要顛倒。</div></details>
     <details class="qa"><summary>可以馬上看屋嗎？</summary><div class="a">要先預約。屋主自住中，不能臨時到現場按電鈴——用<a href="https://lin.ee/IV8bl9H">官方 LINE</a> 跟我說你方便的時段，我幫你跟屋主排。</div></details>
@@ -202,11 +291,11 @@ details.qa .a a{color:var(--warm);font-weight:800}
 
   <!-- 預約 CTA -->
   <div class="cta-block">
-    <h2>想看這間房子</h2>
-    <p>屋主自住中，帶看要先約時間。用官方 LINE 跟我說你方便的時段，我幫你排。</p>
-    <a class="btn btn-book" href="full/">📋 預約帶看（先看完整揭露）</a>
-    <a class="btn btn-line" href="https://lin.ee/IV8bl9H">💬 官方 LINE 直接問</a>
-    <small>點「預約帶看」會先看到這間房子的完整揭露簡報，看完再進 LINE 預約。</small>
+    <h2>想進一步看這間</h2>
+    <p>約好帶看，我會先發一份完整的行前資料給你：每一顆雷的拆解方式、修繕與清運的費用區間（含出處）、入住總成本試算、驗屋建議、風險由誰承擔——全部在你到現場之前就先知道。</p>
+    <a class="btn btn-line" href="https://lin.ee/IV8bl9H">💬 官方 LINE 預約帶看</a>
+    <a class="btn btn-book" href="tel:0930848000">📞 直接打給我 0930-848000</a>
+    <small>屋主自住中，帶看需先預約時段，無法臨時到場。</small>
   </div>
 
   <!-- 完整聯絡資訊 -->
