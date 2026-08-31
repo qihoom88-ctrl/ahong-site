@@ -29,6 +29,11 @@ section{margin:34px 0}
 .hero .kicker{color:var(--warm);font-weight:800;letter-spacing:.12em;font-size:.85rem}
 .hero h1{font-size:1.7rem;line-height:1.35;margin:6px 0 10px;font-weight:900}
 .hero p.sub{color:var(--muted);font-size:.95rem}
+.video-card{margin:18px 0 6px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:#000}
+.video-card video{width:100%;display:block;aspect-ratio:9/13;object-fit:cover}
+.vlabel{display:flex;align-items:center;gap:8px;margin:22px 2px 8px;font-weight:800;font-size:.92rem;color:var(--trust)}
+.vlabel .pill{background:var(--warm);color:#fff;font-size:.72rem;font-weight:900;padding:2px 9px;border-radius:999px;letter-spacing:.05em}
+.vlabel .sec{color:var(--muted);font-weight:600;font-size:.8rem;margin-left:auto}
 .opening{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--trust);border-radius:14px;padding:16px 18px;margin:16px 0;font-size:.95rem}
 .opening b{display:block;margin-bottom:4px;color:var(--trust)}
 details.fold{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:12px;overflow:hidden}
@@ -126,6 +131,14 @@ table{border-collapse:collapse;width:100%;min-width:430px;font-size:.9rem}
     <h1>帶看前，這 5 件事<br>我要先讓你知道</h1>
     <p class="sub">你已經在初階簡報看過這間房子的優點。這一頁講的是另一半——缺點、費用、和你怎麼承擔。看完還想看，我們再約時間。</p>
   </header>
+
+  <div class="vlabel"><span class="pill">帶看前</span>阿宏本人先講一次<span class="sec">18 秒</span></div>
+  <div class="video-card">
+    <video controls playsinline preload="metadata" poster="../../_shared/kaichang_poster.jpg">
+      <source src="../../_shared/kaichang.mp4" type="video/mp4">
+      你的瀏覽器無法播放此影片
+    </video>
+  </div>
 
   <div class="opening">
     <b>阿宏開場（帶看前先講）</b>

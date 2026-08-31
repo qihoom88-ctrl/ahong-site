@@ -34,6 +34,9 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
 .video-card{margin:18px 0 6px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:#000;position:relative}
 .video-card video{width:100%;display:block;aspect-ratio:9/13;object-fit:cover}
 .video-note{font-size:.8rem;color:var(--muted);margin:8px 2px 0}
+.vlabel{display:flex;align-items:center;gap:8px;margin:22px 2px 8px;font-weight:800;font-size:.92rem;color:var(--trust)}
+.vlabel .pill{background:var(--warm);color:#fff;font-size:.72rem;font-weight:900;padding:2px 9px;border-radius:999px;letter-spacing:.05em}
+.vlabel .sec{color:var(--muted);font-weight:600;font-size:.8rem;margin-left:auto}
 /* ===== 四格要點 ===== */
 .keys{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0 4px}
 .key{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px}
@@ -110,10 +113,20 @@ details.qa .a a{color:var(--warm);font-weight:800}
   <header class="hero">
     <div class="kicker">樹林・保安街二段｜台北豪景社區</div>
     <h1>公寓的價錢<br>買<span>電梯四房</span></h1>
-    <p class="sub">36.08 坪、公設只有 14.6%、2 樓還有電梯。它便宜有原因，原因我 15 秒講給你聽。</p>
+    <p class="sub">36.08 坪、公設只有 14.6%、2 樓還有電梯。它便宜有原因，好的壞的我都寫在下面。</p>
   </header>
 
-  <!-- 開場影片（正式版換成阿宏 15 秒開場，見 plan 頁腳本） -->
+  <!-- ① 阿宏本人開場（全站共用，正本：/wujian/_shared/kaichang.mp4） -->
+  <div class="vlabel"><span class="pill">先聽我說</span>阿宏本人開場<span class="sec">18 秒</span></div>
+  <div class="video-card">
+    <video controls playsinline preload="metadata" poster="../../_shared/kaichang_poster.jpg">
+      <source src="../../_shared/kaichang.mp4" type="video/mp4">
+      你的瀏覽器無法播放此影片
+    </video>
+  </div>
+
+  <!-- ② 物件現況實拍 -->
+  <div class="vlabel"><span class="pill">再看房子</span>室內現況一鏡走完<span class="sec">73 秒</span></div>
   <div class="video-card">
     <video controls playsinline preload="metadata" poster="../a/poster73.jpg">
       <source src="../a/web_video73.mp4" type="video/mp4">
