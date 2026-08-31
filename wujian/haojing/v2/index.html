@@ -70,6 +70,21 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
 .contact .row{margin-top:8px}
 /* ===== 法遵條 ===== */
 .legal{font-size:.75rem;color:var(--muted);border-top:1px solid var(--line);padding:16px 0 8px;margin-top:24px;line-height:1.8}
+/* ===== 首付款卡 ===== */
+.pay-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin:14px 0 4px}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.pay-box{background:var(--soft-trust);border-radius:12px;padding:12px}
+.pay-box small{display:block;color:var(--muted);font-size:.75rem}
+.pay-box strong{font-size:1.2rem;font-weight:900}
+.pay-box span{display:block;font-size:.74rem;color:var(--muted)}
+.pay-note{font-size:.78rem;color:var(--muted);margin-top:10px;line-height:1.7}
+/* ===== Q&A ===== */
+details.qa{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:9px}
+details.qa summary{list-style:none;cursor:pointer;padding:13px 15px;font-weight:800;font-size:.95rem;display:flex;gap:8px}
+details.qa summary::-webkit-details-marker{display:none}
+details.qa summary::before{content:"Q";color:var(--warm);font-weight:900;flex:0 0 auto}
+details.qa .a{padding:0 15px 13px;font-size:.9rem;color:var(--muted)}
+details.qa .a a{color:var(--warm);font-weight:800}
 /* ===== 懸浮電話 ===== */
 .float-call{position:fixed;left:0;right:0;bottom:0;display:flex;gap:1px;z-index:50;box-shadow:0 -6px 24px rgba(0,0,0,.14)}
 .float-call a{flex:1;text-align:center;padding:15px 0;font-weight:900;font-size:1rem;text-decoration:none}
@@ -144,6 +159,30 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
       <div class="fit"><span class="dot">✓</span>家裡有長輩或小小孩，重視低樓層與電梯</div>
       <div class="fit"><span class="dot">✓</span>願意自己整理，換一個照自己意思做的家</div>
     </div>
+  </section>
+
+  <!-- 首付款先算 -->
+  <section class="sec">
+    <div class="tag">買之前先算自己</div>
+    <h2>1080 萬，要準備多少</h2>
+    <div class="pay-card">
+      <div class="pay-grid">
+        <div class="pay-box"><small>首付（自備款）</small><strong>216 萬</strong><span>總價 1080 萬 − 貸款 864 萬</span></div>
+        <div class="pay-box"><small>月付款</small><strong>33,847 元</strong><span>本息平均攤還</span></div>
+      </div>
+      <p class="pay-note">試算條件：貸款 8 成、30 年期、年利率 2.435%、無寬限期。這是預設值不是你的條件，實際以銀行核准為準；屋齡 32 年，出價前先做貸款預審。整理費用另計——完整的修繕＋清運＋入住總成本，都在<a href="full/" style="color:var(--warm);font-weight:800">帶看前簡報</a>裡一項一項列。</p>
+    </div>
+  </section>
+
+  <!-- 粉絲常問 Q&A -->
+  <section class="sec">
+    <div class="tag">粉絲常問</div>
+    <h2>你可能想問的</h2>
+    <details class="qa"><summary>屋況要整理，大概要花多少錢？</summary><div class="a">清運、水電、防水、油漆每一項的公開報價區間、含出處，我全部列在<a href="full/">帶看前簡報</a>——先看完那一頁再決定要不要來，你不會白跑。</div></details>
+    <details class="qa"><summary>開價 1080 萬，有得談嗎？</summary><div class="a">開價不等於成交價，也不代表議價空間，最終金額由買賣雙方議定。我不會在這頁暗示可議幅度，那對你沒有幫助——同社區的實際成交行情，<a href="full/">帶看前簡報</a>裡有整理，你可以自己比。</div></details>
+    <details class="qa"><summary>沒有車位，那我的車怎麼辦？</summary><div class="a">社區車位能不能承租、怎麼候補，帶看前我先幫你問管委會；周邊月租停車場看屋當天陪你走一圈實際確認。</div></details>
+    <details class="qa"><summary>貸款能貸幾成？</summary><div class="a">成數、利率、年限每個人不一樣，屋齡 32 年銀行對年限與成數可能比較保守——出價前先做貸款預審，先知道銀行給你多少，再決定要不要出價，順序不要顛倒。</div></details>
+    <details class="qa"><summary>可以馬上看屋嗎？</summary><div class="a">要先預約。屋主自住中，不能臨時到現場按電鈴——用<a href="https://lin.ee/IV8bl9H">官方 LINE</a> 跟我說你方便的時段，我幫你跟屋主排。</div></details>
   </section>
 
   <!-- 預約 CTA -->
