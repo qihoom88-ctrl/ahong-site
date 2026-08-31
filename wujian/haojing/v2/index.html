@@ -168,6 +168,42 @@ details.qa .a a{color:var(--warm);font-weight:800}
 .bomb b{display:block;font-size:.98rem}
 .bomb .how{font-size:.87rem;color:var(--muted);margin-top:4px}
 .bomb .how em{font-style:normal;color:var(--teal);font-weight:800}
+/* ===== 摺疊大字卡 ===== */
+details.acc{background:var(--card);border:1px solid var(--line);border-radius:18px;margin-bottom:11px;overflow:hidden;transition:box-shadow .2s}
+details.acc[open]{box-shadow:var(--shadow)}
+details.acc summary{list-style:none;cursor:pointer;padding:16px 17px;display:flex;align-items:center;gap:13px}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary .ai{width:42px;height:42px;border-radius:13px;background:var(--soft-warm);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex:0 0 auto}
+details.acc summary .at{flex:1;min-width:0}
+details.acc summary .at b{display:block;font-size:1.08rem;font-weight:900;line-height:1.4}
+details.acc summary .at i{display:block;font-style:normal;font-size:.82rem;color:var(--muted);line-height:1.5;margin-top:1px}
+details.acc summary .ac{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--soft-trust);color:var(--trust);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:1.05rem;transition:transform .25s}
+details.acc[open] summary .ac{transform:rotate(135deg);background:var(--warm);color:#fff}
+details.acc .acbody{padding:0 15px 14px}
+details.acc .acbody .sec{margin-top:0}
+details.acc .acbody section{margin:0}
+/* ===== 大綱導言 ===== */
+.outline{background:var(--soft-trust);border-radius:var(--radius);padding:18px;margin:20px 0 14px}
+.outline b{display:block;font-size:1.05rem;font-weight:900;color:var(--trust);margin-bottom:6px}
+.outline p{font-size:.9rem;line-height:1.85;color:var(--ink)}
+.outline p em{font-style:normal;color:var(--warm);font-weight:800}
+/* ===== 阿宏結論 ===== */
+.verdict{background:linear-gradient(155deg,var(--trust),var(--trust-2));color:#fff;border-radius:var(--radius);padding:22px 19px;margin:26px 0 14px}
+.verdict .vh{display:flex;align-items:center;gap:9px;font-weight:900;font-size:1.12rem;margin-bottom:10px}
+.verdict p{font-size:.94rem;line-height:1.9;opacity:.94;margin-bottom:10px}
+.verdict p:last-child{margin-bottom:0}
+.verdict p b{color:#E3B857}
+/* ===== 其他在售物件 ===== */
+.others{margin:22px 0 10px}
+.others h3{font-size:1.12rem;font-weight:900;margin-bottom:4px}
+.others .oh{font-size:.87rem;color:var(--muted);margin-bottom:12px}
+.ocard{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:15px;padding:14px 16px;margin-bottom:9px}
+.ocard .ot{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ocard .ot b{font-size:1rem;font-weight:900}
+.ocard .ot span{font-size:.98rem;font-weight:900;color:var(--warm);margin-left:auto}
+.ocard .om{font-size:.82rem;color:var(--muted);margin-top:3px}
+.ocard .oq{font-size:.86rem;color:var(--teal);font-weight:800;margin-top:5px}
+.others .allbtn{display:block;text-align:center;text-decoration:none;background:var(--soft-trust);color:var(--trust);font-weight:900;padding:13px;border-radius:999px;font-size:.95rem;margin-top:4px}
 /* ===== 懸浮電話 ===== */
 .float-call{position:fixed;left:0;right:0;bottom:0;display:flex;gap:1px;z-index:50;box-shadow:0 -6px 24px rgba(0,0,0,.14)}
 .float-call a{flex:1;text-align:center;padding:15px 0;font-weight:900;font-size:1rem;text-decoration:none}
@@ -211,6 +247,15 @@ details.qa .a a{color:var(--warm);font-weight:800}
     </video>
   </div>
 
+  <div class="outline">
+    <b>下面這些，你想看哪個就點哪個</b>
+    <p>我把這間房子拆成 <em>10 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
+    基本資料、影片、格局、生活圈、優缺點、錢怎麼算，全部都在。看完想進一步，最下面直接約我。</p>
+  </div>
+
+  <details class="acc">
+    <summary><span class="ai">📋</span><span class="at"><b>物件基本資料</b><i>開價・坪數・格局・座向・樓層屋齡・車位・地點，12 項一次看完</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <!-- 建案級完整規格表 -->
   <section class="sec">
     <div class="tag">物件基本資料</div>
@@ -233,7 +278,13 @@ details.qa .a a{color:var(--warm);font-weight:800}
       </table>
     </div>
   </section>
+    </div>
+  </details>
 
+
+  <details class="acc">
+    <summary><span class="ai">🎬</span><span class="at"><b>室內現況影片</b><i>73 秒一鏡走完，沒有配樂沒有調色，現況直球</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <!-- ② 物件現況實拍 -->
   <div class="vlabel"><span class="pill">再看房子</span>室內現況一鏡走完<span class="sec">73 秒</span></div>
   <div class="video-card">
@@ -245,6 +296,9 @@ details.qa .a a{color:var(--warm);font-weight:800}
   <p class="video-note">現況實拍，沒有配樂、沒有調色、沒有修飾。</p>
 
 
+  <details class="acc">
+    <summary><span class="ai">💭</span><span class="at"><b>那些東西誰要收</b><i>看完影片心裡那四個問題，我先回答</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <!-- 接住看完影片的焦慮：內心台詞→反轉 -->
   <section class="sec">
     <div class="tag">看完影片，你在想什麼</div>
@@ -282,7 +336,16 @@ details.qa .a a{color:var(--warm);font-weight:800}
       </div>
     </div>
   </section>
+    </div>
+  </details>
 
+    </div>
+  </details>
+
+
+  <details class="acc">
+    <summary><span class="ai">📐</span><span class="at"><b>格局與方位</b><i>四房怎麼配、座向朝哪、雙衛雙花台的位置</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <!-- 格局與方位 -->
   <section class="sec">
     <div class="tag">格局與方位</div>
@@ -291,7 +354,13 @@ details.qa .a a{color:var(--warm);font-weight:800}
     <div class="rooms"><span>主臥</span><span>臥室 ×3</span><span>客廳</span><span>餐廳</span><span>廚房</span><span>衛浴 ×2</span><span>陽臺</span><span>花台 ×2</span></div>
     <p class="plan-cap">主臥與三房分開配置，客廳、餐廳、廚房在同一動線上，兩套衛浴都有窗。座向朝南（依委託資料）。格局圖為委託方提供之示意圖，圖上原文標註「本格局圖僅供參考，仍需以現況格局為主」，本頁如實保留；已裁除門牌與屋主等不可公開資訊。實際格局與座向以現場、地政謄本與測量成果圖為準。</p>
   </section>
+    </div>
+  </details>
 
+
+  <details class="acc">
+    <summary><span class="ai">🗺️</span><span class="at"><b>生活圈實測</b><i>學區・交通・市場・未來捷運，距離都是實際量過的</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <!-- 生活圈：偵查隊實測（70-0901-01） -->
   <section class="sec">
     <div class="tag">生活圈實測</div>
@@ -344,23 +413,13 @@ details.qa .a a{color:var(--warm);font-weight:800}
 
     </div>
   </section>
-
-  <!-- 🔴 第一級風險：嫌惡設施（A0 白名單兩類之一，必須主動揭露） -->
-  <section class="sec">
-    <div class="tag">這件事我先講</div>
-    <h2>周邊 200 公尺，有這些</h2>
-    <div class="redbox">
-      <div class="rh">⚠️ 帶看前你就該知道</div>
-      <p class="why">這幾項你到現場一眼就會看到。與其讓你白跑一趟才發現，不如我現在先講——<b>能不能接受是你的事，講不講清楚是我的事。</b></p>
-      <ul>
-        <li><b>樹林區第二公墓及周邊墓區</b><span>距社區不到 100 公尺（依 Google 地圖）。社區基地北側緊鄰，圖資顯示南側與西側亦有墓區範圍。</span></li>
-        <li><b>慈鳳宮</b><span>直線不到 100 公尺。有無金爐待現場確認。</span></li>
-        <li><b>工業用地與樹林產業專用區廠區</b><span>直線不到 200 公尺。實際使用現況待現場確認。</span></li>
-      </ul>
-      <p class="tail">以上為外網官方圖資與 Google 地圖查證結果，查證日期 2026-09-01。現場 200 公尺步行勘查尚未完成；其餘嫌惡設施類別本輪外網查證未發現，<b>「未發現」不等於沒有</b>，以現場勘查與主管機關公告為準。帶看當天我會陪你把這幾項實際走一遍。</p>
     </div>
-  </section>
+  </details>
 
+
+  <details class="acc">
+    <summary><span class="ai">✨</span><span class="at"><b>這間強在哪</b><i>三件別間換不到的事，以及入住後日子會長什麼樣</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <!-- 優點：先給購買慾望 -->
   <section class="sec">
     <div class="tag">這間強在哪</div>
@@ -396,7 +455,13 @@ details.qa .a a{color:var(--warm);font-weight:800}
       <p class="close">這是一個「買下來就照自己意思做」的房子——屋況需要整理，但也正因為要整理，你不用先付別人裝潢的錢，格局和用料都能照你家真正的樣子來。整理完，它就不再是一間 32 年的老公寓，是一個四個房間都有窗、公設只收一成四、還有電梯的家。</p>
     </div>
   </section>
+    </div>
+  </details>
 
+
+  <details class="acc">
+    <summary><span class="ai">🧰</span><span class="at"><b>它為什麼便宜</b><i>三個雷點，跟大約怎麼拆——不嚇你，講方法</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <!-- 雷點：只講大約怎麼拆，不做詳細拆解 -->
   <section class="sec">
     <div class="tag">它為什麼便宜</div>
@@ -414,10 +479,17 @@ details.qa .a a{color:var(--warm);font-weight:800}
       <div class="how"><em>怎麼拆：</em>社區車位能不能承租、怎麼候補，帶看前我先幫你問管委會；周邊月租停車場看屋當天陪你走一圈實際確認，把月租直接加進你的月支出一起算。</div>
     </div>
     <div class="more-note">
-      <b>每一顆雷要花多少錢拆、怎麼驗、風險由誰承擔——</b>這些我整理成一份完整的行前資料。<b>約好帶看之後我直接發給你</b>，你在來看屋之前就會全部知道，不用到現場才被告知。
+      <b>每一顆雷要花多少錢拆、怎麼驗、風險由誰承擔——</b>這些我整理成一份完整的行前資料。<b>約好帶看之後我直接發給你</b>，你在來看屋之前就會全部知道，不用到現場才被告知。<br><br>
+      <b>另外，社區周邊 200 公尺我也實際查過一輪</b>（含殯葬、宮廟、工業用地這類要揭露的項目），查到什麼、距離多少，一樣寫在那份行前資料裡，一項都不會少。
     </div>
   </section>
+    </div>
+  </details>
 
+
+  <details class="acc">
+    <summary><span class="ai">🎯</span><span class="at"><b>這間適合誰</b><i>先看合不合，合不合比買不買重要</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <!-- 適合誰 -->
   <section class="sec">
     <div class="tag">先看合不合</div>
@@ -428,7 +500,13 @@ details.qa .a a{color:var(--warm);font-weight:800}
       <div class="fit"><span class="dot">✓</span>願意自己整理，換一個照自己意思做的家</div>
     </div>
   </section>
+    </div>
+  </details>
 
+
+  <details class="acc">
+    <summary><span class="ai">💰</span><span class="at"><b>錢夠不夠</b><i>四種貸款成數的首付與月付，你自己對照</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <!-- 首付與月付：讓他自己算錢夠不夠 -->
   <section class="sec">
     <div class="tag">先算自己</div>
@@ -447,7 +525,13 @@ details.qa .a a{color:var(--warm);font-weight:800}
       另外，首付之外還要準備契稅、印花稅、代書費、規費、火險地震險，以及這間一定會發生的整理費用，上表都<b>沒有</b>計入。整理費用怎麼抓、每一項多少錢，在帶看行前資料裡一項一項列，約好帶看就發給你。
     </div>
   </section>
+    </div>
+  </details>
 
+
+  <details class="acc">
+    <summary><span class="ai">❓</span><span class="at"><b>粉絲常問</b><i>整理費・議價・車位・貸款・預約，五題</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <!-- 粉絲常問 Q&A -->
   <section class="sec">
     <div class="tag">粉絲常問</div>
@@ -458,6 +542,44 @@ details.qa .a a{color:var(--warm);font-weight:800}
     <details class="qa"><summary>貸款能貸幾成？</summary><div class="a">成數、利率、年限每個人不一樣，屋齡 32 年銀行對年限與成數可能比較保守——出價前先做貸款預審，先知道銀行給你多少，再決定要不要出價，順序不要顛倒。</div></details>
     <details class="qa"><summary>可以馬上看屋嗎？</summary><div class="a">要先預約。屋主自住中，不能臨時到現場按電鈴——用<a href="https://lin.ee/IV8bl9H">官方 LINE</a> 跟我說你方便的時段，我幫你跟屋主排。</div></details>
   </section>
+    </div>
+  </details>
+
+
+  <!-- 阿宏的結論 -->
+  <div class="verdict">
+    <div class="vh">🎙️ 最後，我的看法</div>
+    <p>這間房子的數字不難算：<b>總價 1080 萬、36 坪四房、公設只收 14.6%、2 樓有電梯</b>。它便宜的原因也不是秘密——屋況要整理，而整理費是可以先算出來、可以分三層做、可以談進交易條件裡的。</p>
+    <p>所以真正決定你要不要買的，不是這些數字，是<b>你願不願意用「自己整理」換一個公設低、四房全採光、還有電梯的家</b>。願意，這間很划算；不願意，你該看的是別的產品，不是勉強自己。</p>
+    <p><b>合不合，比買不買重要。</b>我不會勸你買這一間——我只把該講的講完，剩下的你自己決定。真的想進一步看，下面約我，我會先把完整的行前資料發給你。</p>
+  </div>
+
+  <!-- 其他在售物件 -->
+  <div class="others">
+    <h3>這間不合？我手上還有這些</h3>
+    <p class="oh">同樣是我在賣的，條件不一樣，每一間我都做了完整的資料頁。</p>
+    <a class="ocard" href="https://0930848000.com/wujian/034/">
+      <span class="ot"><b>車站低總價美 2 樓</b><span>1068 萬</span></span>
+      <span class="om">新北市板橋區・2房4廳2衛・22.07 坪・2 樓・45.3 年</span>
+      <span class="oq">一張產權 一套出租一套空屋</span>
+    </a>
+    <a class="ocard" href="https://0930848000.com/wujian/074/">
+      <span class="ot"><b>彭福捷運新裝三房</b><span>1180 萬</span></span>
+      <span class="om">新北市樹林區・3房2廳2衛・31.17 坪・4 樓・43 年</span>
+      <span class="oq">43年老公寓 裡子全部是新的</span>
+    </a>
+    <a class="ocard" href="https://0930848000.com/wujian/127/">
+      <span class="ot"><b>127 學區捷運大戶</b><span>1098 萬</span></span>
+      <span class="om">新北市樹林區・全開放・1 衛・31 坪・3 樓・43.8 年</span>
+      <span class="oq">格局不是別人決定的 是你自己決定的</span>
+    </a>
+    <a class="ocard" href="https://0930848000.com/wujian/junying/">
+      <span class="ot"><b>樹林俊英街方正電梯三房</b><span>1398 萬</span></span>
+      <span class="om">新北市樹林區・3房2廳2衛・34.01 坪・12F・25年</span>
+      <span class="oq">1398萬 一層兩戶的方正三房</span>
+    </a>
+    <a class="allbtn" href="https://0930848000.com/maifang/">都不合？填條件讓我幫你挑 →</a>
+  </div>
 
   <!-- 預約 CTA -->
   <div class="cta-block">
