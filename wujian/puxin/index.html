@@ -299,6 +299,12 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 .renhua p b{color:var(--ink);font-weight:900}
 .renhua .idiom{text-align:center;font-size:1.05rem;padding:12px 0;margin:4px 0 12px;border-top:1px dashed #DCCFB4;border-bottom:1px dashed #DCCFB4}
 .renhua .idiom b{color:var(--warm);font-size:1.18rem;letter-spacing:.06em}
+
+.whatnext{background:rgba(255,255,255,.1);border-radius:14px;padding:14px 15px;margin:4px 0 14px;text-align:left}
+.whatnext b{display:block;font-weight:900;font-size:.92rem;margin-bottom:8px;color:#E3B857}
+.whatnext ul{list-style:none}
+.whatnext li{display:flex;gap:10px;font-size:.86rem;line-height:1.75;padding:5px 0;opacity:.94}
+.whatnext li i{font-style:normal;flex:0 0 74px;font-weight:900;color:#E3B857}
 </style>
 </head>
 <body>
@@ -341,10 +347,37 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   <div class="outline">
     <b>下面這些，你想看哪個就點哪個</b>
     <p>我把這間房子拆成 <em>8 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
-    坪數怎麼拆、車位長什麼樣、室內實拍、格局、生活圈、錢怎麼算，全部都在。看完想進一步，最下面直接約我。</p>
+    坪數怎麼拆、車位長什麼樣、室內實拍、格局、生活圈、錢怎麼算，全部都在。看完想進一步，最下面直接約我。<br><b>不知道從哪看起，就先點第一張「這間適合誰」</b>——30 秒就知道要不要往下。</p>
   </div>
 
   <details class="acc">
+    <summary><span class="ai">🎯</span><span class="at"><b>這間適合誰</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
+      <section class="sec">
+        <div class="tag">先看合不合</div>
+        <h2>這間不是給所有人的</h2>
+        <div class="fitbox yes">
+          <b>這些條件，你會很有感</b>
+          <ul>
+            <li>家裡兩台車，一定要兩個平面車位——或一車一機車，不想再另外租位子</li>
+            <li>要三房，而且三間都要真的能睡人，不要塞不下床的那種</li>
+            <li>不想再花一筆錢大整理，希望屋況接近可以直接用</li>
+            <li>在意採光通風，不接受暗房</li>
+          </ul>
+        </div>
+        <div class="fitbox no">
+          <b>這幾種情況，我建議你先看別間</b>
+          <ul>
+            <li>只有一台車或不開車——車位那 23.73 坪的價值你用不到，同總價我幫你找室內坪數更大的</li>
+            <li>一定要在雙北上班、通勤時間抓很緊</li>
+            <li>總價上限抓在 1200 萬以內</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </details>
+
+<details class="acc">
     <summary><span class="ai">📋</span><span class="at"><b>物件基本資料</b><i>開價・坪數・格局・車位・屋齡・學區，11 項一次看完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <table class="spec">
@@ -507,34 +540,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
     </div>
   </details>
 
-    <details class="acc">
-    <summary><span class="ai">🎯</span><span class="at"><b>這間適合誰</b><i>先看合不合，合不合比買不買重要</i></span><span class="ac">＋</span></summary>
-    <div class="acbody">
-      <section class="sec">
-        <div class="tag">先看合不合</div>
-        <h2>這間不是給所有人的</h2>
-        <div class="fitbox yes">
-          <b>這些條件，你會很有感</b>
-          <ul>
-            <li>家裡兩台車，一定要兩個平面車位——或一車一機車，不想再另外租位子</li>
-            <li>要三房，而且三間都要真的能睡人，不要塞不下床的那種</li>
-            <li>不想再花一筆錢大整理，希望屋況接近可以直接用</li>
-            <li>在意採光通風，不接受暗房</li>
-          </ul>
-        </div>
-        <div class="fitbox no">
-          <b>這幾種情況，我建議你先看別間</b>
-          <ul>
-            <li>只有一台車或不開車——車位那 23.73 坪的價值你用不到，同總價我幫你找室內坪數更大的</li>
-            <li>一定要在雙北上班、通勤時間抓很緊</li>
-            <li>總價上限抓在 1200 萬以內</li>
-          </ul>
-        </div>
-      </section>
-    </div>
-  </details>
-
-  <!-- 阿宏的結論 -->
+      <!-- 阿宏的結論 -->
   <div class="verdict">
     <div class="vh">🎙️ 最後，我的看法</div>
     <p>這間房子真正稀有的不是坪數，是<b>「這個總價帶配到兩個相連的平面車位，再加一個機車位」</b>。三房、屋齡 12 年、三間都有對外窗，這些條件單獨看都不算難找；<b>難的是全部湊在同一間，而且車位是平面、還相連。</b></p>
@@ -578,7 +584,16 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="cta">
     <h2>想進一步看這間</h2>
-    <p>現況已無租客，時間好安排。想看實際的車位進出動線、房間放床的尺寸、社區環境，直接約時間過來。</p>
+    <p>現況已無租客，時間好安排。</p>
+    <div class="whatnext">
+      <b>約看那天會發生什麼</b>
+      <ul>
+        <li><i>約 40 分鐘</i>不趕時間，三個房間你自己拿捲尺量，我不會站在旁邊催</li>
+        <li><i>先去 B3</i>兩個車位我帶你實際走一次進出動線，寬度自己看</li>
+        <li><i>要帶什麼</i>什麼都不用帶。想量尺寸就帶捲尺，其他我準備</li>
+        <li><i>會不會被推銷</i>不會。合不合你自己判斷，不合我幫你找別間</li>
+      </ul>
+    </div>
     <a class="btn-line" href="https://lin.ee/IV8bl9H">💬 官方 LINE 預約帶看</a>
     <a class="btn-tel" href="tel:0930848000">📞 直接打給我 0930-848000</a>
     <p class="cta-note">現況已無租客，看屋時間好安排，但仍請先預約，我需要跟管理室登記。</p>
