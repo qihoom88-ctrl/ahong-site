@@ -144,6 +144,127 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
 .float-call .f-tel{background:var(--warm);color:#fff}
 .float-call .f-line{background:#06C755;color:#fff}
 @media (min-width:640px){.wrap{max-width:560px}}
+
+/* ===== 40-0902-02 補洞：試算卡／風險模組／工具鈕彈窗／20問表單／免責四條 ===== */
+:root{--danger:#B83232}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--danger:#EC6E6E}}
+:root[data-theme="dark"]{--danger:#EC6E6E}
+
+/* 買方能力試算卡 */
+.afford{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:19px;box-shadow:var(--shadow);margin-top:12px}
+.afford+.afford{margin-top:12px}
+.afford-top{display:grid;gap:10px;grid-template-columns:1fr;margin-bottom:14px}
+.abox{border:1px solid var(--line);border-radius:16px;padding:13px 14px;background:var(--paper)}
+.abox small{display:block;color:var(--muted);font-weight:800;font-size:.78rem;letter-spacing:.05em}
+.abox strong{display:block;margin-top:3px;font-size:1.42rem;font-weight:900;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--trust)}
+.abox span{display:block;margin-top:2px;font-size:.78rem;color:var(--muted)}
+.abox.a-total strong{color:var(--gold)}
+.abox.a-pay strong{color:var(--warm)}
+.arow{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 2px;border-bottom:1px dashed var(--line);font-size:.9rem}
+.arow:last-of-type{border-bottom:0}
+.arow b{font-variant-numeric:tabular-nums;color:var(--trust)}
+.arow i{font-style:normal;color:var(--muted);display:block;font-size:.78rem}
+.abtn{display:flex;align-items:center;justify-content:center;min-height:50px;margin-top:13px;background:var(--warm);color:#fff;border-radius:14px;text-decoration:none;font-weight:900;text-align:center}
+.anote{margin:11px 0 0;color:var(--muted);font-size:.82rem;line-height:1.8}
+
+/* 風險—維修策略—費用—驗屋—買方對策 五欄模組 */
+.riskcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:14px;box-shadow:0 8px 22px rgba(43,58,74,.06)}
+.riskhd{background:var(--trust);color:#fff;padding:13px 16px}
+.riskhd span{display:block;font-size:.75rem;font-weight:800;letter-spacing:.1em;opacity:.82}
+.riskhd strong{display:block;margin-top:2px;font-size:1.02rem;font-weight:900;line-height:1.5}
+.riskbody{padding:5px 16px 14px}
+.rk{padding:12px 0;border-bottom:1px dashed var(--line);font-size:.87rem;line-height:1.75}
+.rk:last-child{border-bottom:0}
+.rk b{display:block;margin-bottom:4px;font-size:.78rem;font-weight:900;letter-spacing:.05em;color:var(--warm)}
+.rk .v{display:block;color:var(--ink)}
+.rk .v strong{color:var(--ink);font-weight:900}
+.rk ol,.rk ul{margin:6px 0 0;padding-left:1.2rem}
+.rk li{margin-bottom:5px}
+.rk .src{display:block;margin-top:6px;font-size:.78rem;color:var(--muted)}
+.pending{display:inline-block;margin-right:6px;padding:2px 8px;border-radius:6px;background:var(--danger);color:#fff;font-size:.72rem;font-weight:900;vertical-align:2px}
+
+/* 買之前先算：四顆工具鈕 */
+.tools{display:grid;gap:10px;margin-top:6px}
+.tool{display:flex;align-items:center;justify-content:space-between;gap:13px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 17px;cursor:pointer;box-shadow:0 8px 20px rgba(43,58,74,.06)}
+.tool-t strong{display:block;color:var(--trust);font-size:1rem;font-weight:900}
+.tool-t span{display:block;color:var(--muted);font-size:.84rem;margin-top:2px}
+.tool-go{flex:0 0 auto;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:var(--soft-warm);color:var(--warm);font-weight:900;font-size:1.1rem}
+
+/* 官方查核入口 */
+.verify{display:grid;gap:9px;margin-top:6px}
+.vlink{text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 15px;display:flex;gap:12px;align-items:center;color:var(--ink)}
+.vlink b{flex:0 0 auto;width:34px;height:34px;border-radius:11px;background:var(--soft-warm);display:grid;place-items:center;color:var(--warm);font-size:.94rem}
+.vlink strong{display:block;color:var(--trust);font-size:.94rem}
+.vlink small{display:block;color:var(--muted);font-size:.8rem}
+
+/* 使用需求 20 問表單 */
+.form-wrap{background:var(--card);border:1px solid var(--line);border-radius:26px;padding:19px;box-shadow:var(--shadow);margin-top:6px}
+.prog{position:sticky;top:0;z-index:12;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:11px 13px;margin:0 0 16px}
+.prog-row{display:flex;justify-content:space-between;font-weight:900;color:var(--trust);font-size:.9rem}
+.prog-track{height:8px;background:var(--soft-trust);border-radius:999px;overflow:hidden;margin-top:7px}
+.prog-bar{height:100%;width:0;background:var(--gold);transition:width .2s ease}
+.qgroups{display:grid;gap:13px}
+.qgroup{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:15px}
+.qgroup h3{margin:0 0 11px;color:var(--trust);font-size:1rem;font-weight:900}
+.q{margin:0 0 12px;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;min-width:0}
+.q:last-child{margin-bottom:0}
+.q legend{width:100%;padding:0 0 9px;color:var(--trust);font-weight:900;font-size:.92rem}
+.qno{display:inline-grid;place-items:center;width:25px;height:25px;margin-right:6px;border-radius:50%;background:var(--gold);color:#fff;font-size:.78rem;font-weight:900}
+.choices{display:flex;flex-wrap:wrap;gap:7px}
+.ch{position:relative}
+.ch input{position:absolute;opacity:0;pointer-events:none}
+.ch span{display:inline-flex;align-items:center;min-height:38px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--muted);font-weight:800;cursor:pointer;font-size:.86rem}
+.ch input:checked+span{background:var(--trust);border-color:var(--trust);color:#fff}
+.fin,.ftx{width:100%;border:1px solid var(--line);border-radius:13px;padding:11px 12px;background:var(--card);color:var(--ink);font:inherit}
+.ftx{min-height:80px;resize:vertical}
+.fin:focus,.ftx:focus{outline:3px solid rgba(200,150,31,.28);border-color:var(--gold)}
+.fact{margin-top:16px;padding:17px;background:var(--trust);border-radius:20px;color:#fff}
+.fact h3{margin:0;font-size:1.08rem;font-weight:900}
+.fact p{margin:5px 0 0;font-size:.87rem;opacity:.86}
+.sumbox{width:100%;min-height:150px;margin-top:11px;border:0;border-radius:13px;padding:12px;background:#fff;color:#1D2731;font:inherit;resize:vertical}
+.sendgrid{display:grid;gap:9px;margin-top:11px}
+.send{display:flex;align-items:center;justify-content:center;min-height:50px;padding:12px 14px;border-radius:14px;text-decoration:none;font-weight:900;text-align:center}
+.send.official{background:var(--warm);color:#fff}
+.send.share{background:#fff;color:#1D2731}
+.fstatus{min-height:1.4em;margin-top:9px;font-weight:800;font-size:.88rem;color:#FFD9B8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .fstatus{color:var(--warm)}}
+:root[data-theme="dark"] .fstatus{color:var(--warm)}
+.fnote{margin-top:8px;font-size:.78rem;opacity:.75;color:var(--muted)}
+
+/* 免責聲明四條 */
+.disc{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px;font-size:.82rem;color:var(--muted);line-height:1.85}
+.disc .warm{color:var(--ink);font-size:.9rem;margin:0 0 11px}
+.disc ol{margin:0;padding-left:1.15rem;display:grid;gap:6px}
+.disc strong{color:var(--ink)}
+
+/* 彈窗 */
+.modal{position:fixed;inset:0;z-index:100;display:none;background:rgba(14,19,25,.93);padding:14px;overflow-y:auto}
+.modal.open{display:block}
+.modal-inner{width:min(100%,640px);margin:52px auto 30px;background:var(--card);border-radius:22px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.modal-inner h3{margin:0 0 4px;color:var(--trust);font-size:1.3rem;font-weight:900}
+.modal-inner .msub{margin:0 0 15px;color:var(--muted);font-size:.88rem}
+.modal-close{position:fixed;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:#1D2731;font-size:1.5rem;font-weight:900;cursor:pointer;z-index:110}
+.mlist{margin:0;padding-left:1.15rem;font-size:.92rem}
+.mlist li{margin:7px 0}
+.mlist b{color:var(--trust)}
+.mnote{margin-top:13px;font-size:.82rem;color:var(--muted);line-height:1.75}
+.checks{display:grid;gap:1px}
+.chk{display:flex;gap:11px;align-items:flex-start;padding:10px 11px;border-radius:10px;cursor:pointer}
+.chk:hover{background:var(--paper)}
+.chk input{width:19px;height:19px;margin:3px 0 0;flex:0 0 auto;accent-color:var(--warm);cursor:pointer}
+.chk span{font-size:.92rem}
+.chk input:checked+span{color:var(--muted);text-decoration:line-through}
+.tally{margin-top:13px;padding:12px 14px;border-radius:12px;background:var(--soft-warm);border:1px solid var(--warm);font-size:.92rem;font-weight:900}
+.tally em{font-style:normal;color:var(--warm);font-variant-numeric:tabular-nums}
+.tally.done{background:var(--soft-teal);border-color:var(--teal)}
+.tally.done em{color:var(--teal)}
+.tally .sub{display:block;font-weight:400;font-size:.83rem;color:var(--muted);margin-top:4px}
+.flagrow{display:grid;grid-template-columns:auto 1fr;gap:11px;padding:12px 0;border-bottom:1px solid var(--line)}
+.flagrow:last-child{border-bottom:0}
+.flagdot{width:8px;height:8px;border-radius:50%;background:var(--danger);margin-top:9px}
+.flagrow strong{color:var(--trust);font-size:.96rem}
+.flagrow p{margin:3px 0 0;color:var(--muted);font-size:.86rem}
+@media (min-width:640px){.qgroups{grid-template-columns:repeat(2,1fr)}.sendgrid,.tools{grid-template-columns:repeat(2,1fr)}.afford-top{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
@@ -224,16 +345,18 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
   </section>
 
   <section class="sec">
-    <div class="tag">照片全部看一遍</div>
-    <h2>空間現況實拍</h2>
+    <div class="tag">屋況直球</div>
+    <h2>好的壞的都拍給你看</h2>
+    <p class="lead">以下六張是現場實拍原始照片，沒有修圖、沒有虛擬佈置，每張都配一句誠實說明。這裡現況是空屋，但不是毛胚——爐具、衛浴都已經裝好，可以直接進駐使用。</p>
     <div class="ph3">
-      <figure><img src="a/k_street.jpg" alt="社區街景實拍"><figcaption>社區街景實拍</figcaption></figure>
-      <figure><img src="a/k_open1.jpg" alt="全開放大跨距空間"><figcaption>全開放大跨距</figcaption></figure>
-      <figure><img src="a/k_open2.jpg" alt="採光面實拍"><figcaption>採光面實拍</figcaption></figure>
+      <figure><img src="a/k_street.jpg" alt="社區街景實拍"><figcaption>社區棟身與街景實拍，這棟外觀與周邊街廓，不是空拍也不是示意圖</figcaption></figure>
+      <figure><img src="a/k_open1.jpg" alt="開放區域含流理台與爐具，現況已完成基礎裝修"><figcaption>開放區域含流理台、瓦斯爐與抽油煙機，靠窗那扇門通往衛浴——現況已完成基礎裝修，不是毛胚空間</figcaption></figure>
+      <figure><img src="a/k_open2.jpg" alt="另一側開放區域，木紋地板與崁燈已完工"><figcaption>另一側開放區域，木紋地板、崁燈與間接照明都已做好，現況空屋沒有家具進駐</figcaption></figure>
     </div>
-    <div class="ph2">
-      <figure><img src="a/k_bath.jpg" alt="獨立衛浴，乾濕分離"><figcaption>獨立衛浴・乾濕分離</figcaption></figure>
-      <figure><img src="a/k_parking.jpg" alt="車位B5-112實拍"><figcaption>車位 B5-112 實拍</figcaption></figure>
+    <div class="ph3">
+      <figure><img src="a/k_bath.jpg" alt="衛浴為乾濕分離規格，已裝好馬桶面盆與淋浴間"><figcaption>衛浴乾濕分離，馬桶、面盆、淋浴間都已裝好，現況乾淨、看不出使用痕跡</figcaption></figure>
+      <figure><img src="a/k_parking.jpg" alt="車位B5-112實拍，坡道平面車位"><figcaption>車位B5-112實拍，坡道平面車位——進出動線建議看屋當天自己開車走一次再確認</figcaption></figure>
+      <figure><img src="a/k_utility.jpg" alt="後陽台工作區，瓦斯錶與熱水器外露，管線配置為工作陽台常態"><figcaption>後陽台工作區，瓦斯錶與熱水器管線外露，是工作陽台常見配置；長期空置未使用，看屋前建議先請水電做一次通水通電（費用見下方買方能力與工具鈕）</figcaption></figure>
     </div>
     <p class="video-note">照片全部為實拍現況，沒有虛擬佈置、沒有修改格局。</p>
   </section>
@@ -243,6 +366,37 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
     <h2>現況格局圖</h2>
     <img class="fp" src="a/k_floorplan.jpg" alt="現況格局圖，可自行規劃隔間">
     <p class="plan-cap">格局圖僅供動線理解，未依實際比例與座向繪製；面積、隔間與座向以地政謄本、測量成果圖及不動產說明書記載為準。</p>
+  </section>
+
+  <section class="sec">
+    <div class="tag">買之前先算自己</div>
+    <h2>1568萬<br>你的月付會是多少</h2>
+    <p class="lead">總價是一個數字，能不能扛得住是另一個。先把首付、月付款、月息攤開來看，再決定要不要花時間來看現場。</p>
+    <div class="afford">
+      <div class="afford-top">
+        <div class="abox a-total"><small>首付（自備款）</small><strong>313.6 萬</strong><span>總價 1568 萬 − 貸款 1254.4 萬</span></div>
+        <div class="abox a-pay"><small>月付款</small><strong>49,141 元</strong><span>本息平均攤還，每月固定</span></div>
+        <div class="abox"><small>月息（首月利息）</small><strong>25,454 元</strong><span>首月本金約 23,687 元</span></div>
+      </div>
+      <div class="arow"><span>委託總價<i>開價不等於成交價</i></span><b>1568 萬</b></div>
+      <div class="arow"><span>貸款金額<i>總價 × 8 成</i></span><b>1254.4 萬</b></div>
+      <div class="arow"><span>試算條件<i>30 年期・年利率 2.435%・無寬限期</i></span><b>本息平均攤還</b></div>
+      <div class="arow"><span>管理費<i>依委託資料，另計、不含在月付款裡</i></span><b>約2,493 元／月</b></div>
+      <a class="abtn" href="/tools/?price=1568#/loan" target="_blank" rel="noopener">用試算工具改成你的成數與利率（已帶入 1568 萬）</a>
+      <p class="anote">
+        試算條件：總價 1568 萬、貸款 8 成、30 年期、年利率 2.435%、無寬限期，本息平均攤還。<strong>這些是預設值，不是你的條件。</strong>本案登記為一般事務所（非住宅），銀行對非住宅用途的估價與貸款成數通常比住宅保守，8 成是試算假設不是保證，<strong>務必先洽銀行做貸款預審</strong>，確認商用空間的實際核貸條件。首付之外還要另外準備契稅、印花稅、代書費、規費、火險地震險，本卡都未計入。
+      </p>
+    </div>
+    <div class="afford">
+      <div class="afford-top">
+        <div class="abox a-total"><small>把檢查算進去</small><strong>約 1,300～4,500 元</strong><span>現況空屋已久，交屋前建議先請水電做一次通水通電複檢（電路檢測 $300～500／次＋水管配管通試 $1,000～4,000／次，來源：找師傅945／PRO360水電頁，查證日2026-08-22），避免長期空置後管路鏽蝕阻塞</span></div>
+      </div>
+      <div class="arow"><span>入住總成本<i>開價 1568 萬＋通水電複檢上限4,500元</i></span><b>約 1568.45 萬</b></div>
+      <div class="arow"><span>驗屋費用另計<i>一般行情 $500～1,000／坪（鴻宇健康驗屋，2025-07-06）×自用29.25坪≈$14,625～$29,250；或按戶計價21～30坪約$15,000、31～40坪約$18,000（PRO360驗屋頁，2025-06-12）</i></span><b>另計</b></div>
+      <p class="anote">
+        <strong>合計怎麼來的：</strong>本案現況已完成基礎裝修（廚具、衛浴都已裝好，見上方「屋況直球」），不是毛胚空間，所以這裡不是一筆裝修預算，而是一筆「長期空置後的複檢費」——金額小，通常直接付現即可，不需要另外規劃分期。<strong>這是上限粗估，不是報價，實際費用以現場估價為準。</strong>下方「風險—維修策略—費用—驗屋」模組把每一項的出處都列給你看。
+      </p>
+    </div>
   </section>
 
   <section class="sec">
@@ -258,6 +412,87 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
     <p class="split-note">兩筆同社區實登都在37坪上下、含車位。以最近一筆45.14萬/坪估算，13樓樓層較高，通常可支撐小幅溢價——調整後的1568萬貼近這個區間，資料來源：內政部實價登錄。</p>
   </section>
 
+  <section class="sec" id="fengxian">
+    <div class="tag">風險我先講完</div>
+    <h2>連費用一起講</h2>
+    <p class="lead">每一項都走完五件事：不處理會怎樣、去哪查怎麼查、大概要花多少、要不要驗、你怎麼承擔。<strong>費用只引用有出處的公開報價區間並標來源與年份；查不到出處的，寫「待查證」，不編數字給你。</strong></p>
+
+    <div class="riskcard">
+      <div class="riskhd"><span>風險 01</span><strong>主要用途登記一般事務所：現況已裝修成可進駐格局，法規／稅／貸款三件事跟住宅不同</strong></div>
+      <div class="riskbody">
+        <div class="rk"><b>不處理的風險</b><span class="v">委託資料明載主要用途為一般事務所，非住宅；但現況已裝好流理台、爐具與衛浴（見上方「屋況直球」照片），是一個可以直接進駐使用的格局。這類單位實務上大量被拿來居住或進駐使用，也是價格比同地段純住宅低的原因之一——但作住家使用不符都市計畫法，依該法第79條可處6萬～30萬罰鍰並得令停止使用，實務上屬被檢舉才處理的類型，買下來等於把這個風險接過來。另外，銀行對非住宅用途的估價與貸款成數通常更保守，自備款要抓寬。</span></div>
+        <div class="rk"><b>查證策略</b><span class="v">
+          <ol>
+            <li>向委託方索取使用執照影本，或自行申請建物謄本，核對登載的主要用途。</li>
+            <li>洽新北市建管與都市計畫相關單位，問清楚你想做的使用內容合不合規。</li>
+            <li>有特定營業計畫的，另洽該目的事業主管機關，不同營業項目各有登記與消防要求。</li>
+            <li>簽約前請地政士協助確認使用執照登載內容與謄本一致。</li>
+            <li><strong>成數洽銀行做貸款預審</strong>：帶著「主要用途登記一般事務所」這個條件去問至少兩家，拿到的才算數。</li>
+          </ol>
+          <strong>這一段我不猜、也不替它背書，全部依主管機關與銀行的正式答覆為準。</strong></span></div>
+        <div class="rk"><b>費用</b><span class="v"><strong>無修繕費用，屬使用限制／交易條件，不進本頁修繕合計。</strong><span class="pending">待查證</span>公部門查詢使用分區與登記用途多為申請規費或免費，金額依各機關公告。<span class="src">70部門修繕行情偵查表（查證日 2026-08-22）為修繕類報價彙整，未收錄公部門規費，故本頁不列數字。</span></span></div>
+        <div class="rk"><b>驗屋成本</b><span class="v">用途查證屬書面與行政程序，不在驗屋範圍，不需另付驗屋費。</span></div>
+        <div class="rk"><b>買方對策（怎麼承擔）</b><span class="v"><strong>預算怎麼算：</strong>查證使用分區與登記用途多為公部門規費或免費，不進修繕合計。<br><strong>交易怎麼談：</strong>可與委託方協商把「查證結果符合你的使用目的」寫成契約條件，條款內容由地政士擬定；查證沒完成前先不要下定。<br><strong>處理順序：</strong>這條不是修繕，是簽約前必須先完成的查證，排在所有工項之前。<br><strong>我能做的：</strong>陪同向主管機關查詢、把查證條件寫進要約或契約建議。</span></div>
+      </div>
+    </div>
+
+    <div class="riskcard">
+      <div class="riskhd"><span>風險 02</span><strong>公設比33.44%：可用面積比登記坪數少</strong></div>
+      <div class="riskbody">
+        <div class="rk"><b>不處理的風險</b><span class="v">登記37.40坪＝主建物17.34坪＋附屬建物2.12坪＋公設17.94坪（內含車位8.15坪），公設比33.44%。如果拿登記總坪數去想像可用空間或跟別件比單價，會把公設一起算進來，比出來的結論是失真的。</span></div>
+        <div class="rk"><b>查證策略</b><span class="v">
+          <ol>
+            <li>比價一律用主建坪數對主建坪數，兩邊基準一致才有意義。</li>
+            <li>看現場帶捲尺，把你真正要用的那幾段實際量一次。</li>
+            <li>申請建物測量成果圖與謄本，核對登記面積與現況範圍。</li>
+          </ol></span></div>
+        <div class="rk"><b>費用</b><span class="v"><strong>無修繕費用，屬交易條件，不進本頁修繕合計。</strong><span class="pending">待查證</span>建物謄本與測量成果圖為地政規費，金額依地政機關公告費額。<span class="src">70部門修繕行情偵查表未收錄地政規費，本頁不編數字，這幾份本來就是我的工作，跟我說一聲我去調。</span></span></div>
+        <div class="rk"><b>驗屋成本</b><span class="v">面積不在驗屋範圍，屬地政測量業務。要精算面積請委託地政士或不動產估價師，費用依委託內容個別議定。</span></div>
+        <div class="rk"><b>買方對策（怎麼承擔）</b><span class="v"><strong>預算怎麼算：</strong>這條不進修繕合計；真正會動到錢的是「用哪個坪數比價」——用主建17.34坪去對別件的主建坪數，基準一致才不會比錯。<br><strong>交易怎麼談：</strong>可要求以謄本坪數為準載明於不動產說明書與契約，面積以地政機關登載為準。<br><strong>處理順序：</strong>簽約前確認——先調謄本與測量成果圖核對，再帶捲尺到現場量你要用的那幾段。<br><strong>我能做的：</strong>陪看時帶謄本核對、代調建物測量成果圖。</span></div>
+      </div>
+    </div>
+
+    <div class="riskcard">
+      <div class="riskhd"><span>風險 03</span><strong>屋齡8.3年、15層電梯大樓：電梯與消防等公共設施是長期持有變數</strong></div>
+      <div class="riskbody">
+        <div class="rk"><b>不處理的風險</b><span class="v">管理費約2,493元／月（依委託資料），一年約29,916元，這是不會停的固定支出。本案屋齡8.3年還不到需要大修的年紀，但電梯保養、消防安檢、外牆這些公共設施，十幾二十年後一定會遇到汰換或大修，屆時費用由區分所有權人依約定分攤，金額可能一次不小。</span></div>
+        <div class="rk"><b>查證策略</b><span class="v">
+          <ol>
+            <li>向管委會索取近三年收支報表與公共基金餘額，看得出來這棟養不養得起自己。</li>
+            <li>問電梯保養合約內容，有沒有汰換或大修的決議或討論。</li>
+            <li>調閱消防安檢申報紀錄，看有沒有未完成的缺失改善單。</li>
+            <li>確認前手有沒有欠繳管理費——欠款的處理方式要寫進契約。</li>
+          </ol>
+          <span class="src">總樓層與戶數依委託資料登載地上15層、地下5層，本戶所在13樓，每層7戶；最終仍以建物謄本與使用執照登載為準。</span></span></div>
+        <div class="rk"><b>費用</b><span class="v"><strong>無本戶單獨的修繕費用，屬交易條件（共用部分依規約分攤），不進本頁修繕合計。</strong><span class="pending">待查證</span>電梯汰換、消防設備更新與大樓公共修繕的分攤金額，以管委會決議與廠商實際報價為準。<span class="src">70部門修繕行情偵查表的九工種未收錄電梯與大樓公共設備，本頁不編數字；可參考的相關項目：高空作業（蜘蛛人）$6,000～10,000／人天（找師傅945，2026-03-24），供評估外牆整修分攤時參考，實際費用以現場估價為準。</span></span></div>
+        <div class="rk"><b>驗屋成本</b><span class="v">公共設施不在個戶驗屋範圍，不需為此加價。改成請管委會提供電梯保養紀錄與消防安檢申報書，這兩份看得出來的東西比驗屋還多。</span></div>
+        <div class="rk"><b>買方對策（怎麼承擔）</b><span class="v"><strong>預算怎麼算：</strong>無本戶單獨的修繕費用，不進修繕合計；管理費約2,493元／月（一年約29,916元）先列進每月支出，公共設備更新的分攤金等管委會資料到手再抓量級。<br><strong>交易怎麼談：</strong>可要求委託方提供管委會近三年收支報表、公共基金餘額與電梯保養紀錄；已決議未繳的分攤金或欠繳管理費，可約定由委託方交屋前結清或價金保留。<br><strong>處理順序：</strong>不是修繕，是出價前的查證——上面「查證策略」那幾份文件看完再出價。<br><strong>我能做的：</strong>陪同向管委會索取文件、把欠繳結清條款寫進要約或契約建議。</span></div>
+      </div>
+    </div>
+
+    <div class="riskcard">
+      <div class="riskhd"><span>風險 04</span><strong>現況空屋已久：廚具、水電與衛浴設備長期無人使用</strong></div>
+      <div class="riskbody">
+        <div class="rk"><b>不處理的風險</b><span class="v">現況雖然已裝好流理台、爐具與衛浴（見上方「屋況直球」照片），但空屋代表這些設備長期沒有水流通過、也沒有通電使用——給排水管路可能有生鏽或阻塞，熱水器久放不點火，迴路久未通電也可能跳脫。這些不是看照片看得出來的，要實際測過才知道。</span></div>
+        <div class="rk"><b>維修策略</b><span class="v">
+          <ol>
+            <li>進場前找水電師傅做一次通水通電檢查。</li>
+            <li>流理台與衛浴排水各測一次，確認排水順暢不阻塞。</li>
+            <li>確認熱水器能正常點火供應熱水。</li>
+            <li>檢查完沒問題就是0元，有問題再依現場報價處理，不用先抓一筆整修預算。</li>
+          </ol></span></div>
+        <div class="rk"><b>費用</b><span class="v">
+          <ul>
+            <li>電路檢測 $300～500／次（找師傅945，2026-03-24）；另一站列 $100～500／次（PRO360水電頁，2025-08-11）。</li>
+            <li>水管配管／通試 $1,000～4,000／次（PRO360水電頁，2025-08-11）。</li>
+          </ul>
+          <span class="src">來源：70部門修繕行情偵查表（查證日 2026-08-22）。以上為市場公開報價區間，實際費用以現場估價為準；本項不含拆除與清運，通常用不到。</span></span></div>
+        <div class="rk"><b>驗屋成本</b><span class="v">建議與上面的通水通電檢查併入同一趟，不需要另外出勤；若要做正式驗屋，費用見上方「買之前先算自己」卡片的「驗屋費用另計」區間。</span></div>
+        <div class="rk"><b>買方對策（怎麼承擔）</b><span class="v"><strong>預算怎麼算：</strong>這條先抓上限 <strong>$4,500</strong>（電路檢測$500＋水管配管通試$4,000）加進「<a href="#loan">入住總成本</a>」；金額小，通常直接付現即可。<br><strong>交易怎麼談：</strong>可協商由委託方負擔進場前的通水通電檢查費，或約定交屋前先測過一次；檢查出問題的部分，可要求委託方交屋前修復或價金保留。<br><strong>處理順序：</strong>排在交屋前、進駐使用前，安全（電）優先於其他工項。<br><strong>我能做的：</strong>代約水電師傅估價、把檢查條件寫進要約或契約建議、交屋清點時一併核對。</span></div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec">
     <div class="tag">誰會用得到這裡</div>
     <h2>這幾種需求，這裡對得上</h2>
@@ -269,6 +504,215 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
         <li>看中電梯高樓層＋大車位的商用置產、收租投資客</li>
       </ul>
     </div>
+  </section>
+
+  <section class="sec">
+    <div class="tag">買之前先算</div>
+    <h2>四件事，點開就有</h2>
+    <p class="lead">這幾件是決定要不要進駐使用的關鍵，我整理成可以直接照著做的版本。</p>
+    <div class="tools">
+      <button class="tool" type="button" data-modal="m-fee">
+        <div class="tool-t"><strong>整理費怎麼抓</strong><span>空屋久放的通水通電複檢費，怎麼算</span></div>
+        <div class="tool-go">→</div>
+      </button>
+      <button class="tool" type="button" data-modal="m-use">
+        <div class="tool-t"><strong>商業用途怎麼查</strong><span>本案有，一般事務所的查證方式</span></div>
+        <div class="tool-go">→</div>
+      </button>
+      <button class="tool" type="button" data-modal="m-check">
+        <div class="tool-t"><strong>看屋當天檢核表</strong><span>16 項，可以勾，會記在你手機裡</span></div>
+        <div class="tool-go">→</div>
+      </button>
+      <button class="tool" type="button" data-modal="m-flag">
+        <div class="tool-t"><strong>看到什麼就該停手</strong><span>六個訊號，出現任一個先暫停</span></div>
+        <div class="tool-go">→</div>
+      </button>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="tag">官方查核入口</div>
+    <h2>這些不要只聽我說</h2>
+    <div class="verify">
+      <a class="vlink" href="https://lvr.land.moi.gov.tw" target="_blank" rel="noopener"><b>價</b><div><strong>內政部實價登錄</strong><small>查同類型成交紀錄</small></div></a>
+      <a class="vlink" href="https://dcland.moi.gov.tw/" target="_blank" rel="noopener"><b>權</b><div><strong>地政司數位櫃臺</strong><small>申請謄本，查產權現況與登記用途</small></div></a>
+      <a class="vlink" href="https://building-management.publicwork.ntpc.gov.tw/" target="_blank" rel="noopener"><b>照</b><div><strong>新北建管便民服務網</strong><small>查使用執照登載的主要用途</small></div></a>
+      <a class="vlink" href="https://icdc-pub.ntpc.gov.tw/ntpcpb/" target="_blank" rel="noopener"><b>建</b><div><strong>新北違章建築案件查詢</strong><small>查有無查報紀錄</small></div></a>
+      <a class="vlink" href="https://dmap.ncdr.nat.gov.tw/" target="_blank" rel="noopener"><b>災</b><div><strong>災害潛勢地圖</strong><small>查淹水、地震與坡地潛勢</small></div></a>
+      <a class="vlink" href="https://law.moj.gov.tw" target="_blank" rel="noopener"><b>法</b><div><strong>全國法規資料庫</strong><small>查法條原文與成屋買賣定型化契約應記載事項</small></div></a>
+    </div>
+  </section>
+
+  <section class="form-wrap" id="needs">
+    <div class="tag">使用需求 20 問</div>
+    <h2>選完直接傳給我</h2>
+    <p class="lead">不用打字整理，填完會自動產生需求摘要，可以直接帶進我的官方 LINE。就算這件不合，我也能照你的條件幫你找。</p>
+
+    <form id="needsForm" novalidate>
+      <div class="prog" aria-live="polite">
+        <div class="prog-row"><span>完成進度</span><span id="progText">0／20</span></div>
+        <div class="prog-track"><div class="prog-bar" id="progBar"></div></div>
+      </div>
+
+      <div class="qgroups">
+        <div class="qgroup">
+          <h3>基本狀況</h3>
+          <fieldset class="q" data-label="稱呼"><legend><span class="qno">1</span>怎麼稱呼你</legend>
+            <input class="fin" type="text" name="q1" placeholder="例如：王小姐、陳先生，或直接寫名字" autocomplete="name"></fieldset>
+          <fieldset class="q" data-label="方便聯絡時段"><legend><span class="qno">2</span>方便聯絡的時段</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q2" value="平日上午"><span>平日上午</span></label>
+              <label class="ch"><input type="radio" name="q2" value="平日下午"><span>平日下午</span></label>
+              <label class="ch"><input type="radio" name="q2" value="平日晚間"><span>平日晚間</span></label>
+              <label class="ch"><input type="radio" name="q2" value="假日"><span>假日</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="洽詢目的"><legend><span class="qno">3</span>這次洽詢的主要目的</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q3" value="自用規劃"><span>自用規劃</span></label>
+              <label class="ch"><input type="radio" name="q3" value="登記營業地址"><span>登記營業地址</span></label>
+              <label class="ch"><input type="radio" name="q3" value="置產出租"><span>置產出租</span></label>
+              <label class="ch"><input type="radio" name="q3" value="其他用途"><span>其他用途</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="決定時間"><legend><span class="qno">4</span>希望多久內完成</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q4" value="1個月內"><span>1個月內</span></label>
+              <label class="ch"><input type="radio" name="q4" value="3個月內"><span>3個月內</span></label>
+              <label class="ch"><input type="radio" name="q4" value="半年內"><span>半年內</span></label>
+              <label class="ch"><input type="radio" name="q4" value="1年內"><span>1年內</span></label>
+              <label class="ch"><input type="radio" name="q4" value="先了解市場"><span>先了解市場</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="目前使用狀況"><legend><span class="qno">5</span>目前的使用狀況</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q5" value="租用中"><span>租用中</span></label>
+              <label class="ch"><input type="radio" name="q5" value="自有空間"><span>自有空間</span></label>
+              <label class="ch"><input type="radio" name="q5" value="準備調整用途"><span>準備調整用途</span></label>
+              <label class="ch"><input type="radio" name="q5" value="其他"><span>其他</span></label>
+            </div></fieldset>
+        </div>
+
+        <div class="qgroup">
+          <h3>地點與預算</h3>
+          <fieldset class="q" data-label="理想區域"><legend><span class="qno">6</span>理想區域或捷運站</legend>
+            <input class="fin" type="text" name="q6" placeholder="例如：新莊、樹林、板橋"></fieldset>
+          <fieldset class="q" data-label="主要通勤地點"><legend><span class="qno">7</span>主要通勤地點</legend>
+            <input class="fin" type="text" name="q7" placeholder="例如：新莊、台北車站"></fieldset>
+          <fieldset class="q" data-label="理想總價"><legend><span class="qno">8</span>理想總價</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q8" value="1200萬內"><span>1200萬內</span></label>
+              <label class="ch"><input type="radio" name="q8" value="1200至1600萬"><span>1200至1600萬</span></label>
+              <label class="ch"><input type="radio" name="q8" value="1600至2000萬"><span>1600至2000萬</span></label>
+              <label class="ch"><input type="radio" name="q8" value="2000萬以上"><span>2000萬以上</span></label>
+              <label class="ch"><input type="radio" name="q8" value="視標的決定"><span>視標的決定</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="可準備自備款"><legend><span class="qno">9</span>目前可準備的自備款</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q9" value="200萬內"><span>200萬內</span></label>
+              <label class="ch"><input type="radio" name="q9" value="200至300萬"><span>200至300萬</span></label>
+              <label class="ch"><input type="radio" name="q9" value="300至400萬"><span>300至400萬</span></label>
+              <label class="ch"><input type="radio" name="q9" value="400萬以上"><span>400萬以上</span></label>
+              <label class="ch"><input type="radio" name="q9" value="尚未計算"><span>尚未計算</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="每月希望負擔的貸款金額"><legend><span class="qno">10</span>每月希望負擔的貸款金額控制在</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q10" value="3萬元內"><span>3萬元內</span></label>
+              <label class="ch"><input type="radio" name="q10" value="3至5萬元"><span>3至5萬元</span></label>
+              <label class="ch"><input type="radio" name="q10" value="5至7萬元"><span>5至7萬元</span></label>
+              <label class="ch"><input type="radio" name="q10" value="7萬元以上"><span>7萬元以上</span></label>
+              <label class="ch"><input type="radio" name="q10" value="希望協助試算"><span>希望協助試算</span></label>
+            </div></fieldset>
+        </div>
+
+        <div class="qgroup">
+          <h3>使用需求</h3>
+          <fieldset class="q" data-label="貸款預審"><legend><span class="qno">11</span>是否做過貸款預審</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q11" value="已完成"><span>已完成</span></label>
+              <label class="ch"><input type="radio" name="q11" value="正在辦理"><span>正在辦理</span></label>
+              <label class="ch"><input type="radio" name="q11" value="尚未辦理"><span>尚未辦理</span></label>
+              <label class="ch"><input type="radio" name="q11" value="需要協助"><span>需要協助</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="預計使用人數"><legend><span class="qno">12</span>預計使用人數</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q12" value="1人"><span>1人</span></label>
+              <label class="ch"><input type="radio" name="q12" value="2人"><span>2人</span></label>
+              <label class="ch"><input type="radio" name="q12" value="3至4人"><span>3至4人</span></label>
+              <label class="ch"><input type="radio" name="q12" value="5人以上"><span>5人以上</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="最少需要幾個獨立空間"><legend><span class="qno">13</span>最少需要幾個獨立空間</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q13" value="1個空間"><span>1個空間</span></label>
+              <label class="ch"><input type="radio" name="q13" value="2個空間"><span>2個空間</span></label>
+              <label class="ch"><input type="radio" name="q13" value="3個空間"><span>3個空間</span></label>
+              <label class="ch"><input type="radio" name="q13" value="3個以上"><span>3個以上</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="衛浴需求"><legend><span class="qno">14</span>衛浴需求</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q14" value="1套可接受"><span>1套可接受</span></label>
+              <label class="ch"><input type="radio" name="q14" value="至少2套"><span>至少2套</span></label>
+              <label class="ch"><input type="radio" name="q14" value="一定要開窗"><span>一定要開窗</span></label>
+              <label class="ch"><input type="radio" name="q14" value="沒有特別要求"><span>沒有特別要求</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="電梯需求"><legend><span class="qno">15</span>電梯是不是必要條件</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q15" value="一定要電梯"><span>一定要電梯</span></label>
+              <label class="ch"><input type="radio" name="q15" value="低樓層可接受"><span>低樓層可接受</span></label>
+              <label class="ch"><input type="radio" name="q15" value="高樓層可接受"><span>高樓層可接受</span></label>
+              <label class="ch"><input type="radio" name="q15" value="依現場條件決定"><span>依現場條件決定</span></label>
+            </div></fieldset>
+        </div>
+
+        <div class="qgroup">
+          <h3>空間偏好與取捨</h3>
+          <fieldset class="q" data-label="車位需求"><legend><span class="qno">16</span>車位需求</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q16" value="一定要平面車位"><span>一定要平面車位</span></label>
+              <label class="ch"><input type="radio" name="q16" value="機械車位可接受"><span>機械車位可接受</span></label>
+              <label class="ch"><input type="radio" name="q16" value="附近可租即可"><span>附近可租即可</span></label>
+              <label class="ch"><input type="radio" name="q16" value="不需要車位"><span>不需要車位</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="屋齡接受度"><legend><span class="qno">17</span>可接受的屋齡</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q17" value="全新未使用過"><span>全新未使用過</span></label>
+              <label class="ch"><input type="radio" name="q17" value="10年內"><span>10年內</span></label>
+              <label class="ch"><input type="radio" name="q17" value="20年內"><span>20年內</span></label>
+              <label class="ch"><input type="radio" name="q17" value="30年內"><span>30年內</span></label>
+              <label class="ch"><input type="radio" name="q17" value="地點好即可"><span>地點好即可</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="空間狀態偏好"><legend><span class="qno">18</span>偏好的空間狀態</legend>
+            <div class="choices">
+              <label class="ch"><input type="radio" name="q18" value="全新狀態"><span>全新狀態</span></label>
+              <label class="ch"><input type="radio" name="q18" value="整理好可用"><span>整理好可用</span></label>
+              <label class="ch"><input type="radio" name="q18" value="可自行裝修"><span>可自行裝修</span></label>
+              <label class="ch"><input type="radio" name="q18" value="視總價決定"><span>視總價決定</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="最重視的條件"><legend><span class="qno">19</span>最重視哪些條件，可複選</legend>
+            <div class="choices">
+              <label class="ch"><input type="checkbox" name="q19" value="交通"><span>交通</span></label>
+              <label class="ch"><input type="checkbox" name="q19" value="商圈"><span>商圈</span></label>
+              <label class="ch"><input type="checkbox" name="q19" value="視野"><span>視野</span></label>
+              <label class="ch"><input type="checkbox" name="q19" value="採光"><span>採光</span></label>
+              <label class="ch"><input type="checkbox" name="q19" value="坪數"><span>坪數</span></label>
+              <label class="ch"><input type="checkbox" name="q19" value="車位"><span>車位</span></label>
+              <label class="ch"><input type="checkbox" name="q19" value="社區管理"><span>社區管理</span></label>
+              <label class="ch"><input type="checkbox" name="q19" value="總價"><span>總價</span></label>
+            </div></fieldset>
+          <fieldset class="q" data-label="不能接受與補充"><legend><span class="qno">20</span>最不能接受的條件或其他補充</legend>
+            <textarea class="ftx" name="q20" placeholder="例如：不要頂樓、需要獨立電表、要能申請特定登記，或其他需求"></textarea></fieldset>
+        </div>
+      </div>
+
+      <div class="fact">
+        <h3>需求摘要</h3>
+        <p>填完之後按下按鈕，文字會帶進 LINE，送出前你還可以自己修改。</p>
+        <textarea class="sumbox" id="needsSummary" readonly aria-label="使用需求摘要"></textarea>
+        <div class="sendgrid">
+          <a class="send official" id="sendOfficial" href="https://line.me/R/oaMessage/%40798ulmws/" target="_blank" rel="noopener">發送至阿宏官方 LINE</a>
+          <a class="send share" id="shareLine" href="https://line.me/R/share?text=" target="_blank" rel="noopener">分享到其他 LINE 對話</a>
+        </div>
+        <div class="fstatus" id="formStatus" aria-live="polite"></div>
+        <div class="fnote">手機用 LINE 開啟效果最好。你填的內容只留在這台手機上，按下按鈕才會帶進 LINE。</div>
+      </div>
+    </form>
   </section>
 
   <section class="cta">
@@ -309,6 +753,17 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
     <div class="row">🪪 <a href="https://0930848000.com/mingpian/">電子名片</a></div>
   </div>
 
+  <!-- 免責聲明四條 -->
+  <div class="disc">
+    <p class="warm">這一頁能幫你把方向抓對，但每個人的需求都不一樣。真的要動手之前，還是找專業的人幫你看過一次，那一趟不會白跑。</p>
+    <ol>
+      <li><strong>官方謄本優先</strong>：本頁產權、面積、格局、現況等資訊整理自委託方資料，僅供參考；與官方謄本、測量成果圖或使用執照不符，一律以官方謄本為準。</li>
+      <li><strong>歡迎指正誤植</strong>：本頁與相關影片文宣如有誤植，歡迎留言或私訊指正，會儘速查證更正。</li>
+      <li><strong>資訊有效期</strong>：本頁資訊僅反映查核日期當下狀況，資料查核日期 2026-09-01，逾 30 天請向本人確認最新現況。</li>
+      <li><strong>避免已售出</strong>：為避免標的已售出或委託異動仍在推廣，歡迎來電 <strong>0930-848000</strong> 確認最新狀態再安排看現場。</li>
+    </ol>
+  </div>
+
   <!-- 法遵條 -->
   <div class="legal">
     經紀業 鴻石不動產經紀有限公司｜住商不動產樹林站前加盟店<br>
@@ -324,6 +779,200 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
   <a class="f-tel" href="tel:0930848000">📞 打給阿宏</a>
   <a class="f-line" href="https://lin.ee/IV8bl9H">💬 LINE 私訊</a>
 </div>
+
+<div class="modal" id="modalBox" role="dialog" aria-modal="true">
+  <button class="modal-close" type="button" id="modalClose" aria-label="關閉">×</button>
+  <div class="modal-inner" id="modalInner"></div>
+</div>
+
+<template id="m-fee">
+  <h3>整理費怎麼抓</h3>
+  <p class="msub">本案現況已裝好流理台、爐具與衛浴，不是毛胚，所以這裡不是一筆裝修預算，而是一筆「空屋久放後的複檢費」。</p>
+  <ol class="mlist">
+    <li><b>先抓一次通水通電檢查。</b>電路檢測 $300～500／次（找師傅945，2026-03-24），水管配管／通試 $1,000～4,000／次（PRO360水電頁，2025-08-11），合計上限約 $4,500。</li>
+    <li><b>檢查沒問題就是這個金額，不用再加。</b>沒有壁癌、沒有隔間，不需要抓泥作、油漆或拆除清運的預算。</li>
+    <li><b>檢查有問題再看現場報價。</b>例如熱水器不點火要換新，或某段水管要局部更新，這些不在上面的區間裡，以現場估價為準。</li>
+    <li><b>想客製化調整內部配置才需要另外抓裝修預算。</b>這部分因人而異，我可以陪你依實際需求問設計師或工班報價，不在本頁的通水電複檢範圍。</li>
+  </ol>
+  <p class="mnote">本頁不對裝修結果做任何保證，實際費用一律以現場估價為準。</p>
+</template>
+
+<template id="m-use">
+  <h3>商業用途怎麼查</h3>
+  <p class="msub">本案主要用途登記為一般事務所，我不遮、也不替它掛保證，教你怎麼查。</p>
+  <ol class="mlist">
+    <li><b>先確認使用執照登載的主要用途。</b>跟委託方索取使用執照影本或自行申請謄本核對，確認登記為一般事務所。</li>
+    <li><b>洽詢主管機關查詢使用分區與登記用途。</b>新北市都市計畫、建管相關單位可以查詢，確認你想做的使用內容合不合法。</li>
+    <li><b>若有特定營業計畫，另洽該目的事業主管機關。</b>不同營業項目可能有各自的登記與消防要求，不能只憑一句話就認定可行。</li>
+    <li><b>了解「登記彈性」不等於「沒有限制」。</b>一般事務所給的是規劃彈性，不是無限制使用，簽約前把限制查清楚再決定。</li>
+    <li><b>貸款要先問銀行。</b>非住宅用途空間的核貸成數與年限，銀行審核標準通常比住宅保守，自備款要抓寬一點。</li>
+  </ol>
+  <p class="mnote">本頁不就使用執照登載內容之合法性做任何聲明或保證；使用分區與登記用途查證結果以主管機關認定為準。</p>
+</template>
+
+<template id="m-check">
+  <h3>看屋當天檢核表</h3>
+  <p class="msub">勾起來代表這一項你已經確認過了。沒勾的，就是你現在還不知道的事。你的勾選會留在這台手機裡。</p>
+  <div class="checks" id="checks">
+    <label class="chk"><input type="checkbox" data-k="c1"><span>我看過建物與土地兩張謄本，確認產權人、登記面積與有無限制登記。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c2"><span>我查過使用執照登載的主要用途，確認與委託資料一致。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c3"><span>我洽詢過主管機關，確認一般事務所用途下我想做的使用內容合不合規。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c4"><span>我要求委託方填寫了不動產標的現況說明書，而且看過內容。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c5"><span>我請水電師傅現場檢查過通水通電，確認流理台與衛浴排水正常。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c6"><span>我確認過熱水器能正常點火供應熱水。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c7"><span>我用主建17.34坪去跟其他標的比過價，不是用登記37.40坪。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c8"><span>我確認過車位B5-112的進出動線與淨空高度，自己開車走過一次。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c9"><span>我向管委會問過近三年收支、公共基金餘額與有無欠繳。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c10"><span>我問過電梯保養與消防安檢紀錄，也問了有沒有汰換或外牆整修的決議。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c11"><span>我問過管理費約2,493元涵蓋哪些服務，會不會另收特別公共基金。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c12"><span>我在白天與傍晚各去過一次，確認過採光、噪音與周邊環境。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c13"><span>我問過至少兩家銀行，確認非住宅用途標的的核貸成數與年限。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c14"><span>我自己用 Google 地圖查過周邊生活機能與交通站點。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c15"><span>我看過格局圖並核對現場動線，確認跟現況一致。</span></label>
+    <label class="chk"><input type="checkbox" data-k="c16"><span>我確認過前手有沒有欠繳管理費或其他費用。</span></label>
+  </div>
+  <p class="tally" id="tally" aria-live="polite">還有 <em>16</em> 項沒確認。<span class="sub">全部確認完之前，先不要出價。</span></p>
+  <p class="mnote">謄本、使用執照、現況說明書這幾項本來就是我的工作，你不用自己跑。要我先幫你調，跟我說一聲就好。</p>
+</template>
+
+<template id="m-flag">
+  <h3>看到什麼就該停手</h3>
+  <p class="msub">以下是通用的風險訊號，不是針對本案的判定。出現任何一項，先暫停，找專業的人到現場看過再說。</p>
+  <div class="flagrow"><span class="flagdot"></span><div><strong>樑柱有斜向或貫穿性裂縫</strong><p>牆面細裂多半是粉刷層問題，出現在樑、柱、剪力牆上的裂縫性質完全不同，要結構技師判斷。</p></div></div>
+  <div class="flagrow"><span class="flagdot"></span><div><strong>謄本上有查封、假扣押或預告登記</strong><p>產權問題不會因為現況單純就消失。先請地政士協助釐清清償與塗銷順序。</p></div></div>
+  <div class="flagrow"><span class="flagdot"></span><div><strong>現場配置、面積與使用執照登載明顯不符</strong><p>現場如果跟官方登載資料對不起來，先請地政士或建管單位協助釐清再往下談。</p></div></div>
+  <div class="flagrow"><span class="flagdot"></span><div><strong>主要用途登記與現況使用明顯不符，委託方無法說明原因</strong><p>先請地政士或建管單位協助釐清用途沿革，不要自己猜測解讀。</p></div></div>
+  <div class="flagrow"><span class="flagdot"></span><div><strong>委託方無法提供正式委託合約或合約編號</strong><p>合理的委託應該可以出示正式文件，遇到刻意迴避要多問一句為什麼。</p></div></div>
+  <div class="flagrow"><span class="flagdot"></span><div><strong>刻意迴避使用執照或謄本問題</strong><p>合理的查證要求不應該被迴避，遇到閃躲先暫停，換一家查證管道確認。</p></div></div>
+</template>
+
+<script>
+(function(){
+  var modal=document.getElementById('modalBox'),inner=document.getElementById('modalInner');
+  var lastFocus=null;
+
+  function openModal(id){
+    var tpl=document.getElementById(id);
+    if(!tpl) return;
+    lastFocus=document.activeElement;
+    inner.innerHTML='';
+    inner.appendChild(tpl.content.cloneNode(true));
+    modal.classList.add('open');
+    document.body.style.overflow='hidden';
+    if(id==='m-check') initChecks();
+    modal.scrollTop=0;
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    document.body.style.overflow='';
+    inner.innerHTML='';
+    if(lastFocus&&lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll('[data-modal]').forEach(function(b){
+    b.addEventListener('click',function(){openModal(b.getAttribute('data-modal'))});
+  });
+  document.getElementById('modalClose').addEventListener('click',closeModal);
+  modal.addEventListener('click',function(e){if(e.target===modal)closeModal()});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&modal.classList.contains('open'))closeModal();
+  });
+
+  var CKEY='mht088_check_v1';
+  function initChecks(){
+    var boxes=[].slice.call(document.querySelectorAll('#checks input[type=checkbox]'));
+    var tally=document.getElementById('tally');
+    if(!boxes.length||!tally) return;
+    var saved={};
+    try{saved=JSON.parse(localStorage.getItem(CKEY))||{}}catch(e){saved={}}
+    boxes.forEach(function(b){if(saved[b.dataset.k])b.checked=true});
+    function render(){
+      var done=boxes.filter(function(b){return b.checked}).length;
+      var left=boxes.length-done;
+      if(left===0){
+        tally.classList.add('done');
+        tally.innerHTML='<em>'+boxes.length+'</em> 項全部確認完成。<span class="sub">該問的都問了，現在可以談價格了。</span>';
+      }else{
+        tally.classList.remove('done');
+        tally.innerHTML='還有 <em>'+left+'</em> 項沒確認。<span class="sub">全部確認完之前，先不要出價。</span>';
+      }
+    }
+    boxes.forEach(function(b){
+      b.addEventListener('change',function(){
+        var o={};
+        boxes.forEach(function(x){if(x.checked)o[x.dataset.k]=1});
+        try{localStorage.setItem(CKEY,JSON.stringify(o))}catch(e){}
+        render();
+      });
+    });
+    render();
+  }
+
+  var form=document.getElementById('needsForm');
+  if(form){
+    var summary=document.getElementById('needsSummary');
+    var progText=document.getElementById('progText'),progBar=document.getElementById('progBar');
+    var sendOfficial=document.getElementById('sendOfficial'),shareLine=document.getElementById('shareLine');
+    var formStatus=document.getElementById('formStatus');
+    var FKEY='mht088_needs_v1';
+
+    function collect(){
+      var out=[],done=0;
+      form.querySelectorAll('fieldset.q').forEach(function(fs){
+        var label=fs.getAttribute('data-label');
+        var text=fs.querySelector('input[type=text],textarea');
+        var val='';
+        if(text){ val=(text.value||'').trim(); }
+        else{
+          var checked=fs.querySelectorAll('input:checked');
+          val=[].slice.call(checked).map(function(i){return i.value}).join('、');
+        }
+        if(val){done++;out.push(label+'：'+val)}
+      });
+      return {lines:out,done:done};
+    }
+    function buildSummary(){
+      var r=collect();
+      progText.textContent=r.done+'／20';
+      progBar.style.width=(r.done/20*100)+'%';
+      var head='【使用需求 20 問】來自088曼哈頓13樓資訊頁\n';
+      var body=r.lines.length?r.lines.join('\n'):'（尚未填寫）';
+      var txt=head+body+'\n\n（由洽詢人於公開資訊頁填寫後傳送）';
+      summary.value=txt;
+      var enc=encodeURIComponent(txt);
+      sendOfficial.href='https://line.me/R/oaMessage/%40798ulmws/?'+enc;
+      shareLine.href='https://line.me/R/share?text='+enc;
+      if(r.done===0){formStatus.textContent=''}
+      else if(r.done<20){formStatus.textContent='已完成 '+r.done+' 題，沒填完也可以先傳給我。'}
+      else{formStatus.textContent='20 題都填好了，按左邊按鈕傳給我。'}
+      try{
+        var o={};
+        form.querySelectorAll('input[type=text],textarea').forEach(function(i){if(i.value)o[i.name]=i.value});
+        form.querySelectorAll('input:checked').forEach(function(i){
+          if(i.type==='checkbox'){o[i.name]=(o[i.name]||[]).concat?[].concat(o[i.name]||[],i.value):i.value}
+          else{o[i.name]=i.value}
+        });
+        localStorage.setItem(FKEY,JSON.stringify(o));
+      }catch(e){}
+    }
+    function restore(){
+      var saved={};
+      try{saved=JSON.parse(localStorage.getItem(FKEY))||{}}catch(e){saved={}}
+      Object.keys(saved).forEach(function(k){
+        var v=saved[k];
+        form.querySelectorAll('[name="'+k+'"]').forEach(function(el){
+          if(el.type==='radio'){if(el.value===v)el.checked=true}
+          else if(el.type==='checkbox'){if([].concat(v).indexOf(el.value)>-1)el.checked=true}
+          else{el.value=v}
+        });
+      });
+    }
+    form.addEventListener('input',buildSummary);
+    form.addEventListener('change',buildSummary);
+    form.addEventListener('submit',function(e){e.preventDefault()});
+    restore(); buildSummary();
+  }
+})();
+</script>
 
 </body>
 </html>
