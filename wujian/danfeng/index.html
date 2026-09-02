@@ -204,6 +204,50 @@ details.acc .acbody section{margin:0}
 .ocard .om{font-size:.82rem;color:var(--muted);margin-top:3px}
 .ocard .oq{font-size:.86rem;color:var(--teal);font-weight:800;margin-top:5px}
 .others .allbtn{display:block;text-align:center;text-decoration:none;background:var(--soft-trust);color:var(--trust);font-weight:900;padding:13px;border-radius:999px;font-size:.95rem;margin-top:4px}
+/* ===== 競品對照看板（2026-09-02 規格：三軸逐項功能性對照，不給總分、不出現單坪數字） ===== */
+.cpb{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+.cpb-ax{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px}
+.cpb-ax .axh{display:flex;align-items:center;gap:8px;font-weight:900;font-size:.98rem}
+.cpb-ax .axh .ic{width:26px;height:26px;border-radius:8px;background:var(--soft-teal);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex:0 0 auto}
+.cpb-ax .axq{font-size:.82rem;color:var(--muted);margin:5px 0 10px;line-height:1.7}
+.cpb-row{margin-bottom:9px}
+.cpb-row .lb{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.83rem;line-height:1.5}
+.cpb-row .lb b{font-weight:800;color:var(--trust)}
+.cpb-row .lb em{font-style:normal;display:block;font-size:.74rem;color:var(--muted);font-weight:400;line-height:1.5}
+.cpb-row .lb span{color:var(--trust);font-weight:800;flex:0 0 auto;white-space:nowrap}
+.cpb-row .bar{height:9px;border-radius:999px;background:var(--soft-trust);margin-top:5px;overflow:hidden}
+.cpb-row .bar i{display:block;height:100%;border-radius:999px;background:var(--trust-2)}
+.cpb-row.me .lb b,.cpb-row.me .lb span{color:var(--warm)}
+.cpb-row.me .bar i{background:var(--warm)}
+.cpb-row.out .lb b,.cpb-row.out .lb span{color:var(--muted)}
+.cpb-row.out .bar i{background:#C3CBD3}
+.cpb-chips{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 10px}
+.cpb-chips span{background:var(--soft-teal);color:var(--teal);font-size:.78rem;font-weight:800;padding:5px 10px;border-radius:999px;line-height:1.4}
+.cpb-cnt{background:var(--soft-trust);border-radius:12px;padding:10px 12px;margin:10px 0 2px;font-size:.83rem;line-height:1.7}
+.cpb-cnt b{font-weight:900;color:var(--trust)}
+.cpb-key{background:var(--soft-warm);border-radius:12px;padding:11px 13px;margin-top:10px;font-size:.86rem;line-height:1.8}
+.cpb-key b{font-weight:900;color:var(--warm)}
+.cpb-src{font-size:.75rem;color:var(--muted);line-height:1.75;margin-top:9px;border-top:1px dashed var(--line);padding-top:8px}
+.cpb-todo{background:var(--card);border:1px dashed var(--warm);border-radius:14px;padding:13px 15px}
+.cpb-todo b.th{display:block;font-weight:900;font-size:.95rem;color:var(--warm);margin-bottom:5px}
+.cpb-todo p{font-size:.82rem;color:var(--muted);line-height:1.75}
+.cpb-todo ul{list-style:none;margin:7px 0 0;font-size:.82rem;line-height:1.8}
+.cpb-todo li{padding-left:15px;position:relative;color:var(--ink)}
+.cpb-todo li:before{content:"\25AB";position:absolute;left:2px;color:var(--warm)}
+/* ===== 誰負責、誰去做（第一階答案版，2026-09-02 阿宏令） ===== */
+.ans{display:flex;flex-direction:column;gap:11px;margin-top:4px}
+.ansc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--warm);border-radius:14px;padding:13px 15px}
+.ansc>b{display:block;font-size:.98rem;font-weight:900;margin-bottom:7px}
+.ansc .r{display:flex;gap:8px;font-size:.86rem;line-height:1.75;margin-bottom:4px}
+.ansc .r i{flex:0 0 auto;font-style:normal;font-weight:900;font-size:.72rem;color:var(--teal);background:var(--soft-teal);border-radius:6px;padding:2px 7px;margin-top:3px;white-space:nowrap}
+.ansc .r span{color:var(--ink)}
+.ansc .r strong{color:var(--warm);font-weight:900}
+.ansc .go{margin-top:7px;font-size:.86rem;font-weight:800;color:var(--trust);background:var(--soft-trust);border-radius:9px;padding:8px 11px;line-height:1.7}
+.ansc .go a{color:var(--teal);font-weight:900}
+.ans-loan{background:var(--soft-warm);border-radius:14px;padding:12px 15px;font-size:.88rem;line-height:1.8;margin-top:11px}
+.ans-loan b{color:var(--warm);font-weight:900}
+.ans-loan a{color:var(--teal);font-weight:900}
+.ans-note{font-size:.76rem;color:var(--muted);margin-top:9px;line-height:1.7}
 /* ===== 懸浮電話 ===== */
 .float-call{position:fixed;left:0;right:0;bottom:0;display:flex;gap:1px;z-index:50;box-shadow:0 -6px 24px rgba(0,0,0,.14)}
 .float-call a{flex:1;text-align:center;padding:15px 0;font-weight:900;font-size:1rem;text-decoration:none}
@@ -408,7 +452,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
         <ul class="newlist">
           <li><b>加蓋的部分沒有登記</b>不計入登記坪數 22.52 坪，屬未登記增建範疇。<b>老公寓有未登記增建在台灣很普遍</b>，重點不在有沒有，而在你要知道它在兩個地方不算數：<br><b>① 不列入權狀範圍</b>——登記坪數就是 22.52 坪，加蓋的部分不在裡面。<br><b>② 銀行鑑價不列入</b>——銀行只認權狀，加蓋空間不會被算進鑑價金額，<b>所以貸款成數是以 22.52 坪去算的</b>。<br>講白一點：<b>加蓋的空間你用得到，但買不到、也貸不到。</b>出價時把它當「多出來的使用空間」，🚫不要當「產權坪數」，比價一律用登記的 22.52 坪去比。<br>簽約前我會照流程查一次新北市違章建築案件查詢，結果連同謄本與測量成果圖書面給你，這是標準程序。</li>
           <li><b>出價時把它當「使用空間」，不要當「產權坪數」</b>比價一律用登記的 22.52 坪去比，把加蓋算進去除，算出來的結果是失真的。</li>
-          <li><b>銀行估價通常不採計加蓋部分</b>所以自備款要照登記坪數的邏輯抓，8 成是上限不是保證。出價前先做貸款預審，這一趟我陪你跑。</li>
+          <li><b>銀行估價通常不採計加蓋部分</b>，成數是以登記的 22.52 坪去算的。先做貸款預審，知道銀行給你多少，再決定要不要出價。預審不用錢也不影響信用，店裡有長期配合的銀行，我可以幫你約。</li>
           <li><b>拆除風險由誰承擔，要白紙黑字寫進契約</b>不要只有口頭承諾。特約條款我可以寫進要約或契約建議，由地政士審過。</li>
         </ul>
       </section>
@@ -486,6 +530,27 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
     </div>
   </details>
 
+
+  <details class="acc">
+    <summary><span class="ai">🧩</span><span class="at"><b>這幾件誰負責</b><i>空屋現況留置物・重大瑕疵・裝修，三件的答案一行一個</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
+  <!-- 這幾件誰負責（第一階答案版，2026-09-02 阿宏令）：一行一件，答案壓在破折號後面 -->
+  <section class="sec">
+    <div class="tag">先給答案</div>
+    <h2>這幾件誰負責，我先講</h2>
+    <div class="ansc">
+      <ul style="list-style:none;margin:0;padding:0">
+        <li style="padding:9px 0;border-bottom:1px dashed var(--line)"><b>屋內殘留物與雜物</b>——現況是空屋，<strong>由屋主清空後點交</strong>，清運不是你的責任，這筆不用進你的預算</li>
+        <li style="padding:9px 0;border-bottom:1px dashed var(--line)"><b>漏水、海砂這類重大瑕疵</b>——<strong>責任歸屬在賣方</strong>；本戶在公寓最高層，屋頂防水與加蓋接縫的滲漏現場確認（上面屋況卡已寫），抓漏檢測我幫你代約。簽約前由地政士就雙方權益逐項確認，屬賣方瑕疵擔保責任範圍的，責任歸屬與修繕方式在買賣契約載明</li>
+        <li style="padding:9px 0"><b>一般裝修與內部配置</b>——<strong>由你自己決定</strong>，不是必須花的錢；衛浴是傳統老配置，要不要換新由你決定，注意<b>只做防水跟整間翻修是兩個範疇、兩個價</b>，不要用同一個數字抓。九個工種的公開行情在這裡：<br><a href="https://0930848000.com/xiushan/" style="color:var(--teal);font-weight:900">https://0930848000.com/xiushan/</a></li>
+      </ul>
+      <p style="font-size:.85rem;color:var(--muted);margin:10px 0 0">以上是制度上的處理方式，不是對本案個別條件的保證。實際點交範圍、責任歸屬與修繕方式，以買賣契約與不動產說明書記載為準。</p>
+    </div>
+    <div class="ans-loan"><b>💰 貸款這件事，順序不要顛倒</b>：先做貸款預審，知道銀行給你多少，再決定要不要出價。<b>預審不用錢，也不影響信用</b>，店裡有長期配合的銀行，時間我幫你約。實際成數與利率仍由承貸銀行依你的條件核定。</div>
+  </section>
+    </div>
+  </details>
+
   <details class="acc">
     <summary><span class="ai">💰</span><span class="at"><b>錢夠不夠</b><i>三種成數的首付月付＋青安試算</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
@@ -534,7 +599,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
             https://www.nta.gov.tw/singlehtml/109
           </div>
         </div>
-        <p class="video-note">屋齡 46 年、又含未登記增建，<b>銀行核貸成數與年限可能明顯低於上表的預設，8 成是上限不是保證</b>，務必先做貸款預審再出價，自備款照最壞情況抓。另外還有契稅、印花稅、代書費、規費、火險地震險，與衛浴要換新的整理預算，這些都不在上表裡。</p>
+        <p class="video-note">上表是以登記的 22.52 坪、8 成成數試算的估算值。先做貸款預審，知道銀行給你多少，再決定要不要出價。預審不用錢也不影響信用，店裡有長期配合的銀行，我可以幫你約。另外還有契稅、印花稅、代書費、規費、火險地震險，與衛浴要換新的整理預算，這些都不在上表裡。</p>
       </section>
     </div>
   </details>
