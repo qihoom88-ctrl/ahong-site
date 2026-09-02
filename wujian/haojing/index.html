@@ -212,6 +212,20 @@ details.acc .acbody section{margin:0}
 .cpb-todo ul{list-style:none;margin:7px 0 0;font-size:.82rem;line-height:1.8}
 .cpb-todo li{padding-left:15px;position:relative;color:var(--ink)}
 .cpb-todo li:before{content:"\25AB";position:absolute;left:2px;color:var(--warm)}
+/* ===== 誰負責、誰去做（第一階答案版，2026-09-02 阿宏令） ===== */
+.ans{display:flex;flex-direction:column;gap:11px;margin-top:4px}
+.ansc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--warm);border-radius:14px;padding:13px 15px}
+.ansc>b{display:block;font-size:.98rem;font-weight:900;margin-bottom:7px}
+.ansc .r{display:flex;gap:8px;font-size:.86rem;line-height:1.75;margin-bottom:4px}
+.ansc .r i{flex:0 0 auto;font-style:normal;font-weight:900;font-size:.72rem;color:var(--teal);background:var(--soft-teal);border-radius:6px;padding:2px 7px;margin-top:3px;white-space:nowrap}
+.ansc .r span{color:var(--ink)}
+.ansc .r strong{color:var(--warm);font-weight:900}
+.ansc .go{margin-top:7px;font-size:.86rem;font-weight:800;color:var(--trust);background:var(--soft-trust);border-radius:9px;padding:8px 11px;line-height:1.7}
+.ansc .go a{color:var(--teal);font-weight:900}
+.ans-loan{background:var(--soft-warm);border-radius:14px;padding:12px 15px;font-size:.88rem;line-height:1.8;margin-top:11px}
+.ans-loan b{color:var(--warm);font-weight:900}
+.ans-loan a{color:var(--teal);font-weight:900}
+.ans-note{font-size:.76rem;color:var(--muted);margin-top:9px;line-height:1.7}
 /* ===== 大綱導言 ===== */
 .outline{background:var(--soft-trust);border-radius:var(--radius);padding:18px;margin:20px 0 14px}
 .outline b{display:block;font-size:1.05rem;font-weight:900;color:var(--trust);margin-bottom:6px}
@@ -439,6 +453,64 @@ details.acc .acbody section{margin:0}
 
     </div>
   </details>
+
+
+  <!-- 誰負責、誰去做（第一階答案版）：五缺點x四件（事實/誰負責/多少錢/下一步）x行動句 -->
+  <section class="sec">
+    <div class="tag">先給答案</div>
+    <h2>缺點我先講，答案一起給</h2>
+    <p style="font-size:.9rem;color:var(--muted);margin-bottom:11px">這間的缺點就是下面五個，我不藏。每一個我把四件事一次講完：<b>事實是什麼、誰負責、大概多少錢、你下一步做什麼</b>——看完這五格，剩下的只有現場才能確認的細節。</p>
+    <div class="ans">
+
+      <div class="ansc">
+        <b>1️⃣ 屋況需要大整理</b>
+        <div class="r"><i>事實</i><span>委託資料原文就是「屋況不好，需要大整理」——看得到的舊多在表面：牆面、地板、燈具。</span></div>
+        <div class="r"><i>誰負責</i><span>沒有涉及重大瑕疵的裝修維修，<strong>你自己決定</strong>要不要做、做到哪。</span></div>
+        <div class="r"><i>多少錢</i><span>這間該做的公開行情區間約 <strong>17.8～39.1 萬</strong>——量級不是報價，實際依現場丈量與廠商書面報價為準。</span></div>
+        <div class="r"><i>下一步</i><span>先驗屋、再估價：估價單拆三層、拿兩家比，驗出的缺失可以回頭談。</span></div>
+        <div class="go">驗屋我陪你去、兩家估價我幫你約——<a href="https://lin.ee/IV8bl9H">官方 LINE</a> 跟我說一聲就開始。</div>
+      </div>
+
+      <div class="ansc">
+        <b>2️⃣ 屋內滿滿都是東西</b>
+        <div class="r"><i>事實</i><span>屋主自住中，有人在這裡好好住了很久——屋內物品是生活現況，不是交屋配置。</span></div>
+        <div class="r"><i>誰負責</i><span><strong>由屋主清空後點交</strong>給你——不是你自己處理，也不是仲介代清。</span></div>
+        <div class="r"><i>多少錢</i><span><strong>你不用花錢</strong>——清空與清運都是屋主的義務。</span></div>
+        <div class="r"><i>下一步</i><span>想留下的物品逐項列成清單寫進契約，沒寫的一律由屋主清空；簽約前代書會針對雙方權益做確認。</span></div>
+        <div class="go">留置物清單怎麼寫，帶看時我當面講給你聽——<a href="https://lin.ee/IV8bl9H">官方 LINE</a> 約時段。</div>
+      </div>
+
+      <div class="ansc">
+        <b>3️⃣ 屋齡 32 年，室內水電現況未查證</b>
+        <div class="r"><i>事實</i><span>委託資料沒記載水電是否更新過，這一項目前是<strong>未查證</strong>——我不推定它好，也不推定它壞。</span></div>
+        <div class="r"><i>誰負責</i><span>檢測後正常＝一般更新，你自己決定要不要動；檢測後查出漏水這類重大瑕疵＝<strong>責任歸屬在賣方</strong>，要確認責任歸屬並修繕完成。</span></div>
+        <div class="r"><i>多少錢</i><span>檢測一次約幾百到一千出頭（公開行情）；真的要動，分項上限約 4.9 萬，<strong>已包含在上面 17.8～39.1 萬的區間內</strong>，不另外加。</span></div>
+        <div class="r"><i>下一步</i><span>帶看當天現場驗：主線路有沒有發黑、放熱水看有沒有鏽水，一項一項來。</span></div>
+        <div class="go">約帶看，這些我陪你當場測——<a href="https://lin.ee/IV8bl9H">官方 LINE</a> 排時間。</div>
+      </div>
+
+      <div class="ansc">
+        <b>4️⃣ 2 樓的兩面</b>
+        <div class="r"><i>事實</i><span>2 樓免爬高；要確認的是管道間排水有無回堵紀錄、前方遮蔽與臨路音量。</span></div>
+        <div class="r"><i>誰負責</i><span>回堵紀錄管委會有檔案，<strong>帶看前我先幫你問</strong>；若查出漏水這類重大瑕疵，一樣<strong>責任歸屬在賣方</strong>。</span></div>
+        <div class="r"><i>多少錢</i><span>問紀錄<strong>不用錢</strong>；遮蔽與音量沒有花錢的解法，用你自己的眼睛和耳朵驗收。</span></div>
+        <div class="r"><i>下一步</i><span>白天、傍晚、深夜各經過一次，自己感受最準。</span></div>
+        <div class="go"><a href="https://lin.ee/IV8bl9H">官方 LINE</a> 說你要來看，我先把管委會的答案問回來。</div>
+      </div>
+
+      <div class="ansc">
+        <b>5️⃣ 本戶沒有車位</b>
+        <div class="r"><i>事實</i><span>本戶不含任何車位或停車權利。</span></div>
+        <div class="r"><i>誰負責</i><span>這一條不是瑕疵、沒有「誰負責修」——是交易條件，由社區租用規則與周邊行情決定。</span></div>
+        <div class="r"><i>多少錢</i><span>月租金要加進每月支出一起算；數字以現場詢價為準，我不編一個給你。</span></div>
+        <div class="r"><i>下一步</i><span>出價前先問清楚社區車位能不能承租、怎麼候補。</span></div>
+        <div class="go">帶看前我代問管委會，看屋當天陪你把周邊停車場走一圈——<a href="https://lin.ee/IV8bl9H">官方 LINE</a> 約。</div>
+      </div>
+
+    </div>
+    <div class="ans-loan">🏦 <b>貸款貸不貸得下來？預審我幫你約</b>——不用錢、也不影響信用，先知道銀行給你多少，再決定要不要出價。<a href="https://lin.ee/IV8bl9H">官方 LINE</a> 跟我說，我幫你約兩家比對。</div>
+    <p class="ans-note">以上為制度說明，不是對本案的承諾；實際條件以買賣契約與不動產現況說明書記載為準。</p>
+  </section>
 
 
   <details class="acc">
