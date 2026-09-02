@@ -255,37 +255,58 @@ details.acc .acbody section{margin:0}
 .float-call .f-line{background:#06C755;color:#fff}
 @media (min-width:640px){.wrap{max-width:560px}}
 
+/* ===== puxin 專用 ===== */
+.splitbar{display:flex;border-radius:14px;overflow:hidden;margin-top:12px;box-shadow:var(--shadow)}
+.splitbar>div{padding:14px 10px;text-align:center;color:#fff}
+.splitbar b{display:block;font-size:1.15rem;font-weight:900}
+.splitbar span{font-size:.78rem;opacity:.9}
+.sp-house{flex:62.1;background:var(--trust)}
+.sp-car{flex:37.9;background:var(--warm)}
+.parkcard{margin-top:14px;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.parkcard img{width:100%;display:block}
+.pk-note{padding:12px 14px;font-size:.87rem;line-height:1.8}
+.pk-note b{display:block;color:var(--warm);font-weight:900;margin-bottom:3px}
+.ph3{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}
+.ph2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+.ph3 figure,.ph2 figure{margin:0}
+.ph3 img,.ph2 img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:11px;display:block}
+.ph3 figcaption,.ph2 figcaption{font-size:.72rem;color:var(--muted);text-align:center;margin-top:4px}
+.fp{width:100%;border-radius:14px;border:1px solid var(--line);background:#fff;display:block;margin-top:10px}
+.geo-list{list-style:none;margin-top:12px}
+.geo-list li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin-bottom:7px}
+.geo-list b{display:block;font-weight:900}
+.geo-list span{font-size:.85rem;color:var(--muted)}
+table.loan{width:100%;border-collapse:collapse;margin-top:12px;background:var(--card);border-radius:12px;overflow:hidden}
+table.loan th,table.loan td{padding:10px 8px;text-align:center;font-size:.9rem;border-bottom:1px solid var(--line)}
+table.loan th{background:var(--soft-trust);font-weight:900;font-size:.82rem}
+table.loan .hi{background:var(--soft-warm);font-weight:900;color:var(--warm)}
+.fitbox{border-radius:16px;padding:15px 17px;margin-top:11px}
+.fitbox.yes{background:var(--soft-teal);border:1px solid #BFE0DA}
+.fitbox.no{background:var(--soft-warm);border:1px solid #F2D6C4}
+.fitbox b{display:block;font-weight:900;margin-bottom:7px}
+.fitbox.yes b{color:var(--teal)}
+.fitbox.no b{color:var(--warm)}
+.fitbox ul{list-style:none}
+.fitbox li{font-size:.9rem;line-height:1.8;padding-left:18px;position:relative;margin-bottom:5px}
+.fitbox.yes li::before{content:"\2713";position:absolute;left:0;color:var(--teal);font-weight:900}
+.fitbox.no li::before{content:"\00B7";position:absolute;left:5px;color:var(--warm);font-weight:900}
 
-/* ===== 最後一句人話 ===== */
-.renhua{background:linear-gradient(160deg,#FBF7EF,#F4EEE2);border:1px solid #E6DCC8;border-radius:var(--radius);padding:22px 19px;margin:16px 0 10px}
-.renhua .rh-h{font-weight:900;font-size:.82rem;letter-spacing:.14em;color:var(--gold);margin-bottom:10px}
-.renhua p{font-size:.95rem;line-height:1.95;margin-bottom:11px}
-.renhua p:last-child{margin-bottom:0}
-.renhua p b{color:var(--ink);font-weight:900}
-.renhua .idiom{text-align:center;font-size:1.05rem;padding:12px 0;margin:4px 0 12px;border-top:1px dashed #DCCFB4;border-bottom:1px dashed #DCCFB4}
-.renhua .idiom b{color:var(--warm);font-size:1.18rem;letter-spacing:.06em}
 
-.whatnext{background:rgba(255,255,255,.1);border-radius:14px;padding:14px 15px;margin:4px 0 14px;text-align:left}
-.whatnext b{display:block;font-weight:900;font-size:.92rem;margin-bottom:8px;color:#E3B857}
-.whatnext ul{list-style:none}
-.whatnext li{display:flex;gap:10px;font-size:.86rem;line-height:1.75;padding:5px 0;opacity:.94}
-.whatnext li i{font-style:normal;flex:0 0 74px;font-weight:900;color:#E3B857}
 
-/* ===== 最後一句人話 ===== */
-.renhua{background:linear-gradient(160deg,#FBF7EF,#F4EEE2);border:1px solid #E6DCC8;border-radius:var(--radius);padding:22px 19px;margin:16px 0 10px}
-.renhua .rh-h{font-weight:900;font-size:.82rem;letter-spacing:.14em;color:var(--gold);margin-bottom:10px}
-.renhua p{font-size:.95rem;line-height:1.95;margin-bottom:11px}
-.renhua p:last-child{margin-bottom:0}
-.renhua p b{color:var(--ink);font-weight:900}
-.renhua .idiom{text-align:center;font-size:1.05rem;padding:12px 0;margin:4px 0 12px;border-top:1px dashed #DCCFB4;border-bottom:1px dashed #DCCFB4}
-.renhua .idiom b{color:var(--warm);font-size:1.18rem;letter-spacing:.06em}
+table.loan .soft{background:var(--soft-teal);color:var(--teal);font-weight:900}
+table.loan th.soft{background:#D9EDE9}
+table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
+.loan-note{background:var(--soft-teal);border-radius:13px;padding:12px 14px;margin-top:10px;font-size:.86rem;line-height:1.8}
 
-.whatnext{background:rgba(255,255,255,.1);border-radius:14px;padding:14px 15px;margin:4px 0 14px;text-align:left}
-.whatnext b{display:block;font-weight:900;font-size:.92rem;margin-bottom:8px;color:#E3B857}
-.whatnext ul{list-style:none}
-.whatnext li{display:flex;gap:10px;font-size:.86rem;line-height:1.75;padding:5px 0;opacity:.94}
-.whatnext li i{font-style:normal;flex:0 0 74px;font-weight:900;color:#E3B857}
-
+/* ===== CTA 區（A0-0901-03 NG-2 補件） ===== */
+.cta{margin:30px 0 12px;background:var(--trust);border-radius:var(--radius);padding:24px 20px;color:#fff;text-align:center}
+.cta h2{font-size:1.25rem;font-weight:900;margin-bottom:8px;color:#fff}
+.cta p{font-size:.9rem;opacity:.9;margin-bottom:16px;line-height:1.85}
+.cta .btn-line,.cta .btn-tel{display:block;text-decoration:none;font-weight:900;padding:15px;border-radius:999px;margin-bottom:10px;font-size:1.02rem}
+.cta .btn-line{background:#06C755;color:#fff}
+.cta .btn-tel{background:#fff;color:var(--trust)}
+.cta .cta-note{font-size:.8rem;opacity:.72;margin:6px 0 0}
+.lead{font-size:.93rem;line-height:1.85;color:var(--ink);margin-bottom:4px}
 
 /* ===== 青安段（20-0901-01） ===== */
 .qa-box{background:var(--soft-teal);border:1px solid #BFE0DA;border-radius:var(--radius);padding:17px;margin-top:16px}
@@ -302,9 +323,32 @@ details.acc .acbody section{margin:0}
 .tline li:last-child{border-bottom:0}
 .tline li i{font-style:normal;flex:0 0 62px;font-weight:900;color:var(--trust)}
 .tline li em{font-style:normal;color:var(--warm);font-weight:900}
+.qa-warn{background:#FDF0F0;border-radius:11px;padding:11px 13px;margin-top:10px;font-size:.85rem;line-height:1.8}
+.qa-warn b{color:#9E2626;font-weight:900}
+.qa-note{font-size:.78rem;color:var(--muted);line-height:1.75;margin-top:9px}
+.ask{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 17px;margin-top:12px}
+.ask b.ah{display:block;font-weight:900;font-size:1rem;margin-bottom:8px}
+.ask ol{margin-left:19px}
+.ask li{font-size:.88rem;line-height:1.85;margin-bottom:6px}
+.ask li b{color:var(--warm)}
+
 .qa-tip{background:#FFF8E8;border:1px solid #EAD9AE;border-radius:11px;padding:11px 13px;margin-top:10px;font-size:.85rem;line-height:1.8}
 .qa-tip b{color:var(--gold);font-weight:900}
-.qa-note{font-size:.78rem;color:var(--muted);line-height:1.75;margin-top:9px}
+
+/* ===== 最後一句人話 ===== */
+.renhua{background:linear-gradient(160deg,#FBF7EF,#F4EEE2);border:1px solid #E6DCC8;border-radius:var(--radius);padding:22px 19px;margin:16px 0 10px}
+.renhua .rh-h{font-weight:900;font-size:.82rem;letter-spacing:.14em;color:var(--gold);margin-bottom:10px}
+.renhua p{font-size:.95rem;line-height:1.95;margin-bottom:11px}
+.renhua p:last-child{margin-bottom:0}
+.renhua p b{color:var(--ink);font-weight:900}
+.renhua .idiom{text-align:center;font-size:1.05rem;padding:12px 0;margin:4px 0 12px;border-top:1px dashed #DCCFB4;border-bottom:1px dashed #DCCFB4}
+.renhua .idiom b{color:var(--warm);font-size:1.18rem;letter-spacing:.06em}
+
+.whatnext{background:rgba(255,255,255,.1);border-radius:14px;padding:14px 15px;margin:4px 0 14px;text-align:left}
+.whatnext b{display:block;font-weight:900;font-size:.92rem;margin-bottom:8px;color:#E3B857}
+.whatnext ul{list-style:none}
+.whatnext li{display:flex;gap:10px;font-size:.86rem;line-height:1.75;padding:5px 0;opacity:.94}
+.whatnext li i{font-style:normal;flex:0 0 74px;font-weight:900;color:#E3B857}
 </style>
 </head>
 <body>
@@ -338,14 +382,14 @@ details.acc .acbody section{margin:0}
   <div class="video-card">
     <video controls playsinline preload="metadata" poster="../_shared/kaichang_poster.jpg">
       <source src="../_shared/kaichang.mp4" type="video/mp4">
-      你的瀏覽器無法播放此影片
     </video>
   </div>
+  <p class="video-note">每一頁都是我本人先講一次。看完影片再往下，下面的東西你想看哪個就點哪個。</p>
 
   <div class="outline">
     <b>下面這些，你想看哪個就點哪個</b>
-    <p>我把這間房子拆成 <em>10 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
-    基本資料、影片、格局、生活圈、優點、錢怎麼算，全部都在。看完想進一步，最下面直接約我。<br><b>不知道從哪看起，就先點第一張「這間適合誰」</b>——30 秒就知道要不要往下。</p>
+    <p>我把這間房子拆成 <em>11 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
+    基本資料、影片、格局、生活圈、競品對照、優點、錢怎麼算，全部都在。看完想進一步，最下面直接約我。<br><b>不知道從哪看起，就先點第一張「這間適合誰」</b>——30 秒就知道要不要往下。</p>
   </div>
 
   <details class="acc">
@@ -354,11 +398,23 @@ details.acc .acbody section{margin:0}
   <!-- 適合誰 -->
   <section class="sec">
     <div class="tag">先看合不合</div>
-    <h2>這間房子適合誰</h2>
-    <div class="fits">
-      <div class="fit"><span class="dot">✓</span>要四房，預算壓在 1100 萬上下</div>
-      <div class="fit"><span class="dot">✓</span>家裡有長輩或小小孩，重視低樓層與電梯</div>
-      <div class="fit"><span class="dot">✓</span>願意自己整理，換一個照自己意思做的家</div>
+    <h2>這間不是給所有人的</h2>
+    <div class="fitbox yes">
+      <b>這些條件，你會很有感</b>
+      <ul>
+        <li>要四房，預算壓在 1100 萬上下</li>
+        <li>受不了公設比三成起跳——這間只有 14.6%，坪數幾乎都在室內</li>
+        <li>家裡有長輩或小小孩，重視低樓層與電梯</li>
+        <li>願意自己整理，換一個照自己意思做的家</li>
+      </ul>
+    </div>
+    <div class="fitbox no">
+      <b>這幾種情況，我建議你先看別間</b>
+      <ul>
+        <li>一定要車位——這間沒有，同總價我幫你找有車位的</li>
+        <li>要買了就能住、不想碰整理——這間要自己發包</li>
+        <li>要的是現在就能搭的捷運，不是興建中的未來站</li>
+      </ul>
     </div>
   </section>
     </div>
@@ -366,7 +422,7 @@ details.acc .acbody section{margin:0}
 
 
 <details class="acc">
-    <summary><span class="ai">📋</span><span class="at"><b>物件基本資料</b><i>開價・坪數・格局・座向・樓層屋齡・車位・地點，12 項一次看完</i></span><span class="ac">＋</span></summary>
+    <summary><span class="ai">📋</span><span class="at"><b>物件基本資料</b><i>開價・坪數・格局・座向・樓層屋齡・車位・地點，13 項一次看完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 建案級完整規格表 -->
   <section class="sec">
@@ -402,10 +458,11 @@ details.acc .acbody section{margin:0}
   <div class="video-card">
     <video controls playsinline preload="metadata" poster="a/poster73.jpg">
       <source src="a/web_video73.mp4" type="video/mp4">
-      你的瀏覽器無法播放此影片
     </video>
   </div>
   <p class="video-note">現況實拍，沒有配樂、沒有調色、沒有修飾。</p>
+    </div>
+  </details>
 
 
   <details class="acc">
@@ -451,15 +508,15 @@ details.acc .acbody section{margin:0}
     </div>
   </details>
 
-    </div>
-  </details>
 
-
+  <details class="acc">
+    <summary><span class="ai">🧩</span><span class="at"><b>缺點與抗性拆解</b><i>四個缺點，事實・誰負責・多少錢・下一步，一次講完</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <!-- 誰負責、誰去做（第一階答案版）：五缺點x四件（事實/誰負責/多少錢/下一步）x行動句 -->
   <section class="sec">
     <div class="tag">先給答案</div>
     <h2>缺點我先講，答案一起給</h2>
-    <p style="font-size:.9rem;color:var(--muted);margin-bottom:11px">這間的缺點就是下面五個，我不藏。每一個我把四件事一次講完：<b>事實是什麼、誰負責、大概多少錢、你下一步做什麼</b>——看完這五格，剩下的只有現場才能確認的細節。</p>
+    <p style="font-size:.9rem;color:var(--muted);margin-bottom:11px">這間的缺點就是下面四個，我不藏。每一個我把四件事一次講完：<b>事實是什麼、誰負責、大概多少錢、你下一步做什麼</b>——看完這四格，剩下的只有現場才能確認的細節。</p>
     <div class="ans">
 
       <div class="ansc">
@@ -502,6 +559,8 @@ details.acc .acbody section{margin:0}
     <div class="ans-loan">🏦 <b>貸款貸不貸得下來？預審我幫你約</b>——不用錢、也不影響信用，先知道銀行給你多少，再決定要不要出價。<a href="https://lin.ee/IV8bl9H">官方 LINE</a> 跟我說，我幫你約兩家比對。</div>
     <p class="ans-note">以上為制度說明，不是對本案的承諾；實際條件以買賣契約與不動產現況說明書記載為準。</p>
   </section>
+    </div>
+  </details>
 
 
   <details class="acc">
@@ -753,8 +812,8 @@ details.acc .acbody section{margin:0}
     <div class="acbody">
   <!-- 首付與月付：讓他自己算錢夠不夠 -->
   <section class="sec">
-    <div class="tag">先算自己</div>
-    <h2>錢夠不夠，你自己看得出來</h2>
+    <div class="tag">錢的部分</div>
+    <h2>首付與月付，自己對照</h2>
     <p style="font-size:.9rem;color:var(--muted);margin-bottom:4px">銀行能貸幾成，每個人不一樣。四種成數的首付與月付我都算好了，你對照自己的狀況就知道這間扛不扛得住。</p>
     <table class="loan-tbl">
       <tr><th>貸款成數</th><th>你要準備的首付</th><th>每月要繳</th></tr>
@@ -870,10 +929,10 @@ details.acc .acbody section{margin:0}
   </div>
 
   <!-- 預約 CTA -->
-  <div class="cta-block">
+  <section class="cta">
     <h2>想進一步看這間</h2>
     <p>屋主自住中，帶看需先預約時段。想看實際格局、採光、四個房間的尺寸，直接約時間過來。</p>
-        <div class="whatnext">
+    <div class="whatnext">
       <b>約看那天會發生什麼</b>
       <ul>
         <li><i>約 40 分鐘</i>不趕時間，四個房間你自己拿捲尺量，我不會站旁邊催</li>
@@ -882,10 +941,10 @@ details.acc .acbody section{margin:0}
         <li><i>會不會被推銷</i>不會。合不合你自己判斷，不合我幫你找別間</li>
       </ul>
     </div>
-    <a class="btn btn-line" href="https://lin.ee/IV8bl9H">💬 官方 LINE 預約帶看</a>
-    <a class="btn btn-book" href="tel:0930848000">📞 直接打給我 0930-848000</a>
-    <small>屋主自住中，帶看需先預約時段，無法臨時到場。</small>
-  </div>
+    <a class="btn-line" href="https://lin.ee/IV8bl9H">💬 官方 LINE 預約帶看</a>
+    <a class="btn-tel" href="tel:0930848000">📞 直接打給我 0930-848000</a>
+    <p class="cta-note">屋主自住中，帶看需先預約時段，無法臨時到場。</p>
+  </section>
 
   <!-- 完整聯絡資訊 -->
   <div class="contact">
