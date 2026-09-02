@@ -265,6 +265,11 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
 .flagrow strong{color:var(--trust);font-size:.96rem}
 .flagrow p{margin:3px 0 0;color:var(--muted);font-size:.86rem}
 @media (min-width:640px){.qgroups{grid-template-columns:repeat(2,1fr)}.sendgrid,.tools{grid-template-columns:repeat(2,1fr)}.afford-top{grid-template-columns:repeat(3,1fr)}}
+
+.zlist{list-style:none;padding:0;margin:14px 0 0}
+.zlist li{background:#fff;border:1px solid var(--line,#e6e6e6);border-radius:12px;
+padding:13px 15px;margin-bottom:9px;font-size:.9rem;line-height:1.85}
+.zlist li b{display:block;margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -412,7 +417,21 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
     <p class="split-note">兩筆同社區實登都在37坪上下、含車位。以最近一筆45.14萬/坪估算，13樓樓層較高，通常可支撐小幅溢價——調整後的1568萬貼近這個區間，資料來源：內政部實價登錄。</p>
   </section>
 
-  <section class="sec" id="fengxian">
+  <section class="sec" id="zeren">
+  <div class="tag">這幾件誰負責</div>
+  <h2>不是你一個人扱</h2>
+  <p class="lead">看完屋最常被問的三件事，制度上各自有人負責。這裡先把答案給你，不用等到簽約才問。</p>
+  <ul class="zlist">
+    <li><b>屋內殘留物——由賣方清空後點交，你不用花這筆錢。</b>
+      本案現況是空屋，基礎裝修已完成；點交前若有殘留物品，依契約約定由賣方清空後交屋。</li>
+    <li><b>漏水、海砂這類重大瑕疵——責任歸屬在簽約時就要載明。</b>
+      簽約前由地政士針對雙方權益做確認；屬賣方瑕疵擔保責任範圍的，需確認責任歸屬並修繕完成。</li>
+    <li><b>一般裝修與內部配置——你自己決定，不是必須花的錢。</b>
+      本案不是毛胚，流理台、爐具、衛浴都已裝好；只需一次通水通電複檢，上限約 $4,500（詳見「整理費怎麼抽」）。</li>
+  </ul>
+  <p class="split-note">以上為制度上的責任分配說明，實際條件一律以雙方簽署之書面契約及地政士確認為準。</p>
+</section>
+<section class="sec" id="fengxian">
     <div class="tag">風險我先講完</div>
     <h2>連費用一起講</h2>
     <p class="lead">每一項都走完五件事：不處理會怎樣、去哪查怎麼查、大概要花多少、要不要驗、你怎麼承擔。<strong>費用只引用有出處的公開報價區間並標來源與年份；查不到出處的，寫「待查證」，不編數字給你。</strong></p>
@@ -805,7 +824,7 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
     <li><b>洽詢主管機關查詢使用分區與登記用途。</b>新北市都市計畫、建管相關單位可以查詢，確認你想做的使用內容合不合法。</li>
     <li><b>若有特定營業計畫，另洽該目的事業主管機關。</b>不同營業項目可能有各自的登記與消防要求，不能只憑一句話就認定可行。</li>
     <li><b>了解「登記彈性」不等於「沒有限制」。</b>一般事務所給的是規劃彈性，不是無限制使用，簽約前把限制查清楚再決定。</li>
-    <li><b>貸款要先問銀行。</b>非住宅用途空間的核貸成數與年限，銀行審核標準通常比住宅保守，自備款要抓寬一點。</li>
+    <li><b>貸款先做預審。</b>非住宅用途的核貸條件跟住宅不同，先做貸款預審，知道銀行給你多少，再決定要不要出價。預審不用錢也不影響信用，店裡有長期配合的銀行，我可以幫你約。</li>
   </ol>
   <p class="mnote">本頁不就使用執照登載內容之合法性做任何聲明或保證；使用分區與登記用途查證結果以主管機關認定為準。</p>
 </template>
@@ -831,7 +850,7 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
     <label class="chk"><input type="checkbox" data-k="c15"><span>我看過格局圖並核對現場動線，確認跟現況一致。</span></label>
     <label class="chk"><input type="checkbox" data-k="c16"><span>我確認過前手有沒有欠繳管理費或其他費用。</span></label>
   </div>
-  <p class="tally" id="tally" aria-live="polite">還有 <em>16</em> 項沒確認。<span class="sub">全部確認完之前，先不要出價。</span></p>
+  <p class="tally" id="tally" aria-live="polite">還有 <em>16</em> 項沒確認。<span class="sub">沒勾的那幾項，帶看當天我陪你一起確認。</span></p>
   <p class="mnote">謄本、使用執照、現況說明書這幾項本來就是我的工作，你不用自己跑。要我先幫你調，跟我說一聲就好。</p>
 </template>
 
@@ -893,7 +912,7 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
         tally.innerHTML='<em>'+boxes.length+'</em> 項全部確認完成。<span class="sub">該問的都問了，現在可以談價格了。</span>';
       }else{
         tally.classList.remove('done');
-        tally.innerHTML='還有 <em>'+left+'</em> 項沒確認。<span class="sub">全部確認完之前，先不要出價。</span>';
+        tally.innerHTML='還有 <em>'+left+'</em> 項沒確認。<span class="sub">沒勾的那幾項，帶看當天我陪你一起確認。</span>';
       }
     }
     boxes.forEach(function(b){
