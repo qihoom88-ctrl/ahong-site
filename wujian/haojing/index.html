@@ -182,6 +182,36 @@ details.acc[open] summary .ac{transform:rotate(135deg);background:var(--warm);co
 details.acc .acbody{padding:0 15px 14px}
 details.acc .acbody .sec{margin-top:0}
 details.acc .acbody section{margin:0}
+/* ===== 競品對照看板（2026-09-02 規格：三軸逐項功能性對照，不給總分、不出現單坪數字） ===== */
+.cpb{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+.cpb-ax{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px}
+.cpb-ax .axh{display:flex;align-items:center;gap:8px;font-weight:900;font-size:.98rem}
+.cpb-ax .axh .ic{width:26px;height:26px;border-radius:8px;background:var(--soft-teal);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex:0 0 auto}
+.cpb-ax .axq{font-size:.82rem;color:var(--muted);margin:5px 0 10px;line-height:1.7}
+.cpb-row{margin-bottom:9px}
+.cpb-row .lb{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:.83rem;line-height:1.5}
+.cpb-row .lb b{font-weight:800;color:var(--trust)}
+.cpb-row .lb em{font-style:normal;display:block;font-size:.74rem;color:var(--muted);font-weight:400;line-height:1.5}
+.cpb-row .lb span{color:var(--trust);font-weight:800;flex:0 0 auto;white-space:nowrap}
+.cpb-row .bar{height:9px;border-radius:999px;background:var(--soft-trust);margin-top:5px;overflow:hidden}
+.cpb-row .bar i{display:block;height:100%;border-radius:999px;background:var(--trust-2)}
+.cpb-row.me .lb b,.cpb-row.me .lb span{color:var(--warm)}
+.cpb-row.me .bar i{background:var(--warm)}
+.cpb-row.out .lb b,.cpb-row.out .lb span{color:var(--muted)}
+.cpb-row.out .bar i{background:#C3CBD3}
+.cpb-chips{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 10px}
+.cpb-chips span{background:var(--soft-teal);color:var(--teal);font-size:.78rem;font-weight:800;padding:5px 10px;border-radius:999px;line-height:1.4}
+.cpb-cnt{background:var(--soft-trust);border-radius:12px;padding:10px 12px;margin:10px 0 2px;font-size:.83rem;line-height:1.7}
+.cpb-cnt b{font-weight:900;color:var(--trust)}
+.cpb-key{background:var(--soft-warm);border-radius:12px;padding:11px 13px;margin-top:10px;font-size:.86rem;line-height:1.8}
+.cpb-key b{font-weight:900;color:var(--warm)}
+.cpb-src{font-size:.75rem;color:var(--muted);line-height:1.75;margin-top:9px;border-top:1px dashed var(--line);padding-top:8px}
+.cpb-todo{background:var(--card);border:1px dashed var(--warm);border-radius:14px;padding:13px 15px}
+.cpb-todo b.th{display:block;font-weight:900;font-size:.95rem;color:var(--warm);margin-bottom:5px}
+.cpb-todo p{font-size:.82rem;color:var(--muted);line-height:1.75}
+.cpb-todo ul{list-style:none;margin:7px 0 0;font-size:.82rem;line-height:1.8}
+.cpb-todo li{padding-left:15px;position:relative;color:var(--ink)}
+.cpb-todo li:before{content:"\25AB";position:absolute;left:2px;color:var(--warm)}
 /* ===== 大綱導言 ===== */
 .outline{background:var(--soft-trust);border-radius:var(--radius);padding:18px;margin:20px 0 14px}
 .outline b{display:block;font-size:1.05rem;font-weight:900;color:var(--trust);margin-bottom:6px}
@@ -300,7 +330,7 @@ details.acc .acbody section{margin:0}
 
   <div class="outline">
     <b>下面這些，你想看哪個就點哪個</b>
-    <p>我把這間房子拆成 <em>9 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
+    <p>我把這間房子拆成 <em>10 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
     基本資料、影片、格局、生活圈、優點、錢怎麼算，全部都在。看完想進一步，最下面直接約我。<br><b>不知道從哪看起，就先點第一張「這間適合誰」</b>——30 秒就知道要不要往下。</p>
   </div>
 
@@ -388,7 +418,7 @@ details.acc .acbody section{margin:0}
 
       <div class="qbox">
         <div class="say"><i>「</i>那到底要花多少錢才能住人？<i>」</i></div>
-        <div class="flip">不要問「整間多少錢」，那個問題沒有答案，只會被報一個嚇人的數字。要拆成<strong>三層問</strong>：<br>①<strong>能不能住人</strong>——清運＋水電檢測＋衛浴防水，這層先做<br>②<strong>住得舒不舒服</strong>——油漆、燈具、開關，可以排隊慢慢做<br>③<strong>好不好看</strong>——系統櫃與風格裝修，獨立報價，跟前兩層分開<br>只有第①層是入住前一定要花的。<strong>每一層的公開報價區間我都查好了，含出處。</strong></div>
+        <div class="flip">不要問「整間多少錢」，那個問題沒有答案，只會被報一個嚇人的數字。要拆成<strong>三層問</strong>：<br>①<strong>能不能住人</strong>——清運＋水電檢測＋衛浴防水，這層先做<br>②<strong>住得舒不舒服</strong>——油漆、燈具、開關，可以排隊慢慢做<br>③<strong>好不好看</strong>——系統櫃與風格裝修，獨立報價，跟前兩層分開<br>只有第①層是入住前一定要花的。<strong>每一層的公開報價區間我都查好了，含出處。</strong><br><br><b>先給你一個量級</b>：這間該做的那幾項加起來，公開行情區間大約是 <strong>18.4～41.4 萬</strong>。這是用公開報價站有出處的區間抓出來的<b>量級，不是報價</b>，實際依現場丈量與廠商書面報價為準。</div>
         <span class="tagline">✓ 分三層估・錢才不會一次爆</span>
       </div>
 
@@ -486,6 +516,134 @@ details.acc .acbody section{margin:0}
 
 
   <details class="acc">
+    <summary><span class="ai">📊</span><span class="at"><b>競品對照看板</b><i>價格・生活圈・工作圈三軸，逐項攤開讓你自己比</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
+  <!-- 競品分析看板（2026-09-02 阿宏規格）：三軸逐項功能性顯示，不給總分、不出現單坪數字 -->
+  <section class="sec">
+    <div class="tag">競品對照</div>
+    <h2>這個價格，到底值不值</h2>
+    <p style="font-size:.9rem;color:var(--muted);margin-bottom:12px">看房子最後都會卡在同一句話：「這樣的價格算不算合理？」我把三件事拆開讓你自己比——<b>價格、生活圈、工作圈</b>。每一項都是逐條列出來的實測值，<b>我不給你一個總分</b>，因為分數是我的權重，不是你的。</p>
+
+    <div class="cpb">
+
+      <div class="cpb-ax">
+        <div class="axh"><span class="ic">💰</span>一、物件價格</div>
+        <p class="axq">同一個社區的實際成交紀錄，你可以自己上內政部實價登錄查證。橫條長度＝總價高低，五條共用同一把尺（最長為 1300 萬）。</p>
+        <div class="cpb-row me">
+          <div class="lb"><b>本案開價<em>36.08 坪・2 樓・無車位</em></b><span>1080 萬</span></div>
+          <div class="bar"><i style="width:83.1%"></i></div>
+        </div>
+        <div class="cpb-row">
+          <div class="lb"><b>113 年 4 月成交<em>36.08 坪・6 樓</em></b><span>1200 萬</span></div>
+          <div class="bar"><i style="width:92.3%"></i></div>
+        </div>
+        <div class="cpb-row">
+          <div class="lb"><b>114 年 11 月成交<em>33.77 坪・11 樓</em></b><span>980 萬</span></div>
+          <div class="bar"><i style="width:75.4%"></i></div>
+        </div>
+        <div class="cpb-row">
+          <div class="lb"><b>114 年 3 月成交<em>41.06 坪・6 樓・含車位</em></b><span>1230 萬</span></div>
+          <div class="bar"><i style="width:94.6%"></i></div>
+        </div>
+        <div class="cpb-row">
+          <div class="lb"><b>114 年 3 月成交<em>44.25 坪・8 樓・含車位</em></b><span>1300 萬</span></div>
+          <div class="bar"><i style="width:100%"></i></div>
+        </div>
+        <div class="cpb-key"><b>一句話比法：</b>同社區、<b>同樣 36.08 坪</b>——113 年 4 月成交 1200 萬，本案開價 <b>1080 萬</b>。坪數完全一樣，所以這兩個數字可以直接放在一起看，中間的差距換的是「屋況要自己整理」與樓層差異。<br>兩筆 1230 萬與 1300 萬都<b>含車位</b>，本案沒有車位，不能直接拿來比。</div>
+        <p class="cpb-src">資料來源：內政部不動產交易實價查詢服務網同社區成交紀錄。<b>開價不等於成交價</b>，實際成交金額由買賣雙方議定；成交資料以內政部網站公告為準。</p>
+      </div>
+
+      <div class="cpb-ax">
+        <div class="axh"><span class="ic">🛒</span>二、生活圈</div>
+        <p class="axq">用同一個門檻逐項判定：<b>走得到的距離＝約 1,000 公尺以內</b>。橫條越短代表越近，八條共用同一把尺（最長為 2,100 公尺）。</p>
+        <div class="cpb-row me">
+          <div class="lb"><b>三多市場<em>傳統市場</em></b><span>約 300 公尺</span></div>
+          <div class="bar"><i style="width:14.3%"></i></div>
+        </div>
+        <div class="cpb-row me">
+          <div class="lb"><b>三多國中<em>學區・已核對官方一覽表</em></b><span>約 400 公尺</span></div>
+          <div class="bar"><i style="width:19.0%"></i></div>
+        </div>
+        <div class="cpb-row me">
+          <div class="lb"><b>社區周邊公園<em>綠地</em></b><span>約 500 公尺</span></div>
+          <div class="bar"><i style="width:23.8%"></i></div>
+        </div>
+        <div class="cpb-row me">
+          <div class="lb"><b>樹林興仁花園夜市<em>飲食</em></b><span>約 900 公尺</span></div>
+          <div class="bar"><i style="width:42.9%"></i></div>
+        </div>
+        <div class="cpb-row out">
+          <div class="lb"><b>武林國小<em>學區・已核對官方一覽表</em></b><span>約 1,100 公尺</span></div>
+          <div class="bar"><i style="width:52.4%"></i></div>
+        </div>
+        <div class="cpb-row out">
+          <div class="lb"><b>全聯福利中心<em>超市</em></b><span>約 1,600 公尺</span></div>
+          <div class="bar"><i style="width:76.2%"></i></div>
+        </div>
+        <div class="cpb-row out">
+          <div class="lb"><b>樹林國民運動中心<em>運動</em></b><span>約 1,700 公尺</span></div>
+          <div class="bar"><i style="width:81.0%"></i></div>
+        </div>
+        <div class="cpb-row out">
+          <div class="lb"><b>家樂福<em>量販</em></b><span>約 2,100 公尺</span></div>
+          <div class="bar"><i style="width:100%"></i></div>
+        </div>
+        <div class="cpb-cnt">八項生活機能裡，<b>4 項</b>在約 1,000 公尺內（市場、國中、公園、夜市），<b>4 項</b>要靠交通工具（國小、超市、運動中心、量販）。<br>白話講：<b>每天要用的走得到，大採買要出門。</b></div>
+        <p class="cpb-src">距離依 Google 地圖步行路徑實測，查證日 2026-09-01，取整百公尺。學區依新北市 115 學年度各公立國民中小學學區一覽表逐字核對；學區以戶籍完整門牌與當學年度官方公告為準。</p>
+      </div>
+
+      <div class="cpb-ax">
+        <div class="axh"><span class="ic">🏢</span>三、工作圈</div>
+        <p class="axq">用同一個門檻逐項判定：<b>從社區最近的公車站上車，不用換車就到得了的就業區</b>（0 次轉乘）。</p>
+        <div class="cpb-chips">
+          <span>✓ 台北市西區・西門</span>
+          <span>✓ 板橋・府中</span>
+          <span>✓ 土城・亞東醫院</span>
+          <span>✓ 迴龍</span>
+        </div>
+        <div class="cpb-cnt">四個主要就業區，<b>4 個</b>都是<b>免轉乘直達</b>：701 到西門、843 到板橋府中、712 到亞東醫院、橘 26 到迴龍。四條路線都停靠社區旁保安街二段的同兩個站牌。</div>
+        <div class="cpb-row me">
+          <div class="lb"><b>上車點・中華電信站<em>四線共站</em></b><span>約 300 公尺</span></div>
+          <div class="bar"><i style="width:11.1%"></i></div>
+        </div>
+        <div class="cpb-row me">
+          <div class="lb"><b>上車點・世紀站<em>四線共站</em></b><span>約 400 公尺</span></div>
+          <div class="bar"><i style="width:14.8%"></i></div>
+        </div>
+        <div class="cpb-row">
+          <div class="lb"><b>近未來捷運 LG19 站<em>興建中・尚未通車，官方預定民國 120 年完工</em></b><span>約 700 公尺</span></div>
+          <div class="bar"><i style="width:25.9%"></i></div>
+        </div>
+        <div class="cpb-row out">
+          <div class="lb"><b>捷運迴龍站<em>新莊線・目前最近的軌道站</em></b><span>約 2,100 公尺</span></div>
+          <div class="bar"><i style="width:77.8%"></i></div>
+        </div>
+        <div class="cpb-row out">
+          <div class="lb"><b>台鐵樹林車站<em>不算近，一併列出讓你自己判斷</em></b><span>約 2,700 公尺</span></div>
+          <div class="bar"><i style="width:100%"></i></div>
+        </div>
+        <div class="cpb-key"><b>這件事我主動更正：</b>市面上有些社區介紹把這裡寫成「鄰近樹林火車站」，<b>實測約 2,700 公尺，不能算近</b>。本案目前最近的軌道站是<b>捷運迴龍站</b>，公車才是這裡真正的通勤主力。</div>
+        <p class="cpb-src">四條公車路線經「大臺北公車」官方停靠站表逐條核對，皆停靠上述兩站（網站更新日期 2026-08-25）；701 為二段票，其餘三線一段票。距離依 Google 地圖實測，查證日 2026-09-01，取整百公尺。捷運 LG19 站站位出自新北市政府捷運工程局 LG19 站出入口開發案文件（113 年 8 月），<b>興建中尚未通車</b>，完工時程與出入口位置以主管機關公告為準。</p>
+      </div>
+
+      <div class="cpb-todo">
+        <b class="th">⚠️ 這張看板還缺哪一塊，我照實講</b>
+        <p>上面三軸比的是<b>本案與同社區成交紀錄</b>，每一筆都查得到出處。至於<b>同區域、同總價帶其他仲介正在賣的案子</b>，我還沒有逐案開頁查證過，所以這張看板<b>不對那些案子做任何價格評價</b>——沒查過的東西我不寫。還沒查的是這幾項：</p>
+        <ul>
+          <li>樹林區 1,000～1,200 萬、四房、有電梯的在售案：坪數、公設比、屋齡、樓層、有無車位</li>
+          <li>上述各案在約 1,000 公尺內的生活機能項目數（同一份門檻重跑一次）</li>
+          <li>上述各案免轉乘直達的就業區數量（同一份門檻重跑一次）</li>
+        </ul>
+        <p style="margin-top:7px">查證方式是逐案開頁抄錄，再與內政部實價登錄的同期成交比對，查完我會把這張看板補齊。你現在就想比，<b>帶看當天我把查到的直接攤給你看。</b></p>
+      </div>
+
+    </div>
+  </section>
+    </div>
+  </details>
+
+
+  <details class="acc">
     <summary><span class="ai">✨</span><span class="at"><b>這間強在哪</b><i>三件別間換不到的事，以及入住後日子會長什麼樣</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 優點：先給購買慾望 -->
@@ -545,7 +703,9 @@ details.acc .acbody section{margin:0}
     <p class="pay-note">試算條件：總價 1080 萬、30 年期、年利率 2.435%、無寬限期、本息平均攤還。<b>這些是預設值，不是你的條件</b>——成數、利率、年限每個人不一樣，實際以銀行核准為準。</p>
     <div class="self-check">
       <b>🔍 屋齡 32 年這件事，先講在前面。</b>老屋的核貸年限與成數，銀行通常會比新屋保守，你未必貸得到 8 成。所以順序是：<b>先做貸款預審，知道銀行給你多少，再決定要不要出價</b>——不要反過來。預審不用錢也不影響信用，我可以幫你約。<br><br>
-      另外，首付之外還要準備契稅、印花稅、代書費、規費、火險地震險，以及這間一定會發生的整理費用，上表都<b>沒有</b>計入。
+      另外，首付之外還要準備契稅、印花稅、代書費、規費、火險地震險，以及這間一定會發生的整理費用，上表都<b>沒有</b>計入。<br><br>
+      <b>🔨 整理費用大概要再花多少，我直接講：公開行情區間約 18.4～41.4 萬。</b>這是量級不是報價，實際依現場丈量與廠商書面報價為準；<b>逐項工種怎麼拆、每一筆的出處是哪一站，帶看前的完整資料裡會攤開給你看</b>。想自己先查行情，九個工種的完整區間都在這一頁：<br>
+      <a href="https://0930848000.com/xiushan/" style="font-weight:900;word-break:break-all">https://0930848000.com/xiushan/</a>
     </div>
   
         <div class="qa-box">
