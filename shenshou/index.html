@@ -103,6 +103,8 @@ textarea.inp{font-size:14px}
     </div>
     <div class="f2">
       <div><label class="fl">車位行情價 <i>萬</i></label><input class="inp" id="c_pkp" inputmode="decimal" placeholder="0"></div>
+      <div><label class="fl">車位行情低 <i>萬，留空＝同上</i></label><input class="inp" id="c_pkl" inputmode="decimal" placeholder=""></div>
+      <div><label class="fl">車位行情高 <i>萬，留空＝同上</i></label><input class="inp" id="c_pkh" inputmode="decimal" placeholder=""></div>
       <div><label class="fl">屋主開價 <i>萬</i></label><input class="inp" id="c_ask" inputmode="decimal" placeholder="1580"></div>
     </div>
     <div class="f2">
@@ -118,12 +120,33 @@ textarea.inp{font-size:14px}
 <!-- ═══ 2 三價 ═══ -->
 <div class="sec" id="s1">
   <div class="box">
-    <h4>實價登錄定錨（已扣車位單價）</h4>
-    <label class="fl">同社區／同路段成交單價 <i>萬/坪，不含車位</i></label>
-    <input class="inp" id="v_up" inputmode="decimal" placeholder="42">
+    <h4>實價登錄成交清單（已扣車位單價）</h4>
+    <p class="hint">每筆＝樓層／單價／年月＋§19 四項調整率%（情況・價格日期・區域・個別），同社區同條件全填 0。🔴 主路徑樓層高低由回歸處理，個別% 不要再填樓層差</p>
+    <div class="f2">
+      <div><label class="fl">樓層</label><input class="inp" id="m_f" inputmode="decimal" placeholder="9"></div>
+      <div><label class="fl">單價 <i>萬/坪 不含車位</i></label><input class="inp" id="m_p" inputmode="decimal" placeholder="46.5"></div>
+    </div>
+    <label class="fl">成交年月</label><input class="inp" id="m_t" placeholder="例：113/08">
+    <div class="f2">
+      <div><label class="fl">情況%</label><input class="inp" id="m_s" inputmode="decimal" value="0"></div>
+      <div><label class="fl">價格日期%</label><input class="inp" id="m_d" inputmode="decimal" value="0"></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">區域%</label><input class="inp" id="m_r" inputmode="decimal" value="0"></div>
+      <div><label class="fl">個別%</label><input class="inp" id="m_g" inputmode="decimal" value="0"></div>
+    </div>
+    <label class="chk"><input type="checkbox" id="m_keep"><span>§25 但書人工保留（逾門檻仍採用，會在摘要敘明理由）</span></label>
+    <button class="btn sm" id="m_add">加入成交清單</button>
+    <div id="m_list"></div>
     <label class="fl">實登揭露至 <i>年月，必填才能對外</i></label>
     <input class="inp" id="v_src" placeholder="例：115年6月">
-    <label class="fl">個案條件調整 <i>%（劣勢-6 持平0 優勢+6）</i></label>
+    <h4 style="margin-top:14px">因素調整表（±3% 七級）</h4>
+    <p class="hint">極優+9 優+6 略優+3 普通0 略劣-3 劣-6 極劣-9。正本＝valuation-beast/references/factor-adjustment.md。🔴 樓層特性只評頂樓／一樓／露台，不評樓層高低</p>
+    <div id="v_fac" class="f2"></div>
+    <div id="v_facsum" class="hint"></div>
+    <label class="fl">舊案相容欄 <i>單一成交單價 萬/坪，新案留空</i></label>
+    <input class="inp" id="v_up" inputmode="decimal" placeholder="">
+    <label class="fl">舊案額外調整率 <i>%，新案填 0</i></label>
     <input class="inp" id="v_adj" inputmode="numeric" value="0">
   </div>
   <div id="v_out"></div>
@@ -230,25 +253,109 @@ for(var i=0;i<tabs.length;i++){tabs[i].onclick=function(){
 }}
 
 /* ── state ── */
-var rivals=[], nuis=[];
+var rivals=[], nuis=[], comps=[];
+/* ══════════ 估價核心 valCore v1.0.0（20-0903-03 定案）══════════
+   正本＝C:/Users/User/.claude/skills/valuation-beast/references/factor-adjustment.md
+   C1 三價統一回歸法＋兩條退路｜C2 因素調整表 ±3% 七級｜缺口④ 三門檻自動退件 §25/§26/§27
+   🔴 本段在 valuation_tool.html 與 shenshou/index.html 兩處逐字相同，改一處要兩處一起改
+   🚫 已廢止：舊的兩個固定係數（憑空的 8% 折讓與溢價，正本 factor-adjustment.md §0）、條件調整三選一(-6/0/+6)、逾30%只顯示黃字不退件 */
+var VAL_LEVELS=[['極優',9],['優',6],['略優',3],['普通',0],['略劣',-3],['劣',-6],['極劣',-9]];
+var VAL_FACTORS=['樓層特性','面向景觀','邊間','屋齡','車位型態','屋況裝潢','格局','社區管理','地段機能','嫌惡設施'];
+var VAL_CAP1=15,VAL_CAP2=30,VAL_SPREAD=20,VAL_MINN=3;
+function valCore(comps,floorNo,K){
+  /* comps 每筆 {f:樓層,p:已扣車位單價萬,t:年月,s:情況%,d:日期%,r:區域%,g:個別%,keep:§25但書保留}
+     floorNo 標的樓層｜K 標的十項個別因素評級加總% */
+  K=K||0;
+  var used=[],drop=[],i,c,s,d,r,g,one,tot;
+  for(i=0;i<comps.length;i++){
+    c=comps[i];s=+c.s||0;d=+c.d||0;r=+c.r||0;g=+c.g||0;
+    one=Math.max(Math.abs(r),Math.abs(g));tot=Math.abs(s)+Math.abs(d)+Math.abs(r)+Math.abs(g)+Math.abs(K);
+    c.hold='';
+    if(one>VAL_CAP1||tot>VAL_CAP2){
+      if(c.keep){c.hold='§25 但書保留：本筆單項調整 '+one.toFixed(1)+'%／總調整 '+tot.toFixed(1)+'% 已逾門檻，因同社區近一年成交筆數不足予以保留採用';used.push(c);continue}
+      drop.push({c:c,why:one>VAL_CAP1
+        ?'單項調整 '+one.toFixed(1)+'% 逾 '+VAL_CAP1+'%（技術規則 §25 前段）'
+        :'總調整 '+tot.toFixed(1)+'% 逾 '+VAL_CAP2+'%（技術規則 §25 後段，含標的因素調整 '+K.toFixed(1)+'%）'});
+      continue}
+    used.push(c)}
+  function reg(a){var m=a.length,j,mf=0,mp=0,nu=0,de=0;if(!m)return[0,0];
+    for(j=0;j<m;j++){mf+=a[j].f;mp+=a[j].p}mf/=m;mp/=m;
+    for(j=0;j<m;j++){nu+=(a[j].f-mf)*(a[j].p-mp);de+=(a[j].f-mf)*(a[j].f-mf)}
+    return[de?nu/de:0,de]}
+  /* §26 量的是「調到標的條件後各筆還互相差多少」——先用回歸斜率抹平樓層差，
+     不抹平會把同社區高低樓層的天然價差誤判成離群，反而砍掉回歸本身 */
+  function trial(c,sl){return(c.p+sl*(floorNo-c.f))*(1+((+c.s||0)+(+c.d||0)+(+c.r||0)+(+c.g||0))/100)}
+  var sl=0,de=0,ts,mn,mx,sp,med,far,j;
+  for(;;){var q=reg(used);sl=q[0];de=q[1];
+    if(used.length<VAL_MINN)break;
+    ts=[];for(i=0;i<used.length;i++)ts.push(trial(used[i],sl));
+    mn=Math.min.apply(null,ts);mx=Math.max.apply(null,ts);
+    sp=(mx+mn)?(mx-mn)/((mx+mn)/2)*100:0;
+    if(sp<VAL_SPREAD)break;
+    med=ts.slice().sort(function(a,b){return a-b})[Math.floor(ts.length/2)];
+    far=0;for(j=1;j<ts.length;j++)if(Math.abs(ts[j]-med)>Math.abs(ts[far]-med))far=j;
+    drop.push({c:used[far],why:'比較標的間價差率 '+sp.toFixed(1)+'% ≥ '+VAL_SPREAD+'%（§26），本筆調整到標的條件後 '+ts[far].toFixed(1)+' 萬／坪 離中位數 '+med.toFixed(1)+' 最遠'});
+    used.splice(far,1)}
+  var k=1+K/100,n=used.length,R={used:used,drop:drop,n:n,k:k,K:K,raw:comps.length,slope:0};
+  if(!n){R.mode='退路B';R.ok=false;R.out=false;R.msg='同社區近一年可用成交 0 筆——🔴 不出三價，只出待查清單';return R}
+  var ps=[],mf=0;for(i=0;i<n;i++){ps.push(used[i].p);mf+=used[i].f}mf/=n;
+  var mp=0;for(i=0;i<n;i++)mp+=ps[i];mp/=n;
+  var lo=Math.min.apply(null,ps),hi=Math.max.apply(null,ps);
+  R.mp=mp;R.lo=lo;R.hi=hi;R.ok=true;
+  if(n>=VAL_MINN&&de!==0){
+    R.mode='主路徑';R.slope=sl;R.est=(mp-sl*mf)+sl*floorNo;R.out=true;
+    R.u合=R.est*k;R.u保=Math.max(Math.min(R.est,mp)-1.5,lo)*k;R.u樂=Math.min(Math.max(R.est,mp)+2,hi)*k;
+    R.msg='採用 '+n+' 筆成交做樓層回歸，每升一層約 '+(sl>=0?'+':'')+sl.toFixed(2)+' 萬／坪';
+  }else{
+    R.out=(n>=VAL_MINN);R.mode=R.out?'退路A2':'退路A1';R.est=mp;
+    R.u合=mp*k;R.u保=lo*k;R.u樂=hi*k;
+    R.msg=R.out
+      ?'本案 '+n+' 筆成交同屬一個樓層，樓層回歸不可解，未做樓層回歸，價格帶取樣本實際成交上下限'
+      :'本案同社區可用成交僅 '+n+' 筆，未做樓層回歸，價格帶取樣本實際成交上下限——🔴【對外禁用】§27 要三件以上，本結果只准進內部底稿，不得作為對外行情卡的唯一依據';
+  }
+  return R}
+function valDropLines(R){var a=[],i;
+  a.push('採用 '+R.n+' 筆／剔除 '+R.drop.length+' 筆（原始 '+R.raw+' 筆）');
+  for(i=0;i<R.drop.length;i++)a.push('剔除 '+R.drop[i].c.f+'樓 '+R.drop[i].c.p+'萬'+(R.drop[i].c.t?' '+R.drop[i].c.t:'')+'：'+R.drop[i].why);
+  for(i=0;i<R.used.length;i++)if(R.used[i].hold)a.push('保留 '+R.used[i].f+'樓 '+R.used[i].p+'萬：'+R.used[i].hold);
+  if(R.drop.length)a.push('因為剔除，本案採用樣本從 '+R.raw+' 筆降到 '+R.n+' 筆');
+  return a}
+/* ══════════ 估價核心結束 ══════════ */
+
 
 /* ── 三價 ── */
+function facK(){var t=0;for(var i=0;i<VAL_FACTORS.length;i++){var e=$('vf'+i);if(e)t+=parseFloat(e.value)||0}return t+(v('v_adj')||0)}
+function comparables(){
+  /* 🔴 舊案相容：只有 v_up 沒有成交清單的舊案，當退路 A 的 1 筆樣本（樓層＝標的樓層），
+     🚫不准因為結構改了就把阿宏手機裡的舊案洗掉 */
+  if(comps.length)return {list:comps.slice(),legacy:false};
+  var up=v('v_up');
+  if(up>0)return {list:[{f:parseFloat($('c_fl').value)||0,p:up,t:'舊案',s:0,d:0,r:0,g:0}],legacy:true};
+  return {list:[],legacy:false};
+}
 function calcVal(){
   var all=v('c_all'),pk=v('c_pk'),pkp=v('c_pkp')*10000;
-  var up=v('v_up')*10000,adj=v('v_adj')/100;
-  var bldg=Math.max(all-pk,0);
-  if(!bldg||!up){$('v_out').innerHTML='<div class="verdict y"><b>還缺資料</b>填「案件」頁的坪數＋本頁實登單價才算得出來——🚫沒有實登定錨不出三價，只列待查</div>';return null}
-  var base=up*(1+adj),dn=base*.92,opt=base*1.08;
-  var lo=dn*bldg+pkp,mid=base*bldg+pkp,hi=opt*bldg+pkp;
+  /* 車位三段：保守取行情低、合理取中、樂觀取高（與 valuation_calc.py／valuation_tool.html 同一慣例）；留空就沿用單一價 */
+  var pkL=(v('c_pkl')||v('c_pkp'))*10000,pkH=(v('c_pkh')||v('c_pkp'))*10000,pkM=(pkL+pkH)/2;
+  var bldg=Math.max(all-pk,0),K=facK(),CC=comparables();
+  var fs=$('v_facsum');if(fs)fs.textContent='因素調整總率 K = '+(K>0?'+':'')+nf(K,1)+'%'+(Math.abs(K)>30?'　🔴 已逾 30%：每一筆比較標的的總調整都會超標，全數剔除 → 不出三價':'');
+  var R=valCore(CC.list.map(function(o){var q={};for(var z in o)q[z]=o[z];return q}),parseFloat($('c_fl').value)||0,K);
+  window.lastR=R;window.lastLegacy=CC.legacy;
+  var drop='<div class="box"><div class="kv">'+valDropLines(R).map(function(l){return '<div class="r"><div>'+l+'</div></div>'}).join('')+'</div></div>';
+  if(!bldg){$('v_out').innerHTML='<div class="verdict y"><b>還缺資料</b>填「案件」頁的坪數才算得出來</div>'+drop;return null}
+  if(!R.ok){$('v_out').innerHTML='<div class="verdict r"><b>不出三價</b>'+R.msg+'<br>待查清單：①同社區近一年實登成交至少 3 筆（含樓層與成交年月）②每筆交易情況（§23 十三種非典型交易先剔除）③車位同社區成交行情</div>'+drop;return null}
+  var base=R.u合*10000,dn=R.u保*10000,opt=R.u樂*10000;
+  var lo=dn*bldg+pkL,mid=base*bldg+pkM,hi=opt*bldg+pkH;
   var ask=v('c_ask')*10000;
   var h='<div class="hero"><div class="lab">合理總價（含車位）</div><div class="val">'+nf(mid/10000)+' <small style="font-size:14px">萬</small></div>'+
-    '<div class="note">建物 '+nf(bldg,2)+' 坪 × '+nf(base/10000,2)+' 萬/坪 ＋ 車位 '+nf(pkp/10000)+' 萬</div></div>'+
+    '<div class="note">建物 '+nf(bldg,2)+' 坪 × '+nf(base/10000,2)+' 萬/坪 ＋ 車位 '+nf(pkM/10000)+' 萬（保守取 '+nf(pkL/10000)+'／樂觀取 '+nf(pkH/10000)+'）</div></div>'+
     '<div class="box"><div class="kv">'+
     '<div class="r"><div>🟢 保守</div><div class="n">'+nf(lo/10000)+' 萬</div></div>'+
     '<div class="r"><div>🟡 合理</div><div class="n">'+nf(mid/10000)+' 萬</div></div>'+
     '<div class="r"><div>🔴 樂觀</div><div class="n">'+nf(hi/10000)+' 萬</div></div>'+
     (ask?'<div class="r"><div>屋主開價（真單價 '+(bldg>0?nf((ask-pkp)/bldg/10000,2):'—')+' 萬/坪）</div><div class="n">'+nf(ask/10000)+' 萬</div></div>':'')+
-    '</div></div>';
+    '</div></div>'+
+    '<div class="verdict '+(R.out?'g':'r')+'"><b>取價路徑 '+R.mode+'</b>'+R.msg+(CC.legacy?'<br>🔴 舊案資料，樣本 1 筆未做回歸':'')+'</div>'+drop;
   if(ask){
     var diff=(ask-mid)/mid*100;
     var cls=diff>12?'r':(diff>4?'y':'g');
@@ -263,6 +370,32 @@ function calcVal(){
 }
 
 /* ── 競品 ── */
+$('m_add').onclick=function(){
+  var f=v('m_f'),p=v('m_p');
+  if(!p){toast('單價要填');return}
+  comps.push({f:f,p:p,t:$('m_t').value.trim(),s:v('m_s'),d:v('m_d'),r:v('m_r'),g:v('m_g'),keep:$('m_keep').checked});
+  $('m_f').value='';$('m_p').value='';$('m_t').value='';$('m_keep').checked=false;
+  recalc();toast('已加入成交清單');
+};
+function renderComps(){
+  var h='',i;
+  for(i=0;i<comps.length;i++){var c=comps[i];
+    h+='<div class="r"><div>'+c.f+'樓　'+nf(c.p,1)+' 萬/坪　'+(c.t||'—')+
+       '<div style="font-size:10.5px;color:var(--ink3)">情況'+c.s+'% 日期'+c.d+'% 區域'+c.r+'% 個別'+c.g+'%'+(c.keep?'　§25但書保留':'')+'</div></div>'+
+       '<div><button class="c_del" data-i="'+i+'">刪</button></div></div>';}
+  $('m_list').innerHTML=h?'<div class="box"><div class="kv">'+h+'</div></div>':'<p class="hint">還沒有成交——🚫 沒有實登定錨不出三價，只列待查</p>';
+  var ds=document.querySelectorAll('.c_del');
+  for(var b=0;b<ds.length;b++)ds[b].onclick=function(){comps.splice(+this.dataset.i,1);recalc()};
+}
+(function(){
+  var h='',i;
+  for(i=0;i<VAL_FACTORS.length;i++){
+    h+='<div><label class="fl">'+VAL_FACTORS[i]+'</label><select class="inp" id="vf'+i+'">';
+    for(var j=0;j<VAL_LEVELS.length;j++)h+='<option value="'+VAL_LEVELS[j][1]+'"'+(VAL_LEVELS[j][1]===0?' selected':'')+'>'+VAL_LEVELS[j][0]+(VAL_LEVELS[j][1]?' ('+(VAL_LEVELS[j][1]>0?'+':'')+VAL_LEVELS[j][1]+'%)':'')+'</option>';
+    h+='</select></div>';}
+  $('v_fac').innerHTML=h;
+  for(i=0;i<VAL_FACTORS.length;i++)$('vf'+i).onchange=recalc;
+})();
 $('r_add').onclick=function(){
   var name=$('r_name').value.trim(),p=v('r_price'),ping=v('r_ping'),src=$('r_src').value.trim();
   if(!name||!p){toast('名稱跟開價要填');return}
@@ -359,7 +492,11 @@ function buildSummary(){
   if(val){
     s+='🟢保守 '+nf(val.lo/10000)+'／🟡合理 '+nf(val.mid/10000)+'／🔴樂觀 '+nf(val.hi/10000)+' 萬（含車位）\n';
     s+='採用單價 '+nf(val.base/10000,2)+' 萬/坪（已扣車位）　實登揭露至 '+($('v_src').value||'⚠️待填')+'\n';
-  } else s+='三價：待實登定錨（🚫無定錨不出價）\n';
+    if(window.lastR){s+='取價路徑 '+window.lastR.mode+'：'+window.lastR.msg+'\n';
+      s+=valDropLines(window.lastR).join('\n')+'\n';
+      if(window.lastLegacy)s+='🔴 舊案資料，樣本 1 筆未做回歸\n';
+      if(!window.lastR.out)s+='🔴【對外禁用】採用樣本不足三件（§27），本三價只准進內部底稿\n';}
+  } else s+='三價：待實登定錨（🚫無定錨不出價）'+(window.lastR?'——'+window.lastR.msg:'')+'\n';
   if(v('c_ask'))s+='屋主開價 '+nf(v('c_ask'))+' 萬\n';
   s+='───────────\n競品天梯（'+rivals.length+' 件）：\n';
   for(var i=0;i<rivals.length;i++){var r=rivals[i];
@@ -385,10 +522,10 @@ $('c_save').onclick=function(){
   var cases=loadCases();
   var data={name:name,ts:Date.now(),
     fields:{c_name:$('c_name').value,c_addr:$('c_addr').value,c_all:$('c_all').value,c_pk:$('c_pk').value,
-      c_pkp:$('c_pkp').value,c_ask:$('c_ask').value,c_age:$('c_age').value,c_fl:$('c_fl').value,
+      c_pkp:$('c_pkp').value,c_pkl:$('c_pkl').value,c_pkh:$('c_pkh').value,c_ask:$('c_ask').value,c_age:$('c_age').value,c_fl:$('c_fl').value,
       c_note:$('c_note').value,v_up:$('v_up').value,v_src:$('v_src').value,v_adj:$('v_adj').value,
-      n_deed:$('n_deed').value},
-    rivals:rivals,nuis:nuis};
+      n_deed:$('n_deed').value,fac:(function(){var a=[],i;for(i=0;i<VAL_FACTORS.length;i++)a.push($('vf'+i).value);return a.join(',')})()},
+    rivals:rivals,nuis:nuis,comps:comps};
   var idx=-1;for(var i=0;i<cases.length;i++)if(cases[i].name===name)idx=i;
   if(idx>=0)cases[idx]=data;else cases.unshift(data);
   saveCases(cases);renderCases();toast('已存：'+name);
@@ -397,7 +534,7 @@ function renderCases(){
   var cases=loadCases(),h='';
   for(var i=0;i<cases.length;i++){
     var c=cases[i];
-    h+='<div class="case-row"><div><b>'+c.name+'</b><div class="sub">'+new Date(c.ts).toLocaleString('zh-TW')+'　競品'+(c.rivals||[]).length+'筆</div></div>'+
+    h+='<div class="case-row"><div><b>'+c.name+'</b><div class="sub">'+new Date(c.ts).toLocaleString('zh-TW')+'　成交'+(c.comps||[]).length+'筆　競品'+(c.rivals||[]).length+'筆</div></div>'+
        '<div style="display:flex;gap:6px"><button data-i="'+i+'" class="k_open">開啟</button><button data-i="'+i+'" class="k_del">刪</button></div></div>';
   }
   $('k_list').innerHTML=h||'<p class="hint">還沒存過案件。在「閘門」頁按 💾 存案件</p>';
@@ -405,7 +542,9 @@ function renderCases(){
   for(var a=0;a<os.length;a++)os[a].onclick=function(){
     var c=loadCases()[+this.dataset.i];if(!c)return;
     for(var k in c.fields){var el=$(k);if(el)el.value=c.fields[k]}
-    rivals=c.rivals||[];nuis=c.nuis||[];
+    rivals=c.rivals||[];nuis=c.nuis||[];comps=c.comps||[];
+    if(c.fields&&c.fields.fac){var fa=String(c.fields.fac).split(',');for(var z=0;z<VAL_FACTORS.length;z++){var fe=$('vf'+z);if(fe&&fa[z]!==undefined)fe.value=fa[z]}}
+    else{for(var z2=0;z2<VAL_FACTORS.length;z2++){var fe2=$('vf'+z2);if(fe2)fe2.value='0'}}
     recalc();tabs[0].click();toast('已載入：'+c.name);
   };
   var ds=document.querySelectorAll('.k_del');
@@ -417,7 +556,7 @@ function renderCases(){
 }
 
 /* ── recalc ── */
-function recalc(){calcVal();renderLadder();renderNuis();gateCheck();renderCases()}
+function recalc(){renderComps();calcVal();renderLadder();renderNuis();gateCheck();renderCases()}
 var inputs=document.querySelectorAll('input.inp,select.inp,textarea.inp');
 for(var q=0;q<inputs.length;q++){inputs[q].addEventListener('input',recalc)}
 recalc();
