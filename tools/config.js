@@ -14,7 +14,7 @@ window.AHCONFIG = {
     "store": "住商不動產 樹林站前店",
     "licenseBroker": "(96) 北縣字第001399號",
     "licenseSales": "（114）年登字第495065號",
-    "lineUrl": "https://lin.ee/IV8bl9H",
+    "lineUrl": "https://line.me/R/ti/p/@798ulmws",
     "_lineUrl備註": "2026-08-09 curl 實測定案：小寫 l 版（IV8bl9H）301 轉 line.me 帳號 @798ulmws 有效；大寫 I 版（IV8bI9H）404。技能包內 4 檔同用小寫版。阿宏手機點一次最終確認是自己帳號。",
     "phone": "02-2687-8822",
     "accent": "ochre",
