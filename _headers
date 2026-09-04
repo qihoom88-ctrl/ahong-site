@@ -1,2 +1,6 @@
 ﻿/lajiche/data/*
   Cache-Control: public, max-age=86400
+
+/wujian/listings.json
+  Access-Control-Allow-Origin: https://ahong-admin.pages.dev
+  Access-Control-Allow-Methods: GET
