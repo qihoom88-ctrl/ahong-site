@@ -103,6 +103,7 @@
     '.ahtail .nav .h{background:' + NIGHT + ';color:#fff}.ahtail .nav .h:hover{background:' + BRAND + '}' +
     '.ahtail .nav .g{border-color:' + GOLD + ';color:#7A5C1C}.ahtail .nav .g:hover{background:rgba(201,162,75,.14)}' +
     '.ahtail .nav .l{background:#06C755;color:#fff}' +
+    '.ahtail .lg{margin:18px 0 0;font-size:11.5px;color:#78807A;line-height:1.9}' +
     '@media print{.ahtail{display:none!important}}';
 
   function here() {
@@ -159,6 +160,14 @@
     }
     h += '<div class="nav"><a class="h" href="/">回首頁</a><a class="g" href="/zhishi/">全部知識</a><a class="g" href="/tools/">免費工具</a>' +
          '<a class="l" href="' + (S.line || 'https://line.me/R/ti/p/@798ulmws') + '" target="_blank" rel="noopener noreferrer">LINE 問阿宏</a></div>';
+    /* 法遵欄＋證號：頁面本身沒揭示才補（A0 紅線：證號揭示／開價≠成交價） */
+    var bodyTxt = (document.body.innerText || '');
+    if (bodyTxt.indexOf('年登字') < 0) {
+      h += '<p class="lg">' + esc(S.company || '住商不動產 樹林站前加盟店') + '｜' + esc(S.companyLtd || '鴻石不動產經紀有限公司') +
+           '｜經紀人證號 ' + esc(S.brokerLic || '(96) 北縣字第001399號') +
+           '｜' + esc(S.agentTitle || '不動產經紀營業員') + ' ' + esc(S.agentName || '何志宏') + ' ' + esc(S.agentLic || '（114）年登字第495065號') +
+           '<br>' + esc(S.legal || '本站所有試算為決策輔助，稅費以國稅局／地方稅捐處核定為準，行情以實價登錄揭露為準，屋況以現場與謄本為準。開價≠成交價。') + '</p>';
+    }
     h += '</div>';
 
     var box = document.createElement('section');
