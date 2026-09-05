@@ -75,13 +75,14 @@
     box.id = 'ahqx'; box.className = 'ahqx'; box.setAttribute('aria-label', '居家清洗合作推薦');
     box.innerHTML = h;
     /* 站在頁尾動線帶之前、內文之後：自己一格，不跟導覽混 */
-    var tail = document.getElementById('ahtail');
-    if (tail) tail.parentNode.insertBefore(box, tail); else document.body.appendChild(box);
+    var slot = document.getElementById('ahqx-slot'), tail = document.getElementById('ahtail');
+    if (slot) slot.appendChild(box);
+    else if (tail) tail.parentNode.insertBefore(box, tail); else document.body.appendChild(box);
   }
 
   function ready() {
     /* tail.js 也是 defer，等它掛完再站位；沒有 tail 就直接掛 */
-    if (document.getElementById('ahtail') || !document.querySelector('script[src*="/tail.js"]')) mount();
+    if (document.getElementById('ahqx-slot') || document.getElementById('ahtail') || !document.querySelector('script[src*="/tail.js"]')) mount();
     else setTimeout(ready, 30);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready); else ready();
