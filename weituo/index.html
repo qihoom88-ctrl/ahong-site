@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>簽委託操作 SOP｜阿宏內部</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="內部作業頁：簽委託當天坐在屋主家裡翻的操作 SOP。">
+<meta name="theme-color" content="#0d2321">
+<style>
+:root{
+  --ink:#0d2321;
+  --ink2:#143230;
+  --card:rgba(255,255,255,.065);
+  --card-line:rgba(205,167,90,.28);
+  --gold:#cda75a;
+  --gold-soft:#e8cf8c;
+  --ember:#ef9351;
+  --ember-deep:#d4752f;
+  --cream:#f5f1e8;
+  --muted:#b3b9af;
+  --teal:#1f4d49;
+  --red:#ff8a80;
+  --green:#8fd3a5;
+  --yellow:#f3d47a;
+  --jump-h:58px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei','Heiti TC',sans-serif;
+  background:var(--ink);
+  color:var(--cream);
+  line-height:1.7;
+  font-size:1rem;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.glow{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -5%, rgba(205,167,90,.22), transparent 60%),
+    radial-gradient(ellipse 75% 45% at 50% 106%, rgba(239,147,81,.16), transparent 66%),
+    radial-gradient(ellipse 95% 65% at 50% 48%, rgba(31,77,73,.45), transparent 72%),
+    linear-gradient(180deg,#0d2321 0%,#12302c 50%,#0d2321 100%);
+}
+.noise{
+  position:fixed;inset:0;z-index:-1;opacity:.04;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 90px;position:relative}
+
+/* 頂部固定快速跳轉列 */
+.jump{
+  position:sticky;top:0;z-index:40;
+  margin:0 -16px;padding:10px 12px;
+  background:rgba(13,35,33,.92);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--card-line);
+  display:flex;gap:8px;overflow-x:auto;white-space:nowrap;
+  scrollbar-width:none;
+}
+.jump::-webkit-scrollbar{display:none}
+.jump a{
+  flex:0 0 auto;
+  font-size:1rem;color:var(--gold-soft);text-decoration:none;
+  border:1px solid var(--card-line);border-radius:30px;
+  padding:6px 13px;background:rgba(201,164,86,.08);
+  line-height:1.4;
+}
+.jump a:active{background:rgba(201,164,86,.22)}
+
+/* HERO */
+.hero{text-align:center;padding:26px 0 8px}
+.brandtag{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:1rem;letter-spacing:2px;color:var(--gold);
+  border:1px solid var(--card-line);border-radius:30px;
+  padding:5px 14px;margin-bottom:14px;
+}
+.brandtag .dot{width:6px;height:6px;border-radius:50%;background:var(--ember)}
+h1{font-family:'Noto Serif TC','PingFang TC',serif;font-weight:900;font-size:1.9rem;letter-spacing:2px;line-height:1.25}
+h1 span{color:var(--gold-soft)}
+.sub{font-size:1rem;color:var(--muted);margin-top:10px;line-height:1.7}
+.meta{font-size:1rem;color:var(--gold);margin-top:8px;letter-spacing:1px}
+
+/* 折疊區塊 */
+.sec{
+  margin-top:16px;
+  background:var(--card);border:1px solid var(--card-line);border-radius:18px;
+  scroll-margin-top:calc(var(--jump-h) + 10px);
+  overflow:hidden;
+}
+.sec summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;gap:12px;
+  padding:16px 16px;
+  font-family:'Noto Serif TC','PingFang TC',serif;font-weight:700;font-size:1.2rem;color:var(--gold-soft);
+  -webkit-tap-highlight-color:transparent;
+}
+.sec summary::-webkit-details-marker{display:none}
+.sec .num{
+  flex:0 0 auto;width:34px;height:34px;border-radius:10px;
+  display:grid;place-items:center;
+  background:rgba(201,164,86,.14);border:1px solid var(--card-line);
+  font-size:1rem;color:var(--gold);font-family:'Noto Sans TC',sans-serif;font-weight:700;
+}
+.sec .chev{margin-left:auto;color:var(--gold);font-size:1.4rem;transition:transform .2s;line-height:1}
+.sec[open] .chev{transform:rotate(90deg)}
+.sec .body{padding:2px 16px 18px;border-top:1px solid rgba(205,167,90,.14)}
+.sec .body>*+*{margin-top:14px}
+
+h4{font-family:'Noto Serif TC','PingFang TC',serif;font-size:1.1rem;color:var(--gold-soft);font-weight:700;margin-top:18px}
+h4:first-child{margin-top:12px}
+p{font-size:1rem}
+.mu{color:var(--muted)}
+b{color:var(--cream);font-weight:700}
+.k{color:var(--ember);font-weight:700}
+.no{color:var(--red);font-weight:700}
+.c{
+  display:inline-block;font-size:1rem;color:var(--gold-soft);
+  border:1px solid var(--card-line);border-radius:8px;padding:0 8px;line-height:1.5;
+  margin-left:6px;white-space:nowrap;vertical-align:middle;background:rgba(201,164,86,.06);
+}
+
+/* 通用卡片 */
+.card{
+  background:rgba(0,0,0,.18);border:1px solid rgba(205,167,90,.18);border-radius:14px;
+  padding:14px 14px;
+}
+.card+.card{margin-top:10px}
+.card .t{font-weight:700;color:var(--gold-soft);font-size:1.05rem}
+.card .d{margin-top:6px}
+.card .m{margin-top:6px;color:var(--muted)}
+.card .m .k{color:var(--ember)}
+
+/* 三堆 */
+.pile{border-left:4px solid var(--gold);padding:10px 12px;background:rgba(0,0,0,.18);border-radius:0 12px 12px 0}
+.pile+.pile{margin-top:10px}
+.pile.g{border-left-color:var(--green)}
+.pile.r{border-left-color:var(--red)}
+.pile.y{border-left-color:var(--yellow)}
+.pile .t{font-weight:700;font-size:1.05rem}
+.pile.g .t{color:var(--green)}
+.pile.r .t{color:var(--red)}
+.pile.y .t{color:var(--yellow)}
+.pile .d{margin-top:4px}
+.pile .s{margin-top:4px;color:var(--muted)}
+
+/* 三個輸入 */
+.three{display:grid;grid-template-columns:1fr;gap:8px}
+.three div{background:rgba(201,164,86,.08);border:1px solid var(--card-line);border-radius:12px;padding:10px 12px}
+.three .i{color:var(--gold);font-weight:700;margin-right:6px}
+
+/* 四段動線 */
+.step{display:grid;grid-template-columns:1fr;gap:4px;padding:12px 14px;background:rgba(0,0,0,.18);border:1px solid rgba(205,167,90,.18);border-radius:14px}
+.step+.step{margin-top:10px}
+.step .when{color:var(--gold-soft);font-weight:700;font-size:1.05rem}
+.step .do{margin-top:2px}
+.step .miss{margin-top:6px;color:var(--muted)}
+.step .miss::before{content:'漏了：';color:var(--red);font-weight:700}
+
+/* 打勾表 */
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}
+.count{color:var(--gold-soft);font-weight:700}
+.btn-clear{
+  font-size:1rem;color:var(--cream);background:rgba(255,138,128,.12);
+  border:1px solid rgba(255,138,128,.45);border-radius:10px;padding:8px 14px;
+  font-family:inherit;cursor:pointer;
+}
+.btn-clear:active{background:rgba(255,138,128,.3)}
+.chk{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:11px 10px;border-radius:12px;
+  background:rgba(0,0,0,.16);border:1px solid rgba(205,167,90,.14);
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.chk+.chk{margin-top:8px}
+.chk input{
+  flex:0 0 auto;width:24px;height:24px;margin-top:3px;
+  accent-color:var(--ember);
+}
+.chk .t{flex:1;line-height:1.55}
+.chk input:checked+.t{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(255,255,255,.35)}
+.chk input:checked+.t .c{opacity:.55}
+
+/* 一般 vs 專任 */
+.q{
+  background:linear-gradient(165deg,rgba(201,164,86,.14),rgba(226,134,74,.06));
+  border:1px solid var(--card-line);border-radius:16px;padding:16px 16px;
+  font-family:'Noto Serif TC','PingFang TC',serif;font-weight:700;font-size:1.15rem;line-height:1.8;color:var(--gold-soft);
+}
+.q .ans{display:block;margin-top:8px;font-family:'Noto Sans TC',sans-serif;font-weight:400;font-size:1rem;color:var(--cream)}
+.vs{background:rgba(0,0,0,.18);border:1px solid rgba(205,167,90,.18);border-radius:14px;padding:12px 14px}
+.vs+.vs{margin-top:10px}
+.vs .sit{font-weight:700;color:var(--gold-soft);font-size:1.05rem}
+.vs .pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.vs .pair div{border-radius:10px;padding:8px 10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.vs .pair .lb{display:block;font-size:1rem;color:var(--muted);margin-bottom:2px}
+.vs .pair .a{border-color:rgba(179,185,175,.25)}
+.vs .pair .b{border-color:rgba(239,147,81,.4)}
+.qa{background:rgba(0,0,0,.18);border:1px solid rgba(205,167,90,.18);border-radius:14px;padding:12px 14px}
+.qa+.qa{margin-top:10px}
+.qa .qq{font-weight:700;color:var(--gold-soft)}
+.qa .aa{margin-top:6px}
+
+/* 必填 13 格 */
+.must{display:flex;gap:12px;padding:12px 12px;background:rgba(0,0,0,.18);border:1px solid rgba(205,167,90,.18);border-radius:14px}
+.must+.must{margin-top:8px}
+.must .idx{flex:0 0 auto;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(239,147,81,.16);border:1px solid rgba(239,147,81,.5);color:var(--ember);font-weight:700;font-size:1rem}
+.must .f{flex:1}
+.must .f .t{font-weight:700;color:var(--cream)}
+.must .f .miss{margin-top:4px;color:var(--muted)}
+.must .f .miss .k{color:var(--red)}
+
+/* 會賠錢 */
+.money{display:flex;gap:12px;padding:12px 12px;background:rgba(255,138,128,.06);border:1px solid rgba(255,138,128,.3);border-radius:14px}
+.money+.money{margin-top:8px}
+.money .idx{flex:0 0 auto;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(255,138,128,.16);border:1px solid rgba(255,138,128,.5);color:var(--red);font-weight:700}
+.money .f{flex:1}
+.money .f .t{font-weight:700}
+.money .f .r{margin-top:4px}
+ol.plain,ul.plain{padding-left:22px}
+ol.plain li+li,ul.plain li+li{margin-top:6px}
+.duty{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:start;padding:10px 12px;background:rgba(0,0,0,.18);border:1px solid rgba(205,167,90,.18);border-radius:12px}
+.duty+.duty{margin-top:8px}
+.duty .lim{color:var(--ember);font-weight:700;white-space:nowrap}
+.duty .c{margin-left:0;grid-column:1/3;justify-self:start}
+
+/* 45 項 */
+.grp{margin-top:14px}
+.grp h4{margin-top:0;padding-bottom:6px;border-bottom:1px solid rgba(205,167,90,.18)}
+.i45{display:flex;gap:10px;padding:8px 4px;border-bottom:1px dashed rgba(255,255,255,.08)}
+.i45:last-child{border-bottom:0}
+.i45 .no45{flex:0 0 34px;color:var(--gold);font-weight:700;text-align:right}
+.i45 .tx{flex:1}
+.i45 .tx .op{color:var(--muted)}
+
+/* 法規紅線 */
+.law{display:flex;gap:10px;padding:12px 12px;background:rgba(0,0,0,.18);border:1px solid rgba(205,167,90,.18);border-radius:14px}
+.law+.law{margin-top:8px}
+.law .idx{flex:0 0 auto;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:rgba(201,164,86,.14);border:1px solid var(--card-line);color:var(--gold);font-weight:700}
+.law .f{flex:1}
+.law .f .what{font-weight:700;color:var(--cream)}
+.law .f .then{margin-top:4px}
+.law .f .then::before{content:'後果：';color:var(--red);font-weight:700}
+.law .f .src{margin-top:4px;color:var(--muted)}
+.law .f .src::before{content:'法源：';color:var(--gold)}
+
+/* 提示框 */
+.note{padding:12px 14px;border-radius:12px;background:rgba(201,164,86,.08);border:1px solid var(--card-line)}
+.note.red{background:rgba(255,138,128,.08);border-color:rgba(255,138,128,.4)}
+.note.warn{background:rgba(243,212,122,.08);border-color:rgba(243,212,122,.4)}
+.note .lead{font-weight:700;color:var(--gold-soft)}
+.note.red .lead{color:var(--red)}
+.note.warn .lead{color:var(--yellow)}
+.note+.note{margin-top:10px}
+
+/* footer */
+.foot{text-align:center;margin-top:36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08)}
+.foot p{color:var(--muted);line-height:1.8}
+.foot .src{color:var(--gold-soft)}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="noise"></div>
+
+<div class="wrap">
+
+  <nav class="jump" aria-label="快速跳轉">
+    <a href="#info">資訊哪裡來</a>
+    <a href="#pack">簽約包打勾</a>
+    <a href="#vs">一般vs專任</a>
+    <a href="#must">必填 13 格</a>
+    <a href="#money">會賠錢</a>
+    <a href="#s45">45 項</a>
+    <a href="#law">法規紅線</a>
+  </nav>
+
+  <header class="hero">
+    <div class="brandtag"><span class="dot"></span>內部 SOP · 10 業務</div>
+    <h1>簽委託<span>操作 SOP</span></h1>
+    <p class="sub">坐在屋主家裡翻這一頁<br>每一條後面都有條號，數字全部是實查的</p>
+    <p class="meta">任務 10-0905-01｜更新 2026-09-05</p>
+  </header>
+
+  <!-- 〇-1 資訊哪裡來 -->
+  <details class="sec" id="info">
+    <summary><span class="num">1</span>資訊哪裡來<span class="chev">›</span></summary>
+    <div class="body">
+      <h4>阿宏只要給三個，其餘自動</h4>
+      <div class="three">
+        <div><span class="i">①</span>哪個案子（案名，或直接丟謄本）</div>
+        <div><span class="i">②</span>一般約還是專任約</div>
+        <div><span class="i">③</span>委託期間起訖</div>
+      </div>
+
+      <h4>其餘欄位分三堆，第一個動作是判這格屬哪一堆</h4>
+      <div class="pile g">
+        <div class="t">🟢 系統撈</div>
+        <div class="d">案名／行政區／社區路段／開價／約別／委託書編號／屋主代號／物件類型／承辦業務／底價（內部）／房數／坪數／樓層屋齡</div>
+        <div class="s">來源：Notion 案件銷售飛輪主檔＋網站價格總表</div>
+      </div>
+      <div class="pile r">
+        <div class="t">🔴 謄本拆</div>
+        <div class="d">所有權人／縣市鄉鎮／段／小段／地號／土地面積／權利範圍／他項權利設定／使用分區／建號／主建物・附屬建物・共同使用部分面積／建築完成日期／完整門牌</div>
+        <div class="s">來源：謄本。專任約<span class="c">第十四條</span>已授權申請第一類謄本（「為完備產權調查義務，委託人授權受託人得申請委託標的之第一類謄本」）。大腦只有「謄本狀態／謄本取得日」兩格，沒有謄本內容——這一堆本來就不在系統裡</div>
+      </div>
+      <div class="pile y">
+        <div class="t">🟡 當面問</div>
+        <div class="d">附隨買賣設備 12 項／付款四期比例／服務報酬 %／定金代收・保管授權／沒收定金分成 %／共有人是否全數同意／地政士誰指定／點交日期／有無與友店簽委託</div>
+        <div class="s">印成清單帶去，這一堆不自動化</div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 〇-2 四段動線 -->
+  <details class="sec" id="flow">
+    <summary><span class="num">2</span>四段動線<span class="chev">›</span></summary>
+    <div class="body">
+      <div class="step">
+        <div class="when">簽約前 ≥3 日</div>
+        <div class="do">契約書及附件全套給屋主攜回審閱＋<b>該公司近三個月成交行情</b>（列印，屋主留一份）＋履保制度說明</div>
+        <div class="miss">審閱期不足→條款效力由屋主單方挑；行情隱匿不實→賠償<span class="c">第七條二</span></div>
+      </div>
+      <div class="step">
+        <div class="when">簽約當下</div>
+        <div class="do">兩份文件一起簽：<b>契約書</b>（4 頁）＋<b>現況說明書 45 項</b>（2 頁），同一組管制編號；13 個必填必勾格（見〔必填 13 格〕）；收屋主 8 樣東西（權狀影本×2、身分證影本、鑰匙、授權書、車位約定文件、有的話使照・管路圖・住戶手冊）</div>
+        <div class="miss">現況說明書沒簽＝誠實告知義務<span class="c">第六條四</span>沒有載體，屋況爆雷拿不出屋主簽認證據</div>
+      </div>
+      <div class="step">
+        <div class="when">離開前</div>
+        <div class="do">照〔簽約包打勾〕逐格勾完（帶去 7 樣／收到 8 樣／契約上填了 13 格＋簽章兩處）</div>
+        <div class="miss">回店才發現漏格＝再跑一趟，或那格永遠空白</div>
+      </div>
+      <div class="step">
+        <div class="when">簽約後</div>
+        <div class="do">要約書 <b>24 小時</b>內轉交／定金 <b>24 小時</b>內送交／送不到 <b>2 日內</b>書面／<b>期滿前把帶看過的客戶名單正式交給屋主留證</b></div>
+        <div class="miss">前三項逾時→屋主得解除委託；名單沒交→期滿後三個月跳單那 6% 不成立<span class="c">第十一條一(四)</span></div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 簽約包打勾 -->
+  <details class="sec" id="pack" open>
+    <summary><span class="num">3</span>簽約包打勾<span class="chev">›</span></summary>
+    <div class="body">
+      <div class="toolbar">
+        <span class="count" id="cnt">已勾 0 / 0</span>
+        <button type="button" class="btn-clear" id="clr">清空勾選</button>
+      </div>
+      <p class="mu">勾選會記在這支手機裡，下一案開始前按「清空勾選」。</p>
+
+      <h4>去之前（帶去 7 樣）</h4>
+      <label class="chk"><input type="checkbox" id="p01"><span class="t">契約書一式兩聯（白聯我方／綠聯屋主）</span></label>
+      <label class="chk"><input type="checkbox" id="p02"><span class="t">近三個月成交行情（列印，屋主要留一份）<span class="c">第七條二</span></span></label>
+      <label class="chk"><input type="checkbox" id="p03"><span class="t">不動產說明書（經紀人已簽章）<span class="c">第七條四</span></span></label>
+      <label class="chk"><input type="checkbox" id="p04"><span class="t">現況說明書空白表（45 項）</span></label>
+      <label class="chk"><input type="checkbox" id="p05"><span class="t">履保制度說明</span></label>
+      <label class="chk"><input type="checkbox" id="p06"><span class="t">公司章（第十九條手寫加註要蓋才有效）<span class="c">第十九條</span></span></label>
+      <label class="chk"><input type="checkbox" id="p07"><span class="t">經紀人證號、經紀人員證號（要填進第 4 頁）</span></label>
+
+      <h4>離開前確認收到（收 8 樣）</h4>
+      <label class="chk"><input type="checkbox" id="r01"><span class="t">土地權狀影本<span class="c">第六條七</span></span></label>
+      <label class="chk"><input type="checkbox" id="r02"><span class="t">建物權狀影本<span class="c">第六條七</span></span></label>
+      <label class="chk"><input type="checkbox" id="r03"><span class="t">身分證或駕照影本<span class="c">第六條七</span></span></label>
+      <label class="chk"><input type="checkbox" id="r04"><span class="t">鑰匙<span class="c">第六條七</span></span></label>
+      <label class="chk"><input type="checkbox" id="r05"><span class="t">現況說明書（屋主已簽認）<span class="c">第六條四</span></span></label>
+      <label class="chk"><input type="checkbox" id="r06"><span class="t">代理人簽約者：授權書（經所有權人簽名）<span class="c">第六條三</span></span></label>
+      <label class="chk"><input type="checkbox" id="r07"><span class="t">有車位者：車位所有權及使用權之約定文件<span class="c">第一條二</span></span></label>
+      <label class="chk"><input type="checkbox" id="r08"><span class="t">有的話：使照影本、管路配置圖、住戶使用維護手冊<span class="c">第六條七</span></span></label>
+
+      <h4>離開前確認契約上填了（13 格＋簽章兩處）</h4>
+      <label class="chk"><input type="checkbox" id="f01"><span class="t">審閱日期＋天數<span class="c">頁首</span></span></label>
+      <label class="chk"><input type="checkbox" id="f02"><span class="t">車位 □有 □無<span class="c">第一條二</span></span></label>
+      <label class="chk"><input type="checkbox" id="f03"><span class="t">點交日期<span class="c">第一條五</span></span></label>
+      <label class="chk"><input type="checkbox" id="f04"><span class="t">委託總價・車位價・合計<span class="c">第二條一</span></span></label>
+      <label class="chk"><input type="checkbox" id="f05"><span class="t">付款四期 %<span class="c">第三條一</span></span></label>
+      <label class="chk"><input type="checkbox" id="f06"><span class="t">定金授權勾選<span class="c">第三條二</span></span></label>
+      <label class="chk"><input type="checkbox" id="f07"><span class="t">委託期間起訖<span class="c">第四條一</span></span></label>
+      <label class="chk"><input type="checkbox" id="f08"><span class="t">服務報酬 %<span class="c">第五條一</span></span></label>
+      <label class="chk"><input type="checkbox" id="f09"><span class="t">有無友店委託<span class="c">第六條一</span></span></label>
+      <label class="chk"><input type="checkbox" id="f10"><span class="t">沒收定金分成 %<span class="c">第八條五</span></span></label>
+      <label class="chk"><input type="checkbox" id="f11"><span class="t">地政士指定<span class="c">第九條</span></span></label>
+      <label class="chk"><input type="checkbox" id="f12"><span class="t">廣告張貼同意<span class="c">第十二條一</span></span></label>
+      <label class="chk"><input type="checkbox" id="f13"><span class="t">第十九條手寫加註已蓋公司章（沒蓋＝無效）<span class="c">第十九條</span></span></label>
+      <label class="chk"><input type="checkbox" id="f14"><span class="t">第 1 頁底「茲確認以上基本銷售條件無誤」委託人簽章<span class="c">第 1 頁底</span></span></label>
+      <label class="chk"><input type="checkbox" id="f15"><span class="t">第 4 頁簽署欄委託人簽章＋受託人公司章＋日期<span class="c">第 4 頁</span></span></label>
+
+      <div class="note">
+        <span class="lead">兩份文件同一組管制編號。</span>契約書簽了、現況說明書沒簽＝第六條四「誠實告知義務」沒有載體，屋況爆雷時我方拿不出屋主簽認的證據。
+      </div>
+    </div>
+  </details>
+
+  <!-- 〇-3 一般 vs 專任 -->
+  <details class="sec" id="vs">
+    <summary><span class="num">4</span>一般約 vs 專任約<span class="chev">›</span></summary>
+    <div class="body">
+      <div class="q">
+        先問屋主這一句：<br>「委託期間內，你自己找到買方賣掉，願不願意付服務費？」
+        <span class="ans">願意→<b>專任</b>；不願意→<b>一般</b>。這一句決定簽哪份，其餘 43 列差異是後果不是決策點。</span>
+      </div>
+
+      <h4>會咬人的五條</h4>
+      <p class="mu">兩約條號不同軸，不可互套。</p>
+
+      <div class="vs">
+        <div class="sit">屋主中途反悔終止</div>
+        <div class="pair">
+          <div class="a"><span class="lb">一般約</span><span class="no">沒有這條</span></div>
+          <div class="b"><span class="lb">專任約</span><span class="c">第十條</span> 委託總價 <span class="k">2%</span></div>
+        </div>
+      </div>
+      <div class="vs">
+        <div class="sit">屋主委託期間自己賣掉／出租／經第三人賣掉</div>
+        <div class="pair">
+          <div class="a"><span class="lb">一般約</span><span class="no">沒有這款</span></div>
+          <div class="b"><span class="lb">專任約</span><span class="c">第十一條一(一)</span> 委託銷售總價 <span class="k">6%</span></div>
+        </div>
+      </div>
+      <div class="vs">
+        <div class="sit">屋主跟我方覓得的買方私下成交</div>
+        <div class="pair">
+          <div class="a"><span class="lb">一般約</span><span class="c">第十條</span> 有</div>
+          <div class="b"><span class="lb">專任約</span><span class="c">第十一條一(二)</span> 有</div>
+        </div>
+      </div>
+      <div class="vs">
+        <div class="sit">交鑰匙・權狀影本・身分證影本</div>
+        <div class="pair">
+          <div class="a"><span class="lb">一般約</span><span class="no">沒有這義務</span></div>
+          <div class="b"><span class="lb">專任約</span><span class="c">第六條七</span> 有</div>
+        </div>
+      </div>
+      <div class="vs">
+        <div class="sit">買方違約被沒收定金，我方分多少</div>
+        <div class="pair">
+          <div class="a"><span class="lb">一般約</span><span class="c">第六條二</span> 賠償金額 <span class="k">50%</span>（不逾原約定服務費）</div>
+          <div class="b"><span class="lb">專任約</span><span class="c">第八條五</span> 填 %（不逾定金 <span class="k">50%</span> 且不逾服務費；<span class="no">空白＝分不到</span>）</div>
+        </div>
+        <div class="m mu" style="margin-top:8px">沒收定金分成 % 那格兩約都有（一般約第九條三／專任約第八條五），空白都分不到。</div>
+      </div>
+
+      <h4>專任約獨有</h4>
+      <ul class="plain">
+        <li>點交日期欄<span class="c">第一條五</span></li>
+        <li>有無與友店簽委託<span class="c">第六條一</span></li>
+        <li>代理人授權書<span class="c">第六條三</span></li>
+        <li>覓得符合底價買方，屋主應配合簽認<span class="c">第六條八</span></li>
+        <li>期滿後義務延續多一個觸發「已將覓得符合底價之買方訊息通知委託人」<span class="c">第四條二</span></li>
+      </ul>
+      <h4>一般約獨有</h4>
+      <ul class="plain">
+        <li>側邊印一句勸屋主改簽專任的話</li>
+        <li>買方違約解約時，服務費以買方賠償金額 50% 計（不逾原約定服務費）<span class="c">第六條二</span></li>
+      </ul>
+
+      <h4>屋主當場會問的 12 題，兩本約答案不同</h4>
+      <div class="qa"><div class="qq">1.「我自己找到買方賣掉，要不要付你們錢？」</div><div class="aa">一般約<span class="c">第十條</span>只列兩款違約事由，沒有「委託期間內自行出售」這一款；專任約<span class="c">第十一條一(一)</span>有，且涵蓋出售、出租、經由第三人介紹或其他類似之銷售行為。</div></div>
+      <div class="qa"><div class="qq">2.「我簽了之後反悔不賣，要賠嗎？」</div><div class="aa">一般約完全沒有委託人終止責任的條文；專任約<span class="c">第十條</span>：尚未仲介成交前因可歸責於委託人之事由終止，付委託總價 2% 違約金。</div></div>
+      <div class="qa"><div class="qq">3.「買方付了定金又跑了，錢怎麼算？」</div><div class="aa">一般約<span class="c">第九條</span>沒有「加倍返還」與「受託人保管定金不得主張利息」；專任約<span class="c">第八條一</span>、<span class="c">第八條四</span>有。</div></div>
+      <div class="qa"><div class="qq">4.「你們要我交權狀影本、身分證影本跟鑰匙？」</div><div class="aa">專任約<span class="c">第六條七</span>的委託人義務；一般約<span class="c">第七條</span>沒有這一項。簽一般約時不准援引契約向屋主要這些。</div></div>
+      <div class="qa"><div class="qq">5.「買方賠錢的話，你們也要抽？」</div><div class="aa">只有一般約<span class="c">第六條二</span>有「以買方賠償金額百分之五十計算給付予受託人（但不得逾原約定服務費數額）」；專任約<span class="c">第五條二</span>沒有這段。</div></div>
+      <div class="qa"><div class="qq">6.「我可以同時委託別家嗎？」</div><div class="aa">專任約<span class="c">第六條一</span>簽約當下就要勾「有無與其他住商不動產友店簽訂委託銷售契約」；一般約沒有這一欄。</div></div>
+      <div class="qa"><div class="qq">7.「幾號可以交屋？」</div><div class="aa">專任約<span class="c">第一條五</span>在委託階段就有點交日期勾選（過戶完成十日內／至遲某日前）；一般約第一條沒有，委託階段不准給屋主交屋日期的答案。</div></div>
+      <div class="qa"><div class="qq">8.「牆上／窗戶可以貼紅單嗎？」</div><div class="aa">專任約<span class="c">第十二條一</span>有同意／不同意張貼銷售廣告的勾選；一般約沒有，張貼前要另外取得屋主同意，不准說「契約裡有寫」。</div></div>
+      <div class="qa"><div class="qq">9.「我們私下加的那條，算不算數？」</div><div class="aa">專任約<span class="c">第十九條</span>寫明未經受託人於簽章欄用公司章印者無效；一般約<span class="c">第十六條</span>特別約定事項沒有這個生效條件。</div></div>
+      <div class="qa"><div class="qq">10.「委託到期那天你們還能跟我收服務費嗎？」</div><div class="aa">一般約<span class="c">第四條三</span>只寫「如已成交」；專任約<span class="c">第四條二</span>多「或受託人已將覓得符合底價之買方訊息通知委託人時」。</div></div>
+      <div class="qa"><div class="qq">11.「要打官司去哪個法院？」</div><div class="aa">一般約<span class="c">第十三條</span>寫「不動產所在地之法院」，專任約<span class="c">第十六條</span>寫「房地產所在地之地方法院」。照該份約的用字，不准兩本約混講。</div></div>
+      <div class="qa"><div class="qq">12.「不是我本人去簽可不可以？」</div><div class="aa">專任約<span class="c">第六條三</span>要求代理人交付經所有權人簽名之授權書，第 4 頁簽署欄也有代理人專區；一般約兩者都沒有。</div></div>
+    </div>
+  </details>
+
+  <!-- 〇-4 必填 13 格 -->
+  <details class="sec" id="must" open>
+    <summary><span class="num">5</span>必填 13 格<span class="chev">›</span></summary>
+    <div class="body">
+      <p class="mu">條號皆為專任約。一般約條號不同軸：服務報酬在第六條、委託人義務第七條、受託人義務第八條、定金第九條、違約第十條、廣告第十一條、特別約定第十六條。</p>
+
+      <div class="must"><div class="idx">1</div><div class="f"><div class="t">審閱日期＋天數<span class="c">頁首</span></div><div class="miss">審閱期至少 <span class="k">3 日</span>；未給審閱期，該條款不構成契約內容（但消費者得主張仍構成）</div></div></div>
+      <div class="must"><div class="idx">2</div><div class="f"><div class="t">車位 □有 □無<span class="c">第一條二</span></div><div class="miss">專任約勾選順序「□有 □無」，一般約「□無 □有」，<span class="k">順序相反最容易勾錯</span></div></div></div>
+      <div class="must"><div class="idx">3</div><div class="f"><div class="t">點交日期 □過戶完成十日內 □至遲民國＿年＿月＿日前<span class="c">第一條五</span></div><div class="miss">專任約獨有，當場敲定</div></div></div>
+      <div class="must"><div class="idx">4</div><div class="f"><div class="t">委託總價・車位價・合計<span class="c">第二條一</span></div><div class="miss">「前項之金額未記載者，不動產委託銷售定型化契約無效」——<span class="k">空白＝整份無效</span></div></div></div>
+      <div class="must"><div class="idx">5</div><div class="f"><div class="t">付款四期 %<span class="c">第三條一</span></div><div class="miss">簽約款／備證款／完稅款／交屋款各 %</div></div></div>
+      <div class="must"><div class="idx">6</div><div class="f"><div class="t">定金授權 □同意 □不同意 代收／保管<span class="c">第三條二</span></div><div class="miss">「除委託人同意授權受託人代為收受買方支付之定金外，視為不同意授權」——<span class="k">不勾＝不同意</span></div></div></div>
+      <div class="must"><div class="idx">7</div><div class="f"><div class="t">委託期間起訖<span class="c">第四條一</span></div><div class="miss">「未記載委託銷售期間者，委託人得隨時以書面終止」——<span class="k">空白＝屋主隨時可終止</span></div></div></div>
+      <div class="must"><div class="idx">8</div><div class="f"><div class="t">服務報酬 %<span class="c">第五條一</span></div><div class="miss">「數額空白未記載者，受託人不得向委託人收取服務報酬」——<span class="k">空白＝一毛收不到</span></div></div></div>
+      <div class="must"><div class="idx">9</div><div class="f"><div class="t">有無與其他住商友店簽過委託 □有（說明）□無<span class="c">第六條一</span></div><div class="miss">專任約特有欄位</div></div></div>
+      <div class="must"><div class="idx">10</div><div class="f"><div class="t">沒收定金分成 %<span class="c">第八條五</span></div><div class="miss"><span class="k">空白＝分不到</span>；有填的上限：不得逾定金 50%，且不得逾約定之服務報酬</div></div></div>
+      <div class="must"><div class="idx">11</div><div class="f"><div class="t">地政士由誰指定（二選一勾）<span class="c">第九條</span></div><div class="miss">未約明者由委託人指定</div></div></div>
+      <div class="must"><div class="idx">12</div><div class="f"><div class="t">可否在標的物上張貼銷售廣告 □同意 □不同意<span class="c">第十二條一</span></div><div class="miss">沒勾＝沒授權貼</div></div></div>
+      <div class="must"><div class="idx">13</div><div class="f"><div class="t">其他約定事項（手寫加註）<span class="c">第十九條</span></div><div class="miss">「本事項未經受託人於簽章欄用公司章印者無效」——<span class="k">要蓋公司章才算數</span></div></div></div>
+
+      <h4>簽章兩處</h4>
+      <div class="card">
+        <div class="t">第 1 頁底「茲確認以上基本銷售條件無誤」委託人簽章</div>
+        <div class="m">這是第 1 頁獨立的簽章欄，跟第 4 頁的簽署欄是兩處。</div>
+      </div>
+      <div class="card">
+        <div class="t">第 4 頁簽署欄</div>
+        <div class="d">委託人姓名／身分證字號／生日／電話／E-mail／戶籍地址／通訊地址；代理人同上；受託人分店／加盟店／負責人／統編／電話／地址／經紀人＋證號／經紀人員＋證號；日期</div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 會賠錢 -->
+  <details class="sec" id="money">
+    <summary><span class="num">6</span>會賠錢的四條<span class="chev">›</span></summary>
+    <div class="body">
+      <div class="money"><div class="idx">1</div><div class="f"><div class="t">服務報酬那格空白<span class="c">第五條一</span></div><div class="r">「數額空白未記載者，受託人不得向委託人收取服務報酬」——<span class="no">一毛都收不到</span></div></div></div>
+      <div class="money"><div class="idx">2</div><div class="f"><div class="t">沒收定金分成比例那格空白<span class="c">第八條五</span></div><div class="r">「沒收定金百分比未記載者，受託人不得向委託人請求服務報酬或費用」——買方違約定金被沒收時，我方<span class="no">一毛都分不到</span>。有填的上限：不得逾定金 <b>50%</b>，且不得逾約定之服務報酬</div></div></div>
+      <div class="money"><div class="idx">3</div><div class="f"><div class="t">屋主中途反悔終止（尚未成交前、可歸責於屋主）<span class="c">第十條</span></div><div class="r">屋主應付<b>委託總價 2%</b> 違約金</div></div></div>
+      <div class="money"><div class="idx">4</div><div class="f"><div class="t">屋主跳單（四種情形任一）<span class="c">第十一條一</span></div><div class="r">視為我方已完成仲介義務，屋主應付<b>委託銷售總價 6%</b> 違約金，全額一次付</div></div></div>
+
+      <h4>第十一條一 的四種跳單情形（逐字對照）</h4>
+      <ol class="plain">
+        <li>(一) 委託期間內，屋主自行將標的物出售、出租，或經由第三人介紹或其他類似之銷售行為</li>
+        <li>(二) 屋主與我方覓得之買方私下成交</li>
+        <li>(三) 屋主違反第六條第八項（我方覓得符合底價之買方時，屋主應配合簽認要約書或議價委託書）或拒絕與我方依約洽妥之買方簽訂買賣契約</li>
+        <li>(四) <b>委託期滿後三個月內</b>，屋主逕與我方曾提供之客戶名單上的客戶、或其配偶、二親等內親屬成交</li>
+      </ol>
+      <div class="note red">
+        <span class="lead">第 (四) 款要成立，前提是「受託人已提供委託人曾經仲介之客戶名單」。</span>沒交過名單就沒有這條保護。委託期滿前把帶看過的客戶名單正式交給屋主（留存證據），是這條能不能用的關鍵動作。
+      </div>
+
+      <h4>我方義務裡有時限的（漏了是我方違約）</h4>
+      <div class="duty"><div>簽約前提供該公司近三個月不動產成交行情供屋主訂價參考；隱匿不實應負賠償</div><div class="lim">簽約前</div><span class="c">第七條二</span></div>
+      <div class="duty"><div>不動產說明書應指派經紀人簽章，經屋主簽認後副本交屋主留存</div><div class="lim">製作時</div><span class="c">第七條四</span></div>
+      <div class="duty"><div>買方簽立要約書→轉交屋主</div><div class="lim">24 小時內</div><span class="c">第七條五</span></div>
+      <div class="duty"><div>收受定金→送交屋主（屋主同意由我方保管者除外）</div><div class="lim">24 小時內</div><span class="c">第七條七</span></div>
+      <div class="duty"><div>無法送達時寄出書面通知</div><div class="lim">2 日內</div><span class="c">第七條八</span></div>
+      <div class="duty"><div>隨時依屋主查詢報告銷售狀況</div><div class="lim">隨時</div><span class="c">第七條六</span></div>
+      <div class="duty"><div>曾經仲介之客戶名單交給屋主</div><div class="lim">委託期滿前</div><span class="c">第十一條一(四)</span></div>
+      <div class="duty"><div>市調、廣告、交涉、諮商、差旅等支出，除雙方同意終止及屋主終止外均由我方負責，不得請求補貼；違反者屋主得終止契約（第十一條二）</div><div class="lim">全程</div><span class="c">第七條三</span></div>
+
+      <h4>服務報酬的三個細節<span class="c">第五條</span></h4>
+      <ol class="plain">
+        <li>「委託人簽認買方之議價委託書或要約書，或買方簽署買賣定金收款憑證者，<b>視為買賣成交</b>」——服務報酬請求權在這一刻成立，不是等過戶</li>
+        <li>買賣契約成立後，因可歸責於屋主之事由或雙方合意解除，<b>屋主仍應給付服務報酬</b><span class="c">第五條二</span></li>
+        <li>給付時點：簽買賣契約書面時 <b>70%</b>，交屋時 <b>30%</b>，均以現金給付；走履保者得由保證專戶支付<span class="c">第五條三</span></li>
+      </ol>
+
+      <h4>定金效力，跟屋主解釋用<span class="c">第八條</span></h4>
+      <ol class="plain">
+        <li>(一) 屋主授權我方收受及保管定金者，定金由我方暫時保管，屋主不得主張保管期間之利息；走履保者逕存專戶</li>
+        <li>(二) 屋主同意代收定金時，買方同意屋主銷售條件並簽「買賣定金收款憑證」給付定金者，<b>毋庸經屋主簽收，買賣契約已有效成立</b></li>
+        <li>(三) 買方簽議價委託書（或要約書），於屋主簽認同意出售時，買賣契約即為有效成立，議價保證金同時轉為購屋定金；<b>屋主未同意出售前，買方保有隨時撤回議價之權利</b></li>
+        <li>(四) 買賣契約成立後，可歸責於屋主致無法完成買賣者，屋主應<b>加倍返還</b>買方已付定金；可歸責於買方者，買方已付定金不得請求返還</li>
+      </ol>
+    </div>
+  </details>
+
+  <!-- 現況說明書 45 項 -->
+  <details class="sec" id="s45">
+    <summary><span class="num">7</span>現況說明書 45 項<span class="chev">›</span></summary>
+    <div class="body">
+      <div class="note">
+        <span class="lead">表頭注意句逐字：</span>「請委託人就持有本房地時間內，所瞭解之屋況確實填寫，以告知買方。」屋主只對「持有期間內所瞭解」的負責，持有前的事可勾「不知情」（第 39 項有此選項）。屋主逐項勾是／否＋委託人說明；經紀人員另有「差異補充說明」欄。表頭填門牌（縣市／市鄉鎮區／路街段巷弄號樓之）。
+      </div>
+
+      <div class="grp"><h4>基地使用現況（1～4）</h4>
+        <div class="i45"><div class="no45">1</div><div class="tx">共有之基地是否有分管協議？<span class="op">（檢附／未檢附書面分管協議，未檢附原因）</span></div></div>
+        <div class="i45"><div class="no45">2</div><div class="tx">基地上有無供公眾通行之私有道路？<span class="op">（如有，其位置）</span></div></div>
+        <div class="i45"><div class="no45">3</div><div class="tx">有無界址糾紛情形？<span class="op">（如有，與何人）</span></div></div>
+        <div class="i45"><div class="no45">4</div><div class="tx">基地對外道路是否可通行？<span class="op">（若否，說明情形）</span></div></div>
+      </div>
+
+      <div class="grp"><h4>建物管理現況（5～18）</h4>
+        <div class="i45"><div class="no45">5</div><div class="tx">建物（主建物、附屬建物）是否為共有？<span class="op">（有分管協議依協議／依慣例使用）</span></div></div>
+        <div class="i45"><div class="no45">6</div><div class="tx">建物是否占用他人土地？</div></div>
+        <div class="i45"><div class="no45">7</div><div class="tx">建物是否有被他人占用？</div></div>
+        <div class="i45"><div class="no45">8</div><div class="tx">電梯設備是否張貼有效合格認證標章？<span class="op">（無電梯勿選）</span></div></div>
+        <div class="i45"><div class="no45">9</div><div class="tx">是否有消防設施？<span class="op">（滅火器／室內消防栓／自動灑水／緊急廣播／瓦斯漏氣火警自動警報設備／其他）</span></div></div>
+        <div class="i45"><div class="no45">10</div><div class="tx">是否有無障礙設施？<span class="op">（無障礙通路／無障礙樓梯／昇降設備／其他）</span></div></div>
+        <div class="i45"><div class="no45">11</div><div class="tx">是否有違建、改建或增建之情事？<span class="op">（位於頂樓／露台／天井／防火巷／平台／陽台／其他，約略面積 m²）</span>＋房屋是否有施作夾層？<span class="op">（合法／不合法，面積）</span>＋是否受主管機關查報列管？<span class="op">（已接獲／未接獲拆除通知）</span></div></div>
+        <div class="i45"><div class="no45">12</div><div class="tx">所有權持有期間是否有居住？<span class="op">（檢附水電費單據／其他）</span></div></div>
+        <div class="i45"><div class="no45">13</div><div class="tx">是否有出租或出借？<span class="op">（出租：租金元／月、租期至、有無辦理公證；出借：內容）</span></div></div>
+        <div class="i45"><div class="no45">14</div><div class="tx">是否設有營利事業登記？</div></div>
+        <div class="i45"><div class="no45">15</div><div class="tx">是否有積欠應繳交之費用？<span class="op">（水費／電費／瓦斯費／管理費／使用費／清潔費／其他，共計）</span></div></div>
+        <div class="i45"><div class="no45">16</div><div class="tx">目前作住宅使用之建物是否位屬工業區或不得作住宅使用之商業區或其他分區？</div></div>
+        <div class="i45"><div class="no45">17</div><div class="tx">是否有獎勵容積之開放空間提供公共使用情形？</div></div>
+        <div class="i45"><div class="no45">18</div><div class="tx">使用執照是否有備註之注意事項？</div></div>
+      </div>
+
+      <div class="grp"><h4>水、電、瓦斯之供應現況（19～24）</h4>
+        <div class="i45"><div class="no45">19</div><div class="tx">本建物是否有水源供應？<span class="op">（自來水／正常／無法供應之原因／地下水）</span></div></div>
+        <div class="i45"><div class="no45">20</div><div class="tx">本建物是否有電源供應？<span class="op">（獨立電表／無獨立電表，原因）</span></div></div>
+        <div class="i45"><div class="no45">21</div><div class="tx">本建物是否有瓦斯供應？<span class="op">（桶裝瓦斯／天然瓦斯）</span></div></div>
+        <div class="i45"><div class="no45">22</div><div class="tx">水管、馬桶及各項排水設施是否可正常使用？</div></div>
+        <div class="i45"><div class="no45">23</div><div class="tx">水電管線於產權持有期間是否更新？</div></div>
+        <div class="i45"><div class="no45">24</div><div class="tx">是否有公寓大廈管理組織？<span class="op">（有／無管理維護公司，管理方式）</span></div></div>
+      </div>
+
+      <div class="grp"><h4>集合住宅或區分所有建物項目（25～30）</h4>
+        <div class="i45"><div class="no45">25</div><div class="tx">是否有住戶規約？＋是否有各項設施使用手冊？<span class="op">（檢附／未檢附）</span></div></div>
+        <div class="i45"><div class="no45">26</div><div class="tx">規約內是否有記載約定專用或約定共用之部分？＋是否有未記載於住戶規約之約定專用或共用部分？</div></div>
+        <div class="i45"><div class="no45">27</div><div class="tx">本標的使用專有部分是否有限制？<span class="op">（如專有之騎樓須開放使用）</span></div></div>
+        <div class="i45"><div class="no45">28</div><div class="tx">是否需繳交管理費？<span class="op">（每年／季／月 元）</span>＋是否需繳交使用費？<span class="op">（游泳池、健身房等）※實際金額以管委會公告為準</span></div></div>
+        <div class="i45"><div class="no45">29</div><div class="tx">是否有社區公共基金？</div></div>
+        <div class="i45"><div class="no45">30</div><div class="tx">是否有所有權人尚未付費之公共設施重大修繕決議？</div></div>
+      </div>
+
+      <div class="grp"><h4>建物瑕疵情形（31～38）</h4>
+        <div class="i45"><div class="no45">31</div><div class="tx">是否有施作過混凝土中水溶性氯離子含量（海砂屋）檢測？＋本標的房屋鋼筋是否裸露？</div></div>
+        <div class="i45"><div class="no45">32</div><div class="tx">是否有施作過輻射檢測？</div></div>
+        <div class="i45"><div class="no45">33</div><div class="tx">本建物是否有傾斜之情形？</div></div>
+        <div class="i45"><div class="no45">34</div><div class="tx">現況是否有滲漏水之情形？<span class="op">（位置）</span></div></div>
+        <div class="i45"><div class="no45">35</div><div class="tx">本標的是否曾有白蟻蟲害之情形？<span class="op">（已處理／現況仍有）</span></div></div>
+        <div class="i45"><div class="no45">36</div><div class="tx">是否曾因火災及其他天然災害或人為破壞，造成建築物損害及其修繕情形？</div></div>
+        <div class="i45"><div class="no45">37</div><div class="tx">目前是否因地震被建管單位公告列為危險建築？<span class="op">（紅標／黃標／其他）</span></div></div>
+        <div class="i45"><div class="no45">38</div><div class="tx">本標的梁、柱部分是否有顯見間隙裂痕？<span class="op">（位置、裂痕長度、間隙寬度）</span></div></div>
+      </div>
+
+      <div class="grp"><h4>其他重要事項（39～44）</h4>
+        <div class="i45"><div class="no45">39</div><div class="tx">本標的是否曾發生兇殺、自殺、一氧化碳中毒或其他非自然死亡之情形？<span class="op">（發生於產權持有期間內／外；內容；<b>對是否有此情形不知情</b>）</span></div></div>
+        <div class="i45"><div class="no45">40</div><div class="tx">是否為直轄市或縣（市）政府列管之山坡地住宅社區？</div></div>
+        <div class="i45"><div class="no45">41</div><div class="tx">是否已辦理地籍圖重測？<span class="op">（若否，主管機關是否已公告辦理）</span></div></div>
+        <div class="i45"><div class="no45">42</div><div class="tx">是否有被公告徵收？<span class="op">（範圍）</span></div></div>
+        <div class="i45"><div class="no45">43</div><div class="tx">本標的是否有依法設置之中繼幫浦機械室或水箱？<span class="op">（位於幾樓）</span></div></div>
+        <div class="i45"><div class="no45">44</div><div class="tx">本標的樓頂平臺是否有依法設置之行動電話基地台設施？</div></div>
+      </div>
+
+      <div class="grp"><h4>重要設施（45）</h4>
+        <div class="i45"><div class="no45">45</div><div class="tx">重要環境設施（<b>距離標的物約 300 公尺以內</b>）：公（私）有市場／超級市場／學校／警察局（分駐所、派出所）／行政機關／體育場／寺廟／顯見之私人墳墓／加（氣）油站／瓦斯行（場）／葬儀社／醫院／飛機場／台電變電所用地／地面高壓電塔（線）／殯儀館／公墓／火化場／骨灰（骸）存放設施／垃圾場（掩埋場、焚化場）</div></div>
+        <div class="i45"><div class="no45">其他</div><div class="tx">1. 2. 3.<span class="op">（自由填）</span></div></div>
+      </div>
+
+      <div class="note warn">
+        <span class="lead">第 45 項的範圍是 300 公尺。</span>做物件簡報時偵查隊查的是 200 公尺，簽委託前要補到 300 公尺才填得出這格。這一格叫「重要環境設施」，市場、超市、學校、警察局、醫院這類機能也列在同一格，跟嫌惡設施是兩個概念，不要混。
+      </div>
+
+      <h4>表尾三條聲明（逐字）</h4>
+      <ol class="plain">
+        <li>不動產買賣（互易）交易皆應遵守課徵各類稅捐之法令，如奢侈稅、財產交易所得稅等，是否應繳納或繳納數額均依主管機關核定為準，與經紀業無涉，委託人如有疑義，應自行向相關單位查詢。</li>
+        <li>本標的物依法應負瑕疵擔保責任，標的物現況日後如有變更應誠實告知買方及經紀業。</li>
+        <li>本標的物之買方如欲檢測高氯離子含量、輻射、得於簽訂買賣契約後自行付費檢測，賣方不得藉故拒絕。</li>
+      </ol>
+
+      <div class="note red">
+        <span class="lead">「現況說明書」≠「不動產說明書」。</span>前者是屋主填給我方的（這 45 項），後者是我方做給買方看的（契約第七條四）。法規明文不得以前者替代後者，兩份都要有。不動產說明書 115.4.1 換版的事見〔法規紅線〕。
+      </div>
+    </div>
+  </details>
+
+  <!-- 〇-5 法規紅線 -->
+  <details class="sec" id="law">
+    <summary><span class="num">8</span>法規紅線<span class="chev">›</span></summary>
+    <div class="body">
+      <p class="mu">2026-09-05 逐條開官網實查（全國法規資料庫、內政部主管法規共用系統、內政部不動產資訊平台、內政部地政司、行政院），每條網址在技能檔正本。</p>
+
+      <h4>先背這七件</h4>
+      <div class="note"><span class="lead">審閱期 3 日是下限。</span>30 日是消保法上限，不是這個。委託銷售契約（跟屋主簽）至少 3 日；成屋買賣契約（買賣雙方簽）至少 5 日，兩個不要背混。</div>
+      <div class="note"><span class="lead">服務報酬上限＝實際成交價 6%，買賣雙方合計。</span>不動產經紀業管理條例第 19 條＋不動產仲介經紀業報酬計收標準規定。超收→加計利息加倍返還＋經紀人員停業 6 個月至 3 年。內政部已預告修正報酬計收標準，內容時程查不到，目前 6% 有效，複查日 2026-12-05。</div>
+      <div class="note"><span class="lead">委託期間法規無上限。</span>專任約幾個月是談判不是法定；但空白不填＝屋主隨時可書面終止。延長要書面雙方同意。</div>
+      <div class="note red"><span class="lead">不動產說明書 115.4.1 換版。</span>內政部 115.1.13 台內地字第1140267470號令修正「不動產說明書應記載及不得記載事項」，115.4.1 生效，成屋段新增「太陽光電發電設備」「建築能效標示」兩格。手上掃描件是住商總部 109.2 版，用舊版會漏填——收委託前先確認總部有沒有換版。</div>
+      <div class="note red"><span class="lead">「現況說明書」≠「不動產說明書」。</span>前者屋主填給我方（45 項），後者我方做給買方；法規「不得記載事項 貳、五」明文不得以前者替代後者。順序：先讓屋主在不動產說明書上簽章→才能拿去跟買方解說→簽約時交付買方並由買方簽章（條例第 23、24 條）。</div>
+      <div class="note warn"><span class="lead">條號軸警告。</span>法規檔引的是內政部範本，同一條號在住商版寫的東西不一樣（範本第十條是服務費用請領上限、住商專任約第十條是 2% 違約金）。本頁所有條號一律是住商版。</div>
+      <div class="note warn"><span class="lead">六份文件全部要經紀人簽章，營業員不能代簽。</span>委託契約書、要約書、定金收據、廣告稿、不動產說明書、買賣契約書（條例第 22 條）。</div>
+
+      <h4>22 條紅線表</h4>
+      <div class="law"><div class="idx">1</div><div class="f"><div class="what">委託契約審閱期給不足 3 日，或根本沒給</div><div class="then">該條款不構成契約內容；但委託人可主張仍構成——等於條款效力由對方單方挑</div><div class="src">應記載事項 壹、一；消保法第 11-1 條</div></div></div>
+      <div class="law"><div class="idx">2</div><div class="f"><div class="what">買賣雙方合計收超過實際成交價金 6%</div><div class="then">已收取部分加計利息後加倍返還；經紀人員 6 個月至 3 年停業；經紀業罰 6 萬至 30 萬</div><div class="src">條例第 19 條、第 29 條第 1 項第 1 款、第 31 條第 1 項第 2 款；報酬計收標準規定 一</div></div></div>
+      <div class="law"><div class="idx">3</div><div class="f"><div class="what">「服務報酬百分之＿」那格空白沒填</div><div class="then">受託人不得向委託人收取服務報酬</div><div class="src">應記載事項 壹、五第 2 項</div></div></div>
+      <div class="law"><div class="idx">4</div><div class="f"><div class="what">「委託銷售價格」金額沒填</div><div class="then">整份不動產委託銷售定型化契約無效</div><div class="src">應記載事項 壹、三第 2 項</div></div></div>
+      <div class="law"><div class="idx">5</div><div class="f"><div class="what">「委託銷售期間」沒填</div><div class="then">委託人得隨時以書面終止（等於沒有專任保護）</div><div class="src">應記載事項 壹、四第 2 項</div></div></div>
+      <div class="law"><div class="idx">6</div><div class="f"><div class="what">還沒跟屋主簽委託契約書就先刊登廣告或銷售</div><div class="then">罰 6 萬至 30 萬，並令限期改正，屆期未改按次處罰</div><div class="src">條例第 21 條第 1 項、第 29 條第 1 項第 1 款、第 2 項</div></div></div>
+      <div class="law"><div class="idx">7</div><div class="f"><div class="what">廣告或銷售內容與事實不符／廣告沒註明經紀業名稱</div><div class="then">罰 6 萬至 30 萬＋負損害賠償責任</div><div class="src">條例第 21 條第 2、3 項、第 29 條第 1 項第 1 款</div></div></div>
+      <div class="law"><div class="idx">8</div><div class="f"><div class="what">委託契約書、要約書、定金收據、廣告稿、不動產說明書、買賣契約書其中任一份沒有經紀人簽章</div><div class="then">經紀業罰 6 萬至 30 萬；經紀人員申誡</div><div class="src">條例第 22 條第 1 項、第 29 條第 1 項第 1 款、第 31 條第 1 項第 1 款</div></div></div>
+      <div class="law"><div class="idx">9</div><div class="f"><div class="what">沒拿不動產說明書向買方解說，或說明書提供解說前沒先給委託人簽章</div><div class="then">經紀人員申誡（申誡 3 次另予 6 個月至 3 年停業；停業累計滿 5 年廢止證書）</div><div class="src">條例第 23 條、第 31 條</div></div></div>
+      <div class="law"><div class="idx">10</div><div class="f"><div class="what">簽約時沒把不動產說明書交付給買方並由買方簽章</div><div class="then">說明書視為買賣契約書之一部分，未交付即失去該部分約定基礎；並生民事爭議</div><div class="src">條例第 24 條</div></div></div>
+      <div class="law"><div class="idx">11</div><div class="f"><div class="what">收差價（實際成交價與委託銷售價格之差額）</div><div class="then">已收差價加計利息後加倍返還；經紀人員 6 個月至 3 年停業</div><div class="src">條例第 4 條第 9 款、第 19 條、第 31 條第 1 項第 2 款</div></div></div>
+      <div class="law"><div class="idx">12</div><div class="f"><div class="what">契約成立前先收斡旋金、訂金或其他名目費用</div><div class="then">要約書「不得記載事項」——該約定不構成契約內容</div><div class="src">應記載事項 附件 要約書 貳</div></div></div>
+      <div class="law"><div class="idx">13</div><div class="f"><div class="what">契約寫「本範本內容僅供參考」／約定「繳回委託銷售契約」／約定報酬得超過中央主管機關規定／用「使用面積」「受益面積」「銷售面積」等名詞</div><div class="then">屬「不得記載事項」，違反者消費者得主張該定型化契約條款無效</div><div class="src">應記載事項 貳、一至四</div></div></div>
+      <div class="law"><div class="idx">14</div><div class="f"><div class="what">不動產說明書寫房價有上漲空間或預測房價上漲</div><div class="then">屬不動產說明書「不得記載事項」</div><div class="src">不動產說明書應記載及不得記載事項 貳、六</div></div></div>
+      <div class="law"><div class="idx">15</div><div class="f"><div class="what">不動產說明書用「委託銷售標的現況說明書」或「建物現況確認書」替代</div><div class="then">屬不動產說明書「不得記載事項」</div><div class="src">不動產說明書應記載及不得記載事項 貳、五</div></div></div>
+      <div class="law"><div class="idx">16</div><div class="f"><div class="what">營業處所明顯處沒揭示報酬標準及收取方式</div><div class="then">令限期改正；屆期未改處 3 萬至 15 萬</div><div class="src">條例第 20 條、第 29 條第 1 項第 4 款；施行細則第 21 條</div></div></div>
+      <div class="law"><div class="idx">17</div><div class="f"><div class="what">加盟店在廣告、市招、名片沒標明「加盟店」或「加盟經營」</div><div class="then">違反施行細則第 22 條；另有違反公平交易法第 21 條之虞</div><div class="src">施行細則第 22 條；公平交易法對房屋仲介業之規範說明</div></div></div>
+      <div class="law"><div class="idx">18</div><div class="f"><div class="what">收到買方要約書超過 24 小時沒轉交委託人，或隱瞞扣留；收受定金超過 24 小時沒送交</div><div class="then">委託人得解除委託契約</div><div class="src">應記載事項 壹、六（五）（八）；範本第 11 條第 2 款</div></div></div>
+      <div class="law"><div class="idx">19</div><div class="f"><div class="what">簽約前沒據實提供該公司近三個月成交行情供屋主訂價參考，或隱匿不實</div><div class="then">應負賠償責任</div><div class="src">應記載事項 壹、六（二）</div></div></div>
+      <div class="law"><div class="idx">20</div><div class="f"><div class="what">洩漏因業務知悉或持有之他人秘密</div><div class="then">經紀人員申誡</div><div class="src">條例第 25 條、第 31 條第 1 項第 1 款</div></div></div>
+      <div class="law"><div class="idx">21</div><div class="f"><div class="what">租賃案件簽約日起 30 日內未申報登錄，或租金、面積資訊不實</div><div class="then">罰 1 萬至 5 萬</div><div class="src">條例第 24-1 條第 1 項、第 29 條第 1 項第 5 款</div></div></div>
+      <div class="law"><div class="idx">22</div><div class="f"><div class="what">非經紀業（無照）而經營仲介業務</div><div class="then">禁止營業＋罰 10 萬至 30 萬；經禁止後仍繼續營業者，1 年以下有期徒刑、拘役或併科 10 萬至 30 萬罰金</div><div class="src">條例第 32 條</div></div></div>
+
+      <p class="mu">「條例」＝不動產經紀業管理條例（修正日期 110.1.27）；「應記載事項」＝不動產委託銷售定型化契約應記載及不得記載事項（92.6.26 公告，92.12.26 生效，至今未修）。</p>
+    </div>
+  </details>
+
+  <footer class="foot">
+    <p class="src">依據住商總部 109.2 版專任約／109.5 版一般約掃描件逐字轉錄＋2026-09-05 法規實查｜正本在技能檔</p>
+    <p>更新日期 2026-09-05｜內部使用，不對外</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var KEY = 'weituo_pack_v1';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.chk input[type=checkbox]'));
+  var cnt = document.getElementById('cnt');
+  var clr = document.getElementById('clr');
+
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+
+  function save() {
+    var o = {};
+    boxes.forEach(function (b) { if (b.checked) o[b.id] = 1; });
+    try { localStorage.setItem(KEY, JSON.stringify(o)); } catch (e) {}
+  }
+  function count() {
+    var n = 0;
+    boxes.forEach(function (b) { if (b.checked) n++; });
+    if (cnt) cnt.textContent = '已勾 ' + n + ' / ' + boxes.length;
+  }
+
+  boxes.forEach(function (b) {
+    if (saved[b.id]) b.checked = true;
+    b.addEventListener('change', function () { save(); count(); });
+  });
+  count();
+
+  if (clr) clr.addEventListener('click', function () {
+    if (!window.confirm('清空全部勾選？下一案開始前才按這顆。')) return;
+    boxes.forEach(function (b) { b.checked = false; });
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    count();
+  });
+
+  /* 快速跳轉：先把目標折疊區打開再捲過去 */
+  Array.prototype.forEach.call(document.querySelectorAll('.jump a'), function (a) {
+    a.addEventListener('click', function () {
+      var id = (a.getAttribute('href') || '').slice(1);
+      var d = document.getElementById(id);
+      if (d && d.tagName === 'DETAILS') d.open = true;
+    });
+  });
+})();
+</script>
+<script src="/cta.js" defer></script>
+</body>
+</html>
