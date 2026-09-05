@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>雙北在地生活通 | 何志宏</title>
+<meta name="description" content="板橋・新莊・土城・樹林・三峽為主，涵蓋雙北——垃圾車、路燈陳情、警消、健保診所藥局、重劃區地圖，只放查得到的官方連結。">
+<link rel="canonical" href="https://0930848000.com/bianmin/shenghuo/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="雙北在地生活通｜何志宏">
+<meta property="og:url" content="https://0930848000.com/bianmin/shenghuo/">
+<style>
+  :root{
+    --bg:#FAF6EE;
+    --bg-raised:#FFFFFF;
+    --ink:#2B241B;
+    --ink-soft:#6B6152;
+    --line:rgba(43,36,27,.14);
+    --accent:#B8721E;
+    --accent-ink:#7A4B12;
+    --accent-soft:#EFDBB8;
+    --accent-soft-2:#F6ECD8;
+    --good:#5B7A5E;
+    --good-soft:#DEE7DC;
+    --shadow:0 1px 2px rgba(43,36,27,.06), 0 8px 24px -12px rgba(43,36,27,.18);
+    --radius:14px;
+    color-scheme: light;
+  }
+  :root[data-theme="dark"]{
+    --bg:#18140F;
+    --bg-raised:#221C15;
+    --ink:#F2EAD9;
+    --ink-soft:#B9AD98;
+    --line:rgba(242,234,217,.14);
+    --accent:#E0A050;
+    --accent-ink:#F3D6A6;
+    --accent-soft:#4A3A22;
+    --accent-soft-2:#332815;
+    --good:#8FB392;
+    --good-soft:#233024;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#18140F;
+      --bg-raised:#221C15;
+      --ink:#F2EAD9;
+      --ink-soft:#B9AD98;
+      --line:rgba(242,234,217,.14);
+      --accent:#E0A050;
+      --accent-ink:#F3D6A6;
+      --accent-soft:#4A3A22;
+      --accent-soft-2:#332815;
+      --good:#8FB392;
+      --good-soft:#233024;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+      color-scheme: dark;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  a{color:inherit;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 20px;}
+  .mono{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;}
+
+  /* ---- preview banner (admin.html iframe only) ---- */
+  .pvbar{
+    background:var(--accent); color:#fff; text-align:center; padding:6px 12px;
+    font-size:12px; font-weight:700; letter-spacing:.04em;
+  }
+
+  /* ---- top bar ---- */
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 0;
+    max-width:640px; margin:0 auto; padding-left:20px; padding-right:20px;
+  }
+  .brand{display:flex; align-items:center; gap:9px;}
+  .brand-mark{
+    width:30px;height:30px;border-radius:8px;
+    background:var(--accent); color:var(--bg-raised);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800; font-size:15px; flex-shrink:0;
+  }
+  .brand-name{font-weight:700; font-size:15px; letter-spacing:.02em;}
+  .city-toggle{
+    display:flex; background:var(--accent-soft-2); border-radius:999px; padding:3px;
+    border:1px solid var(--line); flex-shrink:0;
+  }
+  .city-toggle button{
+    appearance:none; border:none; background:transparent; cursor:pointer;
+    padding:6px 13px; border-radius:999px; font-size:13px; font-weight:600;
+    color:var(--ink-soft); font-family:inherit;
+    transition:background .15s ease, color .15s ease;
+  }
+  .city-toggle button.active{ background:var(--accent); color:#fff; }
+
+  /* ---- hero ---- */
+  .hero{padding:34px 0 22px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:12px; font-weight:700; letter-spacing:.06em;
+    color:var(--accent-ink); background:var(--accent-soft);
+    padding:5px 11px; border-radius:999px; margin-bottom:16px;
+  }
+  h1{
+    font-size:26px; font-weight:800; letter-spacing:-.01em;
+    margin:0 0 10px; text-wrap:balance; line-height:1.35;
+  }
+  .hero p{
+    margin:0; color:var(--ink-soft); font-size:14.5px; max-width:50ch;
+  }
+
+  /* ---- district chips ---- */
+  .districts{
+    display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 4px;
+  }
+  .district-chip{
+    font-size:13px; font-weight:700; padding:7px 13px; border-radius:10px;
+    background:var(--bg-raised); border:1px solid var(--line); color:var(--ink);
+  }
+  .district-chip.primary{
+    background:var(--accent); border-color:var(--accent); color:#fff;
+  }
+  .district-note{font-size:12.5px; color:var(--ink-soft); margin:10px 0 0;}
+
+  /* ---- section ---- */
+  .section{padding:26px 0 6px;}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:14px; gap:10px;
+  }
+  .section-title{font-size:16px; font-weight:800; margin:0;}
+  .section-sub{font-size:12.5px; color:var(--ink-soft); margin:2px 0 0;}
+
+  .card-grid{display:grid; grid-template-columns:1fr; gap:12px;}
+  .card{
+    background:var(--bg-raised); border:1px solid var(--line); border-radius:var(--radius);
+    padding:16px; box-shadow:var(--shadow);
+  }
+  .card-top{display:flex; align-items:flex-start; gap:12px; margin-bottom:12px;}
+  .card-icon{
+    width:38px;height:38px;border-radius:10px; flex-shrink:0;
+    background:var(--accent-soft-2); display:flex;align-items:center;justify-content:center;
+    font-size:18px;
+  }
+  .card-title{font-weight:700; font-size:14.5px; margin:0 0 3px;}
+  .card-desc{font-size:12.5px; color:var(--ink-soft); margin:0;}
+  .card-actions{display:flex; flex-wrap:wrap; gap:8px;}
+  .btn{
+    appearance:none; text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+    font-size:13px; font-weight:700; padding:9px 14px; border-radius:9px;
+    border:1px solid var(--line); font-family:inherit; cursor:pointer;
+  }
+  .btn-primary{ background:var(--accent); border-color:var(--accent); color:#fff; }
+  .btn-ghost{ background:transparent; color:var(--ink); }
+  .btn-dial{ background:var(--good-soft); border-color:var(--good-soft); color:var(--good); }
+  .tag-official{
+    font-size:10.5px; font-weight:700; letter-spacing:.04em;
+    color:var(--good); background:var(--good-soft);
+    padding:2px 7px; border-radius:6px; margin-left:auto; flex-shrink:0;
+    white-space:nowrap;
+  }
+  .tag-pending{
+    font-size:10.5px; font-weight:700; letter-spacing:.04em;
+    color:var(--ink-soft); background:var(--accent-soft-2);
+    padding:2px 7px; border-radius:6px; margin-left:auto; flex-shrink:0;
+    white-space:nowrap;
+  }
+
+  .pending-card{
+    border:1px dashed var(--line); border-radius:var(--radius); padding:16px;
+    color:var(--ink-soft); font-size:13px; background:var(--accent-soft-2);
+  }
+  .pending-card b{color:var(--ink); font-weight:700;}
+
+  /* ---- footer ---- */
+  footer{
+    margin-top:38px; padding:26px 0 40px; border-top:1px solid var(--line);
+  }
+  .foot-brand{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .foot-mark{
+    width:44px;height:44px;border-radius:11px; background:var(--accent); color:#fff;
+    display:flex;align-items:center;justify-content:center; font-weight:800; font-size:19px; flex-shrink:0;
+  }
+  .foot-name{font-weight:800; font-size:15px;}
+  .foot-role{font-size:12.5px; color:var(--ink-soft); margin-top:1px;}
+  .foot-slogan{
+    font-size:13px; color:var(--ink-soft); margin:0 0 16px; line-height:1.7;
+    padding:12px 14px; background:var(--bg-raised); border:1px solid var(--line); border-radius:10px;
+  }
+  .foot-cta{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;}
+  .foot-legal{font-size:11.5px; color:var(--ink-soft); line-height:1.7; margin:0;}
+
+  @media (min-width:560px){
+    .card-grid.cols-2{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-mark" id="brandMark">宏</div>
+      <div class="brand-name" id="brandName">雙北在地生活通</div>
+    </div>
+    <div class="city-toggle" role="group" aria-label="切換城市">
+      <button type="button" id="cityBtnNtpc" data-city="ntpc" class="active">新北市</button>
+      <button type="button" id="cityBtnTpe" data-city="tpe">台北市</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="hero">
+    <span class="eyebrow" id="heroEyebrow">👋 官方連結彙整・沒有一條用猜的</span>
+    <h1 id="heroTitle">垃圾車、路燈陳情、警消、健保診所藥局、重劃區地圖，一頁點到底。</h1>
+    <p id="heroSub">手機打開就能查。每個連結都是政府或健保署官方系統，不是網友整理的二手資訊——查得到什麼，這裡就只放什麼。</p>
+
+    <div class="districts" id="districtChips">
+      <span class="district-chip primary">📍 板橋</span>
+      <span class="district-chip primary">📍 新莊</span>
+      <span class="district-chip primary">📍 土城</span>
+      <span class="district-chip primary">📍 樹林</span>
+      <span class="district-chip primary">📍 三峽</span>
+    </div>
+    <p class="district-note" id="districtNote">主力服務這五區，工具本身涵蓋整個雙北——上面切換「新北市／台北市」，連結會換成對應城市的官方系統。</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="section-title">🗑️ 垃圾清運查詢</p>
+        <p class="section-sub">清運時間、路線、定點，官方即時系統</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">🗑️</div>
+          <div style="flex:1">
+            <p class="card-title" id="trash-title">新北市環保局・垃圾清運資訊查詢網</p>
+            <p class="card-desc" id="trash-desc">依行政區、路線查清運時間與車輛即時位置</p>
+          </div>
+          <span class="tag-official">官方</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-primary" id="trash-link" href="https://crd-rubbish.epd.ntpc.gov.tw/" target="_blank" rel="noopener">開啟查詢系統 ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="section-title">💡 路燈報修・市政陳情</p>
+        <p class="section-sub">路燈不亮、道路坑洞、噪音陳情都算</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">📞</div>
+          <div style="flex:1">
+            <p class="card-title" id="hotline-title">新北市 1999 市民專線</p>
+            <p class="card-desc">路燈、路平、噪音陳情，4 小時至 1 天內回覆</p>
+          </div>
+          <span class="tag-official">官方</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-dial" id="hotline-dial" href="tel:1999">📱 直接撥打 1999</a>
+          <a class="btn btn-ghost" id="hotline-link" href="https://service.ntpc.gov.tw/1999/" target="_blank" rel="noopener">線上陳情 ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="section-title">🚨 警消一鍵撥號</p>
+        <p class="section-sub">緊急狀況，手機點一下直接打</p>
+      </div>
+    </div>
+    <div class="card-grid cols-2" style="grid-template-columns:1fr 1fr;">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">🚓</div>
+          <div style="flex:1">
+            <p class="card-title">警察報案</p>
+            <p class="card-desc">110</p>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-dial" href="tel:110" style="width:100%;justify-content:center;">📱 撥打 110</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">🚑</div>
+          <div style="flex:1">
+            <p class="card-title">消防救護</p>
+            <p class="card-desc">119</p>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-dial" href="tel:119" style="width:100%;justify-content:center;">📱 撥打 119</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="section-title">🚌 交通通勤</p>
+        <p class="section-sub">公車動態、捷運路網，官方即時系統</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">🚌</div>
+          <div style="flex:1">
+            <p class="card-title" id="transit-bus-title">新北市公車動態查詢</p>
+            <p class="card-desc" id="transit-bus-desc">路線、預估到站時間，官方即時系統</p>
+          </div>
+          <span class="tag-official">官方</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-primary" id="transit-bus-link" href="https://e-bus.ntpc.gov.tw/" target="_blank" rel="noopener">開啟查詢系統 ↗</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">🚇</div>
+          <div style="flex:1">
+            <p class="card-title" id="transit-mrt-title">新北捷運路網（含三鶯線）</p>
+            <p class="card-desc" id="transit-mrt-desc">新北大眾捷運公司官方路網與時刻，含三鶯線，通車與營運狀態以官方公告為準</p>
+          </div>
+          <span class="tag-official">官方</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-primary" id="transit-mrt-link" href="https://www.ntmetro.com.tw/" target="_blank" rel="noopener">開啟路網查詢 ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="section-title">🅿️ 停車查詢</p>
+        <p class="section-sub">公共／路外停車場、路邊停車格，官方即時系統</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">🅿️</div>
+          <div style="flex:1">
+            <p class="card-title" id="parking-public-title">新北市公共停車場資訊查詢系統</p>
+            <p class="card-desc" id="parking-public-desc">路外停車場即時車位地圖，官方系統</p>
+          </div>
+          <span class="tag-official">官方</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-primary" id="parking-public-link" href="https://www.parkinginfo.ntpc.gov.tw/parkinginfo/public/googlemap.aspx" target="_blank" rel="noopener">開啟查詢系統 ↗</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">🚗</div>
+          <div style="flex:1">
+            <p class="card-title" id="parking-roadside-title">新北市路邊停車空位查詢系統</p>
+            <p class="card-desc" id="parking-roadside-desc">路邊停車格即時車位狀態，官方系統</p>
+          </div>
+          <span class="tag-official">官方</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-primary" id="parking-roadside-link" href="https://tcdgis.ntpc.gov.tw/public/" target="_blank" rel="noopener">開啟查詢系統 ↗</a>
+        </div>
+      </div>
+      <div class="pending-card" id="parking-private-note">
+        <b>私人停車場</b>：雙北市政府目前沒有針對純民間自營停車場的官方即時查詢系統——這裡只放查得到官方資料的公共／路外停車場跟路邊停車格。私人停車場請現場找或另外用民間 App，不放沒有把握的連結。
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="section-title">🏥 診所藥局查詢</p>
+        <p class="section-sub">健保署官方地圖，全雙北通用</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">💊</div>
+          <div style="flex:1">
+            <p class="card-title" id="health-title">健保署・特約醫事機構地圖查詢</p>
+            <p class="card-desc" id="health-desc">依地址、科別、看診時段找附近診所藥局</p>
+          </div>
+          <span class="tag-official">官方</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-primary" id="health-link" href="https://info.nhi.gov.tw/INAE1000/INAE1000S00" target="_blank" rel="noopener">開啟地圖查詢 ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="section-title">🏗️ 重劃區・都更・建設地圖</p>
+        <p class="section-sub">買房前看得到的公開資訊</p>
+      </div>
+    </div>
+    <div class="card-grid">
+      <div class="card" id="urban-card">
+        <div class="card-top">
+          <div class="card-icon">🗺️</div>
+          <div style="flex:1">
+            <p class="card-title" id="urban-title">新北市城鄉資訊查詢平台</p>
+            <p class="card-desc">分區使用、都市更新、重劃區範圍地圖</p>
+          </div>
+          <span class="tag-official">官方</span>
+        </div>
+        <div class="card-actions">
+          <a class="btn btn-primary" id="urban-link" href="https://urban.planning.ntpc.gov.tw/NtpcURInfo/Map.aspx" target="_blank" rel="noopener">開啟地圖 ↗</a>
+          <a class="btn btn-ghost" id="urban-national-link" href="https://pip.moi.gov.tw/V3/Default.aspx" target="_blank" rel="noopener">內政部不動產資訊平台 ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="section-title">🍜 在地美食・生活店家</p>
+        <p class="section-sub" id="foodSectionSub">籌備中</p>
+      </div>
+    </div>
+    <div id="foodBody">
+      <div class="pending-card">
+        <b>還沒上架。</b>不編口袋名單——之後會用阿宏自己在板橋／新莊／土城／樹林／三峽實際走過、吃過的店慢慢建檔，確定是真資料才放上來。想先加進去的店可以直接跟阿宏說。
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">
+      <div class="foot-mark" id="footMark">宏</div>
+      <div>
+        <div class="foot-name" id="footName">何志宏</div>
+        <div class="foot-role" id="footRole">不動產經紀人・住商不動產 樹林站前店</div>
+      </div>
+    </div>
+    <p class="foot-slogan" id="footSlogan">阿宏賣房不賣夢，陪你完成夢，但不陪你做錯夢。<br>買對是資產，買錯是壓力——房子是人生風險的容器。</p>
+    <div class="foot-cta">
+      <a class="btn btn-primary" id="footPhone" href="tel:0226878822">📞 02-2687-8822</a>
+      <a class="btn btn-primary" id="footLine" href="#" target="_blank" rel="noopener" style="display:none;background:#06C755;border-color:#06C755">💬 加 LINE 問</a>
+    </div>
+    <p class="foot-legal" id="footLegal">
+      本站僅彙整政府與健保署公開之官方查詢系統連結，不擷取、不代管任何第三方資料。清運時間、陳情處理進度、院所看診資訊，實際請以各官方系統當下顯示為準。<br>
+      這是 v1 版本，先把雙北範圍的官方連結架好，美食與店家清單之後陸續補真實資料。
+    </p>
+  </div>
+</footer>
+
+<!-- 設定檔：後台產生。檔案不存在時自動用下面的內建預設值，不會出錯。 -->
+<script src="config.js"></script>
+
+<script>
+(function(){
+
+/* ===================== 設定系統（前台讀，後台寫） =====================
+   ⚠ 這份 DEFAULTS 必須與 admin.html 裡的 DEFAULTS 保持一致，改一邊要改兩邊。 */
+var DEFAULTS = {
+  brand: {
+    site: '雙北在地生活通',
+    mark: '宏',
+    name: '何志宏',
+    title: '不動產經紀營業員',
+    store: '住商不動產 樹林站前加盟店',
+    phone: '02-2687-8822',
+    lineUrl: 'https://line.me/R/ti/p/@798ulmws',
+    accent: 'ochre'
+  },
+  hero: {
+    eyebrow: '👋 官方連結彙整・沒有一條用猜的',
+    title: '垃圾車、路燈陳情、警消、健保診所藥局、重劃區地圖，一頁點到底。',
+    sub: '手機打開就能查。每個連結都是政府或健保署官方系統，不是網友整理的二手資訊——查得到什麼，這裡就只放什麼。'
+  },
+  districts: {
+    items: ['板橋','新莊','土城','樹林','三峽'],
+    note: '主力服務這五區，工具本身涵蓋整個雙北——上面切換「新北市／台北市」，連結會換成對應城市的官方系統。'
+  },
+  perCity: {
+    ntpc: {
+      label: '新北市',
+      trash: {
+        title: '新北市環保局・垃圾清運資訊查詢網',
+        desc: '依行政區、路線查清運時間與車輛即時位置',
+        url: 'https://crd-rubbish.epd.ntpc.gov.tw/'
+      },
+      hotline: {
+        title: '新北市 1999 市民專線',
+        dial: '1999',
+        url: 'https://service.ntpc.gov.tw/1999/'
+      },
+      urban: {
+        title: '新北市城鄉資訊查詢平台',
+        url: 'https://urban.planning.ntpc.gov.tw/NtpcURInfo/Map.aspx'
+      },
+      transit: {
+        bus: {
+          title: '新北市公車動態查詢',
+          desc: '路線、預估到站時間，官方即時系統',
+          url: 'https://e-bus.ntpc.gov.tw/'
+        },
+        mrt: {
+          title: '新北捷運路網（含三鶯線）',
+          desc: '新北大眾捷運公司官方路網與時刻，含三鶯線，通車與營運狀態以官方公告為準',
+          url: 'https://www.ntmetro.com.tw/'
+        }
+      },
+      parking: {
+        public: {
+          title: '新北市公共停車場資訊查詢系統',
+          desc: '路外停車場即時車位地圖，官方系統',
+          url: 'https://www.parkinginfo.ntpc.gov.tw/parkinginfo/public/googlemap.aspx'
+        },
+        roadside: {
+          title: '新北市路邊停車空位查詢系統',
+          desc: '路邊停車格即時車位狀態，官方系統',
+          url: 'https://tcdgis.ntpc.gov.tw/public/'
+        }
+      }
+    },
+    tpe: {
+      label: '台北市',
+      trash: {
+        title: '台北市環保局・垃圾清運路線查詢',
+        desc: '依行政區查清運路線、時間、地點',
+        url: 'https://www.dep-trash-can.gov.taipei/tcr/'
+      },
+      hotline: {
+        title: '台北市 1999 市民熱線',
+        dial: '1999',
+        url: 'https://1999.gov.taipei/'
+      },
+      urban: {
+        title: '台北市都市更新處',
+        url: 'https://uro.gov.taipei/'
+      },
+      transit: {
+        bus: {
+          title: '大臺北公車動態查詢',
+          desc: '雙北公車共用系統，路線、預估到站時間',
+          url: 'https://ebus.gov.taipei/'
+        },
+        mrt: {
+          title: '台北捷運路網圖',
+          desc: '台北捷運公司官方路網圖',
+          url: 'https://web.metro.taipei/pages/tw/roadmap/station'
+        }
+      },
+      parking: {
+        public: {
+          title: '台北市停車管理工程處',
+          desc: '路外／立體停車場查詢入口，官方系統',
+          url: 'https://pma.gov.taipei/'
+        },
+        roadside: {
+          title: '台北市路邊停車查詢',
+          desc: '路邊停車格即時資訊入口，官方系統',
+          url: 'https://pma.gov.taipei/'
+        }
+      }
+    }
+  },
+  urbanNational: {
+    label: '內政部不動產資訊平台',
+    url: 'https://pip.moi.gov.tw/V3/Default.aspx'
+  },
+  healthMap: {
+    title: '健保署・特約醫事機構地圖查詢',
+    desc: '依地址、科別、看診時段找附近診所藥局',
+    url: 'https://info.nhi.gov.tw/INAE1000/INAE1000S00'
+  },
+  parkingPrivateNote: {
+    title: '私人停車場',
+    note: '雙北市政府目前沒有針對純民間自營停車場的官方即時查詢系統——這裡只放查得到官方資料的公共／路外停車場跟路邊停車格。私人停車場請現場找或另外用民間 App，不放沒有把握的連結。'
+  },
+  foodItems: [],
+  footer: {
+    slogan: '阿宏賣房不賣夢，陪你完成夢，但不陪你做錯夢。\n買對是資產，買錯是壓力——房子是人生風險的容器。',
+    disclaimer: '本站僅彙整政府與健保署公開之官方查詢系統連結，不擷取、不代管任何第三方資料。清運時間、陳情處理進度、院所看診資訊，實際請以各官方系統當下顯示為準。\n這是 v1 版本，先把雙北範圍的官方連結架好，美食與店家清單之後陸續補真實資料。'
+  }
+};
+
+var CITY_ORDER = ['ntpc', 'tpe'];
+
+var ACCENTS = {
+  ochre: {
+    light:{ accent:'#B8721E', accentInk:'#7A4B12', accentSoft:'#EFDBB8', accentSoft2:'#F6ECD8' },
+    dark:{ accent:'#E0A050', accentInk:'#F3D6A6', accentSoft:'#4A3A22', accentSoft2:'#332815' }
+  },
+  brick: {
+    light:{ accent:'#B2412C', accentInk:'#7A2418', accentSoft:'#EFC4BC', accentSoft2:'#F7E1DC' },
+    dark:{ accent:'#E0745F', accentInk:'#F3C2B4', accentSoft:'#4A241D', accentSoft2:'#332017' }
+  },
+  indigo: {
+    light:{ accent:'#2F6180', accentInk:'#1C3D51', accentSoft:'#C7DCE7', accentSoft2:'#E4EEF3' },
+    dark:{ accent:'#6FA6C8', accentInk:'#C7E2F0', accentSoft:'#1D3540', accentSoft2:'#16262E' }
+  },
+  moss: {
+    light:{ accent:'#4B6B3A', accentInk:'#2E4322', accentSoft:'#D3E0C6', accentSoft2:'#ECF1E4' },
+    dark:{ accent:'#8FB36F', accentInk:'#D6E8C4', accentSoft:'#263420', accentSoft2:'#1B2417' }
+  },
+  plum: {
+    light:{ accent:'#6D4E9C', accentInk:'#45326A', accentSoft:'#DDD1EE', accentSoft2:'#EEE7F6' },
+    dark:{ accent:'#A98BD8', accentInk:'#DCCBF2', accentSoft:'#2E2440', accentSoft2:'#211A2E' }
+  }
+};
+
+/* 深合併：CFG 每個 key 若 window.LLCONFIG 有提供就採用，
+   但只要該 key 在預設值跟提供值裡都是「物件」，就會繼續往下逐層合併——
+   例如舊版 config.js 沒有 perCity.ntpc.transit / parking 這種新版才新增的巢狀
+   欄位，會自動補上 DEFAULTS 裡的值，不會整段炸掉。陣列（如 foodItems、
+   districts.items）視為單一值整個覆蓋，不逐項合併。
+   半份 config.js 不會把沒提到的欄位清空，新增的巢狀欄位也不會讓舊設定壞掉。 */
+function isPlainObject(v){
+  return !!v && typeof v === 'object' && !Array.isArray(v);
+}
+function mergeConfig(defaults, override){
+  if(!isPlainObject(defaults)) return (override !== undefined) ? override : defaults;
+  var out = {};
+  for (var k in defaults){
+    if(override && Object.prototype.hasOwnProperty.call(override, k)){
+      out[k] = (isPlainObject(defaults[k]) && isPlainObject(override[k]))
+        ? mergeConfig(defaults[k], override[k])
+        : override[k];
+    } else {
+      out[k] = defaults[k];
+    }
+  }
+  return out;
+}
+
+var CFG = mergeConfig(DEFAULTS, window.LLCONFIG || {});
+
+/* 後台即時預覽：?cfg=<base64> 覆蓋設定，不影響一般瀏覽 */
+var PREVIEW = false;
+(function(){
+  var m = location.search.match(/[?&]cfg=([^&]+)/);
+  if(m){
+    try{
+      var decoded = JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(m[1])))));
+      CFG = mergeConfig(DEFAULTS, decoded);
+      PREVIEW = true;
+    }catch(e){}
+  }
+})();
+
+/* ===================== 共用 ===================== */
+function $(id){ return document.getElementById(id) }
+function escapeHtml(s){
+  return String(s===null||s===undefined?'':s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+function nl2br(escaped){ return escaped.replace(/\n/g, '<br>') }
+function digitsOnly(s){ return String(s||'').replace(/[^0-9+]/g, '') }
+/* 安全網址：只允許 http/https，擋掉 javascript: 等會在點擊時執行的 URI scheme。
+   不合法就回傳空字串，呼叫端要自己決定 fallback（隱藏按鈕或給 '#'）。 */
+function safeUrl(s){
+  s = String(s===null||s===undefined?'':s).trim();
+  return /^https?:\/\//i.test(s) ? s : '';
+}
+
+function applyAccent(key){
+  var a = ACCENTS[key] || ACCENTS.ochre;
+  var css =
+    ':root{--accent:'+a.light.accent+';--accent-ink:'+a.light.accentInk+';--accent-soft:'+a.light.accentSoft+';--accent-soft-2:'+a.light.accentSoft2+'}'+
+    '@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--accent:'+a.dark.accent+';--accent-ink:'+a.dark.accentInk+';--accent-soft:'+a.dark.accentSoft+';--accent-soft-2:'+a.dark.accentSoft2+'}}'+
+    ':root[data-theme="light"]{--accent:'+a.light.accent+';--accent-ink:'+a.light.accentInk+';--accent-soft:'+a.light.accentSoft+';--accent-soft-2:'+a.light.accentSoft2+'}'+
+    ':root[data-theme="dark"]{--accent:'+a.dark.accent+';--accent-ink:'+a.dark.accentInk+';--accent-soft:'+a.dark.accentSoft+';--accent-soft-2:'+a.dark.accentSoft2+'}';
+  var el = $('accentOverride');
+  if(!el){ el = document.createElement('style'); el.id = 'accentOverride'; document.head.appendChild(el) }
+  el.textContent = css;
+}
+
+/* ===================== 渲染 ===================== */
+function renderBrand(){
+  var b = CFG.brand;
+  document.title = b.name ? (b.site + ' | ' + b.name) : b.site;
+  var mark = String(b.mark===null||b.mark===undefined?'':b.mark).slice(0,2);
+  $('brandMark').textContent = mark;
+  $('brandName').textContent = b.site;
+  $('footMark').textContent = mark;
+  $('footName').textContent = b.name;
+
+  var roleParts = [];
+  if(b.title) roleParts.push(b.title);
+  if(b.store) roleParts.push(b.store);
+  $('footRole').textContent = roleParts.join('・');
+
+  var phoneBtn = $('footPhone');
+  if(b.phone){
+    phoneBtn.style.display = '';
+    phoneBtn.textContent = '📞 ' + b.phone;
+    phoneBtn.href = 'tel:' + digitsOnly(b.phone);
+  } else {
+    phoneBtn.style.display = 'none';
+  }
+
+  var lineBtn = $('footLine');
+  var safeLineUrl = safeUrl(b.lineUrl);
+  if(safeLineUrl){
+    lineBtn.style.display = '';
+    lineBtn.href = safeLineUrl;
+  } else {
+    lineBtn.style.display = 'none';
+    lineBtn.removeAttribute('href');
+  }
+
+  applyAccent(b.accent);
+}
+
+function renderHero(){
+  $('heroEyebrow').textContent = CFG.hero.eyebrow;
+  $('heroTitle').textContent = CFG.hero.title;
+  $('heroSub').textContent = CFG.hero.sub;
+}
+
+function renderDistricts(){
+  var items = CFG.districts.items || [];
+  var html = '';
+  for(var i=0;i<items.length;i++){
+    html += '<span class="district-chip primary">📍 ' + escapeHtml(items[i]) + '</span>';
+  }
+  $('districtChips').innerHTML = html;
+  $('districtNote').textContent = CFG.districts.note;
+}
+
+var currentCity = 'ntpc';
+function renderCityToggle(){
+  var btnIds = { ntpc:'cityBtnNtpc', tpe:'cityBtnTpe' };
+  for(var i=0;i<CITY_ORDER.length;i++){
+    var cid = CITY_ORDER[i];
+    var city = CFG.perCity[cid];
+    var btn = $(btnIds[cid]);
+    if(!btn || !city) continue;
+    btn.textContent = city.label;
+    btn.classList.toggle('active', cid === currentCity);
+    btn.onclick = (function(cityId){ return function(){ currentCity = cityId; renderCityToggle(); applyCity(cityId) } })(cid);
+  }
+}
+
+function applyCity(cityId){
+  var city = CFG.perCity[cityId];
+  if(!city) return;
+  $('trash-title').textContent = city.trash.title;
+  $('trash-desc').textContent = city.trash.desc;
+  $('trash-link').href = safeUrl(city.trash.url) || '#';
+
+  $('hotline-title').textContent = city.hotline.title;
+  var dialBtn = $('hotline-dial');
+  dialBtn.textContent = '📱 直接撥打 ' + city.hotline.dial;
+  dialBtn.href = 'tel:' + digitsOnly(city.hotline.dial);
+  $('hotline-link').href = safeUrl(city.hotline.url) || '#';
+
+  $('urban-title').textContent = city.urban.title;
+  $('urban-link').href = safeUrl(city.urban.url) || '#';
+
+  $('transit-bus-title').textContent = city.transit.bus.title;
+  $('transit-bus-desc').textContent = city.transit.bus.desc;
+  $('transit-bus-link').href = safeUrl(city.transit.bus.url) || '#';
+
+  $('transit-mrt-title').textContent = city.transit.mrt.title;
+  $('transit-mrt-desc').textContent = city.transit.mrt.desc;
+  $('transit-mrt-link').href = safeUrl(city.transit.mrt.url) || '#';
+
+  $('parking-public-title').textContent = city.parking.public.title;
+  $('parking-public-desc').textContent = city.parking.public.desc;
+  $('parking-public-link').href = safeUrl(city.parking.public.url) || '#';
+
+  $('parking-roadside-title').textContent = city.parking.roadside.title;
+  $('parking-roadside-desc').textContent = city.parking.roadside.desc;
+  $('parking-roadside-link').href = safeUrl(city.parking.roadside.url) || '#';
+}
+
+function renderUrbanNational(){
+  var n = CFG.urbanNational;
+  var el = $('urban-national-link');
+  el.textContent = n.label + ' ↗';
+  el.href = safeUrl(n.url) || '#';
+}
+
+function renderHealthMap(){
+  var h = CFG.healthMap;
+  $('health-title').textContent = h.title;
+  $('health-desc').textContent = h.desc;
+  $('health-link').href = safeUrl(h.url) || '#';
+}
+
+function renderParkingPrivateNote(){
+  var n = CFG.parkingPrivateNote;
+  $('parking-private-note').innerHTML = '<b>' + escapeHtml(n.title) + '</b>：' + escapeHtml(n.note);
+}
+
+function renderFood(){
+  var items = CFG.foodItems || [];
+  var sub = $('foodSectionSub');
+  var body = $('foodBody');
+  if(!items.length){
+    sub.textContent = '籌備中';
+    body.innerHTML = '<div class="pending-card"><b>還沒上架。</b>不編口袋名單——之後會用阿宏自己在板橋／新莊／土城／樹林／三峽實際走過、吃過的店慢慢建檔，確定是真資料才放上來。想先加進去的店可以直接跟阿宏說。</div>';
+    return;
+  }
+  sub.textContent = '已上架 ' + items.length + ' 家・持續新增中';
+  var html = '<div class="card-grid">';
+  for(var i=0;i<items.length;i++){
+    var it = items[i] || {};
+    var pending = it.status === '籌備中';
+    var descParts = [];
+    if(it.area) descParts.push(escapeHtml(it.area));
+    if(it.note) descParts.push(escapeHtml(it.note));
+    html += '<div class="card"><div class="card-top">'+
+      '<div class="card-icon">🍜</div>'+
+      '<div style="flex:1">'+
+        '<p class="card-title">' + escapeHtml(it.name) + '</p>'+
+        '<p class="card-desc">' + descParts.join('・') + '</p>'+
+      '</div>'+
+      (pending ? '<span class="tag-pending">籌備中</span>' : '<span class="tag-official">上架</span>')+
+    '</div></div>';
+  }
+  html += '</div>';
+  body.innerHTML = html;
+}
+
+function renderFooter(){
+  $('footSlogan').innerHTML = nl2br(escapeHtml(CFG.footer.slogan));
+  $('footLegal').innerHTML = nl2br(escapeHtml(CFG.footer.disclaimer));
+}
+
+function showPreviewBanner(){
+  if($('pvbar')) return;
+  var d = document.createElement('div');
+  d.id = 'pvbar';
+  d.className = 'pvbar';
+  d.textContent = '後台預覽模式　這是套用草稿設定後的前台畫面，尚未發布';
+  document.body.insertBefore(d, document.body.firstChild);
+}
+
+/* ===================== 初始化 ===================== */
+renderBrand();
+renderHero();
+renderDistricts();
+renderCityToggle();
+applyCity(currentCity);
+renderUrbanNational();
+renderHealthMap();
+renderParkingPrivateNote();
+renderFood();
+renderFooter();
+if(PREVIEW) showPreviewBanner();
+
+})();
+</script>
+
+<script src="/tail.js" defer></script>
+<script src="/cta.js" defer></script>
+</body>
+</html>
