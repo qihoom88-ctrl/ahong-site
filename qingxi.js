@@ -9,7 +9,7 @@
   var BRAND = S.cBrand || '#1F5C46', GOLD = S.cGold || '#C9A24B';
 
   var HW = {
-    name: '啟康愛清洗', tag: '合作廠商・居家清洗',
+    name: '啟康愛清洗', tag: '便民服務・居家清洗',
     home: 'https://www.hwash.com.tw/files/200-1314-21087.php',
     svc: {
       pipe:  {t:'水管清洗',     d:'熱水管變小、出水發黃',   u:'https://www.hwash.com.tw/files/200-1314-21482.php'},
@@ -17,7 +17,7 @@
       ac:    {t:'冷氣家電清洗', d:'冷氣有味道、洗衣機發霉', u:'https://www.hwash.com.tw/files/200-1314-23637.php'},
       water: {t:'居家淨水',     d:'全戶式淨水器、濾心',     u:'https://www.hwash.com.tw/files/200-1314-23641.php'}
     },
-    note: '交屋前後最常被問的是水管、水塔、冷氣要不要洗。這家是阿宏合作的清洗廠商，只做清洗與淨水，不做修繕。服務內容與價格以該站為準。'
+    note: '交屋前後最常被問的是水管、水塔、冷氣要不要洗。阿宏以前的副業就是這一行，這是那時候認識的團隊，只做清洗與淨水，不做修繕。放這裡是方便你自己去問，服務內容與價格以該站為準。'
   };
 
   /* 哪一頁出現、出現哪幾項（改這裡） */
@@ -69,7 +69,7 @@
       h += '<a href="' + s.u + '" target="_blank" rel="noopener noreferrer sponsored"><b>' + esc(s.t) + ' ↗</b><span>' + esc(s.d) + '</span></a>';
     }
     h += '</div><a class="all" href="' + HW.home + '" target="_blank" rel="noopener noreferrer sponsored">' + esc(HW.name) + ' 全部服務 ↗</a>' +
-         '<small>外部網站。合作廠商頁面，服務內容與價格以該站為準；本站不經手訂單與款項。</small></div>';
+         '<small>外部網站。本站只提供連結方便查詢，不經手訂單與款項，也不收介紹費。</small></div>';
 
     var box = document.createElement('section');
     box.id = 'ahqx'; box.className = 'ahqx'; box.setAttribute('aria-label', '居家清洗合作推薦');
