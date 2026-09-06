@@ -16,74 +16,105 @@
     --accent:#3b82f6; --accent2:#22c55e; --danger:#ef4444;
   }
   *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
   body{
     margin:0; font-family:-apple-system,"Segoe UI",Roboto,"PingFang TC","Microsoft JhengHei",sans-serif;
-    background:var(--bg); color:var(--text); min-height:100vh; padding:24px;
+    background:var(--bg); color:var(--text); min-height:100vh;
+    padding:20px max(16px,env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));
+    -webkit-tap-highlight-color:transparent;
   }
   .wrap{max-width:960px;margin:0 auto}
   h1{font-size:22px;margin:0 0 4px}
-  .sub{color:var(--sub);font-size:14px;margin-bottom:20px}
+  .sub{color:var(--sub);font-size:14px;margin-bottom:18px;line-height:1.7}
   #drop{
-    border:2px dashed var(--line); border-radius:16px; padding:48px 20px;
+    border:2px dashed var(--line); border-radius:16px; padding:40px 18px;
     text-align:center; cursor:pointer; transition:.15s; background:var(--card);
   }
   #drop.hover{border-color:var(--accent); background:#12203a}
-  #drop .big{font-size:18px;margin-bottom:8px}
-  #drop .small{color:var(--sub);font-size:13px}
+  #drop .big{font-size:17px;margin-bottom:8px;line-height:1.5}
+  #drop .small{color:var(--sub);font-size:13px;line-height:1.6}
   input[type=file]{display:none}
-  #sizes{
-    display:flex; flex-wrap:wrap; gap:10px; margin:20px 0;
+  /* 拖曳中：整頁都是接收區，手機上不必準確放進小方框 */
+  #dropVeil{
+    position:fixed; inset:0; z-index:99; display:none;
+    background:rgba(15,17,21,.92); border:3px dashed var(--accent);
+    align-items:center; justify-content:center; text-align:center;
+    font-size:20px; font-weight:700; padding:24px; pointer-events:none;
   }
+  body.dragging #dropVeil{display:flex}
+  #sizes{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0}
   .chip{
-    display:flex; align-items:center; gap:6px;
+    display:flex; align-items:center; gap:8px;
     background:var(--card); border:1px solid var(--line); border-radius:999px;
-    padding:8px 14px; font-size:13px; cursor:pointer; user-select:none;
+    padding:11px 15px; font-size:13.5px; cursor:pointer; user-select:none;
+    min-height:44px; line-height:1.35;
   }
-  .chip input{margin:0}
+  .chip input{margin:0; width:18px; height:18px; flex:none}
   .chip.active{border-color:var(--accent2)}
-  #actions{display:flex; gap:10px; align-items:center; margin:16px 0 24px; flex-wrap:wrap}
+  #actions{display:flex; gap:10px; align-items:center; margin:14px 0 22px; flex-wrap:wrap}
   button{
     background:var(--accent); color:#fff; border:none; border-radius:10px;
-    padding:12px 20px; font-size:15px; cursor:pointer; font-weight:600;
+    padding:13px 20px; font-size:15px; cursor:pointer; font-weight:600; min-height:48px;
   }
   button.secondary{background:var(--card); border:1px solid var(--line); color:var(--text)}
   button:disabled{opacity:.4; cursor:not-allowed}
-  #results{display:flex; flex-direction:column; gap:20px}
-  .item{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px}
-  .item-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px}
-  .item-head .name{font-size:14px; color:var(--sub); word-break:break-all}
-  .outs{display:flex; flex-wrap:wrap; gap:12px}
+  #saveAll{background:var(--accent2)}
+  #progress{color:var(--sub); font-size:13px; margin:-8px 0 16px; min-height:18px}
+  #results{display:flex; flex-direction:column; gap:18px}
+  .item{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px}
+  .item-head{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:12px; flex-wrap:wrap}
+  .item-head .name{font-size:13.5px; color:var(--sub); word-break:break-all; flex:1 1 160px}
+  .badge{
+    font-size:11.5px; font-weight:700; border-radius:999px; padding:4px 10px;
+    background:#0f2a1a; color:var(--accent2); border:1px solid var(--accent2); white-space:nowrap;
+  }
+  .badge.warn{background:#2a1810; color:#f59e0b; border-color:#f59e0b}
+  .badge.err{background:#2a1214; color:var(--danger); border-color:var(--danger)}
+  .outs{display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px}
   .out{
-    display:flex; flex-direction:column; align-items:center; gap:6px;
-    background:#12141a; border:1px solid var(--line); border-radius:10px; padding:10px; width:140px;
+    display:flex; flex-direction:column; align-items:center; gap:7px;
+    background:#12141a; border:1px solid var(--line); border-radius:10px; padding:10px;
   }
-  .out canvas{max-width:120px; max-height:120px; border-radius:6px; background:#000}
-  .out .label{font-size:11px; color:var(--sub); text-align:center}
-  .out a{
-    font-size:12px; color:var(--accent2); text-decoration:none; border:1px solid var(--accent2);
-    border-radius:6px; padding:4px 10px; margin-top:2px;
+  .out canvas{max-width:100%; max-height:130px; border-radius:6px; background:#000}
+  .out .label{font-size:11.5px; color:var(--sub); text-align:center; line-height:1.4}
+  .out .act{
+    display:block; width:100%; text-align:center; font-size:13px; font-weight:600;
+    border-radius:8px; padding:11px 8px; text-decoration:none; cursor:pointer;
+    border:1px solid var(--accent2); color:var(--accent2); background:transparent;
+    min-height:44px; line-height:1.6;
   }
-  .out a:hover{background:var(--accent2); color:#fff}
-  #dlall{background:var(--accent2)}
-  footer{margin-top:30px; color:var(--sub); font-size:12px; text-align:center}
+  .out .act.primary{background:var(--accent2); color:#08130c; border-color:var(--accent2)}
+  .item-save{
+    display:block; width:100%; margin-top:12px; text-align:center; font-size:14px; font-weight:700;
+    border-radius:10px; padding:13px 10px; border:1px solid var(--accent2);
+    background:var(--accent2); color:#08130c; cursor:pointer; min-height:48px;
+  }
+  footer{margin-top:28px; color:var(--sub); font-size:12px; text-align:center; line-height:1.7}
+  @media (max-width:520px){
+    h1{font-size:20px}
+    #drop{padding:32px 14px}
+    .outs{grid-template-columns:repeat(2,1fr)}
+    #actions button{flex:1 1 100%}
+  }
 </style>
 </head>
 <body>
+<div id="dropVeil">📥 放開手指，圖片就進來了</div>
 <div class="wrap">
   <h1>一鍵裁圖工具</h1>
-  <div class="sub">手機、平板、電腦都能用：電腦拖圖進來、手機點一下選圖，丟進來就自動產出 FB／IG／Threads 各尺寸。全程在你裝置裡跑，不上傳任何伺服器。</div>
+  <div class="sub">手機、平板、電腦都能用。iPhone 直接從「照片」長按拖進來就好，<b>iPhone 拍的 HEIC 會自動轉成 JPG</b>，再依你勾的尺寸產出 FB／IG／Threads 各版本。全程在你裝置裡跑，不上傳任何伺服器。</div>
 
   <div id="drop">
-    <div class="big">📥 把圖片拖到這裡，或點一下選擇檔案</div>
-    <div class="small">支援多張同時丟進來，jpg / png / webp 都可以</div>
-    <input type="file" id="fileInput" accept="image/*" multiple>
+    <div class="big">📥 點一下選圖，或把相片拖進來</div>
+    <div class="small" id="dropHint">支援多張同時丟進來・HEIC／jpg／png／webp 都可以</div>
+    <input type="file" id="fileInput" accept="image/*,.heic,.heif" multiple>
   </div>
 
   <div id="sizes"></div>
 
   <div id="modeBar" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
     <label class="chip active" style="display:inline-flex">
-      <input type="radio" name="mode" value="contain" checked> 🖼️ 完整保留（不裁切內容，四周補模糊background）
+      <input type="radio" name="mode" value="contain" checked> 🖼️ 完整保留（不裁切內容，四周補模糊背景）
     </label>
     <label class="chip" style="display:inline-flex">
       <input type="radio" name="mode" value="cover"> ✂️ 裁滿版（滿版好看，但會裁掉邊緣）
@@ -96,13 +127,15 @@
 
   <div id="actions">
     <button id="processBtn" disabled>開始裁切</button>
+    <button id="saveAll" style="display:none">📤 全部存到相簿</button>
     <button id="dlall" class="secondary" style="display:none">全部下載</button>
     <button id="clearBtn" class="secondary" style="display:none">清空重來</button>
   </div>
 
+  <div id="progress"></div>
   <div id="results"></div>
 
-  <footer>離線工具・免安裝・免費使用・裁切邏輯全在瀏覽器本機執行</footer>
+  <footer>離線工具・免安裝・免費使用・裁切與轉檔全在你的瀏覽器本機執行</footer>
 </div>
 
 <script>
@@ -112,23 +145,47 @@ const SIZE_DEFS = [
   {key:"story",     label:"限動／Reels 9:16（IG／FB）",       w:1080, h:1920, on:true},
   {key:"landscape", label:"連結貼文 1.91:1（FB）",            w:1200, h:630,  on:false},
   {key:"fb_cover",  label:"FB 封面",                         w:820,  h:312,  on:false},
+  {key:"original",  label:"原尺寸轉 JPG（不裁切，只轉檔）",   w:0,    h:0,    on:false, passthrough:true},
 ];
 
+// iOS Safari 對「解碼後的圖」有記憶體上限，iPhone 48MP 原圖直接畫會變全黑或空白，先降採樣
+const MAX_SRC_PIXELS = 16777216;
+const IS_IOS = /iP(hone|od|ad)/.test(navigator.userAgent)
+  || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+// Safari 16.4 以前沒有 canvas ctx.filter，設了不會報錯但完全沒效果，要自己算
+const SUPPORTS_CTX_FILTER = (() => {
+  try{
+    const c = document.createElement('canvas').getContext('2d');
+    c.filter = 'blur(2px)';
+    return c.filter === 'blur(2px)';
+  }catch(e){ return false; }
+})();
+
 const dropZone = document.getElementById('drop');
+const dropHint = document.getElementById('dropHint');
 const fileInput = document.getElementById('fileInput');
 const sizesBar = document.getElementById('sizes');
 const processBtn = document.getElementById('processBtn');
+const saveAllBtn = document.getElementById('saveAll');
 const dlAllBtn = document.getElementById('dlall');
 const clearBtn = document.getElementById('clearBtn');
 const resultsEl = document.getElementById('results');
+const progressEl = document.getElementById('progress');
 
 let queuedFiles = [];
 let producedLinks = [];
+let producedFiles = [];
+
+if(IS_IOS){
+  dropHint.textContent = 'iPhone 也可以從「照片」App 長按相片拖過來・HEIC 自動轉 JPG';
+  dlAllBtn.textContent = '全部下載（電腦用）';
+}
 
 SIZE_DEFS.forEach(def => {
   const chip = document.createElement('label');
   chip.className = 'chip' + (def.on ? ' active' : '');
-  chip.innerHTML = `<input type="checkbox" data-key="${def.key}" ${def.on ? 'checked' : ''}> ${def.label} (${def.w}×${def.h})`;
+  const dim = def.passthrough ? '' : ` (${def.w}×${def.h})`;
+  chip.innerHTML = `<input type="checkbox" data-key="${def.key}" ${def.on ? 'checked' : ''}> ${def.label}${dim}`;
   chip.querySelector('input').addEventListener('change', e => {
     chip.classList.toggle('active', e.target.checked);
   });
@@ -144,30 +201,73 @@ document.querySelectorAll('#modeBar input[name=mode]').forEach(radio => {
 function currentMode(){
   return document.querySelector('#modeBar input[name=mode]:checked').value;
 }
-
 function activeSizeDefs(){
   const checked = [...sizesBar.querySelectorAll('input[type=checkbox]:checked')].map(i => i.dataset.key);
   return SIZE_DEFS.filter(d => checked.includes(d.key));
 }
 
+/* ---------- 收檔：拖曳與點選共用，判定放寬 ---------- */
+// iPhone／Files App 拖進來的 HEIC，file.type 常常是空字串或 UTI（public.heic），
+// 用 type.startsWith('image/') 會被整個濾掉＝拖進去沒反應。改成型別或副檔名任一命中就收。
+const IMG_EXT = /\.(jpe?g|png|webp|gif|bmp|avif|heic|heif|tiff?)$/i;
+function isImageFile(f){
+  if(!f || typeof f.name !== 'string') return false;
+  if(f.type && (f.type.startsWith('image/') || /hei[cf]/i.test(f.type))) return true;
+  if(IMG_EXT.test(f.name)) return true;
+  return !f.type && f.size > 0;
+}
+// dataTransfer.items 在任何 await 之後就失效，所以整段同步取完
+function extractFiles(dt){
+  const out = [];
+  if(dt.items && dt.items.length){
+    for(const it of dt.items){
+      if(it.kind === 'file'){
+        const f = it.getAsFile();
+        if(f) out.push(f);
+      }
+    }
+  }
+  if(!out.length && dt.files && dt.files.length) out.push(...dt.files);
+  return out.filter(isImageFile);
+}
+
 dropZone.addEventListener('click', () => fileInput.click());
-['dragenter','dragover'].forEach(ev => dropZone.addEventListener(ev, e => {
-  e.preventDefault(); dropZone.classList.add('hover');
+
+let dragDepth = 0;
+['dragenter','dragover'].forEach(ev => document.addEventListener(ev, e => {
+  e.preventDefault();
+  if(ev === 'dragenter') dragDepth++;
+  document.body.classList.add('dragging');
+  dropZone.classList.add('hover');
 }));
-['dragleave','drop'].forEach(ev => dropZone.addEventListener(ev, e => {
-  e.preventDefault(); dropZone.classList.remove('hover');
-}));
-dropZone.addEventListener('drop', e => {
-  addFiles([...e.dataTransfer.files].filter(f => f.type.startsWith('image/')));
+document.addEventListener('dragleave', e => {
+  e.preventDefault();
+  dragDepth = Math.max(0, dragDepth - 1);
+  if(dragDepth === 0){ document.body.classList.remove('dragging'); dropZone.classList.remove('hover'); }
 });
+// 整頁都收，手機拖曳不必準確放進小方框
+document.addEventListener('drop', e => {
+  e.preventDefault();
+  dragDepth = 0;
+  document.body.classList.remove('dragging');
+  dropZone.classList.remove('hover');
+  const files = extractFiles(e.dataTransfer);
+  if(!files.length){
+    progressEl.textContent = '⚠️ 這次拖進來的東西裡沒有圖片檔（若是從網頁上拖圖，請先長按存到相簿再拖）。';
+    return;
+  }
+  addFiles(files);
+});
+
 fileInput.addEventListener('change', e => {
-  addFiles([...e.target.files]);
+  addFiles([...e.target.files].filter(isImageFile));
 });
 
 function addFiles(files){
   if(!files.length) return;
   queuedFiles = queuedFiles.concat(files);
   processBtn.disabled = false;
+  progressEl.textContent = '';
   dropZone.querySelector('.big').textContent = `✅ 已加入 ${queuedFiles.length} 張圖片`;
   clearBtn.style.display = 'inline-block';
   setTimeout(() => { if(!processBtn.disabled) processBtn.click(); }, 60);
@@ -177,80 +277,180 @@ clearBtn.addEventListener('click', () => {
   queuedFiles = [];
   producedLinks.forEach(u => URL.revokeObjectURL(u));
   producedLinks = [];
+  producedFiles = [];
   resultsEl.innerHTML = '';
+  progressEl.textContent = '';
+  saveAllBtn.style.display = 'none';
   dlAllBtn.style.display = 'none';
   clearBtn.style.display = 'none';
   processBtn.disabled = true;
   fileInput.value = '';
-  dropZone.querySelector('.big').textContent = '📥 把圖片拖到這裡，或點一下選擇檔案';
+  dropZone.querySelector('.big').textContent = '📥 點一下選圖，或把相片拖進來';
 });
 
+/* ---------- 主流程 ---------- */
 processBtn.addEventListener('click', async () => {
   const defs = activeSizeDefs();
   if(!defs.length){ alert('至少勾一個尺寸'); return; }
   resultsEl.innerHTML = '';
+  producedLinks.forEach(u => URL.revokeObjectURL(u));
+  producedLinks = [];
+  producedFiles = [];
   processBtn.disabled = true;
   processBtn.textContent = '裁切中…';
 
+  let done = 0;
+  const total = queuedFiles.length;
+
   for(const file of queuedFiles){
-    const img = await loadImage(file);
+    done++;
+    progressEl.textContent = `處理中… 第 ${done}／${total} 張：${file.name}`;
+    await nextFrame();
+
     const item = document.createElement('div');
     item.className = 'item';
-    const baseName = file.name.replace(/\.[^.]+$/, '');
-    item.innerHTML = `<div class="item-head"><div class="name">${file.name}</div></div>`;
+    const baseName = (file.name || 'image').replace(/\.[^.]+$/, '');
+    const wasHeic = /hei[cf]/i.test(file.type || '') || /\.hei[cf]$/i.test(file.name || '');
+
+    const head = document.createElement('div');
+    head.className = 'item-head';
+    const nameEl = document.createElement('div');
+    nameEl.className = 'name';
+    nameEl.textContent = file.name || '（未命名圖片）';
+    head.appendChild(nameEl);
+    item.appendChild(head);
+    resultsEl.appendChild(item);
+
+    let src;
+    try{
+      src = await loadImage(file);
+    }catch(err){
+      const b = document.createElement('span');
+      b.className = 'badge err';
+      b.textContent = wasHeic ? '這台裝置讀不了 HEIC，請改用 iPhone 開這頁' : '這個檔讀不出來';
+      head.appendChild(b);
+      continue;
+    }
+
+    const shrunk = src.width * src.height > MAX_SRC_PIXELS;
+    const img = shrunk ? downscale(src, MAX_SRC_PIXELS) : src;
+
+    if(wasHeic){
+      const b = document.createElement('span');
+      b.className = 'badge';
+      b.textContent = 'HEIC → JPG 已轉檔';
+      head.appendChild(b);
+    }
+    if(shrunk){
+      const b = document.createElement('span');
+      b.className = 'badge warn';
+      b.textContent = `原圖過大已縮至 ${img.width}×${img.height}`;
+      head.appendChild(b);
+    }
+
     const outs = document.createElement('div');
     outs.className = 'outs';
     item.appendChild(outs);
-    resultsEl.appendChild(item);
+
+    const itemFiles = [];
 
     for(const def of defs){
       const mode = currentMode();
       const enhance = document.getElementById('hdrToggle').checked;
-      const canvas = mode === 'contain'
-        ? containFit(img, def.w, def.h, enhance, 'blur')
-        : coverCrop(img, def.w, def.h, enhance);
+      const tw = def.passthrough ? img.width : def.w;
+      const th = def.passthrough ? img.height : def.h;
+
+      let canvas;
+      if(def.passthrough){
+        canvas = passthrough(img, enhance);
+      } else {
+        canvas = mode === 'contain'
+          ? containFit(img, tw, th, enhance)
+          : coverCrop(img, tw, th, enhance);
+      }
+
       const blob = await new Promise(res => canvas.toBlob(res, 'image/jpeg', 0.95));
+      if(!blob) continue;
       const url = URL.createObjectURL(blob);
       producedLinks.push(url);
 
+      const modeTag = (def.passthrough || mode === 'contain') ? '' : '_滿版裁切';
+      const fileName = `${baseName}_${def.key}_${tw}x${th}${modeTag}.jpg`;
+      const outFile = new File([blob], fileName, {type:'image/jpeg'});
+      producedFiles.push(outFile);
+      itemFiles.push(outFile);
+
       const outEl = document.createElement('div');
       outEl.className = 'out';
-      const previewCanvas = document.createElement('canvas');
-      const ratio = Math.min(120/def.w, 120/def.h);
-      previewCanvas.width = def.w*ratio; previewCanvas.height = def.h*ratio;
-      previewCanvas.getContext('2d').drawImage(canvas, 0,0, previewCanvas.width, previewCanvas.height);
 
-      const modeTag = mode === 'contain' ? '' : '_滿版裁切';
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${baseName}_${def.key}_${def.w}x${def.h}${modeTag}.jpg`;
-      a.textContent = '下載';
+      const previewCanvas = document.createElement('canvas');
+      const ratio = Math.min(130/tw, 130/th, 1);
+      previewCanvas.width = Math.max(1, Math.round(tw*ratio));
+      previewCanvas.height = Math.max(1, Math.round(th*ratio));
+      previewCanvas.getContext('2d').drawImage(canvas, 0,0, previewCanvas.width, previewCanvas.height);
 
       const label = document.createElement('div');
       label.className = 'label';
-      label.textContent = `${def.label}`;
+      label.textContent = def.passthrough ? `原尺寸 ${tw}×${th}` : def.label;
 
       outEl.appendChild(previewCanvas);
       outEl.appendChild(label);
-      outEl.appendChild(a);
-      // iPhone／Android：走系統分享面板直接「儲存影像」進相簿
-      const shareFile = new File([blob], a.download, {type:'image/jpeg'});
-      if(navigator.canShare && navigator.canShare({files:[shareFile]})){
-        const s = document.createElement('a');
-        s.href = 'javascript:void(0)';
-        s.textContent = '📤 存到手機';
+
+      // iPhone／Android：走系統分享面板才存得進相簿（<a download> 在 iOS 只會另開分頁）
+      if(canShareFiles([outFile])){
+        const s = document.createElement('span');
+        s.className = 'act primary';
+        s.textContent = '📤 存到相簿';
         s.addEventListener('click', () => {
-          navigator.share({files:[shareFile]}).catch(()=>{});
+          navigator.share({files:[outFile]}).catch(()=>{});
         });
         outEl.appendChild(s);
       }
+      const a = document.createElement('a');
+      a.className = 'act';
+      a.href = url;
+      a.download = fileName;
+      a.textContent = '下載';
+      outEl.appendChild(a);
+
       outs.appendChild(outEl);
+      await nextFrame();
+    }
+
+    if(itemFiles.length > 1 && canShareFiles(itemFiles)){
+      const btn = document.createElement('div');
+      btn.className = 'item-save';
+      btn.textContent = `📤 這張的 ${itemFiles.length} 個尺寸一起存到相簿`;
+      btn.addEventListener('click', () => {
+        navigator.share({files:itemFiles}).catch(()=>{});
+      });
+      item.appendChild(btn);
     }
   }
 
+  progressEl.textContent = `✅ 完成，共產出 ${producedFiles.length} 張。`;
   processBtn.textContent = '開始裁切';
   processBtn.disabled = false;
-  dlAllBtn.style.display = 'inline-block';
+  if(producedFiles.length && canShareFiles(producedFiles)){
+    saveAllBtn.style.display = 'inline-block';
+  }
+  dlAllBtn.style.display = IS_IOS ? 'none' : 'inline-block';
+});
+
+function canShareFiles(files){
+  try{
+    return !!(navigator.canShare && navigator.share && navigator.canShare({files}));
+  }catch(e){ return false; }
+}
+function nextFrame(){
+  return new Promise(r => requestAnimationFrame(() => setTimeout(r, 0)));
+}
+
+saveAllBtn.addEventListener('click', () => {
+  if(!producedFiles.length) return;
+  navigator.share({files:producedFiles}).catch(() => {
+    progressEl.textContent = '一次存太多張手機會擋，改用每張卡片自己的「存到相簿」逐一存。';
+  });
 });
 
 dlAllBtn.addEventListener('click', () => {
@@ -258,13 +458,72 @@ dlAllBtn.addEventListener('click', () => {
   links.forEach((a, i) => setTimeout(() => a.click(), i*150));
 });
 
+/* ---------- 讀圖：HEIC 走 Safari 系統解碼，失敗再退 createImageBitmap ---------- */
 function loadImage(file){
   return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
     const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = reject;
-    img.src = URL.createObjectURL(file);
+    img.onload = () => { resolve(img); };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      if(typeof createImageBitmap === 'function'){
+        createImageBitmap(file, {imageOrientation:'from-image'}).then(resolve).catch(reject);
+      } else {
+        reject(new Error('decode failed'));
+      }
+    };
+    img.src = url;
   });
+}
+
+// 超過裝置能安全處理的像素數就先等比縮小，避免 iOS 畫出全黑圖
+function downscale(img, maxPixels){
+  const scale = Math.sqrt(maxPixels / (img.width * img.height));
+  const c = document.createElement('canvas');
+  c.width = Math.max(1, Math.round(img.width * scale));
+  c.height = Math.max(1, Math.round(img.height * scale));
+  const ctx = c.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(img, 0, 0, c.width, c.height);
+  return c;
+}
+
+/* ---------- 增豔：有 ctx.filter 就用，沒有就自己算像素 ---------- */
+const ENH = {brightness:1.10, contrast:1.15, saturate:1.25};
+function applyEnhance(ctx, w, h){
+  if(SUPPORTS_CTX_FILTER) return;
+  let data;
+  try{ data = ctx.getImageData(0, 0, w, h); }catch(e){ return; }
+  const d = data.data;
+  const {brightness:br, contrast:co, saturate:sa} = ENH;
+  for(let i = 0; i < d.length; i += 4){
+    let r = d[i] * br, g = d[i+1] * br, b = d[i+2] * br;
+    r = (r - 128) * co + 128; g = (g - 128) * co + 128; b = (b - 128) * co + 128;
+    const gray = 0.2126*r + 0.7152*g + 0.0722*b;
+    r = gray + (r - gray) * sa; g = gray + (g - gray) * sa; b = gray + (b - gray) * sa;
+    d[i]   = r < 0 ? 0 : r > 255 ? 255 : r;
+    d[i+1] = g < 0 ? 0 : g > 255 ? 255 : g;
+    d[i+2] = b < 0 ? 0 : b > 255 ? 255 : b;
+  }
+  ctx.putImageData(data, 0, 0);
+}
+function enhanceFilterString(){
+  return `brightness(${ENH.brightness}) contrast(${ENH.contrast}) saturate(${ENH.saturate})`;
+}
+
+/* ---------- 原尺寸轉檔：不裁切、不縮放，只換成 JPG ---------- */
+function passthrough(img, enhance){
+  const canvas = document.createElement('canvas');
+  canvas.width = img.width; canvas.height = img.height;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  if(enhance && SUPPORTS_CTX_FILTER) ctx.filter = enhanceFilterString();
+  ctx.drawImage(img, 0, 0);
+  ctx.filter = 'none';
+  if(enhance) applyEnhance(ctx, canvas.width, canvas.height);
+  return canvas;
 }
 
 // 等比例填滿裁切（cover），置中裁掉多餘部分，不變形
@@ -291,12 +550,10 @@ function coverCrop(img, targetW, targetH, enhance){
     sy = (img.height - sh) / 2;
   }
 
-  if(enhance){
-    // 拉曝光/對比/飽和度，模擬HDR效果：暗部拉起、色彩更飽滿、細節更立體
-    ctx.filter = 'brightness(1.10) contrast(1.15) saturate(1.25)';
-  }
+  if(enhance && SUPPORTS_CTX_FILTER) ctx.filter = enhanceFilterString();
   ctx.drawImage(img, sx, sy, sw, sh, 0, 0, targetW, targetH);
   ctx.filter = 'none';
+  if(enhance) applyEnhance(ctx, targetW, targetH);
   return canvas;
 }
 
@@ -308,10 +565,21 @@ function containFit(img, targetW, targetH, enhance){
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
 
-  const bg = coverCrop(img, targetW, targetH, false);
-  ctx.filter = 'blur(28px) brightness(0.7)';
-  ctx.drawImage(bg, -24, -24, targetW + 48, targetH + 48);
+  // 先畫到極小張再放大回來＝天然模糊，舊 Safari 沒有 ctx.filter 也一樣有底
+  const tiny = document.createElement('canvas');
+  tiny.width = 40; tiny.height = Math.max(1, Math.round(40 * targetH / targetW));
+  const tctx = tiny.getContext('2d');
+  tctx.imageSmoothingEnabled = true;
+  tctx.imageSmoothingQuality = 'high';
+  tctx.drawImage(coverCrop(img, targetW, targetH, false), 0, 0, tiny.width, tiny.height);
+
+  if(SUPPORTS_CTX_FILTER) ctx.filter = 'blur(18px) brightness(0.7)';
+  ctx.drawImage(tiny, -24, -24, targetW + 48, targetH + 48);
   ctx.filter = 'none';
+  if(!SUPPORTS_CTX_FILTER){
+    ctx.fillStyle = 'rgba(0,0,0,0.30)';
+    ctx.fillRect(0, 0, targetW, targetH);
+  }
 
   const srcRatio = img.width / img.height;
   const targetRatio = targetW / targetH;
@@ -324,11 +592,32 @@ function containFit(img, targetW, targetH, enhance){
     dx = (targetW - dw) / 2; dy = 0;
   }
 
-  if(enhance){
-    ctx.filter = 'brightness(1.10) contrast(1.15) saturate(1.25)';
-  }
+  if(enhance && SUPPORTS_CTX_FILTER) ctx.filter = enhanceFilterString();
   ctx.drawImage(img, 0, 0, img.width, img.height, dx, dy, dw, dh);
   ctx.filter = 'none';
+  if(enhance && !SUPPORTS_CTX_FILTER){
+    // 只增豔主圖區域，模糊底維持原樣
+    const x = Math.max(0, Math.floor(dx)), y = Math.max(0, Math.floor(dy));
+    const w = Math.min(targetW - x, Math.ceil(dw)), h = Math.min(targetH - y, Math.ceil(dh));
+    if(w > 0 && h > 0){
+      let data;
+      try{ data = ctx.getImageData(x, y, w, h); }catch(e){ data = null; }
+      if(data){
+        const d = data.data;
+        const {brightness:br, contrast:co, saturate:sa} = ENH;
+        for(let i = 0; i < d.length; i += 4){
+          let r = d[i]*br, g = d[i+1]*br, b = d[i+2]*br;
+          r = (r-128)*co+128; g = (g-128)*co+128; b = (b-128)*co+128;
+          const gray = 0.2126*r + 0.7152*g + 0.0722*b;
+          r = gray + (r-gray)*sa; g = gray + (g-gray)*sa; b = gray + (b-gray)*sa;
+          d[i]   = r<0?0:r>255?255:r;
+          d[i+1] = g<0?0:g>255?255:g;
+          d[i+2] = b<0?0:b>255?255:b;
+        }
+        ctx.putImageData(data, x, y);
+      }
+    }
+  }
   return canvas;
 }
 </script>
