@@ -446,8 +446,11 @@ function canShareFiles(files){
     return !!(navigator.canShare && navigator.share && navigator.canShare({files}));
   }catch(e){ return false; }
 }
+// 讓出主執行緒好讓進度文字畫出來。
+// 🔴 這裡不能用 requestAnimationFrame：手機切去別的 App 或螢幕鎖住時分頁變成
+// hidden，rAF 就完全不再觸發，整個裁切流程會停在半路且不報錯（實測會卡死）。
 function nextFrame(){
-  return new Promise(r => requestAnimationFrame(() => setTimeout(r, 0)));
+  return new Promise(r => setTimeout(r, 0));
 }
 
 saveAllBtn.addEventListener('click', () => {
