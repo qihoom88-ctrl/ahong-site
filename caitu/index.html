@@ -321,9 +321,11 @@ processBtn.addEventListener('click', async () => {
     item.appendChild(head);
     resultsEl.appendChild(item);
 
-    let src;
+    let src, release = () => {};
     try{
-      src = await loadImage(file);
+      const loaded = await loadImage(file);
+      src = loaded.src;
+      release = loaded.release;
     }catch(err){
       const b = document.createElement('span');
       b.className = 'badge err';
@@ -417,6 +419,8 @@ processBtn.addEventListener('click', async () => {
       await nextFrame();
     }
 
+    release();
+
     if(itemFiles.length > 1 && canShareFiles(itemFiles)){
       const btn = document.createElement('div');
       btn.className = 'item-save';
@@ -459,15 +463,21 @@ dlAllBtn.addEventListener('click', () => {
 });
 
 /* ---------- 讀圖：HEIC 走 Safari 系統解碼，失敗再退 createImageBitmap ---------- */
+// 回傳 {src, release}：release 一定要在這張處理完後呼叫，
+// 否則每張原圖的解碼結果都留在記憶體裡，手機丟十幾張就會整個分頁被系統砍掉
 function loadImage(file){
   return new Promise((resolve, reject) => {
     const url = URL.createObjectURL(file);
     const img = new Image();
-    img.onload = () => { resolve(img); };
+    img.onload = () => {
+      resolve({src: img, release: () => URL.revokeObjectURL(url)});
+    };
     img.onerror = () => {
       URL.revokeObjectURL(url);
       if(typeof createImageBitmap === 'function'){
-        createImageBitmap(file, {imageOrientation:'from-image'}).then(resolve).catch(reject);
+        createImageBitmap(file, {imageOrientation:'from-image'})
+          .then(bmp => resolve({src: bmp, release: () => { try{ bmp.close(); }catch(e){} }}))
+          .catch(reject);
       } else {
         reject(new Error('decode failed'));
       }
