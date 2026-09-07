@@ -34,6 +34,8 @@ body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;ba
 .video-card{margin:18px 0 6px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:#000;position:relative}
 .video-card video{width:100%;display:block;aspect-ratio:9/13;object-fit:cover}
 .video-note{font-size:.8rem;color:var(--muted);margin:8px 2px 0}
+.video-card.full video{aspect-ratio:9/16;object-fit:contain}
+.hardcore-sub{font-size:.95rem;color:var(--muted);margin:-2px 0 4px}
 .vlabel{display:flex;align-items:center;gap:8px;margin:22px 2px 8px;font-weight:800;font-size:.92rem;color:var(--trust)}
 .vlabel .pill{background:var(--warm);color:#fff;font-size:.72rem;font-weight:900;padding:2px 9px;border-radius:999px;letter-spacing:.05em}
 .vlabel .sec{color:var(--muted);font-weight:600;font-size:.8rem;margin-left:auto}
@@ -182,6 +184,7 @@ details.acc[open] summary .ac{transform:rotate(135deg);background:var(--warm);co
 details.acc .acbody{padding:0 15px 14px}
 details.acc .acbody .sec{margin-top:0}
 details.acc .acbody section{margin:0}
+.tl{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:14px;padding:12px 15px;margin-bottom:11px;font-size:.95rem;line-height:1.85;color:var(--ink);overflow-wrap:anywhere}
 /* ===== 競品對照看板（2026-09-02 規格：三軸逐項功能性對照，不給總分、不出現單坪數字） ===== */
 .cpb{display:flex;flex-direction:column;gap:12px;margin-top:4px}
 .cpb-ax{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px}
@@ -387,14 +390,32 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </div>
   <p class="video-note">每一頁都是我本人先講一次。看完影片再往下，下面的東西你想看哪個就點哪個。</p>
 
+  <!-- ③ 硬核簡報（阿宏提供，40-0908-01 加入；母帶：D:/影片成品母帶/台北豪景_硬核簡報68秒_母帶.mp4，8,591,784 bytes，未重壓） -->
+  <section class="sec">
+    <div class="tag">先看這支</div>
+    <h2>60 秒看懂這間</h2>
+    <p class="hardcore-sub">先看這支再往下滑，下面的字是給想確認細節的人。</p>
+    <div class="vlabel"><span class="pill">硬核簡報</span>公設・整理費・貸款一支講完<span class="sec">68 秒</span></div>
+    <div class="video-card full">
+      <video controls playsinline preload="metadata" poster="a/poster68.jpg">
+        <source src="a/web_video68_hardcore.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="video-note">片中依序講：誰不適合買、公設 14.6%、平面圖、管線、工程報價、貸款預審、謄本主要用途、裝修材料——全是手繪示意圖，不是本案現況。實際格局看下面「格局與方位」，整理費怎麼拆看「那些東西誰要收」。</p>
+    <p class="video-note">影片內費用數字以本頁費用表為準。</p>
+  </section>
+
   <div class="outline">
     <b>下面這些，你想看哪個就點哪個</b>
     <p>我把這間房子拆成 <em>11 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
     基本資料、影片、格局、生活圈、競品對照、優點、錢怎麼算，全部都在。看完想進一步，最下面直接約我。<br><b>不知道從哪看起，就先點第一張「這間適合誰」</b>——30 秒就知道要不要往下。</p>
   </div>
 
-  <details class="acc">
-    <summary><span class="ai">🎯</span><span class="at"><b>這間適合誰</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎯 這間適合誰</h2>
+    <div class="tl"><p>適合：要四房、預算壓在 1100 萬上下、受不了公設比三成起跳、家裡有長輩或小小孩、願意自己整理</p><p>先看別間：一定要車位、要買了就能住不想碰整理、要的是現在就能搭的捷運</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 適合誰 -->
   <section class="sec">
@@ -420,10 +441,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
 
-<details class="acc">
-    <summary><span class="ai">📋</span><span class="at"><b>物件基本資料</b><i>開價・坪數・格局・座向・樓層屋齡・車位・地點，13 項一次看完</i></span><span class="ac">＋</span></summary>
+<section class="sec">
+    <h2>📋 物件基本資料</h2>
+    <div class="tl"><p>開價 <b>1080 萬</b>，開價不等於成交價</p><p><b>36.08 坪</b>・4 房 2 廳 2 衛・朝南（依委託資料）・公設比 14.6%</p><p>2 樓有電梯・屋齡 32 年・無車位・管理費 1,800 元／月</p><p>樹林區保安街二段，未來捷運 LG19 站約 700 公尺，興建中尚未通車</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>開價・坪數・格局・座向・樓層屋齡・車位・地點，13 項一次看完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 建案級完整規格表 -->
   <section class="sec">
@@ -449,10 +474,12 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">🎬</span><span class="at"><b>室內現況影片</b><i>73 秒一鏡走完，沒有配樂沒有調色，現況直球</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎬 室內現況影片</h2>
+    <div class="tl"><p>73 秒一鏡走完，沒有配樂沒有調色，現況直球</p></div>
     <div class="acbody">
   <!-- ② 物件現況實拍 -->
   <div class="vlabel"><span class="pill">再看房子</span>室內現況一鏡走完<span class="sec">73 秒</span></div>
@@ -463,11 +490,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </div>
   <p class="video-note">現況實拍，沒有配樂、沒有調色、沒有修飾。</p>
     </div>
-  </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">💭</span><span class="at"><b>那些東西誰要收</b><i>看完影片心裡那四個問題，我先回答</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>💭 那些東西誰要收</h2>
+    <div class="tl"><p>屋內的東西由屋主清空後點交，清空與清運是屋主的義務，不是你的預算</p><p>你看到的舊幾乎都是表面；整理費拆三層估，只有「能不能住人」這層入住前一定要花；先驗再估，回頭談價</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>看完影片心裡那四個問題，我先回答</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 接住看完影片的焦慮：內心台詞→反轉 -->
   <section class="sec">
@@ -508,10 +538,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>缺點與抗性拆解</b><i>四個缺點，事實・誰負責・多少錢・下一步，一次講完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 缺點與抗性拆解</h2>
+    <div class="tl"><p><b>屋況需要大整理</b>——公開行情 17.8～39.1 萬，估價我幫你約兩家比對</p><p><b>屋內滿滿東西</b>——由屋主清空後點交，你不用花錢</p><p><b>2 樓</b>——管道間回堵紀錄帶看前我先問管委會；重大瑕疵（漏水這類）責任在賣方</p><p><b>沒車位</b>——這是交易條件不是瑕疵，社區租位帶看時現場問</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>四個缺點，事實・誰負責・多少錢・下一步，一次講完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 誰負責、誰去做（第一階答案版）：五缺點x四件（事實/誰負責/多少錢/下一步）x行動句 -->
   <section class="sec">
@@ -529,10 +563,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">📐</span><span class="at"><b>格局與方位</b><i>四房怎麼配、座向朝哪、雙衛雙花台的位置</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📐 格局與方位</h2>
+    <div class="tl"><p>主臥與三房分開，客餐廚同一動線，兩套衛浴都有窗，座向朝南（依委託資料）</p><p>格局圖是委託方提供的示意圖，實際格局與座向以現場、地政謄本為準</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>四房怎麼配、座向朝哪、雙衛雙花台的位置</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 格局與方位 -->
   <section class="sec">
@@ -544,13 +582,17 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
 
   
 
 
-  <details class="acc">
-    <summary><span class="ai">📊</span><span class="at"><b>競品對照看板</b><i>價格・生活圈・工作圈三軸，逐項攤開讓你自己比</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📊 競品對照看板</h2>
+    <div class="tl"><p><b>價格</b>：同社區同樣 36.08 坪，113 年 4 月成交 1200 萬，本案開價 1080 萬，差距換的是屋況要自己整理與樓層差異；開價不等於成交價</p><p><b>生活圈</b>：八項裡 4 項走得到——市場約 300 公尺、國中約 400 公尺、公園約 500 公尺、夜市約 900 公尺；大採買要出門</p><p><b>工作圈</b>：西門、板橋府中、亞東醫院、迴龍四個就業區公車免轉乘直達，站牌約 300 公尺</p><p>樹林火車站實測約 2,700 公尺，不能算近；同區其他在售案還沒逐案查，不做價格評價</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>價格・生活圈・工作圈三軸，逐項攤開讓你自己比</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 競品分析看板（2026-09-02 阿宏規格）：三軸逐項功能性顯示，不給總分、不出現單坪數字 -->
   <section class="sec">
@@ -734,10 +776,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </div>
 </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">✨</span><span class="at"><b>這間強在哪</b><i>三件別間換不到的事，以及入住後日子會長什麼樣</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>✨ 這間強在哪</h2>
+    <div class="tl"><p>公設比只有 <b>14.6%</b>，同坪數新大樓普遍三成起跳</p><p><b>2 樓＋電梯</b>：停電照樣回得了家，嬰兒車與輪椅直接進門</p><p><b>四個房間都有對外窗</b>，沒有暗房；主臥與三房分開，兩套衛浴都有窗</p><p>屋況要整理，但也正因為要整理，你不用先付別人裝潢的錢，格局和用料照你家的樣子來</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>三件別間換不到的事，以及入住後日子會長什麼樣</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 優點：先給購買慾望 -->
   <section class="sec">
@@ -776,10 +822,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
 
-      <details class="acc">
-    <summary><span class="ai">💰</span><span class="at"><b>錢夠不夠</b><i>四種貸款成數的首付與月付，你自己對照</i></span><span class="ac">＋</span></summary>
+      <section class="sec">
+    <h2>💰 錢夠不夠</h2>
+    <div class="tl"><p>總價 1080 萬、30 年期、利率 2.435%：貸 7 成首付 <b>324 萬</b>、月付 <b>29,616 元</b>；貸 8 成首付 <b>216 萬</b>、月付 <b>33,847 元</b></p><p>這些是預設值不是你的條件，實際以銀行核准為準；出價前先做貸款預審，預審不用錢也不影響信用</p><p>首付之外還有契稅、印花稅、代書費、規費、保險與整理費，上表沒算；整理費公開行情約 <b>17.8～39.1 萬</b></p><p>符合青安 3.0 的話：前 3 年利率 1.775%，貸 864 萬寬限期內月付息約 12,780 元；青安認的是謄本上的建物主要用途，帶看前我把謄本調出來跟你對</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>四種貸款成數的首付與月付，你自己對照</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 首付與月付：讓他自己算錢夠不夠 -->
   <section class="sec">
@@ -838,10 +888,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">❓</span><span class="at"><b>粉絲常問</b><i>整理費・議價・車位・貸款・預約，五題</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>❓ 粉絲常問</h2>
+    <div class="tl"><p>整理費約看屋時當面算；開價不等於成交價，我不在這頁暗示可議幅度</p><p>沒車位：社區車位能不能租，帶看前先問管委會；貸幾成先做預審；看屋要先預約，屋主自住中</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>整理費・議價・車位・貸款・預約，五題</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 粉絲常問 Q&A -->
   <section class="sec">
@@ -855,6 +909,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
 
   <!-- 阿宏的結論 -->
