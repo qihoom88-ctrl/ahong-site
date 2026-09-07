@@ -182,6 +182,7 @@ details.acc[open] summary .ac{transform:rotate(135deg);background:var(--warm);co
 details.acc .acbody{padding:0 15px 14px}
 details.acc .acbody .sec{margin-top:0}
 details.acc .acbody section{margin:0}
+.tl{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:14px;padding:12px 15px;margin-bottom:11px;font-size:.95rem;line-height:1.85;color:var(--ink);overflow-wrap:anywhere}
 /* ===== 大綱導言 ===== */
 .outline{background:var(--soft-trust);border-radius:var(--radius);padding:18px;margin:20px 0 14px}
 .outline b{display:block;font-size:1.05rem;font-weight:900;color:var(--trust);margin-bottom:6px}
@@ -411,13 +412,16 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <div class="outline">
     <b>下面這些，你想看哪個就點哪個</b>
-    <p>我把這間房子拆成 <em>8 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過。<br>
+    <p>我把這間房子拆成 <em>11 段</em>，每段先給你短版——<em>想看細節再點「看完整版」</em>，不想看的就直接跳過。<br>
     基本資料、屋況實拍、影片、格局、生活圈、錢怎麼算，全部都在。<br>
     <b>不知道從哪看起，就先點第一張「這間適合誰」</b>——30 秒就知道要不要往下。</p>
   </div>
 
-  <details class="acc">
-    <summary><span class="ai">🎯</span><span class="at"><b>這間適合誰</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎯 這間適合誰</h2>
+    <div class="tl"><p>適合：2000 萬內要三房＋車位、通勤靠捷運三峽站、要屋況新、要邊間三面採光、要有大廳中庭遊戲室、要看空屋</p><p>先看別間：車高車重沒確認不敢下訂、一定要中間樓層、朝西南日照不想處理、管理費 2,820 元偏高</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">先看合不合</div>
@@ -444,9 +448,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📋</span><span class="at"><b>物件基本資料</b><i>開價・坪數・格局・樓層・車位・管理費，11 項一次看完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📋 物件基本資料</h2>
+    <div class="tl"><p>開價 <b>1998 萬</b>，含 B3-3 坡道平面車位，開價不等於成交價</p><p>登記 <b>45.3 坪</b>＝房 35.99＋車位 9.31，分開看・3 房 2 廳 2 衛，房間皆有對外窗（依委託資料）</p><p>12 樓／共 12 層・邊間・屋齡 5 年・朝西南（依委託資料）・管理費 2,820 元／月</p><p>車位平面不是機械，車高車重沒有書面數字，開你的車實測；現況空屋；捷運三峽站約 700 公尺；三峽區民生街</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>開價・坪數・格局・樓層・車位・管理費，11 項一次看完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <table class="spec">
         <tr><th>開價</th><td><b>1998 萬</b><small>含 B3-3 坡道平面車位。開價不等於成交價，實際成交金額由買賣雙方議定。</small></td></tr>
@@ -463,9 +471,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </table>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🚇</span><span class="at"><b>捷運旁還配得到車位</b><i>這個總價帶最難湊齊的三件事</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🚇 捷運旁還配得到車位</h2>
+    <div class="tl"><p>捷運站附近三房常見「有房沒車位」——這間 1998 萬三房與 B3-3 坡道平面車位一起買到，屋齡只有 5 年</p><p>捷運三峽站約 700 公尺（依 Google 地圖）；現況空屋，屋況接近可以直接規劃</p><p>B3-3 平面不是機械，看屋當天我陪你試停；12 樓邊間三面採光，三房都有對外窗</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>這個總價帶最難湊齊的三件事</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">這間的引擎</div>
@@ -484,9 +496,11 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🎬</span><span class="at"><b>影片</b><i>現場實拍，沒有虛擬佈置沒有修圖</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎬 影片</h2>
+    <div class="tl"><p>現場實拍，沒有虛擬佈置沒有修圖</p></div>
     <div class="acbody">
       <section class="sec">
         <div class="tag">影片</div>
@@ -499,10 +513,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
         <p class="video-note">29 秒社群版無人開箱剪輯，畫面全部是現場實拍，沒有虛擬佈置、沒有修圖，字卡是剪輯留下的。<br>這不是逐間走完的完整動線影片——空屋看屋好約，想逐間看細節，約時間到現場比什麼影片都準。</p>
       </section>
     </div>
-  </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🛏</span><span class="at"><b>屋況實拍</b><i>空屋現況，照片全部從影片截出來</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🛏 屋況實拍</h2>
+    <div class="tl"><p>三房皆有對外窗、一樓交誼廳、中庭花園（人車分離）、兒童遊戲室，全部從影片截出，沒修圖沒虛擬佈置</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>空屋現況，照片全部從影片截出來</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">屋況實拍</div>
@@ -520,9 +537,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📐</span><span class="at"><b>格局圖</b><i>三房怎麼配，動線自己看</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📐 格局圖</h2>
+    <div class="tl"><p>格局圖來源住商售屋資料，原文標註「僅供參考，仍以現況為主」，最終以地政謄本為準</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>三房怎麼配，動線自己看</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">格局</div>
@@ -532,9 +553,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🗺</span><span class="at"><b>生活圈</b><i>走出社區有什麼</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🗺 生活圈</h2>
+    <div class="tl"><p>捷運三峽站約 700 公尺（依 Google 地圖）；北大國小、三峽國中；龍埔公園</p><p>社區有交誼廳、中庭花園、兒童遊戲室；200 公尺嫌惡設施實勘尚未完成</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>走出社區有什麼</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">生活圈</div>
@@ -552,10 +577,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">📊</span><span class="at"><b>競品對照看板</b><i>物件價格・工作圈逐項攤開，用同一把尺讓你自己比</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📊 競品對照看板</h2>
+    <div class="tl"><p><b>價格</b>：45.3 坪裡房屋 35.99 坪、車位 9.31 坪——分開比，只比總坪會失真；本頁不列每坪單價</p><p><b>工作圈</b>：捷運三峽站約 700 公尺，在 1,000 公尺門檻內</p><p>同社區逐筆成交紀錄內政部實價登錄查得到；開價不等於成交價</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>物件價格・工作圈逐項攤開，用同一把尺讓你自己比</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 競品分析看板（2026-09-02 阿宏規格）：逐項功能性顯示，不給總分，只放查得到出處的項目 -->
   <section class="sec">
@@ -595,9 +624,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>這幾件誰負責</b><i>空屋現況留置物・重大瑕疵・裝修，三件的答案一行一個</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 這幾件誰負責</h2>
+    <div class="tl"><p><b>殘留物</b>——現況空屋，由屋主清空後點交，不進你的預算</p><p><b>漏水、海砂這類重大瑕疵</b>——責任在賣方，契約載明</p><p><b>一般裝修</b>——由你決定，不是必須花的錢，屋況已可直接住；先做貸款預審再出價</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>空屋現況留置物・重大瑕疵・裝修，三件的答案一行一個</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 這幾件誰負責（第一階答案版，2026-09-02 阿宏令）：一行一件，答案壓在破折號後面 -->
   <section class="sec">
@@ -615,10 +648,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>缺點與抗性拆解</b><i>12 樓頂層・朝西南・管理費・車位在 B3，四件事實與答案一行一個</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 缺點與抗性拆解</h2>
+    <div class="tl"><p><b>12 層之 12 樓</b>——頂層屋頂防水與夏季日曬現場確認，白天傍晚各走一次</p><p><b>朝西南</b>——下午日照是既有條件，自己站一次；遮陽窗簾屬裝修由你決定</p><p><b>管理費 2,820 元／月</b>（每坪 70 元、汽車 300 元）——固定持有成本不是瑕疵；收支報表與公共基金餘額我幫你要</p><p><b>車位在 B3</b>——坡道平面不用排隊；車高車重沒書面數字，開你的車實測；重大瑕疵責任在賣方</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>12 樓頂層・朝西南・管理費・車位在 B3，四件事實與答案一行一個</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 缺點我先講（第一階列點卡，2026-09-02 阿宏令 / 40-0907-01 落地）：一行一個缺點，答案壓在破折號後面；每一條都對得上帶看單欄位 -->
   <section class="sec">
@@ -636,10 +673,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">💰</span><span class="at"><b>錢夠不夠</b><i>三種成數的首付月付＋青安試算</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>💰 錢夠不夠</h2>
+    <div class="tl"><p>開價 1998 萬、30 年、2.435%：貸 7 成首付 <b>599 萬</b>、月付 <b>54,790 元</b>；貸 8 成首付 <b>400 萬</b>、月付 <b>62,617 元</b></p><p>估算不是核貸結果；寬限期內只繳息約一半，期滿才跳上去</p><p>符合青安 3.0：前 3 年 1.775%，以上限 1,000 萬計寬限期內月付息 14,792 元；8 成 1,598.4 萬超過一般戶上限，超出部分另循銀行方案；青安認謄本上的建物主要用途</p><p>車位佔登記坪兩成，鑑價各家不同，先做貸款預審再出價；管理費、契稅、代書費、火險不在上表</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>三種成數的首付月付＋青安試算</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">錢的部分</div>
@@ -691,6 +732,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
   <div class="verdict">
     <div class="vh">🎙️ 最後，我的看法</div>

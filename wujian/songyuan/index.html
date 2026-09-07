@@ -182,6 +182,7 @@ details.acc[open] summary .ac{transform:rotate(135deg);background:var(--warm);co
 details.acc .acbody{padding:0 15px 14px}
 details.acc .acbody .sec{margin-top:0}
 details.acc .acbody section{margin:0}
+.tl{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:14px;padding:12px 15px;margin-bottom:11px;font-size:.95rem;line-height:1.85;color:var(--ink);overflow-wrap:anywhere}
 /* ===== 大綱導言 ===== */
 .outline{background:var(--soft-trust);border-radius:var(--radius);padding:18px;margin:20px 0 14px}
 .outline b{display:block;font-size:1.05rem;font-weight:900;color:var(--trust);margin-bottom:6px}
@@ -411,13 +412,16 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <div class="outline">
     <b>下面這些，你想看哪個就點哪個</b>
-    <p>我把這間房子拆成 <em>9 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過。<br>
+    <p>我把這間房子拆成 <em>12 段</em>，每段先給你短版——<em>想看細節再點「看完整版」</em>，不想看的就直接跳過。<br>
     基本資料、屋況實拍、影片、格局、生活圈、錢怎麼算，全部都在。<br>
     <b>不知道從哪看起，就先點第一張「這間適合誰」</b>——30 秒就知道要不要往下。</p>
   </div>
 
-  <details class="acc">
-    <summary><span class="ai">🎯</span><span class="at"><b>這間適合誰</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎯 這間適合誰</h2>
+    <div class="tl"><p>適合：三房兩衛都不要暗房；預算 1400 萬上下含一個車位；錢花在室內不追求大公設；要電梯不需要飯店式管理；接受 26 年屋齡願意驗屋</p><p>先看別間：車超過車高 1.5m 或車重 1800kg；一定要平面車位；只接受新成屋或飯店式大社區；要買在明顯低於同社區成交價</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">先看合不合</div>
@@ -444,9 +448,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📋</span><span class="at"><b>物件基本資料</b><i>總價・坪數・格局・樓層・車位・管理費，13 項一次看完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📋 物件基本資料</h2>
+    <div class="tl"><p>委託總價 <b>1398 萬</b>，含 B1 坡道機械車位一個；開價不等於成交價</p><p>登記 <b>43.14 坪</b>（主建 28.07＋附屬 2.70＋共有 7.43＋車位 4.94）・公設約 17%・土地持分 7.80 坪</p><p>3 房 2 廳 2 衛，三房皆有對外窗、獨立廚房有窗・6 樓／地上 7 層・每層 4 戶・社區 29 戶・屋齡 26 年・朝東</p><p>車位限車高 1.5m、車重 1800kg・管理費 1,864 元／月・現況空屋・三峽區和平街生活圈</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>總價・坪數・格局・樓層・車位・管理費，13 項一次看完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <table class="spec">
         <tr><th>委託總價</th><td><b>1398 萬</b><small>含 B1 坡道機械車位一個。2026-07-26 由原本的 1468 萬調整為現價。開價不等於成交價，實際成交金額由買賣雙方議定。</small></td></tr>
@@ -465,9 +473,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </table>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📏</span><span class="at"><b>43.14 坪怎麼拆</b><i>公設只佔約 17%，主建物 28.07 坪</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📏 43.14 坪怎麼拆</h2>
+    <div class="tl"><p>主建物 28.07 坪才是真正住得到的空間，共有 7.43 坪（約 17%），車位 4.94 坪另外算</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>公設只佔約 17%，主建物 28.07 坪</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">這間的引擎</div>
@@ -488,9 +500,11 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🎬</span><span class="at"><b>影片</b><i>1 分 14 秒現場實拍，空屋現況</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎬 影片</h2>
+    <div class="tl"><p>1 分 14 秒現場實拍，空屋現況</p></div>
     <div class="acbody">
       <section class="sec">
         <div class="tag">影片</div>
@@ -503,10 +517,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
         <p class="video-note">1 分 14 秒，<strong>現場實拍，沒有虛擬佈置、沒有修圖</strong>，空屋現況直接拍。<br>請留意：這個社區一層四戶，中間戶通常會有暗房——三間房、廚房、衛浴的開窗、走道寬度與房間尺度，帶看當天一間一間看最準；哪些留置物要清運，也是當天逐件列清單。想逐間走完整動線，跟我約時間，我陪你走一次。</p>
       </section>
     </div>
-  </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🛏</span><span class="at"><b>屋況實拍</b><i>空屋現況，照片沒有修</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🛏 屋況實拍</h2>
+    <div class="tl"><p>空屋，留有前手未搬走的少量家具與設備；照片沒有修，留置物看屋當天逐項列清單</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>空屋現況，照片沒有修</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">屋況實拍</div>
@@ -535,9 +552,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📐</span><span class="at"><b>格局圖</b><i>三房怎麼配，動線自己看</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📐 格局圖</h2>
+    <div class="tl"><p>客餐廳開放、廚房獨立連通前陽台、主臥在最裡面、兩套衛浴分開；示意圖，實際以現場與謄本為準</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>三房怎麼配，動線自己看</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">格局</div>
@@ -547,9 +568,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🚗</span><span class="at"><b>車位規格</b><i>現場告示牌我直接拍給你看</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🚗 車位規格</h2>
+    <div class="tl"><p>現場告示牌載明車長 5.0m、車寬 1.95m、車高 1.5m、車重 1800kg；看屋前先告訴我車款，我安排實車試停</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>現場告示牌我直接拍給你看</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">車位</div>
@@ -563,9 +588,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🗺</span><span class="at"><b>生活圈</b><i>走出社區有什麼</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🗺 生活圈</h2>
+    <div class="tl"><p>三峽國小・三峽國中約 400 公尺、三鶯線臺北大學站約 550 公尺；三峽老街、傳統市場、全聯在生活半徑內</p><p>周邊 200 公尺的嫌惡設施勘查尚未完成，查到什麼如實告訴你</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>走出社區有什麼</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">生活圈</div>
@@ -587,9 +616,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">💰</span><span class="at"><b>錢夠不夠</b><i>三種成數的首付月付＋青安試算</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>💰 錢夠不夠</h2>
+    <div class="tl"><p>總價 1398 萬、利率 2.435%、貸 30 年：7 成首付 <b>419 萬</b>，寬限期內 19,857 元／寬限期後 <b>38,337 元</b>；8 成首付 <b>280 萬</b>，22,694 元／<b>43,813 元</b></p><p>這是估算不是核貸結果，開價不等於成交價；寬限期結束後才跳到本息均攤的數字，用能長期負擔的那個判斷</p><p>每月還要加管理費 1,864 元與機械車位維保攤提；契稅、印花稅、代書費、規費、火險地震險與搬遷整理費另外抓</p><p>符合青安 3.0：前 3 年利率 1.775%，以上限 1,000 萬計寬限期內月付息 14,792 元；8 成 1,118.4 萬超過一般戶上限，超出部分另循其他方案；青安認謄本上的建物主要用途，帶看前我調謄本跟你對</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>三種成數的首付月付＋青安試算</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">錢的部分</div>
@@ -642,9 +675,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>缺點與抗性拆解</b><i>三個缺點，事實・誰負責・多少錢・下一步，一次講完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 缺點與抗性拆解</h2>
+    <div class="tl"><p><b>車位是 B1 坡道機械式，不是平面</b>——車高 1.5m、車重 1800kg 限制，看屋前先告訴我車款，實車試停我幫你安排</p><p><b>登記 43.14 坪裡有 4.94 坪是車位</b>——比價與出價一律用 38.20 坪算</p><p><b>社區只有 29 戶，管理費 1,864 元／月</b>——沒有大型公設與飯店式服務，換回公設只佔約 17%；涵蓋項目帶看當天在管理室問</p><p>重大瑕疵（漏水、海砂）責任歸屬在賣方</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>三個缺點，事實・誰負責・多少錢・下一步，一次講完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 缺點我先講（第一階列點卡，2026-09-02 阿宏令）：一行一個缺點，四件拆解壓在破折號後面；每一項出處為委託銷售資料欄位 -->
   <section class="sec">
@@ -661,9 +698,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>這幾件誰負責</b><i>前手留置物・重大瑕疵・裝修，三件的答案一行一個</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 這幾件誰負責</h2>
+    <div class="tl"><p>前手家具設備由屋主清空後點交；漏水、海砂責任在賣方；裝修由你決定；先做貸款預審再出價</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>前手留置物・重大瑕疵・裝修，三件的答案一行一個</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 這幾件誰負責（第一階答案版，2026-09-02 阿宏令）：一行一件，答案壓在破折號後面 -->
   <section class="sec">
@@ -681,9 +722,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📊</span><span class="at"><b>競品對照看板</b><i>生活圈・工作圈逐項攤開，用同一把尺讓你自己比</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📊 競品對照看板</h2>
+    <div class="tl"><p><b>生活圈</b>：三峽國小・三峽國中約 400 公尺走得到；老街、傳統市場、全聯依委託資料在生活半徑內</p><p><b>工作圈</b>：三鶯線臺北大學站約 550 公尺，軌道站走得到</p><p>同社區成交紀錄在內政部實價登錄查得到；開價不等於成交價，帶看當天攤給你對</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>生活圈・工作圈逐項攤開，用同一把尺讓你自己比</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 競品分析看板（2026-09-02 阿宏規格）：逐項功能性顯示，不給總分，只放查得到出處的項目 -->
   <section class="sec">
@@ -719,6 +764,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
   <div class="verdict">
     <div class="vh">🎙️ 最後，我的看法</div>

@@ -182,6 +182,7 @@ details.acc[open] summary .ac{transform:rotate(135deg);background:var(--warm);co
 details.acc .acbody{padding:0 15px 14px}
 details.acc .acbody .sec{margin-top:0}
 details.acc .acbody section{margin:0}
+.tl{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:14px;padding:12px 15px;margin-bottom:11px;font-size:.95rem;line-height:1.85;color:var(--ink);overflow-wrap:anywhere}
 /* ===== 大綱導言 ===== */
 .outline{background:var(--soft-trust);border-radius:var(--radius);padding:18px;margin:20px 0 14px}
 .outline b{display:block;font-size:1.05rem;font-weight:900;color:var(--trust);margin-bottom:6px}
@@ -393,13 +394,16 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <div class="outline">
     <b>下面這些，你想看哪個就點哪個</b>
-    <p>我把這間房子拆成 <em>8 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
+    <p>我把這間房子拆成 <em>11 段</em>，每段先給你短版——<em>想看細節再點「看完整版」</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
     零隔間怎麼用、空屋實拍、影片、格局、生活圈、錢怎麼算，全部都在。看完想進一步，最下面直接約我。<br>
     <b>不知道從哪看起，就先點第一張「這間適合誰」</b>——30 秒就知道要不要往下。</p>
   </div>
 
-  <details class="acc">
-    <summary><span class="ai">🎯</span><span class="at"><b>這間適合誰</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎯 這間適合誰</h2>
+    <div class="tl"><p>適合：想完全照自己想法規劃、正在準備成家、有裝潢預算不急著入住、想收租要彈性隔間、在意學區</p><p>先看別間：希望買了就直接入住沒有裝潢預算、等不了設計施工期、一定要電梯或車位</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">先看合不合</div>
@@ -425,9 +429,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📋</span><span class="at"><b>物件基本資料</b><i>總價・坪數・現況格局・座向・樓層・屋齡，11 項一次看完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📋 物件基本資料</h2>
+    <div class="tl"><p>委託總價 <b>1098 萬</b>，本案無車位，開價不等於成交價</p><p><b>31 坪</b>（主建物 25.35＋附屬 5.65）・現況格局全開放・1 衛，沒有任何隔間牆</p><p>3 樓／地上 4 層・每層 2 戶・無電梯・屋齡 43.8 年・座西北朝東南，前後雙陽台・路寬 5 米</p><p>現況空屋，白天傍晚都好約；樹林區國凱街</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>總價・坪數・現況格局・座向・樓層・屋齡，11 項一次看完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <table class="spec">
         <tr><th>委託總價</th><td><b>1098 萬</b><small>本案無車位。開價不等於成交價，實際成交金額由買賣雙方議定。</small></td></tr>
@@ -444,9 +452,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </table>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>31 坪零隔間</b><i>這間的引擎：格局不是別人決定的</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 31 坪零隔間</h2>
+    <div class="tl"><p>31 坪一面隔間牆都沒有，要怎麼隔自己說了算</p><p>沒有隔間也代表沒有拆除費；方正通風、前後雙陽台、每層只有 2 戶</p><p>但隔間、配電、給排水、廚衛管線與防水必須先估出金額——沒估就出價等於在猜；我代約兩家估</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>這間的引擎：格局不是別人決定的</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">這間的引擎</div>
@@ -461,9 +473,11 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🎬</span><span class="at"><b>影片</b><i>1 分 24 秒，現場實拍沒有虛擬佈置</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎬 影片</h2>
+    <div class="tl"><p>1 分 24 秒，現場實拍沒有虛擬佈置</p></div>
     <div class="acbody">
       <section class="sec">
         <div class="tag">影片</div>
@@ -477,10 +491,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
         這一支不是逐間走完的完整動線影片——想逐間看細節，跟我約時間到現場，我陪你一間一間走。</p>
       </section>
     </div>
-  </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🛏</span><span class="at"><b>空屋實拍</b><i>31 坪的縱深，一個角度一個角度拍給你</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🛏 空屋實拍</h2>
+    <div class="tl"><p>主視角、樑柱、對外窗、縱深、陽台、玄關，全部從影片截出，沒修圖沒虛擬佈置</p><p>另附 LG15 站區位示意（出入口預定地，官方尚未定案）</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>31 坪的縱深，一個角度一個角度拍給你</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">屋況實拍</div>
@@ -503,9 +520,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📐</span><span class="at"><b>格局圖</b><i>現況 0 房 1 廳 1 衛，你想怎麼隔</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📐 格局圖</h2>
+    <div class="tl"><p>現況全開放・1 衛，前後雙陽台（圖面標示既有增建鐵窗），座西北朝東南</p><p>格局圖未依比例及座向繪製，以地政謄本為準</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>現況 0 房 1 廳 1 衛，你想怎麼隔</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">格局</div>
@@ -516,9 +537,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🗺</span><span class="at"><b>生活圈</b><i>走出巷口有什麼</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🗺 生活圈</h2>
+    <div class="tl"><p>萬大線 LG15 站尚未通車（官方預定民國 120 年），不列步行距離；公車 847、852 大同國小站</p><p>彭福國小、樹林高中國中部；彭厝市場；彭福公園；對面建物施工中，白天傍晚各去感受一次</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>走出巷口有什麼</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">生活圈</div>
@@ -535,10 +560,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">📊</span><span class="at"><b>競品對照看板</b><i>物件價格逐項攤開，用同一把尺讓你自己比</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📊 競品對照看板</h2>
+    <div class="tl"><p><b>價格</b>：31 坪沒有一坪是公設；土地持分 13.26 坪是另一筆不算進去；本頁不列每坪單價</p><p>坪數依委託資料與地政謄本登載</p><p>同社區逐筆成交紀錄內政部實價登錄查得到；開價不等於成交價</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>物件價格逐項攤開，用同一把尺讓你自己比</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 競品分析看板（2026-09-02 阿宏規格）：逐項功能性顯示，不給總分，只放查得到出處的項目 -->
   <section class="sec">
@@ -567,9 +596,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>這幾件誰負責</b><i>空屋現況留置物・重大瑕疵・裝修，三件的答案一行一個</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 這幾件誰負責</h2>
+    <div class="tl"><p><b>殘留物</b>——現況空屋，由屋主清空後點交，不進你的預算</p><p><b>漏水、海砂這類重大瑕疵</b>——責任在賣方，契約載明</p><p><b>一般裝修</b>——隔到哪、規模多大你自己控制；預算看<a href="https://0930848000.com/xiushan/" style="color:var(--teal);font-weight:900">九個工種公開行情</a>；先做貸款預審再出價</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>空屋現況留置物・重大瑕疵・裝修，三件的答案一行一個</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 這幾件誰負責（第一階答案版，2026-09-02 阿宏令）：一行一件，答案壓在破折號後面 -->
   <section class="sec">
@@ -587,10 +620,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>缺點與抗性拆解</b><i>零隔間・沒車位・3 樓・5 米巷道，四件事實與答案一行一個</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 缺點與抗性拆解</h2>
+    <div class="tl"><p><b>一面隔間牆都沒有</b>——隔間、配電、給排水、防水必須先估出金額，沒估就出價等於在猜</p><p><b>沒車位</b>——交易條件不是瑕疵；月租車位帶看當天問到價</p><p><b>3 樓／4 層每層 2 戶</b>——動線單純，樓梯現場走一次</p><p><b>路寬 5 米</b>——裝潢期建材車與清運車先算進去；重大瑕疵責任在賣方</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>零隔間・沒車位・3 樓・5 米巷道，四件事實與答案一行一個</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 缺點我先講（第一階列點卡，2026-09-02 阿宏令 / 40-0907-01 落地）：一行一個缺點，答案壓在破折號後面；每一條都對得上帶看單欄位 -->
   <section class="sec">
@@ -608,10 +645,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">💰</span><span class="at"><b>錢夠不夠</b><i>三種成數的首付月付＋青安試算</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>💰 錢夠不夠</h2>
+    <div class="tl"><p>開價 1098 萬、30 年、2.435%：貸 7 成首付 <b>329.4 萬</b>、月付 <b>30,110 元</b>；貸 8 成首付 <b>219.6 萬</b>、月付 <b>34,411 元</b></p><p>估算不是核貸結果；寬限期內只繳息約一半，期滿才跳上去</p><p>符合青安 3.0：前 3 年 1.775%，貸 878.4 萬寬限期內月付息 12,993 元；青安認謄本上的建物主要用途，非住宅用途不能申辦</p><p>裝潢預算要跟總價一起算，先拿統包報價單再出價；先做貸款預審；契稅、代書費、火險不在上表</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>三種成數的首付月付＋青安試算</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">錢的部分</div>
@@ -663,6 +704,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
   <div class="verdict">
     <div class="vh">🎙️ 最後，我的看法</div>

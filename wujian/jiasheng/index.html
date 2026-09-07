@@ -182,6 +182,7 @@ details.acc[open] summary .ac{transform:rotate(135deg);background:var(--warm);co
 details.acc .acbody{padding:0 15px 14px}
 details.acc .acbody .sec{margin-top:0}
 details.acc .acbody section{margin:0}
+.tl{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:14px;padding:12px 15px;margin-bottom:11px;font-size:.95rem;line-height:1.85;color:var(--ink);overflow-wrap:anywhere}
 /* ===== 大綱導言 ===== */
 .outline{background:var(--soft-trust);border-radius:var(--radius);padding:18px;margin:20px 0 14px}
 .outline b{display:block;font-size:1.05rem;font-weight:900;color:var(--trust);margin-bottom:6px}
@@ -411,13 +412,16 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <div class="outline">
     <b>下面這些，你想看哪個就點哪個</b>
-    <p>我把這間房子拆成 <em>8 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過。<br>
+    <p>我把這間房子拆成 <em>11 段</em>，每段先給你短版——<em>想看細節再點「看完整版」</em>，不想看的就直接跳過。<br>
     基本資料、屋況實拍、影片、格局、生活圈、錢怎麼算，全部都在。<br>
     <b>不知道從哪看起，就先點第一張「這間適合誰」</b>——30 秒就知道要不要往下。</p>
   </div>
 
-  <details class="acc">
-    <summary><span class="ai">🎯</span><span class="at"><b>這間適合誰</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎯 這間適合誰</h2>
+    <div class="tl"><p>適合：兩個人住不需要第三房、受不了開窗看到對面陽台、要新成屋、要平面車位、通勤靠機場捷運 A10</p><p>先看別間：一定要三房、想買在社區均價（這間站在高位）、沒有冷氣燈具窗簾的餘裕</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">先看合不合</div>
@@ -444,9 +448,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📋</span><span class="at"><b>物件基本資料</b><i>開價・坪數・格局・樓層・車位・座向，11 項一次看完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📋 物件基本資料</h2>
+    <div class="tl"><p>開價 <b>1498 萬</b>，含坡道平面車位，開價不等於成交價</p><p>權狀 <b>33.87 坪</b>＝房屋 26.22＋車位持分 7.64（已計入權狀不另加價）・2 房 1 廳 2 衛・主要用途集合住宅</p><p>7 樓／地上 10 層・每層 2 戶・屋齡 0.4 年未使用・座向未複核不猜・管理費依管委會公告</p><p>窗外前方沒有建物遮擋，窗景方向為坑子溪河堤；桃園蘆竹 A10 山鼻站生活圈</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>開價・坪數・格局・樓層・車位・座向，11 項一次看完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <table class="spec">
         <tr><th>開價</th><td><b>1498 萬</b><small>含坡道平面車位。開價不等於成交價，實際成交金額由買賣雙方議定。</small></td></tr>
@@ -463,9 +471,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </table>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🪟</span><span class="at"><b>前面沒有樓</b><i>屋況可以改，窗外改不了</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🪟 前面沒有樓</h2>
+    <div class="tl"><p>裝潢、格局、家具都能改，只有「窗打開看出去是什麼」買了改不了</p><p>前方沒有建物遮擋，窗景方向為坑子溪河堤（依委託資料與現場實拍）；每層 2 戶，同層鄰居只有一家</p><p>屋齡 0.4 年沒人住過；車位坡道平面，持分 7.64 坪已計入權狀</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>屋況可以改，窗外改不了</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">這間的引擎</div>
@@ -484,9 +496,11 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🎬</span><span class="at"><b>影片</b><i>48 秒室內原檔，逐間走完沒有剪</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎬 影片</h2>
+    <div class="tl"><p>48 秒室內原檔，逐間走完沒有剪</p></div>
     <div class="acbody">
       <section class="sec">
         <div class="tag">影片</div>
@@ -499,10 +513,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
         <p class="video-note">實際到現場拍的原始素材，沒有虛擬佈置、沒有修圖、沒有電腦合成的裝潢示意。從大門進去一路走到後陽台，中間沒有剪掉任何一段。<br>沒有字卡、沒有配樂、沒有旁白——你看到的就是我到現場看到的。</p>
       </section>
     </div>
-  </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🛏</span><span class="at"><b>屋況實拍</b><i>空屋現況，照片沒有修也沒有虛擬佈置</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🛏 屋況實拍</h2>
+    <div class="tl"><p>客廳、房間、衛浴、廚具已配好、排油煙機保護膜還沒撕，全部從現場實拍截出，沒修圖沒虛擬佈置</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>空屋現況，照片沒有修也沒有虛擬佈置</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">屋況實拍</div>
@@ -521,9 +538,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📐</span><span class="at"><b>格局圖</b><i>兩房怎麼配，動線自己看</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📐 格局圖</h2>
+    <div class="tl"><p>格局圖取自委託方帶看資料（D2／F2 戶型），僅供參考，最終以地政謄本為準</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>兩房怎麼配，動線自己看</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">格局</div>
@@ -533,9 +554,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🗺</span><span class="at"><b>生活圈</b><i>走出社區有什麼，含已經查完的那一輪</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🗺 生活圈</h2>
+    <div class="tl"><p>機場捷運 A10 山鼻站約 350 公尺、山鼻之戀公園約 450 公尺、山腳國小約 950 公尺（依 Google 地圖）</p><p>2026-08-25 外網查證：方圓 200 公尺內未發現可查設施，最近四處都在 1 公里以外；山鼻里不在機場航空噪音防制區名單內</p><p>圖資有時間差；200 公尺現場勘查尚未完成，不會說「附近什麼都沒有」</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>走出社區有什麼，含已經查完的那一輪</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">生活圈</div>
@@ -565,10 +590,14 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
 
-  <details class="acc">
-    <summary><span class="ai">📊</span><span class="at"><b>競品對照看板</b><i>物件價格・生活圈・工作圈逐項攤開，用同一把尺讓你自己比</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📊 競品對照看板</h2>
+    <div class="tl"><p><b>價格</b>：33.87 坪裡房屋 26.22 坪、車位持分 7.64 坪——分開比；本頁不列每坪單價</p><p><b>生活圈</b>：山鼻之戀公園約 450 公尺、山腳國小約 950 公尺，都在 1,000 公尺門檻內走得到</p><p><b>工作圈</b>：機場捷運 A10 山鼻站約 350 公尺，營運中，通勤主力</p><p>同社區逐筆成交紀錄內政部實價登錄查得到；開價不等於成交價</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>物件價格・生活圈・工作圈逐項攤開，用同一把尺讓你自己比</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 競品分析看板（2026-09-02 阿宏規格）：逐項功能性顯示，不給總分，只放查得到出處的項目 -->
   <section class="sec">
@@ -623,9 +652,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>缺點與抗性拆解</b><i>四個缺點，事實・誰負責・多少錢・下一步，一次講完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 缺點與抗性拆解</h2>
+    <div class="tl"><p><b>空屋交屋沒有裝修</b>——新成屋常態不是瑕疵；冷氣燈具窗簾由你決定，預算看<a href="https://0930848000.com/xiushan/" style="color:var(--teal);font-weight:900">九個工種公開行情</a></p><p><b>兩房沒有第三房</b>——交易條件不是瑕疵也不用花錢改；要三房同總價我幫你找</p><p><b>公設比 32.2%</b>——比價一律拿主建物 16.39 坪對別件主建坪；謄本我去調，你不用付這筆</p><p><b>開價站在社區高位</b>——同社區成交紀錄逐筆攤開你自己比；開價不等於成交價；重大瑕疵責任在賣方</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>四個缺點，事實・誰負責・多少錢・下一步，一次講完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 缺點我先講（第一階列點卡，2026-09-02 阿宏令／40-0907-02 落地）：一行一個缺點，四件拆解壓在破折號後面；每一條皆可溯到帶看單（住商不動產售屋資料）欄位，見下方出處註 -->
   <section class="sec">
@@ -643,9 +676,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>這幾件誰負責</b><i>新成屋留置物・重大瑕疵・裝修，三件的答案一行一個</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 這幾件誰負責</h2>
+    <div class="tl"><p><b>殘留物</b>——沒人使用過的新成屋，由屋主清空後點交，不進你的預算</p><p><b>漏水、海砂這類重大瑕疵</b>——責任在賣方，契約載明</p><p><b>一般裝修</b>——窗簾、燈具、系統櫃、冷氣由你決定，金額先固定再出價；先做貸款預審</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>新成屋留置物・重大瑕疵・裝修，三件的答案一行一個</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <!-- 這幾件誰負責（第一階答案版，2026-09-02 阿宏令）：一行一件，答案壓在破折號後面 -->
   <section class="sec">
@@ -663,9 +700,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">💰</span><span class="at"><b>錢夠不夠</b><i>三種成數的首付月付＋青安試算</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>💰 錢夠不夠</h2>
+    <div class="tl"><p>開價 1498 萬、30 年、2.435%：貸 7 成首付 <b>449 萬</b>、月付 <b>41,079 元</b>；貸 8 成首付 <b>300 萬</b>、月付 <b>46,947 元</b></p><p>估算不是核貸結果；寬限期內只繳息約一半，期滿才跳上去</p><p>符合青安 3.0：前 3 年 1.775%，以上限 1,000 萬計寬限期內月付息 14,792 元；8 成 1,198.4 萬超過一般戶上限，超出部分另循銀行方案</p><p>新成屋還有冷氣、燈具、窗簾、家電這一筆先固定再出價；管理費、契稅、代書費、規費、火險不在上表；先做貸款預審</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>三種成數的首付月付＋青安試算</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
       <section class="sec">
         <div class="tag">錢的部分</div>
@@ -717,6 +758,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
       </section>
     </div>
   </details>
+  </section>
 
   <div class="verdict">
     <div class="vh">🎙️ 最後，我的看法</div>

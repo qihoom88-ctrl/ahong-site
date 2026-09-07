@@ -182,6 +182,7 @@ details.acc[open] summary .ac{transform:rotate(135deg);background:var(--warm);co
 details.acc .acbody{padding:0 15px 14px}
 details.acc .acbody .sec{margin-top:0}
 details.acc .acbody section{margin:0}
+.tl{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:14px;padding:12px 15px;margin-bottom:11px;font-size:.95rem;line-height:1.85;color:var(--ink);overflow-wrap:anywhere}
 /* ===== 競品對照看板（2026-09-02 規格：三軸逐項功能性對照，不給總分、不出現單坪數字） ===== */
 .cpb{display:flex;flex-direction:column;gap:12px;margin-top:4px}
 .cpb-ax{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px}
@@ -412,12 +413,15 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <div class="outline">
     <b>下面這些，你想看哪個就點哪個</b>
-    <p>我把這個標的拆成 <em>11 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
+    <p>我把這個標的拆成 <em>12 段</em>，每段先給你短版——<em>想看細節再點「看完整版」</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
     基本資料、影片、隔間、競品對照、強項、錢怎麼算，全部都在。看完想進一步，最下面直接約我。<br><b>不知道從哪看起，就先點第一張「這一件適合誰」</b>——30 秒就知道要不要往下。</p>
   </div>
 
-  <details class="acc">
-    <summary><span class="ai">🎯</span><span class="at"><b>這一件適合誰</b><i>30 秒看完，先確定這一件對不對你的胃口</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎯 這一件適合誰</h2>
+    <div class="tl"><p>適合：要一樓、用途保留彈性；需要倉儲；上下貨或接送頻繁；受不了公設三成起跳；自備款抓得夠寬</p><p>先看別件：做靠大街路過客的生意（臨路寬 5 米）；一定要登記車位；把增建面積算進單價才覺得划算</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>30 秒看完，先確定這一件對不對你的胃口</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">先看合不合</div>
@@ -443,9 +447,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📋</span><span class="at"><b>標的基本資料</b><i>總價・坪數・隔間・座向・樓層・臨路・瓦斯汙水，12 項一次看完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📋 標的基本資料</h2>
+    <div class="tl"><p>委託總價 <b>2288 萬</b>，開價不等於成交價</p><p>登記 <b>35.24 坪</b>（主建 29.08＋附屬 3.61＋公設 2.55）・土地 10.29 坪・隔間 3＋2＋2，另有往下一層增建（非登記面積）</p><p>1 樓／地上 5 層・朝南・屋齡 38 年・無登記車位・天然瓦斯・汙水道已整治・臨路 5 米・現況空屋</p><p>主要用途以建物謄本與使用執照登載為準，由我代為調閱；板橋區三民商圈</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>總價・坪數・隔間・座向・樓層・臨路・瓦斯汙水，12 項一次看完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">標的基本資料</div>
@@ -471,9 +479,11 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🎬</span><span class="at"><b>現況影片</b><i>38 秒先看過一次，畫面全部是現場實拍</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎬 現況影片</h2>
+    <div class="tl"><p>38 秒先看過一次，畫面全部是現場實拍</p></div>
     <div class="acbody">
   <div class="vlabel"><span class="pill">再看標的</span>現況影片<span class="sec">38 秒</span></div>
   <div class="video-card">
@@ -483,10 +493,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </div>
   <p class="video-note">現場實拍，沒有虛擬佈置、沒有 AI 生成裝修示意、沒有修圖，字卡是剪輯留下的。逐一空間走完的完整動線我帶你當場走一次，空屋好約。</p>
     </div>
-  </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📷</span><span class="at"><b>現況直球實拍</b><i>七張現場照片，門面・內部・下層增建・門前停靠一次看完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📷 現況直球實拍</h2>
+    <div class="tl"><p>七張從影片截出、沒有修圖：門面、內部、下層增建（非登記面積）、門前停靠（不是法定車位）、周邊草地、商圈街道</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>七張現場照片，門面・內部・下層增建・門前停靠一次看完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">現況直球</div>
@@ -509,9 +522,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📐</span><span class="at"><b>隔間與座向</b><i>3＋2＋2 怎麼配、座向朝哪、增建與外推在哪一段</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📐 隔間與座向</h2>
+    <div class="tl"><p>座向朝南（依委託資料）；圖面僅供參考，法定空地增建、平台外推與下層增建均屬非登記面積，不計入 35.24 坪</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>3＋2＋2 怎麼配、座向朝哪、增建與外推在哪一段</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">隔間與座向</div>
@@ -525,9 +542,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>缺點與抗性拆解</b><i>四個缺點，事實・誰負責・多少錢・下一步，一次講完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 缺點與抗性拆解</h2>
+    <div class="tl"><p><b>主要用途以謄本登載為準</b>——謄本與使用執照我代為調閱，使用內容我陪你去問主管機關，查完再談價</p><p><b>增建與外推屬非登記面積</b>——算單價只用 35.24 坪；違章查報紀錄我幫你調，風險負擔可由契約明定</p><p><b>臨路寬 5 米，不是直接臨大街的門面</b>——既定條件不是瑕疵，平日假日各挑一個時段站門口看一次</p><p><b>沒有登記車位，門前是停靠空間</b>——周邊月租我陪你逐家問；重大瑕疵（漏水、海砂）責任歸屬在賣方</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>四個缺點，事實・誰負責・多少錢・下一步，一次講完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">先給答案</div>
@@ -544,9 +565,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📊</span><span class="at"><b>競品對照看板</b><i>生活圈・工作圈逐項攤開讓你自己比，價格那一軸我照實說還缺什麼</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📊 競品對照看板</h2>
+    <div class="tl"><p><b>生活圈</b>：興隆市場、三民商圈沿街店家、埔墘公園、富貴綠地公園——每天要用的走得到，門口就是商圈；距離帶看當天用 Google 地圖逐項量</p><p><b>工作圈</b>：捷運板新站約 1,100 公尺、板橋五鐵共構約 1,800 公尺；門口【長壽里】站 5 條公車路線</p><p><b>價格</b>：同類型一樓標的成交紀錄還沒逐案抄錄完，這張看板不對任何案子做價格評價；想比先上內政部實價登錄，用主建坪數比</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>生活圈・工作圈逐項攤開讓你自己比，價格那一軸我照實說還缺什麼</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">競品對照</div>
@@ -607,9 +632,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">✨</span><span class="at"><b>這一件強在哪</b><i>三件同總價帶換不到的事，以及進駐後日子會長什麼樣</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>✨ 這一件強在哪</h2>
+    <div class="tl"><p>登記 35.24 坪，<b>公設只佔 2.55 坪</b>（約 7.2%），同坪數電梯大樓普遍三成起跳</p><p><b>一樓</b>，門前能停靠，上下貨與接送直接到門口（不是法定車位）</p><p><b>往下還有一層增建</b>，倉儲彈性大，非登記面積不進單價分母；空屋、方正好畫，照自己意思配</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>三件同總價帶換不到的事，以及進駐後日子會長什麼樣</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">這一件強在哪</div>
@@ -647,9 +676,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">💰</span><span class="at"><b>錢夠不夠</b><i>四種貸款成數的首付與月付，加上要另外準備的現金</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>💰 錢夠不夠</h2>
+    <div class="tl"><p>總價 2288 萬、30 年期、利率 2.435%：7 成首付 <b>686.4 萬</b>、月付 <b>62,743 元</b>；8 成首付 <b>457.6 萬</b>、月付 <b>71,706 元</b></p><p>這些是預設值不是你的條件，實際以銀行核准為準；出價前先做貸款預審，預審不用錢也不影響信用</p><p>首付之外還要準備契稅、印花稅、代書費、規費、火險地震險，上表沒算</p><p>除了頭期款還要另外掏約 <b>2.1～3.4 萬</b>現金（驗屋、電路與抓漏檢測、通水管、搬家），檢測異常加做儀器抓漏上限約 5.4 萬；清運不算你的，由賣方清空後點交</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>四種貸款成數的首付與月付，加上要另外準備的現金</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">錢的部分</div>
@@ -674,9 +707,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🔎</span><span class="at"><b>看現場當天一起驗</b><i>五件事當天一起做，看到什麼就是什麼</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🔎 看現場當天一起驗</h2>
+    <div class="tl"><p>排水與返潮挑雨天或雨後看；管線檢測公開報價：電路 $300～500、抓漏 $500～1,000、通水管 $3,000～5,000／支、完整驗屋 $15,000～24,000／戶</p><p>門前實際停一次車；謄本、使用執照、測量成果圖、違章查報紀錄、災害潛勢這幾份我幫你調</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>五件事當天一起做，看到什麼就是什麼</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">當天一起做</div>
@@ -725,9 +762,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">❓</span><span class="at"><b>你可能想問的</b><i>用途・增建・坪數・停靠・淹水・議價，六題</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>❓ 你可能想問的</h2>
+    <div class="tl"><p>用途由使用執照與主管機關認定；增建不當產權算單價，單價用 35.24 坪除；門前停靠不是法定車位；淹水查災害潛勢地圖＋雨天看現場；開價不等於成交價，不暗示可議幅度</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>用途・增建・坪數・停靠・淹水・議價，六題</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">你可能想問的</div>
@@ -741,9 +782,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🏛</span><span class="at"><b>這些不要只聽我說</b><i>六個官方查核入口，自己查最準</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🏛 這些不要只聽我說</h2>
+    <div class="tl"><p>六個官方入口：實價登錄、地政司數位櫃臺、新北建管、違章建築查詢、災害潛勢地圖、全國法規資料庫</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>六個官方查核入口，自己查最準</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">官方查核入口</div>
@@ -759,6 +804,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
   <!-- 這幾件誰負責（第一階答案版，2026-09-02 阿宏令） -->
   <section class="sec" id="zeren">

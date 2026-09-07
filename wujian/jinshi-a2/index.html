@@ -108,6 +108,21 @@ figure.card figcaption span{color:var(--muted)}
 .float-call a{flex:1;text-align:center;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 10px;font-size:.98rem}
 .float-call .f-tel{background:var(--trust);color:#fff}
 .float-call .f-line{background:#06C755;color:#fff}
+/* ===== 摺疊大字卡 ===== */
+details.acc{background:var(--card);border:1px solid var(--line);border-radius:18px;margin-bottom:11px;overflow:hidden;transition:box-shadow .2s}
+details.acc[open]{box-shadow:var(--shadow)}
+details.acc summary{list-style:none;cursor:pointer;padding:16px 17px;display:flex;align-items:center;gap:13px}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary .ai{width:42px;height:42px;border-radius:13px;background:var(--soft-warm);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex:0 0 auto}
+details.acc summary .at{flex:1;min-width:0}
+details.acc summary .at b{display:block;font-size:1.08rem;font-weight:900;line-height:1.4}
+details.acc summary .at i{display:block;font-style:normal;font-size:.82rem;color:var(--muted);line-height:1.5;margin-top:1px}
+details.acc summary .ac{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--soft-trust);color:var(--trust);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:1.05rem;transition:transform .25s}
+details.acc[open] summary .ac{transform:rotate(135deg);background:var(--warm);color:#fff}
+details.acc .acbody{padding:0 15px 14px}
+details.acc .acbody .sec{margin-top:0}
+details.acc .acbody section{margin:0}
+.tl{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:14px;padding:12px 15px;margin-bottom:11px;font-size:.95rem;line-height:1.85;color:var(--ink);overflow-wrap:anywhere}
 a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -144,6 +159,12 @@ a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
     </video>
   </div>
 
+  <section class="sec">
+    <h2>🧱 牆裡面用什麼</h2>
+    <div class="tl"><p>衛浴 TOTO・窗 YKK ap・大門 Yale・隔間 BR 石膏磚，建商建材說明示意圖；列了品牌沒列型號，型號要寫進契約附件</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>三張建商建材說明原圖：衛浴・窗・大門與隔間</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <section class="sec" id="mat">
     <div class="tag">先給你看</div>
     <h2>牆裡面用什麼，建商自己寫的</h2>
@@ -167,7 +188,16 @@ a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
       這份說明列了品牌、沒列型號。同一個品牌從入門到頂規價差很大，訂約前把型號寫進契約附件，這一步我陪你跟建商確認。
     </div>
   </section>
+    </div>
+  </details>
+  </section>
 
+  <section class="sec">
+    <h2>📐 格局與坪數</h2>
+    <div class="tl"><p>開價 <b>3298 萬</b>，開價不等於成交價，未含車位</p><p>A2棟 10樓・3房2廳2衛1陽台・登記 <b>36.77 坪</b></p><p>主建物 21.84・附屬 2.80・公設 12.13 坪（33%）</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>格局圖＋坪數表：主建物・附屬建物・公設</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <section class="sec" id="plan">
     <div class="tag">格局</div>
     <h2>A2棟 10樓，3房2廳2衛1陽台</h2>
@@ -196,7 +226,14 @@ a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
       <span class="oarr">→</span>
     </a>
   </section>
+    </div>
+  </details>
+  </section>
 
+  <section class="sec">
+    <h2>🎬 無人開箱</h2>
+    <div class="tl"><p>43 秒字卡講建材與格局，含 2026 年 5 月工程實拍</p></div>
+    <div class="acbody">
   <section class="sec" id="video">
     <div class="tag">無人開箱</div>
     <h2>43 秒，字卡講建材與格局</h2>
@@ -207,7 +244,15 @@ a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
     </div>
     <p class="video-note">畫面含建商示意圖與 2026 年 5 月工程中實拍，屋況以現場為準。</p>
   </section>
+    </div>
+  </section>
 
+  <section class="sec">
+    <h2>🗺 走出門有什麼</h2>
+    <div class="tl"><p>捷運蘆洲站約 800 公尺・全聯約 200 公尺・中原公園約 200 公尺・正義公園約 300 公尺（Google 地圖）</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>捷運・全聯・公園，四個點的公尺數</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <section class="sec" id="geo">
     <div class="tag">走出門有什麼</div>
     <h2>南港子重劃區，這幾個點</h2>
@@ -219,7 +264,16 @@ a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
     </div>
     <p class="geo-src">距離依 Google 地圖量測，取整百公尺；實際步行時間依路線與號誌不同。學區依戶籍地址所屬里鄰劃分，本戶確切鄰別未取得前不作陳述。</p>
   </section>
+    </div>
+  </details>
+  </section>
 
+  <section class="sec">
+    <h2>🏗 現在長怎樣</h2>
+    <div class="tl"><p>2026 年 5 月拍的還在鷹架裡，跟建商完工示意差很多是正常的</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>2026 年 5 月工程實拍與建商示意圖對照</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <section class="sec" id="site">
     <div class="tag">現在長怎樣</div>
     <h2>2026 年 5 月拍的，還在鷹架裡</h2>
@@ -235,7 +289,16 @@ a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
       </figure>
     </div>
   </section>
+    </div>
+  </details>
+  </section>
 
+  <section class="sec">
+    <h2>💰 錢夠不夠</h2>
+    <div class="tl"><p>總價 3298 萬、30 年、利率 2.435%：7 成首付 <b>989.4 萬</b>、月付 <b>90,439 元</b>；8 成首付 <b>659.6 萬</b>、月付 <b>103,359 元</b></p><p>預設值不是你的條件，以銀行核准為準；預售屋分期繳，表算交屋後月付</p><p>先做貸款預審再出價；契稅、代書費、火險沒算；青安 3.0 新婚 1,200 萬、育兒 1,500 萬先自己對</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>四種貸款成數的首付與月付，加上青安 3.0 懶人包</i></span><span class="ac">＋</span></summary>
+    <div class="acbody">
   <section class="sec" id="money">
     <div class="tag">錢夠不夠</div>
     <h2>首付與月付，自己對照</h2>
@@ -265,6 +328,9 @@ a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
       <span class="gtxt"><b>青安 3.0 申辦利多與避雷懶人包</b>新婚最高 1,200 萬、育兒最高 1,500 萬，條件與地雷一次看</span>
       <span class="garr">→</span>
     </a>
+  </section>
+    </div>
+  </details>
   </section>
 
   <section class="cta">

@@ -182,6 +182,7 @@ details.acc[open] summary .ac{transform:rotate(135deg);background:var(--warm);co
 details.acc .acbody{padding:0 15px 14px}
 details.acc .acbody .sec{margin-top:0}
 details.acc .acbody section{margin:0}
+.tl{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:14px;padding:12px 15px;margin-bottom:11px;font-size:.95rem;line-height:1.85;color:var(--ink);overflow-wrap:anywhere}
 /* ===== 競品對照看板（2026-09-02 規格：三軸逐項功能性對照，不給總分、不出現單坪數字） ===== */
 .cpb{display:flex;flex-direction:column;gap:12px;margin-top:4px}
 .cpb-ax{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px}
@@ -412,12 +413,15 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <div class="outline">
     <b>下面這些，你想看哪個就點哪個</b>
-    <p>我把這個標的拆成 <em>11 個主題</em>，每一個都收起來了——<em>你點開才會展開</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
+    <p>我把這個標的拆成 <em>12 段</em>，每段先給你短版——<em>想看細節再點「看完整版」</em>，不想看的就直接跳過，不用被一長串資訊淹沒。<br>
     基本資料、影片、隔間、競品對照、強項、錢怎麼算，全部都在。看完想進一步，最下面直接約我。<br><b>不知道從哪看起，就先點第一張「這件適合誰」</b>——30 秒就知道要不要往下。</p>
   </div>
 
-  <details class="acc">
-    <summary><span class="ai">🎯</span><span class="at"><b>這件適合誰</b><i>30 秒看完，先確定這件對不對你的胃口</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎯 這件適合誰</h2>
+    <div class="tl"><p>適合：需要商業用途的彈性空間、預算 838 萬鎖定後站商圈、要電梯大樓、不需要車位、看現場時間可彈性</p><p>先看別件：一定要登記住宅用途、一定要車位、要用自用住宅稅務優惠壓成本</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>30 秒看完，先確定這件對不對你的胃口</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">先看合不合</div>
@@ -443,9 +447,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📋</span><span class="at"><b>標的基本資料</b><i>開價・坪數・主要用途・座向・樓層・管理費・地點，12 項一次看完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📋 標的基本資料</h2>
+    <div class="tl"><p>開價 <b>838 萬</b>，開價不等於成交價</p><p>登記 <b>15.33 坪</b>（主建物 9.73 坪・公設比 31.2%）・主要用途<b>商業用</b>・開放式配置・朝西北</p><p>10 樓電梯大樓・屋齡 29 年・無車位・74 戶・管理費 1,456 元／月・面前路寬 20 米</p><p>樹林區中山路一段後站商圈；空屋，看現場與交屋都好安排</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>開價・坪數・主要用途・座向・樓層・管理費・地點，12 項一次看完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">標的基本資料</div>
@@ -470,9 +478,11 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🎬</span><span class="at"><b>現況影片</b><i>22 秒先看過一次，畫面全部是現場實拍</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🎬 現況影片</h2>
+    <div class="tl"><p>22 秒先看過一次，畫面全部是現場實拍</p></div>
     <div class="acbody">
   <div class="vlabel"><span class="pill">再看標的</span>現況影片<span class="sec">22 秒</span></div>
   <div class="video-card">
@@ -482,10 +492,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </div>
   <p class="video-note">畫面全部是現場實拍照片，沒有虛擬佈置、沒有修圖，字卡是剪輯留下的。逐一空間走完的完整動線我帶你當場走一次，空屋好約。</p>
     </div>
-  </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📷</span><span class="at"><b>現況直球實拍</b><i>八張現場原始照片，好的壞的一起拍給你看</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📷 現況直球實拍</h2>
+    <div class="tl"><p>八張現場原始照片（2026-07-27），沒有虛擬佈置、沒有修圖</p><p>衛浴是全場狀況最好的一區；茶水區、外部工作陽台看得出歲月</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>八張現場原始照片，好的壞的一起拍給你看</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">現況直球</div>
@@ -509,9 +522,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📐</span><span class="at"><b>隔間與座向</b><i>開放式配置怎麼走、座向朝哪、茶水區與衛浴的位置</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📐 隔間與座向</h2>
+    <div class="tl"><p>開放式配置，玻璃隔屏分前後兩段，另有茶水區、衛浴、外部工作陽台；朝西北</p><p>隔間圖是委託方原始圖面僅供參考，以地政謄本、測量成果圖為準</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>開放式配置怎麼走、座向朝哪、茶水區與衛浴的位置</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">隔間與座向</div>
@@ -525,9 +542,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🧩</span><span class="at"><b>缺點與抗性拆解</b><i>四個缺點，事實・誰負責・多少錢・下一步，一次講完</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🧩 缺點與抗性拆解</h2>
+    <div class="tl"><p><b>主要用途登記商業用</b>——價差的來源，法規、稅、貸款跟住宅登記不一樣；使用執照與謄本我代為調閱，查完再談價</p><p><b>沒有車位</b>——交易條件不是瑕疵，月租行情與社區可否承租當天逐家問</p><p><b>公設比 31.2%</b>——比價用主建物 9.73 坪對別件的主建坪數</p><p><b>前手櫃台與玻璃隔屏</b>——由賣方清空後點交，清運不是你的預算；重大瑕疵責任在賣方</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>四個缺點，事實・誰負責・多少錢・下一步，一次講完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">先給答案</div>
@@ -544,9 +565,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">📊</span><span class="at"><b>競品對照看板</b><i>生活圈・工作圈逐項攤開讓你自己比，價格那一軸我照實說還缺什麼</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>📊 競品對照看板</h2>
+    <div class="tl"><p><b>生活圈</b>：博愛市場、保安市場、樹林國小、育林國中、米蘭公園、長壽親子公園；距離尚未實測，本頁不列公尺數</p><p><b>工作圈</b>：802、858、859、880、885、橘 26、藍 38 七條公車可達樹林後火車站</p><p><b>價格</b>：登記商業用要用同類型商用單位比，還沒抄錄完，這張看板不對任何案子做價格評價</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>生活圈・工作圈逐項攤開讓你自己比，價格那一軸我照實說還缺什麼</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">競品對照</div>
@@ -603,9 +628,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">✨</span><span class="at"><b>這件強在哪</b><i>三件同總價帶換不到的事</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>✨ 這件強在哪</h2>
+    <div class="tl"><p><b>838 萬</b>——後站商圈不常見的總價門檻；便宜是因為登記商業用，不是屋況出問題</p><p><b>開放式</b>——沒有實體隔間牆要拆，怎麼配你自己畫，不用先花拆除費</p><p><b>10F・電梯</b>——每層 5 戶共 74 戶，面前路寬 20 米，進出與上下貨條件不容易同時拿到</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>三件同總價帶換不到的事</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">這件強在哪</div>
@@ -642,9 +671,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">💰</span><span class="at"><b>錢夠不夠</b><i>四種貸款成數的首付與月付，你自己對照</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>💰 錢夠不夠</h2>
+    <div class="tl"><p>總價 838 萬、30 年、利率 2.435%：7 成首付 <b>251.4 萬</b>、月付 <b>22,980 元</b>；8 成首付 <b>167.6 萬</b>、月付 <b>26,263 元</b></p><p>預設值不是你的條件，以銀行核准為準；出價前先做貸款預審</p><p>首付之外還有契稅、印花稅、代書費、規費、火險地震險、管理費 1,456 元／月，上表沒算</p><p>整理量級：只有管線這一段，公開行情約 <b>0.5～1.2 萬</b>；前手固定物由賣方清空後點交</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>四種貸款成數的首付與月付，你自己對照</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">錢的部分</div>
@@ -669,9 +702,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🔎</span><span class="at"><b>看現場當天一起驗</b><i>五件事當天一起做，看到什麼就是什麼</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🔎 看現場當天一起驗</h2>
+    <div class="tl"><p>通水通電師傅現場測（電路 $300～500／次、配管通試 $1,000～4,000／次），沒問題就是 0 元；固定物列清單寫進契約附件</p><p>管委會四份我幫你要：收支報表、公共基金餘額、保養安檢紀錄、前手欠繳；月租與社區承租車位當天問</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>五件事當天一起做，看到什麼就是什麼</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">當天一起做</div>
@@ -717,9 +754,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">❓</span><span class="at"><b>你可能想問的</b><i>用途・成數・管理費・固定物・議價，五題</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>❓ 你可能想問的</h2>
+    <div class="tl"><p>登記商業用能做什麼由使用執照與主管機關認定，我代為調閱陪你去問；持有稅按實際使用情形課徵，由稽徵機關核定</p><p>管理費 1,456 元涵蓋項目問管委會，更該問特別公共基金與餘額；開價不等於成交價，不在這頁暗示可議幅度</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>用途・成數・管理費・固定物・議價，五題</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">你可能想問的</div>
@@ -732,9 +773,13 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
-  <details class="acc">
-    <summary><span class="ai">🏛</span><span class="at"><b>這些不要只聽我說</b><i>七個官方查核入口，自己查最準</i></span><span class="ac">＋</span></summary>
+  <section class="sec">
+    <h2>🏛 這些不要只聽我說</h2>
+    <div class="tl"><p>七個官方查核入口：實價登錄、地政司數位櫃臺、新北建管、違建查詢、災害潛勢地圖、全國法規資料庫、停車場查詢——自己查最準</p></div>
+    <details class="acc">
+    <summary><span class="at"><b>看完整版</b><i>七個官方查核入口，自己查最準</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
   <section class="sec">
     <div class="tag">官方查核入口</div>
@@ -751,6 +796,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
   </section>
     </div>
   </details>
+  </section>
 
   <!-- 這幾件誰負責（第一階答案版，2026-09-02 阿宏令） -->
   <section class="sec" id="zeren">
