@@ -86,6 +86,14 @@ footer b{color:var(--ink2)}
 .flinks{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 12px}
 .flinks a{font-size:12.5px;color:var(--accent);text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:6px 13px}
 </style>
+<style>
+#rail{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#rail .flab{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--brand,#1F5C46);margin-right:2px}
+#rail .fbr{flex-basis:100%;height:0}
+.fcount{margin:10px 0 0;font-size:13px;color:#78807A}
+.fempty{grid-column:1/-1;background:#FBF8F1;border-left:3px solid #C9A24B;padding:14px 16px;border-radius:0 8px 8px 0;font-size:14.5px;color:#4A534E}
+.fempty a{color:var(--brand,#1F5C46);font-weight:800}
+</style>
 </head>
 <body>
 
@@ -98,6 +106,7 @@ footer b{color:var(--ink2)}
   </div>
 
   <div class="rail" id="rail" role="tablist"></div>
+<p class="fcount" id="fcount"></p>
   <div class="grid" id="grid"></div>
 
   <div class="note">
@@ -110,21 +119,35 @@ footer b{color:var(--ink2)}
 <script src="/site.config.js?v=20260821c"></script>
 <script src="/tikuan.js?v=20260820f"></script>
 <script src="/nav.js?v=20260821c"></script>
+<script src="/cta.js" defer></script>
 <script src="/wujian/data.js"></script>
 <script>
 var LINE='https://line.me/R/ti/p/@798ulmws';
 var L=window.AHLISTINGS||[];
 
-var REG=['全部','樹林','板橋','新莊','土城','三峽','桃園'];
-var cur='全部';
+/* 區域從資料長出來（蘆洲、鶯歌以前不在清單裡＝篩不到）；總價帶與房數 2026-09-08 對比同事站補 */
+var ORDER=['樹林','板橋','新莊','土城','三峽','鶯歌','蘆洲','桃園'];
+var REG=['全部'].concat(ORDER.filter(function(r){return L.some(function(x){return x.r===r})}))
+  .concat(L.map(function(x){return x.r}).filter(function(r,i,a){return ORDER.indexOf(r)<0&&a.indexOf(r)===i}));
+var PRICE=[['全部',0,1e9],['1000 萬以下',0,1000],['1000-1500 萬',1000,1500],['1500-2000 萬',1500,2000],['2000 萬以上',2000,1e9]];
+var ROOM=['全部','2房','3房','4房以上'];
+var cur='全部', curP=0, curR='全部';
+function rooms(x){var m=(x.sp||[]).join(' ').match(/(\d)房/);return m?+m[1]:0}
+function okRoom(x){var n=rooms(x);if(curR==='全部')return true;if(curR==='4房以上')return n>=4;return n===+curR.charAt(0)}
 function nf(x){return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',')}
 function render(){
   var rail=document.getElementById('rail');
-  rail.innerHTML=REG.map(function(r){
+  rail.innerHTML='<span class="flab">區域</span>'+REG.map(function(r){
     return '<button class="chip" role="tab" aria-pressed="'+(r===cur)+'" data-r="'+r+'">'+r+'</button>';
+  }).join('')+'<span class="fbr"></span><span class="flab">總價</span>'+PRICE.map(function(p,i){
+    return '<button class="chip" role="tab" aria-pressed="'+(i===curP)+'" data-p="'+i+'">'+p[0]+'</button>';
+  }).join('')+'<span class="fbr"></span><span class="flab">房數</span>'+ROOM.map(function(r){
+    return '<button class="chip" role="tab" aria-pressed="'+(r===curR)+'" data-room="'+r+'">'+r+'</button>';
   }).join('');
   var g=document.getElementById('grid');
-  g.innerHTML=L.filter(function(x){return cur==='全部'||x.r===cur}).map(function(x,i){
+  var hit=L.filter(function(x){return (cur==='全部'||x.r===cur)&&x.p>=PRICE[curP][1]&&x.p<PRICE[curP][2]&&okRoom(x)});
+  var cnt=document.getElementById('fcount'); if(cnt) cnt.textContent='共 '+hit.length+' 筆';
+  g.innerHTML=(hit.length?'':'<p class="fempty">這個條件目前沒有物件。放寬一點，或 <a href="/maifang/">填買方配案</a>，有新委託我先通知你。</p>')+hit.map(function(x,i){
     var ph=x.img
       ?'<div class="ph"><img src="'+x.img+'" alt="'+x.n+' 實拍" loading="lazy"></div>'
       :'<div class="ph noimg">實拍照私訊提供</div>';
@@ -141,7 +164,9 @@ function render(){
   }).join('');
 }
 document.addEventListener('click',function(e){
-  var c=e.target.closest('.chip'); if(c){cur=c.dataset.r;render();return}
+  var c=e.target.closest('.chip'); if(c){
+    if(c.dataset.r!==undefined)cur=c.dataset.r; else if(c.dataset.p!==undefined)curP=+c.dataset.p; else if(c.dataset.room!==undefined)curR=c.dataset.room;
+    render();return}
   var b=e.target.closest('.btn-code'); if(b){
     var t=b.dataset.code, done=function(){b.textContent='已複製';b.classList.add('ok');setTimeout(function(){b.textContent='複製留言碼';b.classList.remove('ok')},1600)};
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fallback(t,done)})}
