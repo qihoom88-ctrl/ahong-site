@@ -81,7 +81,7 @@ window.AHCONFIG = {
     },
     {
       "name": "松園和平居｜電梯三房＋車位",
-      "price": 1398,
+      "price": 1468,
       "rooms": "3",
       "region": "新北市三峽區",
       "floor": "6樓",
