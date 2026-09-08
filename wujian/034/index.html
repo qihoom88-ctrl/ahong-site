@@ -185,6 +185,20 @@ details.acc .acbody{padding:0 15px 14px}
 details.acc .acbody .sec{margin-top:0}
 details.acc .acbody section{margin:0}
 .tl{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:14px;padding:12px 15px;margin-bottom:11px;font-size:.95rem;line-height:1.85;color:var(--ink);overflow-wrap:anywhere}
+/* ===== 事實短標籤 chips（40-0908-07：先短標籤、後短句） ===== */
+.tl .chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 9px;max-width:100%}
+.tl .chips:last-child{margin-bottom:0}
+.tl .chip{display:inline-block;max-width:100%;background:var(--soft-trust);color:var(--trust);border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:.82rem;font-weight:800;line-height:1.5;overflow-wrap:anywhere}
+.tl .chip.key{background:var(--soft-warm);color:var(--warm);border-color:var(--soft-warm)}
+.tl .chip.lb{background:var(--trust);color:var(--card);border-color:var(--trust)}
+.tl .chip.alt{background:var(--paper);color:var(--muted)}
+.tl .chip.lb.alt{background:var(--warm);color:var(--card);border-color:var(--warm)}
+.tl .chip i{font-style:normal;font-weight:600;font-size:.74rem;opacity:.75;margin-left:4px}
+.tl>p{font-size:.9rem;line-height:1.8;margin-top:5px;color:var(--ink)}
+.tl>p:first-child{margin-top:0}
+.tl .chips+p{margin-top:2px}
+.tl p+.chips{margin-top:11px}
+
 /* ===== 大綱導言 ===== */
 .outline{background:var(--soft-trust);border-radius:var(--radius);padding:18px;margin:20px 0 14px}
 .outline b{display:block;font-size:1.05rem;font-weight:900;color:var(--trust);margin-bottom:6px}
@@ -358,6 +372,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 .newlist{list-style:none;margin-top:12px}
 .newlist li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin-bottom:7px;font-size:.9rem;line-height:1.75}
 .newlist li b{display:block;color:var(--teal);font-weight:900;margin-bottom:2px}
+.legal .final-note{margin-top:11px;font-weight:800;color:var(--trust);line-height:1.75}
 </style>
 </head>
 <body>
@@ -418,7 +433,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="sec">
     <h2>🎯 這間適合誰</h2>
-    <div class="tl"><p>適合：想買了就有一套在收租、用低總價卡進板橋、通勤靠火車、接受 2 樓沒電梯、看得懂 22.07 坪全實坪</p><p>先看別間：不想碰任何現況處理（正樓上漏水處理中）、一定要電梯或車位、只想單純自住</p></div>
+    <div class="tl"><div class="chips"><span class="chip lb">適合</span><span class="chip">想買了就有一套在收租</span><span class="chip">用低總價卡進板橋</span><span class="chip">通勤靠火車</span><span class="chip">接受 2 樓沒電梯</span><span class="chip">看得懂 22.07 坪全實坪</span></div><div class="chips"><span class="chip lb alt">先看別間</span><span class="chip alt">不想碰任何現況處理</span><span class="chip alt">正樓上漏水處理中</span><span class="chip alt">一定要電梯或車位</span><span class="chip alt">只想單純自住</span></div></div>
     <details class="acc">
     <summary><span class="at"><b>看完整版</b><i>30 秒看完，先確定這間對不對你的胃口</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
@@ -450,7 +465,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="sec">
     <h2>📋 物件基本資料</h2>
-    <div class="tl"><p>委託總價 <b>1068 萬</b>，本案無車位，開價不等於成交價</p><p><b>22.07 坪</b>全實坪（主建物 20.69＋附屬 1.38）・2 房 4 廳 2 衛，一張產權隔成兩套獨立空間</p><p>2 樓／地上 5 層・無電梯・每層 2 戶・屋齡 45.3 年・座東南朝西北（依委託資料）・路寬 10 米</p><p>一套出租中（月租 13,000 元、租約至 116 年 5 月 1 日）、一套空的；板橋區溪崑商圈</p></div>
+    <div class="tl"><div class="chips"><span class="chip key">委託總價 1068 萬</span><span class="chip key">22.07 坪全實坪</span><span class="chip">2 房 4 廳 2 衛</span><span class="chip">2 樓／地上 5 層</span><span class="chip">無電梯</span><span class="chip">每層 2 戶</span><span class="chip">屋齡 45.3 年</span><span class="chip">座東南朝西北<i>依委託資料</i></span><span class="chip">本案無車位</span><span class="chip">路寬 10 米</span><span class="chip">一套出租中</span><span class="chip">一套空的</span><span class="chip">板橋區溪崑商圈</span></div><p>開價不等於成交價</p><p>主建物 20.69＋附屬 1.38</p><p>一張產權隔成兩套獨立空間</p><p>月租 13,000 元、租約至 116 年 5 月 1 日</p></div>
     <details class="acc">
     <summary><span class="at"><b>看完整版</b><i>開價・坪數・格局・樓層・屋齡・現況，13 項一次看完</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
@@ -475,7 +490,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="sec">
     <h2>🔑 一張產權，兩套空間</h2>
-    <div class="tl"><p>一張謄本、一個門牌，內部隔成兩套各自獨立的客廳、廚房、衛浴，樓梯間相連</p><p>過戶與貸款一份手續；銀行鑑價與成數可能跟一般住宅不同，出價前先向兩家銀行預審</p><p>出租那套租約隨產權移轉，不是買了就能收回自用；隔間屬合法現況，簽約前再請銀行與地政士各確認一次</p></div>
+    <div class="tl"><div class="chips"><span class="chip">一張謄本</span><span class="chip">一個門牌</span><span class="chip">樓梯間相連</span><span class="chip">過戶與貸款一份手續</span><span class="chip">隔間屬合法現況</span></div><p>內部隔成兩套各自獨立的客廳、廚房、衛浴</p><p>銀行鑑價與成數可能跟一般住宅不同</p><p>出價前先向兩家銀行預審</p><p>出租那套租約隨產權移轉，不是買了就能收回自用</p><p>簽約前再請銀行與地政士各確認一次</p></div>
     <details class="acc">
     <summary><span class="at"><b>看完整版</b><i>這間的引擎：買下去就有一套在收租</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
@@ -497,7 +512,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="sec">
     <h2>🎬 室內原檔影片</h2>
-    <div class="tl"><p>163 秒一鏡走完全室，沒有配樂沒有調色</p></div>
+    <div class="tl"><div class="chips"><span class="chip key">163 秒</span><span class="chip">一鏡走完全室</span><span class="chip">沒有配樂</span><span class="chip">沒有調色</span></div></div>
     <div class="acbody">
       <section class="sec">
         <div class="tag">室內原檔</div>
@@ -514,7 +529,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="sec">
     <h2>🛏 屋況實拍</h2>
-    <div class="tl"><p>兩套的客廳、臥室、廚房、後陽台、雙衛浴全部從影片截出，沒修圖沒虛擬佈置</p><p>正樓上漏水滲到本戶天花板，雙方處理中；看屋當天直接看，可把「交屋前修復完成」寫進契約建議</p></div>
+    <div class="tl"><div class="chips"><span class="chip">兩套</span><span class="chip">客廳</span><span class="chip">臥室</span><span class="chip">廚房</span><span class="chip">後陽台</span><span class="chip">雙衛浴</span><span class="chip">沒修圖</span><span class="chip">沒虛擬佈置</span></div><p>全部從影片截出</p><p>正樓上漏水滲到本戶天花板，雙方處理中</p><p>看屋當天直接看，可把「交屋前修復完成」寫進契約建議</p></div>
     <details class="acc">
     <summary><span class="at"><b>看完整版</b><i>兩套空間，一間一間拍給你看</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
@@ -544,7 +559,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="sec">
     <h2>📐 格局圖</h2>
-    <div class="tl"><p>上下兩套各自獨立的客餐廚衛，中間樓梯間相連</p><p>「陽台外推」不列入權狀與銀行鑑價，比價出價一律用登記 22.07 坪；違建查詢簽約前我照流程查</p></div>
+    <div class="tl"><div class="chips"><span class="chip">上下兩套</span><span class="chip">各自獨立</span><span class="chip">客餐廚衛</span><span class="chip">中間樓梯間相連</span></div><p>「陽台外推」不列入權狀與銀行鑑價</p><p>比價出價一律用登記 22.07 坪</p><p>違建查詢簽約前我照流程查</p></div>
     <details class="acc">
     <summary><span class="at"><b>看完整版</b><i>兩套怎麼分，動線自己看</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
@@ -562,7 +577,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="sec">
     <h2>🗺 生活圈</h2>
-    <div class="tl"><p>樹林火車站約 450 公尺（依 Google 地圖）；萬大線 LG14 溪洲站興建中，不列步行距離</p><p>保安市場、崑崙公園；學區以官方公告為準；200 公尺嫌惡設施實勘還在跑，不會用「附近什麼都沒有」帶過</p></div>
+    <div class="tl"><div class="chips"><span class="chip">保安市場</span><span class="chip">崑崙公園</span><span class="chip">萬大線 LG14 溪洲站興建中</span></div><p>樹林火車站約 450 公尺（依 Google 地圖）</p><p>溪洲站不列步行距離</p><p>學區以官方公告為準</p><p>200 公尺嫌惡設施實勘還在跑</p><p>不會用「附近什麼都沒有」帶過</p></div>
     <details class="acc">
     <summary><span class="at"><b>看完整版</b><i>走出巷口有什麼</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
@@ -586,7 +601,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="sec">
     <h2>📊 競品對照看板</h2>
-    <div class="tl"><p><b>價格</b>：22.07 坪沒有一坪是公設；土地持分 5.42 坪是另一筆不算進去；本頁不列每坪單價</p><p><b>工作圈</b>：台鐵樹林站約 450 公尺，在 1,000 公尺門檻內，通勤主力是火車</p><p>同社區逐筆成交紀錄內政部實價登錄查得到；開價不等於成交價</p></div>
+    <div class="tl"><div class="chips"><span class="chip lb">價格</span><span class="chip">22.07 坪沒有一坪是公設</span><span class="chip">土地持分 5.42 坪</span></div><p>土地持分是另一筆不算進去</p><p>本頁不列每坪單價</p><div class="chips"><span class="chip lb">工作圈</span><span class="chip">台鐵樹林站約 450 公尺</span><span class="chip">1,000 公尺門檻內</span><span class="chip">通勤主力是火車</span></div><p>同社區逐筆成交紀錄內政部實價登錄查得到</p><p>開價不等於成交價</p></div>
     <details class="acc">
     <summary><span class="at"><b>看完整版</b><i>物件價格・工作圈逐項攤開，用同一把尺讓你自己比</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
@@ -633,7 +648,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="sec">
     <h2>🧩 這幾件誰負責</h2>
-    <div class="tl"><p><b>殘留物</b>——空的那套由屋主清空後點交，不進你的預算；出租那套房客物品不在點交範圍</p><p><b>漏水、海砂這類重大瑕疵</b>——責任在賣方，契約載明；正樓上漏水雙方處理中</p><p><b>一般裝修</b>——由你決定，不是必須花的錢，預算看<a href="https://0930848000.com/xiushan/" style="color:var(--teal);font-weight:900">九個工種公開行情</a>；先做貸款預審再出價</p></div>
+    <div class="tl"><div class="chips"><span class="chip lb">殘留物</span></div><p>空的那套由屋主清空後點交，不進你的預算</p><p>出租那套房客物品不在點交範圍</p><div class="chips"><span class="chip lb">漏水、海砂這類重大瑕疵</span><span class="chip">正樓上漏水雙方處理中</span></div><p>責任在賣方，契約載明</p><div class="chips"><span class="chip lb">一般裝修</span></div><p>由你決定，不是必須花的錢</p><p>預算看<a href="https://0930848000.com/xiushan/" style="color:var(--teal);font-weight:900">九個工種公開行情</a></p><p>先做貸款預審再出價</p></div>
     <details class="acc">
     <summary><span class="at"><b>看完整版</b><i>屋主物品與租約留置物・重大瑕疵・裝修，三件的答案一行一個</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
@@ -658,7 +673,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="sec">
     <h2>🧩 缺點與抗性拆解</h2>
-    <div class="tl"><p><b>沒車位</b>——交易條件不是瑕疵；路寬 10 米，月租車位帶看當天問到價</p><p><b>2 樓／5 層每層 2 戶</b>——動線單純，樓梯搬家動線現場走一次</p><p><b>陽台外推</b>——不列入權狀與鑑價，一律用 22.07 坪算；違建查詢我查，書面給你</p><p><b>一套出租中</b>——買賣不破租賃，先算進出價；重大瑕疵責任在賣方</p></div>
+    <div class="tl"><div class="chips"><span class="chip lb">沒車位</span><span class="chip">路寬 10 米</span></div><p>交易條件不是瑕疵</p><p>月租車位帶看當天問到價</p><div class="chips"><span class="chip lb">2 樓／5 層每層 2 戶</span><span class="chip">動線單純</span></div><p>樓梯搬家動線現場走一次</p><div class="chips"><span class="chip lb">陽台外推</span></div><p>不列入權狀與鑑價，一律用 22.07 坪算</p><p>違建查詢我查，書面給你</p><div class="chips"><span class="chip lb">一套出租中</span><span class="chip">買賣不破租賃</span></div><p>先算進出價</p><p>重大瑕疵責任在賣方</p></div>
     <details class="acc">
     <summary><span class="at"><b>看完整版</b><i>沒車位・2 樓・陽台外推・一套出租中，四件事實與答案一行一個</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
@@ -683,7 +698,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
 
   <section class="sec">
     <h2>💰 錢夠不夠</h2>
-    <div class="tl"><p>開價 1068 萬、30 年、2.435%：貸 7 成首付 <b>320.4 萬</b>、月付 <b>29,287 元</b>；貸 8 成首付 <b>213.6 萬</b>、月付 <b>33,471 元</b></p><p>估算不是核貸結果；寬限期內只繳息約一半，期滿才跳上去</p><p>符合青安 3.0：前 3 年 1.775%，貸 854.4 萬寬限期內月付息 12,638 元；青安認謄本上的建物主要用途，帶看前調出來對</p><p>先做貸款預審再出價；「兩套空間」各銀行認定不一樣；管理費、契稅、代書費、火險不在上表</p></div>
+    <div class="tl"><div class="chips"><span class="chip key">開價 1068 萬</span><span class="chip">30 年</span><span class="chip">2.435%</span></div><div class="chips"><span class="chip lb">貸 7 成</span><span class="chip">首付 320.4 萬</span><span class="chip">月付 29,287 元</span></div><div class="chips"><span class="chip lb">貸 8 成</span><span class="chip">首付 213.6 萬</span><span class="chip">月付 33,471 元</span></div><div class="chips"><span class="chip lb">符合青安 3.0</span><span class="chip">前 3 年 1.775%</span><span class="chip">貸 854.4 萬</span><span class="chip">寬限期內月付息 12,638 元</span></div><p>估算不是核貸結果</p><p>寬限期內只繳息約一半，期滿才跳上去</p><p>青安認謄本上的建物主要用途，帶看前調出來對</p><p>先做貸款預審再出價</p><p>「兩套空間」各銀行認定不一樣</p><p>管理費、契稅、代書費、火險不在上表</p></div>
     <details class="acc">
     <summary><span class="at"><b>看完整版</b><i>三種成數的首付月付＋青安試算</i></span><span class="ac">＋</span></summary>
     <div class="acbody">
@@ -812,6 +827,7 @@ table.loan th small{display:block;font-weight:600;font-size:.72rem;opacity:.85}
     經紀人 林秀嫻 (96)北縣字第001399號<br>
     營業員 何志宏 (114)年登字第495065號<br>
     開價不等於成交價，實際成交金額由買賣雙方議定。本頁資訊依委託資料整理，資料查核日期 2026-09-01；格局、面積與座向以地政謄本、測量成果圖及不動產說明書記載為準。公開版不揭露完整門牌與委託內部價格資訊。
+    <p class="final-note">本頁所有資料不構成投資建議，最終仍以官方資料與謄本記載為準。</p>
   </div>
 
 </div>
