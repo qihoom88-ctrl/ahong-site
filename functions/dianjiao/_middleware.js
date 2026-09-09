@@ -16,7 +16,14 @@
  * 靜態資源不計入）—— 2026-09-09 查 developers.cloudflare.com/pages/functions/pricing/。
  */
 
-const HASH = '8f4865e8e4f56cf7af264da7bb3783b7bdca4ec4364a506acc37465703fe0812';
+/**
+ * 🔴 阿宏 2026-09-09 拍板：「密碼 0930848000。以後固定密碼」
+ *    ＝點交頁**全站共用同一組固定密碼**，🚫不要每個案子各發一組、🚫不要定期輪替。
+ *    理由（他一路的做法）：團隊要能不查不問就打得開，密碼跟他的電話與網域同一組最好記。
+ *    以後新增點交頁**不必改這裡**，這道閘擋的是整個 /dianjiao/。
+ *    要換密碼＝改下面這行 HASH（算法 sha256('dianjiao|' + 新密碼)），明文永遠不寫進 repo。
+ */
+const HASH = '6970bd2e7fc99183c4ed7d69be814bd43243e355d2192c47d4c2f7d0ec97f44c';
 const SALT = 'dianjiao|';
 const COOKIE = 'dj_auth';
 const MAX_AGE = 60 * 60 * 24 * 30; // 30 天，團隊輸入一次可以用一個月
