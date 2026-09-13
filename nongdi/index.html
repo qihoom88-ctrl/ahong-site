@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>農地盤點器</title>
+<meta name="theme-color" content="#131311">
+<!--
+  農地變更與區段徵收換算工具 v1.0（B0-0914-02，掛 prospecting-letter v2.2.0）
+  規格正本：skills/prospecting-letter/references/農地變更與區段徵收換算工具規格.md
+  法條只引：references/農地區段徵收開發方向.md〈零〉六條＋〈零之一〉B0-0914-02 補條（皆逐字對照 law.moj.gov.tw）
+  🔴 資料只在瀏覽器本機計算，沒有任何上傳；要存檔由業務手動貼進 Notion 物件頁。
+  🔴 土增稅函數 landVit() 逐行對照 property-tax-advisor/scripts/tax_calc.py 的 land_vit()，級距與減徵常數原樣照抄，🚫不得在此改級距。
+  🔴 這是「盤點器」不是「變更申請器」：輸出全部是查詢結果與公式，不出結論句、不出金額預測、不出倍數。
+-->
+<style>
+:root{
+  --ground:#E7E7E3; --surface:#FBFBF8; --raise:#FFFFFF;
+  --line:#D5D4CC; --ink:#1A1A17; --ink2:#5C5B54; --ink3:#8A897F;
+  --accent:#4E6B3A; --accent-soft:#E2EAD9;
+  --bad:#B2412C; --bad-soft:#F6DED8;
+  --good:#43713A; --good-soft:#DEEBD9;
+  --warn:#A9761A; --warn-soft:#F0E3C7;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ground:#131311; --surface:#1C1C19; --raise:#2B2B26;
+    --line:#33332E; --ink:#ECECE6; --ink2:#ADACA3; --ink3:#77766D;
+    --accent:#8FB36F; --accent-soft:#25301C;
+    --bad:#E0684D; --bad-soft:#3A211B;
+    --good:#7FB06F; --good-soft:#1F2B1B;
+    --warn:#E3B155; --warn-soft:#3A2F17;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:0 14px 96px}
+header{position:sticky;top:0;z-index:9;background:var(--ground);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;gap:10px}
+header .mark{width:32px;height:32px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:900}
+header b{font-size:15px}
+header span{display:block;font-size:11px;color:var(--ink3)}
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:9;display:flex;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.tabs button{flex:1;border:0;background:none;color:var(--ink3);font:inherit;font-size:11px;padding:8px 2px 10px;cursor:pointer}
+.tabs button .ic{display:block;font-size:19px;margin-bottom:1px}
+.tabs button[aria-selected="true"]{color:var(--accent);font-weight:700}
+.sec{display:none;padding-top:12px}
+.sec.on{display:block}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+.box h4{margin:0 0 10px;font-size:13px;letter-spacing:.04em;color:var(--ink2)}
+label.fl{display:block;font-size:12.5px;font-weight:700;margin:10px 0 4px}
+label.fl i{font-weight:400;color:var(--ink3);font-style:normal}
+label.fl em{font-style:normal;color:var(--bad)}
+.inp{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--raise);color:var(--ink);font:inherit;font-size:16px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.f3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.chk{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13.5px}
+.chk label{display:flex;align-items:center;gap:6px}
+.btn{display:block;width:100%;padding:12px;border:0;border-radius:10px;background:var(--accent);color:#fff;font:inherit;font-weight:800;cursor:pointer;margin-top:10px}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--ink2);font-weight:600}
+.btn.sm{padding:8px;font-size:13px;margin-top:8px}
+.note{font-size:12.5px;color:var(--ink3);margin:6px 0 0}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;margin-right:6px}
+.tag.g{background:var(--good-soft);color:var(--good)}
+.tag.r{background:var(--bad-soft);color:var(--bad)}
+.tag.y{background:var(--warn-soft);color:var(--warn)}
+.tag.n{background:var(--accent-soft);color:var(--accent)}
+.gate{border-left:4px solid var(--line);padding:8px 10px;margin:8px 0;background:var(--raise);border-radius:0 8px 8px 0}
+.gate.g{border-color:var(--good)}.gate.r{border-color:var(--bad)}.gate.y{border-color:var(--warn)}
+.gate b{display:block;font-size:14px}
+.gate small{display:block;color:var(--ink2);font-size:12.5px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{border-bottom:1px solid var(--line);padding:6px 4px;text-align:left;vertical-align:top}
+th{color:var(--ink3);font-weight:600;font-size:12px}
+td.k{color:var(--ink2);white-space:nowrap}
+.blank{display:inline-block;min-width:88px;border-bottom:1px dashed var(--ink3);color:var(--warn);font-size:12px;text-align:center}
+.big{font-size:22px;font-weight:900}
+.dead{display:flex;gap:8px;margin:8px 0}
+.dead>div{flex:1;background:var(--raise);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.dead .d{font-size:26px;font-weight:900}
+.dead .r .d{color:var(--bad)}.dead .y .d{color:var(--warn)}.dead .g .d{color:var(--good)}
+.dead small{display:block;color:var(--ink3);font-size:11.5px}
+.law{font-size:12px;color:var(--ink3);border-top:1px dashed var(--line);margin-top:8px;padding-top:6px}
+.law a{color:inherit}
+.formula{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;background:var(--raise);border:1px solid var(--line);border-radius:8px;padding:8px 10px;overflow-x:auto;white-space:pre}
+.warnbox{background:var(--warn-soft);color:var(--warn);border-radius:8px;padding:8px 10px;font-size:13px;font-weight:700}
+.badbox{background:var(--bad-soft);color:var(--bad);border-radius:8px;padding:8px 10px;font-size:13px;font-weight:700}
+@media print{
+  body{background:#fff;color:#000;font-size:12px}
+  header,.tabs,.noprint{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .sec{display:none}.sec.print{display:block!important}
+  .box{border:1px solid #999;break-inside:avoid;background:#fff}
+  .gate{background:#fff}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="mark">田</div>
+  <div><b>農地盤點器</b><span>變更與區段徵收換算・10 業務內部工具・資料只在這台手機算</span></div>
+</header>
+
+<div class="wrap">
+
+<!-- ═══════════════ 0 輸入 ═══════════════ -->
+<section class="sec on" id="s-in">
+  <div class="box">
+    <h4>地籍（謄本抄）</h4>
+    <div class="f2">
+      <div><label class="fl">縣市</label><input class="inp" id="i_city" placeholder="新北市"></div>
+      <div><label class="fl">鄉鎮市區</label><input class="inp" id="i_town" placeholder="樹林區"></div>
+    </div>
+    <div class="f3">
+      <div><label class="fl">段</label><input class="inp" id="i_sec"></div>
+      <div><label class="fl">小段</label><input class="inp" id="i_sub"></div>
+      <div><label class="fl">地號</label><input class="inp" id="i_no"></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">面積 A <i>㎡</i><em> *</em></label><input class="inp" id="i_A" type="number" inputmode="decimal" min="0" step="0.01"></div>
+      <div><label class="fl">持分 <i>例 1/3，單獨所有填 1/1</i></label><input class="inp" id="i_share" placeholder="1/1"></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">都市計畫內外<em> *</em></label><select class="inp" id="i_urban"><option value="">未填</option><option value="out">都市計畫外（非都市土地）</option><option value="in">都市計畫內</option></select></div>
+      <div><label class="fl">使用分區</label><input class="inp" id="i_zone" placeholder="特定農業區／一般農業區／農業區…"></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">使用地類別 <i>都市計畫內多為空白</i></label><input class="inp" id="i_cat" placeholder="農牧用地／林業用地／甲種建築用地…"></div>
+      <div><label class="fl">公告現值 <i>元/㎡</i></label><input class="inp" id="i_cv" type="number" inputmode="decimal" min="0"></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">公告地價 <i>元/㎡</i></label><input class="inp" id="i_av" type="number" inputmode="decimal" min="0"></div>
+      <div><label class="fl">共有人數</label><input class="inp" id="i_coown" type="number" inputmode="numeric" min="1" placeholder="1"></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h4>取得歷程（多問一句答案就反轉的三格之一）</h4>
+    <div class="f2">
+      <div><label class="fl">謄本登記取得日<em> *</em></label><input class="inp" id="i_acq" type="date"></div>
+      <div><label class="fl">取得原因</label><select class="inp" id="i_acq_why"><option value="">未填</option><option>買賣</option><option>繼承</option><option>贈與</option><option>分割</option><option>其他</option></select></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">原始取得日 <i>繼承／分割的母地取得日</i><em> *</em></label><input class="inp" id="i_acq0" type="date"></div>
+      <div><label class="fl">所有權人戶籍縣市<em> *</em></label><input class="inp" id="i_hcity" placeholder="與土地同縣市才過第④關"></div>
+    </div>
+    <label class="fl">所有權人是否已有自用農舍</label>
+    <select class="inp" id="i_hasfarm"><option value="">未填</option><option value="n">無</option><option value="y">有</option></select>
+  </div>
+
+  <div class="box">
+    <h4>地上農舍與套繪</h4>
+    <div class="f2">
+      <div><label class="fl">地上有無農舍<em> *</em></label><select class="inp" id="i_house"><option value="">未填</option><option value="n">無</option><option value="y">有</option></select></div>
+      <div><label class="fl">農舍使用執照核發日 <i>或建物謄本登記日</i></label><input class="inp" id="i_house_date" type="date"></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">農舍用地面積 <i>㎡，使照檢討表</i></label><input class="inp" id="i_house_area" type="number" inputmode="decimal" min="0"></div>
+      <div><label class="fl">農舍與土地是否同一所有權人</label><select class="inp" id="i_house_same"><option value="">未填</option><option value="y">是</option><option value="n">否</option></select></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">套繪管制註記<em> *</em></label><select class="inp" id="i_tao"><option value="">未查</option><option value="n">無</option><option value="y">有（已著色標示）</option></select></div>
+      <div><label class="fl">套繪已解除？</label><select class="inp" id="i_tao_rel"><option value="">未填</option><option value="y">已解除</option><option value="n">未解除</option></select></div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h4>地上舊建物四件佐證（三格之二）</h4>
+    <label class="fl">地上有無舊建物（非農舍）</label>
+    <select class="inp" id="i_old"><option value="">未填</option><option value="n">無</option><option value="y">有</option></select>
+    <div class="chk" style="margin-top:8px">
+      <label><input type="checkbox" id="i_old1">使用執照</label>
+      <label><input type="checkbox" id="i_old2">設計圖</label>
+      <label><input type="checkbox" id="i_old3">合法水電</label>
+      <label><input type="checkbox" id="i_old4">門牌</label>
+    </div>
+    <p class="note">四件全無＝不能證明合法建物，🚫跟地主講「變更後就合法」；🚫先拆。</p>
+  </div>
+
+  <div class="box">
+    <h4>租約／他項／限制登記（§41 清理清單）</h4>
+    <div class="chk">
+      <label><input type="checkbox" id="i_lease">耕地租約</label>
+      <label><input type="checkbox" id="i_lien">他項權利（抵押等）</label>
+      <label><input type="checkbox" id="i_restrict">限制登記（查封／假處分等）</label>
+    </div>
+    <label class="fl">共有利益落點（三格之三） <i>口頭分配位置 vs 可變更範圍</i></label>
+    <select class="inp" id="i_coalign"><option value="unknown">未知</option><option value="same">一致</option><option value="diff">不一致</option><option value="na">單獨所有／不適用</option></select>
+  </div>
+
+  <div class="box">
+    <h4>所在公告</h4>
+    <label class="fl">公告類型<em> *</em></label>
+    <select class="inp" id="i_ptype">
+      <option value="none">無公告（走農地變更路）</option>
+      <option value="farm">農地重劃</option>
+      <option value="urban">市地重劃</option>
+      <option value="zone">區段徵收</option>
+    </select>
+    <div id="pbox" hidden>
+      <div class="f2">
+        <div><label class="fl">範圍名稱</label><input class="inp" id="i_pname"></div>
+        <div><label class="fl">階段</label><select class="inp" id="i_stage"><option value="">未填</option><option value="1">① 公開展覽</option><option value="2">② 都委會審議</option><option value="3">③ 核定</option><option value="4">④ 徵收／重劃計畫公告</option><option value="5">⑤ 申請抵價地／分配結果公告</option><option value="6">⑥ 配地／登記</option></select></div>
+      </div>
+      <div class="f2">
+        <div><label class="fl">公告日</label><input class="inp" id="i_pdate" type="date"></div>
+        <div><label class="fl">公告期間截止日 <i>空白＝以公告日＋30 日推算</i></label><input class="inp" id="i_pend" type="date"></div>
+      </div>
+      <div class="f2">
+        <div><label class="fl">§41 清理期限（通知書）</label><input class="inp" id="i_clean" type="date"></div>
+        <div><label class="fl">最小建築單位面積 A_min <i>㎡</i></label><input class="inp" id="i_Amin" type="number" inputmode="decimal" min="0"></div>
+      </div>
+      <div id="zbox" hidden>
+        <div class="f2">
+          <div><label class="fl">徵收補償地價 P_c <i>元/㎡</i></label><input class="inp" id="i_Pc" type="number" inputmode="decimal" min="0"></div>
+          <div><label class="fl">補償地價總額 V_total <i>元</i></label><input class="inp" id="i_Vt" type="number" inputmode="decimal" min="0"></div>
+        </div>
+        <div class="f2">
+          <div><label class="fl">權利價值 W <i>元，主管機關通知書</i></label><input class="inp" id="i_W" type="number" inputmode="decimal" min="0"></div>
+          <div><label class="fl">領回抵價地單位地價 P_d <i>元/㎡</i></label><input class="inp" id="i_Pd" type="number" inputmode="decimal" min="0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box noprint">
+    <button class="btn" onclick="run()">算三張表</button>
+    <div class="f2">
+      <button class="btn ghost sm" onclick="saveLocal()">存在這台手機</button>
+      <button class="btn ghost sm" onclick="clearLocal()">清空</button>
+    </div>
+    <p class="note">🔴 不上傳、不連線。存檔只在這台裝置的瀏覽器；要歸檔請手動貼進 Notion 物件頁。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ 1 權利狀態表 ═══════════════ -->
+<section class="sec print" id="s-r">
+  <div class="box">
+    <h4>權利狀態表（留給地主，不管賣不賣都用得到）</h4>
+    <div id="r_out"><p class="note">先到「輸入」填完按「算三張表」。</p></div>
+    <button class="btn ghost sm noprint" onclick="printR()">列印這一張</button>
+  </div>
+</section>
+
+<!-- ═══════════════ 2 業務頁 ═══════════════ -->
+<section class="sec" id="s-b">
+  <div class="box"><h4>業務頁（對內：痛點 #、話術段、下一次接觸日）</h4><div id="b_out"><p class="note">先算。</p></div></div>
+</section>
+
+<!-- ═══════════════ 3 財務頁 ═══════════════ -->
+<section class="sec" id="s-f">
+  <div class="box">
+    <h4>財務頁（〈二〉變數表；空格由 20 財務填）</h4>
+    <div class="f2">
+      <div><label class="fl">持有年數 n</label><input class="inp" id="f_n" type="number" min="0" step="1"></div>
+      <div><label class="fl">申報移轉現值 S <i>元</i></label><input class="inp" id="f_S" type="number" inputmode="decimal" min="0"></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">CPI_adj <i>待 20 財務</i></label><input class="inp" id="f_cpi" type="number" step="0.0001" placeholder="待 20 財務"></div>
+      <div><label class="fl">年持有成本 H <i>待 20 財務</i></label><input class="inp" id="f_H" type="number" inputmode="decimal" placeholder="待 20 財務"></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">清理成本 X_clean</label><input class="inp" id="f_Xc" type="number" inputmode="decimal" placeholder="待 20 財務"></div>
+      <div><label class="fl">移轉費用 T_move</label><input class="inp" id="f_Tm" type="number" inputmode="decimal" placeholder="待 20 財務"></div>
+    </div>
+    <div class="f2">
+      <div><label class="fl">折現率 d</label><input class="inp" id="f_d" type="number" step="0.001" placeholder="待 20 財務"></div>
+      <div><label class="fl">§33 減徵 × §39-1 減徵 疊加順序</label><select class="inp" id="f_order"><option value="">待 20 財務</option><option value="a">先 §33 再 ×(1−40%)</option><option value="b">先 ×(1−40%) 再 §33</option></select></div>
+    </div>
+    <button class="btn sm noprint" onclick="run()">重算</button>
+    <div id="f_out" style="margin-top:10px"></div>
+  </div>
+</section>
+
+</div>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-t="s-in"><span class="ic">✎</span>輸入</button>
+  <button role="tab" data-t="s-r"><span class="ic">▤</span>權利狀態表</button>
+  <button role="tab" data-t="s-b"><span class="ic">☎</span>業務頁</button>
+  <button role="tab" data-t="s-f"><span class="ic">∑</span>財務頁</button>
+</nav>
+
+<script>
+/* ───────────────────────── 法條出處（只引 SOP〈零〉六條＋〈零之一〉補條，逐字對照官方原文）──────────────────────── */
+const LAW = {
+  tz39:  ['土地徵收條例 §39',   'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060058&flno=39'],
+  tz40:  ['土地徵收條例 §40',   'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060058&flno=40'],
+  tz41:  ['土地徵收條例 §41',   'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060058&flno=41'],
+  tz44:  ['土地徵收條例 §44',   'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060058&flno=44'],
+  tz18:  ['土地徵收條例 §18（公告期間三十日）', 'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060058&flno=18'],
+  ts391: ['土地稅法 §39-1',     'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340096&flno=39-1'],
+  ts33:  ['土地稅法 §33',       'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=G0340096&flno=33'],
+  nf18:  ['農業發展條例 §18',   'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=M0020001&flno=18'],
+  ns:    ['農業用地興建農舍辦法 §2／§4／§9／§12', 'https://law.moj.gov.tw/LawClass/LawAll.aspx?PCODE=M0110013'],
+  pq56:  ['平均地權條例 §56（重劃計畫書公告三十日）', 'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060009&flno=56'],
+  pq59:  ['平均地權條例 §59（禁限建不超過一年六個月）', 'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060009&flno=59'],
+  pq60:  ['平均地權條例 §60（共同負擔以未建築土地折價抵付，合計不超過 45%）', 'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060009&flno=60'],
+  pq63:  ['平均地權條例 §63（重劃耕地租約註銷與補償）', 'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0060009&flno=63'],
+  sz31:  ['市地重劃實施辦法 §31／§53（未達最小分配面積標準二分之一者現金補償）', 'https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0060011'],
+  sz35:  ['市地重劃實施辦法 §35（分配結果公告三十日，公告期間內書面異議）', 'https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0060011'],
+  fd27:  ['非都市土地使用管制規則 §27／§28／§30（原使用分區內申請變更編定＋興辦事業計畫）', 'https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0060013'],
+  fd35:  ['非都市土地使用管制規則 §35／§35-1（毗鄰建築用地之零星狹小土地）', 'https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0060013'],
+  qy15:  ['區域計畫法 §15／§21（非都市土地使用管制與罰則）', 'https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070030'],
+  fee:   ['不動產仲介經紀業報酬計收標準規定（買賣雙方合計不得超過成交價金 6%）', 'https://glrs.moi.gov.tw/LawContent.aspx?id=FL053366'],
+};
+function lawRef(keys){ return '<div class="law">出處：' + keys.map(k => '<a href="'+LAW[k][1]+'" target="_blank" rel="noopener">'+LAW[k][0]+'</a>').join('／') + '</div>'; }
+
+/* ───────────────────────── 土地增值稅：逐行對照 property-tax-advisor/scripts/tax_calc.py land_vit() ──────────────────────── */
+// 土地稅法 §33 第 1 項三級累進（切點＝前次現值總額 1 倍與 2 倍；🚫不是 1 倍與 3 倍）
+const LAND_VIT_BRACKETS = [[1.0,0.20],[2.0,0.30],[Infinity,0.40]];
+// §33 第 6～8 項：減徵基數＝「超過最低稅率 20% 的那一塊」；條文「超過二十年以上」採嚴格大於（同 tax_calc.py）
+const LAND_VIT_LONG_HOLD_RELIEF = [[40,0.40],[30,0.30],[20,0.20]];
+function landVitProgressive(gain, prior){
+  if(!(gain>0) || !(prior>0)) return [0,[]];
+  let tax=0, detail=[], low=0;
+  for(const [mult,rate] of LAND_VIT_BRACKETS){
+    const high = mult===Infinity ? Infinity : prior*mult;
+    const seg = Math.max(Math.min(gain,high)-low,0);
+    if(seg>0){ tax+=seg*rate; detail.push([rate,seg,seg*rate]); }
+    low=high; if(gain<=high) break;
+  }
+  return [tax,detail];
+}
+function landVit(gain, prior, holdYears){
+  // 本工具只走一般用地（self_use=False）：配回抵價地為可建築用地，自用住宅優惠不在本工具判定
+  const [tax,detail] = landVitProgressive(gain,prior);
+  let relief=0, label='';
+  if(holdYears!=null && !isNaN(holdYears) && tax>0){
+    const excess = tax - Math.max(gain,0)*LAND_VIT_BRACKETS[0][1];
+    for(const [years,rate] of LAND_VIT_LONG_HOLD_RELIEF){
+      if(holdYears>years){ relief=Math.max(excess,0)*rate; label='持有超過 '+years+' 年，超過最低稅率部分減徵 '+Math.round(rate*100)+'%（§33 第 '+({20:6,30:7,40:8})[years]+' 項）'; break; }
+    }
+  }
+  return {tax:tax-relief, gross:tax, detail, relief, label};
+}
+
+/* ───────────────────────── 工具 ──────────────────────── */
+const $=id=>document.getElementById(id);
+const v=id=>$(id).value.trim();
+const num=id=>{const x=parseFloat($(id).value);return isNaN(x)?null:x;};
+const fmt=x=>x==null?'<span class="blank">待填</span>':Math.round(x).toLocaleString('zh-Hant-TW');
+const fmt2=x=>x==null?'<span class="blank">待填</span>':(Math.round(x*100)/100).toLocaleString('zh-Hant-TW');
+const esc=s=>String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const blank=(who)=>'<span class="blank">待 '+who+'</span>';
+function dt(s){ if(!s) return null; const d=new Date(s+'T00:00:00'); return isNaN(d)?null:d; }
+function addDays(d,n){ const x=new Date(d); x.setDate(x.getDate()+n); return x; }
+function ymd(d){ return d? d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0') : '—'; }
+function daysBetween(a,b){ return Math.round((b-a)/86400000); }
+function yearsBetween(a,b){ let y=b.getFullYear()-a.getFullYear(); const m=b.getMonth()-a.getMonth(); if(m<0||(m===0&&b.getDate()<a.getDate())) y--; return y; }
+function rocYear(d){ return d.getFullYear()-1911; }
+const TODAY=new Date(); TODAY.setHours(0,0,0,0);
+function shareRatio(s){ const m=/^\s*(\d+)\s*\/\s*(\d+)\s*$/.exec(s||''); if(!m) return null; const a=+m[1],b=+m[2]; return b>0?a/b:null; }
+
+/* ───────────────────────── 模組 1｜四關判死（順序固定 ③→①→④→②） ──────────────────────── */
+function gates(){
+  const out=[]; let stop=false;
+  const push=(id,name,color,txt,law)=>out.push({id,name,color,txt,law});
+  // ③ 農舍五年（農發條例 §18 第 2 項）
+  if(v('i_house')==='y'){
+    const hd=dt(v('i_house_date'));
+    if(!hd) push(3,'③ 農舍五年','y','有農舍但未填使照核發日／建物登記日，先補這一格再判。','nf18');
+    else{
+      const yrs=yearsBetween(hd,TODAY);
+      if(yrs<5){ push(3,'③ 農舍五年','r','農舍自 '+ymd(hd)+' 起算未滿五年（今 '+yrs+' 年），依條文「滿五年始得移轉」，只有繼承或法院拍賣例外。這塊地連農舍現在都不能賣，開發信不用寄；只做到期日 '+ymd(addDays(new Date(hd.getFullYear()+5,hd.getMonth(),hd.getDate()),0))+' 的追蹤名單。','nf18'); stop=true; }
+      else push(3,'③ 農舍五年','g','農舍自 '+ymd(hd)+' 起算已滿五年。','nf18');
+    }
+  } else if(v('i_house')==='n') push(3,'③ 農舍五年','g','地上無農舍，本關不適用。','nf18');
+  else push(3,'③ 農舍五年','y','「地上有無農舍」未填。','nf18');
+  if(stop) return out;
+  // ① 套繪（農舍辦法 §12 第 2 項）
+  if(v('i_tao')==='y'){
+    if(v('i_tao_rel')==='y') push(1,'① 套繪','g','曾套繪但已解除管制。','ns');
+    else { push(1,'① 套繪','r','地籍套繪圖已著色標示且未解除，「未經解除套繪管制不得辦理分割」。先問能不能解除（§12 第 3 項三種情形）；解不掉＝只能整筆連農舍一起動。','ns'); stop=true; }
+  } else if(v('i_tao')==='n') push(1,'① 套繪','g','謄本無套繪註記。','ns');
+  else push(1,'① 套繪','y','套繪未查：向主管建築機關申請地籍套繪圖查詢，或看土地登記謄本註記。三分鐘查不出來的不要寄信。','ns');
+  if(stop) return out;
+  // ④ 零點二五公頃與申請人資格（農舍辦法 §2 第 1 項＋農發條例 §18 第 4 項）＋前置：取得歷程
+  const A=num('i_A'); const acq0=dt(v('i_acq0'))||dt(v('i_acq'));
+  let pre='';
+  if(acq0 && rocYear(acq0)<=89) pre='🟡 原始取得日為民國 '+rocYear(acq0)+' 年（89 年修法前後）→ 標「查例外條款」（農舍辦法 §4：89 年修正施行前取得之農業用地依法被徵收者得準用申請興建農舍；但經核准發給抵價地者不適用），🚫直接判死，逐條對條文原文。';
+  const items=[];
+  if(A==null) items.push(['y','面積 A 未填']);
+  else if(A<2500) items.push(['r','面積 '+fmt2(A)+' ㎡ 不到零點二五公頃（2,500 ㎡）：買方池只剩純農用'+(pre?'；但見取得歷程例外':'')]);
+  else items.push(['g','面積 '+fmt2(A)+' ㎡ ≥ 2,500 ㎡']);
+  const acq=dt(v('i_acq'));
+  if(!acq) items.push(['y','取得日未填（土地取得須滿二年）']);
+  else items.push([yearsBetween(acq,TODAY)>=2?'g':'r','土地取得 '+ymd(acq)+'，'+(yearsBetween(acq,TODAY)>=2?'已':'未')+'滿二年']);
+  const hc=v('i_hcity'), lc=v('i_city');
+  if(!hc||!lc) items.push(['y','戶籍縣市或土地縣市未填（須同一直轄市、縣（市）且戶籍登記滿二年）']);
+  else items.push([hc===lc?'g':'r','戶籍 '+esc(hc)+' vs 土地 '+esc(lc)+(hc===lc?'（同縣市）':'（不同縣市：買了也蓋不了農舍）')]);
+  if(v('i_hasfarm')==='y') items.push(['r','已有自用農舍：不得再申請']);
+  else if(v('i_hasfarm')==='n') items.push(['g','無自用農舍']);
+  else items.push(['y','是否已有自用農舍未填']);
+  const worst = items.some(i=>i[0]==='r') ? (pre && A!=null && A<2500 && !items.some(i=>i[0]==='r' && !i[1].startsWith('面積')) ? 'y':'r') : (items.some(i=>i[0]==='y')?'y':'g');
+  push(4,'④ 零點二五公頃與資格',worst, items.map(i=>'<span class="tag '+i[0]+'">'+({g:'過',r:'卡',y:'未查'})[i[0]]+'</span>'+i[1]).join('<br>')+(pre?'<br>'+pre:''),'ns');
+  if(worst==='r') return out;
+  // ② 九成農業經營用地（農舍辦法 §9 第 2 項第 3 款＋農發條例 §18 第 4 項）
+  if(v('i_house')==='y'){
+    const ha=num('i_house_area');
+    if(ha==null||A==null) push(2,'② 九成農業經營用地','y','農舍用地面積未填，看使照檢討表。','ns');
+    else{ const pct=ha/A*100; push(2,'② 九成農業經營用地', pct<=10?'g':'r', '農舍用地 '+fmt2(ha)+' ㎡ ÷ '+fmt2(A)+' ㎡ ＝ '+pct.toFixed(1)+'%'+(pct<=10?'（≤10%）':'（>10%，農業經營用地不足九成）')+'；那九成是農舍的一部分，🚫不能想成「農舍旁邊多一塊空地可以單獨賣」。'+(v('i_house_same')==='n'?'<br><span class="tag r">卡</span>農舍與土地非同一所有權人（農舍應與坐落用地併同移轉）':''),'ns'); }
+  } else push(2,'② 九成農業經營用地','g','無農舍，本關不適用。','ns');
+  return out;
+}
+
+/* ───────────────────────── 模組 2｜路徑判定 ──────────────────────── */
+function path(g){
+  const t=v('i_ptype'); const urban=v('i_urban');
+  const allGreen = g.length && g.every(x=>x.color==='g');
+  const anyRed = g.some(x=>x.color==='r');
+  let html='';
+  const pdate=dt(v('i_pdate')); let pend=dt(v('i_pend')); let pendNote='';
+  if(!pend && pdate && t==='zone'){ pend=addDays(pdate,30); pendNote='（依公告日＋30 日推算，以公告本文為準）'; }
+  if(!pend && pdate && t==='urban'){ pend=addDays(pdate,30); pendNote='（依重劃計畫書公告日＋30 日推算，以公告本文為準）'; }
+  const clean=dt(v('i_clean'));
+  const deadlines=[];
+  if(pend) deadlines.push({name:(t==='zone'?'公告期間截止（抵價地申請）':'公告期間截止（書面反對／異議）'), d:pend, note:pendNote});
+  if(clean) deadlines.push({name:'§41 清理期限', d:clean, note:''});
+  if(deadlines.length && (t==='zone'||t==='urban')){
+    html+='<div class="dead">'+deadlines.map(x=>{const n=daysBetween(TODAY,x.d); const c=n<0?'r':(n<=30?'y':'g'); return '<div class="'+c+'"><div class="d">'+(n<0?'已過':n)+'</div><small>'+x.name+(n<0?'':' 天')+'<br>'+ymd(x.d)+' '+x.note+'</small></div>';}).join('')+'</div>';
+  }
+  if(t==='none'){
+    html+='<p><span class="tag n">農地變更路</span>無公告。下列只是<b>可能途徑名</b>與要補的文件，🚫本工具不判「能變」；能不能變、要多久，一律「查該縣市公告」。</p><ul>';
+    if(urban==='out'){
+      html+='<li><b>原使用分區內申請使用地變更編定</b>（非都市土地使用管制規則 §27：應在原使用分區範圍內申請變更編定；§28 申請文件：變更編定申請書、興辦事業計畫核准文件、同意書、土地使用計畫配置圖及位置圖；§30 應擬具興辦事業計畫）。要補：分區證明、興辦事業計畫、該縣市國土功能分區圖生效日。</li>';
+      html+='<li><b>零星或狹小土地按毗鄰土地變更編定為建築用地</b>（§35：毗鄰甲種、丙種建築用地且面積未超過 0.12 公頃等五款情形之一；§35-1 鄉村區邊緣畸零地）。要補：地籍圖看四鄰使用地類別。</li>';
+    } else if(urban==='in'){
+      html+='<li><b>都市計畫內建地範圍認定</b>：法源<span class="blank">待補</span>（規格〈六〉第 3 件，本工具未查證原文，只列途徑名）。要補：都市計畫土地使用分區證明、細部計畫圖。</li>';
+    } else html+='<li>都市計畫內外未填，無法列途徑。</li>';
+    if(v('i_old')==='y'){
+      const has=['i_old1','i_old2','i_old3','i_old4'].filter(i=>$(i).checked).length;
+      if(has>0) html+='<li><b>合法房屋更正編定／建地範圍認定</b>：法源<span class="blank">待補</span>（規格〈六〉第 3 件）。已有 '+has+'/4 件佐證，先把新建年代與佐證調齊。</li>';
+      else html+='<li><span class="tag r">停</span>舊建物四件佐證全無＝不能證明合法建物，只列「先查建物歷史佐證」，🚫列變更途徑、🚫先拆。</li>';
+    }
+    html+='</ul><p class="note">🟡 變更時程各案不同，本工具不出時間數字。違規使用罰則見區域計畫法 §21（新臺幣六萬元以上三十萬元以下，得按次處罰）——簽長約前先調分區證明。</p>';
+    html+=lawRef(['fd27','fd35','qy15']);
+  } else if(t==='farm'){
+    html+='<p><span class="tag n">農地重劃</span>重劃後仍為農地，不會變建地。走農地買賣委託。</p>';
+  } else if(t==='urban'){
+    html+='<p><span class="tag n">市地重劃</span>走平均地權條例。</p><ul>';
+    html+='<li>重劃計畫書經核定<b>公告滿三十日</b>後實施；公告期間內私有土地所有權人半數以上且面積過半反對者，主管機關應調處修訂（§56）。</li>';
+    html+='<li>重劃地區選定後得公告禁止土地移轉、分割、設定負擔與建築，期間不得超過<b>一年六個月</b>（§59）→ 這段時間<b>不能賣</b>。</li>';
+    html+='<li>公共設施用地及費用由土地所有權人按受益比例共同負擔，以未建築土地折價抵付，合計以不超過重劃區總面積 <b>45%</b> 為限（§60）。</li>';
+    html+='<li>重劃後應分配面積未達最小分配面積標準<b>二分之一</b>者不能分配土地，改發現金補償（實施辦法 §31／§53）；分配結果公告 <b>30 日</b>，公告期間內書面異議（§35）。</li>';
+    html+='<li>耕地租約：不能達到原租賃目的者由政府逕為註銷，承租人得請求公告現值三分之一補償（§63）。</li>';
+    html+='</ul>';
+    const Amin=num('i_Amin'), A=num('i_A'), sh=shareRatio(v('i_share'));
+    if(Amin!=null && A!=null){ const mine=A*(sh??1); html+='<p>面積驗算（粗估，實際負擔比率以計畫書為準）：持分面積 '+fmt2(mine)+' ㎡ vs 最小分配面積標準二分之一 '+fmt2(Amin/2)+' ㎡ → '+(mine<Amin/2?'<span class="tag r">可能不能分配土地</span>':'<span class="tag g">面積門檻過</span>')+'，但重劃負擔會再折讓，此處未扣負擔，🚫拿去對地主講。</p>'; }
+    html+='<p class="note">重劃後第一次移轉的土增稅減徵條文：<span class="blank">待補</span>（本次查 土地稅法 §39 原文無此項，🚫憑記憶寫）。</p>';
+    html+=lawRef(['pq56','pq59','pq60','pq63','sz31','sz35']);
+  } else if(t==='zone'){
+    html+='<p><span class="tag n">區段徵收</span>〈B〉決策樹 Q1–Q5。</p>';
+    const q=[];
+    const inWin = pend ? daysBetween(TODAY,pend)>=0 : null;
+    q.push(['Q1 現在是不是徵收公告期間內？（§40 第 1 項）', inWin==null?'y':(inWin?'g':'r'), inWin==null?'公告日／截止日未填':(inWin?'是，'+ymd(pend)+' 前要以書面申請抵價地':'否，已過期：只能領現金，土增稅免徵（§39-1 第 2 項）。流程結束。')]);
+    const enc=$('i_lease').checked||$('i_lien').checked||$('i_restrict').checked;
+    q.push(['Q2 地上有沒有耕地租約／他項權利／限制登記？（§41）', enc?(clean?'y':'r'):'g', enc?('有：'+[$('i_lease').checked?'耕地租約':'',$('i_lien').checked?'他項權利':'',$('i_restrict').checked?'限制登記':''].filter(Boolean).join('、')+'。限期內清不掉＝核定不發給抵價地，核定次日起十五日內發現金（免徵）。'+(clean?'清理期限 '+ymd(clean):'清理期限未填')):'沒有']);
+    const A=num('i_A'),Pc=num('i_Pc'),Vt=num('i_Vt'),W=num('i_W'),Pd=num('i_Pd'),Amin=num('i_Amin'),sh=shareRatio(v('i_share'));
+    const C=(A!=null&&Pc!=null)?A*(sh??1)*Pc:null; const r=(C!=null&&Vt)?C/Vt:null; const Ad=(W!=null&&Pd)?W/Pd:null;
+    let q3='C＝A×持分×P_c＝'+fmt(C)+' 元；r＝C÷V_total＝'+(r==null?'<span class="blank">待填</span>':(r*100).toFixed(4)+'%')+'；A_d＝W÷P_d＝'+fmt2(Ad)+' ㎡'+(Amin!=null?'；A_min＝'+fmt2(Amin)+' ㎡':'');
+    let q3c='y'; if(Ad!=null&&Amin!=null){ q3c=Ad>=Amin?'g':'r'; q3+= Ad>=Amin?' → 達最小建築單位面積':' → 不足：規定期間內申請與他人合併，未申請或合併不成＝按原徵收地價補償費發現金（免徵）'; }
+    q.push(['Q3 領回面積 A_d 有沒有達到最小建築單位面積？（§44）——我方只做通知書後的驗算', q3c, q3]);
+    q.push(['Q4 要現金流，還是要土地？', 'n', '地主自己決定，🚫替他選。現金：免徵（§39-1 第 2 項）。抵價地：可全部或部分申請（§40 第 2 項），配回時免徵（§39-1 第 3 項）。']);
+    q.push(['Q5 配回之後：持有，還是第一次移轉？', 'n', '持有：年持有成本 H（稅率由 20 財務判定）。第一次移轉：原地價＝實際領回抵價地之地價，土增稅準用 §39-1 第 1 項減徵百分之四十——見財務頁。']);
+    html+=q.map(x=>'<div class="gate '+x[1]+'"><b>'+x[0]+'</b><small>'+x[2]+'</small></div>').join('');
+    html+=lawRef(['tz18','tz39','tz40','tz41','tz44','ts391']);
+  }
+  if(anyRed) html='<div class="badbox">模組 1 有一關卡住，下列路徑只供盤點，🚫對地主講「可以變更」。</div>'+html;
+  if(v('i_coalign')==='diff') html+='<div class="warnbox">共有利益落點：不一致 → 部分變更的利益不在他那份，先不推變更，停在「共有人協議書」。</div>';
+  else if(v('i_coalign')==='unknown' && (parseInt(v('i_coown')||'1')>1)) html+='<div class="warnbox">共有利益落點：未知 → 先做共有人意向表（人數／持分／口頭分配位置／可變更範圍落點）。</div>';
+  return {html, pend, clean, allGreen, anyRed};
+}
+
+/* ───────────────────────── 輸出 1｜權利狀態表 ──────────────────────── */
+function renderR(g,p){
+  const rows=[
+    ['地號', [v('i_city'),v('i_town'),v('i_sec'),v('i_sub')?v('i_sub')+'小段':'',v('i_no')?v('i_no')+'地號':''].filter(Boolean).map(esc).join(' ')||'—'],
+    ['面積／持分', (num('i_A')!=null?fmt2(num('i_A'))+' ㎡':'—')+'　持分 '+esc(v('i_share')||'—')+(shareRatio(v('i_share'))&&num('i_A')!=null?'（持分面積 '+fmt2(num('i_A')*shareRatio(v('i_share')))+' ㎡）':'')],
+    ['分區／類別', ({out:'都市計畫外',in:'都市計畫內'})[v('i_urban')]||'—'+'　'+esc(v('i_zone')||'')+'　'+esc(v('i_cat')||'')],
+    ['公告現值／公告地價', (num('i_cv')!=null?fmt(num('i_cv'))+' 元/㎡':'—')+'　／　'+(num('i_av')!=null?fmt(num('i_av'))+' 元/㎡':'—')],
+    ['取得', ymd(dt(v('i_acq')))+'（'+esc(v('i_acq_why')||'—')+'）　原始取得 '+ymd(dt(v('i_acq0')))],
+    ['租約／他項／限制登記', [$('i_lease').checked?'耕地租約':'',$('i_lien').checked?'他項權利':'',$('i_restrict').checked?'限制登記':''].filter(Boolean).join('、')||'無勾選'],
+    ['共有人', (v('i_coown')||'1')+' 人；利益落點：'+({same:'一致',diff:'不一致',unknown:'未知',na:'不適用'})[v('i_coalign')]],
+    ['所在公告', ({none:'無',farm:'農地重劃',urban:'市地重劃',zone:'區段徵收'})[v('i_ptype')]+(v('i_pname')?'：'+esc(v('i_pname')):'')+(v('i_stage')?'　階段 '+$('i_stage').selectedOptions[0].text:'')],
+    ['兩個死線', (p.pend?'公告期間截止 '+ymd(p.pend):'公告期間截止 —')+'　／　'+(p.clean?'清理期限 '+ymd(p.clean):'清理期限 —')],
+  ];
+  let h='<table>'+rows.map(r=>'<tr><td class="k">'+r[0]+'</td><td>'+r[1]+'</td></tr>').join('')+'</table>';
+  h+='<h4 style="margin-top:12px">四關結果（順序 ③→①→④→②，卡住就停在那一關）</h4>';
+  h+=g.map(x=>'<div class="gate '+x.color+'"><b><span class="tag '+x.color+'">'+({g:'過',r:'卡住',y:'待查'})[x.color]+'</span>'+x.name+'</b><small>'+x.txt+'</small></div>').join('');
+  h+=lawRef(['nf18','ns']);
+  h+='<p class="note">本表是查詢結果的整理，不是變更申請、不是價格意見；能不能變、會不會被徵收，以主管機關公告與通知書為準。製表日 '+ymd(TODAY)+'</p>';
+  $('r_out').innerHTML=h;
+}
+
+/* ───────────────────────── 輸出 2｜業務頁 ──────────────────────── */
+function renderB(g,p){
+  const t=v('i_ptype'); const stage=v('i_stage');
+  let pains=[], seg='', why=[];
+  const red=g.find(x=>x.color==='r');
+  if(red){
+    if(red.id===3) { pains.push('#8 類別變了≠農舍合法（五年關）'); why.push('農舍未滿五年：不寄信，做到期日追蹤名單。'); }
+    if(red.id===1) { pains.push('#8 套繪關'); why.push('套繪未解除：先問能不能解除，解不掉整筆連農舍一起動。'); }
+    if(red.id===4) { pains.push('#6 面積不夠還有沒有路（取得歷程例外）'); why.push('面積或資格卡：買方池只剩純農用；先把原始取得日對一遍。'); }
+    if(red.id===2) { pains.push('#8 九成農業經營用地'); }
+  }
+  if(t==='none'){ pains.unshift('#1 「來不來得及」（先問：評估過沒有）'); if(v('i_old')==='y') pains.push('#3／#5 房子底下先做認定、簽長約前先查分區證明'); if(v('i_coalign')!=='na'&&parseInt(v('i_coown')||'1')>1) pains.push('#7 共有人喬不攏怎麼辦'); seg='〈農地區段徵收開發方向〉段一（公告前）：先盤租約他項套繪，交權利狀態表'; }
+  if(t==='farm'){ pains.unshift('#9 「聽說要重劃了」→ 農地重劃做完還是農地'); seg='農地買賣委託'; }
+  if(t==='urban'){ pains.unshift('#9 重劃三種你是哪一種（市地重劃）'); seg='段一（計畫書公告前）／禁限建期間不能賣，先做權利狀態表'; }
+  if(t==='zone'){ pains.unshift('#2 「我這塊值多少」（只給變數，20 財務跑）'); if(stage==='1'||stage==='2'||stage==='3'||stage==='') seg='段一｜公告前：盤租約他項套繪，權利狀態表留給地主'; else if(stage==='4'||stage==='5') seg='段二｜公告期間：確認截止日、面積驗算、免徵條文印給他自己看'; else seg='段三｜配地後：留或賣，減徵四成請財務用他的地價算，建地委託流程'; }
+  const next = p.pend ? addDays(p.pend,-30) : (p.clean?addDays(p.clean,-30):null);
+  let h='<table><tr><td class="k">對應痛點</td><td>'+(pains.length?pains.map(esc).join('<br>'):'—')+'<br><span class="note">一封信只挑一個痛點</span></td></tr>';
+  h+='<tr><td class="k">話術段</td><td>'+esc(seg||'先過四關')+'</td></tr>';
+  h+='<tr><td class="k">下一次接觸日</td><td>'+(next?ymd(next)+'（死線前 30 天）'+(daysBetween(TODAY,next)<0?' <span class="tag r">已過</span>':''):'無死線：依名單節奏，一年最多三封')+'</td></tr>';
+  h+='<tr><td class="k">交付物（免費、當場）</td><td>權利狀態表（本工具第 1 頁列印）'+(t==='zone'?'＋截止日倒數＋面積驗算':'')+(v('i_coalign')!=='na'&&parseInt(v('i_coown')||'1')>1?'＋共有人意向表':'')+'</td></tr>';
+  h+='<tr><td class="k">走到哪個委託</td><td>'+(red?'農地買賣委託（先判能不能賣）':(t==='zone'&&stage==='6'?'建地委託（我方獨自開發線）':'盤點→共有人整合→委託（買賣或合建），我方獨自開發線'))+'</td></tr>';
+  h+='<tr><td class="k">問出那一句</td><td>'+(why.length?why.map(esc).join('<br>'):'取得歷程／共有人關係／舊建物佐證——填了答案可能不一樣的那一格')+'</td></tr></table>';
+  h+='<div class="badbox" style="margin-top:10px">出門前：署名身分那一行填具體的人；四個禁詞照 SOP〈三〉使用規則一字不出；不引同業影片；金額一律變數；先過母技能 Step 1–5 再過 A0。</div>';
+  $('b_out').innerHTML=h;
+}
+
+/* ───────────────────────── 輸出 3｜財務頁 ──────────────────────── */
+function renderF(){
+  const A=num('i_A'),Pc=num('i_Pc'),Vt=num('i_Vt'),W=num('i_W'),Pd=num('i_Pd'),Amin=num('i_Amin'),sh=shareRatio(v('i_share'))??1;
+  const n=num('f_n'),S=num('f_S'),cpi=num('f_cpi'),H=num('f_H'),Xc=num('f_Xc'),Tm=num('f_Tm'),d=num('f_d'),order=v('f_order');
+  const C=(A!=null&&Pc!=null)?A*sh*Pc:null, r=(C!=null&&Vt)?C/Vt:null, Ad=(W!=null&&Pd)?W/Pd:null, Vp=(Ad!=null&&Pd!=null)?Ad*Pd:null;
+  const G=(S!=null&&Vp!=null&&cpi!=null)?S-Vp*cpi:null;
+  let vit=null, vitTxt='';
+  if(G!=null&&Vp!=null&&order){
+    const base=landVit(G,Vp,n);
+    if(order==='a'){ vit=base.tax*(1-0.40); vitTxt='land_vit（含 §33 減徵 '+fmt(base.relief)+'）＝'+fmt(base.tax)+' → ×(1−40%)＝'+fmt(vit); }
+    else { const g40=base.gross*(1-0.40); const excess=g40-Math.max(G,0)*0.20*(1-0.40); let rel=0; for(const [y,rt] of LAND_VIT_LONG_HOLD_RELIEF){ if(n!=null&&n>y){rel=Math.max(excess,0)*rt;break;} } vit=g40-rel; vitTxt='累進本體 '+fmt(base.gross)+' ×(1−40%)＝'+fmt(g40)+' → 再套 §33 減徵 '+fmt(rel)+'＝'+fmt(vit)+'（此順序的減徵基數解讀待 20 確認）'; }
+    if(base.detail.length) vitTxt+='<br>逐級：'+base.detail.map(x=>Math.round(x[0]*100)+'%×'+fmt(x[1])+'＝'+fmt(x[2])).join('；');
+  }
+  let h='<table><tr><th>變數</th><th>值</th><th>誰填</th></tr>';
+  const row=(k,val,who)=>'<tr><td class="k">'+k+'</td><td>'+val+'</td><td>'+who+'</td></tr>';
+  h+=row('A（持分面積）',fmt2(A!=null?A*sh:null)+' ㎡','10 謄本');
+  h+=row('P_c',Pc!=null?fmt(Pc)+' 元/㎡':blank('公告'),'公告本文');
+  h+=row('C = A × P_c',fmt(C)+' 元','公式');
+  h+=row('V_total',Vt!=null?fmt(Vt):blank('主管機關'),'主管機關');
+  h+=row('r = C ÷ V_total',r==null?blank('公式'):(r*100).toFixed(4)+'%','公式');
+  h+=row('W（權利價值）',W!=null?fmt(W):blank('通知書'),'通知書，我方只驗算');
+  h+=row('P_d',Pd!=null?fmt(Pd)+' 元/㎡':blank('主管機關'),'主管機關');
+  h+=row('A_d = W ÷ P_d',fmt2(Ad)+' ㎡'+(Ad!=null&&Amin!=null?(Ad>=Amin?' ≥':' <')+' A_min '+fmt2(Amin):''),'公式');
+  h+=row('V_prior = A_d × P_d',fmt(Vp)+' 元','公式（§39-1 第 3 項原地價）');
+  h+=row('H（年持有成本，地價稅＋管理）',H!=null?fmt(H):blank('20 財務'),'🔴 20 財務判稅率');
+  h+=row('n',n!=null?n+' 年':blank('情境'),'情境假設');
+  h+=row('S',S!=null?fmt(S):blank('移轉時'),'移轉時');
+  h+=row('CPI_adj',cpi!=null?cpi:blank('20 財務'),'🔴 20 財務（施行細則 §49 實際值，🚫自乘）');
+  h+=row('G = S − V_prior × CPI_adj',fmt(G)+' 元','公式');
+  h+=row('§33 減徵 × §39-1 減徵 疊加順序',order?$('f_order').selectedOptions[0].text:blank('20 財務'),'🔴 20 財務');
+  h+=row('land_vit(G, V_prior, self_use=False, hold_years=n) × (1−40%)',vit==null?blank('上列填齊後自動算'):fmt(vit)+' 元<br><span class="note">'+vitTxt+'</span>','公式（tax_calc.py land_vit 原級距）');
+  h+=row('X_clean',Xc!=null?fmt(Xc):blank('20 財務'),'10 盤點、20 估');
+  h+=row('T_move',Tm!=null?fmt(Tm):blank('20 財務'),'20 財務');
+  h+=row('d',d!=null?d:blank('20 財務'),'20 財務');
+  h+=row('F ≤ 6% × 成交價金','上限，非固定費率','報酬計收標準第一點');
+  h+='</table>';
+  // 三情境
+  h+='<h4 style="margin-top:12px">三情境並列</h4><table><tr><th></th><th>一 現金補償</th><th>二 抵價地持有</th><th>三 抵價地第一次移轉</th></tr>';
+  h+='<tr><td class="k">現金進帳</td><td>C＝'+fmt(C)+'</td><td>無；資產 A_d×P_d＝'+fmt(Vp)+'</td><td>S＝'+(S!=null?fmt(S):blank('移轉時'))+'</td></tr>';
+  h+='<tr><td class="k">土增稅</td><td>0（§39-1 第 2 項免徵）</td><td>0（§39-1 第 3 項免徵）</td><td>'+(vit==null?blank('填齊後算'):fmt(vit))+'（減徵 40%）</td></tr>';
+  h+='<tr><td class="k">前置／移轉支出</td><td>0</td><td>X_clean '+(Xc!=null?fmt(Xc):blank('20'))+'</td><td>X_clean＋T_move '+((Xc!=null&&Tm!=null)?fmt(Xc+Tm):blank('20'))+'</td></tr>';
+  h+='<tr><td class="k">持有成本</td><td>0</td><td>H×n '+((H!=null&&n!=null)?fmt(H*n):blank('20'))+'</td><td>H×n '+((H!=null&&n!=null)?fmt(H*n):blank('20'))+'</td></tr>';
+  h+='<tr><td class="k">仲介服務點</td><td>徵收前買賣 F ≤ 6%×成交價金</td><td>無成交，顧問服務點</td><td>配地後建地買賣 F ≤ 6%×S</td></tr></table>';
+  // 損失感六條
+  h+='<h4 style="margin-top:12px">損失感公式 L1–L6（〈農地話術結構與損失感公式〉〈三〉，只列變數，🚫填假數、🚫出金額給地主）</h4>';
+  h+='<div class="formula">通式  L = (V_對的決定 − V_錯的決定) × P_觸發   ← P 🚫講成 1，只寫觸發條件\n'
+   +'L1 時間   = (V_建 − V_農 − X_變更) × P_來不及 ；P_來不及 = 1 if T_辦 > T_剩 else 0 ；T_剩＝該縣市公告日 − 今天（查公告）\n'
+   +'L2 徵收價差 = A_房屋範圍 × (P_建補償 − P_農補償) + A_道路 × (P_公設補償 − P_農補償) ；公告前 P_* 未定，只列公式\n'
+   +'L3 違規使用 = F_罰 × N_次 + R_月租 × M_剩餘月 × P_停業 ；先查分區證明成本≈0\n'
+   +'L4 共有分配 = X_變更 ÷ n − V_建 × Area(S_i ∩ S_v) ；交集＝0 時 L4 = X_變更 ÷ n\n'
+   +'L5 拆舊建物 = X_拆 + X_重建 + V_建 × T_重申請年 × d − X_修繕 ；L5 > 0 就不拆（前提：舊建物可取得合法證明，未查前🚫算）\n'
+   +'L6 300坪誤判 = (V_可蓋農舍 − V_不可蓋) × P_例外 ；P_例外 = 1 if 母地原始取得日 < 修法日 且 符合例外條款（只引農舍辦法原文）</div>';
+  h+='<div class="warnbox" style="margin-top:8px">本頁數字沒過 20 財務不出門。對外任何載體出現 L1–L6 的數字＝A0 直接退。</div>';
+  h+=lawRef(['ts33','ts391','tz44','fee']);
+  $('f_out').innerHTML=h;
+}
+
+/* ───────────────────────── 主流程 ──────────────────────── */
+function run(){
+  const g=gates(); const p=path(g);
+  renderR(g,p); renderB(g,p); renderF();
+  $('r_out').innerHTML += '<h4 style="margin-top:12px">路徑判定（模組 2）</h4>'+p.html;
+  show('s-r');
+}
+function show(id){ document.querySelectorAll('.sec').forEach(s=>s.classList.toggle('on',s.id===id)); document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===id)); window.scrollTo(0,0); }
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>show(b.dataset.t)));
+function printR(){ window.print(); }
+$('i_ptype').addEventListener('change',()=>{ $('pbox').hidden=$('i_ptype').value==='none'||$('i_ptype').value==='farm'; $('zbox').hidden=$('i_ptype').value!=='zone'; });
+
+/* 本機存檔：只在這台裝置的 localStorage，不上傳 */
+const FIELDS=[...document.querySelectorAll('input,select')].map(e=>e.id).filter(Boolean);
+function saveLocal(){ try{ const o={}; FIELDS.forEach(id=>{const e=$(id); o[id]=e.type==='checkbox'?e.checked:e.value;}); localStorage.setItem('nongdi_v1',JSON.stringify(o)); alert('已存在這台裝置（不上傳）'); }catch(e){ alert('這個瀏覽器不允許本機存檔'); } }
+function clearLocal(){ try{ localStorage.removeItem('nongdi_v1'); }catch(e){} FIELDS.forEach(id=>{const e=$(id); if(e.type==='checkbox') e.checked=false; else e.value='';}); $('i_ptype').value='none'; $('i_ptype').dispatchEvent(new Event('change')); $('r_out').innerHTML='<p class="note">已清空。</p>'; $('b_out').innerHTML=''; $('f_out').innerHTML=''; }
+(function load(){ try{ const o=JSON.parse(localStorage.getItem('nongdi_v1')||'null'); if(!o) return; FIELDS.forEach(id=>{const e=$(id); if(!(id in o)) return; if(e.type==='checkbox') e.checked=!!o[id]; else e.value=o[id];}); $('i_ptype').dispatchEvent(new Event('change')); }catch(e){} })();
+</script>
+<script src="/cta.js" defer></script>
+</body>
+</html>
