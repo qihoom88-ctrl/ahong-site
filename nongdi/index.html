@@ -529,7 +529,7 @@ function renderF(){
   if(G!=null&&Vp!=null&&order){
     const base=landVit(G,Vp,n);
     if(order==='a'){ vit=base.tax*(1-0.40); vitTxt='land_vit（含 §33 減徵 '+fmt(base.relief)+'）＝'+fmt(base.tax)+' → ×(1−40%)＝'+fmt(vit); }
-    else { const g40=base.gross*(1-0.40); const excess=g40-Math.max(G,0)*0.20*(1-0.40); let rel=0; for(const [y,rt] of LAND_VIT_LONG_HOLD_RELIEF){ if(n!=null&&n>y){rel=Math.max(excess,0)*rt;break;} } vit=g40-rel; vitTxt='累進本體 '+fmt(base.gross)+' ×(1−40%)＝'+fmt(g40)+' → 再套 §33 減徵 '+fmt(rel)+'＝'+fmt(vit)+'（此順序的減徵基數解讀待 20 確認）'; }
+    else { const g40=base.gross*(1-0.40); const excess=g40-Math.max(G,0)*0.20*(1-0.40); let rel=0; for(const [y,rt] of LAND_VIT_LONG_HOLD_RELIEF){ if(n!=null&&n>y){rel=Math.max(excess,0)*rt;break;} } vit=g40-rel; vitTxt='累進本體 '+fmt(base.gross)+' ×(1−40%)＝'+fmt(g40)+' → 再套 §33 減徵 '+fmt(rel)+'＝'+fmt(vit)+'（20 財務 2026-09-14 複核：兩序線性恆等，數字不受順序影響；申報書填法待財政部函釋）'; }
     if(base.detail.length) vitTxt+='<br>逐級：'+base.detail.map(x=>Math.round(x[0]*100)+'%×'+fmt(x[1])+'＝'+fmt(x[2])).join('；');
   }
   let h='<table><tr><th>變數</th><th>值</th><th>誰填</th></tr>';
