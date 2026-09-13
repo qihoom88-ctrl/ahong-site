@@ -477,7 +477,7 @@ function renderR(g,p){
   const rows=[
     ['地號', [v('i_city'),v('i_town'),v('i_sec'),v('i_sub')?v('i_sub')+'小段':'',v('i_no')?v('i_no')+'地號':''].filter(Boolean).map(esc).join(' ')||'—'],
     ['面積／持分', (num('i_A')!=null?fmt2(num('i_A'))+' ㎡':'—')+'　持分 '+esc(v('i_share')||'—')+(shareRatio(v('i_share'))&&num('i_A')!=null?'（持分面積 '+fmt2(num('i_A')*shareRatio(v('i_share')))+' ㎡）':'')],
-    ['分區／類別', ({out:'都市計畫外',in:'都市計畫內'})[v('i_urban')]||'—'+'　'+esc(v('i_zone')||'')+'　'+esc(v('i_cat')||'')],
+    ['分區／類別', (({out:'都市計畫外',in:'都市計畫內'})[v('i_urban')]||'—')+'　'+esc(v('i_zone')||'—')+'　'+esc(v('i_cat')||'—')],
     ['公告現值／公告地價', (num('i_cv')!=null?fmt(num('i_cv'))+' 元/㎡':'—')+'　／　'+(num('i_av')!=null?fmt(num('i_av'))+' 元/㎡':'—')],
     ['取得', ymd(dt(v('i_acq')))+'（'+esc(v('i_acq_why')||'—')+'）　原始取得 '+ymd(dt(v('i_acq0')))],
     ['租約／他項／限制登記', [$('i_lease').checked?'耕地租約':'',$('i_lien').checked?'他項權利':'',$('i_restrict').checked?'限制登記':''].filter(Boolean).join('、')||'無勾選'],
