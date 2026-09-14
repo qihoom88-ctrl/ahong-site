@@ -22,6 +22,7 @@
     '.simi-card{display:block;text-decoration:none;color:var(--ink);background:var(--card);',
     'border:1px solid var(--line);border-radius:18px;padding:16px 16px 15px}',
     '.simi-card .simi-dist{font-size:.76rem;font-weight:800;letter-spacing:.06em;color:var(--muted)}',
+    '.simi-card .simi-tag{display:inline-block;margin-left:8px;font-size:.72rem;font-weight:900;color:var(--warm)}',
     '.simi-card h4{margin:5px 0 9px;font-size:1.02rem;font-weight:900;line-height:1.5}',
     '.simi-card .simi-price{font-size:1.18rem;font-weight:900;color:var(--gold);',
     'font-variant-numeric:tabular-nums;line-height:1.3}',
@@ -84,6 +85,36 @@
     return same.concat(sameCity, near).slice(0, 3);
   }
 
+  /* data-mode="price-or-size"：只有頁面指定時才用，其他頁照上面三層挑選。
+     2026-09-14 阿宏「簡報 顯示下架並提供 其他相同價位或坪數供參考」（台北豪景下架公告頁）。
+     條件＝在售、有官網編號（官網比對過才推薦）、開價 ±10% 或權狀坪數 ±10%；
+     兩項都相近的排前面，其餘依開價接近度，最多 6 筆。 */
+  function num(v) {
+    var n = parseFloat(v);
+    return isNaN(n) ? null : n;
+  }
+
+  function pickPriceOrSize(list, me) {
+    var mp = num(me['開價萬']), ma = num(me['權狀坪數']);
+    var out = [];
+    list.forEach(function (x) {
+      if (!x || !x.slug || x.slug === me.slug || x.status !== '在售' || !x['官網編號']) return;
+      var p = num(x['開價萬']), a = num(x['權狀坪數']);
+      var pm = mp != null && p != null && Math.abs(p - mp) <= mp * 0.1;
+      var am = ma != null && a != null && Math.abs(a - ma) <= ma * 0.1;
+      if (!pm && !am) return;
+      out.push({ x: x, both: pm && am, pm: pm, d: (p == null || mp == null) ? 1e9 : Math.abs(p - mp) });
+    });
+    out.sort(function (a, b) {
+      if (a.both !== b.both) return a.both ? -1 : 1;
+      return a.d - b.d;
+    });
+    return out.slice(0, 6).map(function (o) {
+      o.x._tag = o.both ? '開價與坪數都相近' : (o.pm ? '開價相近' : '坪數相近');
+      return o.x;
+    });
+  }
+
   function esc(v) {
     return String(v == null ? '' : v)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -98,6 +129,7 @@
       '<div class="simi-price"><em>開價</em>' + esc(x['開價萬']) + ' 萬</div>';
     return '<a class="simi-card" href="../' + esc(x.slug) + '/">' +
       (x['行政區'] ? '<span class="simi-dist">' + esc(x['行政區']) + '</span>' : '') +
+      (x._tag ? '<span class="simi-tag">' + esc(x._tag) + '</span>' : '') +
       '<h4>' + esc(x['案名']) + '</h4>' + price +
       (spec ? '<p class="simi-spec">' + esc(spec) + '</p>' : '') +
       (x['一句話賣點'] ? '<p class="simi-sell">' + esc(x['一句話賣點']) + '</p>' : '') +
@@ -105,14 +137,18 @@
       '</a>';
   }
 
-  function render(picked) {
-    HOST.innerHTML =
-      '<div class="simi-lead">' +
+  function render(picked, mode) {
+    var lead = mode === 'price-or-size' ?
+        '<div class="simi-kicker">同價位或同坪數的物件</div>' +
+        '<p>這一間已經標示下架。下面是我手上開價或坪數跟它接近、目前還在賣的物件，給你參考。</p>' +
+        '<p>都不合也不要緊，跟我說你真正在意的是什麼，我再幫你留意。</p>' :
         '<div class="simi-kicker">如果這一間不合適</div>' +
         '<p>看到這裡如果覺得不對，那就是不對，沒有關係。沒有哪一間是好的或壞的，只有合不合，' +
         '不合適的先放掉，不用勉強自己去說服自己。</p>' +
         '<p>下面這幾間是我手上性質比較接近的，順路看一眼就好。' +
-        '一間都沒中意也不要緊，跟我說你真正在意的是什麼，我再幫你留意。</p>' +
+        '一間都沒中意也不要緊，跟我說你真正在意的是什麼，我再幫你留意。</p>';
+    HOST.innerHTML =
+      '<div class="simi-lead">' + lead +
         '<div class="simi-grid">' + picked.map(card).join('') + '</div>' +
         '<p class="simi-note">開價不等於成交價；物件狀態可能異動，以來電或 LINE 確認為準。</p>' +
       '</div>';
@@ -131,10 +167,11 @@
           if (doc['物件'][i].slug === me) { self = doc['物件'][i]; break; }
         }
         if (!self) return;
-        var picked = pick(doc['物件'], self);
+        var mode = HOST.getAttribute('data-mode') || '';
+        var picked = mode === 'price-or-size' ? pickPriceOrSize(doc['物件'], self) : pick(doc['物件'], self);
         if (!picked.length) return;
         injectCss();
-        render(picked);
+        render(picked, mode);
       })
       .catch(function () { /* 撈不到就整區隱藏，不出空狀態 */ });
   }
