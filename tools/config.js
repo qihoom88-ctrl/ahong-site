@@ -90,7 +90,7 @@ window.AHCONFIG = {
     },
     {
       "name": "佳陞豐川 F2戶 七樓（蘆竹山鼻）",
-      "price": 1458,
+      "price": 1438,
       "region": "桃園市蘆竹區",
       "floor": "7樓",
       "nearbyBiz": "A10山鼻生活圈",
